@@ -14,6 +14,20 @@ import hashlib
 import discord
 from discord.ext import commands
 
+# -------------------------
+# Paths / constants
+# -------------------------
+# Ensure all runtime file paths are defined before any module-level loads.
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "data")
+
+# SQLite DB (stored on Railway's ephemeral disk unless you use a volume).
+DB_PATH = os.path.join(BASE_DIR, os.getenv("BOT_DB_FILE", "bottany.sqlite3"))
+
+# Core datasets that are loaded at import time.
+DICT_PATH = os.path.join(DATA_DIR, "dictionaries.json")
+TRIVIA_PATH = os.path.join(DATA_DIR, "trivia_facts.json")
+
 logging.basicConfig(level=os.getenv("LOG_LEVEL", "INFO").upper(), format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger("bottany")
 
