@@ -11,9 +11,22 @@ import re
 from typing import Optional, Dict, Any, List
 from datetime import datetime, date, time as dtime
 import hashlib
+import discord
+from discord.ext import commands
 
 logging.basicConfig(level=os.getenv("LOG_LEVEL", "INFO").upper(), format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger("bottany")
+
+# -------------------------
+# Discord bot bootstrap
+# -------------------------
+intents = discord.Intents.default()
+# Prefix commands need message content; slash commands do not, but we enable
+# it because this project supports both styles.
+intents.message_content = True
+intents.members = True
+
+bot = commands.Bot(command_prefix="!", intents=intents)
 
 # Healthcheck server for Railway (listens on $PORT)
 async def _healthcheck_app():
@@ -35,9 +48,6 @@ async def start_healthcheck_server():
         logger.info("Healthcheck server listening on port %s", port)
     except Exception as e:
         logger.warning("Healthcheck server did not start: %s", e)
-
-bot = commands.Bot(command_prefix="!", intents=intents)
-
 # -------------------------
 # DB helpers
 # -------------------------
