@@ -3,111 +3,6 @@ import logging
 import asyncio
 import json
 import random
-# ------------------------------
-# Remote dataset loader (GitHub Raw) with commit-SHA pin, allowlist, caching, and local fallback
-# ------------------------------
-import hashlib
-from urllib.parse import urlparse
-
-DATASET_BASE_URL = os.getenv("DATASET_BASE_URL", "").strip()  # e.g. https://raw.githubusercontent.com/<USER>/<REPO>
-DATASET_PIN = os.getenv("DATASET_PIN", "").strip()            # commit SHA (recommended) or tag
-DATASET_ALLOWLIST = set(d.strip().lower() for d in os.getenv("DATASET_ALLOWLIST", "raw.githubusercontent.com").split(",") if d.strip())
-
-_DATASET_CACHE_DIR = os.path.join(os.getcwd(), ".dataset_cache")
-os.makedirs(_DATASET_CACHE_DIR, exist_ok=True)
-
-def _domain_allowed(url: str) -> bool:
-    try:
-        host = (urlparse(url).hostname or "").lower()
-        return host in DATASET_ALLOWLIST
-    except Exception:
-        return False
-
-def _cache_paths(name: str):
-    safe = re.sub(r"[^a-zA-Z0-9_.-]+", "_", name)
-    return (
-        os.path.join(_DATASET_CACHE_DIR, f"{safe}.json"),
-        os.path.join(_DATASET_CACHE_DIR, f"{safe}.meta.json"),
-    )
-
-class DatasetLoader:
-    def __init__(self, base_url: str, pin: str):
-        self.base_url = base_url.rstrip("/")
-        self.pin = pin
-
-    def enabled(self) -> bool:
-        return bool(self.base_url) and bool(self.pin)
-
-    def url_for(self, filename: str) -> str:
-        # Expect base like https://raw.githubusercontent.com/<user>/<repo>
-        # Full: {base}/{pin}/data/{filename}
-        return f"{self.base_url}/{self.pin}/data/{filename}"
-
-    def load_json(self, filename: str, local_fallback: dict) -> dict:
-        # If not enabled, return local.
-        if not self.enabled():
-            return local_fallback
-
-        url = self.url_for(filename)
-        if not _domain_allowed(url):
-            logger.warning("Remote dataset blocked by allowlist: %s", url)
-            return local_fallback
-
-        cache_json_path, cache_meta_path = _cache_paths(filename)
-        etag = None
-        try:
-            if os.path.exists(cache_meta_path):
-                with open(cache_meta_path, "r", encoding="utf-8") as mf:
-                    meta = json.load(mf)
-                    etag = meta.get("etag")
-        except Exception:
-            etag = None
-
-        headers = {"User-Agent": "Bottany/5.x (+datasets)"}
-        if etag:
-            headers["If-None-Match"] = etag
-
-        try:
-            resp = requests.get(url, headers=headers, timeout=15)
-            if resp.status_code == 304 and os.path.exists(cache_json_path):
-                with open(cache_json_path, "r", encoding="utf-8") as cf:
-                    return json.load(cf)
-
-            if resp.status_code != 200:
-                logger.warning("Remote dataset fetch failed (%s): %s", resp.status_code, url)
-                # Try cache then fallback
-                if os.path.exists(cache_json_path):
-                    with open(cache_json_path, "r", encoding="utf-8") as cf:
-                        return json.load(cf)
-                return local_fallback
-
-            data = resp.json()
-            # Write cache
-            with open(cache_json_path, "w", encoding="utf-8") as cf:
-                json.dump(data, cf, ensure_ascii=False, indent=2)
-
-            meta = {
-                "url": url,
-                "etag": resp.headers.get("ETag"),
-                "fetched_utc": datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
-            }
-            with open(cache_meta_path, "w", encoding="utf-8") as mf:
-                json.dump(meta, mf, ensure_ascii=False, indent=2)
-
-            return data
-        except Exception as e:
-            logger.warning("Remote dataset exception: %s", e)
-            # Try cache then fallback
-            try:
-                if os.path.exists(cache_json_path):
-                    with open(cache_json_path, "r", encoding="utf-8") as cf:
-                        return json.load(cf)
-            except Exception:
-                pass
-            return local_fallback
-
-DATASET_LOADER = DatasetLoader(DATASET_BASE_URL, DATASET_PIN)
-
 import requests
 from aiohttp import web
 from bs4 import BeautifulSoup
@@ -428,9 +323,9 @@ def require_guild(interaction: discord.Interaction) -> bool:
 # -------------------------
 @bot.tree.command(name="dictionaries", description="List prestigious English dictionaries used by the bot.")
 async def dictionaries_cmd(interaction: discord.Interaction):
-        if not module_enabled(interaction, "dictionaries"):
-            await interaction.response.send_message("The **dictionaries** module is disabled in this server.")
-            return
+    if not module_enabled(interaction, "dictionaries"):
+        await interaction.response.send_message("The **dictionaries** module is disabled in this server.")
+        return
 
     dcts = DICT_REG.get("dictionaries", [])
     embed = discord.Embed(title="Prestigious English dictionaries")
@@ -442,12 +337,12 @@ async def dictionaries_cmd(interaction: discord.Interaction):
             inline=False)
     await interaction.response.send_message(embed=embed)
 
-@bot.tree.command(name="define", description="Ask: "what's the meaning of <word>" and get a definition + official dictionary links.")
-@app_commands.describe(award="tga|bafta|dice|gja", year="Year (e.g., 2025)", category="Category name (e.g., Game of the Year)", genre="Optional genre filter (e.g., rpg, action, all)", bafta_slug="BAFTA only: category slug (e.g., best-game)")
+@bot.tree.command(name="define", description="Ask: \"what's the meaning of <word>?\" and get a definition + official dictionary links.")
+@app_commands.describe(phrase="Use the exact pattern: what's the meaning of <word>?")
 async def define_cmd(interaction: discord.Interaction, phrase: str):
-        if not module_enabled(interaction, "dictionaries"):
-            await interaction.response.send_message("The **dictionaries** module is disabled in this server.")
-            return
+    if not module_enabled(interaction, "dictionaries"):
+        await interaction.response.send_message("The **dictionaries** module is disabled in this server.")
+        return
 
     m = MEANING_PATTERN.match(phrase or "")
     if not m:
@@ -465,9 +360,9 @@ trivia_group = app_commands.Group(name="trivia", description="Daily academic tri
 @trivia_group.command(name="setchannel", description="Set the channel where the daily trivia will be posted (admin).")
 @app_commands.describe(channel="Target channel for daily trivia posts")
 async def trivia_setchannel(interaction: discord.Interaction, channel: discord.TextChannel):
-        if not module_enabled(interaction, "trivia"):
-            await interaction.response.send_message("The **trivia** module is disabled in this server.")
-            return
+    if not module_enabled(interaction, "trivia"):
+        await interaction.response.send_message("The **trivia** module is disabled in this server.")
+        return
 
     if not require_guild(interaction):
         await interaction.response.send_message("This must be used in a server.")
@@ -480,9 +375,9 @@ async def trivia_setchannel(interaction: discord.Interaction, channel: discord.T
 
 @trivia_group.command(name="now", description="Post one academic trivia item right now (manual).")
 async def trivia_now(interaction: discord.Interaction):
-        if not module_enabled(interaction, "trivia"):
-            await interaction.response.send_message("The **trivia** module is disabled in this server.")
-            return
+    if not module_enabled(interaction, "trivia"):
+        await interaction.response.send_message("The **trivia** module is disabled in this server.")
+        return
 
     if not require_guild(interaction):
         await interaction.response.send_message("This must be used in a server.")
@@ -493,9 +388,9 @@ async def trivia_now(interaction: discord.Interaction):
 
 @trivia_group.command(name="sources", description="Show the curated sources behind the trivia facts.")
 async def trivia_sources(interaction: discord.Interaction):
-        if not module_enabled(interaction, "trivia"):
-            await interaction.response.send_message("The **trivia** module is disabled in this server.")
-            return
+    if not module_enabled(interaction, "trivia"):
+        await interaction.response.send_message("The **trivia** module is disabled in this server.")
+        return
 
     # Show unique domains / source URLs
     facts = TRIVIA_REG.get("facts", [])
@@ -508,9 +403,9 @@ async def trivia_sources(interaction: discord.Interaction):
 
 @trivia_group.command(name="status", description="Show trivia posting status for this server.")
 async def trivia_status(interaction: discord.Interaction):
-        if not module_enabled(interaction, "trivia"):
-            await interaction.response.send_message("The **trivia** module is disabled in this server.")
-            return
+    if not module_enabled(interaction, "trivia"):
+        await interaction.response.send_message("The **trivia** module is disabled in this server.")
+        return
 
     if not require_guild(interaction):
         await interaction.response.send_message("This must be used in a server.")
@@ -552,9 +447,9 @@ async def bundles(interaction: discord.Interaction, source: Optional[str] = None
 @bot.tree.command(name="define_word", description="Define a word (academic dictionaries only).")
 @app_commands.describe(word="English word to define")
 async def define_word(interaction: discord.Interaction, word: str):
-        if not module_enabled(interaction, "dictionaries"):
-            await interaction.response.send_message("The **dictionaries** module is disabled in this server.")
-            return
+    if not module_enabled(interaction, "dictionaries"):
+        await interaction.response.send_message("The **dictionaries** module is disabled in this server.")
+        return
 
     # Reuse the same pipeline as the phrase-based define
     await send_definition(interaction, word, requester=str(interaction.user))
@@ -562,67 +457,72 @@ async def define_word(interaction: discord.Interaction, word: str):
 @bot.tree.command(name="define_compare", description="Compare UK vs US usage and pronunciation (academic dictionaries).")
 @app_commands.describe(word="English word to compare (UK vs US)")
 async def define_compare(interaction: discord.Interaction, word: str):
-        if not module_enabled(interaction, "dictionaries"):
-            await interaction.response.send_message("The **dictionaries** module is disabled in this server.")
-            return
+    if not module_enabled(interaction, "dictionaries"):
+        await interaction.response.send_message("The **dictionaries** module is disabled in this server.")
+        return
 
-    embed = discord.Embed(title=f"UK vs US — {word}")
+    w = (word or "").strip()
+    if not w:
+        await interaction.response.send_message("Please provide a word to compare.")
+        return
+
+    embed = discord.Embed(title=f"UK vs US — {w}")
     embed.description = (
         "This comparison is based on authoritative dictionaries. "
         "Follow the official links below for full entries, IPA, and audio."
     )
+
     embed.add_field(
         name="UK (Oxford / Cambridge)",
         value=(
-            f"• Oxford Learner’s: https://www.oxfordlearnersdictionaries.com/definition/english/{word}\n"
-            f"• Cambridge: https://dictionary.cambridge.org/dictionary/english/{word}"
+            f"• Oxford Learner’s: https://www.oxfordlearnersdictionaries.com/definition/english/{w}\n"
+            f"• Cambridge: https://dictionary.cambridge.org/dictionary/english/{w}"
         ),
-        inline=False)
+        inline=False,
+    )
     embed.add_field(
         name="US (Merriam-Webster)",
-        value=f"• Merriam-Webster: https://www.merriam-webster.com/dictionary/{word}",
-        inline=False)
-    embed.add_field(
-        name="Pronunciation (IPA & Audio)",
-        value=(
-            "Use the official dictionary pages above to listen to audio pronunciations "
-            "and view IPA for UK and US variants."
-        ),
-        inline=False)
+        value=f"• Merriam-Webster: https://www.merriam-webster.com/dictionary/{w}",
+        inline=False,
+    )
+
     await interaction.response.send_message(embed=embed)
 
 @bot.tree.command(name="define_etymology", description="Show etymology references (academic dictionaries only).")
 @app_commands.describe(word="English word to check etymology")
 async def define_etymology(interaction: discord.Interaction, word: str):
-        if not module_enabled(interaction, "dictionaries"):
-            await interaction.response.send_message("The **dictionaries** module is disabled in this server.")
-            return
+    if not module_enabled(interaction, "dictionaries"):
+        await interaction.response.send_message("The **dictionaries** module is disabled in this server.")
+        return
 
-    embed = discord.Embed(title=f"Etymology — {word}")
+    w = (word or "").strip()
+    if not w:
+        await interaction.response.send_message("Please provide a word.")
+        return
+
+    embed = discord.Embed(title=f"Etymology — {w}")
     embed.description = (
         "Etymology references from authoritative dictionaries. "
         "Follow the official links below for full historical entries."
     )
     embed.add_field(
         name="Oxford English Dictionary (OED)",
-        value=f"https://www.oed.com/search/dictionary/?scope=Entries&q={word}",
-        inline=False)
+        value=f"https://www.oed.com/search/dictionary/?scope=Entries&q={w}",
+        inline=False,
+    )
     embed.add_field(
         name="Merriam-Webster (Etymology)",
-        value=f"https://www.merriam-webster.com/dictionary/{word}#etymology",
-        inline=False)
-    embed.add_field(
-        name="Notes",
-        value="Entries may require institutional or personal access (OED). No scraping is performed.",
-        inline=False)
+        value=f"https://www.merriam-webster.com/dictionary/{w}#etymology",
+        inline=False,
+    )
     await interaction.response.send_message(embed=embed)
 
 @bot.tree.command(name="define_usage", description="Usage examples and synonyms (authoritative dictionaries).")
 @app_commands.describe(word="English word to check usage and synonyms")
 async def define_usage(interaction: discord.Interaction, word: str):
-        if not module_enabled(interaction, "dictionaries"):
-            await interaction.response.send_message("The **dictionaries** module is disabled in this server.")
-            return
+    if not module_enabled(interaction, "dictionaries"):
+        await interaction.response.send_message("The **dictionaries** module is disabled in this server.")
+        return
 
     embed = discord.Embed(title=f"Usage & Synonyms — {word}")
     embed.description = (
@@ -645,9 +545,9 @@ async def define_usage(interaction: discord.Interaction, word: str):
 @bot.tree.command(name="define_pronunciation", description="Pronunciation (IPA & audio via official dictionaries).")
 @app_commands.describe(word="English word to check pronunciation")
 async def define_pronunciation(interaction: discord.Interaction, word: str):
-        if not module_enabled(interaction, "dictionaries"):
-            await interaction.response.send_message("The **dictionaries** module is disabled in this server.")
-            return
+    if not module_enabled(interaction, "dictionaries"):
+        await interaction.response.send_message("The **dictionaries** module is disabled in this server.")
+        return
 
     embed = discord.Embed(title=f"Pronunciation — {word}")
     embed.description = (
@@ -670,50 +570,38 @@ async def define_pronunciation(interaction: discord.Interaction, word: str):
 # Academic helpers (link-first, no scraping)
 # -------------------------
 def ensure_academic_enabled(interaction: discord.Interaction) -> bool:
-        if not module_enabled(interaction, "academic"):
-            return False
-        return True
+    return module_enabled(interaction, "academic")
 
-    def _mk_refs(refs: list) -> str:
-    return "\n".join(f"• {r.get('name')}: {r.get('url')}" for r in refs if r.get("url")) or "No references available."
+def _mk_refs(refs: list) -> str:
+    return "\n".join(
+        f"• {r.get('name')}: {r.get('url')}"
+        for r in refs
+        if r.get("url")
+    ) or "No references available."
 
 def _embed_from(title: str, bullets: list, refs: list) -> discord.Embed:
-        e = discord.Embed(title=title)
-        if bullets:
-            e.description = "\n".join(f"• {b}" for b in bullets)
-        # Governance: always show a reference field
-        if refs:
-            e.add_field(name="Academic references (official)", value=_mk_refs(refs), inline=False)
-        else:
-            e.add_field(name="Academic references (official)", value="(Missing references in registry for this item)", inline=False)
-        return e
-
-def _norm(s: str) -> str:
-    return re.sub(r"\s+", " ", (s or "").strip().lower())
-
-def _closest_key(mapping: dict, query: str) -> str:
-    q = _norm(query)
-    if not mapping:
-        return ""
-    # exact / normalized match
-    for k in mapping.keys():
-        if _norm(k) == q:
-            return k
-    # substring match
-    for k in mapping.keys():
-        if q and q in _norm(k):
-            return k
-    # fallback first
-    return next(iter(mapping.keys()))
+    e = discord.Embed(title=title)
+    if bullets:
+        e.description = "\n".join(f"• {b}" for b in bullets)
+    # Governance: always show a reference field
+    if refs:
+        e.add_field(name="Academic references (official)", value=_mk_refs(refs), inline=False)
+    else:
+        e.add_field(
+            name="Academic references (official)",
+            value="(Missing references in registry for this item)",
+            inline=False,
+        )
+    return e
 
 academic_group = app_commands.Group(name="academic", description="Academic-only knowledge hub (universities, museums, journals, official institutions).")
 
 @academic_group.command(name="concept_map", description="Show an academic concept map for a term (link-first).")
 @app_commands.describe(term="Concept/term, e.g., aesthetics, semiotics, narrative")
 async def academic_concept_map(interaction: discord.Interaction, term: str):
-        if not ensure_academic_enabled(interaction):
-            await interaction.response.send_message("The **academic** module is disabled in this server.")
-            return
+    if not ensure_academic_enabled(interaction):
+        await interaction.response.send_message("The **academic** module is disabled in this server.")
+        return
 
     term_n = _norm(term)
     refs = []
@@ -731,9 +619,9 @@ async def academic_concept_map(interaction: discord.Interaction, term: str):
 @academic_group.command(name="timeline", description="Create an academic timeline starter (link-first).")
 @app_commands.describe(topic="Topic, e.g., video game history, impressionism")
 async def academic_timeline(interaction: discord.Interaction, topic: str):
-        if not ensure_academic_enabled(interaction):
-            await interaction.response.send_message("The **academic** module is disabled in this server.")
-            return
+    if not ensure_academic_enabled(interaction):
+        await interaction.response.send_message("The **academic** module is disabled in this server.")
+        return
 
     refs = []
     refs += ACADEMIC_REG.get("reference_hubs", {}).get("museums", [])[:2]
@@ -766,9 +654,9 @@ async def academic_institution_compare(interaction: discord.Interaction, a: str,
 @academic_group.command(name="academic_sources", description="Where to read academically for a topic (link-first).")
 @app_commands.describe(topic="Topic, e.g., visual semiotics, game preservation")
 async def academic_sources(interaction: discord.Interaction, topic: str):
-        if not ensure_academic_enabled(interaction):
-            await interaction.response.send_message("The **academic** module is disabled in this server.")
-            return
+    if not ensure_academic_enabled(interaction):
+        await interaction.response.send_message("The **academic** module is disabled in this server.")
+        return
 
     refs = []
     refs += ACADEMIC_REG.get("reference_hubs", {}).get("philosophy", [])
@@ -835,8 +723,8 @@ async def academic_citation_helper(interaction: discord.Interaction, url: str, s
     ]
     templates = {
         "apa": "Organization/Author. (Year, Month Day). Title of page. Site Name. URL (Accessed YYYY-MM-DD).",
-        "chicago": "Organization/Author. "Title of Page." Site Name. Last modified/Accessed Month Day, Year. URL.",
-        "mla": "Organization/Author. "Title of Page." Site Name, Publisher (if any), Date, URL. Accessed Day Month Year."
+        "chicago": "Organization/Author. \"Title of Page.\" Site Name. Last modified/Accessed Month Day, Year. URL.",
+        "mla": "Organization/Author. \"Title of Page.\" Site Name, Publisher (if any), Date, URL. Accessed Day Month Year."
     }
     t = templates.get(style_n, templates["apa"])
     e = _embed_from(f"Citation Helper — {style.upper()}", bullets, [{"name":"Source URL", "url": url}])
@@ -872,9 +760,9 @@ async def academic_ethics(interaction: discord.Interaction, topic: str):
 @academic_group.command(name="methodology_guide", description="Methodology guide for a topic (academic-only, link-first).")
 @app_commands.describe(topic="e.g., visual analysis")
 async def methodology_guide(interaction: discord.Interaction, topic: str):
-        if not ensure_academic_enabled(interaction):
-            await interaction.response.send_message("The **academic** module is disabled in this server.")
-            return
+    if not ensure_academic_enabled(interaction):
+        await interaction.response.send_message("The **academic** module is disabled in this server.")
+        return
 
     mapping = ACADEMIC_REG.get("modules", {}).get("methodology_guide", {})
     k = _closest_key(mapping, topic)
@@ -1286,7 +1174,7 @@ def validate_registry_links() -> dict:
 
     # --- academic ---
     a_inst = allow.get("academic_institutional", {}).get("domains", [])
-        a_pub = allow.get("publishers", {}).get("domains", [])
+    a_pub = allow.get("publishers", {}).get("domains", [])
     try:
         for group, items in (ACADEMIC_REG.get("reference_hubs", {}) or {}).items():
             for it in items:
@@ -1336,31 +1224,35 @@ def governance_summary_text() -> str:
 TESLA_REG_PATH = os.path.join(DATA_DIR, "tesla_registry.json")
 # --- Art / Animation registries (code-independent JSON) ---
 def load_json_registry(filename: str) -> dict:
-    """Load a JSON registry.
-    Priority:
-    1) Remote (GitHub Raw) pinned to DATASET_PIN (commit SHA recommended), if configured
-    2) Local cache (if remote previously fetched)
-    3) Bundled local file in ./data (fallback)
-    """
-    local_path = os.path.join("data", filename)
-    local_data = {}
+    path = os.path.join(DATA_DIR, filename)
     try:
-        if os.path.exists(local_path):
-            with open(local_path, "r", encoding="utf-8") as f:
-                local_data = json.load(f)
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
     except Exception as e:
-        logger.warning("Failed reading local registry %s: %s", filename, e)
-        local_data = {}
+        logger.warning("Could not load registry %s: %s", filename, e)
+        return {}
 
-    # Remote override (governance-controlled)
-    try:
-        if "DATASET_LOADER" in globals() and DATASET_LOADER.enabled():
-            return DATASET_LOADER.load_json(filename, local_data)
-    except Exception as e:
-        logger.warning("Remote dataset loader error for %s: %s", filename, e)
+PAINTERS_REGISTRY = load_json_registry("painters_registry.json")
+ANIMATION_AWARDS_REGISTRY = load_json_registry("animation_awards_registry.json")
+ANIMATION_TECH_REGISTRY = load_json_registry("animation_techniques_registry.json")
+ANIMATION_INTL_AWARDS_REGISTRY = load_json_registry("animation_international_awards_registry.json")
+FOOD_SOURCES_REGISTRY = load_json_registry("food_sources_registry.json")
+MICHELIN_REGISTRY = load_json_registry("michelin_starred_registry.json")
+RESTAURANT_AWARDS_REGISTRY = load_json_registry("restaurant_awards_registry.json")
+ANIME_HISTORY_QUOTES = load_json_registry("anime_history_quotes.json")
 
-    return local_data
 
+async def met_object(object_id: int) -> dict:
+    # Official: The Met Collection API (public)
+    url = f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{int(object_id)}"
+    async with aiohttp.ClientSession() as session:
+        async with session.get(url, timeout=20) as resp:
+            if resp.status != 200:
+                return {}
+            return await resp.json()
+
+TESLA_REG = load_json(TESLA_REG_PATH) if os.path.exists(TESLA_REG_PATH) else {}
+TESLA_CACHE_PATH = os.path.join(DATA_DIR, (TESLA_REG.get("cache", {}) or {}).get("cache_file", "tesla_cache.json"))
 
 def _safe_get(url: str, timeout: int = 20) -> str:
     headers = {"User-Agent": "Bottany/1.0 (+https://railway.app)"}
@@ -1669,38 +1561,36 @@ def _playlist_links(mood: str) -> list[tuple[str,str]]:
     return [(it.get("name","Playlist"), it.get("url","")) for it in items if it.get("url")]
 
 @music_group.command(name="recommend", description="Get official search links for a song/artist (no streaming).")
-    @app_commands.describe(query="Song, artist, or album")
-    async def music_recommend(interaction: discord.Interaction, query: str):
-        if not await enforce_rate_limit(interaction, "music_recommend", cooldown_seconds=5):
-            return
+@app_commands.describe(query="Song, artist, or album")
+async def music_recommend(interaction: discord.Interaction, query: str):
+    if not await enforce_rate_limit(interaction, "music_recommend", cooldown_seconds=5):
+        return
 
-        links = _platform_links(query)
-        if not links:
-            await interaction.response.send_message("Music registry is not configured.")
-            return
+    links = _platform_links(query)
+    if not links:
+        await interaction.response.send_message("Music registry is not configured.")
+        return
 
-        embed = discord.Embed(
-            title="Music — Official links",
-            description=f"Query: **{query.strip()}**
+    embed = discord.Embed(
+        title="Music — Official links",
+        description=f"Query: **{query.strip()}**\n\nChoose a platform:"
+    )
+    embed.set_footer(text="Links only (ToS-safe). Bottany does not stream audio.")
 
-Choose a platform:"
-        )
-        embed.set_footer(text="Links only (ToS-safe). Bottany does not stream audio.")
+    class _LinkView(discord.ui.View):
+        def __init__(self, items):
+            super().__init__(timeout=180)
+            for name, url in items[:5]:
+                self.add_item(discord.ui.Button(label=name, url=url))
 
-        class _LinkView(discord.ui.View):
-            def __init__(self, items):
-                super().__init__(timeout=180)
-                for name, url in items[:5]:
-                    self.add_item(discord.ui.Button(label=name, url=url))
+    view = _LinkView(links)
+    await interaction.response.send_message(embed=embed, view=view)
 
-        view = _LinkView(links)
-        await interaction.response.send_message(embed=embed, view=view)
-
-    @music_group.command(name="playlist", description="Get official playlist links by mood (no streaming).")
+@music_group.command(name="playlist", description="Get official playlist links by mood (no streaming).")
 @app_commands.describe(mood="focus|soft|gaming")
-async def music_playlist(interaction: discord\.Interaction, mood: str):
-        if not await enforce_rate_limit(interaction, "music_playlist", cooldown_seconds=5):
-            return
+async def music_playlist(interaction: discord.Interaction, mood: str):
+    if not await enforce_rate_limit(interaction, "music_playlist", cooldown_seconds=5):
+        return
     links = _playlist_links(mood)
     if not links:
         await interaction.response.send_message("No playlists found for that mood. Try: focus, soft, gaming.")
@@ -1907,8 +1797,8 @@ async def weather_official(interaction: discord.Interaction, country: str):
 @weather_group.command(name="forecast", description="Get an official forecast by coordinates (MET Norway API).")
 @app_commands.describe(lat="Latitude (e.g., 50.85)", lon="Longitude (e.g., 4.35)")
 async def weather_forecast(interaction: discord.Interaction, lat: float, lon: float):
-        if not await enforce_rate_limit(interaction, "weather_forecast", cooldown_seconds=10):
-            return
+    if not await enforce_rate_limit(interaction, "weather_forecast", cooldown_seconds=10):
+        return
     api = WEATHER_REG.get("api", {}) or {}
     base_url = api.get("base_url", "https://api.met.no/weatherapi/locationforecast/2.0/compact")
     if not _allowed_domain("weather", base_url):
@@ -1994,8 +1884,8 @@ def _epic_free_games():
 
 @freegames_group.command(name="now", description="Show current free games/giveaway entry points (official sources).")
 async def freegames_now(interaction: discord.Interaction):
-        if not await enforce_rate_limit(interaction, "freegames_now", cooldown_seconds=10):
-            return
+    if not await enforce_rate_limit(interaction, "freegames_now", cooldown_seconds=10):
+        return
     sources = (FREEGAMES_REG.get("sources", []) or [])
     try:
         epic_items = _epic_free_games()
@@ -2262,57 +2152,49 @@ async def awards_lookup(interaction: discord.Interaction, award: str, year: int,
             continue
         entries = a.get("categories", []) or []
         matches = [e for e in entries if int(e.get("year",0))==int(year) and e.get("category","").lower()==cat_norm and (gen_norm=="all" or (e.get("genre","all").lower()==gen_norm))]
-if not matches:
-    # CACHE_FALLBACK: try sync cache for BAFTA/GJA
-    if award_id == "bafta":
-        slug = _norm(bafta_slug) or _norm(category).replace(" ", "-")
-        key = f"bafta:{slug}"
-        c = _cache_get(key) if "_cache_get" in globals() else {}
-        years = (c.get("years", {}) or {})
-        w = years.get(int(year))
-        if w:
-            embed = discord.Embed(title=f"BAFTA Games Awards — {slug} ({year})", description=f"Winner: **{w}**")
-            src = c.get("source_url","")
-            if src and _allowed_domain("awards", src):
-                embed.add_field(name="Official source", value=src, inline=False)
-            await interaction.response.send_message(embed=embed)
+    if not matches:
+        # CACHE_FALLBACK: try sync cache for BAFTA/GJA
+        if award_id == "bafta":
+            slug = _norm(bafta_slug) or _norm(category).replace(" ", "-")
+            key = f"bafta:{slug}"
+            c = _cache_get(key) if "_cache_get" in globals() else {}
+            years = (c.get("years", {}) or {})
+            w = years.get(int(year))
+            if w:
+                embed = discord.Embed(title=f"BAFTA Games Awards — {slug} ({year})", description=f"Winner: **{w}**")
+                src = c.get("source_url","")
+                if src and _allowed_domain("awards", src):
+                    embed.add_field(name="Official source", value=src, inline=False)
+                await interaction.response.send_message(embed=embed)
+                return
+            await interaction.response.send_message("No match in registry or cache. Tip: run /awards sync award:bafta param:<slug> and try again.")
             return
-        await interaction.response.send_message("No match in registry or cache. Tip: run /awards sync award:bafta param:<slug> and try again.")
-        return
 
-    if award_id == "gja":
-        key = f"gja:{int(year)}"
-        c = _cache_get(key) if "_cache_get" in globals() else {}
-        winners = (c.get("winners", {}) or {})
-        cat_norm = (category or "").strip().lower()
-        found = None
-        for k,v in winners.items():
-            if k.strip().lower() == cat_norm:
-                found = (k,v); break
-        if not found:
+        if award_id == "gja":
+            key = f"gja:{int(year)}"
+            c = _cache_get(key) if "_cache_get" in globals() else {}
+            winners = (c.get("winners", {}) or {})
+            cat_norm = (category or "").strip().lower()
+            found = None
             for k,v in winners.items():
-                if cat_norm and cat_norm in k.strip().lower():
+                if k.strip().lower() == cat_norm:
                     found = (k,v); break
-        if found:
-            k,v = found
-            embed = discord.Embed(title=f"Golden Joystick Awards — {k} ({year})", description=f"Winner: **{v}**")
-            src = c.get("source_url","")
-            if src and _allowed_domain("awards", src):
-                embed.add_field(name="Organizer source", value=src, inline=False)
-            await interaction.response.send_message(embed=embed)
+            if not found:
+                for k,v in winners.items():
+                    if cat_norm and cat_norm in k.strip().lower():
+                        found = (k,v); break
+            if found:
+                k,v = found
+                embed = discord.Embed(title=f"Golden Joystick Awards — {k} ({year})", description=f"Winner: **{v}**")
+                src = c.get("source_url","")
+                if src and _allowed_domain("awards", src):
+                    embed.add_field(name="Organizer source", value=src, inline=False)
+                await interaction.response.send_message(embed=embed)
+                return
+            await interaction.response.send_message("No match in registry or cache. Tip: run /awards sync award:gja param:<year> and try again.")
             return
-        await interaction.response.send_message("No match in registry or cache. Tip: run /awards sync award:gja param:<year> and try again.")
-        return
 
-    await interaction.response.send_message("No match found in the registry for that award/year/category/genre.")
-    return
-        m = matches[0]
-        winner = m.get("winner","(unknown)")
-        src = m.get("source_url","")
-        embed = discord.Embed(title=f"{a.get('award_name','Award')} — {category} ({year})", description=f"Winner: **{winner}**\nGenre: **{m.get('genre','all')}**")
-        if src and _allowed_domain("awards", src):
-            embed.add_field(name="Official source", value=src, inline=False)
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.send_message("No match found in the registry for that award/year/category/genre.")
         return
 
     await interaction.response.send_message("Unknown award id. Use: tga, bafta, dice, gja.")
@@ -2366,8 +2248,8 @@ def _find_award_entries(award_id: str, year: int, category: str):
 @awards_group.command(name="tga", description="Lookup The Game Awards winners by year and category.")
 @app_commands.describe(year="Year (e.g., 2023)", category="Category name (e.g., Game of the Year)")
 async def awards_tga(interaction: discord.Interaction, year: int, category: str):
-        if not await enforce_rate_limit(interaction, "awards_tga", cooldown_seconds=10):
-            return
+    if not await enforce_rate_limit(interaction, "awards_tga", cooldown_seconds=10):
+        return
     award_name, matches = _find_award_entries("tga", year, category)
     if not matches:
         await interaction.response.send_message("No match found in the registry for that year/category.")
@@ -2535,174 +2417,6 @@ async def before_weekly_awards_task():
 
     bot.tree.add_command(art_group)
 
-    # --- /anime and /animation commands ---
-    anime_group = app_commands.Group(name="anime", description="Anime & animation: history, awards, and techniques (official/academic sources).")
-
-            @anime_group.command(name="history", description="Anime history via short direct quotes from authoritative sources (links included).")
-        async def anime_history(interaction: discord.Interaction):
-            if not await enforce_rate_limit(interaction, "anime_history", cooldown_seconds=10):
-                return
-            items = (ANIME_HISTORY_QUOTES.get("items", []) or [])
-            if not items:
-                await interaction.response.send_message("Anime history quotes registry is empty.")
-                return
-            embed = discord.Embed(
-                title="Anime: source quotations (short)",
-                description="Direct short quotations (for full context, open the links)."
-            )
-            # Add up to 3 quotes per call
-            for q in items[:3]:
-                embed.add_field(
-                    name=q.get("source_name","Source"),
-                    value=f"{q.get('quote','')}
-{q.get('source_url','')}",
-                    inline=False
-                )
-            await interaction.response.send_message(embed=embed)
-
-    @anime_group.command(name="award_winner", description="Show one award-winning animated film (anime/cartoons) with an official source link.")
-    @app_commands.describe(kind="anime|cartoon|any")
-    async def anime_award_winner(interaction: discord.Interaction, kind: str = "any"):
-        if not await enforce_rate_limit(interaction, "anime_award_winner", cooldown_seconds=5):
-            return
-        kind_n = (kind or "any").strip().lower()
-        items = (ANIMATION_AWARDS_REGISTRY.get("items", []) or [])
-        if kind_n in ("anime","cartoon"):
-            items = [x for x in items if (x.get("type","").lower() == kind_n)]
-        if not items:
-            await interaction.response.send_message("No matching entries in the animation awards registry.")
-            return
-        x = random.choice(items)
-        embed = discord.Embed(
-            title=x.get("title","(title)"),
-            description=f"{x.get('award','')} • {x.get('year','')}".strip(" •")
-        )
-        src = x.get("official_source","")
-        if src and _allowed_domain("animation", src):
-            embed.add_field(name="Official source", value=src, inline=False)
-        elif src:
-            embed.add_field(name="Official source", value="(blocked by governance allowlist)", inline=False)
-        await interaction.response.send_message(embed=embed)
-
-    @anime_group.command(name="awards_stats", description="Stats for the animation awards registry (by award/type/decade).")
-async def anime_awards_stats(interaction: discord.Interaction):
-    if not await enforce_rate_limit(interaction, "anime_awards_stats", cooldown_seconds=10):
-        return
-    items = (ANIMATION_AWARDS_REGISTRY.get("items", []) or [])
-    if not items:
-        await interaction.response.send_message("Animation awards registry is empty.")
-        return
-
-    def family(a: str) -> str:
-        t = (a or "").lower()
-        if "academy" in t or "oscar" in t:
-            return "Oscars"
-        if "annie" in t:
-            return "Annie Awards"
-        if "annecy" in t:
-            return "Annecy"
-        return "Other"
-
-    by_award = collections.Counter(family(x.get("award","")) for x in items)
-    by_type = collections.Counter((x.get("type","") or "unknown").lower() for x in items)
-    by_decade = collections.Counter((int(x.get("year",0) or 0)//10)*10 for x in items if int(x.get("year",0) or 0) >= 1900)
-
-    embed = discord.Embed(title="Animation awards — registry stats")
-    embed.add_field(name="Total entries", value=str(len(items)), inline=True)
-    embed.add_field(name="By award", value="\n".join(f"• {k}: {v}" for k,v in by_award.most_common())[:1000], inline=False)
-    embed.add_field(name="By type", value="\n".join(f"• {k}: {v}" for k,v in by_type.most_common())[:1000], inline=False)
-    if by_decade:
-        decade_lines = []
-        for d in sorted(by_decade.keys()):
-            decade_lines.append(f"• {d}s: {by_decade[d]}")
-        embed.add_field(name="By decade", value="\n".join(decade_lines)[:1000], inline=False)
-    await interaction.response.send_message(embed=embed)
-
-
-@anime_group.command(name="international_award_winner", description="Show one internationally-awarded animated film (official organizer sources).")
-@app_commands.describe(year="0 for any, or a specific year", award="optional award name filter (e.g., BAFTA)")
-async def anime_international_award_winner(interaction: discord.Interaction, year: int = 0, award: str = ""):
-    if not await enforce_rate_limit(interaction, "anime_international_award_winner", cooldown_seconds=8):
-        return
-    items = (ANIMATION_INTL_AWARDS_REGISTRY.get("items", []) or [])
-    if not items:
-        embed = discord.Embed(
-            title="International animation awards",
-            description="Registry is currently empty. Add official entries in data/animation_international_awards_registry.json."
-        )
-        srcs = (ANIMATION_INTL_AWARDS_REGISTRY.get("sources", []) or [])
-        if srcs:
-            embed.add_field(name="Official organizer sources", value="\n".join(f"• {s.get('award','')}: {s.get('url','')}" for s in srcs[:8]), inline=False)
-        await interaction.response.send_message(embed=embed)
-        return
-
-    y = int(year or 0)
-    if y > 0:
-        items = [x for x in items if int(x.get("year", 0) or 0) == y]
-    if award:
-        a = award.strip().lower()
-        items = [x for x in items if a in (x.get("award","").lower())]
-
-    if not items:
-        await interaction.response.send_message("No matching entries in the international animation awards registry.")
-        return
-
-    x = random.choice(items)
-    embed = discord.Embed(title=x.get("title","(title)"), description=f"{x.get('award','')} • {x.get('year','')}".strip(" •"))
-    src = x.get("official_source","")
-        if src and _allowed_domain("animation", src):
-            embed.add_field(name="Official source", value=src, inline=False)
-        elif src:
-            embed.add_field(name="Official source", value="(blocked by governance allowlist)", inline=False)
-    await interaction.response.send_message(embed=embed)
-
-
-@anime_group.command(name="techniques_anime", description="Explain core anime production/drawing techniques (concise, source-based).")
-    async def anime_techniques_anime(interaction: discord.Interaction):
-        if not await enforce_rate_limit(interaction, "anime_techniques_anime", cooldown_seconds=8):
-            return
-        techs = (ANIMATION_TECH_REGISTRY.get("anime_techniques", []) or [])
-        if not techs:
-            await interaction.response.send_message("Techniques registry is empty.")
-            return
-        lines = [f"• **{t.get('name')}** — {t.get('explain')}" for t in techs]
-        embed = discord.Embed(title="Anime techniques (overview)", description="
-".join(lines[:6]))
-        embed.add_field(name="Sources", value="Britannica (anime/animation): https://www.britannica.com/art/anime-Japanese-animation • https://www.britannica.com/art/animation", inline=False)
-        await interaction.response.send_message(embed=embed)
-
-    @anime_group.command(name="techniques_cartoon", description="Explain traditional cartoon animation techniques (cel, stop-motion, cut-out).")
-    async def anime_techniques_cartoon(interaction: discord.Interaction):
-        if not await enforce_rate_limit(interaction, "anime_techniques_cartoon", cooldown_seconds=8):
-            return
-        techs = (ANIMATION_TECH_REGISTRY.get("cartoon_techniques", []) or [])
-        if not techs:
-            await interaction.response.send_message("Techniques registry is empty.")
-            return
-        lines = [f"• **{t.get('name')}** — {t.get('explain')}" for t in techs]
-        embed = discord.Embed(title="Cartoon animation techniques", description="
-".join(lines[:6]))
-        embed.add_field(name="Sources", value="Library of Congress: https://www.loc.gov/loc/lcib/9906/animate.html • Smithsonian (cels): https://www.si.edu/object/animation-cel-little-mermaid%3Anmah_1290145", inline=False)
-        await interaction.response.send_message(embed=embed)
-
-    @anime_group.command(name="tools_random", description="Practical: one traditional (hand-drawn) technique + one tool/item (short).")
-    async def anime_tools_random(interaction: discord.Interaction):
-        if not await enforce_rate_limit(interaction, "anime_tools_random", cooldown_seconds=5):
-            return
-        tools = (ANIMATION_TECH_REGISTRY.get("traditional_tools", []) or [])
-        techs = (ANIMATION_TECH_REGISTRY.get("cartoon_techniques", []) or []) + (ANIMATION_TECH_REGISTRY.get("anime_techniques", []) or [])
-        if not tools or not techs:
-            await interaction.response.send_message("Tools/techniques registry is empty.")
-            return
-        tool = random.choice(tools)
-        tech = random.choice(techs)
-        embed = discord.Embed(title="Traditional animation: one technique + one tool")
-        embed.add_field(name="Technique", value=f"**{tech.get('name')}** — {tech.get('explain')}", inline=False)
-        embed.add_field(name="Tool / item", value=f"**{tool.get('item')}** — {tool.get('use')}", inline=False)
-        embed.add_field(name="Sources", value="Library of Congress (cel history): https://www.loc.gov/loc/lcib/9906/animate.html", inline=False)
-        await interaction.response.send_message(embed=embed)
-
-    bot.tree.add_command(anime_group)
 
     # --- /food commands ---
     food_group = app_commands.Group(name="food", description="Food history & gastronomy (official/academic sources).")
@@ -2718,13 +2432,15 @@ async def anime_international_award_winner(interaction: discord.Interaction, yea
                 "and broader access."
             )
         )
-        embed.add_field(name="Sources", value=(
-            "Britannica: https://www.britannica.com/topic/chocolate
-"
-            "Smithsonian Magazine: https://www.smithsonianmag.com/arts-culture/a-brief-history-of-chocolate-21860917/
-"
-            "British Museum: https://www.britishmuseum.org/blog/18th-century-chocolate-champions"
-        ), inline=False)
+        embed.add_field(
+            name="Sources",
+            value=(
+                "Britannica: https://www.britannica.com/topic/chocolate\n"
+                "Smithsonian Magazine: https://www.smithsonianmag.com/arts-culture/a-brief-history-of-chocolate-21860917/\n"
+                "British Museum: https://www.britishmuseum.org/blog/18th-century-chocolate-champions"
+            ),
+            inline=False,
+        )
         await interaction.response.send_message(embed=embed)
 
     @food_group.command(name="michelin_star_meaning", description="Explain what Michelin Stars mean (official Michelin Guide source).")

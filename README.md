@@ -227,19 +227,3 @@ The bot ships with an expandable registry at `data/animation_awards_registry.jso
 ## International animation awards (v4.7)
 - Populated `data/animation_international_awards_registry.json` with BAFTA + Cannes + Berlinale official entries.
 - Governance allowlist category `animation` added to restrict links.
-
-
-## Remote datasets (GitHub Raw) — pinned & governance-safe
-- Set `DATASET_BASE_URL` to your raw base, e.g. `https://raw.githubusercontent.com/<USER>/bottany-datasets`
-- Set `DATASET_PIN` to a **commit SHA** (recommended) or a tag (e.g., `v6.0.0`).
-- Optional: `DATASET_ALLOWLIST` (comma-separated domains). Default: `raw.githubusercontent.com`.
-- The bot caches registries in `.dataset_cache/` and falls back to bundled `data/*.json` if remote is unavailable.
-
-Example (Railway Variables):
-```
-DATASET_BASE_URL=https://raw.githubusercontent.com/<USER>/bottany-datasets
-DATASET_PIN=<COMMIT_SHA>
-DATASET_ALLOWLIST=raw.githubusercontent.com
-```
-
-Recommended: pin `DATASET_PIN` to a commit SHA for maximum stability.
