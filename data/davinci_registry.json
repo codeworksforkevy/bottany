@@ -1,0 +1,205 @@
+{
+  "name": "Leonardo da Vinci — inventions, drawings, manuscripts (official/public sources)",
+  "policy": "official_or_institutional_public_sources_only",
+  "sources": [
+    {
+      "name": "British Library — Codex Arundel",
+      "url": "https://www.bl.uk/collection-items/codex-arundel",
+      "type": "institutional_source"
+    },
+    {
+      "name": "Biblioteca Ambrosiana — Codex Atlanticus",
+      "url": "https://www.ambrosiana.it/en/opere/codice-atlantico/",
+      "type": "institutional_source"
+    },
+    {
+      "name": "Royal Collection Trust — Leonardo drawings (catalog)",
+      "url": "https://www.rct.uk/collection/search#/1/collection?search=leonardo%20da%20vinci",
+      "type": "institutional_source"
+    },
+    {
+      "name": "Louvre Museum — Collections (search)",
+      "url": "https://collections.louvre.fr/en/recherche?q=Leonardo%20da%20Vinci",
+      "type": "institutional_source"
+    },
+    {
+      "name": "Uffizi Galleries — Collections (search)",
+      "url": "https://www.uffizi.it/en/search?q=Leonardo%20da%20Vinci",
+      "type": "institutional_source"
+    }
+  ],
+  "items": [
+    {
+      "id": "ms_arundel",
+      "title": "Codex Arundel",
+      "category": "manuscript",
+      "type": "institutional",
+      "url": "https://www.bl.uk/collection-items/codex-arundel",
+      "note": "Manuscript notebook pages (British Library)."
+    },
+    {
+      "id": "ms_atlanticus",
+      "title": "Codex Atlanticus",
+      "category": "manuscript",
+      "type": "institutional",
+      "url": "https://www.ambrosiana.it/en/opere/codice-atlantico/",
+      "note": "Large compilation of drawings and notes (Biblioteca Ambrosiana)."
+    },
+    {
+      "id": "mach_flying",
+      "title": "Flying machine studies (catalog search)",
+      "category": "machine",
+      "type": "institutional",
+      "url": "https://www.rct.uk/collection/search#/1/collection?search=flying%20machine%20leonardo",
+      "note": "Explore Leonardo flight studies in Royal Collection catalog."
+    },
+    {
+      "id": "mach_war",
+      "title": "War machines studies (catalog search)",
+      "category": "machine",
+      "type": "institutional",
+      "url": "https://www.ambrosiana.it/en/opere/codice-atlantico/",
+      "note": "Military engineering sketches within Codex Atlanticus."
+    },
+    {
+      "id": "mach_hydraulic",
+      "title": "Hydraulic engineering studies (catalog search)",
+      "category": "machine",
+      "type": "institutional",
+      "url": "https://www.ambrosiana.it/en/opere/codice-atlantico/",
+      "note": "Water and hydraulic devices within Codex Atlanticus."
+    },
+    {
+      "id": "drw_anatomy",
+      "title": "Anatomical drawings (Royal Collection catalog)",
+      "category": "drawing",
+      "type": "institutional",
+      "url": "https://www.rct.uk/collection/search#/1/collection?search=anatomy%20leonardo%20da%20vinci",
+      "note": "Search anatomical sheets in the Royal Collection catalog."
+    },
+    {
+      "id": "drw_horses",
+      "title": "Horse studies (Royal Collection catalog)",
+      "category": "drawing",
+      "type": "institutional",
+      "url": "https://www.rct.uk/collection/search#/1/collection?search=horse%20leonardo%20da%20vinci",
+      "note": "Study horse sketches and related sheets."
+    },
+    {
+      "id": "drw_botany",
+      "title": "Botanical studies (Royal Collection catalog)",
+      "category": "drawing",
+      "type": "institutional",
+      "url": "https://www.rct.uk/collection/search#/1/collection?search=botanical%20leonardo%20da%20vinci",
+      "note": "Search botanical drawings in the Royal Collection catalog."
+    },
+    {
+      "id": "pt_monalisa",
+      "title": "Mona Lisa (collection search)",
+      "category": "painting",
+      "type": "institutional",
+      "url": "https://collections.louvre.fr/en/recherche?q=Mona%20Lisa",
+      "note": "Louvre collections search (painting record)."
+    },
+    {
+      "id": "pt_last_supper",
+      "title": "The Last Supper (institutional references)",
+      "category": "painting",
+      "type": "institutional",
+      "url": "https://www.uffizi.it/en/search?q=Last%20Supper%20Leonardo",
+      "note": "Institutional collection/search entry point."
+    },
+    {
+      "id": "pt_annunciation",
+      "title": "Annunciation (institutional search)",
+      "category": "painting",
+      "type": "institutional",
+      "url": "https://www.uffizi.it/en/search?q=Annunciation%20Leonardo%20da%20Vinci",
+      "note": "Uffizi search entry point."
+    },
+    {
+      "id": "auto_01",
+      "title": "Perspective studies (catalog search)",
+      "category": "drawing",
+      "type": "institutional",
+      "url": "https://www.rct.uk/collection/search#/1/collection?search=perspective%20leonardo%20da%20vinci",
+      "note": "Institutional catalog search entry point."
+    },
+    {
+      "id": "auto_02",
+      "title": "Architecture studies (catalog search)",
+      "category": "drawing",
+      "type": "institutional",
+      "url": "https://www.rct.uk/collection/search#/1/collection?search=architecture%20leonardo%20da%20vinci",
+      "note": "Institutional catalog search entry point."
+    },
+    {
+      "id": "auto_03",
+      "title": "Water studies (catalog search)",
+      "category": "drawing",
+      "type": "institutional",
+      "url": "https://www.rct.uk/collection/search#/1/collection?search=water%20leonardo%20da%20vinci",
+      "note": "Institutional catalog search entry point."
+    },
+    {
+      "id": "auto_04",
+      "title": "Optics studies (catalog search)",
+      "category": "drawing",
+      "type": "institutional",
+      "url": "https://www.rct.uk/collection/search#/1/collection?search=optics%20leonardo%20da%20vinci",
+      "note": "Institutional catalog search entry point."
+    },
+    {
+      "id": "auto_05",
+      "title": "Bridges & engineering (catalog search)",
+      "category": "machine",
+      "type": "institutional",
+      "url": "https://www.rct.uk/collection/search#/1/collection?search=bridge%20leonardo%20da%20vinci",
+      "note": "Institutional catalog search entry point."
+    },
+    {
+      "id": "auto_06",
+      "title": "Gears & mechanisms (catalog search)",
+      "category": "machine",
+      "type": "institutional",
+      "url": "https://www.rct.uk/collection/search#/1/collection?search=gear%20leonardo%20da%20vinci",
+      "note": "Institutional catalog search entry point."
+    },
+    {
+      "id": "auto_07",
+      "title": "Canals & hydraulics (catalog search)",
+      "category": "machine",
+      "type": "institutional",
+      "url": "https://www.rct.uk/collection/search#/1/collection?search=canal%20leonardo%20da%20vinci",
+      "note": "Institutional catalog search entry point."
+    },
+    {
+      "id": "auto_08",
+      "title": "Fortification studies (catalog search)",
+      "category": "machine",
+      "type": "institutional",
+      "url": "https://www.rct.uk/collection/search#/1/collection?search=fortification%20leonardo%20da%20vinci",
+      "note": "Institutional catalog search entry point."
+    },
+    {
+      "id": "auto_09",
+      "title": "Notebook pages (Royal Collection) (catalog search)",
+      "category": "manuscript",
+      "type": "institutional",
+      "url": "https://www.rct.uk/collection/search#/1/collection?search=notebook%20leonardo%20da%20vinci",
+      "note": "Institutional catalog search entry point."
+    },
+    {
+      "id": "auto_10",
+      "title": "Cartography notes (catalog search)",
+      "category": "manuscript",
+      "type": "institutional",
+      "url": "https://www.rct.uk/collection/search#/1/collection?search=map%20leonardo%20da%20vinci",
+      "note": "Institutional catalog search entry point."
+    }
+  ],
+  "pagination": {
+    "page_size": 8
+  },
+  "generated_utc": "2025-12-30T13:07:21Z"
+}

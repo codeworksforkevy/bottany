@@ -1,0 +1,113 @@
+{
+  "version": "1.0",
+  "note": "International film awards track for animation. Populate from official organizer pages only.",
+  "sources": [
+    {
+      "award": "BAFTA Film Awards (Animated Film)",
+      "url": "https://www.bafta.org/awards/film"
+    },
+    {
+      "award": "Golden Globes",
+      "url": "https://www.goldenglobes.com/"
+    },
+    {
+      "award": "Cannes Film Festival",
+      "url": "https://www.festival-cannes.com/en/"
+    },
+    {
+      "award": "Berlin International Film Festival",
+      "url": "https://www.berlinale.de/en/home.html"
+    }
+  ],
+  "items": [
+    {
+      "title": "The Boy And The Heron",
+      "type": "anime",
+      "award": "BAFTA Film Awards — Animated Film (Winner)",
+      "year": 2024,
+      "official_source": "https://www.bafta.org/awards/film?award-year=2024",
+      "note": ""
+    },
+    {
+      "title": "Guillermo del Toro's Pinocchio",
+      "type": "cartoon",
+      "award": "BAFTA Film Awards — Animated Film (Winner)",
+      "year": 2023,
+      "official_source": "https://www.bafta.org/awards/film/animated-film/",
+      "note": ""
+    },
+    {
+      "title": "Persepolis",
+      "type": "cartoon",
+      "award": "Festival de Cannes — Jury Prize (ex-aequo)",
+      "year": 2007,
+      "official_source": "https://www.festival-cannes.com/en/2007/jury-prize-persepolis-by-marjane-satrapi-and-to-silent-light-by-carlos-reygadas/",
+      "note": ""
+    },
+    {
+      "title": "Dumbo",
+      "type": "cartoon",
+      "award": "Festival de Cannes — Grand Prix (Winner)",
+      "year": 1947,
+      "official_source": "https://www.festival-cannes.com/en/2024/cannes-and-cinema-animation-a-moving-story/",
+      "note": "Cited in the festival's official animation-history article as a Grand Prix winner."
+    },
+    {
+      "title": "La Planète Sauvage (Fantastic Planet)",
+      "type": "cartoon",
+      "award": "Festival de Cannes — Special Jury Prize (Winner)",
+      "year": 1973,
+      "official_source": "https://www.festival-cannes.com/en/2024/cannes-and-cinema-animation-a-moving-story/",
+      "note": "Cited in the festival's official animation-history article as a Special Jury Prize winner."
+    },
+    {
+      "title": "Sen to Chihiro no kamikakushi (Spirited Away)",
+      "type": "anime",
+      "award": "Berlin International Film Festival — Golden Bear (ex aequo)",
+      "year": 2002,
+      "official_source": "https://www.berlinale.de/media/download/preise-jurys/52_ifb_awards_2002.pdf",
+      "note": ""
+    },
+    {
+      "title": "Persepolis",
+      "type": "cartoon",
+      "award": "Festival de Cannes — Jury Prize (ex aequo)",
+      "year": 2007,
+      "official_source": "https://www.festival-cannes.com/en/2007/jury-prize-persepolis-by-marjane-satrapi-and-to-silent-light-by-carlos-reygadas/",
+      "note": ""
+    },
+    {
+      "title": "La Planète Sauvage (Fantastic Planet)",
+      "type": "cartoon",
+      "award": "Festival de Cannes — Special Jury Prize",
+      "year": 1973,
+      "official_source": "https://www.festival-cannes.com/en/2024/cannes-and-cinema-animation-a-moving-story/",
+      "note": "Cannes official animation history"
+    },
+    {
+      "title": "Dumbo",
+      "type": "cartoon",
+      "award": "Festival de Cannes — Grand Prix",
+      "year": 1947,
+      "official_source": "https://www.festival-cannes.com/en/2024/cannes-and-cinema-animation-a-moving-story/",
+      "note": "Historical Grand Prix reference"
+    },
+    {
+      "title": "Waltz with Bashir",
+      "type": "animation",
+      "award": "Berlin International Film Festival — Jury Grand Prize (Silver Bear)",
+      "year": 2009,
+      "official_source": "https://www.berlinale.de/en/archive/jahresarchive/2009/02_preistraeger_2009/02_Preistraeger_2009.html",
+      "note": "Animated documentary; internationally recognized by Berlinale jury."
+    },
+    {
+      "title": "Tower",
+      "type": "animation",
+      "award": "Berlin International Film Festival — Special Mention (Animated Feature)",
+      "year": 2016,
+      "official_source": "https://www.berlinale.de/en/archive/jahresarchive/2016/02_preistraeger_2016/02_Preistraeger_2016.html",
+      "note": "Animation-dominant documentary with official Berlinale recognition."
+    }
+  ],
+  "generated_utc": "2026-01-02T19:11:42Z"
+}

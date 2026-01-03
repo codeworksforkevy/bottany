@@ -1,0 +1,165 @@
+{
+  "version": "1.0",
+  "note": "Expanded with official organizers (Oscars database, Annie Awards press/winners, Annecy awards pages). Keep growing via data/animation_awards_registry.json.",
+  "sources": [
+    {
+      "name": "Academy Awards Database",
+      "url": "https://awardsdatabase.oscars.org/"
+    },
+    {
+      "name": "Oscars ceremonies pages",
+      "url": "https://www.oscars.org/oscars/ceremonies"
+    },
+    {
+      "name": "Annecy Festival awards",
+      "url": "https://www.annecyfestival.com/en/the-festival"
+    },
+    {
+      "name": "Annie Awards winners",
+      "url": "https://annieawards.org/winners"
+    }
+  ],
+  "items": [
+    {
+      "title": "Spirited Away",
+      "type": "anime",
+      "award": "Academy Awards — Best Animated Feature",
+      "year": 2003,
+      "official_source": "https://awardsdatabase.oscars.org/"
+    },
+    {
+      "title": "The Boy and the Heron",
+      "type": "anime",
+      "award": "Academy Awards — Best Animated Feature",
+      "year": 2024,
+      "official_source": "https://awardsdatabase.oscars.org/"
+    },
+    {
+      "title": "Arco",
+      "type": "cartoon",
+      "award": "Annecy — Cristal for a Feature Film",
+      "year": 2025,
+      "official_source": "https://www.annecyfestival.com/en/the-festival/2025-awards"
+    },
+    {
+      "title": "The Wild Robot",
+      "type": "cartoon",
+      "award": "Annie Awards — Best Feature",
+      "year": 2025,
+      "official_source": "https://annieawards.org/winners"
+    },
+    {
+      "title": "Inside Out",
+      "type": "cartoon",
+      "award": "Academy Awards — Best Animated Feature",
+      "year": 2016,
+      "official_source": "https://awardsdatabase.oscars.org/"
+    },
+    {
+      "title": "Zootopia",
+      "type": "cartoon",
+      "award": "Academy Awards — Best Animated Feature",
+      "year": 2017,
+      "official_source": "https://awardsdatabase.oscars.org/"
+    },
+    {
+      "title": "Coco",
+      "type": "cartoon",
+      "award": "Academy Awards — Best Animated Feature",
+      "year": 2018,
+      "official_source": "https://awardsdatabase.oscars.org/"
+    },
+    {
+      "title": "Spider-Man: Into the Spider-Verse",
+      "type": "cartoon",
+      "award": "Academy Awards — Best Animated Feature",
+      "year": 2019,
+      "official_source": "https://awardsdatabase.oscars.org/"
+    },
+    {
+      "title": "Toy Story 4",
+      "type": "cartoon",
+      "award": "Academy Awards — Best Animated Feature",
+      "year": 2020,
+      "official_source": "https://awardsdatabase.oscars.org/"
+    },
+    {
+      "title": "Soul",
+      "type": "cartoon",
+      "award": "Academy Awards — Best Animated Feature",
+      "year": 2021,
+      "official_source": "https://awardsdatabase.oscars.org/"
+    },
+    {
+      "title": "Encanto",
+      "type": "cartoon",
+      "award": "Academy Awards — Best Animated Feature",
+      "year": 2022,
+      "official_source": "https://awardsdatabase.oscars.org/"
+    },
+    {
+      "title": "Guillermo del Toro’s Pinocchio",
+      "type": "cartoon",
+      "award": "Academy Awards — Best Animated Feature",
+      "year": 2023,
+      "official_source": "https://awardsdatabase.oscars.org/"
+    },
+    {
+      "title": "Flow",
+      "type": "cartoon",
+      "award": "Academy Awards — Best Animated Feature",
+      "year": 2025,
+      "official_source": "https://awardsdatabase.oscars.org/"
+    },
+    {
+      "title": "Spider-Man: Across the Spider-Verse",
+      "type": "cartoon",
+      "award": "Annie Awards — Best Feature",
+      "year": 2024,
+      "official_source": "https://annieawards.org/press/spider-man-across-the-spider-verse-scores-best-feature-along-with-six-other-categories-at-the-51st-annie-awards"
+    },
+    {
+      "title": "Kung Fu Panda 4",
+      "type": "cartoon",
+      "award": "Annie Awards — Best Feature (listing)",
+      "year": 2025,
+      "official_source": "https://annieawards.org/winners"
+    },
+    {
+      "title": "Flow",
+      "type": "cartoon",
+      "award": "Annie Awards — Best Feature - Independent (listing)",
+      "year": 2025,
+      "official_source": "https://annieawards.org/winners"
+    },
+    {
+      "title": "Memoir of a Snail",
+      "type": "cartoon",
+      "award": "Annecy — Cristal for a Feature Film",
+      "year": 2024,
+      "official_source": "https://www.annecyfestival.com/en/archives/2024/the-festival/2024-awards"
+    },
+    {
+      "title": "Flow",
+      "type": "cartoon",
+      "award": "Annecy — Jury Award (Feature Films)",
+      "year": 2024,
+      "official_source": "https://www.annecyfestival.com/en/archives/2024/the-festival/2024-awards"
+    },
+    {
+      "title": "Totto-Chan: The Little Girl at the Window",
+      "type": "anime",
+      "award": "Annecy — Paul Grimault Award (Feature Films)",
+      "year": 2024,
+      "official_source": "https://www.annecyfestival.com/en/archives/2024/the-festival/2024-awards"
+    },
+    {
+      "title": "Chicken for Linda!",
+      "type": "cartoon",
+      "award": "Annecy — Cristal for a Feature Film",
+      "year": 2023,
+      "official_source": "https://www.annecyfestival.com/about/archives/2023/award-winners"
+    }
+  ],
+  "updated_utc": "2026-01-02T17:05:03Z"
+}

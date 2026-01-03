@@ -1,0 +1,44 @@
+{
+  "version": "1.0",
+  "note": "Seed registry for Michelin-starred restaurants. For full coverage, use official Michelin Guide search links.",
+  "sources": [
+    {
+      "name": "MICHELIN Guide",
+      "url": "https://guide.michelin.com/"
+    }
+  ],
+  "items": [
+    {
+      "name": "Noma",
+      "city": "Copenhagen",
+      "country": "Denmark",
+      "stars": 3,
+      "official_url": "https://guide.michelin.com/",
+      "note": "Use Michelin Guide search for current status."
+    },
+    {
+      "name": "Central",
+      "city": "Lima",
+      "country": "Peru",
+      "stars": 3,
+      "official_url": "https://guide.michelin.com/",
+      "note": "Use Michelin Guide search for current status."
+    },
+    {
+      "name": "Arpège",
+      "city": "Paris",
+      "country": "France",
+      "stars": 3,
+      "official_url": "https://guide.michelin.com/",
+      "note": "Use Michelin Guide search for current status."
+    },
+    {
+      "name": "The Fat Duck",
+      "city": "Bray",
+      "country": "United Kingdom",
+      "stars": 3,
+      "official_url": "https://guide.michelin.com/",
+      "note": "Use Michelin Guide search for current status."
+    }
+  ]
+}

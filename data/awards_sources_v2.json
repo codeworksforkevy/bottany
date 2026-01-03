@@ -1,0 +1,40 @@
+{
+  "name": "Awards sources (official/organizer)",
+  "policy": "official_award_site_only_or_primary_organizer_site",
+  "awards": {
+    "tga": {
+      "award_name": "The Game Awards",
+      "winners_url": "https://thegameawards.com/winners"
+    },
+    "bafta": {
+      "award_name": "BAFTA Games Awards",
+      "awards_hub": "https://www.bafta.org/awards/games/",
+      "category_url_template": "https://www.bafta.org/awards/games/{slug}/",
+      "known_category_slugs": [
+        "best-game",
+        "british-game",
+        "game-design",
+        "artistic-achievement",
+        "music",
+        "narrative",
+        "multiplayer",
+        "performer-in-a-leading-role",
+        "performer-in-a-supporting-role",
+        "technical-achievement",
+        "debut-game",
+        "evolving-game",
+        "family"
+      ]
+    },
+    "dice": {
+      "award_name": "D.I.C.E. Awards (AIAS)",
+      "awards_hub": "https://www.interactive.org/awards/"
+    },
+    "gja": {
+      "award_name": "Golden Joystick Awards",
+      "hub_url": "https://www.gamesradar.com/goldenjoystickawards/",
+      "year_url_template": "https://www.gamesradar.com/games/events-conferences/golden-joystick-awards-{year}-all-winners/"
+    }
+  },
+  "generated_utc": "2026-01-02T08:50:50Z"
+}

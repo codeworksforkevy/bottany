@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "policy": "short_quotes_only_with_links",
+  "items": [
+    {
+      "source_name": "Encyclopaedia Britannica — Anime",
+      "source_url": "https://www.britannica.com/art/anime-Japanese-animation",
+      "quote": "“Anime is a style of animation that originated in Japan and is popular worldwide.”"
+    },
+    {
+      "source_name": "Merriam‑Webster — anime",
+      "source_url": "https://www.merriam-webster.com/dictionary/anime",
+      "quote": "“a style of animation originating in Japan that is characterized by stark colorful graphics.”"
+    },
+    {
+      "source_name": "Encyclopaedia Britannica — Animation",
+      "source_url": "https://www.britannica.com/art/animation",
+      "quote": "“Animation, the art of making inanimate objects appear to move.”"
+    }
+  ]
+}

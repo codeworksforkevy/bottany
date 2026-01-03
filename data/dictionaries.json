@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "generated_utc": "2025-12-28T12:38:04Z",
+  "dictionaries": [
+    {
+      "name": "Oxford English Dictionary (OED)",
+      "official_url": "https://www.oed.com/",
+      "type": "historical",
+      "access": "subscription",
+      "notes": "Definitive historical record of English.",
+      "features": {
+        "ipa": true,
+        "audio": true,
+        "uk_us_contrast": true
+      }
+    },
+    {
+      "name": "Oxford Learner's Dictionaries",
+      "official_url": "https://www.oxfordlearnersdictionaries.com/",
+      "type": "learner",
+      "access": "free",
+      "notes": "Trusted learner dictionary (UK/US).",
+      "features": {
+        "ipa": true,
+        "audio": true,
+        "uk_us_contrast": true
+      }
+    },
+    {
+      "name": "Cambridge Dictionary",
+      "official_url": "https://dictionary.cambridge.org/",
+      "type": "learner",
+      "access": "free",
+      "notes": "Popular learner dictionary with clear definitions.",
+      "features": {
+        "ipa": true,
+        "audio": true,
+        "uk_us_contrast": true
+      }
+    },
+    {
+      "name": "Merriam-Webster",
+      "official_url": "https://www.merriam-webster.com/",
+      "type": "general",
+      "access": "free",
+      "notes": "Major American dictionary and thesaurus.",
+      "features": {
+        "ipa": true,
+        "audio": true,
+        "uk_us_contrast": true
+      }
+    },
+    {
+      "name": "Collins Dictionary",
+      "official_url": "https://www.collinsdictionary.com/",
+      "type": "general",
+      "access": "free",
+      "notes": "Major UK dictionary with extensive corpus support.",
+      "features": {
+        "ipa": true,
+        "audio": true,
+        "uk_us_contrast": true
+      }
+    },
+    {
+      "name": "Longman Dictionary of Contemporary English (LDOCE)",
+      "official_url": "https://www.ldoceonline.com/",
+      "type": "learner",
+      "access": "free",
+      "notes": "Highly respected learner dictionary (Pearson).",
+      "features": {
+        "ipa": true,
+        "audio": true,
+        "uk_us_contrast": true
+      }
+    },
+    {
+      "name": "Macmillan Dictionary",
+      "official_url": "https://www.macmillandictionary.com/",
+      "type": "learner",
+      "access": "free",
+      "notes": "Well-regarded learner dictionary with usage notes.",
+      "features": {
+        "ipa": true,
+        "audio": true,
+        "uk_us_contrast": true
+      }
+    },
+    {
+      "name": "Merriam-Webster Dictionary",
+      "official_url": "https://www.merriam-webster.com/",
+      "type": "general-authoritative",
+      "access": "free",
+      "notes": "Authoritative American English dictionary published by Merriam-Webster.",
+      "features": {
+        "ipa": true,
+        "audio": true,
+        "uk_us_contrast": true
+      }
+    }
+  ]
+}

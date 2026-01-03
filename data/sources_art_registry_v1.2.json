@@ -1,0 +1,684 @@
+{
+  "schema_version": "1.2",
+  "generated_utc": "2025-12-28T12:15:55Z",
+  "scope": {
+    "domain": "visual_art",
+    "description": "Country-based curated registry of prestigious visual art sources (museums, awards, magazines). Links are official where possible.",
+    "countries_included": [
+      "TR",
+      "BE",
+      "UK",
+      "JP",
+      "SE",
+      "US"
+    ]
+  },
+  "countries": {
+    "TR": {
+      "country_name": "Turkey",
+      "museums": [
+        {
+          "name": "Istanbul Modern",
+          "city": "Istanbul",
+          "official_url": "https://www.istanbulmodern.org/en",
+          "type": "museum",
+          "tags": [
+            "contemporary",
+            "exhibitions",
+            "programs"
+          ],
+          "notes": "Contemporary art museum with exhibitions and programs."
+        },
+        {
+          "name": "Pera Museum",
+          "city": "Istanbul",
+          "official_url": "https://www.peramuseum.org/en",
+          "type": "museum",
+          "tags": [
+            "exhibitions",
+            "collections",
+            "talks"
+          ],
+          "notes": "Museum and cultural institution with exhibitions and publications."
+        },
+        {
+          "name": "Sakıp Sabancı Museum",
+          "city": "Istanbul",
+          "official_url": "https://www.sakipsabancimuzesi.org/en",
+          "type": "museum",
+          "tags": [
+            "collections",
+            "exhibitions",
+            "archive"
+          ],
+          "notes": "Museum with collections, exhibitions and cultural programming."
+        },
+        {
+          "name": "Arter",
+          "city": "Istanbul",
+          "official_url": "https://www.arter.org.tr/en",
+          "type": "museum",
+          "tags": [
+            "contemporary",
+            "exhibitions",
+            "publishing"
+          ],
+          "notes": "Contemporary art institution with exhibitions and publications."
+        }
+      ],
+      "awards_and_major_events": [
+        {
+          "name": "Istanbul Biennial (IKSV)",
+          "city": "Istanbul",
+          "official_url": "https://bienal.iksv.org/en",
+          "type": "biennial",
+          "tags": [
+            "biennial",
+            "contemporary",
+            "international"
+          ],
+          "notes": "Major international contemporary art biennial."
+        },
+        {
+          "name": "SAHA Association (support & awards)",
+          "city": "Istanbul",
+          "official_url": "https://www.saha.org.tr/en",
+          "type": "foundation",
+          "tags": [
+            "support",
+            "international"
+          ],
+          "notes": "Supports artists/curators and international participation; check for awards/initiatives."
+        }
+      ],
+      "magazines_and_press": [
+        {
+          "name": "ArtUnlimited Turkey",
+          "city": "Istanbul",
+          "official_url": "https://www.artunlimited.com.tr/",
+          "type": "magazine",
+          "tags": [
+            "contemporary",
+            "turkey"
+          ],
+          "notes": "Art magazine (primarily Turkish; include as regional authority)."
+        },
+        {
+          "name": "Argonotlar",
+          "city": "Istanbul",
+          "official_url": "https://argonotlar.com/",
+          "type": "journal",
+          "tags": [
+            "criticism",
+            "theory"
+          ],
+          "notes": "Arts writing platform (primarily Turkish; include as regional authority)."
+        }
+      ]
+    },
+    "BE": {
+      "country_name": "Belgium",
+      "museums": [
+        {
+          "name": "BOZAR (Palace of Fine Arts)",
+          "city": "Brussels",
+          "official_url": "https://www.bozar.be/en",
+          "type": "arts_center",
+          "tags": [
+            "exhibitions",
+            "performing_arts"
+          ],
+          "notes": "Major arts center with exhibitions and events."
+        },
+        {
+          "name": "Royal Museums of Fine Arts of Belgium",
+          "city": "Brussels",
+          "official_url": "https://fine-arts-museum.be/en",
+          "type": "museum",
+          "tags": [
+            "collections",
+            "fine_art"
+          ],
+          "notes": "National fine arts museums with major collections."
+        },
+        {
+          "name": "WIELS Contemporary Art Centre",
+          "city": "Brussels",
+          "official_url": "https://www.wiels.org/en",
+          "type": "contemporary_art_center",
+          "tags": [
+            "contemporary",
+            "exhibitions"
+          ],
+          "notes": "Leading contemporary art institution in Belgium."
+        }
+      ],
+      "awards_and_major_events": [
+        {
+          "name": "Young Belgian Art Prize",
+          "city": "Brussels",
+          "official_url": "https://www.youngbelgianartprize.be/",
+          "type": "award",
+          "tags": [
+            "emerging_artists"
+          ],
+          "notes": "Notable award highlighting emerging artists."
+        }
+      ],
+      "magazines_and_press": [
+        {
+          "name": "De Witte Raaf",
+          "city": "Brussels",
+          "official_url": "https://www.dewitteraaf.be/",
+          "type": "journal",
+          "tags": [
+            "criticism",
+            "contemporary"
+          ],
+          "notes": "Highly regarded art criticism journal (often multilingual; strong EU reputation)."
+        }
+      ]
+    },
+    "UK": {
+      "country_name": "United Kingdom",
+      "museums": [
+        {
+          "name": "Tate (Tate Modern / Tate Britain)",
+          "city": "London",
+          "official_url": "https://www.tate.org.uk/",
+          "type": "museum_network",
+          "tags": [
+            "modern",
+            "contemporary",
+            "archive"
+          ],
+          "notes": "Major UK museum network; strong exhibitions and research."
+        },
+        {
+          "name": "The British Museum",
+          "city": "London",
+          "official_url": "https://www.britishmuseum.org/",
+          "type": "museum",
+          "tags": [
+            "collection",
+            "history"
+          ],
+          "notes": "World-class museum with online collection."
+        },
+        {
+          "name": "Victoria and Albert Museum (V&A)",
+          "city": "London",
+          "official_url": "https://www.vam.ac.uk/",
+          "type": "museum",
+          "tags": [
+            "design",
+            "decorative_arts"
+          ],
+          "notes": "Major museum for art, design and performance."
+        },
+        {
+          "name": "The National Gallery",
+          "city": "London",
+          "official_url": "https://www.nationalgallery.org.uk/",
+          "type": "museum",
+          "tags": [
+            "painting",
+            "collection"
+          ],
+          "notes": "Major painting collection with research resources."
+        }
+      ],
+      "awards_and_major_events": [
+        {
+          "name": "Turner Prize",
+          "city": "UK",
+          "official_url": "https://www.tate.org.uk/art/turner-prize",
+          "type": "award",
+          "tags": [
+            "contemporary",
+            "prestige"
+          ],
+          "notes": "One of the most prestigious contemporary art awards."
+        }
+      ],
+      "magazines_and_press": [
+        {
+          "name": "Frieze",
+          "city": "London",
+          "official_url": "https://www.frieze.com/",
+          "type": "magazine",
+          "tags": [
+            "contemporary",
+            "art_fair"
+          ],
+          "notes": "Leading contemporary art magazine and art fair."
+        },
+        {
+          "name": "Apollo Magazine",
+          "city": "London",
+          "official_url": "https://www.apollo-magazine.com/",
+          "type": "magazine",
+          "tags": [
+            "art_history",
+            "market"
+          ],
+          "notes": "Long-running magazine covering art, antiques and exhibitions."
+        }
+      ]
+    },
+    "JP": {
+      "country_name": "Japan",
+      "museums": [
+        {
+          "name": "Mori Art Museum",
+          "city": "Tokyo",
+          "official_url": "https://www.mori.art.museum/en/",
+          "type": "museum",
+          "tags": [
+            "contemporary",
+            "international"
+          ],
+          "notes": "Major contemporary art museum with international program."
+        },
+        {
+          "name": "The National Museum of Modern Art, Tokyo (MOMAT)",
+          "city": "Tokyo",
+          "official_url": "https://www.momat.go.jp/english/",
+          "type": "museum",
+          "tags": [
+            "modern",
+            "collection"
+          ],
+          "notes": "National modern art museum with collections and exhibitions."
+        },
+        {
+          "name": "21st Century Museum of Contemporary Art, Kanazawa",
+          "city": "Kanazawa",
+          "official_url": "https://www.kanazawa21.jp/en/",
+          "type": "museum",
+          "tags": [
+            "contemporary"
+          ],
+          "notes": "Renowned contemporary art museum known for innovative exhibitions."
+        }
+      ],
+      "awards_and_major_events": [
+        {
+          "name": "Praemium Imperiale (Japan Art Association)",
+          "city": "Tokyo",
+          "official_url": "https://www.praemiumimperiale.org/en",
+          "type": "award",
+          "tags": [
+            "international",
+            "prestige"
+          ],
+          "notes": "Major international prize often called the 'Nobel of the arts' (multiple disciplines)."
+        },
+        {
+          "name": "Japan Media Arts Festival",
+          "city": "Japan",
+          "official_url": "https://j-mediaarts.jp/en/",
+          "type": "award_festival",
+          "tags": [
+            "digital",
+            "media_arts"
+          ],
+          "notes": "Prestigious festival/awards for media arts (incl. digital art and related fields)."
+        }
+      ],
+      "magazines_and_press": [
+        {
+          "name": "Tokyo Art Beat",
+          "city": "Tokyo",
+          "official_url": "https://www.tokyoartbeat.com/en",
+          "type": "listings_press",
+          "tags": [
+            "exhibitions",
+            "news"
+          ],
+          "notes": "Major English-language art listings and news for Japan."
+        }
+      ]
+    },
+    "SE": {
+      "country_name": "Sweden",
+      "museums": [
+        {
+          "name": "Moderna Museet",
+          "city": "Stockholm",
+          "official_url": "https://www.modernamuseet.se/stockholm/en/",
+          "type": "museum",
+          "tags": [
+            "modern",
+            "contemporary"
+          ],
+          "notes": "Major Swedish museum of modern and contemporary art."
+        },
+        {
+          "name": "Nationalmuseum",
+          "city": "Stockholm",
+          "official_url": "https://www.nationalmuseum.se/en",
+          "type": "museum",
+          "tags": [
+            "collection",
+            "design"
+          ],
+          "notes": "National museum for art and design with online resources."
+        }
+      ],
+      "awards_and_major_events": [
+        {
+          "name": "Carnegie Art Award",
+          "city": "Nordics",
+          "official_url": "https://carnegieartaward.com/",
+          "type": "award",
+          "tags": [
+            "nordic",
+            "contemporary"
+          ],
+          "notes": "Prestigious Nordic contemporary art award with Swedish roots."
+        }
+      ],
+      "magazines_and_press": [
+        {
+          "name": "Paletten",
+          "city": "Sweden",
+          "official_url": "https://paletten.net/",
+          "type": "journal",
+          "tags": [
+            "criticism",
+            "nordic"
+          ],
+          "notes": "Nordic-focused art journal (often Swedish; regional authority)."
+        }
+      ]
+    },
+    "US": {
+      "country_name": "United States",
+      "museums": [
+        {
+          "name": "The Metropolitan Museum of Art (The Met)",
+          "city": "New York",
+          "official_url": "https://www.metmuseum.org/",
+          "type": "museum",
+          "tags": [
+            "collection",
+            "research"
+          ],
+          "notes": "World-leading museum with extensive online collection and scholarship."
+        },
+        {
+          "name": "Museum of Modern Art (MoMA)",
+          "city": "New York",
+          "official_url": "https://www.moma.org/",
+          "type": "museum",
+          "tags": [
+            "modern",
+            "contemporary"
+          ],
+          "notes": "Major modern art museum with exhibitions and publications."
+        },
+        {
+          "name": "Solomon R. Guggenheim Museum",
+          "city": "New York",
+          "official_url": "https://www.guggenheim.org/",
+          "type": "museum",
+          "tags": [
+            "modern",
+            "contemporary"
+          ],
+          "notes": "Major museum and foundation with exhibitions and archives."
+        },
+        {
+          "name": "The Art Institute of Chicago",
+          "city": "Chicago",
+          "official_url": "https://www.artic.edu/",
+          "type": "museum",
+          "tags": [
+            "collection",
+            "research"
+          ],
+          "notes": "Major museum with strong online collection access."
+        }
+      ],
+      "awards_and_major_events": [
+        {
+          "name": "National Medal of Arts",
+          "city": "US",
+          "official_url": "https://www.arts.gov/honors/medals",
+          "type": "award",
+          "tags": [
+            "national",
+            "prestige"
+          ],
+          "notes": "US national honor for contributions to the arts."
+        },
+        {
+          "name": "Guggenheim Fellowship",
+          "city": "US",
+          "official_url": "https://www.gf.org/",
+          "type": "fellowship",
+          "tags": [
+            "fellowship",
+            "prestige"
+          ],
+          "notes": "Prestigious fellowship supporting artists and scholars."
+        },
+        {
+          "name": "MacArthur Fellowship",
+          "city": "US",
+          "official_url": "https://www.macfound.org/programs/fellows/",
+          "type": "fellowship",
+          "tags": [
+            "fellowship",
+            "prestige"
+          ],
+          "notes": "Highly prestigious fellowship; includes artists among recipients."
+        }
+      ],
+      "magazines_and_press": [
+        {
+          "name": "ARTnews",
+          "city": "US",
+          "official_url": "https://www.artnews.com/",
+          "type": "magazine_news",
+          "tags": [
+            "news",
+            "market"
+          ],
+          "notes": "Major art news outlet."
+        },
+        {
+          "name": "Hyperallergic",
+          "city": "US",
+          "official_url": "https://hyperallergic.com/",
+          "type": "magazine_news",
+          "tags": [
+            "criticism",
+            "culture"
+          ],
+          "notes": "Influential arts and culture publication."
+        }
+      ]
+    }
+  },
+  "institutions": {
+    "Oxford University": {
+      "country": "UK",
+      "type": "university",
+      "prestige_tier": "A",
+      "official_url": "https://www.ox.ac.uk/",
+      "related_museums_libraries": [
+        {
+          "name": "Ashmolean Museum",
+          "official_url": "https://www.ashmolean.org/",
+          "type": "museum",
+          "notes": "World’s first university museum; art and archaeology."
+        },
+        {
+          "name": "Bodleian Libraries",
+          "official_url": "https://www.bodleian.ox.ac.uk/",
+          "type": "library",
+          "notes": "Major research library with art history and visual culture collections."
+        }
+      ],
+      "academic_journals": [
+        {
+          "name": "Oxford Art Journal",
+          "official_url": "https://academic.oup.com/oaj",
+          "access": "subscription",
+          "notes": "Highly prestigious peer-reviewed art history journal (OUP)."
+        }
+      ],
+      "notes": "Oxford University contributes via museums, libraries, and top-tier art history journals."
+    },
+    "Harvard University": {
+      "country": "US",
+      "type": "university",
+      "prestige_tier": "A",
+      "official_url": "https://www.harvard.edu/",
+      "related_museums_libraries": [
+        {
+          "name": "Harvard Art Museums",
+          "official_url": "https://harvardartmuseums.org/",
+          "type": "museum_network",
+          "notes": "Fogg, Busch-Reisinger, and Arthur M. Sackler Museums."
+        },
+        {
+          "name": "Harvard Library",
+          "official_url": "https://library.harvard.edu/",
+          "type": "library",
+          "notes": "Extensive art history and visual culture collections."
+        }
+      ],
+      "academic_journals": [
+        {
+          "name": "October",
+          "official_url": "https://www.mitpressjournals.org/loi/octo",
+          "access": "subscription",
+          "notes": "One of the most influential journals of contemporary art and theory (MIT Press; Harvard-affiliated editors)."
+        }
+      ],
+      "notes": "Harvard is central to global art history through museums, libraries, and theory journals."
+    },
+    "University of Cambridge": {
+      "country": "UK",
+      "type": "university",
+      "prestige_tier": "A",
+      "official_url": "https://www.cam.ac.uk/",
+      "related_museums_libraries": [
+        {
+          "name": "Fitzwilliam Museum",
+          "official_url": "https://www.fitzmuseum.cam.ac.uk/",
+          "type": "museum",
+          "notes": "Major art and antiquities museum."
+        },
+        {
+          "name": "Cambridge University Library",
+          "official_url": "https://www.lib.cam.ac.uk/",
+          "type": "library",
+          "notes": "Research library with art history collections."
+        }
+      ],
+      "academic_journals": [
+        {
+          "name": "Cambridge Journal of Art",
+          "official_url": "https://www.cambridge.org/core/journals",
+          "access": "subscription",
+          "notes": "Cambridge University Press art-related journals portal."
+        }
+      ],
+      "notes": "Cambridge contributes through museums, libraries, and CUP journals."
+    },
+    "Massachusetts Institute of Technology (MIT)": {
+      "country": "US",
+      "type": "university",
+      "prestige_tier": "A",
+      "official_url": "https://www.mit.edu/",
+      "related_museums_libraries": [
+        {
+          "name": "MIT List Visual Arts Center",
+          "official_url": "https://listart.mit.edu/",
+          "type": "arts_center",
+          "notes": "Contemporary art exhibitions and public art program."
+        },
+        {
+          "name": "MIT Libraries",
+          "official_url": "https://libraries.mit.edu/",
+          "type": "library",
+          "notes": "Strong collections on art, architecture, and media."
+        }
+      ],
+      "academic_journals": [
+        {
+          "name": "Leonardo (MIT Press)",
+          "official_url": "https://direct.mit.edu/leon",
+          "access": "subscription",
+          "notes": "Peer-reviewed journal on art, science, and technology."
+        },
+        {
+          "name": "October (MIT Press)",
+          "official_url": "https://www.mitpressjournals.org/loi/octo",
+          "access": "subscription",
+          "notes": "Highly influential contemporary art theory journal."
+        }
+      ],
+      "notes": "MIT is central to art–technology and media studies."
+    },
+    "Sorbonne University": {
+      "country": "FR",
+      "type": "university",
+      "prestige_tier": "A",
+      "official_url": "https://www.sorbonne-universite.fr/en",
+      "related_museums_libraries": [
+        {
+          "name": "Bibliothèque de la Sorbonne",
+          "official_url": "https://www.bibliotheque.sorbonne.fr/",
+          "type": "library",
+          "notes": "Historic academic library for humanities and art history."
+        }
+      ],
+      "academic_journals": [
+        {
+          "name": "Revue de l’Art",
+          "official_url": "https://www.cairn.info/revue-de-l-art.htm",
+          "access": "subscription",
+          "notes": "Leading French peer-reviewed art history journal."
+        }
+      ],
+      "notes": "Sorbonne is foundational for art history and humanities."
+    },
+    "Stanford University": {
+      "country": "US",
+      "type": "university",
+      "prestige_tier": "A",
+      "official_url": "https://www.stanford.edu/",
+      "related_museums_libraries": [
+        {
+          "name": "Cantor Arts Center",
+          "official_url": "https://museum.stanford.edu/",
+          "type": "museum",
+          "notes": "Museum with broad collections and research."
+        }
+      ],
+      "academic_journals": [],
+      "notes": "Strong visual culture and digital humanities presence."
+    },
+    "University of Tokyo": {
+      "country": "JP",
+      "type": "university",
+      "prestige_tier": "A",
+      "official_url": "https://www.u-tokyo.ac.jp/en/",
+      "related_museums_libraries": [
+        {
+          "name": "University Museum, The University of Tokyo (UMUT)",
+          "official_url": "https://www.um.u-tokyo.ac.jp/en/",
+          "type": "museum",
+          "notes": "Research museum with art and material culture."
+        }
+      ],
+      "academic_journals": [],
+      "notes": "Major Asian center for art history and cultural studies."
+    }
+  }
+}

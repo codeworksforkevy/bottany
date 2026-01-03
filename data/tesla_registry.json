@@ -1,0 +1,27 @@
+{
+  "name": "Nikola Tesla inventions & patent references",
+  "policy": "official_or_institutional_public_sources_only",
+  "sources": [
+    {
+      "name": "MIT - Nikola Tesla U.S. Patent Collection (Alphabetical)",
+      "url": "https://web.mit.edu/most/Public/Tesla1/alpha_tesla.html",
+      "type": "institutional_source"
+    },
+    {
+      "name": "Nikola Tesla Museum (Belgrade) - List of Nikola Tesla's Patents Granted in the USA (PDF)",
+      "url": "https://tesla-museum.org/wp-content/uploads/2023/05/lista_patenata_eng.pdf",
+      "type": "institutional_source"
+    },
+    {
+      "name": "USPTO - PatentsView (initiative supported by USPTO Office of the Chief Economist)",
+      "url": "https://www.uspto.gov/ip-policy/economic-research/patentsview",
+      "type": "institutional_source"
+    }
+  ],
+  "cache": {
+    "target_count": 150,
+    "cache_file": "tesla_cache.json",
+    "refresh_days": 30
+  },
+  "generated_utc": "2025-12-30T12:57:53Z"
+}

@@ -1,0 +1,236 @@
+{
+  "schema_version": "1.0",
+  "generated_utc": "2025-12-28T13:43:08Z",
+  "principles": [
+    "Academic links only: universities, museums, libraries, peer-reviewed journals, official institutions, academic presses.",
+    "No scraping of paywalled content; provide official links.",
+    "Every answer should include at least one reference link."
+  ],
+  "reference_hubs": {
+    "philosophy": [
+      {
+        "name": "Stanford Encyclopedia of Philosophy",
+        "url": "https://plato.stanford.edu/",
+        "type": "encyclopedia",
+        "notes": "Peer-reviewed academic reference work."
+      }
+    ],
+    "museums": [
+      {
+        "name": "The Met — Heilbrunn Timeline of Art History",
+        "url": "https://www.metmuseum.org/toah/",
+        "type": "museum_research"
+      },
+      {
+        "name": "Tate — Art Terms",
+        "url": "https://www.tate.org.uk/art/art-terms",
+        "type": "museum_glossary"
+      },
+      {
+        "name": "British Museum — Collection",
+        "url": "https://www.britishmuseum.org/collection",
+        "type": "museum_collection"
+      },
+      {
+        "name": "MoMA — Research & Learning",
+        "url": "https://www.moma.org/research-and-learning",
+        "type": "museum_research"
+      },
+      {
+        "name": "Ashmolean Museum (Oxford)",
+        "url": "https://www.ashmolean.org/",
+        "type": "university_museum"
+      },
+      {
+        "name": "Harvard Art Museums",
+        "url": "https://harvardartmuseums.org/",
+        "type": "university_museum"
+      }
+    ],
+    "game_studies": [
+      {
+        "name": "Game Studies (OA)",
+        "url": "https://gamestudies.org/",
+        "type": "journal"
+      },
+      {
+        "name": "ToDIGRA (OA)",
+        "url": "https://todigra.org/",
+        "type": "journal"
+      }
+    ],
+    "art_tech": [
+      {
+        "name": "Leonardo (MIT Press)",
+        "url": "https://direct.mit.edu/leon",
+        "type": "publisher"
+      }
+    ]
+  },
+  "modules": {
+    "methodology_guide": {
+      "visual_analysis": {
+        "title": "Methodology Guide — Visual Analysis",
+        "bullets": [
+          "Formal analysis: composition, color, line, space, material, technique.",
+          "Iconography: symbols, attributes, motifs, and their historical meanings.",
+          "Semiotics: signifier/signified; how images produce meaning within cultures."
+        ],
+        "refs": [
+          {
+            "name": "Tate — Art Terms",
+            "url": "https://www.tate.org.uk/art/art-terms",
+            "type": "reference_hub"
+          },
+          {
+            "name": "The Met — Timeline of Art History",
+            "url": "https://www.metmuseum.org/toah/",
+            "type": "reference_hub"
+          },
+          {
+            "name": "Stanford Encyclopedia of Philosophy",
+            "url": "https://plato.stanford.edu/",
+            "type": "reference_hub"
+          }
+        ]
+      },
+      "archival_research": {
+        "title": "Methodology Guide — Archival Research",
+        "bullets": [
+          "Locate institutional finding aids and catalogs (libraries, museums, archives).",
+          "Record provenance/metadata; triangulate primary and secondary sources.",
+          "Respect rights/permissions for reproductions and citation."
+        ],
+        "refs": [
+          {
+            "name": "British Museum — Collection",
+            "url": "https://www.britishmuseum.org/collection",
+            "type": "reference_hub"
+          },
+          {
+            "name": "The Met — Watson Digital Collections",
+            "url": "https://www.metmuseum.org/art/libraries-and-research-centers/watson-digital-collections",
+            "type": "reference_hub"
+          }
+        ]
+      }
+    },
+    "academic_debate": {
+      "ludology_vs_narratology": {
+        "title": "Academic Debate — Ludology vs Narratology",
+        "bullets": [
+          "Ludology emphasizes rules, systems, and gameplay mechanics as the core object of study.",
+          "Narratology emphasizes story, representation, and narrative structures in games.",
+          "Contemporary scholarship often integrates both perspectives depending on research questions."
+        ],
+        "refs": [
+          {
+            "name": "Game Studies (OA)",
+            "url": "https://gamestudies.org/",
+            "type": "reference_hub"
+          },
+          {
+            "name": "ToDIGRA (OA)",
+            "url": "https://todigra.org/",
+            "type": "reference_hub"
+          }
+        ]
+      },
+      "aura_and_reproduction": {
+        "title": "Academic Debate — Aura & Reproduction (Art/Media)",
+        "bullets": [
+          "Debates around originality, reproduction, and the status of the art object in modernity.",
+          "Often discussed in visual culture and media theory contexts."
+        ],
+        "refs": [
+          {
+            "name": "Stanford Encyclopedia of Philosophy",
+            "url": "https://plato.stanford.edu/",
+            "type": "reference_hub"
+          },
+          {
+            "name": "MIT Press (catalog)",
+            "url": "https://mitpress.mit.edu/",
+            "type": "publisher"
+          }
+        ]
+      }
+    },
+    "theory_origin": {
+      "semiotics": {
+        "title": "Theory Origin — Semiotics",
+        "bullets": [
+          "Semiotics studies signs and meaning-making across language, images, and culture.",
+          "Used widely in visual culture and media studies to analyze how representations communicate."
+        ],
+        "refs": [
+          {
+            "name": "Stanford Encyclopedia of Philosophy",
+            "url": "https://plato.stanford.edu/",
+            "type": "reference_hub"
+          },
+          {
+            "name": "Tate — Art Terms (related terms)",
+            "url": "https://www.tate.org.uk/art/art-terms",
+            "type": "reference_hub"
+          }
+        ]
+      },
+      "aesthetics": {
+        "title": "Theory Origin — Aesthetics",
+        "bullets": [
+          "Aesthetics concerns philosophy of art, beauty, and taste; extends to perception and experience.",
+          "Contemporary aesthetics spans art theory, ethics, and political philosophy."
+        ],
+        "refs": [
+          {
+            "name": "Stanford Encyclopedia of Philosophy",
+            "url": "https://plato.stanford.edu/",
+            "type": "reference_hub"
+          }
+        ]
+      }
+    },
+    "digital_archive_map": {
+      "video_games": {
+        "title": "Digital Archive Map — Video Games (Academic/Institutional)",
+        "bullets": [
+          "Library and archive initiatives are key for preservation; prioritize institutional repositories.",
+          "Use museum/university archives when available; use official collection catalogs for metadata."
+        ],
+        "refs": [
+          {
+            "name": "Internet Archive — Software Collection",
+            "url": "https://archive.org/details/software",
+            "type": "reference_hub"
+          },
+          {
+            "name": "Video Game History Foundation",
+            "url": "https://gamehistory.org/",
+            "type": "reference_hub"
+          }
+        ]
+      }
+    },
+    "open_access": {
+      "game_studies": {
+        "title": "Open Access — Game Studies",
+        "bullets": [
+          "Open-access peer-reviewed journals for game research."
+        ],
+        "refs": [
+          {
+            "name": "Game Studies (OA)",
+            "url": "https://gamestudies.org/",
+            "type": "reference_hub"
+          },
+          {
+            "name": "ToDIGRA (OA)",
+            "url": "https://todigra.org/",
+            "type": "reference_hub"
+          }
+        ]
+      }
+    }
+  }
+}

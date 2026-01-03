@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0",
+  "generated_utc": "2025-12-28T12:31:59Z",
+  "global_official_hubs": [
+    {
+      "name": "WMO World Weather Information Service (WWIS)",
+      "official_url": "https://worldweather.wmo.int/en/",
+      "notes": "Official forecasts for selected cities supplied by National Meteorological and Hydrological Services via WMO."
+    },
+    {
+      "name": "WMO WWIS Participating Members",
+      "official_url": "https://worldweather.wmo.int/en/members.html",
+      "notes": "Directory of participating members (official sources)."
+    }
+  ],
+  "services_by_country": {
+    "BE": {
+      "country_name": "Belgium",
+      "service_name": "Royal Meteorological Institute of Belgium (RMI / KMI-IRM)",
+      "official_url": "https://www.meteo.be/en/belgium",
+      "city_url_template": "https://www.meteo.be/en/{city_slug}",
+      "notes": "Official Belgian meteorological service."
+    },
+    "TR": {
+      "country_name": "Türkiye",
+      "service_name": "Turkish State Meteorological Service (MGM / TSMS)",
+      "official_url": "https://www.mgm.gov.tr/",
+      "city_url_template": "https://mgm.gov.tr/eng/forecast-cities.aspx?m={city_upper}",
+      "notes": "Official meteorological service of Türkiye."
+    },
+    "UK": {
+      "country_name": "United Kingdom",
+      "service_name": "Met Office",
+      "official_url": "https://www.metoffice.gov.uk/",
+      "notes": "UK national meteorological service."
+    },
+    "JP": {
+      "country_name": "Japan",
+      "service_name": "Japan Meteorological Agency (JMA)",
+      "official_url": "https://www.jma.go.jp/jma/indexe.html",
+      "notes": "Japan national meteorological service."
+    },
+    "SE": {
+      "country_name": "Sweden",
+      "service_name": "SMHI",
+      "official_url": "https://www.smhi.se/en/weather",
+      "notes": "Swedish Meteorological and Hydrological Institute."
+    },
+    "US": {
+      "country_name": "United States",
+      "service_name": "National Weather Service (NOAA)",
+      "official_url": "https://www.weather.gov/",
+      "notes": "US National Weather Service under NOAA."
+    }
+  }
+}

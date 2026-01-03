@@ -1,0 +1,71 @@
+{
+  "version": "1.0",
+  "sources": [
+    {
+      "name": "Library of Congress — Innovative Animators (cel patent history)",
+      "url": "https://www.loc.gov/loc/lcib/9906/animate.html"
+    },
+    {
+      "name": "Smithsonian — Animation cels (hand-drawn cel process)",
+      "url": "https://www.si.edu/object/animation-cel-little-mermaid%3Anmah_1290145"
+    },
+    {
+      "name": "Britannica — Animation overview",
+      "url": "https://www.britannica.com/art/animation"
+    },
+    {
+      "name": "Britannica — Anime",
+      "url": "https://www.britannica.com/art/anime-Japanese-animation"
+    }
+  ],
+  "anime_techniques": [
+    {
+      "name": "Limited animation (TV production)",
+      "explain": "Uses fewer frames and strategic holds/cycles to reduce drawing load while maintaining clarity and timing."
+    },
+    {
+      "name": "Key animation + in-betweening",
+      "explain": "Key animators define major poses; in-between drawings create smooth motion between keys."
+    },
+    {
+      "name": "Layout + timing sheets",
+      "explain": "Shot planning that specifies camera/framing and frame-by-frame timing for motion and effects."
+    }
+  ],
+  "cartoon_techniques": [
+    {
+      "name": "Cel animation",
+      "explain": "Characters are drawn on transparent sheets and layered over a fixed background; separates moving parts from the background."
+    },
+    {
+      "name": "Stop-motion",
+      "explain": "Physical models are moved incrementally and photographed frame-by-frame to create motion."
+    },
+    {
+      "name": "Cut-out animation",
+      "explain": "Flat pieces are moved frame-by-frame (paper/digital equivalents) to animate characters and scenes."
+    }
+  ],
+  "traditional_tools": [
+    {
+      "item": "Animation paper (peg holes)",
+      "use": "Standardized paper aligned with pegs to keep drawings consistent across frames."
+    },
+    {
+      "item": "Lightbox",
+      "use": "Illuminated surface used to trace, refine, and register in-between drawings."
+    },
+    {
+      "item": "Peg bar / registration pegs",
+      "use": "Hardware that locks paper in place so drawings align consistently."
+    },
+    {
+      "item": "Pencils (blue/red non-photo + graphite)",
+      "use": "Non-photo pencils for rough passes; graphite for clean-up lines."
+    },
+    {
+      "item": "Ink + paint for cels",
+      "use": "Traditional workflow: ink lines and paint fills on cels (historically common in studios)."
+    }
+  ]
+}

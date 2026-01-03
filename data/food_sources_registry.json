@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "sources": [
+    {
+      "name": "Britannica — Chocolate",
+      "url": "https://www.britannica.com/topic/chocolate"
+    },
+    {
+      "name": "Smithsonian Magazine — A Brief History of Chocolate",
+      "url": "https://www.smithsonianmag.com/arts-culture/a-brief-history-of-chocolate-21860917/"
+    },
+    {
+      "name": "British Museum — 18th-century chocolate champions",
+      "url": "https://www.britishmuseum.org/blog/18th-century-chocolate-champions"
+    },
+    {
+      "name": "MICHELIN Guide — What is a MICHELIN Star?",
+      "url": "https://guide.michelin.com/tr/en/article/features/what-is-a-michelin-star"
+    }
+  ]
+}

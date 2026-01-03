@@ -1,0 +1,108 @@
+{
+  "schema_version": "1.0",
+  "generated_utc": "2025-12-28T13:19:45Z",
+  "policy": "Academic links only (institutional/peer-reviewed/official).",
+  "free_academic_fashion_sources": [
+    {
+      "name": "V&A (UK) — Fashion Collection",
+      "url": "https://www.vam.ac.uk/collections/fashion",
+      "type": "museum_collection",
+      "country": "UK",
+      "notes": "Museum collection highlights and research entry points."
+    },
+    {
+      "name": "The Met (US) — The Costume Institute",
+      "url": "https://www.metmuseum.org/departments/the-costume-institute",
+      "type": "museum_department",
+      "country": "US",
+      "notes": "Costume Institute overview and research entry points."
+    },
+    {
+      "name": "The Met (US) — Costume Institute Collections (Watson Digital Collections)",
+      "url": "https://www.metmuseum.org/art/libraries-and-research-centers/watson-digital-collections/costume-institute-collections",
+      "type": "digital_collections",
+      "country": "US",
+      "notes": "Digitized archival and ephemeral collections."
+    },
+    {
+      "name": "Museum at FIT (US) — Online Collections",
+      "url": "https://www.fitnyc.edu/museum/index.php",
+      "type": "museum_collection",
+      "country": "US",
+      "notes": "Free online object images and past exhibition material."
+    },
+    {
+      "name": "Kyoto Costume Institute (JP) — KCI Digital Archives",
+      "url": "https://www.kci.or.jp/en/archives/digital_archives/",
+      "type": "digital_archive",
+      "country": "JP",
+      "notes": "Digitized objects with image/text, chronological browsing."
+    },
+    {
+      "name": "UC Berkeley Library Guide — Researching Fashion (Online Resources)",
+      "url": "https://guides.lib.berkeley.edu/c.php?g=379166&p=2567728",
+      "type": "university_library_guide",
+      "country": "US",
+      "notes": "Curated institutional guide to fashion research resources."
+    },
+    {
+      "name": "Game Studies (OA) — Example of open-access peer-reviewed journal (method model)",
+      "url": "https://gamestudies.org/",
+      "type": "journal_open_access",
+      "country": "International",
+      "notes": "Open-access peer-reviewed journal model; included as OA pattern."
+    },
+    {
+      "name": "ModeMuseum Antwerpen (MoMu) — Museum",
+      "url": "https://www.momu.be/en",
+      "type": "museum",
+      "country": "BE",
+      "notes": "Official museum site (Antwerp fashion)."
+    },
+    {
+      "name": "British Library — Home (Research gateway)",
+      "url": "https://www.bl.uk/",
+      "type": "national_library",
+      "country": "UK",
+      "notes": "National library research gateway (catalogues & research)."
+    },
+    {
+      "name": "Nationalmuseum (Sweden) — Collections",
+      "url": "https://www.nationalmuseum.se/en/collections",
+      "type": "museum_collection",
+      "country": "SE",
+      "notes": "Institutional collections portal (design/fashion-related objects)."
+    },
+    {
+      "name": "İstanbul Modern — Museum",
+      "url": "https://www.istanbulmodern.org/en",
+      "type": "museum",
+      "country": "TR",
+      "notes": "Official museum portal (design/fashion-related exhibitions when available)."
+    },
+    {
+      "name": "Cooper Hewitt, Smithsonian Design Museum — Collections",
+      "url": "https://collection.cooperhewitt.org/",
+      "type": "museum_collection",
+      "country": "US",
+      "notes": "Design collections; fashion-textile objects included."
+    },
+    {
+      "name": "Musée des Arts Décoratifs (Paris) — Collections",
+      "url": "https://madparis.fr/en/collections",
+      "type": "museum_collection",
+      "country": "FR",
+      "notes": "Decorative arts with fashion/textiles; official collections portal."
+    }
+  ],
+  "prestige_fashion_academic_journals_official": [
+    {
+      "name": "Fashion Theory (Taylor & Francis) — Journal Home",
+      "url": "https://www.tandfonline.com/journals/rfft20",
+      "type": "peer_reviewed_journal",
+      "access": "subscription/partial",
+      "notes": "Official journal page; some content may require access."
+    }
+  ],
+  "note": "Commercial magazines (e.g., Vogue) are excluded to preserve Academic-only policy."
+}

@@ -1,0 +1,120 @@
+{
+  "version": "1.0",
+  "note": "Seed registry. Expand freely (code-independent). Prefer museum collection pages and public-domain/IIIF images.",
+  "sources": [
+    {
+      "name": "The Met Collection API",
+      "url": "https://metmuseum.github.io/"
+    }
+  ],
+  "items": [
+    {
+      "name": "Vincent van Gogh",
+      "lifespan": "1853–1890",
+      "movement": "Post-Impressionism",
+      "museum": "The Metropolitan Museum of Art",
+      "met_object_id": 436535,
+      "why_significant": "Major figure in modern painting; influential use of color and brushwork.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/436535"
+    },
+    {
+      "name": "Claude Monet",
+      "lifespan": "1840–1926",
+      "movement": "Impressionism",
+      "museum": "The Metropolitan Museum of Art",
+      "met_object_id": 437133,
+      "why_significant": "Key Impressionist; series-based studies of light and atmosphere.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/437133"
+    },
+    {
+      "name": "Edgar Degas",
+      "lifespan": "1834–1917",
+      "movement": "Impressionism / Realism",
+      "museum": "The Metropolitan Museum of Art",
+      "met_object_id": 436121,
+      "why_significant": "Innovative composition and depiction of movement; ballet and modern life.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/436121"
+    },
+    {
+      "name": "Mary Cassatt",
+      "lifespan": "1844–1926",
+      "movement": "Impressionism",
+      "museum": "The Metropolitan Museum of Art",
+      "met_object_id": 10388,
+      "why_significant": "Prominent American Impressionist; intimate domestic scenes and printmaking.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/10388"
+    },
+    {
+      "name": "Katsushika Hokusai",
+      "lifespan": "1760–1849",
+      "movement": "Ukiyo-e",
+      "museum": "The Metropolitan Museum of Art",
+      "met_object_id": 45434,
+      "why_significant": "Influential Japanese printmaker; major impact on global visual culture.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/45434"
+    },
+    {
+      "name": "Pablo Picasso",
+      "lifespan": "1881–1973",
+      "movement": "Cubism / Modernism",
+      "museum": "The Metropolitan Museum of Art",
+      "met_object_id": 485019,
+      "why_significant": "Revolutionized modern art; co-developed Cubism and transformed 20th‑century visual language.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/485019"
+    },
+    {
+      "name": "Henri Matisse",
+      "lifespan": "1869–1954",
+      "movement": "Fauvism / Modernism",
+      "museum": "The Metropolitan Museum of Art",
+      "met_object_id": 490056,
+      "why_significant": "Leader of Fauvism; influential color and form innovations across painting and cut-outs.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/490056"
+    },
+    {
+      "name": "Paul Cézanne",
+      "lifespan": "1839–1906",
+      "movement": "Post‑Impressionism",
+      "museum": "The Metropolitan Museum of Art",
+      "met_object_id": 438816,
+      "why_significant": "Bridged Impressionism and Cubism; major influence on structure and composition in modern art.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/438816"
+    },
+    {
+      "name": "Gustav Klimt",
+      "lifespan": "1862–1918",
+      "movement": "Symbolism / Vienna Secession",
+      "museum": "The Metropolitan Museum of Art",
+      "met_object_id": 436835,
+      "why_significant": "Key Secession figure; decorative symbolism and iconic portraiture influenced European modernism.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/436835"
+    },
+    {
+      "name": "Jackson Pollock",
+      "lifespan": "1912–1956",
+      "movement": "Abstract Expressionism",
+      "museum": "The Metropolitan Museum of Art",
+      "met_object_id": 488709,
+      "why_significant": "Pioneered drip technique and action painting; pivotal in postwar American art.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/488709"
+    },
+    {
+      "name": "Frida Kahlo",
+      "lifespan": "1907–1954",
+      "movement": "Modernism / Surrealism (associated)",
+      "museum": "The Metropolitan Museum of Art",
+      "met_object_id": 484310,
+      "why_significant": "Distinctive self-portraiture exploring identity and politics; global cultural impact.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/484310"
+    },
+    {
+      "name": "Georgia O’Keeffe",
+      "lifespan": "1887–1986",
+      "movement": "American Modernism",
+      "museum": "The Metropolitan Museum of Art",
+      "met_object_id": 489961,
+      "why_significant": "Major American modernist; iconic large-scale florals and landscapes.",
+      "source_url": "https://www.metmuseum.org/art/collection/search/489961"
+    }
+  ]
+}

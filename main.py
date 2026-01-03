@@ -3,6 +3,111 @@ import logging
 import asyncio
 import json
 import random
+# ------------------------------
+# Remote dataset loader (GitHub Raw) with commit-SHA pin, allowlist, caching, and local fallback
+# ------------------------------
+import hashlib
+from urllib.parse import urlparse
+
+DATASET_BASE_URL = os.getenv("DATASET_BASE_URL", "").strip()  # e.g. https://raw.githubusercontent.com/<USER>/<REPO>
+DATASET_PIN = os.getenv("DATASET_PIN", "").strip()            # commit SHA (recommended) or tag
+DATASET_ALLOWLIST = set(d.strip().lower() for d in os.getenv("DATASET_ALLOWLIST", "raw.githubusercontent.com").split(",") if d.strip())
+
+_DATASET_CACHE_DIR = os.path.join(os.getcwd(), ".dataset_cache")
+os.makedirs(_DATASET_CACHE_DIR, exist_ok=True)
+
+def _domain_allowed(url: str) -> bool:
+    try:
+        host = (urlparse(url).hostname or "").lower()
+        return host in DATASET_ALLOWLIST
+    except Exception:
+        return False
+
+def _cache_paths(name: str):
+    safe = re.sub(r"[^a-zA-Z0-9_.-]+", "_", name)
+    return (
+        os.path.join(_DATASET_CACHE_DIR, f"{safe}.json"),
+        os.path.join(_DATASET_CACHE_DIR, f"{safe}.meta.json"),
+    )
+
+class DatasetLoader:
+    def __init__(self, base_url: str, pin: str):
+        self.base_url = base_url.rstrip("/")
+        self.pin = pin
+
+    def enabled(self) -> bool:
+        return bool(self.base_url) and bool(self.pin)
+
+    def url_for(self, filename: str) -> str:
+        # Expect base like https://raw.githubusercontent.com/<user>/<repo>
+        # Full: {base}/{pin}/data/{filename}
+        return f"{self.base_url}/{self.pin}/data/{filename}"
+
+    def load_json(self, filename: str, local_fallback: dict) -> dict:
+        # If not enabled, return local.
+        if not self.enabled():
+            return local_fallback
+
+        url = self.url_for(filename)
+        if not _domain_allowed(url):
+            logger.warning("Remote dataset blocked by allowlist: %s", url)
+            return local_fallback
+
+        cache_json_path, cache_meta_path = _cache_paths(filename)
+        etag = None
+        try:
+            if os.path.exists(cache_meta_path):
+                with open(cache_meta_path, "r", encoding="utf-8") as mf:
+                    meta = json.load(mf)
+                    etag = meta.get("etag")
+        except Exception:
+            etag = None
+
+        headers = {"User-Agent": "Bottany/5.x (+datasets)"}
+        if etag:
+            headers["If-None-Match"] = etag
+
+        try:
+            resp = requests.get(url, headers=headers, timeout=15)
+            if resp.status_code == 304 and os.path.exists(cache_json_path):
+                with open(cache_json_path, "r", encoding="utf-8") as cf:
+                    return json.load(cf)
+
+            if resp.status_code != 200:
+                logger.warning("Remote dataset fetch failed (%s): %s", resp.status_code, url)
+                # Try cache then fallback
+                if os.path.exists(cache_json_path):
+                    with open(cache_json_path, "r", encoding="utf-8") as cf:
+                        return json.load(cf)
+                return local_fallback
+
+            data = resp.json()
+            # Write cache
+            with open(cache_json_path, "w", encoding="utf-8") as cf:
+                json.dump(data, cf, ensure_ascii=False, indent=2)
+
+            meta = {
+                "url": url,
+                "etag": resp.headers.get("ETag"),
+                "fetched_utc": datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
+            }
+            with open(cache_meta_path, "w", encoding="utf-8") as mf:
+                json.dump(meta, mf, ensure_ascii=False, indent=2)
+
+            return data
+        except Exception as e:
+            logger.warning("Remote dataset exception: %s", e)
+            # Try cache then fallback
+            try:
+                if os.path.exists(cache_json_path):
+                    with open(cache_json_path, "r", encoding="utf-8") as cf:
+                        return json.load(cf)
+            except Exception:
+                pass
+            return local_fallback
+
+DATASET_LOADER = DatasetLoader(DATASET_BASE_URL, DATASET_PIN)
+
 import requests
 from aiohttp import web
 from bs4 import BeautifulSoup
@@ -1231,35 +1336,31 @@ def governance_summary_text() -> str:
 TESLA_REG_PATH = os.path.join(DATA_DIR, "tesla_registry.json")
 # --- Art / Animation registries (code-independent JSON) ---
 def load_json_registry(filename: str) -> dict:
-    path = os.path.join(DATA_DIR, filename)
+    """Load a JSON registry.
+    Priority:
+    1) Remote (GitHub Raw) pinned to DATASET_PIN (commit SHA recommended), if configured
+    2) Local cache (if remote previously fetched)
+    3) Bundled local file in ./data (fallback)
+    """
+    local_path = os.path.join("data", filename)
+    local_data = {}
     try:
-        with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
+        if os.path.exists(local_path):
+            with open(local_path, "r", encoding="utf-8") as f:
+                local_data = json.load(f)
     except Exception as e:
-        logger.warning("Could not load registry %s: %s", filename, e)
-        return {}
+        logger.warning("Failed reading local registry %s: %s", filename, e)
+        local_data = {}
 
-PAINTERS_REGISTRY = load_json_registry("painters_registry.json")
-ANIMATION_AWARDS_REGISTRY = load_json_registry("animation_awards_registry.json")
-ANIMATION_TECH_REGISTRY = load_json_registry("animation_techniques_registry.json")
-ANIMATION_INTL_AWARDS_REGISTRY = load_json_registry("animation_international_awards_registry.json")
-FOOD_SOURCES_REGISTRY = load_json_registry("food_sources_registry.json")
-MICHELIN_REGISTRY = load_json_registry("michelin_starred_registry.json")
-RESTAURANT_AWARDS_REGISTRY = load_json_registry("restaurant_awards_registry.json")
-ANIME_HISTORY_QUOTES = load_json_registry("anime_history_quotes.json")
+    # Remote override (governance-controlled)
+    try:
+        if "DATASET_LOADER" in globals() and DATASET_LOADER.enabled():
+            return DATASET_LOADER.load_json(filename, local_data)
+    except Exception as e:
+        logger.warning("Remote dataset loader error for %s: %s", filename, e)
 
+    return local_data
 
-async def met_object(object_id: int) -> dict:
-    # Official: The Met Collection API (public)
-    url = f"https://collectionapi.metmuseum.org/public/collection/v1/objects/{int(object_id)}"
-    async with aiohttp.ClientSession() as session:
-        async with session.get(url, timeout=20) as resp:
-            if resp.status != 200:
-                return {}
-            return await resp.json()
-
-TESLA_REG = load_json(TESLA_REG_PATH) if os.path.exists(TESLA_REG_PATH) else {}
-TESLA_CACHE_PATH = os.path.join(DATA_DIR, (TESLA_REG.get("cache", {}) or {}).get("cache_file", "tesla_cache.json"))
 
 def _safe_get(url: str, timeout: int = 20) -> str:
     headers = {"User-Agent": "Bottany/1.0 (+https://railway.app)"}

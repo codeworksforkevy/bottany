@@ -1,0 +1,77 @@
+{
+  "name": "Bottany Philosophy Registry",
+  "policy": "academic_links_only",
+  "modules": {
+    "game_theory": {
+      "title": "John Nash and Game Theory (Pure Theory)",
+      "summary": [
+        "Game theory is a formal framework for analyzing strategic interaction among rational decision-makers.",
+        "John Nash introduced the equilibrium concept that now bears his name, showing that every finite game has at least one equilibrium in mixed strategies."
+      ],
+      "key_concepts": [
+        {
+          "term": "Game",
+          "definition": "A model defined by players, available actions (strategies), and payoffs for each outcome."
+        },
+        {
+          "term": "Strategy",
+          "definition": "A complete plan of action a player will follow in a game."
+        },
+        {
+          "term": "Payoff",
+          "definition": "A numerical representation of each player’s preferences over outcomes."
+        },
+        {
+          "term": "Nash equilibrium",
+          "definition": "A strategy profile where no player can improve their payoff by unilaterally deviating, given others’ strategies."
+        },
+        {
+          "term": "Mixed strategy",
+          "definition": "A probability distribution over pure strategies."
+        },
+        {
+          "term": "Dominant strategy",
+          "definition": "A strategy that yields at least as good a payoff as any other strategy, regardless of opponents’ choices."
+        },
+        {
+          "term": "Best response",
+          "definition": "A strategy that maximizes a player’s payoff given beliefs about other players’ strategies."
+        }
+      ],
+      "core_results": [
+        "Existence: Every finite game has at least one Nash equilibrium in mixed strategies (Nash, 1950/1951).",
+        "Interpretation: Equilibrium as mutual consistency of best responses; stability under unilateral deviation.",
+        "Extensions: Equilibrium refinements and dynamics (e.g., trembling-hand perfection, evolutionary stability) build on Nash’s baseline concept."
+      ],
+      "how_to_read": [
+        "Start with normal-form games (payoff matrices) and compute best responses.",
+        "Identify pure-strategy equilibria via best-response intersections.",
+        "If none exist, solve for mixed strategies by making opponents indifferent between pure actions on support.",
+        "Check deviations: verify that each strategy is a best response to the others."
+      ],
+      "refs": [
+        {
+          "name": "Nash (1950) — Equilibrium points in n-person games (PNAS)",
+          "url": "https://www.pnas.org/doi/10.1073/pnas.36.1.48",
+          "type": "publisher"
+        },
+        {
+          "name": "Nash (1951) — Non-Cooperative Games (Annals of Mathematics)",
+          "url": "https://www.jstor.org/stable/1969529",
+          "type": "journal_platform"
+        },
+        {
+          "name": "Stanford Encyclopedia of Philosophy — Game Theory",
+          "url": "https://plato.stanford.edu/entries/game-theory/",
+          "type": "institutional"
+        },
+        {
+          "name": "Nobel Prize — The Sveriges Riksbank Prize in Economic Sciences 1994 (Nash, Harsanyi, Selten)",
+          "url": "https://www.nobelprize.org/prizes/economic-sciences/1994/summary/",
+          "type": "institutional"
+        }
+      ]
+    }
+  },
+  "generated_utc": "2025-12-30T13:17:06Z"
+}

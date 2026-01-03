@@ -1,0 +1,43 @@
+{
+  "name": "Bottany Weather (official sources)",
+  "policy": "official_meteorology_only",
+  "api": {
+    "name": "MET Norway Locationforecast",
+    "base_url": "https://api.met.no/weatherapi/locationforecast/2.0/compact",
+    "docs": "https://api.met.no/weatherapi/locationforecast/2.0/documentation",
+    "note": "Forecasts for any location on earth by coordinate; requires User-Agent."
+  },
+  "official_services": [
+    {
+      "country": "BE",
+      "name": "Royal Meteorological Institute of Belgium (KMI/IRM)",
+      "url": "https://www.meteo.be/"
+    },
+    {
+      "country": "TR",
+      "name": "Turkish State Meteorological Service (MGM)",
+      "url": "https://www.mgm.gov.tr/"
+    },
+    {
+      "country": "UK",
+      "name": "UK Met Office",
+      "url": "https://www.metoffice.gov.uk/"
+    },
+    {
+      "country": "US",
+      "name": "NOAA / National Weather Service",
+      "url": "https://www.weather.gov/"
+    },
+    {
+      "country": "JP",
+      "name": "Japan Meteorological Agency (JMA)",
+      "url": "https://www.jma.go.jp/jma/indexe.html"
+    },
+    {
+      "country": "SE",
+      "name": "Swedish Meteorological and Hydrological Institute (SMHI)",
+      "url": "https://www.smhi.se/"
+    }
+  ],
+  "generated_utc": "2026-01-02T08:31:23Z"
+}

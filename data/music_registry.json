@@ -1,0 +1,60 @@
+{
+  "name": "Bottany Music Companion (ToS-safe; links only)",
+  "policy": "no_audio_streaming; official_platform_links_only",
+  "platforms": [
+    {
+      "name": "Spotify Search",
+      "url_template": "https://open.spotify.com/search/{q}",
+      "domain": "open.spotify.com"
+    },
+    {
+      "name": "YouTube Search",
+      "url_template": "https://www.youtube.com/results?search_query={q}",
+      "domain": "www.youtube.com"
+    },
+    {
+      "name": "Apple Music Search",
+      "url_template": "https://music.apple.com/us/search?term={q}",
+      "domain": "music.apple.com"
+    }
+  ],
+  "playlists": {
+    "focus": [
+      {
+        "name": "Spotify — Focus",
+        "url": "https://open.spotify.com/search/focus%20playlist",
+        "type": "platform_link"
+      },
+      {
+        "name": "YouTube — Focus music",
+        "url": "https://www.youtube.com/results?search_query=focus+music+playlist",
+        "type": "platform_link"
+      }
+    ],
+    "soft": [
+      {
+        "name": "Spotify — Chill",
+        "url": "https://open.spotify.com/search/chill%20playlist",
+        "type": "platform_link"
+      },
+      {
+        "name": "YouTube — Chill music",
+        "url": "https://www.youtube.com/results?search_query=chill+music+playlist",
+        "type": "platform_link"
+      }
+    ],
+    "gaming": [
+      {
+        "name": "Spotify — Gaming",
+        "url": "https://open.spotify.com/search/gaming%20playlist",
+        "type": "platform_link"
+      },
+      {
+        "name": "YouTube — Gaming music",
+        "url": "https://www.youtube.com/results?search_query=gaming+music+playlist",
+        "type": "platform_link"
+      }
+    ]
+  },
+  "generated_utc": "2025-12-30T13:22:21Z"
+}

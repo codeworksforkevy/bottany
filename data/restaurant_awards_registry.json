@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "note": "Seed registry for major non-Michelin restaurant awards. Expand from official organizer pages.",
+  "sources": [
+    {
+      "award": "The World's 50 Best Restaurants",
+      "url": "https://www.theworlds50best.com/"
+    },
+    {
+      "award": "La Liste",
+      "url": "https://www.laliste.com/"
+    },
+    {
+      "award": "James Beard Awards",
+      "url": "https://www.jamesbeard.org/"
+    }
+  ],
+  "items": [
+    {
+      "name": "Central",
+      "city": "Lima",
+      "country": "Peru",
+      "award": "World's 50 Best Restaurants",
+      "year": 2023,
+      "official_url": "https://www.theworlds50best.com/"
+    },
+    {
+      "name": "Disfrutar",
+      "city": "Barcelona",
+      "country": "Spain",
+      "award": "World's 50 Best Restaurants",
+      "year": 2024,
+      "official_url": "https://www.theworlds50best.com/"
+    },
+    {
+      "name": "La Liste Top 1000 (annual ranking)",
+      "city": "",
+      "country": "Global",
+      "award": "La Liste",
+      "year": 2024,
+      "official_url": "https://www.laliste.com/"
+    },
+    {
+      "name": "Outstanding Restaurant (annual award)",
+      "city": "",
+      "country": "USA",
+      "award": "James Beard Awards",
+      "year": 2024,
+      "official_url": "https://www.jamesbeard.org/"
+    }
+  ]
+}
