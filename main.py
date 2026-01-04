@@ -4,7 +4,8 @@ import asyncio
 import json
 import random
 import requests
-from aiohttp import web
+import aiohttp
+from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
 import sqlite3
 import re
