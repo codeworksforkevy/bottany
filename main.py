@@ -2565,4 +2565,4 @@ async def restaurants_award_winner(interaction: discord.Interaction, year: int =
 bot.tree.add_command(restaurants_group)
 
 
-bot.run(DISCORD_TOKEN)
+bot.run(os.getenv("DISCORD_TOKEN"))
