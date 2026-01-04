@@ -13,6 +13,7 @@ from datetime import datetime, date, time as dtime
 import hashlib
 import discord
 from discord.ext import commands, tasks
+from discord import app_commands
 
 # -------------------------
 # Paths / constants
