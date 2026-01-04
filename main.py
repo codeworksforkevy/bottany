@@ -1672,17 +1672,18 @@ async def wikimedia_tesla_patent_image_url(patent_number: str) -> Optional[str]:
     _wiki_cache_set(pat, None)
     return None
 
-tesla_group = app_commands.Group(name="tesla", description="Nikola Tesla: one invention/patent per call (institutional sources).")
-
 @tesla_group.command(
     name="random",
     description="Show one Nikola Tesla invention/patent (one item per call)."
 )
 async def tesla_random(interaction: discord.Interaction):
+    # IMPORTANT: avoid "Unknown interaction" by deferring immediately
+    await interaction.response.defer(thinking=True)
+
     cache = _ensure_tesla_cache()
     items = cache.get("items", []) or []
     if not items:
-        await interaction.response.send_message(
+        await interaction.followup.send(
             "No Tesla items could be loaded right now. Try again later."
         )
         return
@@ -1714,7 +1715,7 @@ async def tesla_random(interaction: discord.Interaction):
     img_url = None
     drawing_label = None
 
-    # 1) MIT (institutional)
+    # 1) MIT
     try:
         img_url = await mit_tesla_patent_image_url(pat)
     except Exception as e:
@@ -1724,7 +1725,7 @@ async def tesla_random(interaction: discord.Interaction):
     if img_url:
         drawing_label = "📐 Original patent drawing (MIT)"
     else:
-        # 2) Wikimedia Commons (public-domain fallback)
+        # 2) Wikimedia
         try:
             img_url = await wikimedia_tesla_patent_image_url(pat)
         except Exception as e:
@@ -1743,8 +1744,13 @@ async def tesla_random(interaction: discord.Interaction):
     target = int((TESLA_REG.get("cache", {}) or {}).get("target_count", 150))
     embed.set_footer(text=f"Catalog size: {cache.get('count', 0)} / target {target}")
 
-    await interaction.response.send_message(embed=embed)
+    await interaction.followup.send(embed=embed)
 
+if not pat:
+    embed.add_field(name="Drawing", value="No official drawing available", inline=False)
+    ...
+    await interaction.followup.send(embed=embed)
+    return
 
 @tesla_group.command(name="sources", description="Show institutional sources used for Tesla items.")
 async def tesla_sources(interaction: discord.Interaction):
