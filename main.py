@@ -1446,26 +1446,79 @@ def _safe_get(url: str, timeout: int = 20) -> str:
     r.raise_for_status()
     return r.text
 
-def _extract_mit_tesla_patents(html: str):
-    rows = re.findall(r"<tr[^>]*>(.*?)</tr>", html, flags=re.I | re.S)
-    items = []
-    for row in rows:
-        cols = re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", row, flags=re.I | re.S)
-        cols = [re.sub(r"<.*?>", "", c).strip() for c in cols]
-        if len(cols) >= 6:
-            pat = cols[2].replace(",", "")
-            if pat.isdigit():
-                title, order, patno, month, day, year = cols[:6]
-                items.append({
-                    "title": title,
-                    "kind": "patent",
-                    "patent_number": patno.replace(",", ""),
-                    "grant_date": f"{month} {day}, {year}".strip(),
-                    "source_name": "MIT Tesla U.S. Patent Collection",
-                    "source_url": "https://web.mit.edu/most/Public/Tesla1/alpha_tesla.html",
-                    "type": "institutional"
-                })
-    return items
+def _extract_mit_tesla_patents(html: str) -> List[dict]:
+    """
+    Parse MIT Tesla alpha table into a list of patents.
+    More robust than regex parsing.
+    """
+    soup = BeautifulSoup(html, "html.parser")
+    items: List[dict] = []
+
+    for tr in soup.find_all("tr"):
+        # Get cells
+        cells = tr.find_all(["td", "th"])
+        if len(cells) < 4:
+            continue
+
+        # Plain text per cell
+        cols = [c.get_text(" ", strip=True) for c in cells]
+        cols_clean = [re.sub(r"\s+", " ", c).strip() for c in cols]
+
+        # Try to find a patent number (digits, often with commas)
+        joined = " ".join(cols_clean)
+        m = re.search(r"\b(\d{3,}(?:,\d{3})*)\b", joined)
+        if not m:
+            continue
+
+        patno = m.group(1).replace(",", "")
+        if not patno.isdigit():
+            continue
+
+        # Heuristic: title tends to be the first non-empty cell
+        title = ""
+        for c in cols_clean:
+            if c and not re.fullmatch(r"\d+(?:,\d+)*", c):
+                title = c
+                break
+
+        # Heuristic: attempt to build a grant date if month/day/year appear
+        # MIT table often has Month Day Year in separate columns, but format may vary.
+        grant_date = ""
+        # pull tokens that look like Month Day, Year patterns
+        # Example: "Jan 5 1897" or "January 5, 1897" (best effort)
+        date_match = re.search(
+            r"\b(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\b"
+            r"\s+(\d{1,2})(?:,)?\s+(\d{4})\b",
+            joined,
+            flags=re.IGNORECASE,
+        )
+        if date_match:
+            mo, dd, yy = date_match.group(1), date_match.group(2), date_match.group(3)
+            grant_date = f"{mo} {dd}, {yy}"
+
+        items.append(
+            {
+                "title": title or "(untitled)",
+                "kind": "patent",
+                "patent_number": patno,
+                "grant_date": grant_date,
+                "source_name": "MIT Tesla U.S. Patent Collection",
+                "source_url": "https://web.mit.edu/most/Public/Tesla1/alpha_tesla.html",
+                "type": "institutional",
+            }
+        )
+
+    # Deduplicate by patent_number
+    seen = set()
+    dedup = []
+    for it in items:
+        p = it.get("patent_number")
+        if not p or p in seen:
+            continue
+        seen.add(p)
+        dedup.append(it)
+
+    return dedup
 
 def _extract_tesla_museum_pdf_lines(text: str):
     items = []
@@ -1507,14 +1560,6 @@ def _build_tesla_catalog(target_count: int = 150) -> dict:
     except Exception as e:
         logger.exception("Tesla MIT fetch/parse failed: %s", e)
 
-    # Tesla Museum PDF (best effort)
-    try:
-        pdf_as_text = _safe_get(
-            "https://tesla-museum.org/wp-content/uploads/2023/05/lista_patenata_eng.pdf"
-        )
-        extracted = _extract_tesla_museum_pdf_lines(pdf_as_text)
-        logger.info("Tesla Museum PDF extract: %d items", len(extracted))
-        items.extend(extracted)
     except Exception as e:
         logger.exception("Tesla Museum fetch/parse failed: %s", e)
 
