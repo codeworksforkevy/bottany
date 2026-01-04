@@ -14,6 +14,10 @@ import hashlib
 import discord
 from discord import app_commands
 from discord.ext import commands, tasks
+try:
+    from zoneinfo import ZoneInfo
+except Exception:
+    ZoneInfo = None
 
 # -------------------------
 # Paths / constants
@@ -28,6 +32,10 @@ DB_PATH = os.path.join(BASE_DIR, os.getenv("BOT_DB_FILE", "bottany.sqlite3"))
 # Core datasets that are loaded at import time.
 DICT_PATH = os.path.join(DATA_DIR, "dictionaries.json")
 TRIVIA_PATH = os.path.join(DATA_DIR, "trivia_facts.json")
+# Governance / allowlist registries (safe defaults; prevents NameError)
+GOV_REG = {}
+METEO_REG = {}
+FASHION_REG = {}
 
 logging.basicConfig(level=os.getenv("LOG_LEVEL", "INFO").upper(), format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 logger = logging.getLogger("bottany")
