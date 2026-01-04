@@ -1138,7 +1138,7 @@ def validate_registry_links() -> dict:
     Returns a report dict with violations.
     """
     report = {
-        "generated_utc": datetime.datetime.utcnow().replace(microsecond=0).isoformat()+"Z",
+        "generated_utc": datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
         "violations": [],
         "counts": {"checked_urls": 0, "violations": 0},
     }
