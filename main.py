@@ -1672,6 +1672,11 @@ async def wikimedia_tesla_patent_image_url(patent_number: str) -> Optional[str]:
     _wiki_cache_set(pat, None)
     return None
 
+tesla_group = app_commands.Group(
+    name="tesla",
+    description="Nikola Tesla: one invention/patent per call (institutional sources)."
+)
+
 @tesla_group.command(
     name="random",
     description="Show one Nikola Tesla invention/patent (one item per call)."
