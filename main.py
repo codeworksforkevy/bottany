@@ -1279,7 +1279,124 @@ def governance_summary_text() -> str:
     checked = GOV_REPORT.get("counts", {}).get("checked_urls", 0)
     return f"Checked URLs: {checked} | Violations: {v}"
 
+# -------------------------
+# Tesla MIT drawing image resolver + cache
+# -------------------------
+MIT_TESLA_ALPHA_URL = "https://web.mit.edu/most/Public/Tesla1/alpha_tesla.html"
 
+TESLA_MIT_IMAGE_CACHE_PATH = os.path.join(DATA_DIR, "tesla_mit_image_cache.json")
+TESLA_MIT_IMAGE_CACHE = load_json(TESLA_MIT_IMAGE_CACHE_PATH) if os.path.exists(TESLA_MIT_IMAGE_CACHE_PATH) else {}
+
+def _norm_patno(patent_number: str) -> str:
+    return (patent_number or "").strip().replace(",", "").replace(" ", "")
+
+def _is_image_url(u: str) -> bool:
+    u = (u or "").lower()
+    return any(u.endswith(ext) for ext in (".png", ".jpg", ".jpeg", ".gif", ".webp", ".svg"))
+
+async def _fetch_text(url: str, timeout: int = 20) -> str:
+    headers = {"User-Agent": "Bottany/1.0 (+https://railway.app)"}
+    async with aiohttp.ClientSession(headers=headers) as session:
+        async with session.get(url, timeout=timeout) as resp:
+            resp.raise_for_status()
+            return await resp.text()
+
+async def _url_exists(url: str, timeout: int = 10) -> bool:
+    try:
+        headers = {"User-Agent": "Bottany/1.0 (+https://railway.app)"}
+        async with aiohttp.ClientSession(headers=headers) as session:
+            async with session.head(url, allow_redirects=True, timeout=timeout) as resp:
+                return 200 <= resp.status < 400
+    except Exception:
+        return False
+
+def _mit_cache_get(pat: str):
+    # Note: cache stores URL string OR None (negative cache)
+    return TESLA_MIT_IMAGE_CACHE.get(str(pat))
+
+def _mit_cache_set(pat: str, image_url):
+    TESLA_MIT_IMAGE_CACHE[str(pat)] = image_url  # None allowed
+    save_json(TESLA_MIT_IMAGE_CACHE_PATH, TESLA_MIT_IMAGE_CACHE)
+
+async def mit_tesla_patent_image_url(patent_number: str) -> Optional[str]:
+    """
+    Resolve a patent drawing image URL from MIT's Tesla collection.
+    Uses JSON cache (positive + negative).
+    """
+    pat = _norm_patno(patent_number)
+    if not pat.isdigit():
+        return None
+
+    cached = _mit_cache_get(pat)
+    if cached is not None:
+        return cached  # may be URL or None
+
+    # Load alpha table
+    try:
+        html = await _fetch_text(MIT_TESLA_ALPHA_URL, timeout=25)
+    except Exception:
+        _mit_cache_set(pat, None)
+        return None
+
+    soup = BeautifulSoup(html, "html.parser")
+
+    # Find row containing the patent number
+    target_tr = None
+    for tr in soup.find_all("tr"):
+        txt = tr.get_text(" ", strip=True).replace(",", "")
+        if pat in txt.split():
+            target_tr = tr
+            break
+
+    if not target_tr:
+        _mit_cache_set(pat, None)
+        return None
+
+    # Collect candidate links from the row
+    candidates = []
+    for a in target_tr.find_all("a", href=True):
+        abs_href = urljoin(MIT_TESLA_ALPHA_URL, a["href"].strip())
+        candidates.append(abs_href)
+
+    # Direct image link?
+    for u in candidates:
+        if _is_image_url(u) and await _url_exists(u):
+            _mit_cache_set(pat, u)
+            return u
+
+    # Follow likely MIT detail pages and pick best-looking drawing image
+    for page_url in candidates:
+        if "web.mit.edu/most/Public/Tesla1/" not in page_url:
+            continue
+        try:
+            page_html = await _fetch_text(page_url, timeout=20)
+        except Exception:
+            continue
+
+        psoup = BeautifulSoup(page_html, "html.parser")
+        imgs = psoup.find_all("img", src=True)
+
+        scored = []
+        for img in imgs:
+            abs_src = urljoin(page_url, img["src"].strip())
+            if not _is_image_url(abs_src):
+                continue
+            score = 0
+            low = abs_src.lower()
+            if pat in low:
+                score += 5
+            if any(k in low for k in ("fig", "figure", "drawing", "patent")):
+                score += 2
+            scored.append((score, abs_src))
+
+        if scored:
+            scored.sort(key=lambda x: x[0], reverse=True)
+            best = scored[0][1]
+            _mit_cache_set(pat, best)
+            return best
+
+    _mit_cache_set(pat, None)
+    return None
 
 # -------------------------
 # Tesla module (one item per call; caches up to 150)
@@ -1321,7 +1438,10 @@ TESLA_REG = load_json(TESLA_REG_PATH) if os.path.exists(TESLA_REG_PATH) else {}
 TESLA_CACHE_PATH = os.path.join(DATA_DIR, (TESLA_REG.get("cache", {}) or {}).get("cache_file", "tesla_cache.json"))
 
 def _safe_get(url: str, timeout: int = 20) -> str:
-    headers = {"User-Agent": "Bottany/1.0 (+https://railway.app)"}
+    headers = {
+        "User-Agent": "Mozilla/5.0 (compatible; BottanyBot/1.0; +https://railway.app)",
+        "Accept": "*/*",
+    }
     r = requests.get(url, headers=headers, timeout=timeout)
     r.raise_for_status()
     return r.text
@@ -1377,16 +1497,21 @@ def _save_tesla_cache(obj: dict) -> None:
 
 def _build_tesla_catalog(target_count: int = 150) -> dict:
     items = []
-    try:
-        html = _safe_get("https://web.mit.edu/most/Public/Tesla1/alpha_tesla.html")
-        items.extend(_extract_mit_tesla_patents(html))
-    except Exception:
-        pass
-    try:
-        pdf_as_text = _safe_get("https://tesla-museum.org/wp-content/uploads/2023/05/lista_patenata_eng.pdf")
-        items.extend(_extract_tesla_museum_pdf_lines(pdf_as_text))
-    except Exception:
-        pass
+try:
+    html = _safe_get("https://web.mit.edu/most/Public/Tesla1/alpha_tesla.html")
+    extracted = _extract_mit_tesla_patents(html)
+    logger.info("Tesla MIT extract: %d items", len(extracted))
+    items.extend(extracted)
+except Exception as e:
+    logger.exception("Tesla MIT fetch/parse failed: %s", e)
+
+try:
+    pdf_as_text = _safe_get("https://tesla-museum.org/wp-content/uploads/2023/05/lista_patenata_eng.pdf")
+    extracted = _extract_tesla_museum_pdf_lines(pdf_as_text)
+    logger.info("Tesla Museum PDF extract: %d items", len(extracted))
+    items.extend(extracted)
+except Exception as e:
+    logger.exception("Tesla Museum fetch/parse failed: %s", e)
 
     seen = set()
     dedup = []
@@ -1405,6 +1530,32 @@ def _build_tesla_catalog(target_count: int = 150) -> dict:
         "count": len(dedup),
         "items": dedup
     }
+
+FALLBACK_TESLA_ITEMS = [
+    {
+        "title": "Alternating electric current generator",
+        "kind": "patent",
+        "patent_number": "",
+        "grant_date": "",
+        "source_name": "MIT Tesla U.S. Patent Collection",
+        "source_url": "https://web.mit.edu/most/Public/Tesla1/alpha_tesla.html",
+        "type": "institutional",
+    },
+    {
+        "title": "System of electrical distribution",
+        "kind": "patent",
+        "patent_number": "",
+        "grant_date": "",
+        "source_name": "MIT Tesla U.S. Patent Collection",
+        "source_url": "https://web.mit.edu/most/Public/Tesla1/alpha_tesla.html",
+        "type": "institutional",
+    },
+]
+
+# ... dedup oluşturduktan sonra:
+if not dedup:
+    logger.warning("Tesla catalog empty; using fallback items")
+    dedup = FALLBACK_TESLA_ITEMS[:]
 
 def _ensure_tesla_cache():
     target = int((TESLA_REG.get("cache", {}) or {}).get("target_count", 150))
@@ -1426,13 +1577,19 @@ def _ensure_tesla_cache():
 
 tesla_group = app_commands.Group(name="tesla", description="Nikola Tesla: one invention/patent per call (institutional sources).")
 
-@tesla_group.command(name="random", description="Show one Nikola Tesla invention/patent (one item per call).")
+@tesla_group.command(
+    name="random",
+    description="Show one Nikola Tesla invention/patent (one item per call)."
+)
 async def tesla_random(interaction: discord.Interaction):
     cache = _ensure_tesla_cache()
     items = cache.get("items", []) or []
     if not items:
-        await interaction.response.send_message("No Tesla items could be loaded right now. Try again later.")
+        await interaction.response.send_message(
+            "No Tesla items could be loaded right now. Try again later."
+        )
         return
+
     it = random.choice(items)
 
     title = it.get("title", "(untitled)")
@@ -1442,14 +1599,51 @@ async def tesla_random(interaction: discord.Interaction):
     src_url = it.get("source_url", "")
 
     embed = discord.Embed(title=f"Tesla — {title}")
+
     if pat:
         embed.add_field(name="Patent #", value=pat, inline=True)
     if date:
         embed.add_field(name="Grant date", value=date, inline=True)
     if src_url:
-        embed.add_field(name="Source (institutional)", value=f"[{src_name}]({src_url})", inline=False)
+        embed.add_field(
+            name="Source (institutional)",
+            value=f"[{src_name}]({src_url})",
+            inline=False
+        )
+
+    # -------------------------
+    # MIT drawing (official academic source) + fallback text
+    # -------------------------
+    img_url = None
+    try:
+        img_url = await mit_tesla_patent_image_url(pat)
+    except Exception as e:
+        logger.warning(
+            "MIT image resolve failed for patent %s: %s",
+            pat,
+            e
+        )
+        img_url = None
+
+    if img_url:
+        embed.set_image(url=img_url)
+        embed.add_field(
+            name="Drawing",
+            value="📐 Original patent drawing (MIT)",
+            inline=False
+        )
+    else:
+        embed.add_field(
+            name="Drawing",
+            value="No official drawing available",
+            inline=False
+        )
+
     target = int((TESLA_REG.get("cache", {}) or {}).get("target_count", 150))
-    embed.set_footer(text=f"Catalog size: {cache.get('count', 0)} / target {target}")
+    embed.set_footer(
+        text=f"Catalog size: {cache.get('count', 0)} / target {target}"
+    )
+
     await interaction.response.send_message(embed=embed)
 
 @tesla_group.command(name="sources", description="Show institutional sources used for Tesla items.")
