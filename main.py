@@ -1628,6 +1628,54 @@ def _ensure_tesla_cache():
         _save_tesla_cache(cache)
     return cache
 
+# -------------------------
+# Wikimedia Commons drawing resolver + cache (public-domain fallback)
+# -------------------------
+TESLA_WIKI_IMAGE_CACHE_PATH = os.path.join(DATA_DIR, "tesla_wikimedia_image_cache.json")
+TESLA_WIKI_IMAGE_CACHE = load_json(TESLA_WIKI_IMAGE_CACHE_PATH) if os.path.exists(TESLA_WIKI_IMAGE_CACHE_PATH) else {}
+
+def _wiki_cache_get(pat: str):
+    # stores URL string OR None (negative cache)
+    return TESLA_WIKI_IMAGE_CACHE.get(str(pat))
+
+def _wiki_cache_set(pat: str, image_url):
+    TESLA_WIKI_IMAGE_CACHE[str(pat)] = image_url  # None allowed
+    save_json(TESLA_WIKI_IMAGE_CACHE_PATH, TESLA_WIKI_IMAGE_CACHE)
+
+async def wikimedia_tesla_patent_image_url(patent_number: str) -> Optional[str]:
+    """
+    Public-domain fallback: try to resolve a Tesla patent drawing from Wikimedia Commons.
+    Uses Special:FilePath and caches hits (positive + negative).
+    """
+    pat = _norm_patno(patent_number)
+    if not pat.isdigit():
+        return None
+
+    cached = _wiki_cache_get(pat)
+    if cached is not None:
+        return cached  # URL or None
+
+    # Common filename patterns on Commons
+    candidates = [
+        f"Tesla_patent_{pat}.png",
+        f"Tesla_patent_{pat}.jpg",
+        f"Tesla_patent_{pat}.jpeg",
+        f"Tesla_patent_{pat}.svg",
+        f"US{pat}.png",
+        f"US{pat}.jpg",
+        f"US{pat}.jpeg",
+        f"US{pat}.svg",
+    ]
+
+    for fname in candidates:
+        url = f"https://commons.wikimedia.org/wiki/Special:FilePath/{fname}"
+        if await _url_exists(url):
+            _wiki_cache_set(pat, url)
+            return url
+
+    _wiki_cache_set(pat, None)
+    return None
+
 tesla_group = app_commands.Group(name="tesla", description="Nikola Tesla: one invention/patent per call (institutional sources).")
 
 @tesla_group.command(
@@ -1664,40 +1712,46 @@ async def tesla_random(interaction: discord.Interaction):
             inline=False
         )
 
-    # -------------------------
-    # MIT drawing (official academic source) + fallback text
-    # -------------------------
+# -------------------------
+# Drawing (MIT first, Wikimedia fallback)
+# -------------------------
+img_url = None
+drawing_label = None
+
+# 1) MIT (institutional)
+try:
+    img_url = await mit_tesla_patent_image_url(pat)
+except Exception as e:
+    logger.warning("MIT image resolve failed for patent %s: %s", pat, e)
     img_url = None
+
+if img_url:
+    drawing_label = "📐 Original patent drawing (MIT)"
+else:
+    # 2) Wikimedia Commons (public-domain fallback)
     try:
-        img_url = await mit_tesla_patent_image_url(pat)
+        img_url = await wikimedia_tesla_patent_image_url(pat)
     except Exception as e:
-        logger.warning(
-            "MIT image resolve failed for patent %s: %s",
-            pat,
-            e
-        )
+        logger.warning("Wikimedia image resolve failed for patent %s: %s", pat, e)
         img_url = None
 
     if img_url:
-        embed.set_image(url=img_url)
-        embed.add_field(
-            name="Drawing",
-            value="📐 Original patent drawing (MIT)",
-            inline=False
-        )
-    else:
-        embed.add_field(
-            name="Drawing",
-            value="No official drawing available",
-            inline=False
-        )
+        drawing_label = "📐 Public-domain drawing (Wikimedia Commons)"
 
-    target = int((TESLA_REG.get("cache", {}) or {}).get("target_count", 150))
-    embed.set_footer(
-        text=f"Catalog size: {cache.get('count', 0)} / target {target}"
-    )
+if img_url:
+    embed.set_image(url=img_url)
+    embed.add_field(name="Drawing", value=drawing_label, inline=False)
+else:
+    embed.add_field(name="Drawing", value="No official drawing available", inline=False)
 
-    await interaction.response.send_message(embed=embed)
+# -------------------------
+# Footer + send (ALWAYS run)
+# -------------------------
+target = int((TESLA_REG.get("cache", {}) or {}).get("target_count", 150))
+embed.set_footer(text=f"Catalog size: {cache.get('count', 0)} / target {target}")
+
+await interaction.response.send_message(embed=embed)
+
 
 @tesla_group.command(name="sources", description="Show institutional sources used for Tesla items.")
 async def tesla_sources(interaction: discord.Interaction):
