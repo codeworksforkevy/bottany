@@ -96,8 +96,6 @@ def db_init() -> None:
 
         conn.commit()
 
-        conn.commit()
-
 def db_set_channel(guild_id: int, topic: str, channel_id: int) -> None:
     with sqlite3.connect(DB_PATH) as conn:
         cur = conn.cursor()
