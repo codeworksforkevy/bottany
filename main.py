@@ -1561,9 +1561,6 @@ def _build_tesla_catalog(target_count: int = 150) -> dict:
     except Exception as e:
         logger.exception("Tesla MIT fetch/parse failed: %s", e)
 
-    except Exception as e:
-        logger.exception("Tesla Museum fetch/parse failed: %s", e)
-
     # Deduplicate
     seen = set()
     dedup: List[dict] = []
@@ -1576,7 +1573,6 @@ def _build_tesla_catalog(target_count: int = 150) -> dict:
         seen.add(key)
         dedup.append(it)
 
-    # If we failed to collect anything, fall back to a small safe list
     if not dedup:
         logger.warning("Tesla catalog empty; using fallback items")
         dedup = FALLBACK_TESLA_ITEMS[:]
@@ -1712,45 +1708,42 @@ async def tesla_random(interaction: discord.Interaction):
             inline=False
         )
 
-# -------------------------
-# Drawing (MIT first, Wikimedia fallback)
-# -------------------------
-img_url = None
-drawing_label = None
-
-# 1) MIT (institutional)
-try:
-    img_url = await mit_tesla_patent_image_url(pat)
-except Exception as e:
-    logger.warning("MIT image resolve failed for patent %s: %s", pat, e)
+    # -------------------------
+    # Drawing (MIT first, Wikimedia fallback)
+    # -------------------------
     img_url = None
+    drawing_label = None
 
-if img_url:
-    drawing_label = "📐 Original patent drawing (MIT)"
-else:
-    # 2) Wikimedia Commons (public-domain fallback)
+    # 1) MIT (institutional)
     try:
-        img_url = await wikimedia_tesla_patent_image_url(pat)
+        img_url = await mit_tesla_patent_image_url(pat)
     except Exception as e:
-        logger.warning("Wikimedia image resolve failed for patent %s: %s", pat, e)
+        logger.warning("MIT image resolve failed for patent %s: %s", pat, e)
         img_url = None
 
     if img_url:
-        drawing_label = "📐 Public-domain drawing (Wikimedia Commons)"
+        drawing_label = "📐 Original patent drawing (MIT)"
+    else:
+        # 2) Wikimedia Commons (public-domain fallback)
+        try:
+            img_url = await wikimedia_tesla_patent_image_url(pat)
+        except Exception as e:
+            logger.warning("Wikimedia image resolve failed for patent %s: %s", pat, e)
+            img_url = None
 
-if img_url:
-    embed.set_image(url=img_url)
-    embed.add_field(name="Drawing", value=drawing_label, inline=False)
-else:
-    embed.add_field(name="Drawing", value="No official drawing available", inline=False)
+        if img_url:
+            drawing_label = "📐 Public-domain drawing (Wikimedia Commons)"
 
-# -------------------------
-# Footer + send (ALWAYS run)
-# -------------------------
-target = int((TESLA_REG.get("cache", {}) or {}).get("target_count", 150))
-embed.set_footer(text=f"Catalog size: {cache.get('count', 0)} / target {target}")
+    if img_url:
+        embed.set_image(url=img_url)
+        embed.add_field(name="Drawing", value=drawing_label, inline=False)
+    else:
+        embed.add_field(name="Drawing", value="No official drawing available", inline=False)
 
-await interaction.response.send_message(embed=embed)
+    target = int((TESLA_REG.get("cache", {}) or {}).get("target_count", 150))
+    embed.set_footer(text=f"Catalog size: {cache.get('count', 0)} / target {target}")
+
+    await interaction.response.send_message(embed=embed)
 
 
 @tesla_group.command(name="sources", description="Show institutional sources used for Tesla items.")
