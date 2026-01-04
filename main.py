@@ -1496,27 +1496,33 @@ def _save_tesla_cache(obj: dict) -> None:
     save_json(TESLA_CACHE_PATH, obj)
 
 def _build_tesla_catalog(target_count: int = 150) -> dict:
-    items = []
-try:
-    html = _safe_get("https://web.mit.edu/most/Public/Tesla1/alpha_tesla.html")
-    extracted = _extract_mit_tesla_patents(html)
-    logger.info("Tesla MIT extract: %d items", len(extracted))
-    items.extend(extracted)
-except Exception as e:
-    logger.exception("Tesla MIT fetch/parse failed: %s", e)
+    items: List[dict] = []
 
-try:
-    pdf_as_text = _safe_get("https://tesla-museum.org/wp-content/uploads/2023/05/lista_patenata_eng.pdf")
-    extracted = _extract_tesla_museum_pdf_lines(pdf_as_text)
-    logger.info("Tesla Museum PDF extract: %d items", len(extracted))
-    items.extend(extracted)
-except Exception as e:
-    logger.exception("Tesla Museum fetch/parse failed: %s", e)
+    # MIT HTML
+    try:
+        html = _safe_get("https://web.mit.edu/most/Public/Tesla1/alpha_tesla.html")
+        extracted = _extract_mit_tesla_patents(html)
+        logger.info("Tesla MIT extract: %d items", len(extracted))
+        items.extend(extracted)
+    except Exception as e:
+        logger.exception("Tesla MIT fetch/parse failed: %s", e)
 
+    # Tesla Museum PDF (best effort)
+    try:
+        pdf_as_text = _safe_get(
+            "https://tesla-museum.org/wp-content/uploads/2023/05/lista_patenata_eng.pdf"
+        )
+        extracted = _extract_tesla_museum_pdf_lines(pdf_as_text)
+        logger.info("Tesla Museum PDF extract: %d items", len(extracted))
+        items.extend(extracted)
+    except Exception as e:
+        logger.exception("Tesla Museum fetch/parse failed: %s", e)
+
+    # Deduplicate
     seen = set()
-    dedup = []
+    dedup: List[dict] = []
     for it in items:
-        key = (it.get("patent_number", ""), it.get("title", "").lower())
+        key = (it.get("patent_number", ""), (it.get("title", "") or "").lower())
         if key in seen:
             continue
         if not it.get("title"):
@@ -1524,11 +1530,17 @@ except Exception as e:
         seen.add(key)
         dedup.append(it)
 
+    # If we failed to collect anything, fall back to a small safe list
+    if not dedup:
+        logger.warning("Tesla catalog empty; using fallback items")
+        dedup = FALLBACK_TESLA_ITEMS[:]
+
     dedup = dedup[:target_count]
+
     return {
         "generated_utc": datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
         "count": len(dedup),
-        "items": dedup
+        "items": dedup,
     }
 
 FALLBACK_TESLA_ITEMS = [
@@ -1551,11 +1563,6 @@ FALLBACK_TESLA_ITEMS = [
         "type": "institutional",
     },
 ]
-
-# ... dedup oluşturduktan sonra:
-if not dedup:
-    logger.warning("Tesla catalog empty; using fallback items")
-    dedup = FALLBACK_TESLA_ITEMS[:]
 
 def _ensure_tesla_cache():
     target = int((TESLA_REG.get("cache", {}) or {}).get("target_count", 150))
