@@ -188,6 +188,22 @@ def module_enabled(interaction: discord.Interaction, module: str) -> bool:
 def load_json(path: str) -> Dict[str, Any]:
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
+ # -------------------------
+# Rate limiting helper
+# -------------------------
+_RATE_LIMIT_STATE: Dict[str, float] = {}
+
+def enforce_rate_limit(key: str, cooldown_seconds: int = 10) -> None:
+    """
+    Simple in-memory rate limiter.
+    Raises RuntimeError if called too frequently.
+    """
+    now_ts = asyncio.get_event_loop().time()
+    last = _RATE_LIMIT_STATE.get(key, 0.0)
+    if now_ts - last < cooldown_seconds:
+        remaining = int(cooldown_seconds - (now_ts - last))
+        raise RuntimeError(f"Rate limit: try again in {remaining}s.")
+    _RATE_LIMIT_STATE[key] = now_ts       
 
 def save_json(path: str, obj: Any) -> None:
     # Ensure parent directory exists (e.g. data/)
