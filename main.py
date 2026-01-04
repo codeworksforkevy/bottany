@@ -189,6 +189,12 @@ def load_json(path: str) -> Dict[str, Any]:
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
+def save_json(path: str, obj: Any) -> None:
+    # Ensure parent directory exists (e.g. data/)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(obj, f, ensure_ascii=False, indent=2)
+
 DICT_REG = load_json(DICT_PATH)
 TRIVIA_REG = load_json(TRIVIA_PATH)
 
