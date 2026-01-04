@@ -1677,7 +1677,7 @@ async def wikimedia_tesla_patent_image_url(patent_number: str) -> Optional[str]:
     description="Show one Nikola Tesla invention/patent (one item per call)."
 )
 async def tesla_random(interaction: discord.Interaction):
-    # IMPORTANT: avoid "Unknown interaction" by deferring immediately
+    # MUST be first to avoid "Unknown interaction"
     await interaction.response.defer(thinking=True)
 
     cache = _ensure_tesla_cache()
@@ -1715,42 +1715,42 @@ async def tesla_random(interaction: discord.Interaction):
     img_url = None
     drawing_label = None
 
-    # 1) MIT
-    try:
-        img_url = await mit_tesla_patent_image_url(pat)
-    except Exception as e:
-        logger.warning("MIT image resolve failed for patent %s: %s", pat, e)
-        img_url = None
-
-    if img_url:
-        drawing_label = "📐 Original patent drawing (MIT)"
-    else:
-        # 2) Wikimedia
+    if pat:
         try:
-            img_url = await wikimedia_tesla_patent_image_url(pat)
+            img_url = await mit_tesla_patent_image_url(pat)
         except Exception as e:
-            logger.warning("Wikimedia image resolve failed for patent %s: %s", pat, e)
+            logger.warning("MIT image resolve failed for patent %s: %s", pat, e)
             img_url = None
 
         if img_url:
-            drawing_label = "📐 Public-domain drawing (Wikimedia Commons)"
+            drawing_label = "📐 Original patent drawing (MIT)"
+        else:
+            try:
+                img_url = await wikimedia_tesla_patent_image_url(pat)
+            except Exception as e:
+                logger.warning("Wikimedia image resolve failed for patent %s: %s", pat, e)
+                img_url = None
+
+            if img_url:
+                drawing_label = "📐 Public-domain drawing (Wikimedia Commons)"
 
     if img_url:
         embed.set_image(url=img_url)
         embed.add_field(name="Drawing", value=drawing_label, inline=False)
     else:
-        embed.add_field(name="Drawing", value="No official drawing available", inline=False)
+        embed.add_field(
+            name="Drawing",
+            value="No official drawing available",
+            inline=False
+        )
 
     target = int((TESLA_REG.get("cache", {}) or {}).get("target_count", 150))
-    embed.set_footer(text=f"Catalog size: {cache.get('count', 0)} / target {target}")
+    embed.set_footer(
+        text=f"Catalog size: {cache.get('count', 0)} / target {target}"
+    )
 
     await interaction.followup.send(embed=embed)
 
-if not pat:
-    embed.add_field(name="Drawing", value="No official drawing available", inline=False)
-    ...
-    await interaction.followup.send(embed=embed)
-    return
 
 @tesla_group.command(name="sources", description="Show institutional sources used for Tesla items.")
 async def tesla_sources(interaction: discord.Interaction):
