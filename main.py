@@ -10,6 +10,7 @@ import sqlite3
 import re
 from typing import Optional, Dict, Any, List
 from datetime import datetime, date, time as dtime
+from urllib.parse import urlparse
 import hashlib
 import discord
 from discord import app_commands
