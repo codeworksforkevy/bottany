@@ -1808,12 +1808,39 @@ def _sync_awards_gja_year(year: int) -> dict:
             winners[cat] = game
     return {"award":"gja","year": int(year), "winners": winners, "source_url": url, "synced_utc": datetime.utcnow().replace(microsecond=0).isoformat()+"Z"}
 
-def _allowed_domain(group_key: str, url: str) -> bool:
-    host = urlparse(url).netloc.lower().split(":")[0]
-    host = host[4:] if host.startswith("www.") else host
-    allowed = set((((GOV_REG or {}).get("allowlists", {}) or {}).get(group_key, {}) or {}).get("domains", []) or [])
+def _allowed_domain(module: str, url: str) -> bool:
+    # Map module name to allowlist group keys used in GOV_REG
+    module = (module or "").strip().lower()
+    group_key = {
+        "weather": "weather",
+        "dictionaries": "dictionaries",
+        "fashion": "fashion",
+        "academic": "academic",
+        "tesla": "tesla",
+        "restaurants": "restaurants",
+        "michelin": "michelin",
+    }.get(module, module)
+
+    # Parse host safely
+    try:
+        host = urlparse(url).netloc.lower().split(":")[0]
+    except Exception:
+        return False
+
+    if not host:
+        return False
+
+    if host.startswith("www."):
+        host = host[4:]
+
+    allowlists = (GOV_REG or {}).get("allowlists", {}) or {}
+    allowed = set((allowlists.get(group_key, {}) or {}).get("domains", []) or [])
+
+    # If no allowlist configured, allow by default
     if not allowed:
         return True
+
+    # Exact match or subdomain match
     return (host in allowed) or any(host.endswith("." + d) for d in allowed)
 
 # Weather
