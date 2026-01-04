@@ -422,6 +422,11 @@ async def define_cmd(interaction: discord.Interaction, phrase: str):
 # -------------------------
 trivia_group = app_commands.Group(name="trivia", description="Daily academic trivia with reference links.")
 
+tesla_group = app_commands.Group(
+    name="tesla",
+    description="Nikola Tesla: one invention/patent per call (institutional sources)."
+)
+
 @trivia_group.command(name="setchannel", description="Set the channel where the daily trivia will be posted (admin).")
 @app_commands.describe(channel="Target channel for daily trivia posts")
 async def trivia_setchannel(interaction: discord.Interaction, channel: discord.TextChannel):
