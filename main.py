@@ -12,8 +12,8 @@ from typing import Optional, Dict, Any, List
 from datetime import datetime, date, time as dtime
 import hashlib
 import discord
-from discord.ext import commands, tasks
 from discord import app_commands
+from discord.ext import commands, tasks
 
 # -------------------------
 # Paths / constants
@@ -321,6 +321,19 @@ async def trivia_scheduler():
 @bot.event
 async def on_ready():
     db_init()
+    # Compute governance report after startup (avoid crashing at import time)
+    global GOV_REPORT
+    try:
+        GOV_REPORT = validate_registry_links()
+        logger.info("Governance validation done. checked=%s violations=%s",
+                    GOV_REPORT.get("counts", {}).get("checked_urls", 0),
+                    GOV_REPORT.get("counts", {}).get("violations", 0))
+    except Exception as e:
+        logger.exception("Governance validation failed: %s", e)
+        GOV_REPORT = {"generated_utc": datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
+                      "violations": [{"module": "governance", "where": "startup", "url": "", "reason": str(e)}],
+                      "counts": {"checked_urls": 0, "violations": 1}}
+
     try:
         synced = await bot.tree.sync()
         print(f"Synced {len(synced)} command(s). Logged in as {bot.user}")
@@ -362,7 +375,7 @@ async def dictionaries_cmd(interaction: discord.Interaction):
             inline=False)
     await interaction.response.send_message(embed=embed)
 
-@bot.tree.command(name="define", description="Ask: \"what's the meaning of <word>?\" and get a definition + official dictionary links.")
+@bot.tree.command(name="define", description="Define a word and show official dictionary links.")
 @app_commands.describe(phrase="Use the exact pattern: what's the meaning of <word>?")
 async def define_cmd(interaction: discord.Interaction, phrase: str):
     if not module_enabled(interaction, "dictionaries"):
@@ -1030,7 +1043,7 @@ async def governance_report(interaction: discord.Interaction):
 @governance_group.command(name="validate", description="Re-run validation (useful after registry edits).")
 async def governance_validate(interaction: discord.Interaction):
     global GOV_REPORT
-    GOV_REPORT = validate_registry_links()
+    GOV_REPORT = None  # computed in on_ready()
     embed = discord.Embed(title="Validation complete")
     embed.description = governance_summary_text()
     await interaction.response.send_message(embed=embed)
@@ -1075,7 +1088,7 @@ async def add_fashion_source(interaction: discord.Interaction, name: str, url: s
         "notes": notes.strip()
     }
     FASHION_REG.setdefault("free_academic_fashion_sources", []).append(obj)
-    FASHION_REG["generated_utc"] = datetime.datetime.utcnow().replace(microsecond=0).isoformat()+"Z"
+    FASHION_REG["generated_utc"] = datetime.utcnow().replace(microsecond=0).isoformat()+"Z"
     save_json(FASHION_PATH, FASHION_REG)
     await interaction.response.send_message(f"Added fashion source: **{obj['name']}** ({obj['country']})")
 
@@ -1094,7 +1107,7 @@ async def add_academic_ref(interaction: discord.Interaction, group: str, name: s
             "url": url.strip(),
             "type": (kind.strip().lower() or "reference_hub")
         })
-    ACADEMIC_REG["generated_utc"] = datetime.datetime.utcnow().replace(microsecond=0).isoformat()+"Z"
+    ACADEMIC_REG["generated_utc"] = datetime.utcnow().replace(microsecond=0).isoformat()+"Z"
     save_json(ACADEMIC_PATH, ACADEMIC_REG)
     await interaction.response.send_message(f"Added academic hub item to **{g}**: {name.strip()}")
 
@@ -1104,7 +1117,7 @@ async def registry_validate(interaction: discord.Interaction):
         await interaction.response.send_message("You need 'Manage Server' permission.")
         return
     global GOV_REPORT
-    GOV_REPORT = validate_registry_links()
+    GOV_REPORT = None  # computed in on_ready()
     await interaction.response.send_message(governance_summary_text())
 
 bot.tree.add_command(registry_group)
@@ -1138,7 +1151,7 @@ def validate_registry_links() -> dict:
     Returns a report dict with violations.
     """
     report = {
-        "generated_utc": datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
+        "generated_utc": datetime.utcnow().replace(microsecond=0).isoformat()+"Z",
         "violations": [],
         "counts": {"checked_urls": 0, "violations": 0},
     }
@@ -1231,9 +1244,11 @@ def validate_registry_links() -> dict:
 
     return report
 
-GOV_REPORT = validate_registry_links()
+GOV_REPORT = None  # computed in on_ready()
 
 def governance_summary_text() -> str:
+    if not isinstance(GOV_REPORT, dict):
+        return "Governance report not ready."
     v = GOV_REPORT.get("counts", {}).get("violations", 0)
     checked = GOV_REPORT.get("counts", {}).get("checked_urls", 0)
     return f"Checked URLs: {checked} | Violations: {v}"
@@ -1360,7 +1375,7 @@ def _build_tesla_catalog(target_count: int = 150) -> dict:
 
     dedup = dedup[:target_count]
     return {
-        "generated_utc": datetime.datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
+        "generated_utc": datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
         "count": len(dedup),
         "items": dedup
     }
@@ -1373,8 +1388,8 @@ def _ensure_tesla_cache():
         ts = cache.get("generated_utc", "")
         stale = True
         if ts:
-            dt = datetime.datetime.fromisoformat(ts.replace("Z", ""))
-            stale = (datetime.datetime.utcnow() - dt).days >= refresh_days
+            dt = datetime.fromisoformat(ts.replace("Z", ""))
+            stale = (datetime.utcnow() - dt).days >= refresh_days
         if stale or cache.get("count", 0) < min(25, target):
             cache = _build_tesla_catalog(target_count=target)
             _save_tesla_cache(cache)
@@ -1705,7 +1720,7 @@ AWARDS_CACHE = load_json(AWARDS_CACHE_PATH) if os.path.exists(AWARDS_CACHE_PATH)
 
 def save_awards_cache():
     try:
-        AWARDS_CACHE["saved_utc"] = datetime.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+        AWARDS_CACHE["saved_utc"] = datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
         with open(AWARDS_CACHE_PATH, "w", encoding="utf-8") as f:
             json.dump(AWARDS_CACHE, f, ensure_ascii=False, indent=2)
     except Exception as e:
@@ -1743,7 +1758,7 @@ def _sync_awards_bafta(category_slug: str) -> dict:
                 if 2 < len(cand) < 120 and cand.lower() not in {"winner","winners","nominees","award"}:
                     years[yr] = cand
                     break
-    return {"award":"bafta","category_slug": category_slug, "years": years, "source_url": url, "synced_utc": datetime.datetime.utcnow().replace(microsecond=0).isoformat()+"Z"}
+    return {"award":"bafta","category_slug": category_slug, "years": years, "source_url": url, "synced_utc": datetime.utcnow().replace(microsecond=0).isoformat()+"Z"}
 
 def _sync_awards_dice_hub() -> dict:
     src = ((AWARDS_SOURCES.get("awards", {}) or {}).get("dice", {}) or {})
@@ -1762,7 +1777,7 @@ def _sync_awards_dice_hub() -> dict:
         h = href.lower()
         if "dice" in h and "results" in h and _allowed_domain("awards", href):
             links.append({"title": (a.get_text() or "").strip()[:120], "url": href})
-    return {"award":"dice","results_pages": links[:80], "source_url": url, "synced_utc": datetime.datetime.utcnow().replace(microsecond=0).isoformat()+"Z"}
+    return {"award":"dice","results_pages": links[:80], "source_url": url, "synced_utc": datetime.utcnow().replace(microsecond=0).isoformat()+"Z"}
 
 def _sync_awards_gja_year(year: int) -> dict:
     src = ((AWARDS_SOURCES.get("awards", {}) or {}).get("gja", {}) or {})
@@ -1787,7 +1802,7 @@ def _sync_awards_gja_year(year: int) -> dict:
                 break
         if game:
             winners[cat] = game
-    return {"award":"gja","year": int(year), "winners": winners, "source_url": url, "synced_utc": datetime.datetime.utcnow().replace(microsecond=0).isoformat()+"Z"}
+    return {"award":"gja","year": int(year), "winners": winners, "source_url": url, "synced_utc": datetime.utcnow().replace(microsecond=0).isoformat()+"Z"}
 
 def _allowed_domain(group_key: str, url: str) -> bool:
     host = urlparse(url).netloc.lower().split(":")[0]
@@ -1983,7 +1998,7 @@ async def awards_sync_all(interaction: discord.Interaction, gja_years_back: int 
     failed = 0
     try:
         sleep_s = max(0, int(sleep_seconds))
-        now_year = datetime.datetime.utcnow().year
+        now_year = datetime.utcnow().year
 
         # DICE
         try:
@@ -2081,7 +2096,7 @@ async def awards_sync_batch(interaction: discord.Interaction, award: str, start:
             return
 
         if aid == "gja":
-            now_year = datetime.datetime.utcnow().year
+            now_year = datetime.utcnow().year
             if start <= 0:
                 start = now_year - 2
             if end <= 0:
@@ -2144,7 +2159,7 @@ async def awards_sync(interaction: discord.Interaction, award: str, param: str =
             return
 
         if aid == "gja":
-            year = int(param) if str(param).strip().isdigit() else datetime.datetime.utcnow().year
+            year = int(param) if str(param).strip().isdigit() else datetime.utcnow().year
             key = f"gja:{year}"
             if _cache_get(key) and not force:
                 await interaction.response.send_message("Cache already exists. Use force:true to refresh.", ephemeral=True)
@@ -2350,7 +2365,7 @@ async def weekly_awards_task():
         sleep_s = int((BOT_CFG or {}).get("awards_autosync_sleep_seconds", 2))
         slug_limit = int((BOT_CFG or {}).get("awards_autosync_bafta_slug_limit", 25))
         years_back = int((BOT_CFG or {}).get("awards_autosync_gja_years_back", 2))
-        now_year = datetime.datetime.utcnow().year
+        now_year = datetime.utcnow().year
 
         # DICE hub
         try:
