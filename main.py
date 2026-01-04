@@ -33,6 +33,12 @@ DB_PATH = os.path.join(BASE_DIR, os.getenv("BOT_DB_FILE", "bottany.sqlite3"))
 DICT_PATH = os.path.join(DATA_DIR, "dictionaries.json")
 TRIVIA_PATH = os.path.join(DATA_DIR, "trivia_facts.json")
 # Governance / allowlist registries (safe defaults; prevents NameError)
+# -------------------------
+# Trivia scheduling defaults
+# -------------------------
+TRIVIA_POST_HOUR = int(os.getenv("TRIVIA_POST_HOUR", "10"))     # 0-23
+TRIVIA_POST_MINUTE = int(os.getenv("TRIVIA_POST_MINUTE", "0"))  # 0-59
+
 GOV_REG = {}
 METEO_REG = {}
 FASHION_REG = {}
