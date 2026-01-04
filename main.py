@@ -89,21 +89,31 @@ def db_init() -> None:
             );
             """
         )
-        cur.execute(
-            """
-            CREATE TABLE IF NOT EXISTS module_settings (
-                guild_id INTEGER NOT NULL,
-                module TEXT NOT NULL,
-                enabled INTEGER NOT NULL DEFAULT 1,
-                PRIMARY KEY (guild_id, module)
-            );
+cur.executescript(
+    """
+    CREATE TABLE IF NOT EXISTS module_settings (
+        guild_id INTEGER NOT NULL,
+        module TEXT NOT NULL,
+        enabled INTEGER NOT NULL DEFAULT 1,
+        PRIMARY KEY (guild_id, module)
+    );
 
-            CREATE TABLE IF NOT EXISTS trivia_state (
-                guild_id INTEGER NOT NULL PRIMARY KEY,
-                last_sent_date TEXT,
-                last_fact_id TEXT
-            );
-            """
+    CREATE TABLE IF NOT EXISTS trivia_state (
+        guild_id INTEGER NOT NULL PRIMARY KEY,
+        last_sent_date TEXT,
+        last_fact_id TEXT
+    );
+    """
+)
+conn.commit()
+cur.executescript("""
+CREATE TABLE IF NOT EXISTS channels (
+    guild_id INTEGER NOT NULL,
+    topic TEXT NOT NULL,
+    channel_id INTEGER NOT NULL,
+    PRIMARY KEY (guild_id, topic)
+);
+""")
         )
         conn.commit()
 
