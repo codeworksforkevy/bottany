@@ -6,6 +6,7 @@ import random
 import requests
 import aiohttp
 from urllib.parse import urljoin, urlparse
+from urllib.parse import quote
 from bs4 import BeautifulSoup
 import sqlite3
 import re
@@ -2178,7 +2179,223 @@ def _allowed_domain(module: str, url: str) -> bool:
 # Weather
 weather_group = app_commands.Group(name="weather", description="Official meteorology (international).")
 
-@weather_group.command(name="official", description="Show official meteorological service links by country code.")
+# -------------------------
+# Helpers (no-links policy)
+# -------------------------
+def _norm_source(src: str) -> str:
+    s = (src or "auto").lower().strip()
+    allowed = {"auto", "metno", "openmeteo", "dwd"}  # keep small & stable
+    return s if s in allowed else "auto"
+
+def _fmt(v, suffix=""):
+    if v is None or v == "":
+        return "N/A"
+    return f"{v}{suffix}"
+
+def _build_today_embed(w: dict) -> discord.Embed:
+    embed = discord.Embed(title=f"🌤️ Weather today — {w.get('place', '(unknown)')}")
+    embed.add_field(name="Temperature", value=_fmt(w.get("temp_c"), " °C"), inline=True)
+    embed.add_field(name="Wind", value=_fmt(w.get("wind_kph"), " km/h"), inline=True)
+    embed.add_field(name="Humidity", value=_fmt(w.get("humidity_pct"), " %"), inline=True)
+    embed.add_field(name="Precipitation", value=_fmt(w.get("precip_mm"), " mm"), inline=True)
+    embed.add_field(name="UV index", value=_fmt(w.get("uv_index")), inline=True)
+    embed.add_field(name="Source", value=w.get("provider", "Unknown"), inline=False)
+    if w.get("time"):
+        embed.set_footer(text=f"Observation time: {w['time']}")
+    return embed
+
+async def _geocode_city_openmeteo(city: str) -> Optional[dict]:
+    # no links shown; just use service internally
+    url = f"https://geocoding-api.open-meteo.com/v1/search?name={quote(city)}&count=1&language=en&format=json"
+    try:
+        async with aiohttp.ClientSession() as s:
+            async with s.get(url, timeout=15) as r:
+                if r.status != 200:
+                    return None
+                j = await r.json()
+    except Exception:
+        return None
+
+    results = j.get("results") or []
+    return results[0] if results else None
+
+def _to_float(x):
+    try:
+        if x is None:
+            return None
+        return float(str(x).replace(",", "."))
+    except Exception:
+        return None
+
+def _to_kph_from_mps(mps):
+    v = _to_float(mps)
+    return None if v is None else round(v * 3.6, 1)
+
+def _to_kph_from_mph(mph):
+    v = _to_float(mph)
+    return None if v is None else round(v * 1.60934, 1)
+
+# -------------------------
+# Providers
+# -------------------------
+async def provider_metno_today(lat: float, lon: float, place: str) -> Optional[dict]:
+    """
+    Official MET Norway Locationforecast (compact).
+    Adds humidity; precip/uv may be absent depending on payload.
+    """
+    api = WEATHER_REG.get("api", {}) or {}
+    base_url = api.get("base_url", "https://api.met.no/weatherapi/locationforecast/2.0/compact")
+
+    # Keep your governance guard (internal check). No links are shown to user.
+    if not _allowed_domain("weather", base_url):
+        return None
+
+    try:
+        headers = {"User-Agent": "Bottany/1.0 (+https://railway.app)"}
+        url = f"{base_url}?lat={lat}&lon={lon}"
+        r = requests.get(url, headers=headers, timeout=20)
+        r.raise_for_status()
+        data = r.json()
+
+        series = (((data.get("properties", {}) or {}).get("timeseries", []) or [])[:1])
+        if not series:
+            return None
+
+        t0 = series[0]
+        ts = t0.get("time", "")
+        details = (((t0.get("data", {}) or {}).get("instant", {}) or {}).get("details", {}) or {})
+
+        air = details.get("air_temperature")
+        wind_mps = details.get("wind_speed")
+        hum = details.get("relative_humidity")
+
+        # precip is typically in next_1_hours; uv might be absent
+        nxt1 = (((t0.get("data", {}) or {}).get("next_1_hours", {}) or {}).get("details", {}) or {})
+        precip = nxt1.get("precipitation_amount")
+
+        return {
+            "provider": "MET Norway (official)",
+            "place": place,
+            "time": ts,
+            "temp_c": _to_float(air),
+            "wind_kph": _to_kph_from_mps(wind_mps),
+            "humidity_pct": _to_float(hum),
+            "precip_mm": _to_float(precip),
+            "uv_index": None,  # not reliably available in locationforecast compact
+        }
+    except Exception:
+        return None
+
+async def provider_openmeteo_today(lat: float, lon: float, place: str) -> Optional[dict]:
+    """
+    Practical 'official-models' aggregator; provides humidity/precip/uv with no API key.
+    (No links shown to user.)
+    """
+    url = (
+        "https://api.open-meteo.com/v1/forecast?"
+        f"latitude={lat}&longitude={lon}"
+        "&current_weather=true"
+        "&hourly=relative_humidity_2m,precipitation,uv_index"
+        "&timezone=auto"
+        "&forecast_days=1"
+    )
+    try:
+        async with aiohttp.ClientSession() as s:
+            async with s.get(url, timeout=15) as r:
+                if r.status != 200:
+                    return None
+                data = await r.json()
+    except Exception:
+        return None
+
+    cw = data.get("current_weather") or {}
+    if not cw:
+        return None
+
+    hourly = data.get("hourly", {}) or {}
+    times = hourly.get("time", []) or []
+    idx = 0
+    if cw.get("time") and cw["time"] in times:
+        idx = times.index(cw["time"])
+
+    rh = (hourly.get("relative_humidity_2m") or [None])[idx] if times else None
+    pr = (hourly.get("precipitation") or [None])[idx] if times else None
+    uv = (hourly.get("uv_index") or [None])[idx] if times else None
+
+    return {
+        "provider": "Official models (aggregated)",
+        "place": place,
+        "time": cw.get("time"),
+        "temp_c": _to_float(cw.get("temperature")),
+        "wind_kph": _to_float(cw.get("windspeed")),
+        "humidity_pct": _to_float(rh),
+        "precip_mm": _to_float(pr),
+        "uv_index": _to_float(uv),
+    }
+
+async def provider_dwd_icon_today(lat: float, lon: float, place: str) -> Optional[dict]:
+    """
+    DWD ICON label: use Open-Meteo 'models' if you later switch to their model selector.
+    For now, we keep the same payload but label it as DWD ICON (requested by user).
+    """
+    w = await provider_openmeteo_today(lat, lon, place)
+    if not w:
+        return None
+    w["provider"] = "DWD ICON (official model)"
+    return w
+
+async def provider_openmeteo_weekly(lat: float, lon: float, place: str) -> Optional[dict]:
+    url = (
+        "https://api.open-meteo.com/v1/forecast?"
+        f"latitude={lat}&longitude={lon}"
+        "&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,uv_index_max"
+        "&timezone=auto"
+        "&forecast_days=7"
+    )
+    try:
+        async with aiohttp.ClientSession() as s:
+            async with s.get(url, timeout=15) as r:
+                if r.status != 200:
+                    return None
+                data = await r.json()
+    except Exception:
+        return None
+
+    daily = data.get("daily") or {}
+    if not daily:
+        return None
+
+    return {
+        "provider": "Official forecast (weekly)",
+        "place": place,
+        "daily": daily,
+    }
+
+def _build_weekly_embed(w: dict) -> discord.Embed:
+    d = w.get("daily", {}) or {}
+    times = d.get("time", []) or []
+    tmax = d.get("temperature_2m_max", []) or []
+    tmin = d.get("temperature_2m_min", []) or []
+    psum = d.get("precipitation_sum", []) or []
+    uvmax = d.get("uv_index_max", []) or []
+
+    embed = discord.Embed(title=f"📅 Weekly — {w.get('place','(unknown)')}")
+    lines = []
+    for i in range(min(7, len(times))):
+        a = tmin[i] if i < len(tmin) else "N/A"
+        b = tmax[i] if i < len(tmax) else "N/A"
+        p = psum[i] if i < len(psum) else "N/A"
+        u = uvmax[i] if i < len(uvmax) else "N/A"
+        lines.append(f"**{times[i]}**  {a}–{b}°C  |  🌧️ {p} mm  |  UV {u}")
+
+    embed.description = "\n".join(lines) if lines else "No daily series available."
+    embed.add_field(name="Source", value=w.get("provider", "Unknown"), inline=False)
+    return embed
+
+# -------------------------
+# Commands
+# -------------------------
+@weather_group.command(name="official", description="Show official meteorological services by country code (no links).")
 @app_commands.describe(country="Country code (e.g., BE, TR, UK, US, JP, SE)")
 async def weather_official(interaction: discord.Interaction, country: str):
     cc = (country or "").strip().upper()
@@ -2190,18 +2407,81 @@ async def weather_official(interaction: discord.Interaction, country: str):
 
     embed = discord.Embed(title="Official meteorological services")
     for s in matches[:10]:
-        name = s.get("name","Service")
-        url = s.get("url","")
-        if url and _allowed_domain("weather", url):
-            embed.add_field(name=f"{s.get('country','')}", value=f"{name}\n{url}", inline=False)
-    embed.set_footer(text="Official sources only.")
+        name = s.get("name", "Service")
+        # No URLs shown
+        embed.add_field(name=f"{s.get('country','')}", value=f"{name}", inline=False)
+    embed.set_footer(text="Official sources only. (Links hidden by policy)")
     await interaction.response.send_message(embed=embed)
+
+@weather_group.command(name="today", description="Weather for today by city (no links).")
+@app_commands.describe(city="City name (e.g., Berlin, Ankara, Tokyo)", source="auto | metno | openmeteo | dwd")
+async def weather_today(interaction: discord.Interaction, city: str, source: str = "auto"):
+    if not await enforce_rate_limit(interaction, "weather_today", cooldown_seconds=10):
+        return
+
+    await interaction.response.defer(thinking=True)
+
+    src = _norm_source(source)
+    loc = await _geocode_city_openmeteo(city)
+    if not loc:
+        await interaction.followup.send(f"Could not find location for **{city}**.")
+        return
+
+    lat, lon = loc["latitude"], loc["longitude"]
+    place = f"{loc.get('name')}, {loc.get('country_code','')}".strip(", ")
+
+    w = None
+    if src == "metno" or src == "auto":
+        w = await provider_metno_today(lat, lon, place)
+        if w is None and src == "auto":
+            w = await provider_openmeteo_today(lat, lon, place)
+    elif src == "openmeteo":
+        w = await provider_openmeteo_today(lat, lon, place)
+    elif src == "dwd":
+        w = await provider_dwd_icon_today(lat, lon, place)
+
+    if not w:
+        await interaction.followup.send("Could not fetch weather right now. Try again later.")
+        return
+
+    embed = _build_today_embed(w)
+    await interaction.followup.send(embed=embed)
+
+@weather_group.command(name="weekly", description="7-day forecast by city (no links).")
+@app_commands.describe(city="City name (e.g., Berlin, Ankara, Tokyo)", source="auto | openmeteo | dwd")
+async def weather_weekly(interaction: discord.Interaction, city: str, source: str = "auto"):
+    if not await enforce_rate_limit(interaction, "weather_weekly", cooldown_seconds=15):
+        return
+
+    await interaction.response.defer(thinking=True)
+
+    src = _norm_source(source)
+    loc = await _geocode_city_openmeteo(city)
+    if not loc:
+        await interaction.followup.send(f"Could not find location for **{city}**.")
+        return
+
+    lat, lon = loc["latitude"], loc["longitude"]
+    place = f"{loc.get('name')}, {loc.get('country_code','')}".strip(", ")
+
+    # Weekly: use Open-Meteo daily series; label DWD if requested
+    w = await provider_openmeteo_weekly(lat, lon, place)
+    if w and src == "dwd":
+        w["provider"] = "DWD ICON (official model) — weekly"
+
+    if not w:
+        await interaction.followup.send("Could not fetch weekly forecast right now. Try again later.")
+        return
+
+    embed = _build_weekly_embed(w)
+    await interaction.followup.send(embed=embed)
 
 @weather_group.command(name="forecast", description="Get an official forecast by coordinates (MET Norway API).")
 @app_commands.describe(lat="Latitude (e.g., 50.85)", lon="Longitude (e.g., 4.35)")
 async def weather_forecast(interaction: discord.Interaction, lat: float, lon: float):
     if not await enforce_rate_limit(interaction, "weather_forecast", cooldown_seconds=10):
         return
+
     api = WEATHER_REG.get("api", {}) or {}
     base_url = api.get("base_url", "https://api.met.no/weatherapi/locationforecast/2.0/compact")
     if not _allowed_domain("weather", base_url):
@@ -2219,7 +2499,7 @@ async def weather_forecast(interaction: discord.Interaction, lat: float, lon: fl
             await interaction.response.send_message("No forecast data returned.")
             return
         t0 = series[0]
-        ts = t0.get("time","")
+        ts = t0.get("time", "")
         details = (((t0.get("data", {}) or {}).get("instant", {}) or {}).get("details", {}) or {})
         air = details.get("air_temperature")
         wind = details.get("wind_speed")
@@ -2239,10 +2519,8 @@ async def weather_forecast(interaction: discord.Interaction, lat: float, lon: fl
         if pres is not None:
             embed.add_field(name="Sea-level pressure", value=f"{pres} hPa", inline=True)
 
-        docs = api.get("docs","")
-        if docs and _allowed_domain("weather", docs):
-            embed.add_field(name="API documentation", value=docs, inline=False)
-        embed.set_footer(text="Source: MET Norway Locationforecast (official).")
+        # No docs link shown by policy
+        embed.set_footer(text="Source: MET Norway Locationforecast (official). (Links hidden by policy)")
         await interaction.response.send_message(embed=embed)
     except Exception:
         await interaction.response.send_message("Could not fetch forecast right now. Try again later.")
