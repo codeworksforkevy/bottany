@@ -200,13 +200,32 @@ def enforce_rate_limit(key: str, cooldown_seconds: int = 10) -> None:
     """
     Simple in-memory rate limiter.
     Raises RuntimeError if called too frequently.
+
+    NOTE: cooldown_seconds may arrive as str from env/config. We coerce to int.
     """
+    # ---- coerce cooldown_seconds safely ----
+    try:
+        if isinstance(cooldown_seconds, str):
+            cooldown_seconds = cooldown_seconds.strip()
+        cooldown_seconds = int(float(cooldown_seconds))
+    except Exception:
+        cooldown_seconds = 10  # safe fallback
+
     now_ts = asyncio.get_event_loop().time()
+
     last = _RATE_LIMIT_STATE.get(key, 0.0)
-    if now_ts - last < cooldown_seconds:
-        remaining = int(cooldown_seconds - (now_ts - last))
+    try:
+        last = float(last)
+    except Exception:
+        last = 0.0
+
+    if (now_ts - last) < float(cooldown_seconds):
+        remaining = int(float(cooldown_seconds) - (now_ts - last))
+        if remaining < 1:
+            remaining = 1
         raise RuntimeError(f"Rate limit: try again in {remaining}s.")
-    _RATE_LIMIT_STATE[key] = now_ts       
+
+    _RATE_LIMIT_STATE[key] = now_ts
 
 def save_json(path: str, obj: Any) -> None:
     # Ensure parent directory exists (e.g. data/)
