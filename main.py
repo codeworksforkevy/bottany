@@ -6,8 +6,9 @@ import random
 import requests
 import aiohttp
 from urllib.parse import urljoin, urlparse
-from urllib.parse import quote
 from bs4 import BeautifulSoup
+import aiohttp
+from urllib.parse import quote
 import sqlite3
 import re
 from typing import Optional, Dict, Any, List
@@ -2064,6 +2065,18 @@ def _build_today_embed(w: dict) -> discord.Embed:
         embed.set_footer(text=f"Observation time: {w['time']}")
     return embed
 
+def _to_float(x):
+    try:
+        if x is None:
+            return None
+        return float(str(x).replace(",", "."))
+    except Exception:
+        return None
+
+def _to_kph_from_mps(mps):
+    v = _to_float(mps)
+    return None if v is None else round(v * 3.6, 1)
+
 async def _geocode_city_openmeteo(city: str) -> Optional[dict]:
     url = f"https://geocoding-api.open-meteo.com/v1/search?name={quote(city)}&count=1&language=en&format=json"
     try:
@@ -2078,26 +2091,12 @@ async def _geocode_city_openmeteo(city: str) -> Optional[dict]:
     results = j.get("results") or []
     return results[0] if results else None
 
-def _to_float(x):
-    try:
-        if x is None:
-            return None
-        return float(str(x).replace(",", "."))
-    except Exception:
-        return None
-
-def _to_kph_from_mps(mps):
-    v = _to_float(mps)
-    return None if v is None else round(v * 3.6, 1)
-
 # -------------------------
 # Providers
 # -------------------------
 async def provider_metno_today(lat: float, lon: float, place: str) -> Optional[dict]:
     api = WEATHER_REG.get("api", {}) or {}
     base_url = api.get("base_url", "https://api.met.no/weatherapi/locationforecast/2.0/compact")
-
-    # Governance guard (internal only). No links are shown to user.
     if not _allowed_domain("weather", base_url):
         return None
 
@@ -2131,7 +2130,7 @@ async def provider_metno_today(lat: float, lon: float, place: str) -> Optional[d
             "wind_kph": _to_kph_from_mps(wind_mps),
             "humidity_pct": _to_float(hum),
             "precip_mm": _to_float(precip),
-            "uv_index": None,  # not reliably available in this feed
+            "uv_index": None,
         }
     except Exception:
         return None
@@ -2236,8 +2235,8 @@ def _build_weekly_embed(w: dict) -> discord.Embed:
 @weather_group.command(name="official", description="Show official meteorological services by country code (no links).")
 @app_commands.describe(country="Country code (e.g., BE, TR, UK, US, JP, SE)")
 async def weather_official(interaction: discord.Interaction, country: str):
-    cc = (country or "").strip().upper()
     services = WEATHER_REG.get("official_services", []) or []
+    cc = (country or "").strip().upper()
     matches = [s for s in services if s.get("country", "").upper() == cc] if cc else services
     if not matches:
         await interaction.response.send_message("No official service found for that country code.")
@@ -2246,16 +2245,15 @@ async def weather_official(interaction: discord.Interaction, country: str):
     embed = discord.Embed(title="Official meteorological services")
     for s in matches[:10]:
         name = s.get("name", "Service")
-        embed.add_field(name=f"{s.get('country','')}", value=f"{name}", inline=False)
+        embed.add_field(name=f"{s.get('country','')}", value=name, inline=False)
     embed.set_footer(text="Official sources only. (Links hidden by policy)")
     await interaction.response.send_message(embed=embed)
 
 @weather_group.command(name="today", description="Weather for today by city (no links).")
 @app_commands.describe(city="City name (e.g., Berlin, Ankara, Tokyo)", source="auto | metno | openmeteo | dwd")
 async def weather_today(interaction: discord.Interaction, city: str, source: str = "auto"):
-    # IMPORTANT: positional third arg to avoid multiple-values error
-if not await enforce_rate_limit(interaction, "weather_today"):
-    return
+    if not await enforce_rate_limit(interaction, "weather_today"):
+        return
 
     await interaction.response.defer(thinking=True)
 
@@ -2288,8 +2286,8 @@ if not await enforce_rate_limit(interaction, "weather_today"):
 @weather_group.command(name="weekly", description="7-day forecast by city (no links).")
 @app_commands.describe(city="City name (e.g., Berlin, Ankara, Tokyo)", source="auto | openmeteo | dwd")
 async def weather_weekly(interaction: discord.Interaction, city: str, source: str = "auto"):
-if not await enforce_rate_limit(interaction, "weather_weekly"):
-    return
+    if not await enforce_rate_limit(interaction, "weather_weekly"):
+        return
 
     await interaction.response.defer(thinking=True)
 
@@ -2316,8 +2314,8 @@ if not await enforce_rate_limit(interaction, "weather_weekly"):
 @weather_group.command(name="forecast", description="Get an official forecast by coordinates (MET Norway API).")
 @app_commands.describe(lat="Latitude (e.g., 50.85)", lon="Longitude (e.g., 4.35)")
 async def weather_forecast(interaction: discord.Interaction, lat: float, lon: float):
-if not await enforce_rate_limit(interaction, "weather_forecast"):
-    return
+    if not await enforce_rate_limit(interaction, "weather_forecast"):
+        return
 
     api = WEATHER_REG.get("api", {}) or {}
     base_url = api.get("base_url", "https://api.met.no/weatherapi/locationforecast/2.0/compact")
@@ -2363,6 +2361,7 @@ if not await enforce_rate_limit(interaction, "weather_forecast"):
         await interaction.response.send_message("Could not fetch forecast right now. Try again later.")
 
 bot.tree.add_command(weather_group)
+
 
 
 # Free games
