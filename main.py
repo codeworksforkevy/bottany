@@ -2254,8 +2254,8 @@ async def weather_official(interaction: discord.Interaction, country: str):
 @app_commands.describe(city="City name (e.g., Berlin, Ankara, Tokyo)", source="auto | metno | openmeteo | dwd")
 async def weather_today(interaction: discord.Interaction, city: str, source: str = "auto"):
     # IMPORTANT: positional third arg to avoid multiple-values error
-    if not await enforce_rate_limit(interaction, "weather_today", 10):
-        return
+if not await enforce_rate_limit(interaction, "weather_today"):
+    return
 
     await interaction.response.defer(thinking=True)
 
@@ -2288,8 +2288,8 @@ async def weather_today(interaction: discord.Interaction, city: str, source: str
 @weather_group.command(name="weekly", description="7-day forecast by city (no links).")
 @app_commands.describe(city="City name (e.g., Berlin, Ankara, Tokyo)", source="auto | openmeteo | dwd")
 async def weather_weekly(interaction: discord.Interaction, city: str, source: str = "auto"):
-    if not await enforce_rate_limit(interaction, "weather_weekly", 15):
-        return
+if not await enforce_rate_limit(interaction, "weather_weekly"):
+    return
 
     await interaction.response.defer(thinking=True)
 
@@ -2316,8 +2316,8 @@ async def weather_weekly(interaction: discord.Interaction, city: str, source: st
 @weather_group.command(name="forecast", description="Get an official forecast by coordinates (MET Norway API).")
 @app_commands.describe(lat="Latitude (e.g., 50.85)", lon="Longitude (e.g., 4.35)")
 async def weather_forecast(interaction: discord.Interaction, lat: float, lon: float):
-    if not await enforce_rate_limit(interaction, "weather_forecast", 10):
-        return
+if not await enforce_rate_limit(interaction, "weather_forecast"):
+    return
 
     api = WEATHER_REG.get("api", {}) or {}
     base_url = api.get("base_url", "https://api.met.no/weatherapi/locationforecast/2.0/compact")
