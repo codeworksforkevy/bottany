@@ -2036,146 +2036,6 @@ async def music_sources(interaction: discord.Interaction):
 bot.tree.add_command(music_group)
 
 
-# -------------------------
-# Weather / Free Games / Awards modules
-# -------------------------
-WEATHER_REG_PATH = os.path.join(DATA_DIR, "weather_registry.json")
-WEATHER_REG = load_json(WEATHER_REG_PATH) if os.path.exists(WEATHER_REG_PATH) else {}
-
-FREEGAMES_REG_PATH = os.path.join(DATA_DIR, "freegames_registry.json")
-FREEGAMES_REG = load_json(FREEGAMES_REG_PATH) if os.path.exists(FREEGAMES_REG_PATH) else {}
-
-AWARDS_REG_PATH = os.path.join(DATA_DIR, "awards_registry.json")
-AWARDS_REG = load_json(AWARDS_REG_PATH) if os.path.exists(AWARDS_REG_PATH) else {}
-
-# Awards sources + runtime cache (syncable)
-AWARDS_SOURCES_PATH = os.path.join(DATA_DIR, "awards_sources_v2.json")
-AWARDS_SOURCES = load_json(AWARDS_SOURCES_PATH) if os.path.exists(AWARDS_SOURCES_PATH) else {}
-
-AWARDS_CACHE_PATH = os.path.join(DATA_DIR, "awards_cache.json")
-AWARDS_CACHE = load_json(AWARDS_CACHE_PATH) if os.path.exists(AWARDS_CACHE_PATH) else {"cache": {}}
-
-def save_awards_cache():
-    try:
-        AWARDS_CACHE["saved_utc"] = datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
-        with open(AWARDS_CACHE_PATH, "w", encoding="utf-8") as f:
-            json.dump(AWARDS_CACHE, f, ensure_ascii=False, indent=2)
-    except Exception as e:
-        logger.warning("Could not save awards cache: %s", e)
-
-def _norm(s: str) -> str:
-    return (s or "").strip().lower()
-
-def _cache_get(key: str) -> dict:
-    return ((AWARDS_CACHE.get("cache", {}) or {}).get(_norm(key), {}) or {})
-
-def _cache_set(key: str, data: dict):
-    AWARDS_CACHE.setdefault("cache", {})[_norm(key)] = data
-    save_awards_cache()
-
-def _sync_awards_bafta(category_slug: str) -> dict:
-    src = ((AWARDS_SOURCES.get("awards", {}) or {}).get("bafta", {}) or {})
-    tmpl = src.get("category_url_template","")
-    url = tmpl.replace("{slug}", category_slug)
-    if not url or not _allowed_domain("awards", url):
-        return {}
-    headers = {"User-Agent": "Bottany/1.0 (+https://railway.app)"}
-    r = requests.get(url, headers=headers, timeout=25)
-    r.raise_for_status()
-    soup = BeautifulSoup(r.text, "html.parser")
-    lines = [ln.strip() for ln in soup.get_text("\n").split("\n") if ln.strip()]
-    years = {}
-    for i, ln in enumerate(lines):
-        if re.fullmatch(r"19\d{2}|20\d{2}", ln):
-            yr = int(ln)
-            for j in range(i+1, min(i+12, len(lines))):
-                cand = lines[j]
-                if re.fullmatch(r"19\d{2}|20\d{2}", cand):
-                    break
-                if 2 < len(cand) < 120 and cand.lower() not in {"winner","winners","nominees","award"}:
-                    years[yr] = cand
-                    break
-    return {"award":"bafta","category_slug": category_slug, "years": years, "source_url": url, "synced_utc": datetime.utcnow().replace(microsecond=0).isoformat()+"Z"}
-
-def _sync_awards_dice_hub() -> dict:
-    src = ((AWARDS_SOURCES.get("awards", {}) or {}).get("dice", {}) or {})
-    url = src.get("awards_hub","")
-    if not url or not _allowed_domain("awards", url):
-        return {}
-    headers = {"User-Agent": "Bottany/1.0 (+https://railway.app)"}
-    r = requests.get(url, headers=headers, timeout=25)
-    r.raise_for_status()
-    soup = BeautifulSoup(r.text, "html.parser")
-    links = []
-    for a in soup.find_all("a"):
-        href = a.get("href") or ""
-        if not href.startswith("http"):
-            continue
-        h = href.lower()
-        if "dice" in h and "results" in h and _allowed_domain("awards", href):
-            links.append({"title": (a.get_text() or "").strip()[:120], "url": href})
-    return {"award":"dice","results_pages": links[:80], "source_url": url, "synced_utc": datetime.utcnow().replace(microsecond=0).isoformat()+"Z"}
-
-def _sync_awards_gja_year(year: int) -> dict:
-    src = ((AWARDS_SOURCES.get("awards", {}) or {}).get("gja", {}) or {})
-    tmpl = src.get("year_url_template","")
-    url = tmpl.replace("{year}", str(year))
-    if not url or not _allowed_domain("awards", url):
-        return {}
-    headers = {"User-Agent": "Bottany/1.0 (+https://railway.app)"}
-    r = requests.get(url, headers=headers, timeout=25)
-    r.raise_for_status()
-    soup = BeautifulSoup(r.text, "html.parser")
-    winners = {}
-    for h in soup.find_all(["h2","h3"]):
-        cat = (h.get_text() or "").strip()
-        if not cat or len(cat) > 120:
-            continue
-        game = None
-        for cand in h.find_all_next(["p","li"], limit=6):
-            t = (cand.get_text() or "").strip()
-            if t and len(t) < 140 and "read more" not in t.lower():
-                game = t
-                break
-        if game:
-            winners[cat] = game
-    return {"award":"gja","year": int(year), "winners": winners, "source_url": url, "synced_utc": datetime.utcnow().replace(microsecond=0).isoformat()+"Z"}
-
-def _allowed_domain(module: str, url: str) -> bool:
-    # Map module name to allowlist group keys used in GOV_REG
-    module = (module or "").strip().lower()
-    group_key = {
-        "weather": "weather",
-        "dictionaries": "dictionaries",
-        "fashion": "fashion",
-        "academic": "academic",
-        "tesla": "tesla",
-        "restaurants": "restaurants",
-        "michelin": "michelin",
-    }.get(module, module)
-
-    # Parse host safely
-    try:
-        host = urlparse(url).netloc.lower().split(":")[0]
-    except Exception:
-        return False
-
-    if not host:
-        return False
-
-    if host.startswith("www."):
-        host = host[4:]
-
-    allowlists = (GOV_REG or {}).get("allowlists", {}) or {}
-    allowed = set((allowlists.get(group_key, {}) or {}).get("domains", []) or [])
-
-    # If no allowlist configured, allow by default
-    if not allowed:
-        return True
-
-    # Exact match or subdomain match
-    return (host in allowed) or any(host.endswith("." + d) for d in allowed)
-
 # Weather
 weather_group = app_commands.Group(name="weather", description="Official meteorology (international).")
 
@@ -2184,7 +2044,7 @@ weather_group = app_commands.Group(name="weather", description="Official meteoro
 # -------------------------
 def _norm_source(src: str) -> str:
     s = (src or "auto").lower().strip()
-    allowed = {"auto", "metno", "openmeteo", "dwd"}  # keep small & stable
+    allowed = {"auto", "metno", "openmeteo", "dwd"}
     return s if s in allowed else "auto"
 
 def _fmt(v, suffix=""):
@@ -2205,7 +2065,6 @@ def _build_today_embed(w: dict) -> discord.Embed:
     return embed
 
 async def _geocode_city_openmeteo(city: str) -> Optional[dict]:
-    # no links shown; just use service internally
     url = f"https://geocoding-api.open-meteo.com/v1/search?name={quote(city)}&count=1&language=en&format=json"
     try:
         async with aiohttp.ClientSession() as s:
@@ -2231,22 +2090,14 @@ def _to_kph_from_mps(mps):
     v = _to_float(mps)
     return None if v is None else round(v * 3.6, 1)
 
-def _to_kph_from_mph(mph):
-    v = _to_float(mph)
-    return None if v is None else round(v * 1.60934, 1)
-
 # -------------------------
 # Providers
 # -------------------------
 async def provider_metno_today(lat: float, lon: float, place: str) -> Optional[dict]:
-    """
-    Official MET Norway Locationforecast (compact).
-    Adds humidity; precip/uv may be absent depending on payload.
-    """
     api = WEATHER_REG.get("api", {}) or {}
     base_url = api.get("base_url", "https://api.met.no/weatherapi/locationforecast/2.0/compact")
 
-    # Keep your governance guard (internal check). No links are shown to user.
+    # Governance guard (internal only). No links are shown to user.
     if not _allowed_domain("weather", base_url):
         return None
 
@@ -2269,7 +2120,6 @@ async def provider_metno_today(lat: float, lon: float, place: str) -> Optional[d
         wind_mps = details.get("wind_speed")
         hum = details.get("relative_humidity")
 
-        # precip is typically in next_1_hours; uv might be absent
         nxt1 = (((t0.get("data", {}) or {}).get("next_1_hours", {}) or {}).get("details", {}) or {})
         precip = nxt1.get("precipitation_amount")
 
@@ -2281,16 +2131,12 @@ async def provider_metno_today(lat: float, lon: float, place: str) -> Optional[d
             "wind_kph": _to_kph_from_mps(wind_mps),
             "humidity_pct": _to_float(hum),
             "precip_mm": _to_float(precip),
-            "uv_index": None,  # not reliably available in locationforecast compact
+            "uv_index": None,  # not reliably available in this feed
         }
     except Exception:
         return None
 
 async def provider_openmeteo_today(lat: float, lon: float, place: str) -> Optional[dict]:
-    """
-    Practical 'official-models' aggregator; provides humidity/precip/uv with no API key.
-    (No links shown to user.)
-    """
     url = (
         "https://api.open-meteo.com/v1/forecast?"
         f"latitude={lat}&longitude={lon}"
@@ -2334,10 +2180,6 @@ async def provider_openmeteo_today(lat: float, lon: float, place: str) -> Option
     }
 
 async def provider_dwd_icon_today(lat: float, lon: float, place: str) -> Optional[dict]:
-    """
-    DWD ICON label: use Open-Meteo 'models' if you later switch to their model selector.
-    For now, we keep the same payload but label it as DWD ICON (requested by user).
-    """
     w = await provider_openmeteo_today(lat, lon, place)
     if not w:
         return None
@@ -2365,11 +2207,7 @@ async def provider_openmeteo_weekly(lat: float, lon: float, place: str) -> Optio
     if not daily:
         return None
 
-    return {
-        "provider": "Official forecast (weekly)",
-        "place": place,
-        "daily": daily,
-    }
+    return {"provider": "Official forecast (weekly)", "place": place, "daily": daily}
 
 def _build_weekly_embed(w: dict) -> discord.Embed:
     d = w.get("daily", {}) or {}
@@ -2400,7 +2238,7 @@ def _build_weekly_embed(w: dict) -> discord.Embed:
 async def weather_official(interaction: discord.Interaction, country: str):
     cc = (country or "").strip().upper()
     services = WEATHER_REG.get("official_services", []) or []
-    matches = [s for s in services if s.get("country","").upper() == cc] if cc else services
+    matches = [s for s in services if s.get("country", "").upper() == cc] if cc else services
     if not matches:
         await interaction.response.send_message("No official service found for that country code.")
         return
@@ -2408,7 +2246,6 @@ async def weather_official(interaction: discord.Interaction, country: str):
     embed = discord.Embed(title="Official meteorological services")
     for s in matches[:10]:
         name = s.get("name", "Service")
-        # No URLs shown
         embed.add_field(name=f"{s.get('country','')}", value=f"{name}", inline=False)
     embed.set_footer(text="Official sources only. (Links hidden by policy)")
     await interaction.response.send_message(embed=embed)
@@ -2416,7 +2253,8 @@ async def weather_official(interaction: discord.Interaction, country: str):
 @weather_group.command(name="today", description="Weather for today by city (no links).")
 @app_commands.describe(city="City name (e.g., Berlin, Ankara, Tokyo)", source="auto | metno | openmeteo | dwd")
 async def weather_today(interaction: discord.Interaction, city: str, source: str = "auto"):
-    if not await enforce_rate_limit(interaction, "weather_today", cooldown_seconds=10):
+    # IMPORTANT: positional third arg to avoid multiple-values error
+    if not await enforce_rate_limit(interaction, "weather_today", 10):
         return
 
     await interaction.response.defer(thinking=True)
@@ -2431,7 +2269,7 @@ async def weather_today(interaction: discord.Interaction, city: str, source: str
     place = f"{loc.get('name')}, {loc.get('country_code','')}".strip(", ")
 
     w = None
-    if src == "metno" or src == "auto":
+    if src in ("metno", "auto"):
         w = await provider_metno_today(lat, lon, place)
         if w is None and src == "auto":
             w = await provider_openmeteo_today(lat, lon, place)
@@ -2450,7 +2288,7 @@ async def weather_today(interaction: discord.Interaction, city: str, source: str
 @weather_group.command(name="weekly", description="7-day forecast by city (no links).")
 @app_commands.describe(city="City name (e.g., Berlin, Ankara, Tokyo)", source="auto | openmeteo | dwd")
 async def weather_weekly(interaction: discord.Interaction, city: str, source: str = "auto"):
-    if not await enforce_rate_limit(interaction, "weather_weekly", cooldown_seconds=15):
+    if not await enforce_rate_limit(interaction, "weather_weekly", 15):
         return
 
     await interaction.response.defer(thinking=True)
@@ -2464,7 +2302,6 @@ async def weather_weekly(interaction: discord.Interaction, city: str, source: st
     lat, lon = loc["latitude"], loc["longitude"]
     place = f"{loc.get('name')}, {loc.get('country_code','')}".strip(", ")
 
-    # Weekly: use Open-Meteo daily series; label DWD if requested
     w = await provider_openmeteo_weekly(lat, lon, place)
     if w and src == "dwd":
         w["provider"] = "DWD ICON (official model) — weekly"
@@ -2479,7 +2316,7 @@ async def weather_weekly(interaction: discord.Interaction, city: str, source: st
 @weather_group.command(name="forecast", description="Get an official forecast by coordinates (MET Norway API).")
 @app_commands.describe(lat="Latitude (e.g., 50.85)", lon="Longitude (e.g., 4.35)")
 async def weather_forecast(interaction: discord.Interaction, lat: float, lon: float):
-    if not await enforce_rate_limit(interaction, "weather_forecast", cooldown_seconds=10):
+    if not await enforce_rate_limit(interaction, "weather_forecast", 10):
         return
 
     api = WEATHER_REG.get("api", {}) or {}
@@ -2498,6 +2335,7 @@ async def weather_forecast(interaction: discord.Interaction, lat: float, lon: fl
         if not series:
             await interaction.response.send_message("No forecast data returned.")
             return
+
         t0 = series[0]
         ts = t0.get("time", "")
         details = (((t0.get("data", {}) or {}).get("instant", {}) or {}).get("details", {}) or {})
@@ -2519,13 +2357,13 @@ async def weather_forecast(interaction: discord.Interaction, lat: float, lon: fl
         if pres is not None:
             embed.add_field(name="Sea-level pressure", value=f"{pres} hPa", inline=True)
 
-        # No docs link shown by policy
         embed.set_footer(text="Source: MET Norway Locationforecast (official). (Links hidden by policy)")
         await interaction.response.send_message(embed=embed)
     except Exception:
         await interaction.response.send_message("Could not fetch forecast right now. Try again later.")
 
 bot.tree.add_command(weather_group)
+
 
 # Free games
 freegames_group = app_commands.Group(name="freegames", description="Free games and giveaways (official platform sources).")
