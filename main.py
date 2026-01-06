@@ -25,6 +25,7 @@ except Exception:
     ZoneInfo = None
 from commands.drawing import register_drawing
 from commands.weather import register_weather
+from commands.free_games import register_free_games
 
 # -------------------------
 # Paths / constants
