@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "dataset": "free_games_registry",
+    "version": "1.0.0",
+    "last_updated": "2026-01-06",
+    "notes": "Official-source-first endpoints for weekly free game announcements."
+  },
+  "sources": {
+    "epic": {
+      "name": "Epic Games Store Free Games Promotions",
+      "endpoint": "https://store-site-backend-static-ipv4.ak.epicgames.com/freeGamesPromotions",
+      "store_base": "https://store.epicgames.com",
+      "allowed_domains": [
+        "store-site-backend-static-ipv4.ak.epicgames.com",
+        "store.epicgames.com"
+      ]
+    },
+    "gog": {
+      "name": "GOG Free Games Collection / Giveaways",
+      "endpoints": [
+        "https://www.gog.com/en/partner/free_games",
+        "https://www.gog.com/#giveaway"
+      ],
+      "store_base": "https://www.gog.com",
+      "allowed_domains": [
+        "www.gog.com",
+        "gog.com"
+      ]
+    }
+  }
+}
