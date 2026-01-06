@@ -22,6 +22,7 @@ try:
     from zoneinfo import ZoneInfo
 except Exception:
     ZoneInfo = None
+from commands.drawing import register_drawing
 
 # -------------------------
 # Paths / constants
