@@ -1,0 +1,369 @@
+{
+  "meta": {
+    "dataset": "drawing_registry",
+    "version": "1.0.0",
+    "language": "en",
+    "curation_policy": "Curated entries aligned with university-level drawing/animation instruction; each entry includes at least one canonical book reference.",
+    "last_updated": "2026-01-06"
+  },
+  "sources": [
+    "Edwards, B. — Drawing on the Right Side of the Brain",
+    "Nicolaïdes, K. — The Natural Way to Draw",
+    "Speed, H. — The Practice and Science of Drawing",
+    "Ruskin, J. — The Elements of Drawing",
+    "Mayer, R. — The Artist’s Handbook of Materials and Techniques",
+    "Robertson, S. — How to Draw (and/or How to Render)",
+    "Williams, R. — The Animator’s Survival Kit",
+    "Blair, P. — Cartoon Animation",
+    "Wells, P. — Understanding Animation"
+  ],
+  "techniques": [
+    {
+      "name": "Contour drawing",
+      "category": "Drawing fundamentals",
+      "definition": "Drawing the outlines and edges of a subject to train observation and hand–eye coordination.",
+      "use_cases": ["Observation training", "Form simplification", "Accuracy drills"],
+      "tips": ["Prioritize seeing over symbol-drawing", "Keep line economy; avoid over-tracing"],
+      "references": ["Nicolaïdes — The Natural Way to Draw", "Edwards — Drawing on the Right Side of the Brain"]
+    },
+    {
+      "name": "Blind contour",
+      "category": "Drawing fundamentals",
+      "definition": "Contour drawing without looking at the paper; strengthens perception and reduces reliance on visual symbols.",
+      "use_cases": ["Seeing skills", "Confidence lines", "Coordination"],
+      "tips": ["Move slowly", "Do not 'peek' to correct—accept distortion as part of training"],
+      "references": ["Edwards — Drawing on the Right Side of the Brain", "Nicolaïdes — The Natural Way to Draw"]
+    },
+    {
+      "name": "Gesture drawing",
+      "category": "Figure and motion",
+      "definition": "Capturing the overall action, rhythm, and line-of-action of a pose with minimal marks.",
+      "use_cases": ["Figure drawing", "Animation warm-ups", "Action clarity"],
+      "tips": ["Start with the line of action", "Favor movement and weight over details"],
+      "references": ["Nicolaïdes — The Natural Way to Draw", "Williams — The Animator’s Survival Kit"]
+    },
+    {
+      "name": "Negative space drawing",
+      "category": "Perception training",
+      "definition": "Drawing the shapes around an object to improve accuracy and reduce symbolic shortcuts.",
+      "use_cases": ["Proportion accuracy", "Complex silhouettes", "Composition training"],
+      "tips": ["Treat negative shapes as 'real' objects", "Compare angles and distances continuously"],
+      "references": ["Edwards — Drawing on the Right Side of the Brain"]
+    },
+    {
+      "name": "Sight-size measurement",
+      "category": "Academic measurement",
+      "definition": "Measuring proportions by holding a constant viewing position and comparing lengths/angles visually.",
+      "use_cases": ["Portrait studies", "Still life", "Academic drawing practice"],
+      "tips": ["Keep your head position consistent", "Use a pencil at arm’s length as a measuring tool"],
+      "references": ["Speed — The Practice and Science of Drawing"]
+    },
+    {
+      "name": "Comparative measurement",
+      "category": "Academic measurement",
+      "definition": "Measuring relative sizes and angles by comparing one feature against another feature as a unit.",
+      "use_cases": ["Proportions", "Perspective placement", "Figure relationships"],
+      "tips": ["Choose a stable base unit", "Check angles with plumb lines and alignment"],
+      "references": ["Speed — The Practice and Science of Drawing", "Ruskin — The Elements of Drawing"]
+    },
+    {
+      "name": "Cross-hatching",
+      "category": "Shading",
+      "definition": "Building tone and form with overlapping sets of parallel lines at different angles.",
+      "use_cases": ["Form shading", "Value control", "Ink drawing"],
+      "tips": ["Keep spacing consistent for clean values", "Follow form direction to enhance volume"],
+      "references": ["Speed — The Practice and Science of Drawing", "Ruskin — The Elements of Drawing"]
+    },
+    {
+      "name": "Hatching",
+      "category": "Shading",
+      "definition": "Creating tone with a single-direction set of parallel strokes.",
+      "use_cases": ["Value studies", "Pen/ink rendering", "Texture control"],
+      "tips": ["Use line density rather than pressure to control value", "Maintain stroke discipline"],
+      "references": ["Ruskin — The Elements of Drawing"]
+    },
+    {
+      "name": "Stippling",
+      "category": "Shading",
+      "definition": "Creating values via dot density rather than lines.",
+      "use_cases": ["Ink illustration", "Gradual value ramps", "Texture control"],
+      "tips": ["Build midtones gradually", "Avoid clustering that creates unintended patterns"],
+      "references": ["Speed — The Practice and Science of Drawing"]
+    },
+    {
+      "name": "Tonal blocking",
+      "category": "Value and form",
+      "definition": "Separating large value masses (light/mid/shadow) before adding detail.",
+      "use_cases": ["Portrait values", "Still life masses", "Clarity of light"],
+      "tips": ["Identify shadow shapes early", "Keep edges simple until structure is correct"],
+      "references": ["Speed — The Practice and Science of Drawing"]
+    },
+    {
+      "name": "Edge control",
+      "category": "Value and form",
+      "definition": "Deliberately varying hard, soft, and lost edges to guide focus and describe form.",
+      "use_cases": ["Realistic rendering", "Portrait focus", "Atmospheric depth"],
+      "tips": ["Hard edges attract attention; use sparingly", "Lose edges in low-contrast areas"],
+      "references": ["Robertson — How to Render"]
+    },
+    {
+      "name": "Construction drawing",
+      "category": "Structure",
+      "definition": "Building complex forms from simple primitives (box, cylinder, sphere) to maintain solidity.",
+      "use_cases": ["Perspective drawing", "Industrial design sketching", "Figure mannequinization"],
+      "tips": ["Think in 3D primitives", "Align ellipses to the form’s axis"],
+      "references": ["Robertson — How to Draw"]
+    },
+    {
+      "name": "Form intersections",
+      "category": "Structure",
+      "definition": "Using overlaps and intersections of primitives to understand spatial relationships and volume.",
+      "use_cases": ["Perspective training", "3D thinking drills", "Mechanical forms"],
+      "tips": ["Draw through forms", "Use consistent perspective rules across all primitives"],
+      "references": ["Robertson — How to Draw"]
+    },
+    {
+      "name": "Box rotation drill",
+      "category": "Perspective practice",
+      "definition": "Rotating boxes in space to internalize perspective convergence and foreshortening.",
+      "use_cases": ["Perspective mastery", "Spatial reasoning", "Design sketching"],
+      "tips": ["Keep horizon consistent", "Track vanishing points logically"],
+      "references": ["Robertson — How to Draw"]
+    },
+    {
+      "name": "Ellipses in perspective",
+      "category": "Perspective practice",
+      "definition": "Drawing ellipses that correctly represent circles in perspective.",
+      "use_cases": ["Cylinders", "Wheels", "Pipes", "Objects with round features"],
+      "tips": ["Align ellipse minor axis to cylinder axis", "Degree changes with tilt"],
+      "references": ["Robertson — How to Draw"]
+    },
+    {
+      "name": "Value scales",
+      "category": "Value and form",
+      "definition": "Practicing consistent stepped values to improve tonal control.",
+      "use_cases": ["Shading accuracy", "Material studies", "Lighting consistency"],
+      "tips": ["Use a fixed range (e.g., 5–9 steps)", "Avoid compressing midtones"],
+      "references": ["Speed — The Practice and Science of Drawing", "Mayer — The Artist’s Handbook"]
+    },
+    {
+      "name": "Material rendering study",
+      "category": "Rendering",
+      "definition": "Isolating a material (metal, glass, fabric) and analyzing its value patterns and edges.",
+      "use_cases": ["Design rendering", "Still life realism", "Illustration polish"],
+      "tips": ["Observe highlight shape and contrast", "Use edge quality to sell surface properties"],
+      "references": ["Robertson — How to Render", "Mayer — The Artist’s Handbook"]
+    },
+    {
+      "name": "Atmospheric perspective",
+      "category": "Composition and depth",
+      "definition": "Suggesting depth by reducing contrast and detail with distance.",
+      "use_cases": ["Landscapes", "Background staging", "Scene depth"],
+      "tips": ["Lower contrast and saturation in distant forms", "Simplify far silhouettes"],
+      "references": ["Speed — The Practice and Science of Drawing"]
+    },
+    {
+      "name": "Thumbnail composition",
+      "category": "Composition",
+      "definition": "Small, fast sketches to explore value grouping, balance, and focal hierarchy.",
+      "use_cases": ["Illustration planning", "Storyboarding", "Design ideation"],
+      "tips": ["Keep it small to avoid detail", "Test 5–10 options quickly"],
+      "references": ["Speed — The Practice and Science of Drawing"]
+    }
+  ],
+  "tools": [
+    {
+      "name": "Graphite pencil (HB)",
+      "category": "Pencils",
+      "description": "Mid-range hardness for general sketching and construction lines.",
+      "best_for": ["Layout", "Construction drawing", "General sketching"],
+      "notes": ["Reliable baseline pencil; pairs well with kneaded eraser"],
+      "references": ["Mayer — The Artist’s Handbook"]
+    },
+    {
+      "name": "Graphite pencil (2B)",
+      "category": "Pencils",
+      "description": "Softer graphite for darker values and expressive line.",
+      "best_for": ["Gesture", "Value blocking", "Expressive sketching"],
+      "notes": ["Smudges more easily; manage with clean hand placement"],
+      "references": ["Mayer — The Artist’s Handbook"]
+    },
+    {
+      "name": "Mechanical pencil (0.5mm)",
+      "category": "Pencils",
+      "description": "Consistent line width suited to precise construction and measured drawing.",
+      "best_for": ["Perspective grids", "Architectural sketching", "Tight linework"],
+      "notes": ["Avoid over-detailing too early"],
+      "references": ["Mayer — The Artist’s Handbook"]
+    },
+    {
+      "name": "Kneaded eraser",
+      "category": "Erasers",
+      "description": "Malleable eraser that lifts graphite/charcoal gradually without harsh marks.",
+      "best_for": ["Highlight lifting", "Value control", "Soft corrections"],
+      "notes": ["Clean by kneading; do not rub aggressively"],
+      "references": ["Mayer — The Artist’s Handbook"]
+    },
+    {
+      "name": "Vinyl/Plastic eraser",
+      "category": "Erasers",
+      "description": "Harder eraser for strong removal of graphite.",
+      "best_for": ["Clean corrections", "Crisp edges", "Drafting"],
+      "notes": ["Can damage paper if overused; use light pressure"],
+      "references": ["Mayer — The Artist’s Handbook"]
+    },
+    {
+      "name": "Charcoal (vine)",
+      "category": "Charcoal",
+      "description": "Light, easily erasable charcoal ideal for broad gesture and massing.",
+      "best_for": ["Gesture", "Blocking large shapes", "Quick studies"],
+      "notes": ["Fixative recommended for preserving layers"],
+      "references": ["Mayer — The Artist’s Handbook"]
+    },
+    {
+      "name": "Charcoal (compressed)",
+      "category": "Charcoal",
+      "description": "Darker, denser charcoal with higher value range; harder to erase fully.",
+      "best_for": ["Deep shadows", "High-contrast studies", "Expressive rendering"],
+      "notes": ["Use with blending tools cautiously to avoid muddy values"],
+      "references": ["Mayer — The Artist’s Handbook"]
+    },
+    {
+      "name": "Conte crayon",
+      "category": "Dry media",
+      "description": "Waxier dry medium; produces crisp lines and stable darks.",
+      "best_for": ["Figure drawing", "Defined edges", "Classical studies"],
+      "notes": ["Good for controlled hatching and edge work"],
+      "references": ["Mayer — The Artist’s Handbook"]
+    },
+    {
+      "name": "Blending stump (tortillon)",
+      "category": "Tools",
+      "description": "Paper tool used to blend dry media and soften transitions.",
+      "best_for": ["Soft shading", "Gradients", "Controlled blending"],
+      "notes": ["Blend sparingly; preserve value structure and edges"],
+      "references": ["Mayer — The Artist’s Handbook"]
+    },
+    {
+      "name": "India ink (black)",
+      "category": "Ink",
+      "description": "Permanent black ink for high-contrast linework and washes.",
+      "best_for": ["Hatching", "Stippling", "Ink wash studies"],
+      "notes": ["Test on paper; once permanent, corrections are limited"],
+      "references": ["Mayer — The Artist’s Handbook"]
+    },
+    {
+      "name": "Dip pen + nib",
+      "category": "Ink",
+      "description": "Pen system offering variable line weight with pressure/angle changes.",
+      "best_for": ["Line quality studies", "Hatching", "Illustration"],
+      "notes": ["Clean nibs regularly to maintain flow"],
+      "references": ["Mayer — The Artist’s Handbook"]
+    },
+    {
+      "name": "Newsprint pad",
+      "category": "Paper",
+      "description": "Low-cost paper suited to gesture and warm-up drills.",
+      "best_for": ["Gesture sessions", "High-volume practice", "Quick studies"],
+      "notes": ["Not archival; do not expect long-term preservation"],
+      "references": ["Nicolaïdes — The Natural Way to Draw"]
+    },
+    {
+      "name": "Drawing paper (acid-free)",
+      "category": "Paper",
+      "description": "More durable paper suitable for finished studies and layering.",
+      "best_for": ["Finished charcoal/graphite studies", "Controlled rendering"],
+      "notes": ["Choose tooth based on medium (graphite vs charcoal)"],
+      "references": ["Mayer — The Artist’s Handbook"]
+    },
+    {
+      "name": "Fixative (workable)",
+      "category": "Tools",
+      "description": "Spray used to set dry media layers while allowing additional drawing.",
+      "best_for": ["Charcoal layering", "Graphite preservation", "Reducing smudge"],
+      "notes": ["Use in ventilated areas; apply light coats"],
+      "references": ["Mayer — The Artist’s Handbook"]
+    }
+  ],
+  "animation_concepts": [
+    {
+      "name": "Line of action",
+      "category": "Animation fundamentals",
+      "definition": "A simplified directional line capturing the main energy and movement of a pose.",
+      "use_cases": ["Gesture drawing", "Key poses", "Clarity of motion"],
+      "tips": ["Prioritize flow before anatomy", "Avoid stiffness by emphasizing curvature"],
+      "references": ["Williams — The Animator’s Survival Kit", "Blair — Cartoon Animation"]
+    },
+    {
+      "name": "Keyframe",
+      "category": "Animation workflow",
+      "definition": "A defining drawing that marks a significant pose or timing point in an action.",
+      "use_cases": ["Blocking action", "Performance beats", "Timing planning"],
+      "tips": ["Design readable silhouettes", "Stage the strongest story moments"],
+      "references": ["Williams — The Animator’s Survival Kit"]
+    },
+    {
+      "name": "In-between",
+      "category": "Animation workflow",
+      "definition": "Intermediate drawings that create smooth motion between keyframes.",
+      "use_cases": ["Smooth motion", "Timing refinement", "Arc consistency"],
+      "tips": ["Maintain volume and proportions", "Track arcs and spacing"],
+      "references": ["Williams — The Animator’s Survival Kit", "Blair — Cartoon Animation"]
+    },
+    {
+      "name": "Timing and spacing",
+      "category": "Motion control",
+      "definition": "Timing is how long an action takes; spacing is how far the object moves between frames.",
+      "use_cases": ["Weight", "Speed changes", "Believable motion"],
+      "tips": ["Close spacing slows motion; wide spacing speeds it up", "Use charts for complex actions"],
+      "references": ["Williams — The Animator’s Survival Kit"]
+    },
+    {
+      "name": "Squash and stretch",
+      "category": "Animation principles",
+      "definition": "Deforming forms to show weight, flexibility, and impact while preserving volume.",
+      "use_cases": ["Cartoon physics", "Impact", "Appeal"],
+      "tips": ["Preserve volume", "Keep structure readable under deformation"],
+      "references": ["Williams — The Animator’s Survival Kit", "Blair — Cartoon Animation"]
+    },
+    {
+      "name": "Anticipation",
+      "category": "Animation principles",
+      "definition": "A preparatory action that sets up and clarifies the main action.",
+      "use_cases": ["Readable motion", "Staging", "Comedy beats"],
+      "tips": ["Make anticipation smaller than the main action", "Use it to direct viewer attention"],
+      "references": ["Williams — The Animator’s Survival Kit"]
+    },
+    {
+      "name": "Arcs",
+      "category": "Motion control",
+      "definition": "Natural motion tends to travel in arcs rather than straight lines.",
+      "use_cases": ["Limb motion", "Camera staging", "Naturalism"],
+      "tips": ["Track wrist/ankle arcs", "Use guides to maintain consistency"],
+      "references": ["Williams — The Animator’s Survival Kit"]
+    }
+  ],
+  "academic_topics": [
+    {
+      "name": "Proportion and alignment",
+      "category": "Academic drawing",
+      "summary": "A set of observational methods (plumb lines, comparative measurement) to maintain accurate relationships.",
+      "drills": ["Plumb-line alignment checks", "Angle comparison studies", "Unit-based measurement"],
+      "references": ["Speed — The Practice and Science of Drawing", "Ruskin — The Elements of Drawing"]
+    },
+    {
+      "name": "Value grouping",
+      "category": "Academic drawing",
+      "summary": "Simplifying values into clear groups to improve readability and light logic.",
+      "drills": ["2-value poster studies", "3-value massing", "Notan thumbnails"],
+      "references": ["Speed — The Practice and Science of Drawing"]
+    },
+    {
+      "name": "Perspective fundamentals",
+      "category": "Academic drawing",
+      "summary": "Horizon, vanishing points, and convergence as the basis for spatial illusion.",
+      "drills": ["Box rotation", "Cylinder + ellipse sets", "Interior thumbnails with a fixed horizon"],
+      "references": ["Robertson — How to Draw"]
+    }
+  ]
+}
