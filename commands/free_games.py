@@ -454,7 +454,3 @@ class FreeGamesCog(commands.Cog):
 async def register_free_games(bot: commands.Bot, data_dir: str) -> None:
     cog = FreeGamesCog(bot, data_dir)
     await bot.add_cog(cog)
-    try:
-        bot.tree.add_command(cog.freegames_group)
-    except Exception:
-        pass
