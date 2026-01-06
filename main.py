@@ -73,7 +73,7 @@ async def _healthcheck_app():
 
 bot = commands.Bot(command_prefix="!", intents=intents)
 
-register_dictionaries(bot, DATA_DIR)
+# register_dictionaries(bot, DATA_DIR)
 register_trivia(bot, DATA_DIR)
 register_weather(bot, DATA_DIR)
 register_drawing(bot, DATA_DIR)   # <-- buraya
