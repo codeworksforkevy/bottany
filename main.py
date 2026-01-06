@@ -408,6 +408,15 @@ async def on_ready():
             bot._weather_registered = True
         except Exception as e:
             logger.warning("Weather module registration failed: %s", e)
+
+    # Ensure /freegames commands are registered once
+    if not getattr(bot, "_free_games_registered", False):
+        try:
+            register_free_games(bot, DATA_DIR)
+            bot._free_games_registered = True
+        except Exception as e:
+            logger.warning("Free games module registration failed: %s", e)
+    
     # Compute governance report after startup (avoid crashing at import time)
     global GOV_REPORT
     try:
