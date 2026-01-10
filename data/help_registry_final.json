@@ -1,0 +1,77 @@
+{
+  "general": {
+    "description": "Short guidance for the existed commands",
+    "commands": [
+      {
+        "name": "/help",
+        "usage": "/help [category]",
+        "description": "Shows all available commands of Bottany or commands in a specific category. We love Kevy"
+      }
+    ]
+  },
+  "weather": {
+    "description": "Weather and forecast commands",
+    "commands": [
+      {
+        "name": "/weather",
+        "usage": "/weather <subcommand> ...",
+        "description": "Weather utilities (e.g., today/forecast) for a given city"
+      }
+    ]
+  },
+  "drawing": {
+    "description": "Knowledge from academic sources about drawing techniques, tools, and more.",
+    "commands": [
+      {
+        "name": "/drawing",
+        "usage": "/drawing <subcommand> ...",
+        "description": "Drawing-related commands (generation, tips, or utilities depending on the module)"
+      }
+    ]
+  },
+  "gaming": {
+    "description": "Gaming freebies and references",
+    "commands": [
+      {
+        "name": "/freegames",
+        "usage": "/freegames",
+        "description": "Lists currently available free games and selected discounts across supported platforms."
+      },
+      {
+        "name": "/game_theory",
+        "usage": "/game_theory [topic]",
+        "description": "Provides explanations of game theory."
+      }
+    ]
+  },
+  "knowledge": {
+    "description": "Curated knowledge commands",
+    "commands": [
+      {
+        "name": "/philosophy",
+        "usage": "/philosophy [topic]",
+        "description": "Short philosophy guidance."
+      },
+      {
+        "name": "/tesla",
+        "usage": "/tesla [topic]",
+        "description": "Brief introductions to Nikola Tesla’s inventions, based on official sources with patent numbers. Each time it is used, a different invention is shown."
+      },
+      {
+        "name": "/davinci",
+        "usage": "/davinci [topic]",
+        "description": "A varied introduction to Leonardo da Vinci’s works. Academic resources are always used."
+      }
+    ]
+  },
+  "twitch badges and drops": {
+    "description": "Guidance for Twitch badge and drop campaigns using official (authorized) sources and a curated global registry.",
+    "commands": [
+      {
+        "name": "/twitch badges and drops",
+        "usage": "/twitch badges and drops [game]",
+        "description": "Shows Twitch badge and drop campaigns using a combined approach: official authorized data via the Twitch API and a curated global catalogue. Scheduled updates are announced automatically."
+      }
+    ]
+  }
+}
