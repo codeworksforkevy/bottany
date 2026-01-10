@@ -1,4 +1,4 @@
-# Gaming + Art Culture Hub Bot (Railway-ready)
+# Gaming + Art Culture Hub Bot 
 
 ## What’s new in this version
 - Prestigious English dictionaries registry + definition command:
@@ -11,8 +11,6 @@
   - Background daily post at 09:00 Europe/Istanbul to the configured #trivia channel
 
 ## Railway variables
-- DISCORD_TOKEN (required)
-- DB_PATH (optional, default bot.sqlite)
 
 ## Local run
 pip install -r requirements.txt
