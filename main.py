@@ -26,7 +26,8 @@ except Exception:
 from commands.drawing import register_drawing
 from commands.weather import register_weather
 from commands.free_games import register_free_games
-\1from utils.twitch_badges_and_drops_poller import poll_once
+from utils.twitch_badges_and_drops_poller import poll_once
+
 # -------------------------
 # Paths / constants
 # -------------------------
