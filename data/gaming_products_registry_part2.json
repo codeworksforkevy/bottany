@@ -1,0 +1,43 @@
+{
+  "items": [
+    {
+      "id": "ps4-2013",
+      "name": "PlayStation 4",
+      "category": "console",
+      "manufacturer": "Sony",
+      "release_year": 2013,
+      "short_intro": "Eighth-generation console emphasizing social features and digital distribution.",
+      "image_url": "",
+      "logo_url": "",
+      "source": "Sony official history",
+      "source_url": "https://www.sony.com/en/SonyInfo/CorporateInfo/History/",
+      "source_type": "official"
+    },
+    {
+      "id": "xbox-one-2013",
+      "name": "Xbox One",
+      "category": "console",
+      "manufacturer": "Microsoft",
+      "release_year": 2013,
+      "short_intro": "Microsoft’s eighth-generation console.",
+      "image_url": "",
+      "logo_url": "",
+      "source": "Microsoft Xbox",
+      "source_url": "https://www.microsoft.com/en-us/store/b/xbox",
+      "source_type": "official"
+    },
+    {
+      "id": "switch-2017",
+      "name": "Nintendo Switch",
+      "category": "console",
+      "manufacturer": "Nintendo",
+      "release_year": 2017,
+      "short_intro": "Hybrid console combining handheld and home gaming.",
+      "image_url": "",
+      "logo_url": "",
+      "source": "Nintendo Switch (official)",
+      "source_url": "https://www.nintendo.com/switch/",
+      "source_type": "official"
+    }
+  ]
+}

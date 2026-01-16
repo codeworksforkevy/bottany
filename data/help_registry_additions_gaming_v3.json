@@ -1,0 +1,37 @@
+{
+  "gaming products (part 1)": {
+    "description": "Consoles and computers (curated, referenced). Part 1 covers up to 2011.",
+    "commands": [
+      {
+        "name": "/gaming product",
+        "usage": "/gaming product",
+        "description": "Shows a random gaming product with release year, short intro, image (if available), and sources (Part 1 ≤ 2011)."
+      },
+      {
+        "name": "/gaming year_part1",
+        "usage": "/gaming year_part1 [year]",
+        "description": "Lists products released in a given year (Part 1: up to 2011). If no year is provided, shows a summary by year."
+      }
+    ]
+  },
+  "gaming products (part 2)": {
+    "description": "Modern consoles and computers (curated, referenced). Part 2 covers 2012+.",
+    "commands": [
+      {
+        "name": "/gaming product_part2",
+        "usage": "/gaming product_part2",
+        "description": "Shows a random modern gaming product (Part 2: 2012+)."
+      }
+    ]
+  },
+  "gaming timeline": {
+    "description": "Decade-based timeline of major games, consoles, and computers (curated).",
+    "commands": [
+      {
+        "name": "/gaming timeline",
+        "usage": "/gaming timeline [decade]",
+        "description": "Shows timeline entries by decade (e.g., 1980s). If no decade is provided, lists available decades."
+      }
+    ]
+  }
+}

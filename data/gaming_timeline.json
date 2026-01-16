@@ -1,0 +1,38 @@
+{
+  "decades": {
+    "1970s": [
+      "Computer Space (1971) — arcade",
+      "Pong (1972) — arcade",
+      "Magnavox Odyssey (1972) — home console",
+      "Breakout (1976) — arcade",
+      "Apple II (1977) — home computer",
+      "Atari 2600 (1977) — home console",
+      "Space Invaders (1978) — arcade",
+      "IBM 5100 (1975) / early personal computing context"
+    ],
+    "1980s": [
+      "IBM PC (Model 5150) (1981) — PC platform",
+      "Commodore 64 (1982) — home computer",
+      "Nintendo Entertainment System / Famicom (1983) — home console",
+      "Donkey Kong (1981) — arcade",
+      "Pac-Man (1980) — arcade",
+      "Elite (1984) — home computer"
+    ],
+    "1990s": [
+      "Super Nintendo Entertainment System (1990) — home console",
+      "Sony PlayStation (1994) — home console",
+      "Nintendo 64 (1996) — home console",
+      "Dreamcast (1998) — home console"
+    ],
+    "2000s": [
+      "PlayStation 2 (2000) — home console",
+      "Xbox (2001) — home console",
+      "Nintendo Wii (2006) — home console"
+    ],
+    "2010s": [
+      "PlayStation 4 (2013) — home console",
+      "Xbox One (2013) — home console",
+      "Nintendo Switch (2017) — hybrid console"
+    ]
+  }
+}
