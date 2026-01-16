@@ -1,0 +1,27 @@
+{
+  "console": {
+    "description": "Game console history commands (curated).",
+    "commands": [
+      {
+        "name": "/console random",
+        "usage": "/console random",
+        "description": "Shows a random game console with release year, short intro, image (if available), and sources."
+      }
+    ]
+  },
+  "games firsts": {
+    "description": "Early commercially released games (curated).",
+    "commands": [
+      {
+        "name": "/games first100",
+        "usage": "/games first100",
+        "description": "Lists up to the first 100 commercially released games from the curated registry (expandable)."
+      },
+      {
+        "name": "/games by_year",
+        "usage": "/games by_year [year]",
+        "description": "Shows early commercially released games by year, or lists a specific year when provided."
+      }
+    ]
+  }
+}

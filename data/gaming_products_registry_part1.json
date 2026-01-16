@@ -1,0 +1,87 @@
+{
+  "items": [
+    {
+      "id": "ibm-pc-5150-1981",
+      "name": "IBM PC (Model 5150)",
+      "category": "computer",
+      "manufacturer": "IBM",
+      "release_year": 1981,
+      "region_note": "Initial launch year",
+      "short_intro": "A foundational personal computer platform that influenced PC compatibility standards.",
+      "image_url": "",
+      "source": "IBM (official) / institutional references",
+      "source_url": "",
+      "source_type": "institution",
+      "tags": [
+        "pc",
+        "home-computing"
+      ]
+    },
+    {
+      "id": "commodore-64-1982",
+      "name": "Commodore 64",
+      "category": "computer",
+      "manufacturer": "Commodore",
+      "release_year": 1982,
+      "region_note": "Initial launch year",
+      "short_intro": "One of the most influential home computers for early gaming and software distribution.",
+      "image_url": "",
+      "source": "Institutional references",
+      "source_url": "",
+      "source_type": "institution",
+      "tags": [
+        "home-computer",
+        "8-bit"
+      ]
+    },
+    {
+      "id": "apple-ii-1977",
+      "name": "Apple II",
+      "category": "computer",
+      "manufacturer": "Apple",
+      "release_year": 1977,
+      "region_note": "Initial launch year",
+      "short_intro": "A landmark home computer platform with significant early software and game ecosystems.",
+      "image_url": "",
+      "source": "Apple (official) / institutional references",
+      "source_url": "",
+      "source_type": "institution",
+      "tags": [
+        "home-computer"
+      ]
+    },
+    {
+      "id": "atari-800-1979",
+      "name": "Atari 800",
+      "category": "computer",
+      "manufacturer": "Atari",
+      "release_year": 1979,
+      "region_note": "Initial launch year",
+      "short_intro": "Home computer line with strong gaming ties and notable early game development.",
+      "image_url": "",
+      "source": "Atari / institutional references",
+      "source_url": "",
+      "source_type": "reputable_secondary",
+      "tags": [
+        "home-computer"
+      ]
+    },
+    {
+      "id": "sega-dreamcast-1998",
+      "name": "Dreamcast",
+      "category": "console",
+      "manufacturer": "SEGA",
+      "release_year": 1998,
+      "region_note": "JP launch year",
+      "short_intro": "Early online features and influential arcade-to-home conversions; notable in late-90s console history.",
+      "image_url": "",
+      "source": "SEGA / institutional references",
+      "source_url": "",
+      "source_type": "reputable_secondary",
+      "tags": [
+        "console",
+        "online"
+      ]
+    }
+  ]
+}
