@@ -1,0 +1,28 @@
+{
+  "version": "curated-v1",
+  "campaigns": [
+    {
+      "title": "How Twitch Drops work (official guide)",
+      "game": "",
+      "time_window": "",
+      "summary": "Reference entry: official Twitch help for earning and claiming Drops.",
+      "image_url": "",
+      "badge_icon_url": "",
+      "drops": [],
+      "sources": [
+        {
+          "name": "How to Earn Drops (official)",
+          "url": "https://link.twitch.tv/HowtoEarnDrops"
+        },
+        {
+          "name": "Drops Inventory (official)",
+          "url": "https://www.twitch.tv/drops/inventory"
+        },
+        {
+          "name": "Drops - Developer overview",
+          "url": "https://dev.twitch.tv/drops/"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,861 @@
+{
+  "version": "v1-early-60",
+  "games": [
+    {
+      "name": "Spacewar!",
+      "year": 1962,
+      "platform": "Mainframe (PDP-1)",
+      "summary": "Early space combat game developed at MIT; widely cited as one of the first influential computer games.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Computer Space",
+      "year": 1971,
+      "platform": "Arcade",
+      "summary": "One of the first commercially sold coin-op video games.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Pong",
+      "year": 1972,
+      "platform": "Arcade",
+      "summary": "Foundational arcade table tennis game that popularized coin-op video games.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Maze War",
+      "year": 1973,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Spasim",
+      "year": 1974,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Gun Fight",
+      "year": 1975,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Breakout",
+      "year": 1976,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Zork",
+      "year": 1977,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Space Invaders",
+      "year": 1978,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Asteroids",
+      "year": 1979,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Adventure",
+      "year": 1979,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Pac-Man",
+      "year": 1980,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Rogue",
+      "year": 1980,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Donkey Kong",
+      "year": 1981,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Galaga",
+      "year": 1981,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Wizardry",
+      "year": 1981,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Ms. Pac-Man",
+      "year": 1982,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Pitfall!",
+      "year": 1982,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Dragon's Lair",
+      "year": 1983,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Tetris",
+      "year": 1984,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Elite",
+      "year": 1984,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Super Mario Bros.",
+      "year": 1985,
+      "platform": "",
+      "summary": "Early influential title (curated list).",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        },
+        {
+          "name": "World Video Game Hall of Fame (inducted games)",
+          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #23",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #24",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #25",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #26",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #27",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #28",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #29",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #30",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #31",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #32",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #33",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #34",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #35",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #36",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #37",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #38",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #39",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #40",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #41",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #42",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #43",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #44",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #45",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #46",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #47",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #48",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #49",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #50",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #51",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #52",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #53",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #54",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #55",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #56",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #57",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #58",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #59",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    },
+    {
+      "name": "Curated early game #60",
+      "year": 1985,
+      "platform": "",
+      "summary": "Placeholder: replace with a specific historical title and official source URL.",
+      "image_url": "",
+      "sources": [
+        {
+          "name": "CHM Revolution: Computer Games",
+          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+        }
+      ]
+    }
+  ]
+}

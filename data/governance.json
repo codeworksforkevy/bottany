@@ -1,0 +1,26 @@
+{
+  "rules": {
+    "require_reference_field": true
+  },
+  "allowlists": {
+    "gaming": {
+      "domains": [
+        "computerhistory.org",
+        "museumofplay.org",
+        "sciencemuseumgroup.org.uk",
+        "sciencemuseum.org.uk",
+        "upload.wikimedia.org",
+        "artsandculture.google.com"
+      ]
+    },
+    "dictionaries": {
+      "domains": []
+    },
+    "weather": {
+      "domains": []
+    },
+    "fashion": {
+      "domains": []
+    }
+  }
+}
