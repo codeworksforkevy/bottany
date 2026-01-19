@@ -1,0 +1,86 @@
+{
+  "version": 2,
+  "updated_utc": "2026-01-19T00:00:00Z",
+  "quotes": [
+    {
+      "id": "sim_trilemma",
+      "topic": "simulation",
+      "author": "Nick Bostrom",
+      "year": 2003,
+      "quote": "This paper argues that at least one of the following propositions is true.",
+      "source_title": "Are You Living in a Computer Simulation?",
+      "source_url": "https://ora.ox.ac.uk/objects/uuid:44c386c4-5d9e-4ecf-a47c-9631a2a59747/files/mb5d6febf23502ea79f57c9be3516c4d3",
+      "source_type": "paper"
+    },
+    {
+      "id": "sim_substrate_independence",
+      "topic": "simulation",
+      "author": "Nick Bostrom",
+      "year": 2003,
+      "quote": "Provided a system implements the right sort of computational structures and processes, it can be associated with conscious experiences.",
+      "source_title": "Are You Living in a Computer Simulation?",
+      "source_url": "https://ora.ox.ac.uk/objects/uuid:44c386c4-5d9e-4ecf-a47c-9631a2a59747/files/mb5d6febf23502ea79f57c9be3516c4d3",
+      "source_type": "paper"
+    },
+    {
+      "id": "game_equilibrium_point",
+      "topic": "game",
+      "author": "John F. Nash Jr.",
+      "year": 1950,
+      "quote": "A self-countering n-tuple is called an equilibrium point.",
+      "source_title": "Equilibrium Points in n-Person Games",
+      "source_url": "https://bugarinmauricio.com/wp-content/uploads/2022/02/nash1950.pdf",
+      "source_type": "paper"
+    },
+    {
+      "id": "game_strategic_interaction",
+      "topic": "game",
+      "author": "John C. Harsanyi",
+      "year": 1994,
+      "quote": "Game theory is a theory of strategic interaction.",
+      "source_title": "Games with Incomplete Information (Nobel Lecture)",
+      "source_url": "https://www.nobelprize.org/uploads/2018/06/harsanyi-lecture.pdf",
+      "source_type": "lecture"
+    },
+    {
+      "id": "game_threat_second_move",
+      "topic": "game",
+      "author": "Thomas C. Schelling",
+      "year": 1958,
+      "quote": "The threat is a commitment to a strategy for second move.",
+      "source_title": "The Strategy of Conflict: Prospectus for a Reorientation of Game Theory",
+      "source_url": "https://gpde.direito.ufmg.br/wp-content/uploads/2019/04/The-Strategy-of-Conflict-Prospectus-for-a-Reorientation-of-Game-Theory.pdf",
+      "source_type": "paper"
+    },
+    {
+      "id": "game_most_spectacular_event",
+      "topic": "game",
+      "author": "Thomas C. Schelling",
+      "year": 2005,
+      "quote": "The most spectacular event of the past half century is one that did not occur.",
+      "source_title": "An Astonishing Sixty Years: The Legacy of Hiroshima (Nobel Lecture)",
+      "source_url": "https://www.nobelprize.org/uploads/2018/06/schelling-lecture.pdf",
+      "source_type": "lecture"
+    },
+    {
+      "id": "game_human_misery",
+      "topic": "game",
+      "author": "Robert J. Aumann",
+      "year": 2005,
+      "quote": "Wars and other conflicts are among the main sources of human misery.",
+      "source_title": "War and Peace (Nobel Prize Lecture)",
+      "source_url": "https://www.nobelprize.org/uploads/2018/06/aumann-lecture.pdf",
+      "source_type": "lecture"
+    },
+    {
+      "id": "game_gap_model_reality",
+      "topic": "game",
+      "author": "Reinhard Selten",
+      "year": 1994,
+      "quote": "In this way the gap between model and reality is not closed, but maybe diminished or at least illuminated.",
+      "source_title": "Multistage Game Models and Delay Supergames (Nobel Lecture)",
+      "source_url": "https://www.nobelprize.org/uploads/2018/06/selten-lecture.pdf",
+      "source_type": "lecture"
+    }
+  ]
+}
