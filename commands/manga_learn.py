@@ -6,398 +6,587 @@ from typing import Any, Dict, List, Optional, Tuple
 import discord
 from discord import app_commands
 
-
 REGISTRY_FILENAME = "manga_drawing_sources_registry.json"
+PRESETS_FILENAME = "manga_learn_presets.json"
+
+# -------------------------
+# Normalization / aliases
+# -------------------------
+_TOPIC_ALIASES = {
+    "bg": "backgrounds",
+    "background": "backgrounds",
+    "bgs": "backgrounds",
+    "env": "environments",
+    "environment": "environments",
+    "environ": "environments",
+    "persp": "perspective",
+    "value": "values",
+    "tonal": "values",
+    "atmosphere": "atmospheric_perspective",
+    "depth": "atmospheric_perspective",
+}
+
+_TOOL_ALIASES = {
+    "csp": "clip-studio",
+    "clip": "clip-studio",
+    "clipstudio": "clip-studio",
+    "clip_studio": "clip-studio",
+    "medibang": "medibang",
+    "wacom": "wacom",
+    "too": "too",
+    "procreate": "procreate",
+    "kodansha": "kodansha",
+}
+
+_ALLOWED_TOPICS = {
+    "lineart",
+    "paneling",
+    "screentone",
+    "lettering",
+    "workflow",
+    "tools",
+    "anatomy",
+    "composition",
+    "perspective",
+    "backgrounds",
+    "environments",
+    "lighting",
+    "values",
+    "atmospheric_perspective",
+    "materials",
+    "props",
+    "architecture",
+}
+
+_ALLOWED_LEVELS = {"Beginner", "Intermediate", "Advanced"}
+_ALLOWED_MODES = {"Digital", "Traditional", "Hybrid"}
 
 
-def _norm(s: str) -> str:
-    return (s or "").strip().lower()
+def _utc_now() -> str:
+    return datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
 
 
-def _load_json(path: str) -> Dict[str, Any]:
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+def _registry_path(data_dir: str) -> str:
+    return os.path.join(data_dir, REGISTRY_FILENAME)
 
 
-def _dedupe_keep_order(items: List[str]) -> List[str]:
-    seen = set()
-    out = []
-    for x in items:
-        if x in seen:
+def _preset_path(data_dir: str) -> str:
+    return os.path.join(data_dir, PRESETS_FILENAME)
+
+
+def _load_json(path: str, default: Any) -> Any:
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return default
+
+
+def _save_json(path: str, obj: Any) -> None:
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(obj, f, ensure_ascii=False, indent=2)
+
+
+def _norm_topic(v: Optional[str]) -> Optional[str]:
+    if not v:
+        return None
+    s = v.strip().lower().replace(" ", "_")
+    s = _TOPIC_ALIASES.get(s, s)
+    return s if s in _ALLOWED_TOPICS else None
+
+
+def _norm_level(v: Optional[str]) -> Optional[str]:
+    if not v:
+        return None
+    s = v.strip().title()
+    return s if s in _ALLOWED_LEVELS else None
+
+
+def _norm_mode(v: Optional[str]) -> Optional[str]:
+    if not v:
+        return None
+    s = v.strip().title()
+    return s if s in _ALLOWED_MODES else None
+
+
+def _norm_tool(v: Optional[str]) -> Optional[str]:
+    if not v:
+        return None
+    s = v.strip().lower().replace(" ", "-").replace("_", "-")
+    s = _TOOL_ALIASES.get(s, s)
+    return s
+
+
+def _preset_code(topic: Optional[str], level: Optional[str], mode: Optional[str], tool: Optional[str]) -> str:
+    parts = []
+    if topic:
+        parts.append(f"topic={topic}")
+    if level:
+        parts.append(f"level={level}")
+    if mode:
+        parts.append(f"mode={mode}")
+    if tool:
+        parts.append(f"tool={tool}")
+    return ";".join(parts)
+
+
+def _parse_preset_code(code: str) -> Dict[str, str]:
+    out: Dict[str, str] = {}
+    if not code:
+        return out
+    for chunk in code.split(";"):
+        if "=" not in chunk:
             continue
-        seen.add(x)
-        out.append(x)
+        k, v = chunk.split("=", 1)
+        k = (k or "").strip().lower()
+        v = (v or "").strip()
+        if k and v:
+            out[k] = v
     return out
 
 
-def _match_any(needles: List[str], hay: List[str]) -> bool:
-    if not needles:
-        return True
-    hs = {_norm(x) for x in hay if x}
-    for n in needles:
-        if _norm(n) in hs:
-            return True
-    return False
+def _load_registry(data_dir: str) -> List[Dict[str, Any]]:
+    obj = _load_json(_registry_path(data_dir), {"version": 1, "sources": []})
+    sources = obj.get("sources") if isinstance(obj, dict) else []
+    if not isinstance(sources, list):
+        return []
+    out = []
+    for s in sources:
+        if isinstance(s, dict) and s.get("id") and s.get("url"):
+            out.append(s)
+    return out
 
 
-def _extract_tools(it: Dict[str, Any]) -> List[str]:
-    """Return normalized tool identifiers for an item.
+def _load_presets(data_dir: str) -> Dict[str, Any]:
+    obj = _load_json(_preset_path(data_dir), {"version": 1, "updated_utc": _utc_now(), "presets": []})
+    if not isinstance(obj, dict):
+        obj = {"version": 1, "updated_utc": _utc_now(), "presets": []}
+    obj.setdefault("version", 1)
+    obj.setdefault("updated_utc", _utc_now())
+    obj.setdefault("presets", [])
+    if not isinstance(obj["presets"], list):
+        obj["presets"] = []
+    return obj
 
-    Supports both the preferred `tools` list and legacy fields like `tool_focus`.
-    """
-    tools: List[str] = []
-    tools.extend(list(it.get("tools", []) or []))
-    tf = it.get("tool_focus") or it.get("tool") or ""
-    if tf:
-        tools.append(str(tf))
-    prov = it.get("provider") or ""
-    if prov:
-        tools.append(str(prov))
 
-    # Normalize into a small set of predictable tokens
-    normed: List[str] = []
-    for t in tools:
-        t_n = _norm(str(t))
-        if not t_n:
-            continue
-        if "clip" in t_n or "csp" in t_n:
-            normed.append("clip-studio")
-        elif "wacom" in t_n:
-            normed.append("wacom")
-        elif "medibang" in t_n or "jump paint" in t_n:
-            normed.append("medibang")
-        elif "procreate" in t_n:
-            normed.append("procreate")
-        elif "too" in t_n:
-            normed.append("too")
+def _save_presets(data_dir: str, obj: Dict[str, Any]) -> None:
+    obj["updated_utc"] = _utc_now()
+    _save_json(_preset_path(data_dir), obj)
+
+
+def _score_source(src: Dict[str, Any], topic: Optional[str], level: Optional[str], mode: Optional[str], tool: Optional[str]) -> float:
+    """Compute a relevance score for a source given optional filters."""
+    score = 0.0
+
+    # source_type preference
+    st = (src.get("source_type") or "").lower()
+    if st in {"official", "official_platform", "official_docs"}:
+        score += 4.0
+    elif st in {"trusted", "trusted_platform", "curated"}:
+        score += 2.0
+
+    # Exact / partial matches
+    topics = [str(t).lower() for t in (src.get("topics") or []) if isinstance(t, str)]
+    levels = [str(t) for t in (src.get("levels") or []) if isinstance(t, str)]
+    modes = [str(t) for t in (src.get("modes") or []) if isinstance(t, str)]
+    src_tool = str(src.get("tool") or "").lower()
+
+    if topic:
+        if topic in topics:
+            score += 6.0
         else:
-            normed.append(t_n)
+            score -= 1.0
+    if level:
+        if level in levels:
+            score += 3.0
+        else:
+            score -= 0.5
+    if mode:
+        if mode in modes:
+            score += 2.0
+        else:
+            score -= 0.5
+    if tool:
+        if tool == src_tool:
+            score += 3.0
+        else:
+            score -= 0.25
 
-    return _dedupe_keep_order(normed)
+    # Small boost for concise summaries
+    if src.get("summary"):
+        score += 0.25
 
-
-def _norm_mode(mode: str) -> str:
-    m = _norm(mode)
-    if m in ("both", "either"):
-        return "hybrid"
-    return m
-
-
-def _pick(items: List[Dict[str, Any]], limit: int = 8) -> List[Dict[str, Any]]:
-    # stable sort: prioritize official/curated labels first, then shorter titles
-    def score(it: Dict[str, Any]) -> Tuple[int, int]:
-        src = _norm(it.get("source_type", ""))
-        # 0 is best
-        pri = 2
-        if src in ("official", "official_platform"):
-            pri = 0
-        elif src in ("trusted_platform", "curated"):
-            pri = 1
-        return (pri, len(it.get("title", "")))
-
-    items2 = sorted(items, key=score)
-    return items2[:limit]
+    return score
 
 
-def _fmt_entry(it: Dict[str, Any]) -> str:
-    title = it.get("title", "(untitled)")
-    url = it.get("url") or it.get("official_url", "")
-    summary = it.get("summary", "").strip()
-    level = ", ".join(it.get("levels", []) or [])
-    mode = ", ".join(it.get("modes", []) or [])
-    topics = ", ".join(it.get("topics", []) or [])
-    tags = " | ".join([x for x in [level, mode, topics] if x])
+def _select_sources(
+    sources: List[Dict[str, Any]],
+    topic: Optional[str],
+    level: Optional[str],
+    mode: Optional[str],
+    tool: Optional[str],
+    limit: int = 8,
+) -> List[Dict[str, Any]]:
+    scored: List[Tuple[float, Dict[str, Any]]] = []
+    for s in sources:
+        scored.append((_score_source(s, topic, level, mode, tool), s))
 
-    line1 = f"[{title}]({url})" if url else title
-    if summary:
-        line2 = f"{summary}"
-        return f"• {line1}\n  {line2}\n  _{tags}_" if tags else f"• {line1}\n  {line2}"
-    return f"• {line1}\n  _{tags}_" if tags else f"• {line1}"
+    scored.sort(key=lambda x: x[0], reverse=True)
+
+    # Greedy diversity selection: penalize repeating the same provider.
+    picked: List[Dict[str, Any]] = []
+    provider_counts: Dict[str, int] = {}
+
+    for _ in range(limit):
+        best = None
+        best_score = -10**9
+        best_idx = -1
+        for idx, (base_score, s) in enumerate(scored):
+            if s is None:
+                continue
+            provider = str(s.get("provider") or "unknown").lower()
+            penalty = 1.25 * provider_counts.get(provider, 0)
+            adj = base_score - penalty
+            if adj > best_score:
+                best_score = adj
+                best = s
+                best_idx = idx
+        if best is None:
+            break
+        picked.append(best)
+        provider = str(best.get("provider") or "unknown").lower()
+        provider_counts[provider] = provider_counts.get(provider, 0) + 1
+        scored[best_idx] = (-10**9, None)  # type: ignore
+
+    return picked
 
 
-async def register_manga_learn(bot, data_dir: str) -> None:
-    """Register /manga commands.
+def _mini_paths() -> Tuple[List[str], List[str]]:
+    beginner = [
+        "composition",
+        "perspective",
+        "values",
+        "backgrounds",
+        "lighting",
+    ]
+    intermediate = [
+        "perspective",
+        "atmospheric_perspective",
+        "materials",
+        "props",
+        "architecture",
+        "environments",
+        "lighting",
+    ]
+    return beginner, intermediate
 
-    Design goals:
-    - Link-first: we do NOT scrape paywalled/tutorial content. We surface official/trusted links.
-    - Filterable: topic / level / mode / tool.
-    """
 
-    reg_path = os.path.join(data_dir, REGISTRY_FILENAME)
-    reg: Dict[str, Any] = {}
-    try:
-        reg = _load_json(reg_path)
-    except Exception as e:
-        # Keep the module non-fatal; expose a helpful error at runtime.
-        reg = {"error": f"Could not load {REGISTRY_FILENAME}: {e}"}
+def _path_for(track: Optional[str]) -> List[str]:
+    if track and track.strip().lower() == "backgrounds":
+        # default to the full intermediate-ish backgrounds track
+        return [
+            "workflow",
+            "composition",
+            "perspective",
+            "values",
+            "atmospheric_perspective",
+            "materials",
+            "props",
+            "architecture",
+            "environments",
+            "backgrounds",
+            "lighting",
+        ]
 
-    sources: List[Dict[str, Any]] = list(reg.get("sources", []) or [])
+    # General manga creation path
+    return [
+        "workflow",
+        "composition",
+        "perspective",
+        "values",
+        "backgrounds",
+        "paneling",
+        "anatomy",
+        "lineart",
+        "screentone",
+        "lettering",
+    ]
 
-    # Precompute filters
-    all_topics = _dedupe_keep_order(
-        sorted({t for s in sources for t in (s.get("topics", []) or []) if t})
-    )
-    all_levels = _dedupe_keep_order(
-        sorted({t for s in sources for t in (s.get("levels", []) or []) if t})
-    )
-    all_modes = _dedupe_keep_order(
-        sorted({t for s in sources for t in (s.get("modes", []) or []) if t})
-    )
-    all_tools = _dedupe_keep_order(
-        sorted({t for s in sources for t in _extract_tools(s) if t})
-    )
 
-    manga_group = app_commands.Group(
-        name="manga",
-        description="Manga learning hub (official/trusted links; filterable).",
-    )
+class MangaGroup(app_commands.Group):
+    def __init__(self, data_dir: str):
+        super().__init__(name="manga", description="Manga learning resources (official/trusted) and study paths")
+        self._data_dir = data_dir
 
-    @manga_group.command(name="learn", description="Find manga drawing learning resources (filterable).")
-    @app_commands.describe(
-        topic="workflow | composition | perspective | values | atmospheric_perspective | architecture | props | materials | backgrounds | environments | paneling | anatomy | lineart | screentone | lighting | lettering | tools",
-        level="Beginner | Intermediate | Advanced",
-        mode="Digital | Traditional | Hybrid",
-        tool="Optional tool focus (e.g., clip-studio, wacom, medibang)",
-    )
-    async def manga_learn(
+    @app_commands.command(name="filters", description="Show available filters for /manga learn")
+    async def filters(self, interaction: discord.Interaction):
+        topic_list = ", ".join(sorted(_ALLOWED_TOPICS))
+        level_list = ", ".join(sorted(_ALLOWED_LEVELS))
+        mode_list = ", ".join(sorted(_ALLOWED_MODES))
+        tool_list = ", ".join(sorted(set(_TOOL_ALIASES.values())))
+        embed = discord.Embed(title="/manga filters", color=0x2F3136)
+        embed.add_field(name="Topics", value=topic_list[:1024], inline=False)
+        embed.add_field(name="Levels", value=level_list, inline=False)
+        embed.add_field(name="Modes", value=mode_list, inline=False)
+        embed.add_field(name="Tools", value=tool_list[:1024], inline=False)
+        embed.set_footer(text="Tip: aliases work (e.g., topic:bg, tool:csp)")
+        await interaction.response.send_message(embed=embed, ephemeral=True)
+
+    @app_commands.command(name="topics", description="Alias for /manga filters")
+    async def topics(self, interaction: discord.Interaction):
+        await self.filters(interaction)
+
+    @app_commands.command(name="learn", description="List official/trusted resources to learn manga drawing")
+    @app_commands.describe(topic="Topic (e.g., lineart, backgrounds, perspective)", level="Beginner/Intermediate/Advanced", mode="Digital/Traditional/Hybrid", tool="clip-studio/medibang/wacom/etc")
+    async def learn(
+        self,
         interaction: discord.Interaction,
         topic: Optional[str] = None,
         level: Optional[str] = None,
         mode: Optional[str] = None,
         tool: Optional[str] = None,
     ):
-        # Defensive: registry load errors
-        if reg.get("error"):
-            await interaction.response.send_message(
-                f"Manga registry is not available. {reg['error']}",
-                ephemeral=True,
-            )
+        topic_n = _norm_topic(topic)
+        level_n = _norm_level(level)
+        mode_n = _norm_mode(mode)
+        tool_n = _norm_tool(tool)
+
+        sources = _load_registry(self._data_dir)
+        picks = _select_sources(sources, topic_n, level_n, mode_n, tool_n, limit=8)
+
+        title_parts = ["/manga learn"]
+        fparts = []
+        if topic_n:
+            fparts.append(f"topic:{topic_n}")
+        if level_n:
+            fparts.append(f"level:{level_n}")
+        if mode_n:
+            fparts.append(f"mode:{mode_n}")
+        if tool_n:
+            fparts.append(f"tool:{tool_n}")
+        if fparts:
+            title_parts.append("(" + ", ".join(fparts) + ")")
+
+        embed = discord.Embed(title=" ".join(title_parts), color=0x2F3136)
+        if not picks:
+            embed.description = "No sources matched your filters. Try removing one filter or use /manga filters."
+            await interaction.response.send_message(embed=embed, ephemeral=True)
             return
 
-        topic_n = _norm(topic) if topic else ""
-        level_n = _norm(level) if level else ""
-        mode_n = _norm_mode(mode) if mode else ""
-        tool_n = _norm(tool) if tool else ""
+        lines = []
+        for s in picks:
+            sid = s.get("id")
+            name = s.get("title") or s.get("name") or sid
+            url = s.get("url")
+            summary = (s.get("summary") or "").strip()
+            provider = s.get("provider")
+            meta = []
+            if provider:
+                meta.append(str(provider))
+            if s.get("tool"):
+                meta.append(str(s.get("tool")))
+            if s.get("source_type"):
+                meta.append(str(s.get("source_type")))
+            meta_txt = " — ".join(meta)
+            if summary:
+                lines.append(f"• **{name}**\n  {summary}\n  {url}\n  _{meta_txt}_")
+            else:
+                lines.append(f"• **{name}**\n  {url}\n  _{meta_txt}_")
 
-        # Filter
-        filtered: List[Dict[str, Any]] = []
-        for s in sources:
-            if topic_n and topic_n not in {_norm(x) for x in (s.get("topics", []) or [])}:
-                continue
-            if level_n and level_n not in {_norm(x) for x in (s.get("levels", []) or [])}:
-                continue
-            if mode_n and mode_n not in {_norm(x) for x in (s.get("modes", []) or [])}:
-                continue
-            if tool_n and tool_n not in {_norm(x) for x in _extract_tools(s)}:
-                continue
-            filtered.append(s)
+        embed.description = "\n\n".join(lines)[:4096]
 
-        picked = _pick(filtered, limit=8)
-
-        title_parts = ["Manga Learn"]
-        if topic:
-            title_parts.append(f"topic:{topic}")
-        if level:
-            title_parts.append(f"level:{level}")
-        if mode:
-            title_parts.append(f"mode:{mode}")
-        if tool:
-            title_parts.append(f"tool:{tool}")
-        title = " — ".join(title_parts)
-
-        embed = discord.Embed(title=title)
-        if not filtered:
-            embed.description = (
-                "No matches for those filters. Try loosening filters or use **/manga filters** to see supported values."
-            )
-        else:
-            embed.description = "\n\n".join(_fmt_entry(x) for x in picked)
-
-        # If the user is exploring scene/background topics, show a mini-path
-        if topic_n in ("composition", "perspective", "values", "atmospheric_perspective", "materials", "props", "architecture", "backgrounds", "environments", "lighting"):
+        # Mini-path for backgrounds / scene work
+        scene_topics = {"backgrounds", "environments", "composition", "perspective", "lighting", "values", "atmospheric_perspective", "materials", "props", "architecture"}
+        if topic_n in scene_topics or (topic_n is None and (tool_n in {"clip-studio", "medibang", "procreate"})):
+            beg, inter = _mini_paths()
             embed.add_field(
-                name="Scene & Background Mini-Path",
-                value=(
-                    "1) composition (thumbnails) → 2) perspective → 3) values → 4) atmospheric_perspective\n"
-                    "5) architecture/props → 6) materials/textures → 7) backgrounds/environments → 8) lighting/finishing\n\n"
-                    "Tip: use **/manga path** for the full sequence, or refine with filters like `topic:perspective` and `level:Beginner`."
-                ),
+                name="Scene & Background Mini-Path — Beginner",
+                value=" → ".join(beg),
+                inline=False,
+            )
+            embed.add_field(
+                name="Scene & Background Mini-Path — Intermediate",
+                value=" → ".join(inter),
                 inline=False,
             )
 
-        embed.add_field(
-            name="How to use",
-            value=(
-                "• **/manga learn** (no filters) shows a curated starter set\n"
-                "• Add filters: `topic:lineart` `level:Beginner` `mode:Digital` `tool:clip-studio`\n"
-                "• Use **/manga filters** to see available values\n"
-                "• Want a structured sequence? Use **/manga path**"
-            ),
-            inline=False,
-        )
-
-        embed.set_footer(text="Link-first policy: the bot surfaces official/trusted tutorials and entry points; it does not copy/paste paywalled content.")
-
-        await interaction.response.send_message(embed=embed)
-
-    @manga_group.command(name="filters", description="Show available filters for /manga learn.")
-    async def manga_filters(interaction: discord.Interaction):
-        if reg.get("error"):
-            await interaction.response.send_message(
-                f"Manga registry is not available. {reg['error']}",
-                ephemeral=True,
+        preset_code = _preset_code(topic_n, level_n, mode_n, tool_n)
+        if preset_code:
+            embed.add_field(
+                name="Saveable preset",
+                value=(
+                    f"`{preset_code}`\n"
+                    f"Save: `/manga preset_save name:MyPreset code:{preset_code}`\n"
+                    f"Run: `/manga preset_run name:MyPreset`"
+                )[:1024],
+                inline=False,
             )
-            return
 
-        embed = discord.Embed(title="/manga learn — available filters")
-        embed.add_field(name="Topics", value=", ".join(all_topics) if all_topics else "(none)", inline=False)
-        embed.add_field(name="Levels", value=", ".join(all_levels) if all_levels else "(none)", inline=False)
-        embed.add_field(name="Modes", value=", ".join(all_modes) if all_modes else "(none)", inline=False)
-        embed.add_field(name="Tools", value=", ".join(all_tools) if all_tools else "(none)", inline=False)
-        embed.set_footer(text=f"Registry: {REGISTRY_FILENAME} | Updated: {reg.get('generated_utc','unknown')}")
+        embed.set_footer(text="Short summaries + official links only (no scraped content).")
         await interaction.response.send_message(embed=embed)
 
-    @manga_group.command(name="topics", description="Alias for /manga filters (shows available filter values).")
-    async def manga_topics(interaction: discord.Interaction):
-        await manga_filters(interaction)
-
-    @manga_group.command(name="path", description="Get a recommended step-by-step learning path (with links).")
-    @app_commands.describe(
-        level="Beginner | Intermediate | Advanced",
-        mode="Digital | Traditional | Hybrid",
-        tool="Optional tool focus (e.g., clip-studio, wacom, medibang)",
-    )
-    async def manga_path(
+    @app_commands.command(name="path", description="Show a step-by-step learning path with curated links")
+    @app_commands.describe(track="Optional track: backgrounds", level="Beginner/Intermediate/Advanced", mode="Digital/Traditional/Hybrid", tool="clip-studio/medibang/wacom/etc")
+    async def path(
+        self,
         interaction: discord.Interaction,
+        track: Optional[str] = None,
         level: Optional[str] = None,
         mode: Optional[str] = None,
         tool: Optional[str] = None,
     ):
-        if reg.get("error"):
-            await interaction.response.send_message(
-                f"Manga registry is not available. {reg['error']}",
-                ephemeral=True,
-            )
-            return
+        track_n = (track or "").strip().lower() or None
+        if track_n in {"bg", "background", "bgs"}:
+            track_n = "backgrounds"
 
-        level_n = _norm(level) if level else ""
-        mode_n = _norm_mode(mode) if mode else ""
-        tool_n = _norm(tool) if tool else ""
+        level_n = _norm_level(level)
+        mode_n = _norm_mode(mode)
+        tool_n = _norm_tool(tool)
 
-        # A conservative, generally applicable progression.
-        # Each step is mapped to one or more registry topics.
-        # Expanded: explicitly covers backgrounds & perspective (scene-setting).
-        steps: List[Tuple[str, List[str], str]] = [
-            (
-                "Step 1 — Workflow & pages (planning → rough)",
-                ["workflow"],
-                "Goal: understand the end-to-end pipeline and page setup.",
-            ),
-            (
-                "Step 2 — Composition & thumbnails",
-                ["composition", "workflow"],
-                "Goal: plan focal points, readability, and shot choices.",
-            ),
-            (
-                "Step 3 — Perspective basics (1–3 point)",
-                ["perspective"],
-                "Goal: consistent depth so backgrounds feel believable.",
-            ),
-            (
-                "Step 4 — Values (readability in black & white)",
-                ["values"],
-                "Goal: control contrast and depth before screentones/shading.",
-            ),
-            (
-                "Step 5 — Atmospheric perspective (depth with air & haze)",
-                ["atmospheric_perspective"],
-                "Goal: push distance with reduced contrast/detail and lighter values.",
-            ),
-            (
-                "Step 6 — Materials & texture (surfaces, fabrics, finishes)",
-                ["materials"],
-                "Goal: make environments feel tactile; keep textures readable.",
-            ),
-            (
-                "Step 7 — Props & objects (vehicles, furniture, hard-surface)",
-                ["props"],
-                "Goal: draw repeatable objects that sell the scene.",
-            ),
-            (
-                "Step 8 — Architecture (buildings, interiors)",
-                ["architecture", "backgrounds"],
-                "Goal: construct believable spaces with perspective tools.",
-            ),
-            (
-                "Step 9 — Backgrounds & environments",
-                ["backgrounds", "environments"],
-                "Goal: place characters in a scene and support storytelling.",
-            ),
-            (
-                "Step 10 — Paneling & page flow",
-                ["paneling"],
-                "Goal: readable layouts, pacing, and eye flow.",
-            ),
-            (
-                "Step 11 — Anatomy & figure basics",
-                ["anatomy"],
-                "Goal: believable bodies/poses for characters.",
-            ),
-            (
-                "Step 12 — Lineart & inking",
-                ["lineart"],
-                "Goal: confident lines and clean inks.",
-            ),
-            (
-                "Step 13 — Screentone, fills & finishing",
-                ["screentone", "lighting"],
-                "Goal: value control, shading, and manga-style finishing.",
-            ),
-            (
-                "Step 14 — Lettering & balloons",
-                ["lettering"],
-                "Goal: readable text, balloons, and sound effects.",
-            ),
-        ]
+        steps = _path_for(track_n)
+        sources = _load_registry(self._data_dir)
 
-        embed = discord.Embed(title="Manga Learning Path")
-        if level:
-            embed.title += f" — level:{level}"
-        if mode:
-            embed.title += f" — mode:{mode}"
-        if tool:
-            embed.title += f" — tool:{tool}"
+        title = "/manga path" + (f" track:{track_n}" if track_n else "")
+        embed = discord.Embed(title=title, color=0x2F3136)
 
-        for step_title, step_topics, goal in steps:
-            # Filter candidates by step topic(s) and user filters
-            candidates: List[Dict[str, Any]] = []
-            for s in sources:
-                if not _match_any(step_topics, s.get("topics", []) or []):
-                    continue
-                if level_n and level_n not in {_norm(x) for x in (s.get("levels", []) or [])}:
-                    continue
-                if mode_n and mode_n not in {_norm(x) for x in (s.get("modes", []) or [])}:
-                    continue
-                if tool_n and tool_n not in {_norm(x) for x in _extract_tools(s)}:
-                    continue
-                candidates.append(s)
-
-            picks = _pick(candidates, limit=2)
+        blocks = []
+        for i, step_topic in enumerate(steps, start=1):
+            picks = _select_sources(sources, step_topic, level_n, mode_n, tool_n, limit=2)
             if picks:
-                value = f"{goal}\n\n" + "\n\n".join(_fmt_entry(x) for x in picks)
+                links = "\n".join(f"- {p.get('title') or p.get('id')}: {p.get('url')}" for p in picks)
             else:
-                value = f"{goal}\n\n_No matching resources for these filters._"
+                links = "- (no matching source; try /manga learn topic:{step_topic})"
+            blocks.append(f"**{i}. {step_topic}**\n{links}")
 
-            embed.add_field(name=step_title, value=value, inline=False)
-
-        embed.set_footer(
-            text=(
-                "Tip: use /manga learn with topic filters (e.g., topic:lineart) to expand each step. "
-                "Link-first policy: short summaries + official/trusted links."
-            )
-        )
-
+        embed.description = "\n\n".join(blocks)[:4096]
         await interaction.response.send_message(embed=embed)
 
-    # Register group once
-    bot.tree.add_command(manga_group)
+    @app_commands.command(name="source", description="Show a single source by id")
+    @app_commands.describe(id="Source id")
+    async def source(self, interaction: discord.Interaction, id: str):
+        sid = (id or "").strip()
+        if not sid:
+            await interaction.response.send_message("Please provide a source id.", ephemeral=True)
+            return
+        sources = _load_registry(self._data_dir)
+        s = next((x for x in sources if str(x.get("id")) == sid), None)
+        if not s:
+            await interaction.response.send_message("Source not found. Use /manga learn or /manga filters.", ephemeral=True)
+            return
+
+        title = s.get("title") or sid
+        embed = discord.Embed(title=title, color=0x2F3136)
+        if s.get("summary"):
+            embed.description = str(s.get("summary"))
+        embed.add_field(name="URL", value=str(s.get("url")), inline=False)
+        meta = []
+        for k in ("provider", "tool", "source_type"):
+            if s.get(k):
+                meta.append(f"{k}: {s.get(k)}")
+        if meta:
+            embed.add_field(name="Meta", value="\n".join(meta)[:1024], inline=False)
+        if s.get("topics"):
+            embed.add_field(name="Topics", value=", ".join(s.get("topics"))[:1024], inline=False)
+        await interaction.response.send_message(embed=embed)
+
+    # -------------------------
+    # Presets
+    # -------------------------
+    @app_commands.command(name="preset_save", description="Save a preset (filters) for quick reuse")
+    @app_commands.describe(name="Preset name", code="Preset code shown by /manga learn")
+    async def preset_save(self, interaction: discord.Interaction, name: str, code: str):
+        name = (name or "").strip()
+        if not name:
+            await interaction.response.send_message("Preset name cannot be empty.", ephemeral=True)
+            return
+
+        parsed = _parse_preset_code(code)
+        topic_n = _norm_topic(parsed.get("topic"))
+        level_n = _norm_level(parsed.get("level"))
+        mode_n = _norm_mode(parsed.get("mode"))
+        tool_n = _norm_tool(parsed.get("tool"))
+
+        obj = _load_presets(self._data_dir)
+        presets = obj.get("presets", [])
+
+        uid = interaction.user.id
+        presets = [p for p in presets if not (p.get("owner_id") == uid and (p.get("name") or "").lower() == name.lower())]
+
+        presets.append({
+            "owner_id": uid,
+            "name": name,
+            "filters": {"topic": topic_n, "level": level_n, "mode": mode_n, "tool": tool_n},
+            "created_utc": _utc_now(),
+        })
+        obj["presets"] = presets
+        _save_presets(self._data_dir, obj)
+        await interaction.response.send_message(f"Saved preset **{name}**.", ephemeral=True)
+
+    @app_commands.command(name="preset_list", description="List your saved presets")
+    async def preset_list(self, interaction: discord.Interaction):
+        obj = _load_presets(self._data_dir)
+        uid = interaction.user.id
+        mine = [p for p in obj.get("presets", []) if p.get("owner_id") == uid]
+        if not mine:
+            await interaction.response.send_message("You have no presets yet. Use /manga learn then /manga preset_save.", ephemeral=True)
+            return
+
+        lines = []
+        for p in sorted(mine, key=lambda x: (x.get("name") or "").lower()):
+            f = p.get("filters") or {}
+            lines.append(f"• **{p.get('name')}** — `{_preset_code(f.get('topic'), f.get('level'), f.get('mode'), f.get('tool'))}`")
+
+        embed = discord.Embed(title="/manga preset_list", description="\n".join(lines)[:4096], color=0x2F3136)
+        await interaction.response.send_message(embed=embed, ephemeral=True)
+
+    @app_commands.command(name="preset_run", description="Run a saved preset by name")
+    @app_commands.describe(name="Preset name")
+    async def preset_run(self, interaction: discord.Interaction, name: str):
+        obj = _load_presets(self._data_dir)
+        uid = interaction.user.id
+        name_l = (name or "").strip().lower()
+        target = None
+        for p in obj.get("presets", []):
+            if p.get("owner_id") == uid and (p.get("name") or "").strip().lower() == name_l:
+                target = p
+                break
+        if not target:
+            await interaction.response.send_message("Preset not found. Use /manga preset_list.", ephemeral=True)
+            return
+
+        f = target.get("filters") or {}
+        await self.learn(
+            interaction,
+            topic=f.get("topic"),
+            level=f.get("level"),
+            mode=f.get("mode"),
+            tool=f.get("tool"),
+        )
+
+    @app_commands.command(name="preset_delete", description="Delete a saved preset by name")
+    @app_commands.describe(name="Preset name")
+    async def preset_delete(self, interaction: discord.Interaction, name: str):
+        obj = _load_presets(self._data_dir)
+        uid = interaction.user.id
+        name_l = (name or "").strip().lower()
+        before = len(obj.get("presets", []))
+        obj["presets"] = [p for p in obj.get("presets", []) if not (p.get("owner_id") == uid and (p.get("name") or "").strip().lower() == name_l)]
+        after = len(obj.get("presets", []))
+        _save_presets(self._data_dir, obj)
+        if after == before:
+            await interaction.response.send_message("Preset not found.", ephemeral=True)
+        else:
+            await interaction.response.send_message(f"Deleted preset **{name}**.", ephemeral=True)
+
+
+async def register_manga(bot: discord.Client, data_dir: str) -> None:
+    """Register the /manga command group."""
+    group = MangaGroup(data_dir=data_dir)
+
+    # Prevent double-register
+    for cmd in bot.tree.get_commands():
+        if isinstance(cmd, app_commands.Group) and cmd.name == group.name:
+            raise RuntimeError("Already registered")
+
+    bot.tree.add_command(group)
