@@ -1,1008 +1,162 @@
 {
-  "generated_utc": "2026-01-16T21:02:43Z",
-  "schema_version": 2,
-  "filters": {
-    "topics": [
-      "workflow",
-      "composition",
-      "perspective",
-      "values",
-      "atmospheric_perspective",
-      "materials",
-      "props",
-      "architecture",
-      "backgrounds",
-      "environments",
-      "paneling",
-      "anatomy",
-      "lineart",
-      "screentone",
-      "lighting",
-      "lettering",
-      "tools"
-    ],
-    "levels": [
-      "Beginner",
-      "Intermediate",
-      "Advanced"
-    ],
-    "modes": [
-      "Digital",
-      "Traditional",
-      "Hybrid"
-    ],
-    "tools": [
-      "clip-studio",
-      "medibang",
-      "wacom",
-      "procreate",
-      "too",
-      "kodansha"
-    ]
-  },
+  "version": 1,
+  "updated_utc": "2026-01-18T00:00:00Z",
   "sources": [
     {
       "id": "csp_official_tutorials",
-      "title": "CLIP STUDIO PAINT — Official Tutorials (Comics/Manga)",
-      "provider": "CELSYS / Clip Studio Paint",
-      "official_url": "https://tips.clip-studio.com/en-us/official",
+      "title": "CLIP STUDIO PAINT — Official Tutorials",
+      "url": "https://www.clipstudio.net/en/tutorials/",
+      "provider": "CLIP STUDIO",
+      "tool": "clip-studio",
       "source_type": "official_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "workflow",
-        "composition",
-        "perspective",
-        "backgrounds",
-        "environments",
-        "lineart",
-        "paneling",
-        "screentone",
-        "lettering"
-      ],
-      "summary": "Official curated tutorials (text/video) including manga/comics workflows, panels, effects, and lettering."
+      "topics": ["workflow", "tools", "lineart", "paneling", "lettering", "backgrounds"],
+      "levels": ["Beginner", "Intermediate"],
+      "modes": ["Digital"],
+      "summary": "Official tutorial hub for CSP, including comics/manga workflows and core features."
     },
     {
       "id": "csp_tips_hub",
-      "title": "CLIP STUDIO TIPS — Knowledge base",
-      "provider": "CELSYS / Clip Studio Paint",
-      "official_url": "https://tips.clip-studio.com/en-us",
+      "title": "CLIP STUDIO TIPS — Tips & Tutorials Hub",
+      "url": "https://tips.clip-studio.com/en-us",
+      "provider": "CLIP STUDIO",
+      "tool": "clip-studio",
       "source_type": "official_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate",
-        "Advanced"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "workflow",
-        "composition",
-        "perspective",
-        "backgrounds",
-        "environments",
-        "lineart",
-        "paneling",
-        "screentone",
-        "lettering",
-        "anatomy",
-        "lighting"
-      ],
-      "summary": "Official domain hosting a large library of drawing, manga, and tool tutorials (official + community posts)."
+      "topics": ["workflow", "tools", "lineart", "paneling", "screentone", "lettering", "composition", "perspective", "backgrounds", "environments", "lighting", "values", "materials", "props", "architecture"],
+      "levels": ["Beginner", "Intermediate", "Advanced"],
+      "modes": ["Digital"],
+      "summary": "Official CSP community/tutorial portal; use filters to focus on manga workflows and specific techniques."
     },
     {
-      "id": "csp_figure_drawing",
-      "title": "How to draw manga: Let's learn figure drawing techniques!",
-      "provider": "Clip Studio TIPS",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/1722",
-      "source_type": "official_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "anatomy"
-      ],
-      "summary": "Figure drawing basics: proportions and techniques to draw characters in different poses."
+      "id": "csp_user_guide_perspective_ruler",
+      "title": "CLIP STUDIO PAINT User Guide — Perspective Ruler",
+      "url": "https://help.clip-studio.com/en-us/manual_en/180_layers/Perspective_ruler.htm",
+      "provider": "CLIP STUDIO",
+      "tool": "clip-studio",
+      "source_type": "official_docs",
+      "topics": ["perspective", "backgrounds", "architecture"],
+      "levels": ["Beginner", "Intermediate"],
+      "modes": ["Digital"],
+      "summary": "Official documentation on using perspective rulers for backgrounds and architectural scenes."
     },
     {
-      "id": "csp_lineart_vector_layers",
-      "title": "How to Lineart Using Vector Layers",
-      "provider": "Clip Studio TIPS",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/3875",
-      "source_type": "official_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "lineart",
-        "tools"
-      ],
-      "summary": "Beginner-friendly guide to inking/lineart using vector layers so you can correct and refine lines without quality loss."
+      "id": "csp_user_guide_3d_import",
+      "title": "CLIP STUDIO PAINT User Guide — Importing 3D Materials",
+      "url": "https://help.clip-studio.com/en-us/manual_en/610_material/Importing_3D_materials.htm",
+      "provider": "CLIP STUDIO",
+      "tool": "clip-studio",
+      "source_type": "official_docs",
+      "topics": ["props", "architecture", "environments", "workflow"],
+      "levels": ["Intermediate"],
+      "modes": ["Digital"],
+      "summary": "Official docs for using 3D assets to block in props/backgrounds and speed up scene construction."
     },
     {
-      "id": "csp_paneling_comic_panels_part1",
-      "title": "Creating Comic Panels Part One",
-      "provider": "Clip Studio TIPS",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/5600",
-      "source_type": "official_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "paneling",
-        "workflow"
-      ],
-      "summary": "Walkthrough of setting up comic frames/panels using the Frame Border tool."
-    },
-    {
-      "id": "csp_screentones_methods",
-      "title": "Methods for applying screentones",
-      "provider": "Clip Studio TIPS",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/6227",
-      "source_type": "official_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "screentone",
-        "tools"
-      ],
-      "summary": "Different ways to apply screentones for manga/comics, plus basic screentone concepts."
-    },
-    {
-      "id": "csp_balloon_tool_official",
-      "title": "Let's create speech balloons! — How to use the balloon tool",
-      "provider": "Clip Studio TIPS (Official admin post)",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/863",
-      "source_type": "official",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "lettering",
-        "tools"
-      ],
-      "summary": "Official-admin tutorial on creating speech balloons, tails, and balloon variants."
-    },
-    {
-      "id": "csp_traditional_to_digital",
-      "title": "From Traditional to Digital Comic, Manga and Webtoon",
-      "provider": "Clip Studio TIPS",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/9776",
-      "source_type": "official_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Hybrid",
-        "Digital"
-      ],
-      "topics": [
-        "workflow",
-        "tools",
-        "screentone"
-      ],
-      "summary": "Perspective on moving from traditional workflows to digital, including time/cost and screentone considerations."
-    },
-    {
-      "id": "medibang_tutorial_hub",
-      "title": "MediBang Paint — Tutorial portal",
+      "id": "medibang_tutorials_hub",
+      "title": "MediBang Paint — Tutorials",
+      "url": "https://medibangpaint.com/en/tutorial/",
       "provider": "MediBang",
-      "official_url": "https://medibangpaint.com/en/tutorial/",
+      "tool": "medibang",
       "source_type": "official_platform",
-      "tools": [
-        "medibang"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "workflow",
-        "composition",
-        "perspective",
-        "backgrounds",
-        "environments",
-        "paneling",
-        "screentone",
-        "lettering",
-        "tools",
-        "anatomy"
-      ],
-      "summary": "Official MediBang tutorial hub covering manga creation features and step-by-step guides."
+      "topics": ["workflow", "tools", "lineart", "paneling", "lettering", "backgrounds", "perspective"],
+      "levels": ["Beginner", "Intermediate"],
+      "modes": ["Digital"],
+      "summary": "Official MediBang tutorial hub for manga creation, tools, and workflow tips."
     },
     {
-      "id": "medibang_manga_process",
-      "title": "Manga Tutorial for Beginners 01 — Process of Manga Making",
-      "provider": "MediBang Paint",
-      "official_url": "https://medibangpaint.com/en/use/2021/06/mangatutorialforbeginners01/",
-      "source_type": "official_platform",
-      "tools": [
-        "medibang"
-      ],
-      "levels": [
-        "Beginner"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "workflow"
-      ],
-      "summary": "Overview of an end-to-end manga workflow (planning, storyboard/\"name\", rough, inking, tone/finishing, export)."
-    },
-    {
-      "id": "medibang_frames_balloons",
-      "title": "Manga Tutorial for Beginners 08 — Frames and speech bubbles",
-      "provider": "MediBang Paint",
-      "official_url": "https://medibangpaint.com/en/use/2021/11/mangatutorialforbeginners08/",
-      "source_type": "official_platform",
-      "tools": [
-        "medibang"
-      ],
-      "levels": [
-        "Beginner"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "paneling",
-        "lettering"
-      ],
-      "summary": "Practical guide for drawing frames and speech bubbles in a manga workflow."
-    },
-    {
-      "id": "medibang_people_nature",
-      "title": "Manga Tutorial for Beginners 09 — People and natural objects",
-      "provider": "MediBang Paint",
-      "official_url": "https://medibangpaint.com/en/use/2021/12/mangatutorialforbeginners09/",
-      "source_type": "official_platform",
-      "tools": [
-        "medibang"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "anatomy"
-      ],
-      "summary": "Drawing people and natural objects with broadly applicable observation principles."
-    },
-    {
-      "id": "csp_user_guide_perspective_rulers",
-      "title": "CLIP STUDIO PAINT User Guide — Perspective Rulers",
-      "provider": "CELSYS / Clip Studio Paint",
-      "official_url": "https://help.clip-studio.com/en-us/manual_en/510_ruler/Perspective_Rulers.htm",
+      "id": "medibang_perspective_guide",
+      "title": "MediBang Paint — Use a Perspective Guide",
+      "url": "https://medibangpaint.com/en/tutorial/pc/use_perspective/",
+      "provider": "MediBang",
+      "tool": "medibang",
       "source_type": "official",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "perspective",
-        "tools",
-        "backgrounds"
-      ],
-      "summary": "Official documentation for creating and editing perspective rulers (1–3 point), useful for consistent backgrounds."
+      "topics": ["perspective", "backgrounds", "architecture"],
+      "levels": ["Beginner"],
+      "modes": ["Digital"],
+      "summary": "Official walkthrough for perspective guides to build accurate rooms and city scenes."
     },
     {
-      "id": "csp_backgrounds_how_to_draw",
-      "title": "CLIP STUDIO — Simply Well Drawn Part 4: Drawing Backgrounds",
-      "provider": "CLIP STUDIO (How-to-draw)",
-      "official_url": "https://www.clipstudio.net/how-to-draw/archives/155615",
+      "id": "medibang_snap_tools_rooms",
+      "title": "MediBang Paint — Rooms as Backgrounds (Snap Tools)",
+      "url": "https://medibangpaint.com/en/tutorial/pc/snap_tools_room/",
+      "provider": "MediBang",
+      "tool": "medibang",
       "source_type": "official",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "backgrounds",
-        "environments",
-        "composition"
-      ],
-      "summary": "Official lesson on thinking through backgrounds so characters read well (planning, focus, and scene support)."
-    },
-    {
-      "id": "csp_backgrounds_thumbnail_perspective",
-      "title": "How to draw manga styled backgrounds — Intro & Thumbnail",
-      "provider": "Clip Studio TIPS",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/2366",
-      "source_type": "official_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "composition",
-        "backgrounds",
-        "perspective",
-        "workflow",
-        "environments"
-      ],
-      "summary": "Background-focused manga workflow: thumbnailing, setting a perspective ruler, drafting/inking, and finishing the scene."
-    },
-    {
-      "id": "csp_backgrounds_lose_fear",
-      "title": "CLIP STUDIO TIPS — Lose Your Fear to Make Backgrounds",
-      "provider": "Clip Studio TIPS",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/4792",
-      "source_type": "official_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "composition",
-        "backgrounds",
-        "environments",
-        "lighting",
-        "workflow"
-      ],
-      "summary": "A step-by-step background process emphasizing composition thumbnails and light/shadow choices for readability."
-    },
-    {
-      "id": "csp_backgrounds_simple",
-      "title": "CLIP STUDIO TIPS — Making a Simple Background",
-      "provider": "Clip Studio TIPS",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/8190",
-      "source_type": "official_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "backgrounds",
-        "environments",
-        "workflow"
-      ],
-      "summary": "A beginner-friendly walkthrough for building a basic environment layer-by-layer (structures, depth cues, and quick blocking)."
-    },
-    {
-      "id": "medibang_perspective_guides_backgrounds",
-      "title": "MediBang Paint — [Easy] Draw backgrounds using perspective guides",
-      "provider": "MediBang Paint",
-      "official_url": "https://medibangpaint.com/en/use/2022/07/use-a-perspective-ruler/",
-      "source_type": "official_platform",
-      "tools": [
-        "medibang"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "perspective",
-        "backgrounds",
-        "environments",
-        "tools"
-      ],
-      "summary": "Practical steps: rough background → apply perspective guides → line drawing → balance/finish."
-    },
-    {
-      "id": "medibang_room_background_snap_tools",
-      "title": "MediBang Paint — Draw rooms you can use as backgrounds (Snap Tools)",
-      "provider": "MediBang Paint",
-      "official_url": "https://medibangpaint.com/en/use/2022/10/how-to-draw-a-room-that-can-be-used-as-a-background/",
-      "source_type": "official_platform",
-      "tools": [
-        "medibang"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "perspective",
-        "backgrounds",
-        "environments",
-        "tools"
-      ],
-      "summary": "Room background construction using built-in snap/perspective tools; good for interior scenes."
+      "topics": ["backgrounds", "environments", "architecture", "props"],
+      "levels": ["Intermediate"],
+      "modes": ["Digital"],
+      "summary": "Using snap tools to construct room backgrounds you can reuse across panels."
     },
     {
       "id": "wacom_getting_started",
       "title": "Wacom — Getting Started",
+      "url": "https://www.wacom.com/en-us/getting-started",
       "provider": "Wacom",
-      "official_url": "https://www.wacom.com/en-us/support/getting-started",
-      "source_type": "official",
-      "tools": [
-        "wacom"
-      ],
-      "levels": [
-        "Beginner"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "tools"
-      ],
-      "summary": "Official setup portal: pick your tablet/display and follow driver + configuration steps."
+      "tool": "wacom",
+      "source_type": "official_platform",
+      "topics": ["tools", "workflow"],
+      "levels": ["Beginner"],
+      "modes": ["Digital"],
+      "summary": "Official onboarding for tablets and setup; helpful for beginners preparing a drawing workflow."
     },
     {
-      "id": "wacom_one_how_to_use",
-      "title": "Wacom One — How to use (Tutorials)",
+      "id": "wacom_one_tutorials",
+      "title": "Wacom One — Tutorials",
+      "url": "https://www.wacom.com/en-us/products/pen-displays/wacom-one#tutorials",
       "provider": "Wacom",
-      "official_url": "https://www.wacom.com/en-tr/getting-started/wacom-one-gen1/how-to-use",
-      "source_type": "official",
-      "tools": [
-        "wacom"
-      ],
-      "levels": [
-        "Beginner"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "tools"
-      ],
-      "summary": "Official tutorials hub for Wacom One users: setup, usage videos, and starter learning resources."
+      "tool": "wacom",
+      "source_type": "official_platform",
+      "topics": ["tools", "workflow", "lineart"],
+      "levels": ["Beginner", "Intermediate"],
+      "modes": ["Digital"],
+      "summary": "Official Wacom One tutorial section for fundamentals and tablet-based workflows."
     },
     {
-      "id": "procreate_handbook_intro",
-      "title": "Procreate — Official Handbook (Introduction)",
-      "provider": "Savage Interactive / Procreate",
-      "official_url": "https://help.procreate.com/procreate/handbook/introduction",
-      "source_type": "official",
-      "tools": [
-        "procreate"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "workflow",
-        "tools",
-        "lettering"
-      ],
-      "summary": "Official user guide to Procreate features that support comic/manga workflows (layers, text, guides, export)."
-    },
-    {
-      "id": "procreate_inking_brushes",
-      "title": "Procreate Handbook — Brush Library (Inking)",
-      "provider": "Savage Interactive / Procreate",
-      "official_url": "https://help.procreate.com/procreate/handbook/brushes/brush-library",
-      "source_type": "official",
-      "tools": [
-        "procreate"
-      ],
-      "levels": [
-        "Beginner"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "lineart",
-        "tools"
-      ],
-      "summary": "Official reference for inking brush sets and ink-centric brush behavior."
-    },
-    {
-      "id": "too_how_to_draw_manga_hub",
-      "title": "TOO — How To Draw Manga (English)",
-      "provider": "TOO Corporation",
-      "official_url": "https://www.too.com/manga/en/",
+      "id": "too_how_to_draw_manga",
+      "title": "TOO — How to Draw Manga (Traditional/Hybrid)",
+      "url": "https://www.too.com/manga/en/",
+      "provider": "TOO",
+      "tool": "too",
       "source_type": "trusted_platform",
-      "tools": [
-        "too"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Traditional",
-        "Hybrid"
-      ],
-      "topics": [
-        "workflow",
-        "lineart",
-        "screentone",
-        "lettering",
-        "paneling",
-        "tools",
-        "composition",
-        "perspective",
-        "backgrounds",
-        "environments"
-      ],
-      "summary": "Technique-and-tool oriented resource covering manga workflow steps and traditional production tools."
+      "topics": ["workflow", "lineart", "screentone", "lettering", "backgrounds", "composition"],
+      "levels": ["Beginner", "Intermediate"],
+      "modes": ["Traditional", "Hybrid"],
+      "summary": "Structured guidance for manga-making fundamentals, including tools, tone, and panel/page concepts."
     },
     {
-      "id": "too_workflow_plot_to_print",
-      "title": "TOO — How To Draw Manga: plot → storyboard → sketch → inking → screens → lettering",
-      "provider": "TOO Corporation",
-      "official_url": "https://www.too.com/manga/en/howto.html",
-      "source_type": "trusted_platform",
-      "tools": [
-        "too"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Traditional",
-        "Hybrid"
-      ],
-      "topics": [
-        "workflow",
-        "lettering",
-        "screentone",
-        "paneling"
-      ],
-      "summary": "Concrete breakdown of manga creation steps including adding spoken lines and basic publishing considerations."
-    },
-    {
-      "id": "csp_user_guide_perspective_rulers",
-      "title": "CLIP STUDIO PAINT User Guide — Perspective Rulers",
-      "provider": "CELSYS / Clip Studio Paint",
-      "official_url": "https://help.clip-studio.com/en-us/manual_en/510_ruler/Perspective_Rulers.htm",
-      "source_type": "official",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "perspective",
-        "tools",
-        "backgrounds"
-      ],
-      "summary": "Official reference on creating and editing perspective rulers (1–3 point) for accurate scene depth."
-    },
-    {
-      "id": "csp_tips_manga_backgrounds_thumbnail",
-      "title": "CLIP STUDIO TIPS — How to draw manga styled backgrounds (thumbnail → perspective ruler → inks)",
-      "provider": "Clip Studio TIPS",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/2366",
-      "source_type": "official_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "composition",
-        "perspective",
-        "backgrounds",
-        "environments",
-        "workflow"
-      ],
-      "summary": "Background-focused manga workflow that explicitly includes thumbnails, perspective ruler setup, and finishing steps."
-    },
-    {
-      "id": "csp_how_to_draw_backgrounds",
-      "title": "CLIP STUDIO — Simply Well Drawn Part 4: Drawing Backgrounds",
-      "provider": "Clip Studio (How-to-draw)",
-      "official_url": "https://www.clipstudio.net/how-to-draw/archives/155615",
-      "source_type": "official",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital",
-        "Hybrid"
-      ],
-      "topics": [
-        "backgrounds",
-        "environments",
-        "composition"
-      ],
-      "summary": "Official lesson on thinking through and building backgrounds that support the subject and scene readability."
-    },
-    {
-      "id": "csp_tips_backgrounds_composition",
-      "title": "CLIP STUDIO TIPS — LOSE YOUR FEAR TO MAKE BACKGROUNDS (composition → rough → lineart → light/shadow)",
-      "provider": "Clip Studio TIPS",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/4792",
-      "source_type": "official_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "composition",
-        "backgrounds",
-        "environments",
-        "lighting",
-        "workflow"
-      ],
-      "summary": "Process-driven guide that starts from composition thumbnails and ends with lighting/shadow passes for environments."
-    },
-    {
-      "id": "medibang_perspective_backgrounds_guides",
-      "title": "MediBang Paint — How to draw backgrounds using perspective guides",
-      "provider": "MediBang",
-      "official_url": "https://medibangpaint.com/en/use/2022/07/use-a-perspective-ruler/",
-      "source_type": "official_platform",
-      "tools": [
-        "medibang"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "perspective",
-        "backgrounds",
-        "environments",
-        "tools"
-      ],
-      "summary": "Official walk-through: sketch → perspective guide → line drawing for backgrounds, emphasizing consistent depth."
-    },
-    {
-      "id": "medibang_room_backgrounds_snap_tools",
-      "title": "MediBang Paint — Draw rooms for backgrounds with perspective guides (Snap Tools)",
-      "provider": "MediBang",
-      "official_url": "https://medibangpaint.com/en/use/2022/10/how-to-draw-a-room-that-can-be-used-as-a-background/",
-      "source_type": "official_platform",
-      "tools": [
-        "medibang"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "perspective",
-        "backgrounds",
-        "environments",
-        "tools"
-      ],
-      "summary": "Official example project: build a reusable room background by setting perspective first and snapping to guides."
+      "id": "procreate_handbook_perspective",
+      "title": "Procreate Handbook — Perspective Guide",
+      "url": "https://procreate.com/handbook/procreate/guides/perspective/",
+      "provider": "Procreate",
+      "tool": "procreate",
+      "source_type": "official_docs",
+      "topics": ["perspective", "backgrounds", "architecture"],
+      "levels": ["Beginner", "Intermediate"],
+      "modes": ["Digital"],
+      "summary": "Official guide to perspective tools useful for background construction on iPad workflows."
     },
     {
       "id": "kodansha_manga_academy",
-      "title": "Kodansha Manga Academy — Guide for manga creators",
+      "title": "Kodansha Manga Academy",
+      "url": "https://manga-academy.kodansha.co.jp/",
       "provider": "Kodansha",
-      "official_url": "https://manga-academy.kodansha.com/",
+      "tool": "kodansha",
       "source_type": "official",
-      "tools": [
-        "kodansha"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Hybrid"
-      ],
-      "topics": [
-        "workflow"
-      ],
-      "summary": "Official guide site covering the path to becoming a manga creator, including process, advice, and creator support systems."
+      "topics": ["workflow"],
+      "levels": ["Beginner", "Intermediate"],
+      "modes": ["Hybrid", "Traditional", "Digital"],
+      "summary": "Official creator/academy entry point; useful for learning pathways and industry-oriented guidance."
     },
     {
-      "id": "csp_official_ruler_tools_props",
-      "title": "CLIP STUDIO TIPS (Official) — Basics of the Ruler tool (useful for props)",
-      "provider": "CLIP STUDIO TIPS (Official Admin)",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/1577",
+      "id": "csp_tips_backgrounds_intro",
+      "title": "CLIP STUDIO TIPS — Backgrounds (Starter Search)",
+      "url": "https://tips.clip-studio.com/en-us/search?word=background",
+      "provider": "CLIP STUDIO",
+      "tool": "clip-studio",
       "source_type": "official_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "tools",
-        "props",
-        "perspective",
-        "lineart"
-      ],
-      "summary": "Official primer on ruler tools; practical for drawing clean props/objects and technical lines in comics."
-    },
-    {
-      "id": "csp_castle_architecture_perspective",
-      "title": "Constructing Castles in CSP (architectural elements with perspective ruler)",
-      "provider": "CLIP STUDIO TIPS",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/8641",
-      "source_type": "trusted_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "architecture",
-        "perspective",
-        "backgrounds",
-        "environments"
-      ],
-      "summary": "Architectural breakdowns (windows, arches, towers) using perspective rulers—useful for scene-building and set design."
-    },
-    {
-      "id": "csp_perspective_drawings_backgrounds",
-      "title": "Perspective Drawings for Background Illustrations (linear + aerial perspective)",
-      "provider": "CLIP STUDIO TIPS",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/4345",
-      "source_type": "trusted_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "perspective",
-        "backgrounds",
-        "environments",
-        "atmospheric_perspective"
-      ],
-      "summary": "Overview of linear perspective plus aerial/atmospheric perspective for convincing depth in background scenes."
-    },
-    {
-      "id": "csp_atmospheric_perspective_backgrounds",
-      "title": "Making backgrounds easily with the perspective ruler (includes atmospheric perspective)",
-      "provider": "CLIP STUDIO TIPS",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/4420",
-      "source_type": "trusted_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "backgrounds",
-        "perspective",
-        "atmospheric_perspective",
-        "values"
-      ],
-      "summary": "Background workflow with perspective ruler plus a clear section on atmospheric perspective (distance = lower contrast/detail)."
-    },
-    {
-      "id": "csp_values_grayscale_village",
-      "title": "Composing fantasy villages with perspective ruler (grayscale values for depth)",
-      "provider": "CLIP STUDIO TIPS",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/2380",
-      "source_type": "trusted_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "values",
-        "composition",
-        "perspective",
-        "backgrounds"
-      ],
-      "summary": "Uses grayscale/value planning to separate foreground–midground–background and improve readability before finishing."
-    },
-    {
-      "id": "csp_texture_basics",
-      "title": "5 Easy Ways to use Texture in your Art (Clip Studio textures/Assets)",
-      "provider": "CLIP STUDIO TIPS",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/2174",
-      "source_type": "trusted_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Beginner",
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "materials",
-        "tools",
-        "workflow",
-        "values"
-      ],
-      "summary": "Practical texture workflow: importing textures, rasterizing, masking, and integrating texture layers for materials."
-    },
-    {
-      "id": "csp_texture_mixing",
-      "title": "Mixing Free Textures to Get Your Own Unique Textures",
-      "provider": "CLIP STUDIO TIPS",
-      "official_url": "https://tips.clip-studio.com/en-us/articles/4107",
-      "source_type": "trusted_platform",
-      "tools": [
-        "clip-studio"
-      ],
-      "levels": [
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "materials",
-        "workflow",
-        "values"
-      ],
-      "summary": "Shows a repeatable way to build unique material textures by stacking free textures with blend modes and opacity."
-    },
-    {
-      "id": "procreate_perspective_guide",
-      "title": "Procreate Handbook — Perspective Guide",
-      "provider": "Procreate (Official Handbook)",
-      "official_url": "https://help.procreate.com/procreate/handbook/guides/guides-perspective",
-      "source_type": "official",
-      "tools": [
-        "procreate"
-      ],
-      "levels": [
-        "Beginner"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "perspective",
-        "backgrounds",
-        "environments"
-      ],
-      "summary": "Official guide to setting vanishing points and building structured backgrounds with Procreate’s Perspective Guide."
-    },
-    {
-      "id": "procreate_3d_material_brushes",
-      "title": "Procreate Handbook — Brush Studio (3D Materials settings)",
-      "provider": "Procreate (Official Handbook)",
-      "official_url": "https://help.procreate.com/procreate/handbook/brushes/brush-studio-settings",
-      "source_type": "official",
-      "tools": [
-        "procreate"
-      ],
-      "levels": [
-        "Intermediate"
-      ],
-      "modes": [
-        "Digital"
-      ],
-      "topics": [
-        "materials",
-        "tools"
-      ],
-      "summary": "Explains how Material Brushes use metallic/roughness values—useful when studying material response and texture logic."
+      "topics": ["backgrounds", "environments", "composition", "lighting"],
+      "levels": ["Beginner", "Intermediate", "Advanced"],
+      "modes": ["Digital"],
+      "summary": "Quick entry point to curated background tutorials; refine via tags and difficulty inside TIPS."
     }
   ]
 }
