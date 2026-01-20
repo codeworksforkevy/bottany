@@ -1,0 +1,351 @@
+{
+  "version": 2,
+  "updated_utc": "2026-01-20",
+  "categories": [
+    "beer",
+    "soft_drinks",
+    "water",
+    "coffee",
+    "cocoa"
+  ],
+  "tiers": [
+    "mainstream",
+    "heritage",
+    "craft",
+    "industry"
+  ],
+  "items": [
+    {
+      "id": "beer_abinbev",
+      "name": "AB InBev",
+      "category": "beer",
+      "tier": "industry",
+      "notable_brands": [
+        "Stella Artois",
+        "Leffe",
+        "Hoegaarden",
+        "Jupiler"
+      ],
+      "url": "https://www.ab-inbev.com/",
+      "summary": "Global brewer with Belgian roots; maker of many iconic beer brands.",
+      "tags": [
+        "lager",
+        "abbey",
+        "wheat",
+        "pils"
+      ]
+    },
+    {
+      "id": "beer_duvel_moortgat",
+      "name": "Duvel Moortgat",
+      "category": "beer",
+      "tier": "heritage",
+      "notable_brands": [
+        "Duvel",
+        "Vedett",
+        "Chouffe",
+        "Liefmans"
+      ],
+      "url": "https://www.duvelmoortgat.com/en",
+      "summary": "Family-owned Belgian brewing group known for strong golden ales and specialty beer brands.",
+      "tags": [
+        "strong_ale",
+        "specialty",
+        "family"
+      ]
+    },
+    {
+      "id": "beer_lindemans",
+      "name": "Lindemans",
+      "category": "beer",
+      "tier": "heritage",
+      "notable_brands": [
+        "Gueuze",
+        "Kriek",
+        "Faro"
+      ],
+      "url": "https://www.lindemans.be/",
+      "summary": "Family brewery (since 1822) known for lambic beers from the Senne Valley.",
+      "tags": [
+        "lambic",
+        "kriek",
+        "gueuze"
+      ]
+    },
+    {
+      "id": "beer_cantillon",
+      "name": "Brasserie Cantillon",
+      "category": "beer",
+      "tier": "craft",
+      "notable_brands": [
+        "Gueuze",
+        "Kriek",
+        "Lambic"
+      ],
+      "url": "https://www.cantillon.be/",
+      "summary": "Traditional lambic brewery and museum in Brussels, renowned for spontaneous fermentation.",
+      "tags": [
+        "lambic",
+        "spontaneous",
+        "brussels"
+      ]
+    },
+    {
+      "id": "beer_delirium_huyghe",
+      "name": "Brouwerij Huyghe",
+      "category": "beer",
+      "tier": "heritage",
+      "notable_brands": [
+        "Delirium Tremens"
+      ],
+      "url": "https://www.brouwerijhuyghe.be/en",
+      "summary": "Belgian brewery best known internationally for the Delirium range.",
+      "tags": [
+        "strong_ale",
+        "classic"
+      ]
+    },
+    {
+      "id": "beer_chimay",
+      "name": "Chimay (Scourmont Abbey)",
+      "category": "beer",
+      "tier": "heritage",
+      "notable_brands": [
+        "Chimay Red",
+        "Chimay Blue",
+        "Chimay Triple"
+      ],
+      "url": "https://chimay.com/en/",
+      "summary": "Trappist brewery and cheese producer at Scourmont Abbey.",
+      "tags": [
+        "trappist",
+        "abbey"
+      ]
+    },
+    {
+      "id": "beer_orval",
+      "name": "Orval Abbey",
+      "category": "beer",
+      "tier": "heritage",
+      "notable_brands": [
+        "Orval"
+      ],
+      "url": "https://www.orval.be/en/",
+      "summary": "Trappist abbey brewery producing the distinctive, dry-hopped Orval beer.",
+      "tags": [
+        "trappist",
+        "dry_hop"
+      ]
+    },
+    {
+      "id": "beer_rochefort",
+      "name": "Abbaye Notre-Dame de Saint-Remy (Rochefort)",
+      "category": "beer",
+      "tier": "heritage",
+      "notable_brands": [
+        "Rochefort 6",
+        "Rochefort 8",
+        "Rochefort 10"
+      ],
+      "url": "https://www.rochefort.be/en/",
+      "summary": "Trappist brewery known for dark, rich ales with bottle conditioning.",
+      "tags": [
+        "trappist",
+        "dark_ale"
+      ]
+    },
+    {
+      "id": "beer_westmalle",
+      "name": "Trappist Westmalle",
+      "category": "beer",
+      "tier": "heritage",
+      "notable_brands": [
+        "Westmalle Tripel",
+        "Westmalle Dubbel"
+      ],
+      "url": "https://www.trappistwestmalle.be/en/",
+      "summary": "Trappist brewery associated with the archetypal Belgian tripel style.",
+      "tags": [
+        "trappist",
+        "tripel"
+      ]
+    },
+    {
+      "id": "beer_westvleteren",
+      "name": "Trappist Westvleteren (Saint-Sixtus Abbey)",
+      "category": "beer",
+      "tier": "heritage",
+      "notable_brands": [
+        "Westvleteren Blond",
+        "Westvleteren 8",
+        "Westvleteren 12"
+      ],
+      "url": "https://www.trappistwestvleteren.be/en",
+      "summary": "Monastic Trappist beers brewed in small quantities, available via the abbey sales channels.",
+      "tags": [
+        "trappist",
+        "abbey",
+        "limited"
+      ]
+    },
+    {
+      "id": "soft_ritchie",
+      "name": "Ritchie",
+      "category": "soft_drinks",
+      "tier": "craft",
+      "notable_brands": [
+        "Ritchie Lemonade",
+        "Ritchie Natural Cola"
+      ],
+      "url": "https://www.drinkritchie.com/en/",
+      "summary": "Traditional Belgian soft drink brand (lemonades/cola) revived as a modern line.",
+      "tags": [
+        "lemonade",
+        "cola"
+      ]
+    },
+    {
+      "id": "soft_looza",
+      "name": "Looza",
+      "category": "soft_drinks",
+      "tier": "mainstream",
+      "notable_brands": [
+        "Looza Orange",
+        "Looza ACE",
+        "Looza Apple-Cherry"
+      ],
+      "url": "https://looza.be/",
+      "summary": "Belgian fruit juice brand (since 1947) with a wide range of classic and blended juices.",
+      "tags": [
+        "juice",
+        "fruit"
+      ]
+    },
+    {
+      "id": "water_spa",
+      "name": "SPA",
+      "category": "water",
+      "tier": "mainstream",
+      "notable_brands": [
+        "SPA Reine",
+        "SPA Intense"
+      ],
+      "url": "https://www.spa.be/en",
+      "summary": "Belgian natural mineral water brand; part of Spadel.",
+      "tags": [
+        "mineral_water"
+      ]
+    },
+    {
+      "id": "water_spadel",
+      "name": "Spadel Group",
+      "category": "water",
+      "tier": "industry",
+      "notable_brands": [
+        "Spa",
+        "Bru",
+        "Wattwiller",
+        "Carola",
+        "Devin"
+      ],
+      "url": "https://www.spadel.com/en",
+      "summary": "Family group of natural mineral waters and regional brands.",
+      "tags": [
+        "waters"
+      ]
+    },
+    {
+      "id": "water_bru",
+      "name": "BRU",
+      "category": "water",
+      "tier": "mainstream",
+      "notable_brands": [
+        "BRU sparkling",
+        "BRU still"
+      ],
+      "url": "https://bru.be/nl",
+      "summary": "Naturally sparkling Belgian water brand within the Spadel portfolio.",
+      "tags": [
+        "sparkling_water"
+      ]
+    },
+    {
+      "id": "water_chaudfontaine",
+      "name": "Chaudfontaine",
+      "category": "water",
+      "tier": "mainstream",
+      "notable_brands": [
+        "Chaudfontaine still",
+        "Chaudfontaine sparkling"
+      ],
+      "url": "https://www.chaudfontaine.be/",
+      "summary": "Belgian mineral water brand bottled in Wallonia; owned by The Coca-Cola Company.",
+      "tags": [
+        "mineral_water"
+      ]
+    },
+    {
+      "id": "coffee_or",
+      "name": "OR Coffee Roasters",
+      "category": "coffee",
+      "tier": "craft",
+      "notable_brands": [
+        "Specialty coffee",
+        "Training center"
+      ],
+      "url": "https://www.orcoffee.be/",
+      "summary": "Belgian specialty coffee roaster and training center focused on direct trade.",
+      "tags": [
+        "specialty",
+        "direct_trade"
+      ]
+    },
+    {
+      "id": "coffee_mok",
+      "name": "MOK Coffee",
+      "category": "coffee",
+      "tier": "craft",
+      "notable_brands": [
+        "Micro roastery",
+        "Brussels",
+        "Leuven"
+      ],
+      "url": "https://mokcoffee.be/",
+      "summary": "Belgian micro coffee roastery emphasizing quality and traceability.",
+      "tags": [
+        "specialty",
+        "micro_roastery"
+      ]
+    },
+    {
+      "id": "coffee_caffenation",
+      "name": "Caffenation",
+      "category": "coffee",
+      "tier": "craft",
+      "notable_brands": [
+        "Antwerp roastery",
+        "Coffee bars"
+      ],
+      "url": "https://caffenation.be/",
+      "summary": "Specialty coffee roaster based in Antwerp with cafés and online shop.",
+      "tags": [
+        "specialty",
+        "antwerp"
+      ]
+    },
+    {
+      "id": "cocoa_cecemel",
+      "name": "Cécémel",
+      "category": "cocoa",
+      "tier": "mainstream",
+      "notable_brands": [
+        "Cécémel"
+      ],
+      "url": "https://www.cecemel.com/nl-be",
+      "summary": "Belgian chocolate drink brand (marketed as Chocomel in some countries).",
+      "tags": [
+        "chocolate_milk"
+      ]
+    }
+  ]
+}
