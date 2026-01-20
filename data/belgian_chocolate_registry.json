@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "generated_utc": "2026-01-20T00:00:00Z",
+  "intro_sources": {
+    "belgian_context": [
+      "Visit Flanders: Top Belgian chocolate brands - https://www.visitflanders.com/en/discover-flanders/culinary-treats-and-belgian-beer/belgian-chocolate/top-belgian-chocolate-brands",
+      "Food.be: Chocolate, Belgium's most excellent ambassador - https://www.food.be/stories/chocolate-belgiums-most-excellent-ambassador"
+    ],
+    "chocolate_making": [
+      "Britannica: Chocolate (processing/tempering basics) - https://www.britannica.com/topic/chocolate"
+    ]
+  },
+  "brands": {
+    "chocolatiers": [
+      {"name": "Neuhaus", "url": "https://www.neuhauschocolates.com/", "note": "Inventor of the Belgian praline (historical claim widely repeated)."},
+      {"name": "Leonidas", "url": "https://www.leonidas.com/"},
+      {"name": "Pierre Marcolini", "url": "https://eu.marcolini.com/"},
+      {"name": "Mary Chocolatier", "url": "https://www.mary.be/"},
+      {"name": "Galler", "url": "https://www.galler.com/"},
+      {"name": "Guylian", "url": "https://www.guylian.com/"}
+    ],
+    "mass_market": [
+      {"name": "Cote d'Or", "url": "https://www.cotedor.be/"},
+      {"name": "Jacques", "url": "https://www.jacqueschocolates.com/"},
+      {"name": "Cote d'Or (Mondelez brand hub)", "url": "https://www.mondelezinternational.com/our-brands/"}
+    ],
+    "industry": [
+      {"name": "Barry Callebaut", "url": "https://www.barry-callebaut.com/", "note": "Major Belgian cocoa/chocolate manufacturer (B2B ingredients)."},
+      {"name": "Belcolade", "url": "https://www.belcolade.com/"},
+      {"name": "Puratos", "url": "https://www.puratos.com/", "note": "Belgian bakery/chocolate ingredients and chocolate (B2B)."}
+    ],
+    "drinks": [
+      {"name": "Cecemel", "url": "https://www.cecemel.com/nl-be", "note": "Chocolate milk brand (Chocomel branding in other markets)."},
+      {"name": "Chocomel (global brand page)", "url": "https://www.frieslandcampina.com/brands/chocomel/"},
+      {"name": "Kwatta", "url": "https://www.kraftheinz.com/nl-BE/kwatta/assortiment", "note": "Belgium brand page (Kraft Heinz)."}
+    ]
+  },
+  "sources": {
+    "brands": [
+      "Visit Flanders: Top Belgian chocolate brands - https://www.visitflanders.com/en/discover-flanders/culinary-treats-and-belgian-beer/belgian-chocolate/top-belgian-chocolate-brands",
+      "Food.be: Chocolate, Belgium's most excellent ambassador - https://www.food.be/stories/chocolate-belgiums-most-excellent-ambassador"
+    ]
+  }
+}
