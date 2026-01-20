@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "name": "Nick Bostrom (2003) - Are You Living in a Computer Simulation?",
+      "year": 2003,
+      "url": "https://simulation-argument.com/simulation.pdf",
+      "topics": [
+        "simulation"
+      ],
+      "type": "paper"
+    }
+  ]
+}

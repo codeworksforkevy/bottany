@@ -1,0 +1,55 @@
+{
+  "version": 2,
+  "quotes": [
+    {
+      "id": "bostrom2003-abstract",
+      "topic": "simulation",
+      "author": "Nick Bostrom",
+      "work": "Are You Living in a Computer Simulation?",
+      "year": 2003,
+      "quote": "At least one of the following propositions is true.",
+      "source_url": "https://simulation-argument.com/simulation.pdf",
+      "source_type": "paper"
+    },
+    {
+      "id": "schelling2005-opening",
+      "topic": "game",
+      "author": "Thomas C. Schelling",
+      "work": "Nobel Lecture",
+      "year": 2005,
+      "quote": "My topic is the interdependent decisions of adversaries.",
+      "source_url": "https://www.nobelprize.org/prizes/economic-sciences/2005/schelling/lecture/",
+      "source_type": "lecture"
+    },
+    {
+      "id": "aumann2005-opening",
+      "topic": "game",
+      "author": "Robert J. Aumann",
+      "work": "Nobel Lecture",
+      "year": 2005,
+      "quote": "Human misery is staggering: wars, disease, poverty.",
+      "source_url": "https://www.nobelprize.org/prizes/economic-sciences/2005/aumann/lecture/",
+      "source_type": "lecture"
+    },
+    {
+      "id": "selten1994-models",
+      "topic": "game",
+      "author": "Reinhard Selten",
+      "work": "Nobel Lecture",
+      "year": 1994,
+      "quote": "Models simplify reality; their validity must be assessed.",
+      "source_url": "https://www.nobelprize.org/prizes/economic-sciences/1994/selten/lecture/",
+      "source_type": "lecture"
+    },
+    {
+      "id": "harsanyi1994-bargaining",
+      "topic": "game",
+      "author": "John C. Harsanyi",
+      "work": "Nobel Lecture",
+      "year": 1994,
+      "quote": "Game theory analyzes strategic interaction among rational players.",
+      "source_url": "https://www.nobelprize.org/prizes/economic-sciences/1994/harsanyi/lecture/",
+      "source_type": "lecture"
+    }
+  ]
+}
