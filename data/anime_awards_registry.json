@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "updated_utc": "2026-01-20T00:00:00Z",
+  "awards": [
+    {
+      "id": "taaf",
+      "name": "Tokyo Anime Award Festival (TAAF)",
+      "since": 2014,
+      "organizer": "Tokyo Anime Award Festival Executive Committee",
+      "region": "japan",
+      "kind": "festival",
+      "note": "Anime-focused festival and awards in Tokyo; official festival site.",
+      "url": "https://animeaward.jp/en/"
+    },
+    {
+      "id": "japan_academy_animation",
+      "name": "Japan Academy Film Prize — Animation of the Year",
+      "since": 2007,
+      "organizer": "Japan Academy Film Prize Association",
+      "region": "japan",
+      "kind": "industry",
+      "note": "Major national film awards with a dedicated Animation category; official Japan Academy Prize site.",
+      "url": "https://www.japan-academy-prize.jp/"
+    },
+    {
+      "id": "mainichi_film_awards",
+      "name": "Mainichi Film Awards — Animation categories",
+      "since": 1946,
+      "organizer": "Mainichi Shimbun",
+      "region": "japan",
+      "kind": "industry",
+      "note": "Long-running Japanese film awards that include major animation recognition (e.g., Animation Film Award, Ōfuji Noburō Award).",
+      "url": "https://en.wikipedia.org/wiki/Mainichi_Film_Awards"
+    },
+    {
+      "id": "annie_awards",
+      "name": "Annie Awards",
+      "since": 1972,
+      "organizer": "ASIFA-Hollywood",
+      "region": "international",
+      "kind": "industry",
+      "note": "Prestigious international animation awards; official Annie Awards site.",
+      "url": "https://annieawards.org/"
+    },
+    {
+      "id": "annecy",
+      "name": "Annecy International Animation Film Festival — Awards (Cristal)",
+      "since": 1960,
+      "organizer": "CITIA / Annecy Festival",
+      "region": "international",
+      "kind": "festival",
+      "note": "Top-tier international animation festival; official Annecy festival site and awards pages.",
+      "url": "https://www.annecyfestival.com/en"
+    }
+  ]
+}

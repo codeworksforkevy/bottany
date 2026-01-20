@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "updated_utc": "2026-01-20T00:00:00Z",
+  "entries": [
+    {
+      "id": "choju_giga_12c",
+      "medium": "manga",
+      "scope": "japan",
+      "date": "12th–13th c.",
+      "title": "Chōjū-jinbutsu-giga (scrolls of frolicking animals)",
+      "note": "Frequently cited as a proto-manga milestone: sequential ink drawings with character motion and visual storytelling.",
+      "url": "https://www.tnm.jp/modules/r_free_page/index.php?id=1707&lang=en"
+    },
+    {
+      "id": "hokusai_manga_1814",
+      "medium": "manga",
+      "scope": "japan",
+      "date": "1814",
+      "title": "Hokusai Manga (北斎漫画), Volume I published",
+      "note": "Early use of the term “manga” for informal drawings/sketch collections; influential for later usage.",
+      "url": "https://www.loc.gov/item/j67001705/"
+    },
+    {
+      "id": "kitazawa_rakuten_1902",
+      "medium": "manga",
+      "scope": "japan",
+      "date": "1902",
+      "title": "Rakuten Kitazawa — “Tagosaku to Mokube no Tokyo Kenbutsu”",
+      "note": "Often referenced as an early “modern manga”/comic strip format milestone in Japan.",
+      "url": "https://commons.wikimedia.org/wiki/File:Tagosaku_to_Mokube_no_Tokyo_Kenbutsu.jpg"
+    },
+    {
+      "id": "katsudo_shashin_1905_1912",
+      "medium": "anime",
+      "scope": "japan",
+      "date": "c. 1905–1912",
+      "title": "Katsudō Shashin (Matsumoto fragment)",
+      "note": "A short animated filmstrip widely cited as the oldest known Japanese animation fragment (dating debated).",
+      "url": "https://en.wikipedia.org/wiki/Katsud%C5%8D_Shashin"
+    },
+    {
+      "id": "namakura_gatana_1917",
+      "medium": "anime",
+      "scope": "japan",
+      "date": "1917",
+      "title": "Namakura Gatana (The Dull Sword)",
+      "note": "Among the oldest surviving Japanese animated shorts; early example of comedic animation.",
+      "url": "https://tr.wikipedia.org/wiki/Dosya:Kouichi_Jun%27ichi_-_Namakura_Gatana_(1917)"
+    },
+    {
+      "id": "momotaro_sacred_sailors_1945",
+      "medium": "anime",
+      "scope": "japan",
+      "date": "1945",
+      "title": "Momotaro: Sacred Sailors",
+      "note": "Widely cited as the first Japanese feature-length animated film (wartime propaganda context).",
+      "url": "https://en.wikipedia.org/wiki/Momotaro:_Sacred_Sailors"
+    },
+    {
+      "id": "white_snake_1958",
+      "medium": "anime",
+      "scope": "japan",
+      "date": "1958",
+      "title": "The White Snake Enchantress (Hakujaden)",
+      "note": "Often cited as the first Japanese color animated feature film; Toei Animation’s first theatrical feature.",
+      "url": "https://en.wikipedia.org/wiki/The_White_Snake_Enchantress_(film)"
+    },
+    {
+      "id": "astro_boy_1963",
+      "medium": "anime",
+      "scope": "japan",
+      "date": "1963-01-01",
+      "title": "Astro Boy TV series premieres",
+      "note": "Commonly cited as the first Japanese TV animation series produced as an ongoing series (Tezuka).",
+      "url": "https://artsandculture.google.com/story/tezuka-osamu-the-dawn-of-tv-animation-tezuka-osamu/dgWBBNM8pRsA8A?hl=en"
+    }
+  ]
+}

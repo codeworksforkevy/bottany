@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "updated_utc": "2026-01-20T00:00:00Z",
+  "awards": [
+    {
+      "id": "shogakukan_manga_award",
+      "name": "Shogakukan Manga Award (小学館漫画賞)",
+      "since": 1955,
+      "organizer": "Shogakukan",
+      "region": "japan",
+      "kind": "industry",
+      "note": "One of Japan’s oldest manga awards; official Shogakukan award page.",
+      "url": "https://shogakukan-comic.jp/shogakukan-mangasho"
+    },
+    {
+      "id": "kodansha_manga_award",
+      "name": "Kodansha Manga Award (講談社漫画賞)",
+      "since": 1977,
+      "organizer": "Kodansha",
+      "region": "japan",
+      "kind": "industry",
+      "note": "Major annual manga award; official Kodansha winners/history index.",
+      "url": "https://www.kodansha.co.jp/awards/comics/histories"
+    },
+    {
+      "id": "japan_international_manga_award",
+      "name": "Japan International MANGA Award",
+      "since": 2007,
+      "organizer": "Ministry of Foreign Affairs of Japan",
+      "region": "international",
+      "kind": "government",
+      "note": "International award founded by Japan’s MOFA to promote global exchange through manga.",
+      "url": "https://www.manga-award.mofa.go.jp/index_e.HTML"
+    },
+    {
+      "id": "jmaf_manga_division",
+      "name": "Japan Media Arts Festival — Manga Division",
+      "since": 1997,
+      "organizer": "Agency for Cultural Affairs (Japan)",
+      "region": "japan",
+      "kind": "festival",
+      "note": "Government-run media arts awards; Manga Division award pages.",
+      "url": "https://j-mediaarts-festival.bunka.go.jp/en/division/manga/index-2.html"
+    },
+    {
+      "id": "kadokawa_world_manga_contest",
+      "name": "KADOKAWA WORLD MANGA CONTEST",
+      "since": 2013,
+      "organizer": "KADOKAWA",
+      "region": "international",
+      "kind": "industry",
+      "note": "Publisher-run contest open worldwide; official site.",
+      "url": "https://kadokawaworldmanga.com/"
+    }
+  ]
+}
