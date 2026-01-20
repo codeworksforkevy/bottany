@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "enabled": true,
+  "keywords": [
+    "free nitro",
+    "steam gift",
+    "airdrop",
+    "crypto giveaway"
+  ],
+  "regex": [
+    "\\bdiscord\\s+nitro\\b"
+  ]
+}

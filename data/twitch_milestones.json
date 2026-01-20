@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "follower_thresholds": [
+    100,
+    250,
+    500,
+    1000,
+    2000,
+    5000
+  ],
+  "last_followers": 0,
+  "last_announced": 0
+}
