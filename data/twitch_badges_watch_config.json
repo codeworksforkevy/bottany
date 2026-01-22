@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "enabled": true,
+  "discord_channel_id": null,
+  "watch_global_badges": true,
+  "watch_channel_badges": false,
+  "twitch_broadcaster_login": "kevkevvy",
+  "twitch_broadcaster_id": "",
+  "poll_minutes": 360,
+  "announce_max_badges_per_run": 6,
+  "last_run_ts": 0
+}
