@@ -1,0 +1,7 @@
+{
+  "city_to_location_id": {
+    "london": "2643743",
+    "manchester": "2643123",
+    "edinburgh": "2650225"
+  }
+}

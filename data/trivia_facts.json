@@ -1,96 +1,10 @@
 {
-  "schema_version": "1.0",
-  "generated_utc": "2025-12-28T12:21:35Z",
   "facts": [
     {
-      "id": "art_met_timeline",
-      "topic": "Art History",
-      "fact": "The Met’s Heilbrunn Timeline of Art History is a free scholarly resource that organizes art history by time and geography.",
-      "source_url": "https://www.metmuseum.org/toah/"
-    },
-    {
-      "id": "british_museum_collection",
-      "topic": "Museum Collections",
-      "fact": "The British Museum provides an online collection search with object records and research information.",
-      "source_url": "https://www.britishmuseum.org/collection"
-    },
-    {
-      "id": "tate_art_terms",
-      "topic": "Art Terms",
-      "fact": "Tate hosts an online glossary explaining key art terms used in modern and contemporary art.",
-      "source_url": "https://www.tate.org.uk/art/art-terms"
-    },
-    {
-      "id": "moma_research",
-      "topic": "Museum Research",
-      "fact": "MoMA publishes research and exhibition materials through its online resources and publications pages.",
-      "source_url": "https://www.moma.org/research-and-learning"
-    },
-    {
-      "id": "gamestudies_journal",
-      "topic": "Game Studies",
-      "fact": "Game Studies is a peer-reviewed, open-access journal dedicated to the study of games.",
-      "source_url": "https://gamestudies.org/"
-    },
-    {
-      "id": "todigra_journal",
-      "topic": "Game Studies",
-      "fact": "ToDIGRA (Transactions of the DiGRA) is an open-access, peer-reviewed journal for game research.",
-      "source_url": "https://todigra.org/"
-    },
-    {
-      "id": "leonardo_mitpress",
-      "topic": "Art & Tech",
-      "fact": "Leonardo (MIT Press) is a peer-reviewed journal at the intersection of art, science, and technology.",
-      "source_url": "https://direct.mit.edu/leon"
-    },
-    {
-      "id": "oxford_art_journal",
-      "topic": "Art History",
-      "fact": "Oxford Art Journal is a leading peer-reviewed publication in art history and visual culture (Oxford University Press).",
-      "source_url": "https://academic.oup.com/oaj"
-    },
-    {
-      "id": "praemium_imperiale",
-      "topic": "Art Awards",
-      "fact": "Praemium Imperiale is a major international arts prize awarded by the Japan Art Association across multiple disciplines.",
-      "source_url": "https://www.praemiumimperiale.org/en"
-    },
-    {
-      "id": "turner_prize",
-      "topic": "Art Awards",
-      "fact": "The Turner Prize is one of the best-known contemporary art prizes in the United Kingdom, organized by Tate.",
-      "source_url": "https://www.tate.org.uk/art/turner-prize"
-    },
-    {
-      "id": "v_and_a_about",
-      "topic": "Design & Decorative Arts",
-      "fact": "The V&A is a leading museum for art, design, and performance, with extensive online resources.",
-      "source_url": "https://www.vam.ac.uk/"
-    },
-    {
-      "id": "internet_archive_software",
-      "topic": "Digital Preservation",
-      "fact": "The Internet Archive hosts a large software collection, including preserved games and historical software.",
-      "source_url": "https://archive.org/details/software"
-    },
-    {
-      "id": "vghf",
-      "topic": "Game History",
-      "fact": "The Video Game History Foundation supports game preservation and provides research resources and collections.",
-      "source_url": "https://gamehistory.org/"
-    },
-    {
-      "id": "ashmolean",
-      "topic": "University Museums",
-      "fact": "The Ashmolean Museum is often described as the world’s first university museum, part of the University of Oxford.",
-      "source_url": "https://www.ashmolean.org/"
-    },
-    {
-      "id": "harvard_art_museums",
-      "topic": "University Museums",
-      "fact": "Harvard Art Museums provide collections, exhibitions, and research resources online.",
-      "source_url": "https://harvardartmuseums.org/"
+      "id": "t1",
+      "title": "Tesla patent numbering",
+      "text": "Nikola Tesla was granted hundreds of patents across multiple countries; patent numbers vary by jurisdiction.",
+      "source_url": "https://www.uspto.gov/patents"
     }
   ]
 }
