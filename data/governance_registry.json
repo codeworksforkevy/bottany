@@ -1,0 +1,28 @@
+{
+  "rules": {
+    "require_reference_field": true
+  },
+  "allowlists": {
+    "academic": {
+      "domains": [
+        "uspto.gov",
+        "oxfordlearnersdictionaries.com",
+        "dictionary.cambridge.org",
+        "merriam-webster.com",
+        "oed.com",
+        "britannica.com",
+        "metoffice.gov.uk",
+        "datahub.metoffice.gov.uk",
+        "datapoint.metoffice.gov.uk"
+      ]
+    },
+    "twitch": {
+      "domains": [
+        "twitch.tv",
+        "id.twitch.tv",
+        "api.twitch.tv",
+        "help.twitch.tv"
+      ]
+    }
+  }
+}
