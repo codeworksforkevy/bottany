@@ -1,0 +1,58 @@
+{
+  "version": "1.0.0",
+  "license_allowlist": [
+    "CC0",
+    "CC BY 4.0",
+    "CC BY-SA 4.0",
+    "CC BY-NC 4.0",
+    "CC BY-NC-SA 4.0",
+    "CC BY-NC-SA 3.0"
+  ],
+  "sources": [
+    {
+      "id": "yale_oyc",
+      "org": "Yale",
+      "type": "html_list",
+      "index_url": "https://oyc.yale.edu/courses",
+      "license_required": true,
+      "expected_license_substrings": [
+        "CC BY-NC-SA 3.0",
+        "Creative Commons"
+      ]
+    },
+    {
+      "id": "epfl_cc",
+      "org": "EPFL",
+      "type": "rss_or_html",
+      "index_url": "https://actu.epfl.ch/",
+      "license_required": true,
+      "expected_license_substrings": [
+        "CC BY-SA 4.0",
+        "Creative Commons"
+      ]
+    },
+    {
+      "id": "ipparis_cc",
+      "org": "Institut Polytechnique de Paris",
+      "type": "html_list",
+      "index_url": "https://www.ip-paris.fr/",
+      "license_required": true,
+      "expected_license_substrings": [
+        "CC BY 4.0",
+        "Creative Commons"
+      ]
+    },
+    {
+      "id": "princeton_repo",
+      "org": "Princeton",
+      "type": "oai_pmh_or_repo",
+      "index_url": "https://dataspace.princeton.edu/",
+      "license_required": true,
+      "expected_license_substrings": [
+        "Creative Commons",
+        "CC BY",
+        "CC0"
+      ]
+    }
+  ]
+}
