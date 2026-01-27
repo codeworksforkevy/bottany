@@ -1,82 +1,53 @@
-# Bottany (Discord bot) — packaged build
+# AcademicTrivia Discord Bot
 
-This bundle contains a deployable Discord bot focused on:
-- governance/allowlist validation for registries
-- Twitch automation:
-  - **Badges watcher** (official Helix API) that posts **embedded thumbnails** (fixes “download link only” behavior)
-  - **EventSub webhook** server for:
-    - `stream.online` / `stream.offline` notifications
-    - `channel.clip.create` notifications + clip logging
-  - curated **/twitch drops** registry command
-- Met Office **DataPoint** weather (official) via `/weather metoffice_site` and cache-based `/weather metoffice_find`
-- hybrid `/help` (auto-discovery + curated overrides)
+A minimal Discord bot that provides **/academictrivia daily** (deterministic daily rotation) and **/academictrivia random**
+from an **open-licensed** academic sentence pool.
 
-## Quick start (local)
+## Features
+- `/academictrivia daily` — same sentence for everyone each UTC day
+- `/academictrivia random` — random sentence
+- Pool file: `data/academic_trivia_pool.json` (target 1000+ unique one-sentence facts)
+- Builder script (skeleton): `scripts/build_academic_trivia_pool.py` (ingest + license whitelist + quality filter + dedupe)
 
-1) Create a `.env` (or Railway variables) with:
+> This repo ships with an empty pool. You must build/fill the pool before the command becomes useful.
 
-- `DISCORD_TOKEN` (required)
-- `DEV_GUILD_ID` (optional, for faster command sync while testing)
-- `TZ_NAME` (default: Europe/Luxembourg)
+## Setup
 
-Twitch (optional, for badges + EventSub scripts):
-- `TWITCH_CLIENT_ID`
-- `TWITCH_CLIENT_SECRET`
-- `TWITCH_EVENTSUB_SECRET` (required to validate webhook signatures)
-- `PUBLIC_BASE_URL` (your public HTTPS base, e.g. `https://your-app.up.railway.app`)
-- `TWITCH_EVENTSUB_PORT` (default 8090) and `TWITCH_EVENTSUB_PATH` (default `/twitch/eventsub`)
+### 1) Create a Discord application & bot
+- Create an app in the Discord Developer Portal
+- Add a bot user
+- Copy the bot token
 
-Met Office (optional):
-- `METOFFICE_API_KEY`
+### 2) Configure environment variables
+Create a `.env` file (or set variables on your host):
 
-2) Install and run:
+```
+DISCORD_TOKEN=YOUR_TOKEN_HERE
+DATA_DIR=./data
+TZ_NAME=UTC
+```
 
-```bash
+### 3) Install and run
+```
+python -m venv .venv
+# Windows: .venv\Scripts\activate
+# macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
 python main.py
 ```
 
-## Twitch: how live notifications work
+### 4) Build the pool (optional but recommended)
+The builder script is a **safe-by-default skeleton**:
+- It only keeps sentences when it detects a license string that matches the allowlist.
+- If license info is missing, it drops the page.
 
-There are two pieces:
-
-1) In Discord, set a posting channel and watch list:
-- `/admin setchannel topic:twitch channel:#your-channel`
-- `/twitch watch twitch_login:piica channel:#your-channel`
-
-2) Create EventSub subscriptions that point to your callback:
-- Railway exposes **one** public port. This bundle runs:
-  - Healthcheck on `$PORT` (Railway-provided)
-  - EventSub webhook on `TWITCH_EVENTSUB_PORT` (default 8090)
-
-Recommended for Railway:
-- Run EventSub **on the same `$PORT`** as the healthcheck by setting:
-  - `TWITCH_EVENTSUB_PORT=$PORT`
-  - and ensure the path does not collide; default `/twitch/eventsub` is fine.
-
-Then use:
-```bash
-python scripts/create_eventsub_subscriptions.py --login piica
+Run:
+```
+python scripts/build_academic_trivia_pool.py
 ```
 
-The script supports both app tokens and user tokens (if you provide `TWITCH_USER_OAUTH_TOKEN`).
+Then verify `data/academic_trivia_pool.json` contains >= 1000 items.
 
-## Met Office sites cache
-
-To search by city name (`/weather metoffice_find`), generate a local cache:
-
-```bash
-python scripts/update_metoffice_sites_cache.py
-```
-
-This writes `data/metoffice_sites_cache.json`.
-
-## Files of interest
-
-- `main.py` — bot entrypoint
-- `commands/twitch_badges_watch.py` — badge polling + embedded thumbnails
-- `commands/twitch_eventsub.py` — webhook listener (challenge + signature verification)
-- `commands/weather_metoffice.py` — DataPoint forecast
-- `commands/help.py` — hybrid help system
-- `data/*.json` — registries (seeded with minimal examples)
-
+## Licensing note
+Only ingest content where each item/page clearly exposes an open license (e.g., Creative Commons).
+If license is missing/ambiguous, do not ingest.
