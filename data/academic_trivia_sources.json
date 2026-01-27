@@ -1,0 +1,86 @@
+{
+  "license_allowlist": [
+    "https://creativecommons.org/licenses/by/4.0/",
+    "https://creativecommons.org/licenses/by-sa/4.0/",
+    "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "http://creativecommons.org/licenses/by-nc-sa/3.0/us",
+    "https://creativecommons.org/publicdomain/zero/1.0/",
+    "CC0"
+  ],
+  "sources": [
+    {
+      "id": "mit_ocw_course_pages",
+      "type": "html_course_catalog",
+      "base_url": "https://ocw.mit.edu",
+      "start_urls": [
+        "https://ocw.mit.edu/search/?type=course"
+      ],
+      "declared_license": "CC BY-NC-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      "max_pages": 60
+    },
+    {
+      "id": "yale_oyc_courses",
+      "type": "html_list",
+      "start_urls": [
+        "https://oyc.yale.edu/courses"
+      ],
+      "declared_license": "CC BY-NC-SA 3.0 US (most materials)",
+      "license_url": "http://creativecommons.org/licenses/by-nc-sa/3.0/us",
+      "max_pages": 50
+    },
+    {
+      "id": "stanford_see_courses",
+      "type": "html_list",
+      "start_urls": [
+        "https://see.stanford.edu/Course"
+      ],
+      "declared_license": "Creative Commons (varies; exceptions exist)",
+      "license_url": "https://see.stanford.edu/",
+      "max_pages": 20
+    },
+    {
+      "id": "harvard_dataverse_cc0",
+      "type": "dataverse_search",
+      "api_base": "https://dataverse.harvard.edu/api",
+      "query": "*",
+      "per_page": 100,
+      "max_results": 500,
+      "required_license_contains": [
+        "CC0"
+      ]
+    },
+    {
+      "id": "cambridge_apollo_oai",
+      "type": "oai_pmh",
+      "base_url": "https://api.repository.cam.ac.uk/server/oai/request",
+      "metadata_prefix": "oai_dc",
+      "set": null,
+      "max_records": 800
+    },
+    {
+      "id": "oxford_ora_oai",
+      "type": "oai_pmh",
+      "base_url": "https://ora.ox.ac.uk/oai2",
+      "metadata_prefix": "oai_dc",
+      "set": null,
+      "max_records": 800
+    },
+    {
+      "id": "epfl_infoscience_oai",
+      "type": "oai_pmh",
+      "base_url": "https://infoscience.epfl.ch/server/oai/openaire4",
+      "metadata_prefix": "oai_dc",
+      "set": null,
+      "max_records": 800
+    },
+    {
+      "id": "princeton_datacommons_datacite_cc",
+      "type": "datacite_prefix",
+      "prefix": "10.34770",
+      "page_size": 100,
+      "max_results": 1500,
+      "notes": "Princeton Data Commons datasets are registered with DataCite; we harvest DOI metadata via the DataCite public REST API and keep only records whose rightsList matches the license allowlist."
+    }
+  ]
+}
