@@ -3,5 +3,4 @@ __pycache__/
 *.sqlite
 .env
 .venv/
-.venv312/
 .venv*/
