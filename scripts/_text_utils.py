@@ -28,6 +28,43 @@ def is_good_sentence(s: str) -> bool:
         return False
     return True
 
+
+
+_FACTUAL_BLACKLIST = [
+    "i think", "i believe", "in my opinion", "we think", "we believe",
+    "you should", "we should", "should consider", "must", "let's",
+    "amazing", "awesome", "wonderful", "terrible", "great!", "best", "worst",
+    "join us", "sign up", "subscribe", "learn more", "click here", "watch",
+]
+
+def is_factual_sentence(s: str) -> bool:
+    """
+    Heuristic 'factual-only' filter for academic trivia.
+    Goal: exclude opinion/marketing/CTA tone and keep definitional or historical statements.
+    This is intentionally conservative.
+    """
+    s = normalize_space(s)
+    low = s.lower()
+    if any(b in low for b in _FACTUAL_BLACKLIST):
+        return False
+    # exclude questions / exclamations (usually not factual trivia)
+    if "?" in s:
+        return False
+    if s.count("!") >= 1:
+        return False
+    # exclude first/second person pronouns (common in essays/CTAs)
+    if re.search(r"\b(i|we|you|our|my|your)\b", low):
+        return False
+    # prefer sentences with a verb/copula or numeric/date signal
+    has_copula = re.search(r"\b(is|are|was|were|refers to|defined as|consists of|includes)\b", low) is not None
+    has_date_or_num = re.search(r"\b(1[6-9]\d{2}|20\d{2}|[0-9]+(\.[0-9]+)?)\b", s) is not None
+    if not (has_copula or has_date_or_num):
+        # allow some passive factual constructions
+        if re.search(r"\b(was discovered|was developed|was proposed|was introduced|was first)\b", low) is None:
+            return False
+    return True
+
+
 def split_sentences(text: str) -> List[str]:
     text = normalize_space(text)
     if not text:
