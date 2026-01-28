@@ -7,7 +7,12 @@ import hashlib
 from datetime import datetime, timezone
 from typing import Dict, List
 
-from tqdm import tqdm
+try:
+    from tqdm import tqdm  # type: ignore
+except Exception:  # pragma: no cover
+    def tqdm(x, **kwargs):
+        return x
+
 
 from scripts._text_utils import normalize_space, pick_best_sentences, is_factual_sentence
 from scripts._dedupe_utils import NearDuplicateIndex, simhash64, hamming64, approx_similarity_from_hamming
@@ -71,9 +76,10 @@ def main():
     args = ap.parse_args()
 
     cfg = load_json(args.config, {})
-    allowlist = cfg.get("license_allowlist", [])
-
+    # Load license whitelist/blocklist patterns (optional)
     whitelist_cfg = load_json(args.license_whitelist, {}) if args.license_whitelist else {}
+
+    allowlist = whitelist_cfg.get('allow', []) or cfg.get('license_allowlist', [])
     sources = cfg.get("sources", [])
 
     items_out: List[Dict] = []
@@ -201,6 +207,16 @@ def main():
                 # OCW course URLs look like /courses/<dept>/<number>/
                 links = crawl_links(u, link_regex=r"ocw\.mit\.edu/courses/[^\s\"\']+/?$", max_pages=int(src.get("max_pages", 50)))
                 course_links.extend(links)
+
+            # If MIT OCW search pages return zero links (often JS-driven), fall back to /courses/ listing.
+            if (not course_links) and any("ocw.mit.edu/search" in (u or "") for u in start_urls):
+                fallback_urls = [
+                    "https://ocw.mit.edu/courses/",
+                    "https://ocw.mit.edu/courses/?page=1",
+                ]
+                for u2 in fallback_urls:
+                    links2 = crawl_links(u2, link_regex=r"ocw\.mit\.edu/courses/[^\s\"\']+/?$", max_pages=max(10, int(src.get("max_pages", 60))))
+                    course_links.extend(links2)
             # de-dupe
             seen_links = []
             for l in course_links:
