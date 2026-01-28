@@ -1,6 +1,6 @@
 {
   "version": "1.1.0",
-  "generated_utc": "2026-01-28T06:01:59Z",
+  "generated_utc": "2026-01-28T09:48:31Z",
   "items": [
     {
       "text": "This course is the largest of the introductory programming courses and is one of the largest courses at Stanford.",
@@ -108,21 +108,21 @@
       "license": "Creative Commons (SEE; verify per-page)"
     },
     {
-      "text": "Least-squares, linear and quadratic programs, semidefinite programming, minimax, extremal volume, and other problems.",
+      "text": "Convex sets, functions, and optimization problems.",
       "source_org": "Stanford Engineering Everywhere",
       "source_title": "Stanford Engineering Everywhere",
       "source_url": "https://see.stanford.edu/Course/EE364A",
       "license": "Creative Commons (SEE; verify per-page)"
     },
     {
-      "text": "Decentralized convex optimization via primal and dual decomposition.",
+      "text": "Subgradient, cutting-plane, and ellipsoid methods.",
       "source_org": "Stanford Engineering Everywhere",
       "source_title": "Stanford Engineering Everywhere",
       "source_url": "https://see.stanford.edu/Course/EE364B",
       "license": "Creative Commons (SEE; verify per-page)"
     },
     {
-      "text": "Convex relaxations of hard problems, and global optimization via branch & bound.",
+      "text": "Decentralized convex optimization via primal and dual decomposition.",
       "source_org": "Stanford Engineering Everywhere",
       "source_title": "Stanford Engineering Everywhere",
       "source_url": "https://see.stanford.edu/Course/EE364B",
@@ -290,14 +290,14 @@
       "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
     },
     {
-      "text": "James’s work on the University Library’s medieval manuscripts, the next concerted attempt to produce updated descriptions of the collection was undertaken by Harold Pink, a member of staff in the Library’s Department of Manuscripts.",
+      "text": "Following the unsuccessful conclusion in 1930 of M.R.",
       "source_org": "cambridge_apollo_oai",
       "source_title": "Unpublished description by H.L. Pink of Cambridge, University Library, MS Add. 3054 (Iohannes Climacus, Scala paradisi; Daniel, monk of Raithu, Vita sub compendio S. Iohannis Climaci; Iohannes Climacus, Sermo ad pastorem; and other texts)",
       "source_url": "https://www.repository.cam.ac.uk/handle/1810/320212",
       "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
     },
     {
-      "text": "Pink laboured on this task from 1948 until his retirement in 1970, in many instances revising those descriptions produced by James twenty years earlier.",
+      "text": "James’s work on the University Library’s medieval manuscripts, the next concerted attempt to produce updated descriptions of the collection was undertaken by Harold Pink, a member of staff in the Library’s Department of Manuscripts.",
       "source_org": "cambridge_apollo_oai",
       "source_title": "Unpublished description by H.L. Pink of Cambridge, University Library, MS Add. 3054 (Iohannes Climacus, Scala paradisi; Daniel, monk of Raithu, Vita sub compendio S. Iohannis Climaci; Iohannes Climacus, Sermo ad pastorem; and other texts)",
       "source_url": "https://www.repository.cam.ac.uk/handle/1810/320212",
@@ -1277,6 +1277,20 @@
       "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
     },
     {
+      "text": "The third pandemic of plague (in its bubonic and pneumonic clinical forms) struck the globe between 1894 and 1959.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "\"A view of convalescent wards (tents) G.P.H [General Plague Hospital\"",
+      "source_url": "578/4 (42)",
+      "license": "Public Domain Mark 1.0 https://creativecommons.org/publicdomain/mark/1.0/ No Known Copyright From the collections of: TH"
+    },
+    {
+      "text": "As Yersinia pestis spread from country to country and from continent to continent, it left behind it not only a trail of death and devastation, but also a vast visual archive.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "\"A view of convalescent wards (tents) G.P.H [General Plague Hospital\"",
+      "source_url": "578/4 (42)",
+      "license": "Public Domain Mark 1.0 https://creativecommons.org/publicdomain/mark/1.0/ No Known Copyright From the collections of: TH"
+    },
+    {
       "text": "Human structural and functional brain architecture is increasingly studied by applying the mathematical framework of complex networks to data from magnetic resonance imaging.",
       "source_org": "cambridge_apollo_oai",
       "source_title": "Characterising disease-related and developmental changes in correlation-derived structural and functional brain networks",
@@ -1291,14 +1305,14 @@
       "license": "Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) https://creativecommons.org/licenses/by-nc-n"
     },
     {
-      "text": "On activation, the ER recruits and assembles a 1-2 MDa transcriptionally active complex.",
+      "text": "The estrogen receptor-α (ER) drives 75% of breast cancers.",
       "source_org": "cambridge_apollo_oai",
       "source_title": "ZMIZ1 enhances ERα-dependent expression of E2F2 in breast cancer.",
       "source_url": "0952-5041",
       "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
     },
     {
-      "text": "These complexes can modulate tumour growth, and understanding the roles of individual proteins within these complexes can help identify new therapeutic targets.",
+      "text": "On activation, the ER recruits and assembles a 1-2 MDa transcriptionally active complex.",
       "source_org": "cambridge_apollo_oai",
       "source_title": "ZMIZ1 enhances ERα-dependent expression of E2F2 in breast cancer.",
       "source_url": "0952-5041",
@@ -1347,14 +1361,14 @@
       "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
     },
     {
-      "text": "Snow still haunt the University where he developed his reputation.",
+      "text": "Abstract The two cultures described in 1959 by C.P.",
       "source_org": "cambridge_apollo_oai",
       "source_title": "Two cultures of interdisciplinarity",
       "source_url": "3033-3725",
       "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
     },
     {
-      "text": "While the policy legacy of that debate is often reduced to concerns about numeracy skills and the supposed objectivity of quantitative evidence, the class distinctions of sophisticated culture versus lowly trade are again being blurred by social media and generative AI.",
+      "text": "Snow still haunt the University where he developed his reputation.",
       "source_org": "cambridge_apollo_oai",
       "source_title": "Two cultures of interdisciplinarity",
       "source_url": "3033-3725",
@@ -1394,6 +1408,13 @@
       "source_title": "Synthesis and Characterization of a Terminal Iron(II)-PH2 Complex and a Series of Iron(II)-PH3 Complexes.",
       "source_url": "0020-1669",
       "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Part of the Research Support Ambassador Programme 2017",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Open Access",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/266698",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
     },
     {
       "text": "Human induced pluripotent stem cells (hiPSC) have been used to generate intestinal organoids that mimic key intestinal properties without the requirement for invasive procedures to obtain human tissues.",
@@ -1551,13 +1572,6 @@
     },
     {
       "text": ".mp3 audio file This jangar song is about the Ak Jang hero spirit-protector Shunu, the subject of an Altaian epic and many tales.",
-      "source_org": "cambridge_apollo_oai",
-      "source_title": "Shunu baatyr, 'Shunu Hero'",
-      "source_url": "http://www.dspace.cam.ac.uk/handle/1810/244542",
-      "license": "Attribution-NonCommercial-NoDerivs 2.0 UK: England & Wales http://creativecommons.org/licenses/by-nc-nd/2.0/uk/ Attribut"
-    },
-    {
-      "text": "The project builds on Pegg's research undertaken in the Mountain Altai since 2002.",
       "source_org": "cambridge_apollo_oai",
       "source_title": "Shunu baatyr, 'Shunu Hero'",
       "source_url": "http://www.dspace.cam.ac.uk/handle/1810/244542",
@@ -1767,14 +1781,14 @@
       "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
     },
     {
-      "text": "She shows a talisman and says that people hang such talismans over the entrance to their houses as protection from jealous tongues and accidents.",
+      "text": "Tatyana talks about the purpose of talismans called bu.",
       "source_org": "cambridge_apollo_oai",
       "source_title": "Tatyana Boskhomdzhieva, Bu",
       "source_url": "https://www.repository.cam.ac.uk/handle/1810/276734",
       "license": "Attribution-NonCommercial-NoDerivs 3.0 Unported (CC BY-NC-ND 3.0) https://creativecommons.org/licenses/by-nc-nd/3.0/"
     },
     {
-      "text": "The talisman that Tatyana holds in her hands was brought by her male relative from Mongolia when he travelled there.",
+      "text": "She shows a talisman and says that people hang such talismans over the entrance to their houses as protection from jealous tongues and accidents.",
       "source_org": "cambridge_apollo_oai",
       "source_title": "Tatyana Boskhomdzhieva, Bu",
       "source_url": "https://www.repository.cam.ac.uk/handle/1810/276734",
@@ -2075,14 +2089,14 @@
       "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
     },
     {
-      "text": "SETTING: Australia, Canada, Chile, Mexico, the United Kingdom (UK) and the United States of America (USA).",
+      "text": "DESIGN: Repeat cross-sectional online survey.",
       "source_org": "cambridge_apollo_oai",
       "source_title": "Adolescents' media usage and self-reported exposure to advertising across six countries: implications for less healthy food and beverage marketing.",
       "source_url": "2044-6055",
       "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
     },
     {
-      "text": "PARTICIPANTS: Respondents to the International Food Policy Study who provided information on all variables of interest in November-December 2019 aged 10-17 years (n=9171).",
+      "text": "SETTING: Australia, Canada, Chile, Mexico, the United Kingdom (UK) and the United States of America (USA).",
       "source_org": "cambridge_apollo_oai",
       "source_title": "Adolescents' media usage and self-reported exposure to advertising across six countries: implications for less healthy food and beverage marketing.",
       "source_url": "2044-6055",
@@ -2222,14 +2236,14 @@
       "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
     },
     {
-      "text": "It was first available from Springer via http://dx.doi.org/10.1007/s00401-015-1521-1 Remyelination in multiple sclerosis (MS) lesions often remains incomplete despite the presence of oligodendrocyte progenitor cells (OPCs).",
+      "text": "This is the final version of the article.",
       "source_org": "cambridge_apollo_oai",
       "source_title": "Antibody mediated neutralization of myelin associated EphrinB3 accelerates CNS remyelination",
       "source_url": "Acta Neuropathologica 2016, 131(2): 281-298. doi:10.1007/s00401-015-1521-1",
       "license": "Creative Commons Attribution 4.0 International License http://creativecommons.org/licenses/by/4.0/"
     },
     {
-      "text": "Amongst other factors, successful remyelination depends on the phagocytic clearance of myelin debris.",
+      "text": "It was first available from Springer via http://dx.doi.org/10.1007/s00401-015-1521-1 Remyelination in multiple sclerosis (MS) lesions often remains incomplete despite the presence of oligodendrocyte progenitor cells (OPCs).",
       "source_org": "cambridge_apollo_oai",
       "source_title": "Antibody mediated neutralization of myelin associated EphrinB3 accelerates CNS remyelination",
       "source_url": "Acta Neuropathologica 2016, 131(2): 281-298. doi:10.1007/s00401-015-1521-1",
@@ -2307,7 +2321,7 @@
     }
   ],
   "stats": {
-    "unique_sentences": 329,
-    "target": 1200
+    "unique_sentences": 331,
+    "target": 2000
   }
 }
