@@ -1,0 +1,25 @@
+{
+  "allowed_license_patterns": [
+    "creativecommons.org/licenses/by/4.0",
+    "creativecommons.org/licenses/by-sa/4.0",
+    "creativecommons.org/licenses/by-nc-sa/4.0",
+    "creativecommons.org/licenses/by-nc-sa/3.0",
+    "creativecommons.org/publicdomain/zero/1.0",
+    "CC0",
+    "cc by",
+    "cc-by",
+    "cc by-sa",
+    "cc by-nc-sa"
+  ],
+  "blocked_license_patterns": [
+    "all rights reserved",
+    "\u00a9",
+    "copyright",
+    "no derivative",
+    "cc by-nd",
+    "cc-by-nd",
+    "cc by-nc-nd",
+    "cc-by-nc-nd"
+  ],
+  "notes": "Heuristic patterns; ingestion also allows per-source declared_license_url when present."
+}
