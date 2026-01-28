@@ -72,6 +72,8 @@ def main():
 
     cfg = load_json(args.config, {})
     allowlist = cfg.get("license_allowlist", [])
+
+    whitelist_cfg = load_json(args.license_whitelist, {}) if args.license_whitelist else {}
     sources = cfg.get("sources", [])
 
     items_out: List[Dict] = []
