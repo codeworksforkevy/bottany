@@ -1,5 +1,2313 @@
 {
   "version": "1.1.0",
-  "generated_utc": "",
-  "items": []
+  "generated_utc": "2026-01-28T06:01:59Z",
+  "items": [
+    {
+      "text": "This course is the largest of the introductory programming courses and is one of the largest courses at Stanford.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/CS106A",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "Topics focus on the introduction to the engineering of computer applications emphasizing modern software engineering principles: object-oriented design, decomposition, encapsulation, abstraction, and testing.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/CS106A",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "This course is the natural successor to Programming Methodology and covers such advanced programming topics as recursion, algorithmic analysis, and data abstraction using the C++ programming language, which is similar to both C and Java.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/CS106B",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "If you've taken the Computer Science AP exam and done well (scored 4 or 5) or earned a good grade in a college course, Programming Abstractions may be an appropriate course for you to start with, but often Programming Abstractions (Accelerated) is a better choice.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/CS106B",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "Advanced memory management features of C and C++; the differences between imperative and object-oriented paradigms.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/CS107",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "The functional paradigm (using LISP) and concurrent programming (using C and C++).",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/CS107",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "The purpose of this course is to introduce you to basics of modeling, design, planning, and control of robot systems.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/CS223A",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "In essence, the material treated in this course is a brief survey of relevant results from geometry, kinematics, statics, dynamics, and control.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/CS223A",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "This course provides a broad introduction to machine learning and statistical pattern recognition.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/CS229",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "The course will also discuss recent applications of machine learning, such as to robotic control, data mining, autonomous navigation, bioinformatics, speech recognition, and text and web data processing.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/CS229",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "The goals for the course are to gain a facility with using the Fourier transform, both specific techniques and general principles, and learning to recognize when, why, and how it is used.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/EE261",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "Together with a great variety, the subject also has a great coherence, and the hope is students come to appreciate both.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/EE261",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "Introduction to applied linear algebra and linear dynamical systems, with applications to circuits, signal processing, communications, and control systems.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/EE263",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "Topics include: Least-squares aproximations of over-determined equations and least-norm solutions of underdetermined equations.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/EE263",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "Concentrates on recognizing and solving convex optimization problems that arise in engineering.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/EE364A",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "Least-squares, linear and quadratic programs, semidefinite programming, minimax, extremal volume, and other problems.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/EE364A",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "Decentralized convex optimization via primal and dual decomposition.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/EE364B",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "Convex relaxations of hard problems, and global optimization via branch & bound.",
+      "source_org": "Stanford Engineering Everywhere",
+      "source_title": "Stanford Engineering Everywhere",
+      "source_url": "https://see.stanford.edu/Course/EE364B",
+      "license": "Creative Commons (SEE; verify per-page)"
+    },
+    {
+      "text": "Abstract Many national governments have incorporated nature‐based solutions (NbS) in their plans to reduce net greenhouse gas emissions.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The potential contribution of terrestrial nature‐based solutions to a national ‘net zero’ climate target",
+      "source_url": "0021-8901",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "However, uncertainties persist regarding both feasibility and consequences of major NbS deployment.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The potential contribution of terrestrial nature‐based solutions to a national ‘net zero’ climate target",
+      "source_url": "0021-8901",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This video contains footage of fashi (folk Daoist practitioners) consecrating a new deity statue and performing various songs and dances to delight the temple deity.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Jishishan Fashi 01",
+      "source_url": "http://www.dspace.cam.ac.uk/handle/1810/243757",
+      "license": "Attribution-NonCommercial-NoDerivs 2.0 UK: England & Wales http://creativecommons.org/licenses/by-nc-nd/2.0/uk/ Creative"
+    },
+    {
+      "text": "The recording and announcement of villagers' donations are also shown, as is a procession of the deity's palanquin.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Jishishan Fashi 01",
+      "source_url": "http://www.dspace.cam.ac.uk/handle/1810/243757",
+      "license": "Attribution-NonCommercial-NoDerivs 2.0 UK: England & Wales http://creativecommons.org/licenses/by-nc-nd/2.0/uk/ Creative"
+    },
+    {
+      "text": "This data set contains all data underlying the figures in the main text and supporting information.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Research data supporting: \"Direct imaging of carriers funnelling in a dielectric engineered 2D\nsemiconductor.\"",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/362435",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The data is arranged in several folders: AFM: contains the AFM profile of fig1 and AFM map of SI note 1.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Research data supporting: \"Direct imaging of carriers funnelling in a dielectric engineered 2D\nsemiconductor.\"",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/362435",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "CAG repeat expansion in the HTT gene drives Huntington's disease (HD) pathogenesis and is modulated by DNA damage repair pathways.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "FAN1 controls mismatch repair complex assembly via MLH1 retention to stabilize CAG repeat expansion in Huntington's disease.",
+      "source_url": "2639-1856",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "In this context, the interaction between FAN1, a DNA-structure-specific nuclease, and MLH1, member of the DNA mismatch repair pathway (MMR), is not defined.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "FAN1 controls mismatch repair complex assembly via MLH1 retention to stabilize CAG repeat expansion in Huntington's disease.",
+      "source_url": "2639-1856",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Sponsored by Arcadia Fund, a charitable fund of Lisbet Rausing and Peter Baldwin",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Ivan Modunkaev, About the Deed Lamin clan",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/314380",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "text": "Funder: Diabetes Research and Wellness Foundation; doi: http://dx.doi.org/10.13039/501100000273 AIM: Evidence from mouse models suggests that brain serotonergic pathways control blood glucose.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Sumatriptan, a serotonin 5HT1B receptor agonist, acutely reduces insulin secretion and sensitivity and glucose effectiveness in overweight humans: A double-blinded placebo-controlled cross-over trial.",
+      "source_url": "Diabetes, Obesity and Metabolism",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "We hypothesized that sumatriptan (5HT1B -receptor agonist) would alter glucose homeostasis in humans.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Sumatriptan, a serotonin 5HT1B receptor agonist, acutely reduces insulin secretion and sensitivity and glucose effectiveness in overweight humans: A double-blinded placebo-controlled cross-over trial.",
+      "source_url": "Diabetes, Obesity and Metabolism",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The purpose of this study was to explore the association of cognition with hazardous drinking Polygenic Scores (PGS) in 2649 schizophrenia, 558 schizoaffective disorder, and 1125 bipolar disorder patients in Finland.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Reaction Time and Visual Memory in Connection to Hazardous Drinking Polygenic Scores in Schizophrenia, Schizoaffective Disorder and Bipolar Disorder.",
+      "source_url": "2076-3425",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Hazardous drinking PGS was computed using the LDPred program.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Reaction Time and Visual Memory in Connection to Hazardous Drinking Polygenic Scores in Schizophrenia, Schizoaffective Disorder and Bipolar Disorder.",
+      "source_url": "2076-3425",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "An archaeological excavation was undertaken in May 2007 on 0.0036 ha of land on the south-eastern side of Chairfen Road, at Green Farm, Thistley Green, West Row, Suffolk (TL 6613 7614).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Land at Thistley Green, West Row, Suffolk. An Archaeological Evaluation",
+      "source_url": "769",
+      "license": "CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "text": "The site was located within a chalk landscape at 3.001m to 3.187m OD, in an area of known prehistoric activity.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Land at Thistley Green, West Row, Suffolk. An Archaeological Evaluation",
+      "source_url": "769",
+      "license": "CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "text": "This dataset contains all experimental results published in the work: The Reactivity of an Inorganic Glass Melt with ZIF-8, L.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Research data supporting The Reactivity of an Inorganic Glass Melt with ZIF-8",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/317720",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Longley et al., Dalton Trans., (2021), DOI: 10.1039/d1dt00152c This work explores the thermal behaviour of ZIF-8, Zn(meIm)2, in the presence of a sodium fluoroaluminophosphate glass melt.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Research data supporting The Reactivity of an Inorganic Glass Melt with ZIF-8",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/317720",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Niche hijack by malignant cells is considered to be a prominent cause of disease relapse.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Targeting adhesion to the vascular niche to improve therapy for acute myeloid leukemia.",
+      "source_url": "2041-1723",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Barbier and colleagues uncover (E)-selectin as a novel mediator of malignant cell survival and regeneration which, upon blockade, has the potential to significantly improve therapeutic outcomes.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Targeting adhesion to the vascular niche to improve therapy for acute myeloid leukemia.",
+      "source_url": "2041-1723",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "BACKGROUND AND OBJECTIVES: The use of over-the-counter laxatives is common in the general population.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Association Between Regular Laxative Use and Incident Dementia in UK Biobank Participants.",
+      "source_url": "0028-3878",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) https://creativecommons.org/licenses/by-nc-n"
+    },
+    {
+      "text": "The microbiome-gut-brain axis hypothesis suggests that the use of laxatives could be associated with dementia.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Association Between Regular Laxative Use and Incident Dementia in UK Biobank Participants.",
+      "source_url": "0028-3878",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) https://creativecommons.org/licenses/by-nc-n"
+    },
+    {
+      "text": "Tapping into firm-level accounting data across 90 countries over a 26-year period, we find that sound political institutions are positively associated with corporate risk-taking.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Political institutions and corporate risk-taking: International evidence",
+      "source_url": "1369-412X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This result is economically significant, robust to alternative proxies for corporate risk-taking and political institutions, and continues to hold after mitigating endogeneity concerns of political institutions.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Political institutions and corporate risk-taking: International evidence",
+      "source_url": "1369-412X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "James’s work on the University Library’s medieval manuscripts, the next concerted attempt to produce updated descriptions of the collection was undertaken by Harold Pink, a member of staff in the Library’s Department of Manuscripts.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Unpublished description by H.L. Pink of Cambridge, University Library, MS Add. 3054 (Iohannes Climacus, Scala paradisi; Daniel, monk of Raithu, Vita sub compendio S. Iohannis Climaci; Iohannes Climacus, Sermo ad pastorem; and other texts)",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/320212",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Pink laboured on this task from 1948 until his retirement in 1970, in many instances revising those descriptions produced by James twenty years earlier.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Unpublished description by H.L. Pink of Cambridge, University Library, MS Add. 3054 (Iohannes Climacus, Scala paradisi; Daniel, monk of Raithu, Vita sub compendio S. Iohannis Climaci; Iohannes Climacus, Sermo ad pastorem; and other texts)",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/320212",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "EU External Relations Law and Policy significantly evolved since the seminal Singapore Opinion in the Court of Justice (ECJ).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "EU External Relations Law on Trade and Sustainable Development: The Evolving Nature of EU Law and Policy Constraints",
+      "source_url": "1384-6299",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "It is argued that the existence of global goals and targets combined with EU internal action in the context of the EU Green Deal fundamentally change the availability and legality of EU External Relations Law on Trade and Sustainability.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "EU External Relations Law on Trade and Sustainable Development: The Evolving Nature of EU Law and Policy Constraints",
+      "source_url": "1384-6299",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Sustainable structural materials with excellent impact-resistance properties are urgently needed but challenging to produce, especially in a scalable fashion and with control over 3D shape.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Scalable bacterial production of moldable and recyclable biomineralized cellulose with tunable mechanical properties",
+      "source_url": "2666-3864",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Here, we show that bacterial cellulose (BC) and bacterially precipitated calcium carbonate self-assemble into a layered structure reminiscent of tough biomineralized materials in nature (nacre, bone, dentin).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Scalable bacterial production of moldable and recyclable biomineralized cellulose with tunable mechanical properties",
+      "source_url": "2666-3864",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "We describe stereocontrolled semi-syntheses of deguelin and tephrosin, anti-cancer rotenoids isolated from Tephrosia vogelii.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Stereocontrolled semi-syntheses of deguelin and tephrosin.",
+      "source_url": "1477-0520",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Firstly, we present a new two-step transformation of rotenone into rot-2'-enonic acid via a zinc-mediated ring opening of rotenone hydrobromide.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Stereocontrolled semi-syntheses of deguelin and tephrosin.",
+      "source_url": "1477-0520",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Culture (behaviour based on socially transmitted information) is present in diverse animal species, yet how it interacts with genetic evolution remains largely unexplored.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The reach of gene-culture coevolution in animals.",
+      "source_url": "2041-1723",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Here, we review the evidence for gene-culture coevolution in animals, especially birds, cetaceans and primates.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The reach of gene-culture coevolution in animals.",
+      "source_url": "2041-1723",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "State-of-the-art pixels for high-resolution microdisplays utilize refective surfaces on top of electrical backplanes.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Nanostructured plasmonic metapixels",
+      "source_url": "2045-2322",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Each pixel is a single fxed color and will usually only modulate the amplitude of light.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Nanostructured plasmonic metapixels",
+      "source_url": "2045-2322",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "BACKGROUND: The purpose of this study was to investigate the therapeutic efficacy of intravenously administered immunoselected STRO-3 + mesenchymal precursor cells (MPCs) on clinical scores, joint pathology and cytokine production in an ovine model of monoarthritis.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Immunoselected STRO-3(+) mesenchymal precursor cells reduce inflammation and improve clinical outcomes in a large animal model of monoarthritis.",
+      "source_url": "1757-6512",
+      "license": "Attribution 4.0 International Attribution 4.0 International Attribution 4.0 International Attribution 4.0 International "
+    },
+    {
+      "text": "METHODS: Monoarthritis was established in 16 adult merino sheep by administration of bovine type II collagen into the left hock joint following initial sensitization to this antigen.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Immunoselected STRO-3(+) mesenchymal precursor cells reduce inflammation and improve clinical outcomes in a large animal model of monoarthritis.",
+      "source_url": "1757-6512",
+      "license": "Attribution 4.0 International Attribution 4.0 International Attribution 4.0 International Attribution 4.0 International "
+    },
+    {
+      "text": "BACKGROUND: Smoking in pregnancy is a major international public health problem.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Effectiveness and cost-effectiveness of a tailored text-message programme (MiQuit) for smoking cessation in pregnancy: study protocol for a randomised controlled trial (RCT) and meta-analysis.",
+      "source_url": "1468-6708",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Self-help support (SHS) increases the likelihood of women stopping smoking in pregnancy and delivering this kind of support by text message could be a cost-effective way to deliver SHS to pregnant women who smoke.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Effectiveness and cost-effectiveness of a tailored text-message programme (MiQuit) for smoking cessation in pregnancy: study protocol for a randomised controlled trial (RCT) and meta-analysis.",
+      "source_url": "1468-6708",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "We introduce a notion of local Hilbert–Schmidt stability, motivated by the recent definition by Bradford of local permutation stability, and give examples of (non-residually finite) groups that are locally Hilbert–Schmidt stable but not Hilbert–Schmidt stable.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Local Hilbert–Schmidt stability",
+      "source_url": "0021-8693",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "For amenable groups, we provide a criterion for local Hilbert–Schmidt stability in terms of group characters, by analogy with the character criterion of Hadwin and Shulman for Hilbert–Schmidt stable amenable groups.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Local Hilbert–Schmidt stability",
+      "source_url": "0021-8693",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The result, argue Keleman and McNamara, has been a ‘gradual, uneven, and dysfunctional’ integration process, stopping short of statehood.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The anachronism of bellicist state-building",
+      "source_url": "1350-1763",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Ironically, their comparative historical explanation for the EU's shortcomings is strangely ‘ahistorical’, failing to consider the specific world-historical time at which the EU was born.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The anachronism of bellicist state-building",
+      "source_url": "1350-1763",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Plural valuation is about eliciting the diverse values of nature articulated by different stakeholders in order to inform decision making and thus achieve more equitable and sustainable outcomes.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Plural valuation of nature for equity and sustainability: Insights from the Global South",
+      "source_url": "0959-3780",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "text": "We explore what approaches align with plural valuation on the ground, as well as how different social-ecological contexts play a role in translating plural valuation into decisions and outcomes.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Plural valuation of nature for equity and sustainability: Insights from the Global South",
+      "source_url": "0959-3780",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "text": "Zip folder containing separate folders for steady sate spectroscopy data and impulsive vibrational spectroscopy (IVS) data.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Research Data supporting ''Vibronically Coherent Exciton trapping in Monolayer WS2''",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/388083",
+      "license": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The IVS .txt files are labelled according to the main text and supplementary information figures that the data is used for.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Research Data supporting ''Vibronically Coherent Exciton trapping in Monolayer WS2''",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/388083",
+      "license": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This paper presents a full procedure for the development of a Part-of-Speech (POS) tagged corpus of Old Catalan.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Old Catalan Morphosyntax: Developing an Annotated Corpus",
+      "source_url": "2059-481X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "As an extremely low-resource language with rich inflection and frequent homographs, Old Catalan poses non-trivial problems in the development of a searchable constituency-based treebank.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Old Catalan Morphosyntax: Developing an Annotated Corpus",
+      "source_url": "2059-481X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Our findings show that there are two types of signals observed for these molecular catalysts; a transient signal and a steady‐state signal, with the former being assigned to the Co I state and the latter being assigned to the Co II state.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "In situ Detection of Cobaloxime Intermediates During Photocatalysis Using Hollow‐Core Photonic Crystal Fiber Microreactors",
+      "source_url": "Angewandte Chemie, article-number e202214788",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "These observations lend support to a unimolecular pathway, rather than a bimolecular pathway, for hydrogen evolution.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "In situ Detection of Cobaloxime Intermediates During Photocatalysis Using Hollow‐Core Photonic Crystal Fiber Microreactors",
+      "source_url": "Angewandte Chemie, article-number e202214788",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Multiple trapping and release (MTR) is a typical charge transport mechanism associated with localized states in technologically important disordered semiconductors such as hydrogenated amorphous silicon (a-Si:H) and many amorphous oxides.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Revisiting multiple trapping and release charge transport in amorphous semiconductors exemplified by hydrogenated amorphous silicon",
+      "source_url": "0022-3093",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "However, till now the analysis of MTR has been built on an “abrupt” mobility edge model.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Revisiting multiple trapping and release charge transport in amorphous semiconductors exemplified by hydrogenated amorphous silicon",
+      "source_url": "0022-3093",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "C4 photosynthesis has evolved repeatedly from the ancestral C3 state to generate a carbon concentrating mechanism that increases photosynthetic efficiency.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Synergistic Binding of bHLH Transcription Factors to the Promoter of the Maize NADP-ME Gene Used in C4 Photosynthesis Is Based on an Ancient Code Found in the Ancestral C3 State.",
+      "source_url": "0737-4038",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This specialized form of photosynthesis is particularly common in the PACMAD clade of grasses, and is used by many of the world's most productive crops.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Synergistic Binding of bHLH Transcription Factors to the Promoter of the Maize NADP-ME Gene Used in C4 Photosynthesis Is Based on an Ancient Code Found in the Ancestral C3 State.",
+      "source_url": "0737-4038",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "<jats:title>Abstract</jats:title><jats:p>Surface melting occurs across many of Antarctica’s ice shelves, mainly during the austral summer.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Substantial contribution of slush to meltwater area across Antarctic ice shelves",
+      "source_url": "1752-0894",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This study applies a machine-learning method to the entire Landsat 8 image catalogue to derive monthly records of slush and ponded water area across 57 ice shelves between 2013 and 2021.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Substantial contribution of slush to meltwater area across Antarctic ice shelves",
+      "source_url": "1752-0894",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This review summarises some of the key features of interstitial lung diseases (ILDs) from a translational science point of view and brings insights into potential therapeutic options.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Insights into interstitial lung disease pathogenesis.",
+      "source_url": "1810-6838",
+      "license": "Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "text": "Genetic predisposition and environmental factors like smoking, pollution and infections significantly impact the onset, progression and treatment response in ILDs, highlighting the need for personalised management.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Insights into interstitial lung disease pathogenesis.",
+      "source_url": "1810-6838",
+      "license": "Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "text": "BACKGROUND: The SPEEDY study was set up to quantify levels of physical activity (PA) and dietary habits and the association with potential correlates in 9-10 year old British school children.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Physical activity and dietary behaviour in a population-based sample of British 10-year old children: the SPEEDY study (Sport, Physical activity and Eating behaviour: environmental Determinants in Young people).",
+      "source_url": "1472-698X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/ van Sluijs et al.; licensee BioMed Central Lt"
+    },
+    {
+      "text": "We present here the analyses of the PA, dietary and anthropometry data.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Physical activity and dietary behaviour in a population-based sample of British 10-year old children: the SPEEDY study (Sport, Physical activity and Eating behaviour: environmental Determinants in Young people).",
+      "source_url": "1472-698X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/ van Sluijs et al.; licensee BioMed Central Lt"
+    },
+    {
+      "text": "Cancer is characterized by cell heterogeneity and the development of 3D $\\textit{in vitro }$ assays that can distinguish more invasive or migratory phenotypes could enhance diagnosis or drug discovery.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Development of three-dimensional collagen scaffolds with controlled architecture for cell migration studies using breast cancer cell lines",
+      "source_url": "0142-9612",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "3D collagen scaffolds have been used to develop analogues of complex tissues $\\textit{in vitro }$ and are suited to routine biochemical and immunological assays.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Development of three-dimensional collagen scaffolds with controlled architecture for cell migration studies using breast cancer cell lines",
+      "source_url": "0142-9612",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Distorted olivines of enigmatic origin are ubiquitous in erupted products from a wide range of volcanic systems (e.g., Hawai'i, Iceland, Andes).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Microstructural constraints on magmatic mushes under Kīlauea Volcano, Hawai'i.",
+      "source_url": "2041-1723",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Investigation of these features at Kīlauea Volcano, Hawai'i, using an integrative crystallographic and chemical approach places quantitative constraints on mush pile thicknesses.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Microstructural constraints on magmatic mushes under Kīlauea Volcano, Hawai'i.",
+      "source_url": "2041-1723",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Extraintestinal pathogenic Escherichia coli (ExPEC) is the leading cause of urinary tract infections (UTIs) worldwide and may be transmitted from food animals to humans via contaminated meat.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Zoonotic Escherichia coli and urinary tract infections in Southern California.",
+      "source_url": "2161-2129",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "However, the contribution of zoonotic ExPEC strains to UTIs in metropolitan areas remains unclear.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Zoonotic Escherichia coli and urinary tract infections in Southern California.",
+      "source_url": "2161-2129",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Urban planners and other stakeholders often view trees as the ultimate panacea for mitigating urban heat stress; however, their cooling efficacy varies globally and is influenced by three primary factors: tree traits, urban morphology, and climate conditions.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Cooling efficacy of trees across cities is determined by background climate, urban morphology, and tree trait",
+      "source_url": "2662-4435",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This study analyzes 182 studies on the cooling effects of urban trees across 17 climates in 110 global cities or regions.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Cooling efficacy of trees across cities is determined by background climate, urban morphology, and tree trait",
+      "source_url": "2662-4435",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Better understanding of feeding behaviour will be vital in reducing obesity and metabolic syndrome, but we lack a standard model that captures the complexity of feeding behaviour.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The homeostatic dynamics of feeding behaviour identify novel mechanisms of anorectic agents",
+      "source_url": "1544-9173",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "We construct an accurate stochastic model of rodent feeding at the bout level in order to perform quantitative behavioural analysis.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The homeostatic dynamics of feeding behaviour identify novel mechanisms of anorectic agents",
+      "source_url": "1544-9173",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Logging and habitat fragmentation impact tropical forest ecosystems in numerous ways, perhaps the most striking of which is by altering the temperature, humidity, and light environment of the forest—its microclimate.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A Research Agenda for Microclimate Ecology in Human-Modified Tropical Forests",
+      "source_url": "2624-893X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "However, the actual pathways through which altered microclimatic conditions reshape the ecology of these human-modified ecosystems remain largely unexplored.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A Research Agenda for Microclimate Ecology in Human-Modified Tropical Forests",
+      "source_url": "2624-893X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) pandemic will be remembered as one of the defining events of the 21st century.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The COVID-19 Data Portal: accelerating SARS-CoV-2 and COVID-19 research through rapid open access data sharing.",
+      "source_url": "0305-1048",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The rapid global outbreak has had significant impacts on human society and is already responsible for millions of deaths.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The COVID-19 Data Portal: accelerating SARS-CoV-2 and COVID-19 research through rapid open access data sharing.",
+      "source_url": "0305-1048",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This speculative essay suggests that instead of arguing for the Middle Ages as essential, instead of arguing for the Middle Ages’ modernity, medievalists ought to embrace the contingency of the Middle Ages.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The Contingent Middle Ages",
+      "source_url": "0038-7134",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This means thinking the Middle Ages as neither a disposable patch of darkness nor an essential stage on the way to modernity.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The Contingent Middle Ages",
+      "source_url": "0038-7134",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Publication status: Published In this study, a three-layered multicenter ONIOM approach is implemented to characterize the naive folding pathway of bovine pancreatic trypsin inhibitor (BPTI).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Multilevel Framework for Analysis of Protein Folding Involving Disulfide Bond Formation.",
+      "source_url": "1520-6106",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Each layer represents a distinct level of theory, where the initial layer, encompassing the entire protein, is modeled by a general all-atom force-field GFN-FF.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Multilevel Framework for Analysis of Protein Folding Involving Disulfide Bond Formation.",
+      "source_url": "1520-6106",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "A high-quality reference genome is a fundamental resource for functional genetics, comparative genomics, and population genomics, and is increasingly important for conservation biology.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A High-Quality De novo Genome Assembly from a Single Mosquito Using PacBio Sequencing.",
+      "source_url": "2073-4425",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "PacBio Single Molecule, Real-Time (SMRT) sequencing generates long reads with uniform coverage and high consensus accuracy, making it a powerful technology for de novo genome assembly.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A High-Quality De novo Genome Assembly from a Single Mosquito Using PacBio Sequencing.",
+      "source_url": "2073-4425",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This article is a reply to critics who contributed to a roundtable on my book, Hegel's World Revolutions.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Reflections on Hegel’s World Revolutions: a reply to critics",
+      "source_url": "0191-6599",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "As if learning a second language (L2) was not challenging enough, languages continue to innovate and introduce new words.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "L2 English Speakers’ Ability to Process Novel Denominal Verbs: The Role of Proficiency and Language Experience",
+      "source_url": "2399-9101",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "One source of lexical innovation can be the use of existing nouns as novel verbs (e.g., ‘to porch the newspaper’), which are termed denominal verbs.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "L2 English Speakers’ Ability to Process Novel Denominal Verbs: The Role of Proficiency and Language Experience",
+      "source_url": "2399-9101",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Funder: Canadian Institutes of Health Research; doi: http://dx.doi.org/10.13039/501100000024 Funder: Public Health Agency of Canada BACKGROUND: The public health benefits of sugar-sweetened beverage (SSB) taxes often rely on, among other things, changes to consumer purchases.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Tax awareness and perceived cost of sugar-sweetened beverages in four countries between 2017 and 2019: findings from the international food policy study.",
+      "source_url": "1479-5868",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Thus, perceived cost of SSBs and signalling effects-via awareness of the tax-may impact the effectiveness of SSB taxes on consumer purchases.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Tax awareness and perceived cost of sugar-sweetened beverages in four countries between 2017 and 2019: findings from the international food policy study.",
+      "source_url": "1479-5868",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Cells sense and integrate external information from diverse sources that include mechanical cues.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Notch-dependent and -independent transcription are modulated by tissue movements at gastrulation.",
+      "source_url": "2050-084X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Shaping of tissues during development may thus require coordination between mechanical forces from morphogenesis and cell-cell signalling to confer appropriate changes in gene expression.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Notch-dependent and -independent transcription are modulated by tissue movements at gastrulation.",
+      "source_url": "2050-084X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "In this video, Bembejav reminisced about renowned horses among the Torghuts.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Renowned Horses in Torghut's History in Hobogsair",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/371036",
+      "license": "CC BY-NC-ND 3.0 https://creativecommons.org/licenses/by-nc-nd/3.0/"
+    },
+    {
+      "text": "As an experienced horse trainer with extensive knowledge about equines, Bembejav also delved into methods for treating diseases, wounds, and bone dislocations in horses.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Renowned Horses in Torghut's History in Hobogsair",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/371036",
+      "license": "CC BY-NC-ND 3.0 https://creativecommons.org/licenses/by-nc-nd/3.0/"
+    },
+    {
+      "text": "Background Older adults who live alone and have difficulties in activities of daily living (ADLs) may have been more vulnerable during the COVID-19 pandemic.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Difficulty and help with activities of daily living among older adults living alone during the COVID-19 pandemic: a multi-country population-based study",
+      "source_url": "1471-2318",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "However, little is known about pandemic-related changes in ADL assistance (such as home care, domiciliary care) and its international variation.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Difficulty and help with activities of daily living among older adults living alone during the COVID-19 pandemic: a multi-country population-based study",
+      "source_url": "1471-2318",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "BACKGROUND: The last 20 years have seen a marked increase in the use of cluster randomised trials (CRTs) in schools to evaluate interventions for improving pupil health outcomes.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Systematic review of the characteristics of school-based feasibility cluster randomised trials of interventions for improving the health of pupils in the UK.",
+      "source_url": "2055-5784",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Schools have limited resources and participating in full-scale trials can be challenging and costly, given their main purpose is education.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Systematic review of the characteristics of school-based feasibility cluster randomised trials of interventions for improving the health of pupils in the UK.",
+      "source_url": "2055-5784",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "These are supplementary data for the PhD thesis titled 'Transcriptomic studies on host-parasite interactions in Schistosoma mansoni intramammalian stages'.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Supplementary data for the PhD thesis titled 'Transcriptomic studies on host-parasite interactions in Schistosoma mansoni intramammalian stages'",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/265149",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The thesis can be found at ftp://ftp.sanger.ac.uk/pub/resources/theses/aw17/ Wellcome Trust Sanger Institute, Ministry of Science and Technology (Thailand)",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Supplementary data for the PhD thesis titled 'Transcriptomic studies on host-parasite interactions in Schistosoma mansoni intramammalian stages'",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/265149",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Axon degeneration represents a pathological feature of many neurodegenerative diseases, including Alzheimer's disease and Parkinson's disease where axons die before the neuronal soma, and axonopathies, such as Charcot-Marie-Tooth disease and hereditary spastic paraplegia.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A Novel NAD Signaling Mechanism in Axon Degeneration and its Relationship to Innate Immunity.",
+      "source_url": "2296-889X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Over the last two decades, it has slowly emerged that a central signaling pathway forms the basis of this process in many circumstances.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A Novel NAD Signaling Mechanism in Axon Degeneration and its Relationship to Innate Immunity.",
+      "source_url": "2296-889X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "In the early 2010s, mainstream discourse about British Muslims’ civic engagement defined this mainly through a “generous donor” frame.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Generous Donors or Active Citizens? Framing British Muslims’ Civic Engagement in the Early 2010s",
+      "source_url": "1360-2004",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This frame foregrounds notions of altruism and benevolence that are shared between the Islamic tradition and common understandings of what it means to be a good citizen.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Generous Donors or Active Citizens? Framing British Muslims’ Civic Engagement in the Early 2010s",
+      "source_url": "1360-2004",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "BACKGROUND AND AIMS:Extracellular ATP governs a range of plant functions, including cell viability, adaptation and cross-kingdom interactions.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "DORN1/P2K1 and purino-calcium signalling in plants: making waves with extracellular ATP.",
+      "source_url": "0305-7364",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Key functions of extracellular ATP in leaves and roots may involve an increase in cytosolic free calcium as a second messenger ('calcium signature').",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "DORN1/P2K1 and purino-calcium signalling in plants: making waves with extracellular ATP.",
+      "source_url": "0305-7364",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This directory contains the data relating to the figures in \"External amplitude and frequency modulation of a terahertz quantum cascade laser using metamaterial/graphene devices\".",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Research data supporting [External amplitude and frequency modulation of a terahertz quantum cascade laser using metamaterial/graphene devices]",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/266562",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Each xlsx file name describes which figure it is referring to.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Research data supporting [External amplitude and frequency modulation of a terahertz quantum cascade laser using metamaterial/graphene devices]",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/266562",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The study discussed in this paper investigated how young women studying science, technology, engineering, and mathematics (STEM) courses in upper secondary technical institutes in Ghana made their education and career decisions.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A non-conformist choice: how young women studying science, technology, engineering, and mathematics in technical institutes in Ghana navigate their education and career decision",
+      "source_url": "1363-6820",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "text": "The study interviewed 26 young women to explore and understand the processes they navigated to choose STEM in TVET.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A non-conformist choice: how young women studying science, technology, engineering, and mathematics in technical institutes in Ghana navigate their education and career decision",
+      "source_url": "1363-6820",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "text": "Acknowledgements: This work has generously been funded by the Lundbeck Foundation (grant no.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Molecular properties and diagnostic potential of monoclonal antibodies targeting cytotoxic α-synuclein oligomers.",
+      "source_url": "2373-8057",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "R276-2018-671) as well as the Carlsberg Foundation (grants no.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Molecular properties and diagnostic potential of monoclonal antibodies targeting cytotoxic α-synuclein oligomers.",
+      "source_url": "2373-8057",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Abstract: Chemical compound space refers to the vast set of all possible chemical compounds, estimated to contain 1060 molecules.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Machine learning in chemical reaction space",
+      "source_url": "s41467-020-19267-x",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "While intractable as a whole, modern machine learning (ML) is increasingly capable of accurately predicting molecular properties in important subsets.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Machine learning in chemical reaction space",
+      "source_url": "s41467-020-19267-x",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This note records the order of a higher dimensional Dehn twist in a range of topologically significant groups.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "On the order of Dehn twists",
+      "source_url": "1076-9803",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The need for policy makers to understand science and for scientists to understand policy processes is widely recognised.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A collaboratively-derived science-policy research agenda",
+      "source_url": "1932-6203",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "However, the science-policy relationship is sometimes difficult and occasionally dysfunctional; it is also increasingly visible, because it must deal with contentious issues, or itself becomes a matter of public controversy, or both.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A collaboratively-derived science-policy research agenda",
+      "source_url": "1932-6203",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "INTRODUCTION: Dissemination of results of randomised controlled trials is traditionally limited to academic and professional groups rather than clinical trial participants.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Study within a trial (SWAT) protocol. Participants' perspectives and preferences on clinical trial result dissemination: The TRUST Thyroid Trial experience.",
+      "source_url": "2451-8654",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "While there is increasing consensus that results should be communicated to trial participants, there is a lack of evidence on the most appropriate methods of dissemination.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Study within a trial (SWAT) protocol. Participants' perspectives and preferences on clinical trial result dissemination: The TRUST Thyroid Trial experience.",
+      "source_url": "2451-8654",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "An in vitro model system based on a ketosynthase domain of the erythromycin polyketide synthase was used to probe the apparent substrate tolerance of ketosynthase domains of the mycolactone polyketide synthase.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Broadening substrate specificity of a chain-extending ketosynthase through a single active-site mutation.",
+      "source_url": "1359-7345",
+      "license": "Attribution 4.0 International Attribution 4.0 International Attribution 4.0 International http://creativecommons.org/lic"
+    },
+    {
+      "text": "A specific residue change was identified that led to an emphatic increase in turnover of a range of substrates.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Broadening substrate specificity of a chain-extending ketosynthase through a single active-site mutation.",
+      "source_url": "1359-7345",
+      "license": "Attribution 4.0 International Attribution 4.0 International Attribution 4.0 International http://creativecommons.org/lic"
+    },
+    {
+      "text": "Funder: National Institute for Health Research (NIHR) Funder: Wellcome Trust BACKGROUND: Multidisciplinary teams (MDTs) are widely used in cancer care.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Cancer multidisciplinary team meetings: impact of logistical challenges on communication and decision-making.",
+      "source_url": "2474-9842",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Recent research points to logistical challenges impeding MDT decision-making and dissatisfaction among members.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Cancer multidisciplinary team meetings: impact of logistical challenges on communication and decision-making.",
+      "source_url": "2474-9842",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "BACKGROUND: Worldwide, the Coronavirus pandemic has had a major impact on people's health, lives, and livelihoods.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The mental health experiences of ethnic minorities in the UK during the Coronavirus pandemic: A qualitative exploration.",
+      "source_url": "2296-2565",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "However, this impact has not been felt equally across various population groups.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The mental health experiences of ethnic minorities in the UK during the Coronavirus pandemic: A qualitative exploration.",
+      "source_url": "2296-2565",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "BACKGROUND: When vaccination depends on injection, it is plausible that the blood-injection-injury cluster of fears may contribute to hesitancy.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Injection fears and COVID-19 vaccine hesitancy.",
+      "source_url": "0033-2917",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Our primary aim was to estimate in the UK adult population the proportion of COVID-19 vaccine hesitancy explained by blood-injection-injury fears.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Injection fears and COVID-19 vaccine hesitancy.",
+      "source_url": "0033-2917",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Does non-human communication, like language, involve meaning?",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A multifaceted framework to establish the presence of meaning in non-human communication.",
+      "source_url": "1464-7931",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This question guides our focus through an interdisciplinary review of the theories and terminology used to study meaning across disciplines and species.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A multifaceted framework to establish the presence of meaning in non-human communication.",
+      "source_url": "1464-7931",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Accurate classification of variants in cancer susceptibility genes (CSGs) is key for correct estimation of cancer risk and management of patients.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Combining evidence for and against pathogenicity for variants in cancer susceptibility genes: CanVIG-UK consensus recommendations.",
+      "source_url": "0022-2593",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "However, considerable inconsistency persists regarding practice in the combination of evidence elements.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Combining evidence for and against pathogenicity for variants in cancer susceptibility genes: CanVIG-UK consensus recommendations.",
+      "source_url": "0022-2593",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Nanosized, carbon-coated LiFePO4 (LFP) is a promising cathode for Li-ion batteries.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Mapping the Inhomogeneous Electrochemical Reaction Through Porous LiFePO4‑Electrodes in a Standard Coin Cell Battery",
+      "source_url": "Strobridge et al. Chemistry of Materials (2015) Vol. 27 Issue 7, pp. 2374-2386. DOI: 10.1021/cm504317a",
+      "license": "Attribution 2.0 UK: England & Wales http://creativecommons.org/licenses/by/2.0/uk/"
+    },
+    {
+      "text": "Using in situ energy-dispersive X-ray diffraction, we map the evolution of the inhomogeneous electrochemical reaction in LFP-electrodes.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Mapping the Inhomogeneous Electrochemical Reaction Through Porous LiFePO4‑Electrodes in a Standard Coin Cell Battery",
+      "source_url": "Strobridge et al. Chemistry of Materials (2015) Vol. 27 Issue 7, pp. 2374-2386. DOI: 10.1021/cm504317a",
+      "license": "Attribution 2.0 UK: England & Wales http://creativecommons.org/licenses/by/2.0/uk/"
+    },
+    {
+      "text": ".wav and .mp3 versions of audio file This song bids farewell to participants in a love song singing session.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Love Song 9",
+      "source_url": "http://www.dspace.cam.ac.uk/handle/1810/242269",
+      "license": "Attribution-NonCommercial-NoDerivs 2.0 UK: England & Wales http://creativecommons.org/licenses/by-nc-nd/2.0/uk/ Attribut"
+    },
+    {
+      "text": "Mendelian randomization uses genetic variants to make causal inferences about a modifiable exposure.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Mendelian randomization with a binary exposure variable: interpretation and presentation of causal estimates",
+      "source_url": "1573-7284",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Subject to a genetic variant satisfying the instrumental variable assumptions, an association between the variant and outcome implies a causal effect of the exposure on the outcome.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Mendelian randomization with a binary exposure variable: interpretation and presentation of causal estimates",
+      "source_url": "1573-7284",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "BACKGROUND: Peptic ulcer disease is common with a lifetime prevalence in the general population of 5-10% and an incidence of 0.1-0.3% per year.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Perforated and bleeding peptic ulcer: WSES guidelines.",
+      "source_url": "1749-7922",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Despite a sharp reduction in incidence and rates of hospital admission and mortality over the past 30 years, complications are still encountered in 10-20% of these patients.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Perforated and bleeding peptic ulcer: WSES guidelines.",
+      "source_url": "1749-7922",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "BACKGROUND: Cerebral vasospasm (VS) and delayed cerebral ischemia (DCI) constitute major complications following subarachnoid hemorrhage (SAH).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Association of transcranial Doppler blood flow velocity slow waves with delayed cerebral ischemia in patients suffering from subarachnoid hemorrhage: a retrospective study.",
+      "source_url": "2197-425X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "A few studies have examined the relationship between different indices of cerebrovascular dynamics with the occurrence of VS.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Association of transcranial Doppler blood flow velocity slow waves with delayed cerebral ischemia in patients suffering from subarachnoid hemorrhage: a retrospective study.",
+      "source_url": "2197-425X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "BACKGROUND:There is a growing focus on the development of multi-factorial cancer risk prediction algorithms alongside tools that operationalise them for clinical use.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Evaluating clinician acceptability of the prototype CanRisk tool for predicting risk of breast and ovarian cancer: A multi-methods study.",
+      "source_url": "1932-6203",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "BOADICEA is a breast and ovarian cancer risk prediction model incorporating genetic and other risk factors.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Evaluating clinician acceptability of the prototype CanRisk tool for predicting risk of breast and ovarian cancer: A multi-methods study.",
+      "source_url": "1932-6203",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The childhood brain tumor, medulloblastoma, includes four subtypes with very different prognoses.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Medulloblastoma Genotype Dictates Blood Brain Barrier Phenotype.",
+      "source_url": "Cancer Cell 2016",
+      "license": "Attribution-NonCommercial-NoDerivs 2.0 UK: England & Wales http://creativecommons.org/licenses/by-nc-nd/2.0/uk/"
+    },
+    {
+      "text": "In contrast, SHH-medulloblastoma, a less curable disease subtype, contains an intact blood brain barrier, rendering this tumor impermeable and resistant to chemotherapy.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Medulloblastoma Genotype Dictates Blood Brain Barrier Phenotype.",
+      "source_url": "Cancer Cell 2016",
+      "license": "Attribution-NonCommercial-NoDerivs 2.0 UK: England & Wales http://creativecommons.org/licenses/by-nc-nd/2.0/uk/"
+    },
+    {
+      "text": "This thesis is an anthropological treatise on teenage attention based on ethnographic fieldwork at two urban schools in Cochabamba, Bolivia, and Warsaw, Poland.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The Social Life of Teen Attention: Navigating Citizenship, Schooling and the World Wide Web in Cochabamba, Bolivia and Warsaw, Poland",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/375298",
+      "license": "Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "text": "It proposes a socio-cognitive framework for an analysis of attention as a nexus comprised of ideological, bureaucratic, somatic, and affective elements as well as a form of practice that acts upon the world.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The Social Life of Teen Attention: Navigating Citizenship, Schooling and the World Wide Web in Cochabamba, Bolivia and Warsaw, Poland",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/375298",
+      "license": "Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "text": "INTRODUCTION: Complex metabolic disruption is a major aspect of the pathophysiology of traumatic brain injury (TBI).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Quantification of pyruvate in-vitro using mid-infrared spectroscopy: Developing a system for microdialysis monitoring in traumatic brain injury patients.",
+      "source_url": "2772-5294",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "text": "LPR is conventionally measured offline on a bedside analyzer, on hourly accumulations of brain microdialysate.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Quantification of pyruvate in-vitro using mid-infrared spectroscopy: Developing a system for microdialysis monitoring in traumatic brain injury patients.",
+      "source_url": "2772-5294",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "text": "Covalent DNA-protein cross-links (DPCs) are toxic DNA lesions that block replication and require repair by multiple pathways.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Transcription-coupled repair of DNA-protein cross-links depends on CSA and CSB.",
+      "source_url": "1465-7392",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Whether transcription blockage contributes to the toxicity of DPCs and how cells respond when RNA polymerases stall at DPCs is unknown.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Transcription-coupled repair of DNA-protein cross-links depends on CSA and CSB.",
+      "source_url": "1465-7392",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "BACKGROUND: Altered enteroendocrine hormone responses are widely believed to underlie the beneficial effects of bariatric surgery in type 2 diabetes.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Gastrectomy with Roux-en-Y reconstruction as a lean model of bariatric surgery.",
+      "source_url": "1550-7289",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "While elevated postprandial glucagon-like peptide-1 (GLP-1) is considered one of the mediators, increased postprandial glucagon levels have recently been implicated.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Gastrectomy with Roux-en-Y reconstruction as a lean model of bariatric surgery.",
+      "source_url": "1550-7289",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "BACKGROUND: Breast cancer is one of the most common diseases in women worldwide.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Predicting factors for survival of breast cancer patients using machine learning techniques.",
+      "source_url": "1472-6947",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Many studies have been conducted to predict the survival indicators, however most of these analyses were predominantly performed using basic statistical methods.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Predicting factors for survival of breast cancer patients using machine learning techniques.",
+      "source_url": "1472-6947",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Zinc metal batteries (ZMBs) are promising candidates for low-cost, intrinsically safe, and environmentally friendly energy storage systems.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The effect of interface heterogeneity on zinc metal anode cyclability.",
+      "source_url": "2050-7488",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "However, the anode is plagued with problems such as the parasitic hydrogen evolution reaction, surface passivation, corrosion, and a rough metal electrode morphology that is prone to short circuits.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The effect of interface heterogeneity on zinc metal anode cyclability.",
+      "source_url": "2050-7488",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Emotional enhancement of free recall can be context dependent.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Local context influences memory for emotional stimuli but not electrophysiological markers of emotion-dependent attention.",
+      "source_url": "0048-5772",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "It is readily observed when emotional and neutral scenes are encoded and recalled together in a \"mixed\" list, but diminishes when these scenes are encoded separately in \"pure\" lists.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Local context influences memory for emotional stimuli but not electrophysiological markers of emotion-dependent attention.",
+      "source_url": "0048-5772",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The CAU were commissioned to undertake an evaluation on land owned by St.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "An Archaeological Evaluation at St John's College School, 73 Grange Road, Cambridge",
+      "source_url": "145",
+      "license": "CC-BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "text": "John's College School prior to the proposed development of new music school rooms.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "An Archaeological Evaluation at St John's College School, 73 Grange Road, Cambridge",
+      "source_url": "145",
+      "license": "CC-BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "text": ".mp3 audio file A song about the beauty of the landscape of home Primarily a collection of folk and religious offering songs sung by a specialised class of folk singers (Emeda) in Lo.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Offering Songs, Festive Songs, Processional Songs mGar-gLu, Khro-Glu, Phebsnga: Khang Lhamo, Yandol & Pema Dolma Music: Parso Karpo Ri La, 'The hill is white like elephants' tusks'",
+      "source_url": "http://www.dspace.cam.ac.uk/handle/1810/244423",
+      "license": "Attribution-NonCommercial-NoDerivs 2.0 UK: England & Wales http://creativecommons.org/licenses/by-nc-nd/2.0/uk/ Attribut"
+    },
+    {
+      "text": "Most of these songs are sung by Tashi Tsering, the last remaining Emeda singer in Lo.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Offering Songs, Festive Songs, Processional Songs mGar-gLu, Khro-Glu, Phebsnga: Khang Lhamo, Yandol & Pema Dolma Music: Parso Karpo Ri La, 'The hill is white like elephants' tusks'",
+      "source_url": "http://www.dspace.cam.ac.uk/handle/1810/244423",
+      "license": "Attribution-NonCommercial-NoDerivs 2.0 UK: England & Wales http://creativecommons.org/licenses/by-nc-nd/2.0/uk/ Attribut"
+    },
+    {
+      "text": "The continuing development of consumer electronics, mobile communications and advanced computing technologies has led to a rapid growth in data traffic, creating challenges for the communications industry.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Emerging light-emitting diodes for next-generation data communications",
+      "source_url": "2520-1131",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Here we review the development of emerging LED materials—organic semiconductors, colloidal quantum dots and metal halide perovskites—for use in optical communications.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Emerging light-emitting diodes for next-generation data communications",
+      "source_url": "2520-1131",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Recent years have seen neuroimaging data sets becoming richer, with larger cohorts of participants, a greater variety of acquisition techniques, and increasingly complex analyses.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Automatic analysis (aa): efficient neuroimaging workflows and parallel processing using Matlab and XML.",
+      "source_url": "1662-5196",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "These advances have made data analysis pipelines complicated to set up and run (increasing the risk of human error) and time consuming to execute (restricting what analyses are attempted).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Automatic analysis (aa): efficient neuroimaging workflows and parallel processing using Matlab and XML.",
+      "source_url": "1662-5196",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Importance: Psychotic disorders contribute significantly to the global disease burden, yet the latest international incidence study of psychotic disorders was conducted in the 1980s.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Treated Incidence of Psychotic Disorders in the Multinational EU-GEI Study",
+      "source_url": "2168-622X",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Objectives: To estimate the incidence of psychotic disorders using comparable methods across 17 catchment areas in 6 countries and to examine the variance between catchment areas by putative environmental risk factors.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Treated Incidence of Psychotic Disorders in the Multinational EU-GEI Study",
+      "source_url": "2168-622X",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Human structural and functional brain architecture is increasingly studied by applying the mathematical framework of complex networks to data from magnetic resonance imaging.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Characterising disease-related and developmental changes in correlation-derived structural and functional brain networks",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/277816",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) https://creativecommons.org/licenses/by-nc-n"
+    },
+    {
+      "text": "Connections (edges) in such brain networks are commonly constructed using correlations of features between pairs of brain regions, such as regional morphology (across participants) or neurophysiological time series (within participants).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Characterising disease-related and developmental changes in correlation-derived structural and functional brain networks",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/277816",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) https://creativecommons.org/licenses/by-nc-n"
+    },
+    {
+      "text": "On activation, the ER recruits and assembles a 1-2 MDa transcriptionally active complex.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "ZMIZ1 enhances ERα-dependent expression of E2F2 in breast cancer.",
+      "source_url": "0952-5041",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "These complexes can modulate tumour growth, and understanding the roles of individual proteins within these complexes can help identify new therapeutic targets.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "ZMIZ1 enhances ERα-dependent expression of E2F2 in breast cancer.",
+      "source_url": "0952-5041",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "A high quality evidence review in accordance with international reporting standards is currently lacking.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Management of impacted fetal head at cesarean birth: A systematic review and meta‐analysis",
+      "source_url": "0001-6349",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Included were randomized controlled trials (any size) and non‐randomized comparative studies (<jats:italic>n</jats:italic> ≥ 30 in each arm) comparing techniques or adjunctive measures to prevent or manage impacted fetal head at cesarean birth.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Management of impacted fetal head at cesarean birth: A systematic review and meta‐analysis",
+      "source_url": "0001-6349",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Whilst upstream signalling pathways leading to RBM3 expression have been described, the precise molecular mechanism of RBM3 cold induction remains elusive.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "HNRNPH1 regulates the neuroprotective cold-shock protein RBM3 expression through poison exon exclusion.",
+      "source_url": "The EMBO Journal, article-number e113168",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "To identify temperature-dependent modulators of RBM3, we performed a genome-wide CRISPR-Cas9 knockout screen using RBM3-reporter human iPSC-derived neurons.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "HNRNPH1 regulates the neuroprotective cold-shock protein RBM3 expression through poison exon exclusion.",
+      "source_url": "The EMBO Journal, article-number e113168",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Publication status: Published The low field magnetic susceptibility ( χ LF ) measured in the 1116‐m‐long Dévaványa core (Pannonian Basin) is a quasi‐continuous record of the Plio–Pleistocene Mid‐European mountain permafrost development.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A quasi‐continuous long‐term (5 Ma) Mid‐European mountain permafrost record based on fluvial magnetic susceptibility and its contribution to the explanation of Plio–Pleistocene glaciations",
+      "source_url": "0300-9483",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The continuity of fluvial conditions is confirmed by seismic data, and the detrital origin of magnetite is indicated by frequency‐dependent susceptibility measurements, scanning electron microscope, and hysteresis investigations.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A quasi‐continuous long‐term (5 Ma) Mid‐European mountain permafrost record based on fluvial magnetic susceptibility and its contribution to the explanation of Plio–Pleistocene glaciations",
+      "source_url": "0300-9483",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Snow still haunt the University where he developed his reputation.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Two cultures of interdisciplinarity",
+      "source_url": "3033-3725",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "While the policy legacy of that debate is often reduced to concerns about numeracy skills and the supposed objectivity of quantitative evidence, the class distinctions of sophisticated culture versus lowly trade are again being blurred by social media and generative AI.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Two cultures of interdisciplinarity",
+      "source_url": "3033-3725",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This chapter introduces the principal themes of the edited volume 'The Matter of Mimesis: Studies from Art, Nature, and Science'.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Introduction",
+      "source_url": "9789004392496",
+      "license": "Attribution-NoDerivatives 4.0 International (CC BY-ND 4.0) https://creativecommons.org/licenses/by-nd/4.0/"
+    },
+    {
+      "text": "BACKGROUND: The introduction of a conjugate vaccine for serogroup A Neisseria meningitidis has dramatically reduced disease in the African meningitis belt.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The cost-effectiveness of alternative vaccination strategies for polyvalent meningococcal vaccines in Burkina Faso: A transmission dynamic modeling study.",
+      "source_url": "1549-1277",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "In this context, important questions remain about the performance of different vaccine policies that target remaining serogroups.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The cost-effectiveness of alternative vaccination strategies for polyvalent meningococcal vaccines in Burkina Faso: A transmission dynamic modeling study.",
+      "source_url": "1549-1277",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Reported is the reaction of a series of iron(II) bisphosphine complexes with PH3 in the presence of NaBArF4 [where BArF4 = tetrakis(3,5-bis(trifluoromethyl)phenyl)borate].",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Synthesis and Characterization of a Terminal Iron(II)-PH2 Complex and a Series of Iron(II)-PH3 Complexes.",
+      "source_url": "0020-1669",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The iron(II) bisphosphine reagents bear two chlorides or a hydride and a chloride motif.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Synthesis and Characterization of a Terminal Iron(II)-PH2 Complex and a Series of Iron(II)-PH3 Complexes.",
+      "source_url": "0020-1669",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Human induced pluripotent stem cells (hiPSC) have been used to generate intestinal organoids that mimic key intestinal properties without the requirement for invasive procedures to obtain human tissues.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Genome-Wide Epigenetic and Transcriptomic Characterization of Human-Induced Pluripotent Stem Cell-Derived Intestinal Epithelial Organoids.",
+      "source_url": "2352-345X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The main protocols that have been described result in gut organoids that contain both intestinal epithelium as well as mesenchymal cells (2, 3).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Genome-Wide Epigenetic and Transcriptomic Characterization of Human-Induced Pluripotent Stem Cell-Derived Intestinal Epithelial Organoids.",
+      "source_url": "2352-345X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Background Increasing numbers of people die of the frailty and multimorbidity associated with old age, often without receiving an End-of-Life diagnosis.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The difference an End of Life diagnosis makes: a qualitative study of community care providers’ perspectives",
+      "source_url": "0960-1643",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Compared to those with a single life-limiting condition such as cancer, frail older people are less likely to access adequate community care.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The difference an End of Life diagnosis makes: a qualitative study of community care providers’ perspectives",
+      "source_url": "0960-1643",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The effects of varying the twist angle and surface finishing on the mechanical properties of gut harp strings have been explored.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Research data supporting 'Effects of Twisting and Surface Finish on the Mechanical Properties of Natural Gut Harp Strings'",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/353702",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Strings were tested over a range of twist angles from 23.5° to 58.3°, and with all four combinations of ground or unground and varnished or unvarnished surface finishing.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Research data supporting 'Effects of Twisting and Surface Finish on the Mechanical Properties of Natural Gut Harp Strings'",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/353702",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This paper offers a novel interpretation of the theory of the personality of the state put forward in Hobbes’s Leviathan.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Personality, authority, and self-esteem in Hobbes’s Leviathan",
+      "source_url": "1749-6977",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) https://creativecommons.org/licenses/by-nc-n"
+    },
+    {
+      "text": "Hobbes’s account of political representation does not conceive of the state as a ‘purely artificial person’ or ‘person by fiction’, as Quentin Skinner and David Runciman have argued.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Personality, authority, and self-esteem in Hobbes’s Leviathan",
+      "source_url": "1749-6977",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0) https://creativecommons.org/licenses/by-nc-n"
+    },
+    {
+      "text": "Gravitational waves from coalescing binary black holes encode the evolution of their spins prior to merger.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Distinguishing black-hole spin-orbit resonances by their gravitational wave signatures. II. Full parameter estimation",
+      "source_url": "Trifirò et al. Physical Review D (2016)",
+      "license": "Attribution-NonCommercial 2.0 UK: England & Wales https://creativecommons.org/licenses/by-nc/2.0/uk/"
+    },
+    {
+      "text": "In the post-Newtonian regime and on the precession time scale, this evolution has one of three morphologies, with the spins either librating around one of two fixed points (\"resonances\") or circulating freely.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Distinguishing black-hole spin-orbit resonances by their gravitational wave signatures. II. Full parameter estimation",
+      "source_url": "Trifirò et al. Physical Review D (2016)",
+      "license": "Attribution-NonCommercial 2.0 UK: England & Wales https://creativecommons.org/licenses/by-nc/2.0/uk/"
+    },
+    {
+      "text": "BACKGROUND: The epidemiology of traumatic brain injury (TBI) is unclear - it is estimated to affect 27-69 million individuals yearly with the bulk of the TBI burden in low-to-middle income countries (LMICs).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "An international, prospective observational study on traumatic brain injury epidemiology study protocol:  GEO-TBI: Incidence.",
+      "source_url": "2633-4402",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Research has highlighted significant between-hospital variability in TBI outcomes following emergency surgery, but the overall incidence and epidemiology of TBI remains unclear.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "An international, prospective observational study on traumatic brain injury epidemiology study protocol:  GEO-TBI: Incidence.",
+      "source_url": "2633-4402",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The associated production of a Higgs boson with a W or Z boson decaying into leptons and where the Higgs boson decays to a b b ¯ pair is measured in the high vector-boson transverse momentum regime, above 250 GeV, with the ATLAS detector.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Measurement of the associated production of a Higgs boson decaying into b-quarks with a vector boson at high transverse momentum in pp collisions at s = 13  TeV with the ATLAS detector",
+      "source_url": "0370-2693",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The analysed data, corresponding to an integrated luminosity of 139 fb − 1 , were collected in proton–proton collisions at the Large Hadron Collider between 2015 and 2018 at a centre-of-mass energy of s = 13 TeV .",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Measurement of the associated production of a Higgs boson decaying into b-quarks with a vector boson at high transverse momentum in pp collisions at s = 13  TeV with the ATLAS detector",
+      "source_url": "0370-2693",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "During the decolonization period, the order of the ocean changed as remarkably as that of land.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Decolonization and International Law: Putting the Ocean on the Map",
+      "source_url": "1388-199X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Yet, the developments in the law of the sea usually receive less prominent consideration.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Decolonization and International Law: Putting the Ocean on the Map",
+      "source_url": "1388-199X",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "BACKGROUND: There is a global need to develop new therapies to treat infectious diseases and tackle the rise in antimicrobial resistance.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "An attacin antimicrobial peptide, Hill_BB_C10074, from Hermetia illucens with anti-Pseudomonas aeruginosa activity.",
+      "source_url": "1471-2180",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "To date, the larvae of the Black Solider Fly, Hermetia illucens, have the largest repertoire of antimicrobial peptides derived from insects.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "An attacin antimicrobial peptide, Hill_BB_C10074, from Hermetia illucens with anti-Pseudomonas aeruginosa activity.",
+      "source_url": "1471-2180",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The role that culture plays in the way different groups experience, respond to, and recover from disasters has been widely discussed.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Werewolves and warning signs: Cultural responses to tropical cyclones in Mauritius",
+      "source_url": "0016-7185",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "text": "The literature that does exist tends also to focus either on western cultures or on groups that pursue highly traditional livelihoods.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Werewolves and warning signs: Cultural responses to tropical cyclones in Mauritius",
+      "source_url": "0016-7185",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "text": "This paper studies the survivability of peatland-related programs in Indonesia.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Multi-level actor-network: Case of Peatland programs in a Riau Village, Indonesia (1974–2020)",
+      "source_url": "0016-7185",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "text": "Despite an increase in the global and national programs for peatland restoration, many of these programs fail to survive in the long-term.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Multi-level actor-network: Case of Peatland programs in a Riau Village, Indonesia (1974–2020)",
+      "source_url": "0016-7185",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "text": ".mp3 audio file This jangar song is about the Ak Jang hero spirit-protector Shunu, the subject of an Altaian epic and many tales.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Shunu baatyr, 'Shunu Hero'",
+      "source_url": "http://www.dspace.cam.ac.uk/handle/1810/244542",
+      "license": "Attribution-NonCommercial-NoDerivs 2.0 UK: England & Wales http://creativecommons.org/licenses/by-nc-nd/2.0/uk/ Attribut"
+    },
+    {
+      "text": "The project builds on Pegg's research undertaken in the Mountain Altai since 2002.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Shunu baatyr, 'Shunu Hero'",
+      "source_url": "http://www.dspace.cam.ac.uk/handle/1810/244542",
+      "license": "Attribution-NonCommercial-NoDerivs 2.0 UK: England & Wales http://creativecommons.org/licenses/by-nc-nd/2.0/uk/ Attribut"
+    },
+    {
+      "text": "The use of mesenchymal stromal cells (MSCs) in regenerative medicine and tissue engineering is well established, given their properties of self-renewal and differentiation.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Chronological Age Affects MSC Senescence In Vitro-A Systematic Review.",
+      "source_url": "1661-6596",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "However, several studies have shown that these properties diminish with age, and understanding the pathways involved are important to provide regenerative therapies in an ageing population.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Chronological Age Affects MSC Senescence In Vitro-A Systematic Review.",
+      "source_url": "1661-6596",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "In most languages, sentences can be broken down into words, which themselves can be further decomposed into units that contain meaning of their own, so-called morphemes (e.g., “play” or plural form “-s”).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Editorial: Morphologically Complex Words in the Mind/Brain",
+      "source_url": "1662-5161",
+      "license": "Attribution 4.0 International Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/ http://creativec"
+    },
+    {
+      "text": "Morphemes are the main building blocks and tools, which we use to create and change words.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Editorial: Morphologically Complex Words in the Mind/Brain",
+      "source_url": "1662-5161",
+      "license": "Attribution 4.0 International Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/ http://creativec"
+    },
+    {
+      "text": "UNLABELLED: Poly(3,4-ethylenedioxythiophene) doped with poly(styrenesulfonate), PEDOT: PSS, has been utilized for over two decades as a stable, solution-processable hole conductor.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Structural control of mixed ionic and electronic transport in conducting polymers.",
+      "source_url": "2041-1723",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "While its hole transport properties have been the subject of intense investigation, recent work has turned to PEDOT: PSS as a mixed ionic/electronic conductor in applications including bioelectronics, energy storage and management, and soft robotics.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Structural control of mixed ionic and electronic transport in conducting polymers.",
+      "source_url": "2041-1723",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "We present measurements of spin pumping detected by the inverse spin Hall effect voltage and ferromagnetic resonance spectroscopy in a series of metallic ferromagnet/normal metal thin film stacks.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Efficient spin transport through native oxides of nickel and permalloy with platinum and gold overlayers",
+      "source_url": "Zink et al. Physical Review B (2016) Vol. 93, Article 184401. doi: 10.1103/PhysRevB.93.184401",
+      "license": "Attribution-NonCommercial 2.0 UK: England & Wales http://creativecommons.org/licenses/by-nc/2.0/uk/"
+    },
+    {
+      "text": "We compare heterostructures grown in situ to those where either a magnetic or nonmagnetic oxide is introduced between the two metals.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Efficient spin transport through native oxides of nickel and permalloy with platinum and gold overlayers",
+      "source_url": "Zink et al. Physical Review B (2016) Vol. 93, Article 184401. doi: 10.1103/PhysRevB.93.184401",
+      "license": "Attribution-NonCommercial 2.0 UK: England & Wales http://creativecommons.org/licenses/by-nc/2.0/uk/"
+    },
+    {
+      "text": "BACKGROUND: Chronic subdural haematoma (CSDH) is a common neurosurgical condition, typically treated with surgical drainage of the haematoma.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Dexamethasone for adult patients with a symptomatic chronic subdural haematoma (Dex-CSDH) trial: study protocol for a randomised controlled trial.",
+      "source_url": "1468-6708",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "However, surgery is associated with mortality and morbidity, including up to 20% recurrence of the CSDH.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Dexamethasone for adult patients with a symptomatic chronic subdural haematoma (Dex-CSDH) trial: study protocol for a randomised controlled trial.",
+      "source_url": "1468-6708",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "An amendment to this paper has been published and can be accessed via a link at the top of the paper.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Author Correction: Boundary effects of expectation in human pain perception",
+      "source_url": "s41598-020-75632-2",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Diagnostic testing continues to be an integral component of the strategy to contain the Severe Acute Respiratory Syndrome Coronavirus 2 (SARS-CoV-2) global pandemic, the causative agent of Coronavirus Disease 2019 (COVID-19).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Development of a colorimetric assay for the detection of SARS-CoV-2 3CLpro activity.",
+      "source_url": "0264-6021",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The SARS-CoV-2 genome encodes the 3C-like protease (3CLpro) which is essential for coronavirus replication.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Development of a colorimetric assay for the detection of SARS-CoV-2 3CLpro activity.",
+      "source_url": "0264-6021",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Abstract: Background: Investigating similarities and differences among healthcare providers, on the basis of patient healthcare experience, is of interest for policy making.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Evaluating the effect of healthcare providers on the clinical path of heart failure patients through a semi-Markov, multi-state model",
+      "source_url": "s12913-020-05294-3",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Availability of high quality, routine health databases allows a more detailed analysis of performance across multiple outcomes, but requires appropriate statistical methodology.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Evaluating the effect of healthcare providers on the clinical path of heart failure patients through a semi-Markov, multi-state model",
+      "source_url": "s12913-020-05294-3",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "In healthy paediatric airways, we observed cells already in an interferon-activated state, that upon SARS-CoV-2 infection was further induced especially in airway immune cells.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Local and systemic responses to SARS-CoV-2 infection in children and adults",
+      "source_url": "0028-0836",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "We postulate that higher paediatric innate interferon-responses restrict viral replication and disease progression.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Local and systemic responses to SARS-CoV-2 infection in children and adults",
+      "source_url": "0028-0836",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Publication status: Published <jats:p>Induction of mycobacterial efflux pumps is a cause of <jats:italic>Mycobacterium tuberculosis</jats:italic> (Mtb) drug tolerance, a barrier to shortening antitubercular treatment.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A dose‐finding study to guide use of verapamil as an adjunctive therapy in tuberculosis",
+      "source_url": "0009-9236",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Verapamil inhibits Mtb efflux pumps that mediate tolerance to rifampin, a cornerstone of tuberculosis treatment.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A dose‐finding study to guide use of verapamil as an adjunctive therapy in tuberculosis",
+      "source_url": "0009-9236",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This article reports on an analysis of reflections by students and staff following a student-staff partnership which conducted a qualitative exploratory inquiry case study on student mental health in higher education.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A student-staff partnership conducting research in higher education: An analysis of student and staff reflections",
+      "source_url": "2560-7367",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Following completion of the inquiry, two engaged students and the principal investigator reflected on their experience of the partnership.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A student-staff partnership conducting research in higher education: An analysis of student and staff reflections",
+      "source_url": "2560-7367",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "BACKGROUND: There is a lack of consistent, evidence-based guidelines for the management of patients with fever after brain injury.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Targeted temperature management in patients with intracerebral haemorrhage, subarachnoid haemorrhage, or acute ischaemic stroke: updated consensus guideline recommendations by the Neuroprotective Therapy Consensus Review (NTCR) group.",
+      "source_url": "0007-0912",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The aim was to update previously published consensus recommendations on targeted temperature management after intracerebral haemorrhage, aneurysmal subarachnoid haemorrhage, and acute ischaemic stroke in patients who require admission to critical care.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Targeted temperature management in patients with intracerebral haemorrhage, subarachnoid haemorrhage, or acute ischaemic stroke: updated consensus guideline recommendations by the Neuroprotective Therapy Consensus Review (NTCR) group.",
+      "source_url": "0007-0912",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "BACKGROUND: In rheumatoid arthritis (RA) the cause for loss of tolerance and anti-citrullinated protein antibody (ACPA) production remains unidentified.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Human Lymph Node Stromal Cells Have the Machinery to Regulate Peripheral Tolerance during Health and Rheumatoid Arthritis.",
+      "source_url": "1661-6596",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Mouse studies showed that lymph node stromal cells (LNSCs) maintain peripheral tolerance through presentation of peripheral tissue antigens (PTAs).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Human Lymph Node Stromal Cells Have the Machinery to Regulate Peripheral Tolerance during Health and Rheumatoid Arthritis.",
+      "source_url": "1661-6596",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Compared with conventional laboratory-scale X-ray techniques, synchrotron based X-rays with higher brilliance and higher coherence allow for the investigation of various material properties with high spatial resolution.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Multimodal hard X-ray nanoprobe techniques for operando investigations of photovoltaic devices.",
+      "source_url": "0909-0495",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "We have developed X-ray beam-induced current (XBIC) measurement capability at I14 to address the growing demand for operando analysis in energy-harvesting research.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Multimodal hard X-ray nanoprobe techniques for operando investigations of photovoltaic devices.",
+      "source_url": "0909-0495",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "OBJECTIVES: To design a questionnaire and use it to explore unmet needs with practical aspects of medicine taking after stroke, predictors of medicine taking and to estimate the proportion of survivors who get support with daily medication taking.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Evaluating practical support stroke survivors get with medicines and unmet needs in primary care: a survey.",
+      "source_url": "2044-6055",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "DESIGN: Four workshops with stroke survivors and caregivers to design the questionnaire.A cross-sectional postal questionnaire in primary care.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Evaluating practical support stroke survivors get with medicines and unmet needs in primary care: a survey.",
+      "source_url": "2044-6055",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "She shows a talisman and says that people hang such talismans over the entrance to their houses as protection from jealous tongues and accidents.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Tatyana Boskhomdzhieva, Bu",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/276734",
+      "license": "Attribution-NonCommercial-NoDerivs 3.0 Unported (CC BY-NC-ND 3.0) https://creativecommons.org/licenses/by-nc-nd/3.0/"
+    },
+    {
+      "text": "The talisman that Tatyana holds in her hands was brought by her male relative from Mongolia when he travelled there.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Tatyana Boskhomdzhieva, Bu",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/276734",
+      "license": "Attribution-NonCommercial-NoDerivs 3.0 Unported (CC BY-NC-ND 3.0) https://creativecommons.org/licenses/by-nc-nd/3.0/"
+    },
+    {
+      "text": "Mutations in myosin VI have been associated with autosomal-recessive (DFNB37) and autosomal-dominant (DFNA22) deafness in humans.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Loss of cargo binding in the human myosin VI deafness mutant (R1166X) leads to increased actin filament binding.",
+      "source_url": "0264-6021",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Here, we characterise an myosin VI nonsense mutation (R1166X) that was identified in a family with hereditary hearing loss in Pakistan.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Loss of cargo binding in the human myosin VI deafness mutant (R1166X) leads to increased actin filament binding.",
+      "source_url": "0264-6021",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "BACKGROUND: Aphids, including the generalist herbivore Myzus persicae, transmit cucumber mosaic virus (CMV).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Cucumber mosaic virus and its 2b protein alter emission of host volatile organic compounds but not aphid vector settling in tobacco",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/266761",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "CMV (strain Fny) infection affects M. persicae feeding behavior and performance on tobacco (Nicotiana tabacum), Arabidopsis thaliana and cucurbits in varying ways.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Cucumber mosaic virus and its 2b protein alter emission of host volatile organic compounds but not aphid vector settling in tobacco",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/266761",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "High grade serous ovarian carcinoma (HGSOC) is a highly heterogeneous disease that typically presents at an advanced, metastatic state.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Integrated radiogenomics models predict response to neoadjuvant chemotherapy in high grade serous ovarian cancer.",
+      "source_url": "2041-1723",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The multi-scale complexity of HGSOC is a major obstacle to predicting response to neoadjuvant chemotherapy (NACT) and understanding critical determinants of response.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Integrated radiogenomics models predict response to neoadjuvant chemotherapy in high grade serous ovarian cancer.",
+      "source_url": "2041-1723",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Abstract This essay focuses on the concept of “international order” and its uses and misuses.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Rethinking International Order",
+      "source_url": "0892-6794",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "It argues that the concept of “order” should not be conflated with the concept of a “system,” and that it makes more sense to speak of world order than international order because the former accommodates political units beyond the nation-state.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Rethinking International Order",
+      "source_url": "0892-6794",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Excel file containing results of a systematic review and literature meta-analysis on sensory deprivation in rodents National Science Foundation under Grant No.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Research Data supporting \"Deprivation-induced plasticity in the early central circuits of the rodent visual, auditory, and olfactory systems\"",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/363929",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "NSF PHY-1748958 (EG), UKRI BBSRC BB/W014688/1 (EG), Cambridge Trust PhD Studentship (LH)",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Research Data supporting \"Deprivation-induced plasticity in the early central circuits of the rodent visual, auditory, and olfactory systems\"",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/363929",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "A total of seventeen test pits and five trenches, totalling 300m, were excavated.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Dominic Harrington Nurseries, Old Lynn Road, Wisbech. An Archaeological Investigation.",
+      "source_url": "1051",
+      "license": "CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "text": "The investigation identified that the site was situated on fen silts in excess of 4.5m thick along with traces of modern farming and manuring.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Dominic Harrington Nurseries, Old Lynn Road, Wisbech. An Archaeological Investigation.",
+      "source_url": "1051",
+      "license": "CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "text": "The first observations of the James Webb Space Telescope (JWST) have revolutionized our understanding of the Universe by identifying galaxies at redshift z ≈ 13 (refs.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Spectroscopic confirmation of two luminous galaxies at a redshift of 14.",
+      "source_url": "0028-0836",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "In addition, the discovery of many luminous galaxies at Cosmic Dawn (z > 10) has suggested that galaxies developed rapidly, in apparent tension with many standard models4-8.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Spectroscopic confirmation of two luminous galaxies at a redshift of 14.",
+      "source_url": "0028-0836",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The neutron noise equation contains a fixed source term where the neutron angular flux is present.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A memory-efficient neutron noise algorithm for reactor physics",
+      "source_url": "0306-4549",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Deterministic noise solvers have tended to solve for and store this angular flux term in a preprocessing step.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "A memory-efficient neutron noise algorithm for reactor physics",
+      "source_url": "0306-4549",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "In solid tumours, cancer cells exist within hypoxic microenvironments, and their metabolic adaptation to this hypoxia is driven by HIF-1 transcription factor, which is overexpressed in a broad range of human cancers.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "HIF-1-Independent Mechanisms Regulating Metabolic Adaptation in Hypoxic Cancer Cells.",
+      "source_url": "2073-4409",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "HIF inhibitors are under pre-clinical investigation and clinical trials, but there is evidence that hypoxic cancer cells can adapt metabolically to HIF-1 inhibition, which would provide a potential route for drug resistance.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "HIF-1-Independent Mechanisms Regulating Metabolic Adaptation in Hypoxic Cancer Cells.",
+      "source_url": "2073-4409",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "<jats:title>Abstract</jats:title> <jats:p>Dust is a fundamental component of the interstellar medium (ISM) within galaxies, as dust grains are highly efficient absorbers of UV and optical photons.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Detection of the 2175Å UV Bump at <i>z</i> &amp;gt; 7: Evidence for Rapid Dust Evolution in a Merging Reionisation-Era Galaxy",
+      "source_url": "0035-8711",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Accurately quantifying this obscuration is crucial for interpreting galaxy spectral energy distributions (SEDs).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Detection of the 2175Å UV Bump at <i>z</i> &amp;gt; 7: Evidence for Rapid Dust Evolution in a Merging Reionisation-Era Galaxy",
+      "source_url": "0035-8711",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Oxidative stress and oxidative DNA damage are early features of mild cognitive impairment and Alzheimer’s disease (AD), occurring before the formation of classical AD neuropathology, and resulting from an imbalance between pro- and anti-oxidants.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Metallothionein-I/II expression associates with the astrocyte DNA damage response and not Alzheimer-type pathology in the ageing brain",
+      "source_url": "1098-1136",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Astrocytes play a major neuroprotective role, producing high levels of anti-oxidants including metallothionein-I and –II (MT-I/II).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Metallothionein-I/II expression associates with the astrocyte DNA damage response and not Alzheimer-type pathology in the ageing brain",
+      "source_url": "1098-1136",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Objective: To provide quantitative evidence for systematically prioritising individuals for full formal cardiovascular disease (CVD) risk assessment using primary care records with a novel tool (eHEART) with age- and sex- specific risk thresholds.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Prioritising cardiovascular disease risk assessment to high risk individuals based on primary care records",
+      "source_url": "1932-6203",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Methods and Analysis: eHEART was derived using landmark Cox models for incident CVD with repeated measures of conventional CVD risk predictors in 1,642,498 individuals from the Clinical Practice Research Datalink.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Prioritising cardiovascular disease risk assessment to high risk individuals based on primary care records",
+      "source_url": "1932-6203",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Meiosis is a core feature of eukaryotes that occurs in all major groups, including the early diverging excavates.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Sequential production of gametes during meiosis in trypanosomes.",
+      "source_url": "2399-3642",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "In this group, meiosis and production of haploid gametes have been described in the pathogenic protist, Trypanosoma brucei, and mating occurs in the salivary glands of the insect vector, the tsetse fly.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Sequential production of gametes during meiosis in trypanosomes.",
+      "source_url": "2399-3642",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The gastric bacterium Helicobacter pylori shares a coevolutionary history with humans that predates the out-of-Africa diaspora, and the geographical specificities of H. pylori populations reflect multiple well-known human migrations.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Helicobacter pylori's historical journey through Siberia and the Americas.",
+      "source_url": "0027-8424",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "text": "A total of 556 strains were cultivated and genotyped by multilocus sequence typing, and 54 representative draft genomes were sequenced.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Helicobacter pylori's historical journey through Siberia and the Americas.",
+      "source_url": "0027-8424",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International https://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "text": "Adaptive laboratory evolution has proven highly effective for obtaining microorganisms with enhanced capabilities.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Adaptive laboratory evolution of microbial co-cultures for improved metabolite secretion.",
+      "source_url": "1744-4292",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Yet, this method is inherently restricted to the traits that are positively linked to cell fitness, such as nutrient utilization.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Adaptive laboratory evolution of microbial co-cultures for improved metabolite secretion.",
+      "source_url": "1744-4292",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Acknowledgements: The project that gave rise to these results received the support of a fellowship from ‘‘la Caixa” Foundation (LCF/BQ/PR23/11980041).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Promoting photoswitching in mismatching mixed-linker multivariate Zr6 MOFs.",
+      "source_url": "2046-2069",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This publication is part of the I+D project PID2023-148580NA-I00 financed by MCIN/AEI/10.13039/501100011033/ and FEDER ‘a way to make Europe’.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Promoting photoswitching in mismatching mixed-linker multivariate Zr6 MOFs.",
+      "source_url": "2046-2069",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "James was employed by Cambridge University Library to prepare descriptions of its medieval manuscripts, with a view to superseding the information provided by the five-volume catalogue published between 1856 and 1867.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Unpublished description by M.R. James of Cambridge, University Library, MS Ll.2.12 (Missal, Use of Sarum)",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/321010",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "In all, James prepared descriptions of over 1,200 of the Library's manuscripts.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Unpublished description by M.R. James of Cambridge, University Library, MS Ll.2.12 (Missal, Use of Sarum)",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/321010",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Glass strength is very sensitive to damage accumulation during its service life.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Repair of Soda-Lime-Silica Glass",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/277362",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Repair methods for glass have been proposed over the last decades to volumetrically fill or remove existing flaws from the surface of glass.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Repair of Soda-Lime-Silica Glass",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/277362",
+      "license": "Attribution 4.0 International http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "A desk based assessment was carried out for the DETR Development Site on Station Road, Cambridge.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The DETR Development Site, Station Road, Cambridge: An Archaeological Desk-top Assessment",
+      "source_url": "379",
+      "license": "CC-BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "text": "The findings indicate that archaeology from the Roman period is most likely to be found on the site, particularly to the west and south.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The DETR Development Site, Station Road, Cambridge: An Archaeological Desk-top Assessment",
+      "source_url": "379",
+      "license": "CC-BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "text": "OBJECTIVE: Countries and regions vary substantially in transport related physical activity that people gain from walking and cycling and in how this varies by age and gender.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Contrasts in active transport behaviour across four countries: how do they translate into public health benefits?",
+      "source_url": "Götschi et al. Preventive Medicine (2015) Vol. 74, pp. 42-48. doi: 10.1016/j.ypmed.2015.02.009.",
+      "license": "Attribution 2.0 UK: England & Wales https://creativecommons.org/licenses/by/2.0/uk/"
+    },
+    {
+      "text": "This study aims to quantify the population health impacts of differences between four settings.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Contrasts in active transport behaviour across four countries: how do they translate into public health benefits?",
+      "source_url": "Götschi et al. Preventive Medicine (2015) Vol. 74, pp. 42-48. doi: 10.1016/j.ypmed.2015.02.009.",
+      "license": "Attribution 2.0 UK: England & Wales https://creativecommons.org/licenses/by/2.0/uk/"
+    },
+    {
+      "text": "Apelin peptide analogues displaying bias towards G protein signalling pathways have beneficial cardiovascular actions compared with the native peptide in humans in vivo.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Cardiac action of the first G protein biased small molecule apelin agonist.",
+      "source_url": "0006-2952",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Our aim was to determine whether small molecule agonists could retain G protein bias.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Cardiac action of the first G protein biased small molecule apelin agonist.",
+      "source_url": "0006-2952",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "SETTING: Australia, Canada, Chile, Mexico, the United Kingdom (UK) and the United States of America (USA).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Adolescents' media usage and self-reported exposure to advertising across six countries: implications for less healthy food and beverage marketing.",
+      "source_url": "2044-6055",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "PARTICIPANTS: Respondents to the International Food Policy Study who provided information on all variables of interest in November-December 2019 aged 10-17 years (n=9171).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Adolescents' media usage and self-reported exposure to advertising across six countries: implications for less healthy food and beverage marketing.",
+      "source_url": "2044-6055",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "dsRNA uptake from the environment is a common phenomenon in many invertebrates and can be harnessed for acquiring pest control.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Double-stranded RNA uptake in Caenorhabditis elegans",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/295784",
+      "license": "Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "text": "In the nematode Caenorhabditis elegans, a transmembrane protein named systemic RNAi deficient-2 (sid-2) is required for dsRNA uptake from the environment through the intestine.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Double-stranded RNA uptake in Caenorhabditis elegans",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/295784",
+      "license": "Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "text": "OBJECTIVE: To evaluate 5-year efficacy and safety of alemtuzumab in patients with active relapsing-remitting multiple sclerosis and inadequate response to prior therapy.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Alemtuzumab CARE-MS II 5-year follow-up: Efficacy and safety findings.",
+      "source_url": "0028-3878",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International http://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "text": "METHODS: In the 2-year Comparison of Alemtuzumab and Rebif Efficacy in Multiple Sclerosis (CARE-MS) II study (NCT00548405), alemtuzumab-treated patients received 2 courses (baseline and 12 months later).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Alemtuzumab CARE-MS II 5-year follow-up: Efficacy and safety findings.",
+      "source_url": "0028-3878",
+      "license": "Attribution-NonCommercial-NoDerivatives 4.0 International http://creativecommons.org/licenses/by-nc-nd/4.0/"
+    },
+    {
+      "text": "Urtnasun has worked for over 30 years in the Mongolian school in Nilah County, Ili prefecture.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Epic Geser Cultural Heritage: An Interview with Urtnasun",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/370677",
+      "license": "CC BY-NC-ND 3.0 https://creativecommons.org/licenses/by-nc-nd/3.0/"
+    },
+    {
+      "text": "In 2016, when Nilah County became the base of the national Epic Geser in China, Urtnasun, along with three other locals, established the association of the Epic Geser within the County.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Epic Geser Cultural Heritage: An Interview with Urtnasun",
+      "source_url": "https://www.repository.cam.ac.uk/handle/1810/370677",
+      "license": "CC BY-NC-ND 3.0 https://creativecommons.org/licenses/by-nc-nd/3.0/"
+    },
+    {
+      "text": "Six trenches were opened on the Perse School playing field, off Latham Close, Cambridge.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Latham Close, Cambridge.  An Archaeological Evaluation",
+      "source_url": "619",
+      "license": "CC-BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "text": "These revealed that the area had been extensively quarried, and only a small area of undisturbed ground remained.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Latham Close, Cambridge.  An Archaeological Evaluation",
+      "source_url": "619",
+      "license": "CC-BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "text": "Teaching and learning anatomy by using human cadaveric specimens has been a foundation of medical and biomedical teaching for hundreds of years.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Neutralisation of SARS-CoV-2 by anatomical embalming solutions.",
+      "source_url": "0021-8782",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Therefore, the majority of institutions that teach topographical anatomy rely on body donation programmes to provide specimens for both undergraduate and postgraduate teaching of gross anatomy.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Neutralisation of SARS-CoV-2 by anatomical embalming solutions.",
+      "source_url": "0021-8782",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Funder: NIHR Imperial Biomedical Research Centre; doi: http://dx.doi.org/10.13039/501100013342 Abstract: Background: Reaching recruitment targets in randomised controlled trials is a challenge.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Does a video clip enhance recruitment into a parenting trial? Learnings from a study within a trial",
+      "source_url": "s13063-020-04779-0",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Media tools are increasingly used to engage participants, yet there is a paucity of research into the use of video to optimise recruitment.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Does a video clip enhance recruitment into a parenting trial? Learnings from a study within a trial",
+      "source_url": "s13063-020-04779-0",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Multidisciplinary (MD) care is essential in the management of patients with spondyloarthritis (SpA) and is one of the main pillars of disease management and patient care.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Multidisciplinary working in the management of axial and peripheral spondyloarthritis.",
+      "source_url": "1759-720X",
+      "license": "Attribution-NonCommercial 4.0 International https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "text": "However, evidence supporting the effectiveness and benefits of this strategy in SpA is scarce.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Multidisciplinary working in the management of axial and peripheral spondyloarthritis.",
+      "source_url": "1759-720X",
+      "license": "Attribution-NonCommercial 4.0 International https://creativecommons.org/licenses/by-nc/4.0/"
+    },
+    {
+      "text": "The prevalence of native-speaker ideologies marginalizes NNESTs in professional settings and impedes their agency enactment in claiming identities as competent educators.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Moving beyond native-speakerism through identity-based teacher education: The roles of positioning and agency",
+      "source_url": "1362-1688",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Therefore, it is crucial to facilitate English teachers (especially NNESTs) to practice agency to (re)negotiate identities to move beyond native-speaker ideologies.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Moving beyond native-speakerism through identity-based teacher education: The roles of positioning and agency",
+      "source_url": "1362-1688",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "An amendment to this paper has been published and can be accessed via the original article.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Correction to: DNA methylation changes during preimplantation development reveal interspecies differences and reprogramming events at imprinted genes",
+      "source_url": "1868-7075",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Abstract: Intramammary infections (IMI) with Staphylococcus aureus are a common cause of bovine mastitis and can result in both clinical (CM) or subclinical mastitis (SCM).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Genomic analysis of European bovine Staphylococcus aureus from clinical versus subclinical mastitis",
+      "source_url": "s41598-020-75179-2",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Although bacterial isolates of S. aureus differ in their virulence potential it is largely unclear which bacterial virulence factors are responsible for increased clinical severity.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Genomic analysis of European bovine Staphylococcus aureus from clinical versus subclinical mastitis",
+      "source_url": "s41598-020-75179-2",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "It was first available from Springer via http://dx.doi.org/10.1007/s00401-015-1521-1 Remyelination in multiple sclerosis (MS) lesions often remains incomplete despite the presence of oligodendrocyte progenitor cells (OPCs).",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Antibody mediated neutralization of myelin associated EphrinB3 accelerates CNS remyelination",
+      "source_url": "Acta Neuropathologica 2016, 131(2): 281-298. doi:10.1007/s00401-015-1521-1",
+      "license": "Creative Commons Attribution 4.0 International License http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Amongst other factors, successful remyelination depends on the phagocytic clearance of myelin debris.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Antibody mediated neutralization of myelin associated EphrinB3 accelerates CNS remyelination",
+      "source_url": "Acta Neuropathologica 2016, 131(2): 281-298. doi:10.1007/s00401-015-1521-1",
+      "license": "Creative Commons Attribution 4.0 International License http://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The essential mitochondrial import protein coiled-coil helix coiled-coil helix domain-containing protein 4 (CHCHD4) controls respiratory chain complex activity and oxygen consumption, and regulates the growth of tumours in vivo.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "CHCHD4 regulates tumour proliferation and EMT-related phenotypes, through respiratory chain-mediated metabolism",
+      "source_url": "s40170-019-0200-4",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "In this study, we interrogate the importance of CHCHD4-regulated mitochondrial metabolism for tumour cell proliferation and EMT-related phenotypes, and elucidate key pathways involved.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "CHCHD4 regulates tumour proliferation and EMT-related phenotypes, through respiratory chain-mediated metabolism",
+      "source_url": "s40170-019-0200-4",
+      "license": "Attribution 4.0 International (CC BY 4.0) https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The recent claim of room temperature superconductivity in a copper-doped lead apatite compound, called LK-99, has sparked remarkable interest and controversy.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "On the dynamical stability of copper-doped lead apatite",
+      "source_url": "2057-3960",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "Subsequent experiments have largely failed to reproduce the claimed superconductivity, while theoretical works have identified multiple key features including strong electronic correlation, structural instabilities, and dopability constraints.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "On the dynamical stability of copper-doped lead apatite",
+      "source_url": "2057-3960",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "The contribution of rare and low-frequency variants to human traits is largely unexplored.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The UK10K project identifies rare variants in health and disease.",
+      "source_url": "0028-0836",
+      "license": "Attribution-NonCommercial-ShareAlike 4.0 International https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    {
+      "text": "Here we describe insights from sequencing whole genomes (low read depth, 7×) or exomes (high read depth, 80×) of nearly 10,000 individuals from population-based and disease collections.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "The UK10K project identifies rare variants in health and disease.",
+      "source_url": "0028-0836",
+      "license": "Attribution-NonCommercial-ShareAlike 4.0 International https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    },
+    {
+      "text": "A watching brief was maintained during digging work to lay cable ducting between the two branches of Marks and Spencers in Cambridge City centre.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Archaeological Observations on Cable Laying at Church Walk, Cambridge",
+      "source_url": "300",
+      "license": "CC-BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "text": "Part of the route ran along Church Walk, immediately adjacent to the graveyard of the 12th century Holy Trinity Church.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Archaeological Observations on Cable Laying at Church Walk, Cambridge",
+      "source_url": "300",
+      "license": "CC-BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/"
+    },
+    {
+      "text": "BACKGROUND: Increasing the availability of non-alcoholic options is a promising population-level intervention to reduce alcohol consumption, currently unassessed in naturalistic settings.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Impact on alcohol selection and online purchasing of changing the proportion of available non-alcoholic versus alcoholic drinks: A randomised controlled trial.",
+      "source_url": "1549-1277",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    },
+    {
+      "text": "This study in an online retail context aimed to estimate the impact of increasing the proportion of non-alcoholic (relative to alcoholic) drinks, on selection and purchasing of alcohol.",
+      "source_org": "cambridge_apollo_oai",
+      "source_title": "Impact on alcohol selection and online purchasing of changing the proportion of available non-alcoholic versus alcoholic drinks: A randomised controlled trial.",
+      "source_url": "1549-1277",
+      "license": "Attribution 4.0 International https://creativecommons.org/licenses/by/4.0/"
+    }
+  ],
+  "stats": {
+    "unique_sentences": 329,
+    "target": 1200
+  }
 }
