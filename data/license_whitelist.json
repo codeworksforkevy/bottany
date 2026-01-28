@@ -1,25 +1,45 @@
 {
   "allowed_license_patterns": [
-    "creativecommons.org/licenses/by/4.0",
-    "creativecommons.org/licenses/by-sa/4.0",
-    "creativecommons.org/licenses/by-nc-sa/4.0",
-    "creativecommons.org/licenses/by-nc-sa/3.0",
-    "creativecommons.org/publicdomain/zero/1.0",
     "CC0",
-    "cc by",
-    "cc-by",
-    "cc by-sa",
-    "cc by-nc-sa"
+    "Creative Commons Zero",
+    "CC-BY",
+    "Creative Commons Attribution",
+    "CC-BY-SA",
+    "Creative Commons Attribution-ShareAlike",
+    "Public Domain",
+    "MIT License",
+    "Open Access",
+    "OpenCourseWare",
+    "OCW",
+    "Open Educational Resources",
+    "OER",
+    "This work is licensed under a Creative Commons",
+    "©.*University.*Open",
+    "©.*University.*Open Access"
   ],
   "blocked_license_patterns": [
-    "all rights reserved",
-    "\u00a9",
-    "copyright",
-    "no derivative",
-    "cc by-nd",
-    "cc-by-nd",
-    "cc by-nc-nd",
-    "cc-by-nc-nd"
+    "All rights reserved",
+    "No redistribution",
+    "No reuse",
+    "Proprietary",
+    "Copyrighted",
+    "©.*All Rights Reserved",
+    "Terms of Use prohibit",
+    "Permission required"
   ],
-  "notes": "Heuristic patterns; ingestion also allows per-source declared_license_url when present."
+  "notes": {
+    "policy": "Academic trivia ingestion whitelist",
+    "scope": "Short factual sentences only",
+    "universities": [
+      "Harvard University",
+      "MIT",
+      "Stanford University",
+      "Oxford University",
+      "Cambridge University",
+      "Yale University",
+      "Princeton University",
+      "EPFL",
+      "ETH Zurich"
+    ]
+  }
 }
