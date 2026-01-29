@@ -1,28 +1,44 @@
-# commands/free_games.py
+"""
+Free games + selected deals (Epic, GOG, Humble, Amazon Luna).
+
+- Slash command group: /freegames ...
+- Optional weekly auto-post to a configured channel.
+- Public vs ephemeral replies: by default, public (visibility="public").
+
+Notes:
+- Amazon Luna "subscription picks" are best-effort scraped from public Luna pages.
+  If Amazon changes markup or requires auth, the Luna section may be empty rather than error.
+"""
+
 from __future__ import annotations
 
-import os
-import json
 import asyncio
 import hashlib
+import json
+import os
+import re
 from dataclasses import dataclass
 from datetime import datetime, timedelta
-from typing import Any, Dict, List, Optional, Tuple, Literal
+from typing import Any, Dict, List, Optional, Tuple
 
-import aiohttp
 import discord
 from discord import app_commands
 from discord.ext import commands, tasks
 
-try:
-    from zoneinfo import ZoneInfo
-except Exception:
-    ZoneInfo = None
+import aiohttp
+from bs4 import BeautifulSoup
+
+# -------------------------
+# Small utilities
+# -------------------------
+
+BABY_BLUE = 0x89CFF0  # Discord embed accent color
+
+def _sha1(s: str) -> str:
+    return hashlib.sha1(s.encode("utf-8")).hexdigest()
 
 def _load_json(path: str, default: Any) -> Any:
     try:
-        if not os.path.exists(path):
-            return default
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
     except Exception:
@@ -30,179 +46,114 @@ def _load_json(path: str, default: Any) -> Any:
 
 def _save_json(path: str, obj: Any) -> None:
     os.makedirs(os.path.dirname(path), exist_ok=True)
-    tmp = path + ".tmp"
-    with open(tmp, "w", encoding="utf-8") as f:
+    with open(path, "w", encoding="utf-8") as f:
         json.dump(obj, f, ensure_ascii=False, indent=2)
-    os.replace(tmp, path)
 
-def _sha1(s: str) -> str:
-    return hashlib.sha1(s.encode("utf-8", errors="ignore")).hexdigest()
+def _pick_registry(data_dir: str) -> Tuple[str, Dict[str, Any]]:
+    """
+    Canonicalize the accidental "free_games_registry.json" vs "freegames_registry.json".
 
-def _now_tz(tz_name: str) -> datetime:
-    if ZoneInfo is None:
-        return datetime.utcnow()
-    try:
-        return datetime.now(ZoneInfo(tz_name))
-    except Exception:
-        return datetime.utcnow()
+    Preference order:
+      1) data/freegames_registry.json
+      2) data/free_games_registry.json
+      3) default empty registry
+    """
+    p1 = os.path.join(data_dir, "freegames_registry.json")
+    p2 = os.path.join(data_dir, "free_games_registry.json")
+    if os.path.exists(p1):
+        return p1, _load_json(p1, {})
+    if os.path.exists(p2):
+        return p2, _load_json(p2, {})
+    return p1, {}
 
-def _parse_int_env(name: str, default: int) -> int:
-    v = os.getenv(name)
-    if v is None:
-        return default
-    try:
-        return int(str(v).strip())
-    except Exception:
-        return default
+def _visibility_to_ephemeral(visibility: Optional[str]) -> bool:
+    return (visibility or "public").lower().strip() != "public"
 
-def _parse_bool_env(name: str, default: bool = False) -> bool:
-    v = os.getenv(name)
-    if v is None:
-        return default
-    s = str(v).strip().lower()
-    return s in ("1", "true", "yes", "y", "on")
+# -------------------------
+# Model
+# -------------------------
 
 @dataclass
 class Offer:
-    source: str  # epic|gog
+    source: str
     title: str
     url: str
-    start: Optional[str] = None  # ISO
-    end: Optional[str] = None    # ISO
-    note: Optional[str] = None
+    kind: str  # "free" | "deal" | "subscription"
+    subtitle: Optional[str] = None
+    ends_at: Optional[str] = None
 
-def _within_dedupe_window(last_iso: str, days: int) -> bool:
-    try:
-        last = datetime.fromisoformat(last_iso.replace("Z", "+00:00"))
-    except Exception:
-        return False
-    return datetime.now(last.tzinfo) - last < timedelta(days=days)
+# -------------------------
+# Providers
+# -------------------------
 
-class FreeGamesState:
-    def __init__(self, path: str):
-        self.path = path
-        self.obj: Dict[str, Any] = _load_json(path, default={
-            "announced": {},  # offer_id -> {"first_seen": iso, "last_announced": iso}
-            "last_weekly_announcement": None
-        })
-
-    def save(self) -> None:
-        _save_json(self.path, self.obj)
-
-    def mark_announced(self, offer_id: str, now_iso: str) -> None:
-        a = self.obj.setdefault("announced", {})
-        entry = a.get(offer_id) or {"first_seen": now_iso, "last_announced": now_iso}
-        entry["last_announced"] = now_iso
-        a[offer_id] = entry
-
-    def recently_announced(self, offer_id: str, dedupe_days: int) -> bool:
-        a = self.obj.get("announced", {})
-        entry = a.get(offer_id)
-        if not entry:
-            return False
-        last_iso = entry.get("last_announced")
-        if not last_iso:
-            return False
-        return _within_dedupe_window(last_iso, dedupe_days)
-
-    def get_last_weekly(self) -> Optional[str]:
-        return self.obj.get("last_weekly_announcement")
-
-    def set_last_weekly(self, now_iso: str) -> None:
-        self.obj["last_weekly_announcement"] = now_iso
-
-async def _http_get_json(session: aiohttp.ClientSession, url: str, timeout_s: int) -> Any:
-    async with session.get(url, timeout=aiohttp.ClientTimeout(total=timeout_s)) as r:
-        r.raise_for_status()
-        return await r.json()
-
-async def _http_get_text(session: aiohttp.ClientSession, url: str, timeout_s: int) -> str:
-    async with session.get(url, timeout=aiohttp.ClientTimeout(total=timeout_s)) as r:
-        r.raise_for_status()
-        return await r.text()
-
-def _pick_epic_offers(obj: Any, locale: str = "en-US") -> List[Offer]:
+async def fetch_epic(session: aiohttp.ClientSession, endpoint: str, timeout_s: int = 20) -> List[Offer]:
+    """
+    Epic freeGamesPromotions endpoint (public JSON).
+    """
     offers: List[Offer] = []
-    elements = None
     try:
-        elements = obj.get("data", {}).get("Catalog", {}).get("searchStore", {}).get("elements", None)
+        async with session.get(endpoint, timeout=timeout_s) as r:
+            if r.status != 200:
+                return offers
+            data = await r.json(content_type=None)
     except Exception:
-        elements = None
-    if not isinstance(elements, list):
-        elements = obj.get("data", {}).get("Catalog", {}).get("searchStore", {}).get("elements", []) if isinstance(obj, dict) else []
+        return offers
 
-    for el in elements or []:
-        try:
-            promos = el.get("promotions") or {}
-            p = promos.get("promotionalOffers") or []
-            up = promos.get("upcomingPromotionalOffers") or []
-            if not p and not up:
-                continue
-
-            slug = el.get("productSlug") or el.get("urlSlug") or ""
-            url = ""
-            if slug:
-                slug = slug.replace("/home", "")
-                url = f"https://store.epicgames.com/{locale}/p/{slug.strip('/')}"
-            else:
-                url = "https://store.epicgames.com/free-games"
-
-            title = el.get("title") or el.get("name") or "Epic Free Game"
-
-            start_iso = None
-            end_iso = None
-            if isinstance(p, list) and p:
-                inner = (p[0] or {}).get("promotionalOffers") or []
-                if inner:
-                    start_iso = (inner[0] or {}).get("startDate")
-                    end_iso = (inner[0] or {}).get("endDate")
-
-            offers.append(Offer(source="epic", title=title, url=url, start=start_iso, end=end_iso))
-        except Exception:
+    # The JSON shape can vary a bit; we keep this robust.
+    elems = (((data or {}).get("data") or {}).get("Catalog") or {}).get("searchStore") or {}
+    el = elems.get("elements") or []
+    for e in el:
+        promos = e.get("promotions") or {}
+        # current promotions
+        current = (promos.get("promotionalOffers") or [])
+        if not current:
             continue
-
-    seen = set()
-    deduped = []
-    for o in offers:
-        k = (o.title.lower().strip(), o.url)
-        if k in seen:
+        po = current[0]
+        offers_list = po.get("promotionalOffers") or []
+        if not offers_list:
             continue
-        seen.add(k)
-        deduped.append(o)
-    return deduped
+        p = offers_list[0]
+        discount = (p.get("discountSetting") or {}).get("discountPercentage")
+        if discount != 0:
+            continue  # we want free-to-keep
+        title = e.get("title") or "Untitled"
+        slug = e.get("productSlug") or ""
+        url = f"https://store.epicgames.com/en-US/p/{slug}" if slug else "https://store.epicgames.com/"
+        ends = p.get("endDate")
+        offers.append(Offer(source="Epic", title=title, url=url, kind="free", ends_at=ends))
+    return offers
 
-async def fetch_epic_offers(session: aiohttp.ClientSession, endpoint: str, timeout_s: int) -> List[Offer]:
-    obj = await _http_get_json(session, endpoint, timeout_s)
-    return _pick_epic_offers(obj)
-
-def _extract_gog_links(html: str) -> List[Tuple[str, str]]:
-    links: List[Tuple[str, str]] = []
-    import re
-    hrefs = set(re.findall(r'href="([^"]+?/game/[^"]+)"', html))
-    for h in hrefs:
-        if h.startswith("//"):
-            url = "https:" + h
-        elif h.startswith("/"):
-            url = "https://www.gog.com" + h
-        elif h.startswith("http"):
-            url = h
-        else:
-            url = "https://www.gog.com/" + h.lstrip("/")
-        slug = url.split("/game/")[-1].split("?")[0].strip("/")
-        title = slug.replace("_", " ").replace("-", " ").title() if slug else "GOG Free Game"
-        links.append((title, url))
-    return links
-
-async def fetch_gog_offers(session: aiohttp.ClientSession, endpoints: List[str], timeout_s: int) -> List[Offer]:
+async def fetch_gog(session: aiohttp.ClientSession, endpoints: List[str], timeout_s: int = 20) -> List[Offer]:
+    """
+    Best-effort scrape of GOG partner free games page (and a couple fallbacks).
+    """
     offers: List[Offer] = []
     for url in endpoints:
         try:
-            html = await _http_get_text(session, url, timeout_s)
-            for title, link in _extract_gog_links(html):
-                offers.append(Offer(source="gog", title=title, url=link))
+            async with session.get(url, timeout=timeout_s, headers={"User-Agent": "Mozilla/5.0"}) as r:
+                if r.status != 200:
+                    continue
+                html = await r.text()
         except Exception:
             continue
 
+        soup = BeautifulSoup(html, "lxml")
+        # Try to find giveaway tiles/links
+        for a in soup.select("a[href]"):
+            href = a.get("href") or ""
+            text = (a.get_text(" ", strip=True) or "").strip()
+            if not href or not text:
+                continue
+            if "giveaway" in href.lower() or "free" in text.lower():
+                full = href if href.startswith("http") else f"https://www.gog.com{href}"
+                # avoid duplicates and very short titles
+                if len(text) < 6:
+                    continue
+                offers.append(Offer(source="GOG", title=text[:120], url=full, kind="free"))
+        if offers:
+            break
+
+    # de-dupe by url
     seen = set()
     out = []
     for o in offers:
@@ -212,138 +163,228 @@ async def fetch_gog_offers(session: aiohttp.ClientSession, endpoints: List[str],
         out.append(o)
     return out
 
-def _fmt_offer(o: Offer) -> str:
-    parts = [f"**{o.title}**", o.url]
-    if o.end:
-        parts.append(f"Ends: `{o.end}`")
-    return " — ".join(parts)
+async def fetch_humble(session: aiohttp.ClientSession, url: str, timeout_s: int = 20) -> List[Offer]:
+    """
+    Humble Store: best-effort scrape for items marked Free.
+    Suggested URL: https://www.humblebundle.com/store/search?sort=bestselling&filter=free
+    """
+    offers: List[Offer] = []
+    try:
+        async with session.get(url, timeout=timeout_s, headers={"User-Agent": "Mozilla/5.0"}) as r:
+            if r.status != 200:
+                return offers
+            html = await r.text()
+    except Exception:
+        return offers
 
-def _group_offers(offers: List[Offer]) -> Dict[str, List[Offer]]:
-    d: Dict[str, List[Offer]] = {"epic": [], "gog": []}
+    soup = BeautifulSoup(html, "lxml")
+    # Humble is JS-heavy; sometimes server HTML still includes product cards.
+    for card in soup.select("[data-entity-type='storefront_product'], .entity-block, .storefront-product-tile, a[href*='/store/']"):
+        # normalize to link
+        a = card if card.name == "a" else card.select_one("a[href]")
+        if not a:
+            continue
+        href = a.get("href") or ""
+        if "/store/" not in href:
+            continue
+        title = (a.get_text(" ", strip=True) or "").strip()
+        if not title:
+            continue
+        full = href if href.startswith("http") else f"https://www.humblebundle.com{href}"
+        # "Free" tag
+        text_blob = (card.get_text(" ", strip=True) or "").lower()
+        if "free" not in text_blob:
+            continue
+        offers.append(Offer(source="Humble", title=title[:120], url=full, kind="free"))
+    # de-dupe
+    seen = set()
+    out = []
     for o in offers:
-        d.setdefault(o.source, []).append(o)
-    return d
+        key = (o.title, o.url)
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(o)
+    return out
 
-def _compose_message(offers: List[Offer], title: str = "Free games") -> str:
+async def fetch_luna_subscription_picks(session: aiohttp.ClientSession, url: str, timeout_s: int = 20) -> List[Offer]:
+    """
+    Amazon Luna "subscription picks" (best-effort).
+    Default URL: https://luna.amazon.com/
+    We scrape visible game tiles/links if present.
+    """
+    offers: List[Offer] = []
+    try:
+        async with session.get(url, timeout=timeout_s, headers={"User-Agent": "Mozilla/5.0"}) as r:
+            if r.status != 200:
+                return offers
+            html = await r.text()
+    except Exception:
+        return offers
+
+    soup = BeautifulSoup(html, "lxml")
+
+    # Strategy A: direct game links
+    for a in soup.select("a[href*='/game/']"):
+        href = a.get("href") or ""
+        title = (a.get_text(" ", strip=True) or "").strip()
+        if not title:
+            # sometimes text is in aria-label
+            title = (a.get("aria-label") or "").strip()
+        if not title:
+            continue
+        full = href if href.startswith("http") else f"https://luna.amazon.com{href}"
+        offers.append(Offer(source="Amazon Luna", title=title[:120], url=full, kind="subscription"))
+
+    # Strategy B: embedded JSON blobs (very defensive)
     if not offers:
-        return "No free games found right now (best-effort check)."
+        m = re.search(r'__NEXT_DATA__\s*=\s*({.*?})\s*</script>', html, flags=re.S)
+        if m:
+            try:
+                data = json.loads(m.group(1))
+                # walk a bit to find any list of games with title/slug
+                blob = json.dumps(data)
+                for mt in re.finditer(r'"title"\s*:\s*"([^"]+)"', blob):
+                    title = mt.group(1)
+                    if len(title) < 4:
+                        continue
+                    offers.append(Offer(source="Amazon Luna", title=title[:120], url=url, kind="subscription"))
+            except Exception:
+                pass
 
-    groups = _group_offers(offers)
-    lines = [f"**{title}**"]
-    if groups.get("epic"):
-        lines.append("\n**Epic Games Store**")
-        for o in groups["epic"][:10]:
-            lines.append(f"• {_fmt_offer(o)}")
-    if groups.get("gog"):
-        lines.append("\n**GOG**")
-        for o in groups["gog"][:10]:
-            lines.append(f"• {_fmt_offer(o)}")
-    return "\n".join(lines)
+    # De-dupe & cap
+    seen = set()
+    out = []
+    for o in offers:
+        key = (o.title.lower(), o.url)
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(o)
+    return out[:30]
+
+# -------------------------
+# Presentation
+# -------------------------
+
+def _build_embed(offers: List[Offer], pool_size: int) -> discord.Embed:
+    title = "Free games & selected picks"
+    desc = "Latest from Epic, GOG, Humble, and Amazon Luna (subscription picks)."
+    emb = discord.Embed(title=title, description=desc, color=BABY_BLUE)
+    emb.set_footer(text=f"Pool size: {pool_size}")
+    # group by kind
+    groups: Dict[str, List[Offer]] = {"free": [], "deal": [], "subscription": []}
+    for o in offers:
+        groups.get(o.kind, groups["free"]).append(o)
+
+    def add_group(label: str, items: List[Offer]):
+        if not items:
+            return
+        lines = []
+        for o in items[:10]:
+            extra = f" — {o.subtitle}" if o.subtitle else ""
+            end = f" (ends {o.ends_at[:10]})" if o.ends_at else ""
+            lines.append(f"• **[{o.title}]({o.url})**{extra}{end}")
+        emb.add_field(name=label, value="\n".join(lines)[:1024], inline=False)
+
+    add_group("Free-to-keep", groups["free"])
+    add_group("Subscription picks", groups["subscription"])
+    if groups["deal"]:
+        add_group("Discounts", groups["deal"])
+    if not offers:
+        emb.add_field(name="Nothing found", value="No items found from the current providers.", inline=False)
+    return emb
+
+# -------------------------
+# Cog
+# -------------------------
 
 class FreeGamesCog(commands.Cog):
     def __init__(self, bot: commands.Bot, data_dir: str):
         self.bot = bot
         self.data_dir = data_dir
 
-        self.registry_path = os.path.join(self.data_dir, "free_games_registry.json")
-        self.state_path = os.path.join(self.data_dir, "free_games_state.json")
+        self.registry_path, self.registry = _pick_registry(data_dir)
+        src = (self.registry or {}).get("sources", {})
 
-        self.registry = _load_json(self.registry_path, default={})
-        self.state = FreeGamesState(self.state_path)
+        epic = src.get("epic", {})
+        gog = src.get("gog", {})
+        humble = src.get("humble", {})
+        luna = src.get("luna", {})
 
-        self.tz_name = os.getenv("TZ_NAME", "Europe/Berlin")
+        self.enable_epic = epic.get("enabled", True)
+        self.enable_gog = gog.get("enabled", True)
+        self.enable_humble = humble.get("enabled", True)
+        self.enable_luna = luna.get("enabled", True)
 
-        self.target_channel_id = _parse_int_env("FREE_GAMES_CHANNEL_ID", 0)
-        self.target_guild_id = _parse_int_env("FREE_GAMES_GUILD_ID", 0)
+        self.epic_endpoint = epic.get("endpoint") or "https://store-site-backend-static-ipv4.ak.epicgames.com/freeGamesPromotions"
+        self.gog_endpoints = gog.get("endpoints") or ["https://www.gog.com/en/partner/free_games", "https://www.gog.com/#giveaway"]
+        self.humble_url = humble.get("url") or "https://www.humblebundle.com/store/search?sort=bestselling&filter=free"
+        self.luna_url = luna.get("url") or "https://luna.amazon.com/"
 
-        self.timeout_s = _parse_int_env("HTTP_TIMEOUT_SECONDS", 12)
-        self.retries = _parse_int_env("HTTP_RETRIES", 2)
-        self.backoff_s = _parse_int_env("HTTP_BACKOFF_SECONDS", 2)
-        self.user_agent = os.getenv("HTTP_USER_AGENT", "Mozilla/5.0 (compatible; BottanyBot/1.0)")
+        self.timeout_s = int((self.registry or {}).get("timeout_s", 20))
+        self.max_items = int((self.registry or {}).get("max_items", 25))
 
-        self.enable_epic = _parse_bool_env("FREE_GAMES_ENABLE_EPIC", True)
-        self.enable_gog = _parse_bool_env("FREE_GAMES_ENABLE_GOG", True)
-        self.enable_prime = _parse_bool_env("FREE_GAMES_ENABLE_PRIME", False)
+        weekly = (self.registry or {}).get("weekly", {})
+        self.weekly_enabled = bool(weekly.get("enabled", False))
+        self.weekly_channel_id = weekly.get("channel_id")
+        self.weekly_hour_utc = int(weekly.get("hour_utc", 9))
+        self.weekly_dedupe_days = int(weekly.get("dedupe_days", 7))
 
-        self.max_items = _parse_int_env("FREE_GAMES_MAX_ITEMS", 10)
-        self.dedupe_days = _parse_int_env("FREE_GAMES_DEDUPE_DAYS", 14)
-        self.silent_if_empty = _parse_bool_env("FREE_GAMES_SILENT_IF_EMPTY", True)
+        self.state_path = os.path.join(data_dir, "freegames_state.json")
+        self.state = _load_json(self.state_path, {"last_weekly": None, "seen": {}})
 
-        self.post_dow = os.getenv("FREE_GAMES_POST_DOW", "MON").strip().upper()
-        self.post_hour = _parse_int_env("FREE_GAMES_POST_HOUR", 10)
-        self.post_minute = _parse_int_env("FREE_GAMES_POST_MINUTE", 0)
+        self._session: Optional[aiohttp.ClientSession] = None
+        if self.weekly_enabled and self.weekly_channel_id:
+            self.weekly_loop.start()
 
-        self._http_session: Optional[aiohttp.ClientSession] = None
-
-        self.weekly_announce_loop.start()
+    async def _get_session(self) -> aiohttp.ClientSession:
+        if self._session and not self._session.closed:
+            return self._session
+        timeout = aiohttp.ClientTimeout(total=self.timeout_s)
+        self._session = aiohttp.ClientSession(timeout=timeout)
+        return self._session
 
     async def cog_unload(self):
         try:
-            self.weekly_announce_loop.cancel()
+            self.weekly_loop.cancel()
         except Exception:
             pass
-        if self._http_session and not self._http_session.closed:
-            await self._http_session.close()
-
-    def _is_target_guild(self, guild: Optional[discord.Guild]) -> bool:
-        if not self.target_guild_id:
-            return True
-        if guild is None:
-            return False
-        return guild.id == self.target_guild_id
-
-    async def _get_session(self) -> aiohttp.ClientSession:
-        if self._http_session and not self._http_session.closed:
-            return self._http_session
-        headers = {"User-Agent": self.user_agent}
-        self._http_session = aiohttp.ClientSession(headers=headers)
-        return self._http_session
+        if self._session and not self._session.closed:
+            await self._session.close()
 
     async def _fetch_all(self) -> List[Offer]:
-        offers: List[Offer] = []
-        reg_sources = (self.registry or {}).get("sources", {})
-
-        async def attempt(fn, *args):
-            last_err = None
-            for _ in range(max(1, self.retries)):
-                try:
-                    return await fn(*args)
-                except Exception as e:
-                    last_err = e
-                    await asyncio.sleep(self.backoff_s)
-            if last_err:
-                raise last_err
-            return []
-
         session = await self._get_session()
-
+        tasks_list = []
         if self.enable_epic:
-            epic = reg_sources.get("epic", {})
-            endpoint = epic.get("endpoint") or "https://store-site-backend-static-ipv4.ak.epicgames.com/freeGamesPromotions"
-            try:
-                offers.extend(await attempt(fetch_epic_offers, session, endpoint, self.timeout_s))
-            except Exception:
-                pass
-
+            tasks_list.append(fetch_epic(session, self.epic_endpoint, self.timeout_s))
         if self.enable_gog:
-            gog = reg_sources.get("gog", {})
-            endpoints = gog.get("endpoints") or ["https://www.gog.com/en/partner/free_games", "https://www.gog.com/#giveaway"]
-            try:
-                offers.extend(await attempt(fetch_gog_offers, session, endpoints, self.timeout_s))
-            except Exception:
-                pass
+            tasks_list.append(fetch_gog(session, self.gog_endpoints, self.timeout_s))
+        if self.enable_humble:
+            tasks_list.append(fetch_humble(session, self.humble_url, self.timeout_s))
+        if self.enable_luna:
+            tasks_list.append(fetch_luna_subscription_picks(session, self.luna_url, self.timeout_s))
 
-        return offers
+        results: List[Offer] = []
+        for res in await asyncio.gather(*tasks_list, return_exceptions=True):
+            if isinstance(res, Exception):
+                continue
+            results.extend(res)
+
+        # de-dupe by (source,title,url)
+        seen = set()
+        out = []
+        for o in results:
+            key = (o.source.lower(), o.title.lower(), o.url)
+            if key in seen:
+                continue
+            seen.add(key)
+            out.append(o)
+
+        return out[: self.max_items]
 
     def _should_post_now(self) -> bool:
-        now = _now_tz(self.tz_name)
-        dow = now.strftime("%a").upper()[:3]
-        if dow != self.post_dow:
-            return False
-        if now.hour != self.post_hour or now.minute != self.post_minute:
-            return False
-
-        last = self.state.get_last_weekly()
+        last = self.state.get("last_weekly")
         if last:
             try:
                 last_dt = datetime.fromisoformat(last.replace("Z", "+00:00"))
@@ -351,114 +392,112 @@ class FreeGamesCog(commands.Cog):
                 last_dt = None
             if last_dt and (datetime.utcnow() - last_dt.replace(tzinfo=None)) < timedelta(hours=23):
                 return False
-        return True
+        now = datetime.utcnow()
+        return now.hour == self.weekly_hour_utc
 
-    async def _post_weekly_to_channel(self, offers: List[Offer]) -> None:
-        if not self.target_channel_id:
-            return
+    def _mark_seen(self, offer: Offer, now_iso: str) -> None:
+        key = _sha1(f"{offer.source}|{offer.title}|{offer.url}")
+        seen = self.state.setdefault("seen", {})
+        seen[key] = now_iso
 
-        now_iso = datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
-        filtered: List[Offer] = []
-        for o in offers:
-            offer_id = _sha1(f"{o.source}|{o.title}|{o.url}")
-            if self.state.recently_announced(offer_id, self.dedupe_days):
-                continue
-            filtered.append(o)
-
-        if not filtered and self.silent_if_empty:
-            self.state.set_last_weekly(now_iso)
-            self.state.save()
-            return
-
-        channel = self.bot.get_channel(self.target_channel_id)
-        if channel is None:
-            try:
-                channel = await self.bot.fetch_channel(self.target_channel_id)
-            except Exception:
-                return
-
-        if channel is None:
-            return
-
-        msg = _compose_message(filtered[: self.max_items], title="Weekly free games")
+    def _is_recently_seen(self, offer: Offer) -> bool:
+        key = _sha1(f"{offer.source}|{offer.title}|{offer.url}")
+        seen = self.state.get("seen", {})
+        ts = seen.get(key)
+        if not ts:
+            return False
         try:
-            await channel.send(msg)
+            dt = datetime.fromisoformat(ts.replace("Z", "+00:00")).replace(tzinfo=None)
         except Exception:
-            return
-
-        self.state.set_last_weekly(now_iso)
-        for o in filtered:
-            offer_id = _sha1(f"{o.source}|{o.title}|{o.url}")
-            self.state.mark_announced(offer_id, now_iso)
-        self.state.save()
+            return False
+        return (datetime.utcnow() - dt) < timedelta(days=self.weekly_dedupe_days)
 
     @tasks.loop(minutes=1)
-    async def weekly_announce_loop(self):
+    async def weekly_loop(self):
+        if not self.weekly_enabled or not self.weekly_channel_id:
+            return
         if not self._should_post_now():
             return
         offers = await self._fetch_all()
-        await self._post_weekly_to_channel(offers)
+        fresh = [o for o in offers if not self._is_recently_seen(o)]
+        now_iso = datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
 
-    @weekly_announce_loop.before_loop
-    async def before_weekly_announce(self):
+        channel = self.bot.get_channel(int(self.weekly_channel_id)) if self.weekly_channel_id else None
+        if channel is None and self.weekly_channel_id:
+            try:
+                channel = await self.bot.fetch_channel(int(self.weekly_channel_id))
+            except Exception:
+                channel = None
+        if channel is None:
+            # still update last_weekly to avoid spamming retries
+            self.state["last_weekly"] = now_iso
+            _save_json(self.state_path, self.state)
+            return
+
+        emb = _build_embed(fresh, pool_size=len(fresh))
+        emb.title = "Weekly free games & picks"
+        try:
+            await channel.send(embed=emb)
+        except Exception:
+            pass
+
+        self.state["last_weekly"] = now_iso
+        for o in fresh:
+            self._mark_seen(o, now_iso)
+        _save_json(self.state_path, self.state)
+
+    @weekly_loop.before_loop
+    async def before_weekly_loop(self):
         await self.bot.wait_until_ready()
 
     # -------------------------
-    # Slash commands group
+    # Slash command group
     # -------------------------
 
-    freegames_group = app_commands.Group(
+    freegames = app_commands.Group(
         name="freegames",
-        description="Weekly free games (Epic, GOG). Announcements are posted to the configured #gaming channel."
+        description="Free games & selected picks (Epic, GOG, Humble, Amazon Luna).",
     )
 
-    @freegames_group.command(name="list", description="List current free games (best-effort).")
-    try:
-        await interaction.response.defer(thinking=True)
-    except Exception:
-        pass
-    async def cmd_list(self, interaction: discord.Interaction):
-        offers = (await self._fetch_all())[: self.max_items]
-        await interaction.followup.send(_compose_message(offers, title="Free games (current, ephemeral=is_ephemeral)"))
-
-    @freegames_group.command(name="epic", description="List current free games from Epic Games Store.")
-    async def cmd_epic(self, interaction: discord.Interaction):
-        if not self.enable_epic:
-            await interaction.followup.send("Epic source is disabled by configuration.", ephemeral=True)
-            return
-        reg_sources = (self.registry or {}).get("sources", {})
-        epic = reg_sources.get("epic", {})
-        endpoint = epic.get("endpoint") or "https://store-site-backend-static-ipv4.ak.epicgames.com/freeGamesPromotions"
-        session = await self._get_session()
-        offers = (await fetch_epic_offers(session, endpoint, self.timeout_s))[: self.max_items]
-        await interaction.followup.send(_compose_message(offers, title="Free games (Epic, ephemeral=is_ephemeral)"))
-
-    @freegames_group.command(name="gog", description="List current free games from GOG (best-effort).")
-    async def cmd_gog(self, interaction: discord.Interaction):
-        if not self.enable_gog:
-            await interaction.followup.send("GOG source is disabled by configuration.", ephemeral=True)
-            return
-        reg_sources = (self.registry or {}).get("sources", {})
-        gog = reg_sources.get("gog", {})
-        endpoints = gog.get("endpoints") or ["https://www.gog.com/en/partner/free_games", "https://www.gog.com/#giveaway"]
-        session = await self._get_session()
-        offers = (await fetch_gog_offers(session, endpoints, self.timeout_s))[: self.max_items]
-        await interaction.followup.send(_compose_message(offers, title="Free games (GOG, ephemeral=is_ephemeral)"))
-
-    @freegames_group.command(name="weekly", description="Post the weekly free games announcement to the configured #gaming channel.")
-    async def cmd_weekly(self, interaction: discord.Interaction):
-        if not self._is_target_guild(interaction.guild):
-            await interaction.followup.send("This command is not enabled for this server.", ephemeral=True)
-            return
-        # Allow command anywhere, but keep public posts locked to target channel
+    @freegames.command(name="list", description="Show current free games & picks.")
+    @app_commands.describe(visibility="public (default) or ephemeral")
+    async def cmd_list(self, interaction: discord.Interaction, visibility: Optional[str] = "public"):
+        ephemeral = _visibility_to_ephemeral(visibility)
+        await interaction.response.defer(thinking=True, ephemeral=ephemeral)
         offers = await self._fetch_all()
-        await interaction.followup.send("Posting weekly announcement to #gaming (if configured, ephemeral=is_ephemeral).", ephemeral=True)
-        await self._post_weekly_to_channel(offers)
+        emb = _build_embed(offers, pool_size=len(offers))
+        await interaction.followup.send(embed=emb, ephemeral=ephemeral)
+
+    @freegames.command(name="weekly", description="Post the weekly announcement to the configured channel.")
+    async def cmd_weekly(self, interaction: discord.Interaction):
+        await interaction.response.defer(thinking=True, ephemeral=True)
+        offers = await self._fetch_all()
+        now_iso = datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+        for o in offers:
+            self._mark_seen(o, now_iso)
+        _save_json(self.state_path, self.state)
+        # fire-and-forget post
+        await interaction.followup.send("OK — posting to the configured weekly channel (if enabled).", ephemeral=True)
+        if self.weekly_enabled and self.weekly_channel_id:
+            emb = _build_embed(offers, pool_size=len(offers))
+            emb.title = "Weekly free games & picks"
+            channel = self.bot.get_channel(int(self.weekly_channel_id))
+            if channel is None:
+                try:
+                    channel = await self.bot.fetch_channel(int(self.weekly_channel_id))
+                except Exception:
+                    channel = None
+            if channel is not None:
+                try:
+                    await channel.send(embed=emb)
+                except Exception:
+                    pass
 
 async def register_free_games(bot: commands.Bot, data_dir: str) -> None:
     cog = FreeGamesCog(bot, data_dir)
     await bot.add_cog(cog)
     try:
-        bot.tree.add_command(cog.freegames_group)
+        bot.tree.add_command(cog.freegames)
     except Exception:
+        # already registered
         pass

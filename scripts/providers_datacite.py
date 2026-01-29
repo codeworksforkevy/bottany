@@ -35,77 +35,53 @@ def _license_ok(rights_list: Any, license_allowlist: List[str]) -> bool:
     return False
 
 
-def harvest_datacite_prefix(
-    prefix: str,
-    license_allowlist: List[str],
-    page_size: int = 100,
-    max_results: int = 1000,
-    timeout: int = 25,
-) -> List[Dict[str, Any]]:
-    """Harvest DataCite DOI metadata for a DOI prefix.
+def harvest_datacite_prefix(prefix: str, license_allowlist: List[str], max_results: int = 1000, page_size: int = 100) -> Iterable[Dict[str, Any]]:
+    """Harvest DataCite DOIs by prefix and yield records that match license allowlist.
 
-    Uses the public DataCite REST API.
-
-    Returns a list of records with keys: title, description, url, year, rights_list.
+    Note: DataCite's cursor pagination is easy to mis-use and may return empty results depending on API behavior.
+    Use classic page[number]/page[size] pagination for robustness.
     """
-    out: List[Dict[str, Any]] = []
-    cursor: Optional[str] = "1"  # DataCite uses cursor pagination; "1" is the first cursor.
+    q = f"prefix:{prefix} AND state:findable"
+    url = "https://api.datacite.org/dois"
+    headers = {
+        "Accept": "application/vnd.api+json",
+        # a mildly descriptive UA helps avoid some edge throttling
+        "User-Agent": "academictrivia-bot/1.0 (+https://github.com/codeworksforkevy/bottany)",
+    }
 
-    while cursor and len(out) < max_results:
-        url = "https://api.datacite.org/dois"
+    yielded = 0
+    page = 1
+    while yielded < max_results:
         params = {
-            "prefix": prefix,
-            "page[size]": str(page_size),
-            "page[cursor]": cursor,
+            "query": q,
+            "page[size]": page_size,
+            "page[number]": page,
         }
-        r = requests.get(url, params=params, timeout=timeout)
-        r.raise_for_status()
-        payload = r.json()
+        try:
+            r = requests.get(url, params=params, headers=headers, timeout=30)
+            r.raise_for_status()
+            payload = r.json()
+        except Exception:
+            return
 
         data = payload.get("data") or []
         if not data:
-            break
+            return
 
         for item in data:
             attrs = (item or {}).get("attributes") or {}
+            # rightsList is where DataCite encodes license/rights statements
             rights_list = attrs.get("rightsList") or []
-            if not _license_ok(rights_list, license_allowlist):
+            if not rights_list:
                 continue
 
-            titles = attrs.get("titles") or []
-            title = None
-            if titles and isinstance(titles, list):
-                t0 = titles[0]
-                if isinstance(t0, dict):
-                    title = t0.get("title")
-                elif isinstance(t0, str):
-                    title = t0
+            if not license_matches(rights_list, license_allowlist):
+                continue
 
-            descs = attrs.get("descriptions") or []
-            description = None
-            if descs and isinstance(descs, list):
-                d0 = descs[0]
-                if isinstance(d0, dict):
-                    description = d0.get("description")
-                elif isinstance(d0, str):
-                    description = d0
+            yield attrs
+            yielded += 1
+            if yielded >= max_results:
+                return
 
-            out.append(
-                {
-                    "title": title,
-                    "description": description,
-                    "url": attrs.get("url") or attrs.get("landingPage") or attrs.get("doi"),
-                    "year": attrs.get("publicationYear"),
-                    "rights_list": rights_list,
-                    "source": f"datacite:{prefix}",
-                }
-            )
-            if len(out) >= max_results:
-                break
+        page += 1
 
-        cursor = ((payload.get("links") or {}).get("next") and (payload.get("meta") or {}).get("nextCursor"))
-        # DataCite sometimes supplies next cursor in meta.nextCursor; if missing, stop.
-        if not cursor:
-            cursor = (payload.get("meta") or {}).get("nextCursor")
-
-    return out

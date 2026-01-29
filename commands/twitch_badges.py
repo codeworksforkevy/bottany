@@ -184,7 +184,7 @@ class BadgePager(discord.ui.View):
                 pass
 
     async def _update(self, interaction: discord.Interaction) -> None:
-        await interaction.response.edit_message(embeds=self._page_embeds(), view=self)
+        await interaction.response.defer(); await interaction.message.edit(embeds=self._page_embeds(), view=self)
 
     @discord.ui.button(label="Prev", style=discord.ButtonStyle.secondary)
     async def prev(self, interaction: discord.Interaction, button: discord.ui.Button) -> None:
@@ -202,7 +202,7 @@ class BadgePager(discord.ui.View):
     async def close(self, interaction: discord.Interaction, button: discord.ui.Button) -> None:
         for child in self.children:
             child.disabled = True
-        await interaction.response.edit_message(view=self)
+        await interaction.response.defer(); await interaction.message.edit(view=self)
 
 
 def _load_drops_registry(data_dir: str) -> List[Dict[str, Any]]:

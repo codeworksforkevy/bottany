@@ -11,7 +11,7 @@ def normalize_space(s: str) -> str:
 
 def is_good_sentence(s: str) -> bool:
     s = normalize_space(s)
-    if len(s) < 60:  # too short to be meaningful academic trivia
+    if len(s) < 40:  # too short to be meaningful academic trivia
         return False
     if len(s) > 280: # too long for Discord embed
         return False
