@@ -4,6 +4,8 @@ import json
 import asyncio
 import hashlib
 import secrets
+import importlib
+import inspect
 from datetime import datetime, timezone
 
 import discord
@@ -40,7 +42,7 @@ def get_env(name: str, default: str = "") -> str:
     return val if val else default
 
 
-def make_command(tree: app_commands.CommandTree, data_dir: str) -> None:
+def make_academictrivia_command(tree: app_commands.CommandTree, data_dir: str) -> None:
     pool_path = safe_join(data_dir, "academic_trivia_pool.json")
 
     @app_commands.command(
@@ -80,7 +82,11 @@ def make_command(tree: app_commands.CommandTree, data_dir: str) -> None:
             return
 
         emb = discord.Embed(title=title, description=text)
-        emb.add_field(name="Source", value=f'{picked.get("source_org","Unknown")} — {picked.get("source_title","")}'.strip(" —"), inline=False)
+        emb.add_field(
+            name="Source",
+            value=f'{picked.get("source_org","Unknown")} — {picked.get("source_title","")}'.strip(" —"),
+            inline=False
+        )
         emb.add_field(name="License", value=picked.get("license","(unknown)"), inline=True)
         if picked.get("source_url"):
             emb.add_field(name="Open", value=picked["source_url"], inline=False)
@@ -89,6 +95,63 @@ def make_command(tree: app_commands.CommandTree, data_dir: str) -> None:
         await interaction.response.send_message(embed=emb)
 
     tree.add_command(academictrivia)
+
+
+def _try_register_callable(fn, client: discord.Client, tree: app_commands.CommandTree, data_dir: str) -> bool:
+    """Call a register_* function with best-effort argument matching."""
+    try:
+        sig = inspect.signature(fn)
+        kwargs = {}
+        for name, p in sig.parameters.items():
+            lname = name.lower()
+            if lname in ("bot", "client"):
+                kwargs[name] = client
+            elif lname in ("tree", "command_tree", "cmd_tree"):
+                kwargs[name] = tree
+            elif lname in ("data_dir", "datadir", "data_path", "data_root"):
+                kwargs[name] = data_dir
+            else:
+                # Don't guess extra params; let it fail loudly in that module.
+                pass
+        # If it needs positional-only or required params we didn't satisfy, skip.
+        for name, p in sig.parameters.items():
+            if p.default is inspect._empty and name not in kwargs and p.kind not in (inspect.Parameter.VAR_POSITIONAL, inspect.Parameter.VAR_KEYWORD):
+                return False
+        fn(**kwargs)
+        return True
+    except Exception as e:
+        print(f"[WARN] register call failed: {getattr(fn,'__name__',fn)} -> {e}")
+        return False
+
+
+def register_optional_command_modules(
+    client: discord.Client,
+    tree: app_commands.CommandTree,
+    data_dir: str,
+    modules: list[str],
+) -> None:
+    """Import commands.<module> and run register_* hooks if present."""
+    loaded = []
+    for modname in modules:
+        try:
+            m = importlib.import_module(modname)
+        except Exception as e:
+            print(f"[INFO] Optional module not loaded: {modname} ({e})")
+            continue
+
+        did_any = False
+        for attr in dir(m):
+            if not attr.startswith("register_"):
+                continue
+            fn = getattr(m, attr)
+            if callable(fn) and _try_register_callable(fn, client, tree, data_dir):
+                did_any = True
+
+        if did_any:
+            loaded.append(modname)
+
+    if loaded:
+        print("[INFO] Registered optional modules:", ", ".join(loaded))
 
 
 async def run() -> None:
@@ -107,13 +170,32 @@ async def run() -> None:
     client = discord.Client(intents=intents)
     tree = app_commands.CommandTree(client)
 
-    make_command(tree, data_dir)
+    # Core command(s)
+    make_academictrivia_command(tree, data_dir)
+
+    # Optional command modules (keeps main.py small; avoids silent non-registration on Railway)
+    register_optional_command_modules(
+        client,
+        tree,
+        data_dir,
+        modules=[
+            "commands.twitch_badges",
+            "commands.twitch_badges_and_drops",
+            "commands.twitch_drops",
+            "commands.twitch_badges_watch",
+            "commands.twitch_stream",
+            "commands.twitch_eventsub",
+            "commands.free_games",
+            "commands.gaming_news",
+        ],
+    )
 
     @client.event
     async def on_ready():
-        await tree.sync()
+        synced = await tree.sync()
+        names = [f"/{c.name}" for c in synced]
         print(f"Logged in as {client.user} (id={client.user.id})")
-        print("Slash commands synced: /academictrivia")
+        print("Slash commands synced:", ", ".join(names) if names else "(none)")
 
     await client.start(token)
 
