@@ -1,0 +1,32 @@
+{
+  "sources": {
+    "epic": {
+      "endpoint": "https://store-site-backend-static-ipv4.ak.epicgames.com/freeGamesPromotions",
+      "label": "Epic Games Store"
+    },
+    "gog": {
+      "endpoints": [
+        "https://www.gog.com/en/partner/free_games",
+        "https://www.gog.com/#giveaway"
+      ],
+      "label": "GOG"
+    },
+    "humble": {
+      "urls": [
+        "https://www.humblebundle.com/store/search?sort=bestselling&search=free"
+      ],
+      "label": "Humble Bundle (store search)",
+      "notes": "Treated as deals unless you wire a verified free-to-keep feed."
+    },
+    "luna": {
+      "label": "Amazon Luna",
+      "subscription_picks": [
+        {
+          "title": "(Example) Game name here",
+          "url": "https://luna.amazon.com/",
+          "note": "Replace these with your curated Luna+ / channel picks."
+        }
+      ]
+    }
+  }
+}
