@@ -13,14 +13,17 @@ from providers.freegames_luna import fetch_luna_subscription_picks
 # NOTE: You already have Epic/GOG fetchers somewhere in your repo.
 # Keep importing them the same way you do today. If your current file already
 # defines fetch_epic_offers / fetch_gog_offers, you can remove these imports.
+# NOTE: Epic/GOG fetchers are expected to live in providers/. If they aren't present,
+# we fall back to internal minimal implementations by treating those sources as unavailable.
 try:
-    from freegames_logic import fetch_epic_offers, fetch_gog_offers  # type: ignore
-except Exception:
+    from providers.freegames_epic import fetch_epic_offers  # type: ignore
+except Exception:  # pragma: no cover
     fetch_epic_offers = None  # type: ignore
-    fetch_gog_offers = None   # type: ignore
 
-
-BABY_BLUE = 0x89CFF0
+try:
+    from providers.freegames_gog import fetch_gog_offers  # type: ignore
+except Exception:  # pragma: no cover
+    fetch_gog_offers = None  # type: ignore
 
 def load_json(path: str, default: Any) -> Any:
     try:
