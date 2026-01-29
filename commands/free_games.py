@@ -1,104 +1,36 @@
-from __future__ import annotations
-
-from datetime import datetime, timezone
-from typing import Dict, List
-
-import aiohttp
+from discord import app_commands, Embed
 import discord
-from discord import app_commands
-from discord.ext import commands
+from freegames_logic import fetch_all_offers
 
-from _utils import load_json
+BABY_BLUE = 0x9AD0EC
+BABY_PINK = 0xF4B6C2
+BURNT_ORANGE = 0xE67E22
 
-# Unified registry file name (keep ONLY this one going forward)
-REGISTRY_PATH = "data/freegames_registry.json"
+async def register_free_games(client):
+    @client.tree.command(name="freegames", description="Free, discounted and subscription games")
+    @app_commands.describe(only_free="Only show free-to-keep games")
+    async def freegames(interaction: discord.Interaction, only_free: bool = False):
+        offers = await fetch_all_offers()
+        groups = {"free": [], "discount": [], "subscription": []}
+        for o in offers:
+            groups[o.kind].append(o)
 
-# Shared aggregation logic
-from freegames_logic import Offer, fetch_all_offers  # type: ignore
+        await interaction.response.defer()
 
-BABY_BLUE = 9031664
+        if groups["free"]:
+            e = Embed(title="Free Games", color=BABY_BLUE)
+            for o in groups["free"]:
+                e.add_field(name=o.title, value=o.url, inline=False)
+            await interaction.followup.send(embed=e)
 
+        if not only_free and groups["discount"]:
+            e = Embed(title="Discounted Deals", color=BABY_PINK)
+            for o in groups["discount"]:
+                e.add_field(name=o.title, value=o.url, inline=False)
+            await interaction.followup.send(embed=e)
 
-def _utc_day_str() -> str:
-    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
-
-
-def _group_offers(offers: List[Offer]) -> Dict[str, List[Offer]]:
-    groups: Dict[str, List[Offer]] = {}
-    for o in offers:
-        groups.setdefault(o.platform, []).append(o)
-    return groups
-
-
-def _platform_label(p: str) -> str:
-    return {
-        "epic": "Epic Games Store",
-        "gog": "GOG",
-        "humble": "Humble Bundle",
-        "luna": "Amazon Luna",
-    }.get(p, p)
-
-
-def _kind_label(kind: str) -> str:
-    return {
-        "free_to_keep": "Free to keep",
-        "giveaway": "Giveaway",
-        "deal": "Deal",
-        "subscription": "Subscription picks",
-    }.get(kind, kind)
-
-
-def _render_offer(o: Offer) -> str:
-    note = f" — {o.note}" if getattr(o, "note", "") else ""
-    return f"• [{o.title}]({o.url}) ({_kind_label(o.kind)}){note}"
-
-
-def _build_embed(offers: List[Offer]) -> discord.Embed:
-    title = "Free games & selected deals"
-    subtitle = "Official entry points for free-to-keep games, giveaways, and subscription picks from trusted platforms."
-    emb = discord.Embed(title=title, description=subtitle, color=BABY_BLUE)
-
-    groups = _group_offers(offers)
-    for platform in ["epic", "gog", "humble", "luna"]:
-        items = groups.get(platform, [])
-        if not items:
-            continue
-        lines = [_render_offer(o) for o in items[:10]]
-        if len(items) > 10:
-            lines.append(f"…and {len(items)-10} more")
-        emb.add_field(name=_platform_label(platform), value="\n".join(lines), inline=False)
-
-    emb.set_footer(text=f"UTC day: {_utc_day_str()} • Items: {len(offers)}")
-    return emb
-
-
-class FreeGamesCog(commands.Cog):
-    def __init__(self, bot: commands.Bot):
-        self.bot = bot
-        self.registry = load_json(REGISTRY_PATH, {})
-
-    async def _fetch_offers(self) -> List[Offer]:
-        async with aiohttp.ClientSession() as session:
-            return await fetch_all_offers(session, self.registry)
-
-    @app_commands.command(
-        name="freegames",
-        description="Show current free games and selected deals (Epic, GOG, Humble, Luna).",
-    )
-    async def freegames(self, interaction: discord.Interaction):
-        await interaction.response.defer(thinking=True)
-        try:
-            offers = await self._fetch_offers()
-        except Exception as e:
-            await interaction.followup.send(f"Unable to fetch offers: {e}", ephemeral=True)
-            return
-
-        if not offers:
-            await interaction.followup.send("No offers found right now.", ephemeral=True)
-            return
-
-        await interaction.followup.send(embed=_build_embed(offers))
-
-
-async def setup(bot: commands.Bot):
-    await bot.add_cog(FreeGamesCog(bot))
+        if not only_free and groups["subscription"]:
+            e = Embed(title="Subscription Picks", color=BURNT_ORANGE)
+            for o in groups["subscription"]:
+                e.add_field(name=o.title, value=o.url, inline=False)
+            await interaction.followup.send(embed=e)

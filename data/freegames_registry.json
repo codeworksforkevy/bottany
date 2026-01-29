@@ -1,33 +1,29 @@
 {
-  "name": "Bottany Free Games (official platforms)",
-  "policy": "official_platform_sources_only",
-  "sources": [
-    {
-      "name": "Epic Games Store — Free Games Promotions API (store backend)",
-      "type": "official_platform_endpoint",
-      "url": "https://store-site-backend-static.ak.epicgames.com/freeGamesPromotions"
+  "sources": {
+    "epic": {
+      "endpoint": "https://store-site-backend-static-ipv4.ak.epicgames.com/freeGamesPromotions"
     },
-    {
-      "name": "GOG — Free Games Collection",
-      "type": "official_platform_page",
-      "url": "https://www.gog.com/en/partner/free_games"
+    "gog": {
+      "endpoints": [
+        "https://www.gog.com/en/partner/free_games",
+        "https://www.gog.com/#giveaway"
+      ]
     },
-    {
-      "name": "Prime Gaming",
-      "type": "official_platform_page",
-      "url": "https://gaming.amazon.com/home"
+    "humble": {
+      "urls": [
+        "https://www.humblebundle.com/games",
+        "https://www.humblebundle.com/store/search?sort=bestselling&filter=onsale"
+      ]
     },
-    {
-      "name": "Humble Bundle",
-      "type": "official_platform_page",
-      "url": "https://www.humblebundle.com/"
+    "luna": {
+      "urls": [
+        "https://luna.amazon.com/",
+        "https://luna.amazon.com/channels"
+      ],
+      "cache_file": "data/luna_cache.json",
+      "cache_max_age_s": 604800,
+      "max_items": 60,
+      "fallback_items": []
     }
-  ],
-  "generated_utc": "2026-01-02T08:31:23Z",
-  "meta": {
-    "dataset": "free_games_registry",
-    "version": "1.0.0",
-    "last_updated": "2026-01-06",
-    "notes": "Official-source-first endpoints for weekly free game announcements."
   }
 }
