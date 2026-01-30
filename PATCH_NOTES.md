@@ -1,37 +1,48 @@
-# Bottany patch notes (register fixes + freegames UX)
+# Bottany Patch Pack (2026-01-30)
 
-## What this patch fixes
-- `register_academic_trivia()` was being called with wrong signature on Railway.
-  `main.py` now consistently calls registrars as `(client, tree, data_dir)`.
-- Removes `add_cog()` dependency from `gaming_news` (works with `discord.Client`).
-- Rewrites `free_games` command to use the app command tree directly (no `_utils`, no Cogs).
-- Adds color-coded embeds:
-  - Free-to-keep: baby blue
-  - Discounts: baby pink
-  - Subscription picks: burnt orange
-- Adds safe **platform “icons”** via Unicode emoji (no logo files).
+This zip contains:
 
-## Important: Logos / brand icons (copyright & trademark)
-- Official platform logos (Epic/GOG/Humble/Amazon) are usually **trademarked**.
-  You *can* often use them under brand guidelines, but you should treat that as a legal/compliance decision.
-- The safest UX approach is what this patch does: **Unicode emoji** + platform text.
-- If you still want real icons:
-  1) Use **official brand assets** and follow their guidelines; keep them as remote URLs or bundled assets + attribution.
-  2) Or use **open-licensed icon sets** (e.g., Simple Icons) but note trademarks still apply.
+1) commands/gaming_news.py
+   - Fixes Discord embed field overflow (<=1024 chars)
+   - Adds:
+     - /gamingnews compact:bool
+     - /gamingnews sources:"ign,polygon,..."
+     - Pagination (Prev/Next buttons) for multi-page results
+   - Optional data/news_registry.json keys:
+     - page_size (3..10): items per page shown
+     - fetch_size (5..50): items fetched from NewsAPI
+
+2) commands/twitch_badges.py
+   - Provides a top-level /badges command to avoid:
+       CommandNotFound: Application command 'badges' not found
+   - Uses official Twitch Helix endpoint for global chat badges.
 
 ## How to apply
-Copy files into your repo with the same paths:
-- main.py
-- commands/free_games.py
-- commands/gaming_news.py
-- requirements.txt (ensure aiohttp is present)
 
-Then:
-- `git add -A`
-- `git commit -m "Fix registrars + freegames/news commands"`
-- `git push`
+A) Copy files into your repo:
+   - Replace: commands/gaming_news.py
+   - Add:     commands/twitch_badges.py
 
-## Env vars
-- DISCORD_TOKEN (required)
-- NEWSAPI_KEY (required only for /gamingnews)
-- DATA_DIR (optional, defaults to 'data')
+B) In main.py (or your registrar), ensure you import and register them BEFORE tree.sync():
+   - from commands.gaming_news import register_gaming_news
+   - from commands.twitch_badges import register_twitch_badges
+
+   Then call:
+   - register_gaming_news(client, tree, DATA_DIR)
+   - register_twitch_badges(client, tree)
+
+C) Railway variables:
+   - DISCORD_TOKEN=...
+   - NEWSAPI_KEY=...
+   - TWITCH_CLIENT_ID=...
+   - TWITCH_OAUTH_TOKEN=...
+
+D) Re-deploy, then re-sync commands once (your existing sync command or on_ready sync).
+
+## Notes on the badges error
+
+If Discord still routes /badges interactions but your code doesn't have it, you’ll see CommandNotFound.
+That usually happens when:
+  - the bot process started without registering the command (import/register missing), OR
+  - tree.sync wasn't called after adding the command, OR
+  - you changed from guild sync to global sync and the server still has an old command definition.
