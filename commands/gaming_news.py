@@ -1,29 +1,17 @@
-"""
-Gaming news module with three ingestion options:
-1) NewsAPI (licensed aggregator) via NEWSAPI_KEY env var
-2) RSS/Atom feeds from an allowlisted set (data/news_sources_allowlist.json)
-3) "Allowlisted sites" mode (placeholder): you can add your own parsers later
-
-Slash command: /gamingnews query:<text> mode:<newsapi|rss> visibility:<public|ephemeral>
-
-This module is intentionally conservative: it only reads from known sources,
-and keeps snippets short.
-"""
-
+# commands/gaming_news.py
 from __future__ import annotations
 
-import json
 import os
-from datetime import datetime
+import json
+import datetime as dt
 from typing import Any, Dict, List, Optional
 
-import aiohttp
 import discord
-from discord import app_commands
-from discord.ext import commands
-from bs4 import BeautifulSoup
+import aiohttp
 
-BABY_BLUE = 0x89CFF0
+
+NEWS_COLOR = 0x8EC5FF  # baby blue (matches your UX request)
+
 
 def _load_json(path: str, default: Any) -> Any:
     try:
@@ -32,131 +20,70 @@ def _load_json(path: str, default: Any) -> Any:
     except Exception:
         return default
 
-def _visibility_to_ephemeral(visibility: Optional[str]) -> bool:
-    return (visibility or "public").lower().strip() != "public"
 
-async def _fetch_newsapi(session: aiohttp.ClientSession, api_key: str, query: str, page_size: int = 6) -> List[Dict[str, Any]]:
-    # NewsAPI v2 Everything endpoint
+async def _fetch_newsapi(session: aiohttp.ClientSession, api_key: str, q: str, page_size: int = 5) -> List[Dict[str, Any]]:
+    # NewsAPI.org endpoint (top headlines or everything). Keep it simple + safe.
     url = "https://newsapi.org/v2/everything"
     params = {
-        "q": query,
+        "q": q,
         "language": "en",
         "sortBy": "publishedAt",
-        "pageSize": str(max(1, min(page_size, 10))),
+        "pageSize": int(page_size),
     }
     headers = {"X-Api-Key": api_key}
-    async with session.get(url, params=params, headers=headers, timeout=20) as r:
-        if r.status != 200:
-            return []
-        data = await r.json(content_type=None)
-    return (data or {}).get("articles", []) or []
+    async with session.get(url, params=params, headers=headers, timeout=aiohttp.ClientTimeout(total=20)) as r:
+        r.raise_for_status()
+        data = await r.json()
+    return data.get("articles", []) or []
 
-async def _fetch_rss(session: aiohttp.ClientSession, feed_url: str, timeout_s: int = 20) -> List[Dict[str, Any]]:
-    async with session.get(feed_url, timeout=timeout_s, headers={"User-Agent": "Mozilla/5.0"}) as r:
-        if r.status != 200:
-            return []
-        xml = await r.text()
-    soup = BeautifulSoup(xml, "xml")
-    items = []
-    for it in soup.find_all(["item", "entry"])[:10]:
-        title = (it.title.get_text(strip=True) if it.title else "").strip()
-        link = ""
-        if it.link:
-            # RSS: <link>text</link>, Atom: <link href="..."/>
-            link = (it.link.get_text(strip=True) or "").strip() or (it.link.get("href") or "").strip()
-        pub = ""
-        if it.pubDate:
-            pub = it.pubDate.get_text(strip=True)
-        elif it.published:
-            pub = it.published.get_text(strip=True)
-        elif it.updated:
-            pub = it.updated.get_text(strip=True)
-        summary = ""
-        if it.description:
-            summary = it.description.get_text(" ", strip=True)
-        elif it.summary:
-            summary = it.summary.get_text(" ", strip=True)
-        items.append({"title": title, "url": link, "published": pub, "summary": summary})
-    return items
 
-def _build_embed(items: List[Dict[str, Any]], title: str) -> discord.Embed:
-    emb = discord.Embed(title=title, color=BABY_BLUE, timestamp=datetime.utcnow())
-    if not items:
-        emb.description = "No items returned."
-        return emb
-    lines = []
-    for a in items[:6]:
-        t = (a.get("title") or "").strip()
-        u = (a.get("url") or a.get("link") or "").strip()
-        if not t:
-            continue
-        if u:
-            lines.append(f"• **[{t}]({u})**")
-        else:
-            lines.append(f"• **{t}**")
-    emb.description = "\n".join(lines)[:4000]
-    return emb
+def register_gaming_news(client: discord.Client, tree: discord.app_commands.CommandTree, data_dir: str) -> None:
+    """
+    Register /gamingnews without using cogs (works with discord.Client).
+    Expects NEWSAPI_KEY in environment. Optional config at data/news_registry.json.
+    """
 
-class GamingNewsCog(commands.Cog):
-    def __init__(self, bot: commands.Bot, data_dir: str):
-        self.bot = bot
-        self.data_dir = data_dir
-        self.allowlist_path = os.path.join(data_dir, "news_sources_allowlist.json")
-        self.allowlist = _load_json(self.allowlist_path, {"rss_feeds": []})
+    @tree.command(name="gamingnews", description="Fetch latest gaming news via NewsAPI (licensed aggregator).")
+    async def gamingnews(interaction: discord.Interaction, query: Optional[str] = "video games"):
+        api_key = os.getenv("NEWSAPI_KEY", "").strip()
+        if not api_key:
+            await interaction.response.send_message("Missing NEWSAPI_KEY env var.", ephemeral=True)
+            return
 
-    news = app_commands.Group(name="gamingnews", description="Gaming news via NewsAPI or allowlisted RSS feeds.")
-
-    @news.command(name="latest", description="Fetch latest gaming news.")
-    @app_commands.describe(
-        query="Search query (default: video game)",
-        mode="newsapi (requires NEWSAPI_KEY) or rss",
-        visibility="public (default) or ephemeral",
-    )
-    async def latest(self, interaction: discord.Interaction, query: Optional[str] = "video game", mode: Optional[str] = "rss", visibility: Optional[str] = "public"):
-        ephemeral = _visibility_to_ephemeral(visibility)
-        await interaction.response.defer(thinking=True, ephemeral=ephemeral)
-
-        mode = (mode or "rss").lower().strip()
-        query = (query or "video game").strip()
+        await interaction.response.defer(thinking=False)
+        reg = _load_json(os.path.join(data_dir, "news_registry.json"), {})
+        page_size = int(reg.get("page_size", 5))
 
         async with aiohttp.ClientSession() as session:
-            if mode == "newsapi":
-                key = os.getenv("NEWSAPI_KEY", "").strip()
-                if not key:
-                    await interaction.followup.send("NEWSAPI_KEY is missing. Set it in Railway Variables / local .env.", ephemeral=True)
-                    return
-                articles = await _fetch_newsapi(session, key, query, page_size=6)
-                items = []
-                for a in articles:
-                    items.append({"title": a.get("title"), "url": a.get("url"), "published": a.get("publishedAt"), "summary": a.get("description")})
-                emb = _build_embed(items, title=f"Gaming news (NewsAPI): {query}")
-                await interaction.followup.send(embed=emb, ephemeral=ephemeral)
+            try:
+                arts = await _fetch_newsapi(session, api_key=api_key, q=(query or "video games"), page_size=page_size)
+            except Exception as e:
+                await interaction.followup.send(f"News fetch failed: {type(e).__name__}: {e}", ephemeral=True)
                 return
 
-            # RSS mode
-            feeds: List[Dict[str, Any]] = self.allowlist.get("rss_feeds", [])
-            if not feeds:
-                await interaction.followup.send("RSS allowlist is empty. Add feeds to data/news_sources_allowlist.json.", ephemeral=True)
-                return
+        if not arts:
+            await interaction.followup.send("No news results right now.", ephemeral=False)
+            return
 
-            merged: List[Dict[str, Any]] = []
-            for f in feeds[:8]:
-                url = (f.get("url") or "").strip()
-                if not url:
-                    continue
-                items = await _fetch_rss(session, url)
-                for it in items:
-                    it["source"] = f.get("name") or url
-                    merged.append(it)
+        now_utc = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
+        # One embed with multiple items (clean UX, avoids spam)
+        e = discord.Embed(
+            title="Gaming news",
+            description=f"Query: **{query}**",
+            color=NEWS_COLOR,
+        )
 
-            # Keep it simple: just take first N after merge; (optional) you can sort later by parsed date.
-            emb = _build_embed(merged[:6], title=f"Gaming news (RSS allowlist): {query}")
-            await interaction.followup.send(embed=emb, ephemeral=ephemeral)
+        lines: List[str] = []
+        for a in arts[:page_size]:
+            title = (a.get("title") or "").strip()
+            url = (a.get("url") or "").strip()
+            source = (a.get("source") or {}).get("name") or "NewsAPI"
+            published = (a.get("publishedAt") or "")[:10]  # YYYY-MM-DD
+            if url:
+                lines.append(f"• [{title}]({url}) — *{source}* ({published})")
+            else:
+                lines.append(f"• {title} — *{source}* ({published})")
 
-async def register_gaming_news(bot: commands.Bot, data_dir: str) -> None:
-    cog = GamingNewsCog(bot, data_dir)
-    await bot.add_cog(cog)
-    try:
-        bot.tree.add_command(cog.news)
-    except Exception:
-        pass
+        e.add_field(name="Latest", value="\n".join(lines), inline=False)
+        e.set_footer(text=f"UTC day: {now_utc} • via NewsAPI")
+        await interaction.followup.send(embed=e, ephemeral=False)
