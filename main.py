@@ -72,6 +72,7 @@ async def register_all(client: discord.Client, tree: app_commands.CommandTree) -
         ("commands.twitch_badges_and_drops", "register_twitch_badges_and_drops"),
         ("commands.free_games", "register_free_games"),
         ("commands.gaming_news", "register_gaming_news"),
+        ("commands.twitch_unified_feed", "register_twitch_unified_feed"),
     ]
 
     for mod_name, fn_name in modules:
