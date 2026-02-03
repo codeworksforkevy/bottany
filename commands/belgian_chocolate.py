@@ -66,7 +66,7 @@ class BelgiumGroup(app_commands.Group):
         embed = discord.Embed(
             title="Belgian chocolate-making (overview)",
             description=(
-                "A practical overview of how Belgian-style pralines and couverture-based chocolates are typically made, "
+                "A summarized overview of how Belgian-style pralines and couverture-based chocolates are typically made, "
                 "with a focus on technique (tempering, fillings, finishing) and quality cues."
             ),
         )
@@ -157,3 +157,4 @@ async def register_belgium_chocolate(bot: discord.Client, data_dir: str) -> None
     except Exception:
         # If already registered, ignore.
         pass
+
