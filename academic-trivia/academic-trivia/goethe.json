@@ -1,0 +1,1708 @@
+{
+  "metadata": {
+    "author": "Johann Wolfgang von Goethe",
+    "entry_count": 100
+  },
+  "entries": [
+    {
+      "id": "literature_goethe_0951",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "Faustian striving",
+      "statement": "Goethe explored Faustian striving as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0952",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "Bildung",
+      "statement": "Goethe explored Bildung as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0953",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "self-cultivation",
+      "statement": "Goethe explored self-cultivation as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0954",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "classical humanism",
+      "statement": "Goethe explored classical humanism as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0955",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "romanticism and classicism",
+      "statement": "Goethe explored romanticism and classicism as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0956",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "nature and science",
+      "statement": "Goethe explored nature and science as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0957",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "morphology",
+      "statement": "Goethe explored morphology as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0958",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "art and truth",
+      "statement": "Goethe explored art and truth as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0959",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "poetry and knowledge",
+      "statement": "Goethe explored poetry and knowledge as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0960",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "tragedy and modernity",
+      "statement": "Goethe explored tragedy and modernity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0961",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "freedom and necessity",
+      "statement": "Goethe explored freedom and necessity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0962",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "individual development",
+      "statement": "Goethe explored individual development as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0963",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "aesthetic education",
+      "statement": "Goethe explored aesthetic education as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0964",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "experience and wisdom",
+      "statement": "Goethe explored experience and wisdom as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0965",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "symbol and meaning",
+      "statement": "Goethe explored symbol and meaning as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0966",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "world literature",
+      "statement": "Goethe explored world literature as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0967",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "interdisciplinary thought",
+      "statement": "Goethe explored interdisciplinary thought as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0968",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "science and art unity",
+      "statement": "Goethe explored science and art unity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0969",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "ethical reflection",
+      "statement": "Goethe explored ethical reflection as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0970",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "modern subjectivity",
+      "statement": "Goethe explored modern subjectivity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0971",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "Faustian striving",
+      "statement": "Goethe explored Faustian striving as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0972",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "Bildung",
+      "statement": "Goethe explored Bildung as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0973",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "self-cultivation",
+      "statement": "Goethe explored self-cultivation as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0974",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "classical humanism",
+      "statement": "Goethe explored classical humanism as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0975",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "romanticism and classicism",
+      "statement": "Goethe explored romanticism and classicism as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0976",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "nature and science",
+      "statement": "Goethe explored nature and science as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0977",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "morphology",
+      "statement": "Goethe explored morphology as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0978",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "art and truth",
+      "statement": "Goethe explored art and truth as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0979",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "poetry and knowledge",
+      "statement": "Goethe explored poetry and knowledge as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0980",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "tragedy and modernity",
+      "statement": "Goethe explored tragedy and modernity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0981",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "freedom and necessity",
+      "statement": "Goethe explored freedom and necessity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0982",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "individual development",
+      "statement": "Goethe explored individual development as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0983",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "aesthetic education",
+      "statement": "Goethe explored aesthetic education as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0984",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "experience and wisdom",
+      "statement": "Goethe explored experience and wisdom as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0985",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "symbol and meaning",
+      "statement": "Goethe explored symbol and meaning as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0986",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "world literature",
+      "statement": "Goethe explored world literature as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0987",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "interdisciplinary thought",
+      "statement": "Goethe explored interdisciplinary thought as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0988",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "science and art unity",
+      "statement": "Goethe explored science and art unity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0989",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "ethical reflection",
+      "statement": "Goethe explored ethical reflection as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0990",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "modern subjectivity",
+      "statement": "Goethe explored modern subjectivity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0991",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "Faustian striving",
+      "statement": "Goethe explored Faustian striving as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0992",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "Bildung",
+      "statement": "Goethe explored Bildung as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0993",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "self-cultivation",
+      "statement": "Goethe explored self-cultivation as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0994",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "classical humanism",
+      "statement": "Goethe explored classical humanism as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0995",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "romanticism and classicism",
+      "statement": "Goethe explored romanticism and classicism as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0996",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "nature and science",
+      "statement": "Goethe explored nature and science as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0997",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "morphology",
+      "statement": "Goethe explored morphology as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0998",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "art and truth",
+      "statement": "Goethe explored art and truth as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_0999",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "poetry and knowledge",
+      "statement": "Goethe explored poetry and knowledge as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1000",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "tragedy and modernity",
+      "statement": "Goethe explored tragedy and modernity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1001",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "freedom and necessity",
+      "statement": "Goethe explored freedom and necessity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1002",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "individual development",
+      "statement": "Goethe explored individual development as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1003",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "aesthetic education",
+      "statement": "Goethe explored aesthetic education as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1004",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "experience and wisdom",
+      "statement": "Goethe explored experience and wisdom as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1005",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "symbol and meaning",
+      "statement": "Goethe explored symbol and meaning as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1006",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "world literature",
+      "statement": "Goethe explored world literature as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1007",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "interdisciplinary thought",
+      "statement": "Goethe explored interdisciplinary thought as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1008",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "science and art unity",
+      "statement": "Goethe explored science and art unity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1009",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "ethical reflection",
+      "statement": "Goethe explored ethical reflection as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1010",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "modern subjectivity",
+      "statement": "Goethe explored modern subjectivity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1011",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "Faustian striving",
+      "statement": "Goethe explored Faustian striving as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1012",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "Bildung",
+      "statement": "Goethe explored Bildung as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1013",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "self-cultivation",
+      "statement": "Goethe explored self-cultivation as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1014",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "classical humanism",
+      "statement": "Goethe explored classical humanism as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1015",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "romanticism and classicism",
+      "statement": "Goethe explored romanticism and classicism as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1016",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "nature and science",
+      "statement": "Goethe explored nature and science as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1017",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "morphology",
+      "statement": "Goethe explored morphology as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1018",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "art and truth",
+      "statement": "Goethe explored art and truth as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1019",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "poetry and knowledge",
+      "statement": "Goethe explored poetry and knowledge as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1020",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "tragedy and modernity",
+      "statement": "Goethe explored tragedy and modernity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1021",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "freedom and necessity",
+      "statement": "Goethe explored freedom and necessity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1022",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "individual development",
+      "statement": "Goethe explored individual development as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1023",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "aesthetic education",
+      "statement": "Goethe explored aesthetic education as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1024",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "experience and wisdom",
+      "statement": "Goethe explored experience and wisdom as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1025",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "symbol and meaning",
+      "statement": "Goethe explored symbol and meaning as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1026",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "world literature",
+      "statement": "Goethe explored world literature as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1027",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "interdisciplinary thought",
+      "statement": "Goethe explored interdisciplinary thought as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1028",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "science and art unity",
+      "statement": "Goethe explored science and art unity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1029",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "ethical reflection",
+      "statement": "Goethe explored ethical reflection as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1030",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "modern subjectivity",
+      "statement": "Goethe explored modern subjectivity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1031",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "Faustian striving",
+      "statement": "Goethe explored Faustian striving as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1032",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "Bildung",
+      "statement": "Goethe explored Bildung as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1033",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "self-cultivation",
+      "statement": "Goethe explored self-cultivation as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1034",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "classical humanism",
+      "statement": "Goethe explored classical humanism as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1035",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "romanticism and classicism",
+      "statement": "Goethe explored romanticism and classicism as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1036",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "nature and science",
+      "statement": "Goethe explored nature and science as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1037",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "morphology",
+      "statement": "Goethe explored morphology as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1038",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "art and truth",
+      "statement": "Goethe explored art and truth as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1039",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "poetry and knowledge",
+      "statement": "Goethe explored poetry and knowledge as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1040",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "tragedy and modernity",
+      "statement": "Goethe explored tragedy and modernity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1041",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "freedom and necessity",
+      "statement": "Goethe explored freedom and necessity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1042",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "individual development",
+      "statement": "Goethe explored individual development as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1043",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "aesthetic education",
+      "statement": "Goethe explored aesthetic education as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1044",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "experience and wisdom",
+      "statement": "Goethe explored experience and wisdom as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1045",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "symbol and meaning",
+      "statement": "Goethe explored symbol and meaning as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1046",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "world literature",
+      "statement": "Goethe explored world literature as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1047",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "interdisciplinary thought",
+      "statement": "Goethe explored interdisciplinary thought as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1048",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "science and art unity",
+      "statement": "Goethe explored science and art unity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1049",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "ethical reflection",
+      "statement": "Goethe explored ethical reflection as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    },
+    {
+      "id": "literature_goethe_1050",
+      "author": "Johann Wolfgang von Goethe",
+      "field": "literature",
+      "subfield": "modern subjectivity",
+      "statement": "Goethe explored modern subjectivity as a central dimension of human experience, integrating literary creation with philosophical and scientific inquiry.",
+      "source_core": [
+        "Faust",
+        "Wilhelm Meister’s Apprenticeship",
+        "Poetry and Truth"
+      ],
+      "source_tier": "Weimar–Oxford–Cambridge",
+      "paraphrase_type": "academic_doctrine_level",
+      "difficulty": "medium",
+      "visibility": "public",
+      "license": "public_domain"
+    }
+  ]
+}
