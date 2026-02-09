@@ -163,3 +163,11 @@ def register_kevy(bot):
 
         embed = discord.Embed(
             title="Kevy Leaderboard 🎉",
+            description="\n".join(lines),
+            color=0xEB459E
+        )
+
+        await interaction.response.send_message(embed=embed, ephemeral=True)
+
+    bot.tree.add_command(kevy_group)
+    bot._kevy_registered = True
