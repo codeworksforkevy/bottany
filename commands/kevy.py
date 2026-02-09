@@ -88,7 +88,7 @@ def register_kevy(bot):
 
         confetti = "🎉"
         heart = "💙"
-        text = "We love you Kevy"
+        text = "We love you Kevy 💙"
 
         if user:
             text = f"{user.mention} — {text}"
