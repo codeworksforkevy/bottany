@@ -499,241 +499,151 @@ async def trivia_scheduler():
 async def on_ready():
     db_init()
 
-    # Ensure /drawing commands are registered once
+    # /drawing
     if not getattr(bot, "_drawing_registered", False):
         try:
             await _maybe_await(register_drawing, bot, DATA_DIR)
             bot._drawing_registered = True
         except Exception as e:
-            if "already registered" in str(e).lower():
-                bot._drawing_registered = True
-                logger.warning("Drawing command group was already registered; continuing.")
-            else:
-                logger.warning("Drawing module registration failed: %s", e)
-    # Ensure /weather commands are registered once
+            logger.warning("Drawing registration failed: %s", e)
+
+    # /weather
     if not getattr(bot, "_weather_registered", False):
         try:
             register_weather(bot, DATA_DIR)
             bot._weather_registered = True
         except Exception as e:
-            logger.warning("Weather module registration failed: %s", e)
+            logger.warning("Weather registration failed: %s", e)
 
-    # Ensure /time command is registered once
-if not getattr(bot, "_time_registered", False):
-    try:
-        register_time_command(bot, DATA_DIR)
-        bot._time_registered = True
-    except Exception as e:
-        if "already registered" in str(e).lower():
+    # /time
+    if not getattr(bot, "_time_registered", False):
+        try:
+            register_time_command(bot, DATA_DIR)
             bot._time_registered = True
-            logger.warning("Time command was already registered; continuing.")
-        else:
-            logger.warning("Time command registration failed: %s", e)
+        except Exception as e:
+            logger.warning("Time registration failed: %s", e)
 
-@bot.event
-async def on_ready():
-
-    db_init()
-
-    # Ensure /freegames commands are registered once
+    # /freegames
     if not getattr(bot, "_free_games_registered", False):
         try:
             await _maybe_await(register_free_games, bot, DATA_DIR)
             bot._free_games_registered = True
         except Exception as e:
-            # If a reconnect happens, Discord.py may see the group as already present.
-            if "already registered" in str(e).lower():
-                bot._free_games_registered = True
-                logger.warning(
-                    "Free games command group was already registered; continuing."
-                )
-            else:
-                logger.warning(
-                    "Free games module registration failed: %s", e
-                )
+            logger.warning("Free games registration failed: %s", e)
 
-    # Ensure /help commands are registered once
+    # /help
     if not getattr(bot, "_help_registered", False):
         try:
             register_help(bot, DATA_DIR)
             bot._help_registered = True
         except Exception as e:
-            # If a reconnect happens, Discord.py may see the command as already present.
-            if "already registered" in str(e).lower():
-                bot._help_registered = True
-                logger.warning("Help command was already registered; continuing.")
-            else:
-                logger.warning("Help module registration failed: %s", e)
+            logger.warning("Help registration failed: %s", e)
 
-    # Ensure /trivia commands are registered once
-if not getattr(bot, "_trivia_registered", False):
-    try:
-        register_trivia(bot.tree)
-        bot._trivia_registered = True
-    except Exception as e:
-        if "already" in str(e).lower():
+    # /trivia
+    if not getattr(bot, "_trivia_registered", False):
+        try:
+            register_trivia(bot.tree)
             bot._trivia_registered = True
-            logger.warning("Trivia command was already registered; continuing.")
-        else:
-            logger.warning("Trivia command registration failed: %s", e)
-                
-    # Ensure /gaming commands are registered once
+        except Exception as e:
+            logger.warning("Trivia registration failed: %s", e)
+
+    # /gaming products
     if not getattr(bot, "_gaming_products_registered", False):
         try:
             register_gaming_products(bot, DATA_DIR)
             bot._gaming_products_registered = True
         except Exception as e:
-            if "already registered" in str(e).lower():
-                bot._gaming_products_registered = True
-                logger.warning("Gaming command group was already registered; continuing.")
-            else:
-                logger.warning("Gaming module registration failed: %s", e)
+            logger.warning("Gaming products registration failed: %s", e)
 
-
-    # Ensure /game_sources command is registered once
+    # /game sources
     if not getattr(bot, "_game_sources_registered", False):
         try:
-            if register_game_sources:
-                register_game_sources(bot, DATA_DIR)
+            register_game_sources(bot, DATA_DIR)
             bot._game_sources_registered = True
         except Exception as e:
-            if "already" in str(e).lower():
-                bot._game_sources_registered = True
-                logger.warning("Game sources command was already registered; continuing.")
-            else:
-                logger.warning("Game sources registration failed: %s", e)
+            logger.warning("Game sources registration failed: %s", e)
 
-    # Ensure /console commands are registered once
+    # /console history
     if not getattr(bot, "_history_of_the_consoles_registered", False):
         try:
             register_history_of_the_consoles(bot, DATA_DIR)
             bot._history_of_the_consoles_registered = True
         except Exception as e:
-            if "already registered" in str(e).lower():
-                bot._history_of_the_consoles_registered = True
-                logger.warning("Console command group was already registered; continuing.")
-            else:
-                logger.warning("Console module registration failed: %s", e)
+            logger.warning("Console history registration failed: %s", e)
 
-    # Ensure /games commands are registered once
+    # /early games
     if not getattr(bot, "_first_and_early_games_from_the_history_registered", False):
         try:
             register_first_and_early_games_from_the_history(bot, DATA_DIR)
             bot._first_and_early_games_from_the_history_registered = True
         except Exception as e:
-            if "already registered" in str(e).lower():
-                bot._first_and_early_games_from_the_history_registered = True
-                logger.warning("Games command group was already registered; continuing.")
-            else:
-                logger.warning("Games module registration failed: %s", e)
+            logger.warning("Early games registration failed: %s", e)
 
-    
-@bot.event
-async def on_ready():
-    db_init()
-
-    # Ensure /belgium beverages commands are registered once
+    # /belgium beverages
     if not getattr(bot, "_belgium_beverages_registered", False):
         try:
-            if register_belgium_beverages:
-                await _maybe_await(register_belgium_beverages, bot, DATA_DIR)
+            await _maybe_await(register_belgium_beverages, bot, DATA_DIR)
             bot._belgium_beverages_registered = True
         except Exception as e:
-            if "already" in str(e).lower():
-                bot._belgium_beverages_registered = True
-                logger.warning(
-                    "Belgium beverages commands were already registered; continuing."
-                )
-            else:
-                logger.warning(
-                    "Belgium beverages registration failed: %s", e
-                )
+            logger.warning("Belgium beverages registration failed: %s", e)
 
-    logger.info("Bot ready.")
-   
-
-# Ensure /belgium chocolate commands are registered once
-if not getattr(bot, "_belgium_chocolate_registered", False):
-    try:
-        if register_belgian_chocolate:
+    # /belgium chocolate
+    if not getattr(bot, "_belgium_chocolate_registered", False):
+        try:
             await _maybe_await(register_belgian_chocolate, bot, DATA_DIR)
-        bot._belgium_chocolate_registered = True
-    except Exception as e:
-        if "already" in str(e).lower():
             bot._belgium_chocolate_registered = True
-            logger.warning("Belgium chocolate commands were already registered; continuing.")
-        else:
+        except Exception as e:
             logger.warning("Belgium chocolate registration failed: %s", e)
 
-# Ensure /davinci commands are registered once
-if not getattr(bot, "_davinci_registered", False):
-    try:
-        register_davinci(bot, DATA_DIR)
-        bot._davinci_registered = True
-    except Exception as e:
-        if "already" in str(e).lower():
+    # /davinci
+    if not getattr(bot, "_davinci_registered", False):
+        try:
+            register_davinci(bot, DATA_DIR)
             bot._davinci_registered = True
-            logger.warning("Da Vinci command group was already registered; continuing.")
-        else:
+        except Exception as e:
             logger.warning("Da Vinci registration failed: %s", e)
-    
-    # Ensure /badges commands are registered once (Twitch badges watcher)
+
+    # /badges
     if not getattr(bot, "_badges_registered", False):
         try:
-            if register_badges:
-                await _maybe_await(register_badges, bot, DATA_DIR)
+            await _maybe_await(register_badges, bot, DATA_DIR)
             bot._badges_registered = True
         except Exception as e:
-            if "already" in str(e).lower():
-                bot._badges_registered = True
-                logger.warning("Badges command group was already registered; continuing.")
-            else:
-                logger.warning("Badges registration failed: %s", e)
+            logger.warning("Badges registration failed: %s", e)
 
-    # Ensure /drops commands are registered once (Twitch Drops registry)
+    # /drops
     if not getattr(bot, "_twitch_drops_registered", False):
         try:
-            if register_twitch_drops:
-                register_twitch_drops(bot, DATA_DIR)
+            register_twitch_drops(bot, DATA_DIR)
             bot._twitch_drops_registered = True
         except Exception as e:
-            if "already" in str(e).lower():
-                bot._twitch_drops_registered = True
-                logger.warning("Twitch drops commands were already registered; continuing.")
-            else:
-                logger.warning("Twitch drops registration failed: %s", e)
+            logger.warning("Twitch drops registration failed: %s", e)
 
-    # Start Twitch EventSub webhook server once (optional; requires TWITCH_EVENTSUB_SECRET)
+    # EventSub
     if not getattr(bot, "_twitch_eventsub_started", False):
         try:
-            if register_twitch_eventsub:
-                await _maybe_await(register_twitch_eventsub, 
-                    bot,
-                    DATA_DIR,
-                    db_get_channel=db_get_channel,
-                    db_list_twitch_watch=db_list_twitch_watch,
-                    db_log_clip=db_log_clip,
-                )
+            await _maybe_await(
+                register_twitch_eventsub,
+                bot,
+                DATA_DIR,
+                db_get_channel=db_get_channel,
+                db_list_twitch_watch=db_list_twitch_watch,
+                db_log_clip=db_log_clip,
+            )
             bot._twitch_eventsub_started = True
         except Exception as e:
-            logger.warning("Twitch EventSub server start failed: %s", e)
-# Compute governance report after startup (avoid crashing at import time)
+            logger.warning("EventSub start failed: %s", e)
+
+    # Governance
     global GOV_REPORT
     try:
         GOV_REPORT = validate_registry_links()
-        logger.info(
-            "Governance validation done. checked=%s violations=%s",
-            GOV_REPORT.get("counts", {}).get("checked_urls", 0),
-            GOV_REPORT.get("counts", {}).get("violations", 0),
-        )
+        logger.info("Governance validation completed.")
     except Exception as e:
         logger.exception("Governance validation failed: %s", e)
-        from datetime import datetime as _dt
-        GOV_REPORT = {
-            "generated_utc": _dt.utcnow().replace(microsecond=0).isoformat() + "Z",
-            "violations": [{"module": "governance", "where": "startup", "url": "", "reason": str(e)}],
-            "counts": {"checked_urls": 0, "violations": 1},
-        }
+
+    logger.info("Bot ready.")
+
 
     # --- Slash command sync ---
     # DISCORD_GUILD_ID enables faster 'instant' syncing to a single test server.
