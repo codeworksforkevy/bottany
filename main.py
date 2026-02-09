@@ -529,6 +529,10 @@ if not getattr(bot, "_time_registered", False):
         else:
             logger.warning("Time command registration failed: %s", e)
 
+ @bot.event
+async def on_ready():
+    db_init()
+
     # Ensure /freegames commands are registered once
     if not getattr(bot, "_free_games_registered", False):
         try:
@@ -538,9 +542,13 @@ if not getattr(bot, "_time_registered", False):
             # If a reconnect happens, Discord.py may see the group as already present.
             if "already registered" in str(e).lower():
                 bot._free_games_registered = True
-                logger.warning("Free games command group was already registered; continuing.")
+                logger.warning(
+                    "Free games command group was already registered; continuing."
+                )
             else:
-                logger.warning("Free games module registration failed: %s", e)
+                logger.warning(
+                    "Free games module registration failed: %s", e
+                )
 
     # Ensure /help commands are registered once
     if not getattr(bot, "_help_registered", False):
