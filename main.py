@@ -12,6 +12,7 @@ import aiohttp
 from urllib.parse import quote
 import sqlite3
 import re
+from commands.academic_trivia_pager import register_trivia
 from typing import Optional, Dict, Any, List
 from datetime import datetime, date, time as dtime
 from urllib.parse import urlparse
