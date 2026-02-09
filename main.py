@@ -628,6 +628,10 @@ if not getattr(bot, "_trivia_registered", False):
                 logger.warning("Games module registration failed: %s", e)
 
     
+@bot.event
+async def on_ready():
+    db_init()
+
     # Ensure /belgium beverages commands are registered once
     if not getattr(bot, "_belgium_beverages_registered", False):
         try:
@@ -637,9 +641,16 @@ if not getattr(bot, "_trivia_registered", False):
         except Exception as e:
             if "already" in str(e).lower():
                 bot._belgium_beverages_registered = True
-                logger.warning("Belgium beverages commands were already registered; continuing.")
+                logger.warning(
+                    "Belgium beverages commands were already registered; continuing."
+                )
             else:
-                logger.warning("Belgium beverages registration failed: %s", e)
+                logger.warning(
+                    "Belgium beverages registration failed: %s", e
+                )
+
+    logger.info("Bot ready.")
+   
 
 # Ensure /belgium chocolate commands are registered once
 if not getattr(bot, "_belgium_chocolate_registered", False):
