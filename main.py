@@ -14,6 +14,7 @@ import sqlite3
 import re
 from commands.academic_trivia_pager import register_trivia
 from commands.belgian_chocolate import register_belgian_chocolate
+from commands.davinci import register_davinci
 from commands.time import register_time_command
 from typing import Optional, Dict, Any, List
 from datetime import datetime, date, time as dtime
@@ -652,6 +653,18 @@ if not getattr(bot, "_belgium_chocolate_registered", False):
         else:
             logger.warning("Belgium chocolate registration failed: %s", e)
 
+# Ensure /davinci commands are registered once
+if not getattr(bot, "_davinci_registered", False):
+    try:
+        register_davinci(bot, DATA_DIR)
+        bot._davinci_registered = True
+    except Exception as e:
+        if "already" in str(e).lower():
+            bot._davinci_registered = True
+            logger.warning("Da Vinci command group was already registered; continuing.")
+        else:
+            logger.warning("Da Vinci registration failed: %s", e)
+    
     # Ensure /badges commands are registered once (Twitch badges watcher)
     if not getattr(bot, "_badges_registered", False):
         try:
