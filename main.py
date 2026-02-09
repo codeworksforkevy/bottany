@@ -13,6 +13,8 @@ from urllib.parse import quote
 import sqlite3
 import re
 from commands.academic_trivia_pager import register_trivia
+from commands.belgian_chocolate import register_belgian_chocolate
+from commands.time import register_time_command
 from typing import Optional, Dict, Any, List
 from datetime import datetime, date, time as dtime
 from urllib.parse import urlparse
@@ -515,6 +517,18 @@ async def on_ready():
         except Exception as e:
             logger.warning("Weather module registration failed: %s", e)
 
+    # Ensure /time command is registered once
+if not getattr(bot, "_time_registered", False):
+    try:
+        register_time_command(bot, DATA_DIR)
+        bot._time_registered = True
+    except Exception as e:
+        if "already registered" in str(e).lower():
+            bot._time_registered = True
+            logger.warning("Time command was already registered; continuing.")
+        else:
+            logger.warning("Time command registration failed: %s", e)
+
     # Ensure /freegames commands are registered once
     if not getattr(bot, "_free_games_registered", False):
         try:
@@ -541,6 +555,18 @@ async def on_ready():
             else:
                 logger.warning("Help module registration failed: %s", e)
 
+    # Ensure /trivia commands are registered once
+if not getattr(bot, "_trivia_registered", False):
+    try:
+        register_trivia(bot.tree)
+        bot._trivia_registered = True
+    except Exception as e:
+        if "already" in str(e).lower():
+            bot._trivia_registered = True
+            logger.warning("Trivia command was already registered; continuing.")
+        else:
+            logger.warning("Trivia command registration failed: %s", e)
+                
     # Ensure /gaming commands are registered once
     if not getattr(bot, "_gaming_products_registered", False):
         try:
@@ -605,7 +631,18 @@ async def on_ready():
             else:
                 logger.warning("Belgium beverages registration failed: %s", e)
 
-
+# Ensure /belgium chocolate commands are registered once
+if not getattr(bot, "_belgium_chocolate_registered", False):
+    try:
+        if register_belgian_chocolate:
+            await _maybe_await(register_belgian_chocolate, bot, DATA_DIR)
+        bot._belgium_chocolate_registered = True
+    except Exception as e:
+        if "already" in str(e).lower():
+            bot._belgium_chocolate_registered = True
+            logger.warning("Belgium chocolate commands were already registered; continuing.")
+        else:
+            logger.warning("Belgium chocolate registration failed: %s", e)
 
     # Ensure /badges commands are registered once (Twitch badges watcher)
     if not getattr(bot, "_badges_registered", False):
