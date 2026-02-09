@@ -1531,6 +1531,16 @@ async def registry_validate(interaction: discord.Interaction):
 
 bot.tree.add_command(registry_group)
 
+# -------------------------------------------------
+# Kevy commands (fun / stats) — registry-attached
+# -------------------------------------------------
+
+from commands.kevy import register_kevy
+
+try:
+    register_kevy(bot)
+except Exception as e:
+    logger.warning("Kevy commands could not be registered: %s", e)
 
 
 # -------------------------
