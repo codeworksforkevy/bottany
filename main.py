@@ -530,8 +530,9 @@ if not getattr(bot, "_time_registered", False):
         else:
             logger.warning("Time command registration failed: %s", e)
 
- @bot.event
+@bot.event
 async def on_ready():
+
     db_init()
 
     # Ensure /freegames commands are registered once
