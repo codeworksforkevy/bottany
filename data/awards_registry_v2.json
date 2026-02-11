@@ -1,0 +1,264 @@
+{
+  "meta": {
+    "registry_version": "2.0",
+    "scope": "winners_only",
+    "years_covered": "2015-2024",
+    "policy": "official_sources_only"
+  },
+  "awards": {
+    "tga": {
+      "name": "The Game Awards"
+    },
+    "bafta": {
+      "name": "BAFTA Games Awards"
+    },
+    "dice": {
+      "name": "D.I.C.E. Awards"
+    },
+    "gja": {
+      "name": "Golden Joystick Awards"
+    }
+  },
+  "winners": [
+    {
+      "award_id": "tga",
+      "year": 2015,
+      "category": "Game of the Year",
+      "winner": "The Witcher 3: Wild Hunt"
+    },
+    {
+      "award_id": "tga",
+      "year": 2016,
+      "category": "Game of the Year",
+      "winner": "Overwatch"
+    },
+    {
+      "award_id": "tga",
+      "year": 2017,
+      "category": "Game of the Year",
+      "winner": "The Legend of Zelda: Breath of the Wild"
+    },
+    {
+      "award_id": "tga",
+      "year": 2018,
+      "category": "Game of the Year",
+      "winner": "God of War"
+    },
+    {
+      "award_id": "tga",
+      "year": 2019,
+      "category": "Game of the Year",
+      "winner": "Sekiro: Shadows Die Twice"
+    },
+    {
+      "award_id": "tga",
+      "year": 2020,
+      "category": "Game of the Year",
+      "winner": "The Last of Us Part II"
+    },
+    {
+      "award_id": "tga",
+      "year": 2021,
+      "category": "Game of the Year",
+      "winner": "It Takes Two"
+    },
+    {
+      "award_id": "tga",
+      "year": 2022,
+      "category": "Game of the Year",
+      "winner": "Elden Ring"
+    },
+    {
+      "award_id": "tga",
+      "year": 2023,
+      "category": "Game of the Year",
+      "winner": "Baldur's Gate 3"
+    },
+    {
+      "award_id": "tga",
+      "year": 2024,
+      "category": "Game of the Year",
+      "winner": "Astro Bot"
+    },
+    {
+      "award_id": "bafta",
+      "year": 2015,
+      "category": "Best Game",
+      "winner": "Destiny"
+    },
+    {
+      "award_id": "bafta",
+      "year": 2016,
+      "category": "Best Game",
+      "winner": "Fallout 4"
+    },
+    {
+      "award_id": "bafta",
+      "year": 2017,
+      "category": "Best Game",
+      "winner": "Uncharted 4: A Thief's End"
+    },
+    {
+      "award_id": "bafta",
+      "year": 2018,
+      "category": "Best Game",
+      "winner": "What Remains of Edith Finch"
+    },
+    {
+      "award_id": "bafta",
+      "year": 2019,
+      "category": "Best Game",
+      "winner": "God of War"
+    },
+    {
+      "award_id": "bafta",
+      "year": 2020,
+      "category": "Best Game",
+      "winner": "Outer Wilds"
+    },
+    {
+      "award_id": "bafta",
+      "year": 2021,
+      "category": "Best Game",
+      "winner": "Hades"
+    },
+    {
+      "award_id": "bafta",
+      "year": 2022,
+      "category": "Best Game",
+      "winner": "Returnal"
+    },
+    {
+      "award_id": "bafta",
+      "year": 2023,
+      "category": "Best Game",
+      "winner": "Vampire Survivors"
+    },
+    {
+      "award_id": "bafta",
+      "year": 2024,
+      "category": "Best Game",
+      "winner": "Baldur's Gate 3"
+    },
+    {
+      "award_id": "dice",
+      "year": 2015,
+      "category": "Game of the Year",
+      "winner": "Dragon Age: Inquisition"
+    },
+    {
+      "award_id": "dice",
+      "year": 2016,
+      "category": "Game of the Year",
+      "winner": "Fallout 4"
+    },
+    {
+      "award_id": "dice",
+      "year": 2017,
+      "category": "Game of the Year",
+      "winner": "Overwatch"
+    },
+    {
+      "award_id": "dice",
+      "year": 2018,
+      "category": "Game of the Year",
+      "winner": "The Legend of Zelda: Breath of the Wild"
+    },
+    {
+      "award_id": "dice",
+      "year": 2019,
+      "category": "Game of the Year",
+      "winner": "God of War"
+    },
+    {
+      "award_id": "dice",
+      "year": 2020,
+      "category": "Game of the Year",
+      "winner": "Untitled Goose Game"
+    },
+    {
+      "award_id": "dice",
+      "year": 2021,
+      "category": "Game of the Year",
+      "winner": "Hades"
+    },
+    {
+      "award_id": "dice",
+      "year": 2022,
+      "category": "Game of the Year",
+      "winner": "It Takes Two"
+    },
+    {
+      "award_id": "dice",
+      "year": 2023,
+      "category": "Game of the Year",
+      "winner": "Elden Ring"
+    },
+    {
+      "award_id": "dice",
+      "year": 2024,
+      "category": "Game of the Year",
+      "winner": "Baldur's Gate 3"
+    },
+    {
+      "award_id": "gja",
+      "year": 2015,
+      "category": "Ultimate Game of the Year",
+      "winner": "The Witcher 3: Wild Hunt"
+    },
+    {
+      "award_id": "gja",
+      "year": 2016,
+      "category": "Ultimate Game of the Year",
+      "winner": "Dark Souls III"
+    },
+    {
+      "award_id": "gja",
+      "year": 2017,
+      "category": "Ultimate Game of the Year",
+      "winner": "The Legend of Zelda: Breath of the Wild"
+    },
+    {
+      "award_id": "gja",
+      "year": 2018,
+      "category": "Ultimate Game of the Year",
+      "winner": "Fortnite"
+    },
+    {
+      "award_id": "gja",
+      "year": 2019,
+      "category": "Ultimate Game of the Year",
+      "winner": "Resident Evil 2"
+    },
+    {
+      "award_id": "gja",
+      "year": 2020,
+      "category": "Ultimate Game of the Year",
+      "winner": "The Last of Us Part II"
+    },
+    {
+      "award_id": "gja",
+      "year": 2021,
+      "category": "Ultimate Game of the Year",
+      "winner": "Resident Evil Village"
+    },
+    {
+      "award_id": "gja",
+      "year": 2022,
+      "category": "Ultimate Game of the Year",
+      "winner": "Elden Ring"
+    },
+    {
+      "award_id": "gja",
+      "year": 2023,
+      "category": "Ultimate Game of the Year",
+      "winner": "Baldur's Gate 3"
+    },
+    {
+      "award_id": "gja",
+      "year": 2024,
+      "category": "Ultimate Game of the Year",
+      "winner": "Black Myth: Wukong"
+    }
+  ]
+}
