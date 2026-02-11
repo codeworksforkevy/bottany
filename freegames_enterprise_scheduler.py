@@ -5,20 +5,20 @@ import os
 import json
 import hashlib
 import datetime as dt
-from typing import Dict
 
 import discord
 from discord.ext import tasks
 from discord import app_commands
 
-from freegames_logic import gather_offers, build_kind_embeds
+from freegames_logic import gather_offers
+
 
 STATE_DIR = "data/freegames_state"
 CONFIG_FILE = "data/freegames_channels.json"
 
-TARGET_WEEKDAY = 3      # Thursday
-TARGET_HOUR_UTC = 18    # 18:00 UTC
-CHECK_INTERVAL_MIN = 30
+PLATFORM_COLORS = {
+    "epic": 0x2F3136
+}
 
 
 def _load_json(path, default):
@@ -40,6 +40,60 @@ def _offers_hash(offers):
     return hashlib.sha256(raw.encode()).hexdigest()
 
 
+def _format_countdown(expires_at):
+    if not expires_at:
+        return "Unknown"
+
+    now = dt.datetime.now(dt.timezone.utc)
+    delta = expires_at - now
+    if delta.total_seconds() <= 0:
+        return "Expired"
+
+    days = delta.days
+    hours = delta.seconds // 3600
+    return f"{days}d {hours}h remaining"
+
+
+def _build_embed(offer):
+    color = PLATFORM_COLORS.get(offer.platform, 0xA7D8FF)
+
+    embed = discord.Embed(
+        title=offer.title,
+        url=offer.url,
+        color=color
+    )
+
+    embed.add_field(name="Status", value="FREE TO KEEP", inline=False)
+
+    if offer.expires_at:
+        embed.add_field(
+            name="Claim Before",
+            value=offer.expires_at.strftime("%Y-%m-%d %H:%M UTC"),
+            inline=True
+        )
+
+        embed.add_field(
+            name="Countdown",
+            value=_format_countdown(offer.expires_at),
+            inline=True
+        )
+
+    embed.add_field(name="Platform", value=offer.platform.upper(), inline=False)
+
+    if offer.thumbnail:
+        embed.set_thumbnail(url=offer.thumbnail)
+
+    view = discord.ui.View()
+    button = discord.ui.Button(
+        label="Claim Now",
+        style=discord.ButtonStyle.link,
+        url=offer.url
+    )
+    view.add_item(button)
+
+    return embed, view
+
+
 class FreeGamesEnterprise:
 
     def __init__(self, bot: discord.Client, registry_path: str):
@@ -47,10 +101,10 @@ class FreeGamesEnterprise:
         self.registry_path = registry_path
         self.loop.start()
 
-    @tasks.loop(minutes=CHECK_INTERVAL_MIN)
+    @tasks.loop(minutes=30)
     async def loop(self):
         now = dt.datetime.utcnow()
-        if now.weekday() != TARGET_WEEKDAY or now.hour != TARGET_HOUR_UTC:
+        if now.weekday() != 3 or now.hour != 18:
             return
 
         await self._post_updates(force=False)
@@ -79,8 +133,9 @@ class FreeGamesEnterprise:
             if not channel:
                 continue
 
-            embeds = build_kind_embeds(offers, title_prefix="Free Games Update")
-            await channel.send(embeds=embeds)
+            for offer in offers:
+                embed, view = _build_embed(offer)
+                await channel.send(embed=embed, view=view)
 
             _save_json(state_path, {"hash": new_hash})
 
