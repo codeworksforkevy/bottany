@@ -8,20 +8,20 @@ from typing import Any, Dict, List
 import aiohttp
 
 
-def _parse_iso(date_str: str) -> dt.datetime | None:
+def _parse_iso(date_str: str):
     try:
         return dt.datetime.fromisoformat(date_str.replace("Z", "+00:00"))
     except Exception:
         return None
 
 
-def _is_active_offer(offer: dict) -> bool:
-    start = _parse_iso(offer.get("startDate", ""))
-    end = _parse_iso(offer.get("endDate", ""))
-    if not start or not end:
+def _is_active(start: str, end: str) -> bool:
+    start_dt = _parse_iso(start)
+    end_dt = _parse_iso(end)
+    if not start_dt or not end_dt:
         return False
     now = dt.datetime.now(dt.timezone.utc)
-    return start <= now <= end
+    return start_dt <= now <= end_dt
 
 
 async def fetch_epic_offers(
@@ -30,15 +30,8 @@ async def fetch_epic_offers(
     timeout_s: int = 20
 ) -> List[Dict[str, Any]]:
     '''
-    Production-ready Epic Games free-to-keep fetcher (2026 stable version)
-
-    Returns list of:
-    {
-        "title": str,
-        "url": str,
-        "kind": "free_to_keep",
-        "note": str
-    }
+    Production-ready Epic active-only weekly free games fetcher.
+    Returns ONLY currently active free-to-keep games.
     '''
 
     params = {
@@ -66,14 +59,16 @@ async def fetch_epic_offers(
 
     for el in elements:
         promotions = el.get("promotions") or {}
-
         promo_groups = promotions.get("promotionalOffers") or []
 
         active = False
 
         for group in promo_groups:
             for offer in group.get("promotionalOffers", []):
-                if _is_active_offer(offer):
+                if _is_active(
+                    offer.get("startDate", ""),
+                    offer.get("endDate", "")
+                ):
                     active = True
                     break
             if active:
@@ -103,3 +98,4 @@ async def fetch_epic_offers(
         })
 
     return results
+
