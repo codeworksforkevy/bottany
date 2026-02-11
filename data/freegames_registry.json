@@ -15,15 +15,14 @@
         "https://www.humblebundle.com/store/search?sort=bestselling&filter=onsale"
       ]
     },
-    "luna": {
-      "urls": [
-        "https://luna.amazon.com/",
-        "https://luna.amazon.com/channels"
-      ],
-      "cache_file": "data/luna_cache.json",
-      "cache_max_age_s": 604800,
-      "max_items": 60,
-      "fallback_items": []
+"luna": {
+  "urls": [],
+  "fallback_items": [
+    {
+      "title": "Example Luna Game",
+      "url": "https://luna.amazon.com/game/example"
     }
-  }
+  ],
+  "cache_max_age_s": 604800,
+  "max_items": 60
 }
