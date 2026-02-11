@@ -21,8 +21,8 @@ import aiohttp
 import discord
 from bs4 import BeautifulSoup
 
-# ---- Import stabilized Epic v2 ----
-from freegames_epic_v2 import fetch_epic_offers
+# ---- Import stabilized Epic  ----
+from freegames_epic import fetch_epic_offers
 
 
 BABY_BLUE = 0xA7D8FF
