@@ -21,6 +21,44 @@ import aiohttp
 import discord
 from bs4 import BeautifulSoup
 
+import discord
+
+BABY_BLUE = 0xA7D8FF
+BABY_PINK = 0xFFB6C1
+BURNT_ORANGE = 0xCC5500
+
+def build_kind_embeds(offers, *, title_prefix="Free games & deals"):
+    by_kind = {"free_to_keep": [], "deal": [], "subscription": []}
+    for o in offers:
+        by_kind.setdefault(o.kind, []).append(o)
+
+    embeds = []
+
+    def _mk(kind, title, color):
+        items = sorted(by_kind.get(kind, []), key=lambda x: (x.platform + x.title).lower())
+        if not items:
+            return None
+        emb = discord.Embed(title=f"{title_prefix} — {title}", color=color)
+        lines = []
+        for o in items[:25]:
+            note = f" — {o.note}" if o.note else ""
+            lines.append(f"• [{o.title}]({o.url}){note}")
+        emb.description = "\n".join(lines)
+        if len(items) > 25:
+            emb.set_footer(text=f"+{len(items)-25} more not shown")
+        return emb
+
+    e1 = _mk("free_to_keep", "Free-to-keep", BABY_BLUE)
+    e2 = _mk("deal", "Discount deals", BABY_PINK)
+    e3 = _mk("subscription", "Subscription picks", BURNT_ORANGE)
+
+    for e in (e1, e2, e3):
+        if e:
+            embeds.append(e)
+
+    return embeds
+
+
 # ---- Import stabilized Epic  ----
 from freegames_epic import fetch_epic_offers
 
