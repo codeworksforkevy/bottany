@@ -29,7 +29,7 @@ from discord import app_commands
 from discord.ext import commands, tasks
 
 # ---- Enterprise Free Games Scheduler ----
-from freegames_enterprise_scheduler_v2 import (
+from freegames_enterprise_scheduler import (
     FreeGamesEnterprise,
     register_freegames_admin
 )
