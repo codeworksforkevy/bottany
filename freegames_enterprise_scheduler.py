@@ -11,7 +11,7 @@ import discord
 from discord.ext import tasks
 from discord import app_commands
 
-from freegames_logic_v2 import gather_offers, build_kind_embeds
+from freegames_logic import gather_offers, build_kind_embeds
 
 STATE_DIR = "data/freegames_state"
 CONFIG_FILE = "data/freegames_channels.json"
