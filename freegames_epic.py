@@ -15,13 +15,24 @@ def _parse_iso(date_str: str):
         return None
 
 
-def _is_active(start: str, end: str) -> bool:
+def _is_active(start: str, end: str):
     start_dt = _parse_iso(start)
     end_dt = _parse_iso(end)
     if not start_dt or not end_dt:
-        return False
+        return False, None
+
     now = dt.datetime.now(dt.timezone.utc)
-    return start_dt <= now <= end_dt
+    return start_dt <= now <= end_dt, end_dt
+
+
+def _get_thumbnail(el: Dict[str, Any]) -> str | None:
+    images = el.get("keyImages") or []
+    for img in images:
+        if img.get("type") in ("OfferImageWide", "DieselStoreFrontWide"):
+            return img.get("url")
+    if images:
+        return images[0].get("url")
+    return None
 
 
 async def fetch_epic_offers(
@@ -29,10 +40,6 @@ async def fetch_epic_offers(
     endpoint: str,
     timeout_s: int = 20
 ) -> List[Dict[str, Any]]:
-    '''
-    Production-ready Epic active-only weekly free games fetcher.
-    Returns ONLY currently active free-to-keep games.
-    '''
 
     params = {
         "locale": "en-US",
@@ -61,41 +68,34 @@ async def fetch_epic_offers(
         promotions = el.get("promotions") or {}
         promo_groups = promotions.get("promotionalOffers") or []
 
-        active = False
-
         for group in promo_groups:
             for offer in group.get("promotionalOffers", []):
-                if _is_active(
+
+                active, end_dt = _is_active(
                     offer.get("startDate", ""),
                     offer.get("endDate", "")
-                ):
-                    active = True
-                    break
-            if active:
-                break
+                )
 
-        if not active:
-            continue
+                if not active:
+                    continue
 
-        title = el.get("title") or el.get("productSlug") or "Epic offer"
+                price = el.get("price", {})
+                total = price.get("totalPrice", {})
+                if total.get("discountPrice") != 0:
+                    continue
 
-        slug = (
-            el.get("productSlug")
-            or el.get("urlSlug")
-            or ""
-        )
+                title = el.get("title") or el.get("productSlug") or "Epic offer"
+                slug = el.get("productSlug") or el.get("urlSlug") or ""
+                page = f"https://store.epicgames.com/en-US/p/{slug}" if slug else "https://store.epicgames.com/"
 
-        if slug:
-            page = f"https://store.epicgames.com/en-US/p/{slug}"
-        else:
-            page = "https://store.epicgames.com/"
-
-        results.append({
-            "title": title.strip(),
-            "url": page,
-            "kind": "free_to_keep",
-            "note": ""
-        })
+                results.append({
+                    "title": title.strip(),
+                    "url": page,
+                    "kind": "free_to_keep",
+                    "platform": "epic",
+                    "thumbnail": _get_thumbnail(el),
+                    "expires_at": end_dt
+                })
 
     return results
 
