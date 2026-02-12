@@ -1,0 +1,15 @@
+prometheus:
+  server:
+    persistentVolume:
+      enabled: true
+    service:
+      type: ClusterIP
+
+grafana:
+  adminPassword: strongpassword
+  service:
+    type: ClusterIP
+  ingress:
+    enabled: true
+    hosts:
+      - grafana.yourdomain.com
