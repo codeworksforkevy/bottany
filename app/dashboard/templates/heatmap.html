@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+const ws = new WebSocket("ws://" + location.host + "/ws");
+ws.onmessage = (e)=>{
+    const data = JSON.parse(e.data);
+    const container = document.getElementById("heatmap");
+    container.innerHTML = "";
+
+    for (const [platform,count] of Object.entries(data.counts)){
+        const div = document.createElement("div");
+        div.innerHTML = platform + ": " + count;
+        if(data.anomaly_detected){
+            div.style.color = "red";
+        }
+        container.appendChild(div);
+    }
+};
+</script>
+</head>
+<body>
+<h2>Enterprise Live Heatmap + AI Monitor</h2>
+<div id="heatmap"></div>
+</body>
+</html>
