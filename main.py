@@ -650,12 +650,21 @@ async def on_ready():
 
 
     # --- Slash command sync ---
-    
 @bot.event
 async def on_ready():
     logger.info("Bot ready as %s", bot.user)
 
-    # --- Forced guild sync (instant, stable) ---
+    # ---- REGISTER COMMANDS FIRST ----
+    from commands.weather import register_weather
+    from commands.time import register_time_command
+    from pathlib import Path
+
+    DATA_DIR = Path("data")
+
+    register_weather(bot, str(DATA_DIR))
+    register_time_command(bot, bot.tree, DATA_DIR)
+
+    # ---- FORCED GUILD SYNC ----
     try:
         guild = discord.Object(id=1446560723122520207)
         bot.tree.copy_global_to(guild=guild)
@@ -666,6 +675,7 @@ async def on_ready():
 
     if not trivia_scheduler.is_running():
         trivia_scheduler.start()
+
 
 @bot.event
 async def on_message(message: discord.Message):
