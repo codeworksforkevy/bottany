@@ -1,0 +1,159 @@
+{
+  "meta": {
+    "dataset_version": "2.0",
+    "curation_level": "professional_structured",
+    "updated_utc": "2026-02-13T18:16:54.496423Z",
+    "source_policy": "official_and_institutional_focus"
+  },
+  "categories": [
+    "trappist",
+    "abbey",
+    "lambic",
+    "gueuze",
+    "kriek",
+    "tripel",
+    "quadrupel",
+    "saison",
+    "witbier",
+    "pilsner",
+    "regional_craft",
+    "pdo_protected_product"
+  ],
+  "items": [
+    {
+      "id": "bev_1",
+      "name": "Westvleteren 12",
+      "producer": "Sint-Sixtusabdij Westvleteren",
+      "category": "trappist",
+      "region": "West Flanders",
+      "official_url": "",
+      "notes": "Recognized Trappist product"
+    },
+    {
+      "id": "bev_2",
+      "name": "Chimay Blue",
+      "producer": "Bi\u00e8res de Chimay",
+      "category": "trappist",
+      "region": "Hainaut",
+      "official_url": "",
+      "notes": "Recognized Trappist product"
+    },
+    {
+      "id": "bev_3",
+      "name": "Orval",
+      "producer": "Abbaye d'Orval",
+      "category": "trappist",
+      "region": "Luxembourg",
+      "official_url": "",
+      "notes": "Recognized Trappist product"
+    },
+    {
+      "id": "bev_4",
+      "name": "Rochefort 10",
+      "producer": "Abbaye Notre-Dame de Saint-R\u00e9my",
+      "category": "trappist",
+      "region": "Namur",
+      "official_url": "",
+      "notes": "Recognized Trappist product"
+    },
+    {
+      "id": "bev_5",
+      "name": "Westmalle Tripel",
+      "producer": "Brouwerij der Trappisten van Westmalle",
+      "category": "trappist",
+      "region": "Antwerp",
+      "official_url": "",
+      "notes": "Recognized Trappist product"
+    },
+    {
+      "id": "bev_6",
+      "name": "Cantillon Gueuze",
+      "producer": "Brasserie Cantillon",
+      "category": "lambic",
+      "region": "Brussels",
+      "official_url": "",
+      "notes": "Traditional spontaneous fermentation lambic"
+    },
+    {
+      "id": "bev_7",
+      "name": "Boon Oude Geuze",
+      "producer": "Brouwerij Boon",
+      "category": "lambic",
+      "region": "Flemish Brabant",
+      "official_url": "",
+      "notes": "Traditional spontaneous fermentation lambic"
+    },
+    {
+      "id": "bev_8",
+      "name": "Tilquin Oude Gueuze",
+      "producer": "Gueuzerie Tilquin",
+      "category": "lambic",
+      "region": "Walloon Brabant",
+      "official_url": "",
+      "notes": "Traditional spontaneous fermentation lambic"
+    },
+    {
+      "id": "bev_9",
+      "name": "Oud Beersel Oude Geuze",
+      "producer": "Brouwerij Oud Beersel",
+      "category": "lambic",
+      "region": "Flemish Brabant",
+      "official_url": "",
+      "notes": "Traditional spontaneous fermentation lambic"
+    },
+    {
+      "id": "bev_10",
+      "name": "De Dolle Oerbier",
+      "producer": "Brouwerij De Dolle Brouwers",
+      "category": "regional_craft",
+      "region": "West Flanders",
+      "official_url": "",
+      "notes": "Regional craft brewery"
+    },
+    {
+      "id": "bev_11",
+      "name": "Straffe Hendrik Quadrupel",
+      "producer": "Brouwerij De Halve Maan",
+      "category": "regional_craft",
+      "region": "West Flanders",
+      "official_url": "",
+      "notes": "Regional craft brewery"
+    },
+    {
+      "id": "bev_12",
+      "name": "Saison Dupont",
+      "producer": "Brasserie Dupont",
+      "category": "regional_craft",
+      "region": "Hainaut",
+      "official_url": "",
+      "notes": "Regional craft brewery"
+    },
+    {
+      "id": "bev_13",
+      "name": "Gouden Carolus Classic",
+      "producer": "Brouwerij Het Anker",
+      "category": "regional_craft",
+      "region": "Antwerp",
+      "official_url": "",
+      "notes": "Regional craft brewery"
+    },
+    {
+      "id": "bev_14",
+      "name": "Oude Geuze",
+      "producer": "Traditional Speciality Guaranteed (TSG)",
+      "category": "pdo_protected_product",
+      "region": "Belgium",
+      "official_url": "",
+      "notes": "Protected designation / traditional speciality"
+    },
+    {
+      "id": "bev_15",
+      "name": "Oude Kriek",
+      "producer": "Traditional Speciality Guaranteed (TSG)",
+      "category": "pdo_protected_product",
+      "region": "Belgium",
+      "official_url": "",
+      "notes": "Protected designation / traditional speciality"
+    }
+  ]
+}
