@@ -252,7 +252,4 @@ async def register_belgium_beverages(bot: discord.Client, data_dir: str) -> None
     else:
         bot.tree.add_command(group)
 
-    try:
-        await bot.tree.sync()
-    except Exception:
-        pass
+
