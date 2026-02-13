@@ -1,0 +1,4812 @@
+{
+  "updated_utc": "2026-02-13T17:55:37.388737Z",
+  "categories": [
+    "chocolate",
+    "praline",
+    "dessert",
+    "waffle",
+    "speculoos"
+  ],
+  "items": [
+    {
+      "id": "sweet_1",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_2",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_3",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_4",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_5",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_6",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_7",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_8",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_9",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_10",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_11",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_12",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_13",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_14",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_15",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_16",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_17",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_18",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_19",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_20",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_21",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_22",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_23",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_24",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_25",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_26",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_27",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_28",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_29",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_30",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_31",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_32",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_33",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_34",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_35",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_36",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_37",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_38",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_39",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_40",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_41",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_42",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_43",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_44",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_45",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_46",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_47",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_48",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_49",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_50",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_51",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_52",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_53",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_54",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_55",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_56",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_57",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_58",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_59",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_60",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_61",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_62",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_63",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_64",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_65",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_66",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_67",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_68",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_69",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_70",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_71",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_72",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_73",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_74",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_75",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_76",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_77",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_78",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_79",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_80",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_81",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_82",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_83",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_84",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_85",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_86",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_87",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_88",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_89",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_90",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_91",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_92",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_93",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_94",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_95",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_96",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_97",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_98",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_99",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_100",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_101",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_102",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_103",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_104",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_105",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_106",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_107",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_108",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_109",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_110",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_111",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_112",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_113",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_114",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_115",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_116",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_117",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_118",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_119",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_120",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_121",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_122",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_123",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_124",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_125",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_126",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_127",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_128",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_129",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_130",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_131",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_132",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_133",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_134",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_135",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_136",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_137",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_138",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_139",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_140",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_141",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_142",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_143",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_144",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_145",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_146",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_147",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_148",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_149",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_150",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_151",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_152",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_153",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_154",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_155",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_156",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_157",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_158",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_159",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_160",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_161",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_162",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_163",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_164",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_165",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_166",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_167",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_168",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_169",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_170",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_171",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_172",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_173",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_174",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_175",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_176",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_177",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_178",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_179",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_180",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_181",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_182",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_183",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_184",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_185",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_186",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_187",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_188",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_189",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_190",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_191",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_192",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_193",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_194",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_195",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_196",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_197",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_198",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_199",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_200",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_201",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_202",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_203",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_204",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_205",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_206",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_207",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_208",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_209",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_210",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_211",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_212",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_213",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_214",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_215",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_216",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_217",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_218",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_219",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_220",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_221",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_222",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_223",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_224",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_225",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_226",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_227",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_228",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_229",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_230",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_231",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_232",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_233",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_234",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_235",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_236",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_237",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_238",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_239",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_240",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_241",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_242",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_243",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_244",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_245",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_246",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_247",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_248",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_249",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_250",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_251",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_252",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_253",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_254",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_255",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_256",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_257",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_258",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_259",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_260",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_261",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_262",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_263",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_264",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_265",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_266",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_267",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_268",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_269",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_270",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_271",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_272",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_273",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_274",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_275",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_276",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_277",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_278",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_279",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_280",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_281",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_282",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_283",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_284",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_285",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_286",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_287",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_288",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_289",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_290",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_291",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_292",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_293",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_294",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_295",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_296",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_297",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_298",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_299",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_300",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_301",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_302",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_303",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_304",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_305",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_306",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_307",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_308",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_309",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_310",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_311",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_312",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_313",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_314",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_315",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_316",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_317",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_318",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_319",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_320",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_321",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_322",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_323",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_324",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_325",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_326",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_327",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_328",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_329",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_330",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_331",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_332",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_333",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_334",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_335",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_336",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_337",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_338",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_339",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_340",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_341",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_342",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_343",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_344",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_345",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_346",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_347",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_348",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_349",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_350",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_351",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_352",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_353",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_354",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_355",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_356",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_357",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_358",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_359",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_360",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_361",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_362",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_363",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_364",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_365",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_366",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_367",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_368",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_369",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_370",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_371",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_372",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_373",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_374",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_375",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_376",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_377",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_378",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_379",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_380",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_381",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_382",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_383",
+      "name": "Mattentaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Mattentaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_384",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_385",
+      "name": "Merveilleux",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Merveilleux is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_386",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_387",
+      "name": "Belgian Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Belgian Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_388",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_389",
+      "name": "Brussels Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Brussels Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_390",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_391",
+      "name": "Cuberdon",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Cuberdon is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_392",
+      "name": "Leonidas",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Leonidas is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_393",
+      "name": "Rijsttaart",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Rijsttaart is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_394",
+      "name": "C\u00f4te d'Or",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "C\u00f4te d'Or is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_395",
+      "name": "Tarte au Riz",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Tarte au Riz is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_396",
+      "name": "Galler",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Galler is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_397",
+      "name": "Li\u00e8ge Waffle",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Li\u00e8ge Waffle is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_398",
+      "name": "Dolfin",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Dolfin is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    },
+    {
+      "id": "sweet_399",
+      "name": "Speculoos",
+      "category": "dessert",
+      "region": "Belgium",
+      "summary": "Speculoos is a traditional Belgian dessert.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "dessert"
+      ]
+    },
+    {
+      "id": "sweet_400",
+      "name": "Neuhaus",
+      "category": "chocolate",
+      "region": "Belgium",
+      "summary": "Neuhaus is a traditional Belgian chocolate.",
+      "url": "https://www.visitflanders.com",
+      "tags": [
+        "belgian",
+        "chocolate"
+      ]
+    }
+  ]
+}

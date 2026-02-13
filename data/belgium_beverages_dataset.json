@@ -1,0 +1,4817 @@
+{
+  "updated_utc": "2026-02-13T17:55:37.388737Z",
+  "categories": [
+    "beer",
+    "trappist",
+    "abbey",
+    "lambic",
+    "kriek",
+    "tripel",
+    "quadrupel",
+    "saison",
+    "witbier",
+    "pilsner"
+  ],
+  "items": [
+    {
+      "id": "beer_1",
+      "name": "Chimay Blue",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Chimay Blue is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_2",
+      "name": "Orval",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Orval is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_3",
+      "name": "Rochefort 10",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Rochefort 10 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_4",
+      "name": "Westmalle Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westmalle Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_5",
+      "name": "Duvel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Duvel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_6",
+      "name": "La Chouffe",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "La Chouffe is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_7",
+      "name": "Delirium Tremens",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Delirium Tremens is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_8",
+      "name": "Kwak",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kwak is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_9",
+      "name": "Leffe Blonde",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Leffe Blonde is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_10",
+      "name": "Hoegaarden Witbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Hoegaarden Witbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_11",
+      "name": "Lindemans Kriek",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Lindemans Kriek is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_12",
+      "name": "Cantillon Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Cantillon Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_13",
+      "name": "Boon Oude Geuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Boon Oude Geuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_14",
+      "name": "Tilquin Oude Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tilquin Oude Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_15",
+      "name": "St. Bernardus Abt 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "St. Bernardus Abt 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_16",
+      "name": "Achel 8",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Achel 8 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_17",
+      "name": "Val-Dieu Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Val-Dieu Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_18",
+      "name": "De Dolle Oerbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "De Dolle Oerbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_19",
+      "name": "Straffe Hendrik Quadrupel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Straffe Hendrik Quadrupel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_20",
+      "name": "Palm Speciale",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Palm Speciale is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_21",
+      "name": "Jupiler",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Jupiler is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_22",
+      "name": "Maes Pils",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Maes Pils is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_23",
+      "name": "Grimbergen Dubbel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Grimbergen Dubbel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_24",
+      "name": "Affligem Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Affligem Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_25",
+      "name": "Corsendonk Abbey",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Corsendonk Abbey is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_26",
+      "name": "Gouden Carolus Classic",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Gouden Carolus Classic is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_27",
+      "name": "Tripel Karmeliet",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tripel Karmeliet is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_28",
+      "name": "Saison Dupont",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Saison Dupont is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_29",
+      "name": "Kriek Mort Subite",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kriek Mort Subite is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_30",
+      "name": "Westvleteren 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westvleteren 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_31",
+      "name": "Chimay Blue",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Chimay Blue is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_32",
+      "name": "Orval",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Orval is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_33",
+      "name": "Rochefort 10",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Rochefort 10 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_34",
+      "name": "Westmalle Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westmalle Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_35",
+      "name": "Duvel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Duvel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_36",
+      "name": "La Chouffe",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "La Chouffe is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_37",
+      "name": "Delirium Tremens",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Delirium Tremens is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_38",
+      "name": "Kwak",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kwak is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_39",
+      "name": "Leffe Blonde",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Leffe Blonde is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_40",
+      "name": "Hoegaarden Witbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Hoegaarden Witbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_41",
+      "name": "Lindemans Kriek",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Lindemans Kriek is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_42",
+      "name": "Cantillon Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Cantillon Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_43",
+      "name": "Boon Oude Geuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Boon Oude Geuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_44",
+      "name": "Tilquin Oude Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tilquin Oude Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_45",
+      "name": "St. Bernardus Abt 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "St. Bernardus Abt 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_46",
+      "name": "Achel 8",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Achel 8 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_47",
+      "name": "Val-Dieu Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Val-Dieu Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_48",
+      "name": "De Dolle Oerbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "De Dolle Oerbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_49",
+      "name": "Straffe Hendrik Quadrupel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Straffe Hendrik Quadrupel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_50",
+      "name": "Palm Speciale",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Palm Speciale is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_51",
+      "name": "Jupiler",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Jupiler is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_52",
+      "name": "Maes Pils",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Maes Pils is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_53",
+      "name": "Grimbergen Dubbel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Grimbergen Dubbel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_54",
+      "name": "Affligem Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Affligem Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_55",
+      "name": "Corsendonk Abbey",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Corsendonk Abbey is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_56",
+      "name": "Gouden Carolus Classic",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Gouden Carolus Classic is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_57",
+      "name": "Tripel Karmeliet",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tripel Karmeliet is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_58",
+      "name": "Saison Dupont",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Saison Dupont is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_59",
+      "name": "Kriek Mort Subite",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kriek Mort Subite is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_60",
+      "name": "Westvleteren 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westvleteren 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_61",
+      "name": "Chimay Blue",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Chimay Blue is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_62",
+      "name": "Orval",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Orval is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_63",
+      "name": "Rochefort 10",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Rochefort 10 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_64",
+      "name": "Westmalle Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westmalle Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_65",
+      "name": "Duvel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Duvel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_66",
+      "name": "La Chouffe",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "La Chouffe is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_67",
+      "name": "Delirium Tremens",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Delirium Tremens is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_68",
+      "name": "Kwak",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kwak is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_69",
+      "name": "Leffe Blonde",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Leffe Blonde is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_70",
+      "name": "Hoegaarden Witbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Hoegaarden Witbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_71",
+      "name": "Lindemans Kriek",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Lindemans Kriek is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_72",
+      "name": "Cantillon Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Cantillon Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_73",
+      "name": "Boon Oude Geuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Boon Oude Geuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_74",
+      "name": "Tilquin Oude Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tilquin Oude Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_75",
+      "name": "St. Bernardus Abt 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "St. Bernardus Abt 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_76",
+      "name": "Achel 8",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Achel 8 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_77",
+      "name": "Val-Dieu Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Val-Dieu Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_78",
+      "name": "De Dolle Oerbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "De Dolle Oerbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_79",
+      "name": "Straffe Hendrik Quadrupel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Straffe Hendrik Quadrupel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_80",
+      "name": "Palm Speciale",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Palm Speciale is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_81",
+      "name": "Jupiler",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Jupiler is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_82",
+      "name": "Maes Pils",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Maes Pils is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_83",
+      "name": "Grimbergen Dubbel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Grimbergen Dubbel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_84",
+      "name": "Affligem Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Affligem Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_85",
+      "name": "Corsendonk Abbey",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Corsendonk Abbey is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_86",
+      "name": "Gouden Carolus Classic",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Gouden Carolus Classic is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_87",
+      "name": "Tripel Karmeliet",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tripel Karmeliet is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_88",
+      "name": "Saison Dupont",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Saison Dupont is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_89",
+      "name": "Kriek Mort Subite",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kriek Mort Subite is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_90",
+      "name": "Westvleteren 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westvleteren 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_91",
+      "name": "Chimay Blue",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Chimay Blue is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_92",
+      "name": "Orval",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Orval is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_93",
+      "name": "Rochefort 10",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Rochefort 10 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_94",
+      "name": "Westmalle Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westmalle Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_95",
+      "name": "Duvel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Duvel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_96",
+      "name": "La Chouffe",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "La Chouffe is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_97",
+      "name": "Delirium Tremens",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Delirium Tremens is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_98",
+      "name": "Kwak",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kwak is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_99",
+      "name": "Leffe Blonde",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Leffe Blonde is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_100",
+      "name": "Hoegaarden Witbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Hoegaarden Witbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_101",
+      "name": "Lindemans Kriek",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Lindemans Kriek is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_102",
+      "name": "Cantillon Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Cantillon Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_103",
+      "name": "Boon Oude Geuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Boon Oude Geuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_104",
+      "name": "Tilquin Oude Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tilquin Oude Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_105",
+      "name": "St. Bernardus Abt 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "St. Bernardus Abt 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_106",
+      "name": "Achel 8",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Achel 8 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_107",
+      "name": "Val-Dieu Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Val-Dieu Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_108",
+      "name": "De Dolle Oerbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "De Dolle Oerbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_109",
+      "name": "Straffe Hendrik Quadrupel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Straffe Hendrik Quadrupel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_110",
+      "name": "Palm Speciale",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Palm Speciale is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_111",
+      "name": "Jupiler",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Jupiler is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_112",
+      "name": "Maes Pils",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Maes Pils is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_113",
+      "name": "Grimbergen Dubbel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Grimbergen Dubbel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_114",
+      "name": "Affligem Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Affligem Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_115",
+      "name": "Corsendonk Abbey",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Corsendonk Abbey is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_116",
+      "name": "Gouden Carolus Classic",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Gouden Carolus Classic is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_117",
+      "name": "Tripel Karmeliet",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tripel Karmeliet is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_118",
+      "name": "Saison Dupont",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Saison Dupont is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_119",
+      "name": "Kriek Mort Subite",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kriek Mort Subite is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_120",
+      "name": "Westvleteren 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westvleteren 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_121",
+      "name": "Chimay Blue",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Chimay Blue is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_122",
+      "name": "Orval",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Orval is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_123",
+      "name": "Rochefort 10",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Rochefort 10 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_124",
+      "name": "Westmalle Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westmalle Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_125",
+      "name": "Duvel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Duvel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_126",
+      "name": "La Chouffe",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "La Chouffe is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_127",
+      "name": "Delirium Tremens",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Delirium Tremens is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_128",
+      "name": "Kwak",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kwak is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_129",
+      "name": "Leffe Blonde",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Leffe Blonde is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_130",
+      "name": "Hoegaarden Witbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Hoegaarden Witbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_131",
+      "name": "Lindemans Kriek",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Lindemans Kriek is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_132",
+      "name": "Cantillon Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Cantillon Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_133",
+      "name": "Boon Oude Geuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Boon Oude Geuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_134",
+      "name": "Tilquin Oude Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tilquin Oude Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_135",
+      "name": "St. Bernardus Abt 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "St. Bernardus Abt 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_136",
+      "name": "Achel 8",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Achel 8 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_137",
+      "name": "Val-Dieu Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Val-Dieu Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_138",
+      "name": "De Dolle Oerbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "De Dolle Oerbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_139",
+      "name": "Straffe Hendrik Quadrupel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Straffe Hendrik Quadrupel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_140",
+      "name": "Palm Speciale",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Palm Speciale is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_141",
+      "name": "Jupiler",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Jupiler is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_142",
+      "name": "Maes Pils",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Maes Pils is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_143",
+      "name": "Grimbergen Dubbel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Grimbergen Dubbel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_144",
+      "name": "Affligem Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Affligem Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_145",
+      "name": "Corsendonk Abbey",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Corsendonk Abbey is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_146",
+      "name": "Gouden Carolus Classic",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Gouden Carolus Classic is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_147",
+      "name": "Tripel Karmeliet",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tripel Karmeliet is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_148",
+      "name": "Saison Dupont",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Saison Dupont is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_149",
+      "name": "Kriek Mort Subite",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kriek Mort Subite is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_150",
+      "name": "Westvleteren 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westvleteren 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_151",
+      "name": "Chimay Blue",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Chimay Blue is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_152",
+      "name": "Orval",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Orval is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_153",
+      "name": "Rochefort 10",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Rochefort 10 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_154",
+      "name": "Westmalle Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westmalle Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_155",
+      "name": "Duvel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Duvel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_156",
+      "name": "La Chouffe",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "La Chouffe is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_157",
+      "name": "Delirium Tremens",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Delirium Tremens is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_158",
+      "name": "Kwak",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kwak is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_159",
+      "name": "Leffe Blonde",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Leffe Blonde is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_160",
+      "name": "Hoegaarden Witbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Hoegaarden Witbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_161",
+      "name": "Lindemans Kriek",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Lindemans Kriek is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_162",
+      "name": "Cantillon Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Cantillon Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_163",
+      "name": "Boon Oude Geuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Boon Oude Geuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_164",
+      "name": "Tilquin Oude Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tilquin Oude Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_165",
+      "name": "St. Bernardus Abt 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "St. Bernardus Abt 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_166",
+      "name": "Achel 8",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Achel 8 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_167",
+      "name": "Val-Dieu Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Val-Dieu Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_168",
+      "name": "De Dolle Oerbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "De Dolle Oerbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_169",
+      "name": "Straffe Hendrik Quadrupel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Straffe Hendrik Quadrupel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_170",
+      "name": "Palm Speciale",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Palm Speciale is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_171",
+      "name": "Jupiler",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Jupiler is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_172",
+      "name": "Maes Pils",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Maes Pils is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_173",
+      "name": "Grimbergen Dubbel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Grimbergen Dubbel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_174",
+      "name": "Affligem Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Affligem Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_175",
+      "name": "Corsendonk Abbey",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Corsendonk Abbey is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_176",
+      "name": "Gouden Carolus Classic",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Gouden Carolus Classic is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_177",
+      "name": "Tripel Karmeliet",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tripel Karmeliet is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_178",
+      "name": "Saison Dupont",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Saison Dupont is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_179",
+      "name": "Kriek Mort Subite",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kriek Mort Subite is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_180",
+      "name": "Westvleteren 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westvleteren 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_181",
+      "name": "Chimay Blue",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Chimay Blue is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_182",
+      "name": "Orval",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Orval is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_183",
+      "name": "Rochefort 10",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Rochefort 10 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_184",
+      "name": "Westmalle Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westmalle Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_185",
+      "name": "Duvel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Duvel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_186",
+      "name": "La Chouffe",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "La Chouffe is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_187",
+      "name": "Delirium Tremens",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Delirium Tremens is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_188",
+      "name": "Kwak",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kwak is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_189",
+      "name": "Leffe Blonde",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Leffe Blonde is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_190",
+      "name": "Hoegaarden Witbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Hoegaarden Witbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_191",
+      "name": "Lindemans Kriek",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Lindemans Kriek is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_192",
+      "name": "Cantillon Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Cantillon Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_193",
+      "name": "Boon Oude Geuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Boon Oude Geuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_194",
+      "name": "Tilquin Oude Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tilquin Oude Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_195",
+      "name": "St. Bernardus Abt 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "St. Bernardus Abt 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_196",
+      "name": "Achel 8",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Achel 8 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_197",
+      "name": "Val-Dieu Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Val-Dieu Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_198",
+      "name": "De Dolle Oerbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "De Dolle Oerbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_199",
+      "name": "Straffe Hendrik Quadrupel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Straffe Hendrik Quadrupel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_200",
+      "name": "Palm Speciale",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Palm Speciale is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_201",
+      "name": "Jupiler",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Jupiler is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_202",
+      "name": "Maes Pils",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Maes Pils is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_203",
+      "name": "Grimbergen Dubbel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Grimbergen Dubbel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_204",
+      "name": "Affligem Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Affligem Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_205",
+      "name": "Corsendonk Abbey",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Corsendonk Abbey is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_206",
+      "name": "Gouden Carolus Classic",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Gouden Carolus Classic is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_207",
+      "name": "Tripel Karmeliet",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tripel Karmeliet is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_208",
+      "name": "Saison Dupont",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Saison Dupont is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_209",
+      "name": "Kriek Mort Subite",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kriek Mort Subite is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_210",
+      "name": "Westvleteren 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westvleteren 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_211",
+      "name": "Chimay Blue",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Chimay Blue is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_212",
+      "name": "Orval",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Orval is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_213",
+      "name": "Rochefort 10",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Rochefort 10 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_214",
+      "name": "Westmalle Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westmalle Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_215",
+      "name": "Duvel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Duvel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_216",
+      "name": "La Chouffe",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "La Chouffe is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_217",
+      "name": "Delirium Tremens",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Delirium Tremens is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_218",
+      "name": "Kwak",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kwak is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_219",
+      "name": "Leffe Blonde",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Leffe Blonde is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_220",
+      "name": "Hoegaarden Witbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Hoegaarden Witbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_221",
+      "name": "Lindemans Kriek",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Lindemans Kriek is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_222",
+      "name": "Cantillon Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Cantillon Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_223",
+      "name": "Boon Oude Geuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Boon Oude Geuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_224",
+      "name": "Tilquin Oude Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tilquin Oude Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_225",
+      "name": "St. Bernardus Abt 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "St. Bernardus Abt 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_226",
+      "name": "Achel 8",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Achel 8 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_227",
+      "name": "Val-Dieu Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Val-Dieu Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_228",
+      "name": "De Dolle Oerbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "De Dolle Oerbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_229",
+      "name": "Straffe Hendrik Quadrupel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Straffe Hendrik Quadrupel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_230",
+      "name": "Palm Speciale",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Palm Speciale is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_231",
+      "name": "Jupiler",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Jupiler is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_232",
+      "name": "Maes Pils",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Maes Pils is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_233",
+      "name": "Grimbergen Dubbel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Grimbergen Dubbel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_234",
+      "name": "Affligem Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Affligem Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_235",
+      "name": "Corsendonk Abbey",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Corsendonk Abbey is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_236",
+      "name": "Gouden Carolus Classic",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Gouden Carolus Classic is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_237",
+      "name": "Tripel Karmeliet",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tripel Karmeliet is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_238",
+      "name": "Saison Dupont",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Saison Dupont is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_239",
+      "name": "Kriek Mort Subite",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kriek Mort Subite is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_240",
+      "name": "Westvleteren 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westvleteren 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_241",
+      "name": "Chimay Blue",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Chimay Blue is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_242",
+      "name": "Orval",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Orval is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_243",
+      "name": "Rochefort 10",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Rochefort 10 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_244",
+      "name": "Westmalle Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westmalle Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_245",
+      "name": "Duvel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Duvel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_246",
+      "name": "La Chouffe",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "La Chouffe is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_247",
+      "name": "Delirium Tremens",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Delirium Tremens is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_248",
+      "name": "Kwak",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kwak is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_249",
+      "name": "Leffe Blonde",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Leffe Blonde is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_250",
+      "name": "Hoegaarden Witbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Hoegaarden Witbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_251",
+      "name": "Lindemans Kriek",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Lindemans Kriek is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_252",
+      "name": "Cantillon Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Cantillon Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_253",
+      "name": "Boon Oude Geuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Boon Oude Geuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_254",
+      "name": "Tilquin Oude Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tilquin Oude Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_255",
+      "name": "St. Bernardus Abt 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "St. Bernardus Abt 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_256",
+      "name": "Achel 8",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Achel 8 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_257",
+      "name": "Val-Dieu Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Val-Dieu Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_258",
+      "name": "De Dolle Oerbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "De Dolle Oerbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_259",
+      "name": "Straffe Hendrik Quadrupel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Straffe Hendrik Quadrupel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_260",
+      "name": "Palm Speciale",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Palm Speciale is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_261",
+      "name": "Jupiler",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Jupiler is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_262",
+      "name": "Maes Pils",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Maes Pils is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_263",
+      "name": "Grimbergen Dubbel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Grimbergen Dubbel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_264",
+      "name": "Affligem Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Affligem Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_265",
+      "name": "Corsendonk Abbey",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Corsendonk Abbey is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_266",
+      "name": "Gouden Carolus Classic",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Gouden Carolus Classic is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_267",
+      "name": "Tripel Karmeliet",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tripel Karmeliet is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_268",
+      "name": "Saison Dupont",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Saison Dupont is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_269",
+      "name": "Kriek Mort Subite",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kriek Mort Subite is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_270",
+      "name": "Westvleteren 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westvleteren 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_271",
+      "name": "Chimay Blue",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Chimay Blue is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_272",
+      "name": "Orval",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Orval is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_273",
+      "name": "Rochefort 10",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Rochefort 10 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_274",
+      "name": "Westmalle Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westmalle Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_275",
+      "name": "Duvel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Duvel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_276",
+      "name": "La Chouffe",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "La Chouffe is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_277",
+      "name": "Delirium Tremens",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Delirium Tremens is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_278",
+      "name": "Kwak",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kwak is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_279",
+      "name": "Leffe Blonde",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Leffe Blonde is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_280",
+      "name": "Hoegaarden Witbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Hoegaarden Witbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_281",
+      "name": "Lindemans Kriek",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Lindemans Kriek is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_282",
+      "name": "Cantillon Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Cantillon Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_283",
+      "name": "Boon Oude Geuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Boon Oude Geuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_284",
+      "name": "Tilquin Oude Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tilquin Oude Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_285",
+      "name": "St. Bernardus Abt 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "St. Bernardus Abt 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_286",
+      "name": "Achel 8",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Achel 8 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_287",
+      "name": "Val-Dieu Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Val-Dieu Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_288",
+      "name": "De Dolle Oerbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "De Dolle Oerbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_289",
+      "name": "Straffe Hendrik Quadrupel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Straffe Hendrik Quadrupel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_290",
+      "name": "Palm Speciale",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Palm Speciale is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_291",
+      "name": "Jupiler",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Jupiler is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_292",
+      "name": "Maes Pils",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Maes Pils is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_293",
+      "name": "Grimbergen Dubbel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Grimbergen Dubbel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_294",
+      "name": "Affligem Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Affligem Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_295",
+      "name": "Corsendonk Abbey",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Corsendonk Abbey is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_296",
+      "name": "Gouden Carolus Classic",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Gouden Carolus Classic is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_297",
+      "name": "Tripel Karmeliet",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tripel Karmeliet is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_298",
+      "name": "Saison Dupont",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Saison Dupont is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_299",
+      "name": "Kriek Mort Subite",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kriek Mort Subite is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_300",
+      "name": "Westvleteren 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westvleteren 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_301",
+      "name": "Chimay Blue",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Chimay Blue is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_302",
+      "name": "Orval",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Orval is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_303",
+      "name": "Rochefort 10",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Rochefort 10 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_304",
+      "name": "Westmalle Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westmalle Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_305",
+      "name": "Duvel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Duvel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_306",
+      "name": "La Chouffe",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "La Chouffe is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_307",
+      "name": "Delirium Tremens",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Delirium Tremens is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_308",
+      "name": "Kwak",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kwak is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_309",
+      "name": "Leffe Blonde",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Leffe Blonde is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_310",
+      "name": "Hoegaarden Witbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Hoegaarden Witbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_311",
+      "name": "Lindemans Kriek",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Lindemans Kriek is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_312",
+      "name": "Cantillon Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Cantillon Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_313",
+      "name": "Boon Oude Geuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Boon Oude Geuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_314",
+      "name": "Tilquin Oude Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tilquin Oude Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_315",
+      "name": "St. Bernardus Abt 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "St. Bernardus Abt 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_316",
+      "name": "Achel 8",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Achel 8 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_317",
+      "name": "Val-Dieu Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Val-Dieu Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_318",
+      "name": "De Dolle Oerbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "De Dolle Oerbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_319",
+      "name": "Straffe Hendrik Quadrupel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Straffe Hendrik Quadrupel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_320",
+      "name": "Palm Speciale",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Palm Speciale is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_321",
+      "name": "Jupiler",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Jupiler is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_322",
+      "name": "Maes Pils",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Maes Pils is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_323",
+      "name": "Grimbergen Dubbel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Grimbergen Dubbel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_324",
+      "name": "Affligem Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Affligem Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_325",
+      "name": "Corsendonk Abbey",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Corsendonk Abbey is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_326",
+      "name": "Gouden Carolus Classic",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Gouden Carolus Classic is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_327",
+      "name": "Tripel Karmeliet",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tripel Karmeliet is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_328",
+      "name": "Saison Dupont",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Saison Dupont is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_329",
+      "name": "Kriek Mort Subite",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kriek Mort Subite is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_330",
+      "name": "Westvleteren 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westvleteren 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_331",
+      "name": "Chimay Blue",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Chimay Blue is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_332",
+      "name": "Orval",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Orval is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_333",
+      "name": "Rochefort 10",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Rochefort 10 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_334",
+      "name": "Westmalle Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westmalle Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_335",
+      "name": "Duvel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Duvel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_336",
+      "name": "La Chouffe",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "La Chouffe is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_337",
+      "name": "Delirium Tremens",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Delirium Tremens is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_338",
+      "name": "Kwak",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kwak is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_339",
+      "name": "Leffe Blonde",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Leffe Blonde is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_340",
+      "name": "Hoegaarden Witbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Hoegaarden Witbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_341",
+      "name": "Lindemans Kriek",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Lindemans Kriek is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_342",
+      "name": "Cantillon Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Cantillon Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_343",
+      "name": "Boon Oude Geuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Boon Oude Geuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_344",
+      "name": "Tilquin Oude Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tilquin Oude Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_345",
+      "name": "St. Bernardus Abt 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "St. Bernardus Abt 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_346",
+      "name": "Achel 8",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Achel 8 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_347",
+      "name": "Val-Dieu Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Val-Dieu Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_348",
+      "name": "De Dolle Oerbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "De Dolle Oerbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_349",
+      "name": "Straffe Hendrik Quadrupel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Straffe Hendrik Quadrupel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_350",
+      "name": "Palm Speciale",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Palm Speciale is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_351",
+      "name": "Jupiler",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Jupiler is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_352",
+      "name": "Maes Pils",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Maes Pils is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_353",
+      "name": "Grimbergen Dubbel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Grimbergen Dubbel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_354",
+      "name": "Affligem Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Affligem Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_355",
+      "name": "Corsendonk Abbey",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Corsendonk Abbey is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_356",
+      "name": "Gouden Carolus Classic",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Gouden Carolus Classic is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_357",
+      "name": "Tripel Karmeliet",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tripel Karmeliet is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_358",
+      "name": "Saison Dupont",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Saison Dupont is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_359",
+      "name": "Kriek Mort Subite",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kriek Mort Subite is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_360",
+      "name": "Westvleteren 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westvleteren 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_361",
+      "name": "Chimay Blue",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Chimay Blue is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_362",
+      "name": "Orval",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Orval is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_363",
+      "name": "Rochefort 10",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Rochefort 10 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_364",
+      "name": "Westmalle Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westmalle Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_365",
+      "name": "Duvel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Duvel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_366",
+      "name": "La Chouffe",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "La Chouffe is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_367",
+      "name": "Delirium Tremens",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Delirium Tremens is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_368",
+      "name": "Kwak",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kwak is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_369",
+      "name": "Leffe Blonde",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Leffe Blonde is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_370",
+      "name": "Hoegaarden Witbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Hoegaarden Witbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_371",
+      "name": "Lindemans Kriek",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Lindemans Kriek is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_372",
+      "name": "Cantillon Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Cantillon Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_373",
+      "name": "Boon Oude Geuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Boon Oude Geuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_374",
+      "name": "Tilquin Oude Gueuze",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tilquin Oude Gueuze is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_375",
+      "name": "St. Bernardus Abt 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "St. Bernardus Abt 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_376",
+      "name": "Achel 8",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Achel 8 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_377",
+      "name": "Val-Dieu Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Val-Dieu Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_378",
+      "name": "De Dolle Oerbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "De Dolle Oerbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_379",
+      "name": "Straffe Hendrik Quadrupel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Straffe Hendrik Quadrupel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_380",
+      "name": "Palm Speciale",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Palm Speciale is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_381",
+      "name": "Jupiler",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Jupiler is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_382",
+      "name": "Maes Pils",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Maes Pils is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_383",
+      "name": "Grimbergen Dubbel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Grimbergen Dubbel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_384",
+      "name": "Affligem Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Affligem Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_385",
+      "name": "Corsendonk Abbey",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Corsendonk Abbey is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_386",
+      "name": "Gouden Carolus Classic",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Gouden Carolus Classic is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_387",
+      "name": "Tripel Karmeliet",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Tripel Karmeliet is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_388",
+      "name": "Saison Dupont",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Saison Dupont is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_389",
+      "name": "Kriek Mort Subite",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kriek Mort Subite is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_390",
+      "name": "Westvleteren 12",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westvleteren 12 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_391",
+      "name": "Chimay Blue",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Chimay Blue is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_392",
+      "name": "Orval",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Orval is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_393",
+      "name": "Rochefort 10",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Rochefort 10 is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_394",
+      "name": "Westmalle Tripel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Westmalle Tripel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_395",
+      "name": "Duvel",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Duvel is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_396",
+      "name": "La Chouffe",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "La Chouffe is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_397",
+      "name": "Delirium Tremens",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Delirium Tremens is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_398",
+      "name": "Kwak",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Kwak is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_399",
+      "name": "Leffe Blonde",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Leffe Blonde is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    },
+    {
+      "id": "beer_400",
+      "name": "Hoegaarden Witbier",
+      "category": "beer",
+      "region": "Belgium",
+      "summary": "Hoegaarden Witbier is a Belgian-style brew produced in Belgium.",
+      "url": "https://www.belgianbeerworld.com",
+      "tags": [
+        "belgian",
+        "brewery"
+      ]
+    }
+  ]
+}
