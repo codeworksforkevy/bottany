@@ -650,17 +650,23 @@ async def on_ready():
 
 
     # --- Slash command sync ---
-    # --- Forced guild sync (instant, no propagation delay) ---
-try:
-    guild = discord.Object(id=1446560723122520207)
-    bot.tree.copy_global_to(guild=guild)
-    synced = await bot.tree.sync(guild=guild)
-    logger.info("Synced %s command(s) instantly to guild.", len(synced))
-except Exception as e:
-    logger.warning("Command sync failed: %s", e)
+    
+@bot.event
+async def on_ready():
+    logger.info("Bot ready as %s", bot.user)
+
+    # --- Forced guild sync (instant, stable) ---
+    try:
+        guild = discord.Object(id=1446560723122520207)
+        bot.tree.copy_global_to(guild=guild)
+        synced = await bot.tree.sync(guild=guild)
+        logger.info("Synced %s command(s) instantly to guild.", len(synced))
+    except Exception as e:
+        logger.warning("Command sync failed: %s", e)
 
     if not trivia_scheduler.is_running():
         trivia_scheduler.start()
+
 @bot.event
 async def on_message(message: discord.Message):
     if message.author.bot:
