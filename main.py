@@ -650,24 +650,14 @@ async def on_ready():
 
 
     # --- Slash command sync ---
-    # DISCORD_GUILD_ID enables faster 'instant' syncing to a single test server.
-    # If DISCORD_GUILD_ID is set, we sync to that guild; otherwise we sync globally.
-    try:
-        guild_id_env = (os.getenv("DISCORD_GUILD_ID", "") or "").strip() or (os.getenv("DEV_GUILD_ID", "") or "").strip()
-        if guild_id_env:
-            gid = int(guild_id_env)
-            guild = discord.Object(id=gid)
-            try:
-                bot.tree.copy_global_to(guild=guild)
-            except Exception:
-                pass
-            synced = await bot.tree.sync(guild=guild)
-            logger.info("Synced %s command(s) to DISCORD_GUILD_ID=%s. Logged in as %s", len(synced), gid, bot.user)
-        else:
-            synced = await bot.tree.sync()
-            logger.info("Synced %s command(s) globally. Logged in as %s", len(synced), bot.user)
-    except Exception as e:
-        logger.warning("Command sync failed: %s", e)
+    # --- Forced guild sync (instant, no propagation delay) ---
+try:
+    guild = discord.Object(id=1446560723122520207)
+    bot.tree.copy_global_to(guild=guild)
+    synced = await bot.tree.sync(guild=guild)
+    logger.info("Synced %s command(s) instantly to guild.", len(synced))
+except Exception as e:
+    logger.warning("Command sync failed: %s", e)
 
     if not trivia_scheduler.is_running():
         trivia_scheduler.start()
