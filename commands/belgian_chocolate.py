@@ -1,12 +1,12 @@
-
 import json
 import os
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 import discord
 from discord import app_commands
 
 REGISTRY_FILENAME = "belgian_chocolate_registry.json"
+
 
 def _load_json(path: str, default: Any) -> Any:
     try:
@@ -15,8 +15,10 @@ def _load_json(path: str, default: Any) -> Any:
     except Exception:
         return default
 
+
 def _registry_path(data_dir: str) -> str:
     return os.path.join(data_dir, REGISTRY_FILENAME)
+
 
 def _chunk(lines: List[str], max_len: int = 900) -> str:
     out: List[str] = []
@@ -28,37 +30,26 @@ def _chunk(lines: List[str], max_len: int = 900) -> str:
         n += len(line) + 1
     return "\n".join(out)
 
-def _format_brand(b: Dict[str, Any]) -> str:
-    name = b.get("name", "(unknown)")
-    url = b.get("url", "")
-    note = b.get("note", "")
-    parts = [f"**{name}**"]
-    if note:
-        parts.append(note)
-    if url:
-        parts.append(url)
-    return " — ".join(parts)
 
-def _select_brands(reg: Dict[str, Any], category: str, limit: int = 12) -> List[Dict[str, Any]]:
-    items = (reg.get("brands", {}) or {}).get(category, []) or []
-    out: List[Dict[str, Any]] = []
-    for b in items:
-        if isinstance(b, dict):
-            out.append(b)
-    return out[: max(1, min(limit, 25))]
+async def register_belgium_chocolate(bot: discord.Client, data_dir: str) -> None:
+    """
+    Attach chocolate commands to existing /belgium group.
+    DOES NOT create a new group.
+    """
 
-class BelgiumGroup(app_commands.Group):
-    def __init__(self, data_dir: str):
-        super().__init__(name="belgium", description="Belgium: curated culture & food facts.")
-        self._data_dir = data_dir
-        self._reg = _load_json(_registry_path(data_dir), {})
+    group = bot.tree.get_command("belgium")
+    if not group:
+        return  # beverages henüz register edilmemiş
+
+    reg = _load_json(_registry_path(data_dir), {})
 
     @app_commands.command(name="chocolate", description="Explain Belgian chocolate-making.")
-    async def chocolate(self, interaction: discord.Interaction):
+    async def chocolate(interaction: discord.Interaction):
         embed = discord.Embed(
             title="Belgian chocolate-making (overview)",
             description="High-level overview of Belgian chocolate craftsmanship."
         )
+
         steps = [
             "Ingredients & couverture",
             "Refining & conching",
@@ -68,17 +59,27 @@ class BelgiumGroup(app_commands.Group):
             "Finishing",
             "Storage",
         ]
+
         embed.add_field(name="Process", value=_chunk(steps), inline=False)
         await interaction.response.send_message(embed=embed)
 
     @app_commands.command(name="chocolate_brands", description="Belgian chocolate brands.")
-    async def chocolate_brands(self, interaction: discord.Interaction):
-        embed = discord.Embed(title="Belgian chocolate brands")
+    async def chocolate_brands(interaction: discord.Interaction):
+        brands = reg.get("brands", [])
+        lines = [f"• {b.get('name')}" for b in brands[:20] if isinstance(b, dict)]
+
+        embed = discord.Embed(
+            title="Belgian chocolate brands",
+            description="\n".join(lines)[:4096] if lines else "No data available."
+        )
+
         await interaction.response.send_message(embed=embed)
 
-async def register_belgium_chocolate(bot: discord.Client, data_dir: str) -> None:
-    grp = BelgiumGroup(data_dir)
-    try:
-        bot.tree.add_command(grp)
-    except Exception:
-        pass
+    # Prevent duplicate registration
+    if not group.get_command("chocolate"):
+        group.add_command(chocolate)
+
+    if not group.get_command("chocolate_brands"):
+        group.add_command(chocolate_brands)
+
+
