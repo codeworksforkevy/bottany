@@ -5,6 +5,7 @@ import discord
 from discord import app_commands
 
 STATE_FILE = "follower_milestones.json"
+ALLOWED_ROLE_NAME = "Moderator"
 
 
 def next_target(current: int) -> int:
@@ -33,25 +34,27 @@ def save_state(data_dir: str, state: dict):
 
 async def register(bot, data_dir):
 
+    def has_allowed_role(user: discord.Member):
+        return any(role.name == ALLOWED_ROLE_NAME for role in user.roles)
+
+
     @bot.tree.command(name="followers", description="Post a Twitch follower milestone.")
     @app_commands.describe(milestone="Follower count reached")
     async def followers(interaction: discord.Interaction, milestone: int):
 
-        # Admin only check
-        if not interaction.user.guild_permissions.administrator:
+        if not has_allowed_role(interaction.user):
             await interaction.response.send_message(
-                "Admins only.",
+                "Only users with the Moderator role can use this command.",
                 ephemeral=True
             )
             return
 
         state = load_state(data_dir)
 
-        # Update state
         state["last_milestone"] = milestone
         history = state.get("history", [])
         history.append(milestone)
-        state["history"] = history[-20:]  # keep last 20 milestones
+        state["history"] = history[-20:]
         save_state(data_dir, state)
 
         next_goal = next_target(milestone)
@@ -74,9 +77,9 @@ async def register(bot, data_dir):
     @bot.tree.command(name="followers_history", description="Show follower milestone history.")
     async def followers_history(interaction: discord.Interaction):
 
-        if not interaction.user.guild_permissions.administrator:
+        if not has_allowed_role(interaction.user):
             await interaction.response.send_message(
-                "Admins only.",
+                "Only users with the Moderator role can use this command.",
                 ephemeral=True
             )
             return
@@ -85,7 +88,10 @@ async def register(bot, data_dir):
         history = state.get("history", [])
 
         if not history:
-            await interaction.response.send_message("No milestones recorded yet.", ephemeral=True)
+            await interaction.response.send_message(
+                "No milestones recorded yet.",
+                ephemeral=True
+            )
             return
 
         embed = discord.Embed(
@@ -98,3 +104,4 @@ async def register(bot, data_dir):
         )
 
         await interaction.response.send_message(embed=embed, ephemeral=True)
+
