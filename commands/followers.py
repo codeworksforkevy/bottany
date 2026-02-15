@@ -5,7 +5,7 @@ import discord
 from discord import app_commands
 
 STATE_FILE = "follower_milestones.json"
-ALLOWED_ROLE_NAME = "Moderator"
+ALLOWED_ROLE_NAME = "Mod"
 
 
 def next_target(current: int) -> int:
