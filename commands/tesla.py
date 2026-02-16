@@ -6,7 +6,7 @@ from services.tesla_catalog_service import get_tesla_catalog
 from services.tesla_mit_resolver import resolve_mit_patent_image
 from services.tesla_wikimedia_resolver import resolve_wikimedia_patent_image
 
-def register_tesla(bot, DATA_DIR):
+def register(bot, DATA_DIR):
 
     group = app_commands.Group(
         name="tesla",
