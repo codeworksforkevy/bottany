@@ -62,12 +62,25 @@ class BottanyBot(commands.Bot):
             try:
                 module = importlib.import_module(f"commands.{module_name}")
 
-                if hasattr(module, "register"):
-                    register_func = getattr(module, "register")
-                    await self.safe_register(register_func)
-                    logger.info("Loaded module: commands.%s", module_name)
-                else:
-                    logger.warning("No register() in commands.%s", module_name)
+found_register = False
+
+for attr in dir(module):
+    if attr.startswith("register"):
+        register_func = getattr(module, attr)
+        await self.safe_register(register_func)
+        logger.info(
+            "Registered via %s in commands.%s",
+            attr,
+            module_name
+        )
+        found_register = True
+
+if not found_register:
+    logger.warning(
+        "No register* function found in commands.%s",
+        module_name
+    )
+
 
             except Exception as e:
                 logger.warning("Auto-load failed for commands.%s: %s", module_name, e)
