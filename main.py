@@ -49,7 +49,7 @@ class BottanyBot(commands.Bot):
             logger.warning("Register failed for %s: %s", func.__name__, e)
 
     # -----------------------------
-    # AUTO-LOADER
+    # AUTO-LOADER (FLEXIBLE)
     # -----------------------------
     async def auto_load_command_modules(self):
         try:
@@ -62,31 +62,34 @@ class BottanyBot(commands.Bot):
             try:
                 module = importlib.import_module(f"commands.{module_name}")
 
-found_register = False
+                found_register = False
 
-for attr in dir(module):
-    if attr.startswith("register"):
-        register_func = getattr(module, attr)
-        await self.safe_register(register_func)
-        logger.info(
-            "Registered via %s in commands.%s",
-            attr,
-            module_name
-        )
-        found_register = True
+                for attr in dir(module):
+                    if attr.startswith("register"):
+                        register_func = getattr(module, attr)
+                        await self.safe_register(register_func)
+                        logger.info(
+                            "Registered via %s in commands.%s",
+                            attr,
+                            module_name
+                        )
+                        found_register = True
 
-if not found_register:
-    logger.warning(
-        "No register* function found in commands.%s",
-        module_name
-    )
-
+                if not found_register:
+                    logger.warning(
+                        "No register* function found in commands.%s",
+                        module_name
+                    )
 
             except Exception as e:
-                logger.warning("Auto-load failed for commands.%s: %s", module_name, e)
+                logger.warning(
+                    "Auto-load failed for commands.%s: %s",
+                    module_name,
+                    e
+                )
 
     # -----------------------------
-    # SETUP HOOK (CRITICAL)
+    # SETUP HOOK
     # -----------------------------
     async def setup_hook(self):
         # 1️⃣ Load all modules FIRST
@@ -105,7 +108,6 @@ if not found_register:
 
 bot = BottanyBot()
 
-
 # -----------------------------
 # CORE HEALTH CHECK COMMAND
 # -----------------------------
@@ -113,9 +115,6 @@ bot = BottanyBot()
 async def ping(interaction: discord.Interaction):
     await interaction.response.send_message("Pong.")
 
-
-if __name__ == "__main__":
-    bot.run(os.getenv("DISCORD_TOKEN"))
 
 if __name__ == "__main__":
     bot.run(os.getenv("DISCORD_TOKEN"))
