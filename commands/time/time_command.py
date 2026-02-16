@@ -6,7 +6,6 @@ from .time_api import TimeAPI
 
 logger = logging.getLogger("bottany.time")
 
-# Country → canonical timezone map
 COUNTRY_FALLBACK = {
     "turkey": "Europe/Istanbul",
     "italy": "Europe/Rome",
@@ -30,26 +29,19 @@ async def register(bot, data_dir):
     api = TimeAPI(data_dir)
     api.load_cache()
 
-    # -------------------------------------------------
-    # INITIAL FETCH
-    # -------------------------------------------------
     if not api.timezones:
         try:
             await api.fetch_timezones()
-            logger.info("Initial timezone list fetched.")
         except Exception as e:
             logger.warning("Initial timezone fetch failed: %s", e)
 
-    if not api.timezones:
-        logger.warning("Timezone list is empty after initialization.")
-
-    # -------------------------------------------------
-    # AUTO REFRESH TASK (24h)
-    # -------------------------------------------------
+    # -----------------------------
+    # AUTO REFRESH (24h)
+    # -----------------------------
     async def refresh_task():
         await bot.wait_until_ready()
         while not bot.is_closed():
-            await asyncio.sleep(86400)  # 24 hours
+            await asyncio.sleep(86400)
             try:
                 await api.fetch_timezones()
                 logger.info("Timezone list auto-refreshed.")
@@ -58,13 +50,10 @@ async def register(bot, data_dir):
 
     bot.loop.create_task(refresh_task())
 
-    # -------------------------------------------------
+    # -----------------------------
     # AUTOCOMPLETE
-    # -------------------------------------------------
-    async def timezone_autocomplete(
-        interaction: discord.Interaction,
-        current: str,
-    ):
+    # -----------------------------
+    async def timezone_autocomplete(interaction, current: str):
         if not api.timezones:
             return []
 
@@ -78,9 +67,9 @@ async def register(bot, data_dir):
             for tz in filtered
         ]
 
-    # -------------------------------------------------
-    # SMART RESOLVE
-    # -------------------------------------------------
+    # -----------------------------
+    # RESOLVE
+    # -----------------------------
     def resolve_timezone(user_input: str):
 
         if not api.timezones:
@@ -88,59 +77,52 @@ async def register(bot, data_dir):
 
         key = user_input.lower().strip()
 
-        # 1️⃣ Direct full match
         for tz in api.timezones:
             if tz.lower() == key:
                 return tz
 
-        # 2️⃣ Exact city match (after slash)
         for tz in api.timezones:
-            city_part = tz.split("/")[-1].lower()
-            if city_part == key:
+            city = tz.split("/")[-1].lower()
+            if city == key:
                 return tz
 
-        # 3️⃣ Partial match
         for tz in api.timezones:
             if key in tz.lower():
                 return tz
 
-        # 4️⃣ Country fallback
         if key in COUNTRY_FALLBACK:
             return COUNTRY_FALLBACK[key]
 
         return None
 
-    # -------------------------------------------------
+    # -----------------------------
     # COMMAND
-    # -------------------------------------------------
+    # -----------------------------
     @bot.tree.command(
         name="time",
-        description="Get current time by timezone or country"
+        description="Get current time by timezone, city, or country"
     )
     @app_commands.describe(
-        timezone="Enter timezone (Europe/Istanbul) or city (Stockholm) or country (Sweden)"
+        timezone="Example: Europe/Stockholm or stockholm or Sweden"
     )
     @app_commands.autocomplete(timezone=timezone_autocomplete)
-    async def time_command(
-        interaction: discord.Interaction,
-        timezone: str
-    ):
+    async def time_command(interaction: discord.Interaction, timezone: str):
+
+        await interaction.response.defer()  # 🔥 critical
 
         resolved = resolve_timezone(timezone)
 
         if not resolved:
-            await interaction.response.send_message(
-                f"Unknown location: {timezone}",
-                ephemeral=True
+            await interaction.followup.send(
+                f"Unknown location: {timezone}"
             )
             return
 
         data = await api.get_time(resolved)
 
         if not data:
-            await interaction.response.send_message(
-                "Unable to retrieve time.",
-                ephemeral=True
+            await interaction.followup.send(
+                "Unable to retrieve time."
             )
             return
 
@@ -167,5 +149,4 @@ async def register(bot, data_dir):
             inline=True
         )
 
-        await interaction.response.send_message(embed=embed)
-
+        await interaction.followup.send(embed=embed)
