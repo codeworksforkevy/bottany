@@ -1,12 +1,11 @@
-
 import aiohttp
 import json
 from pathlib import Path
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-TIMEZONE_LIST_URL = "https://timeapi.io/api/TimeZone/AvailableTimeZones"
-TIMEZONE_TIME_URL = "https://timeapi.io/api/Time/current/zone?timeZone="
+TIMEZONE_LIST_URL = "http://worldtimeapi.org/api/timezone"
+TIMEZONE_TIME_URL = "http://worldtimeapi.org/api/timezone/"
 
 
 class TimeAPI:
@@ -15,8 +14,11 @@ class TimeAPI:
         self.cache_path = Path(data_dir) / "timezone_cache.json"
         self.timezones = []
 
+    # -------------------------------------------------
+    # FETCH TIMEZONE LIST
+    # -------------------------------------------------
     async def fetch_timezones(self):
-        timeout = aiohttp.ClientTimeout(total=10)
+        timeout = aiohttp.ClientTimeout(total=3)
         async with aiohttp.ClientSession(timeout=timeout) as session:
             async with session.get(TIMEZONE_LIST_URL) as resp:
                 if resp.status == 200:
@@ -35,26 +37,46 @@ class TimeAPI:
             with open(self.cache_path, "r", encoding="utf-8") as f:
                 self.timezones = json.load(f)
 
+    # -------------------------------------------------
+    # GET TIME (FAIL FAST + FALLBACK)
+    # -------------------------------------------------
     async def get_time(self, timezone: str):
-        timeout = aiohttp.ClientTimeout(total=10)
-        async with aiohttp.ClientSession(timeout=timeout) as session:
-            try:
+
+        timeout = aiohttp.ClientTimeout(total=2.5)
+
+        try:
+            async with aiohttp.ClientSession(timeout=timeout) as session:
                 async with session.get(
                     TIMEZONE_TIME_URL + timezone
                 ) as resp:
                     if resp.status == 200:
-                        return await resp.json()
-            except Exception:
-                pass
+                        data = await resp.json()
 
-        # Fallback to local zoneinfo
+                        dt = data.get("datetime")
+                        offset = data.get("utc_offset")
+                        day_index = data.get("day_of_week")
+
+                        # Parse datetime string
+                        parsed = datetime.fromisoformat(dt)
+
+                        return {
+                            "hour": parsed.hour,
+                            "minute": parsed.minute,
+                            "seconds": parsed.second,
+                            "timeZone": timezone,
+                            "dayOfWeek": parsed.strftime("%A"),
+                            "dstActive": False if offset == "+00:00" else True
+                        }
+
+        except Exception:
+            pass
+
+        # 🔥 LOCAL FALLBACK
         try:
             tz = ZoneInfo(timezone)
             now = datetime.now(tz)
+
             return {
-                "year": now.year,
-                "month": now.month,
-                "day": now.day,
                 "hour": now.hour,
                 "minute": now.minute,
                 "seconds": now.second,
