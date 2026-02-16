@@ -16,6 +16,9 @@ intents.message_content = True
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
+# 🔥 YOUR GUILD ID
+GUILD_ID = 1446560723122520207
+
 
 class BottanyBot(commands.Bot):
     def __init__(self):
@@ -25,7 +28,7 @@ class BottanyBot(commands.Bot):
         )
 
     # -------------------------------------------------
-    # SAFE REGISTER (SIGNATURE-AWARE)
+    # SAFE REGISTER
     # -------------------------------------------------
     async def safe_register(self, func):
         if not callable(func):
@@ -37,7 +40,6 @@ class BottanyBot(commands.Bot):
 
             result = None
 
-            # Supported signatures only
             if param_names == ["bot", "data_dir"]:
                 result = func(self, DATA_DIR)
 
@@ -79,8 +81,6 @@ class BottanyBot(commands.Bot):
             try:
                 module = importlib.import_module(f"commands.{module_name}")
 
-                found_register = False
-
                 for attr in dir(module):
                     if not attr.startswith("register"):
                         continue
@@ -98,14 +98,6 @@ class BottanyBot(commands.Bot):
                         module_name
                     )
 
-                    found_register = True
-
-                if not found_register:
-                    logger.info(
-                        "No register* function found in commands.%s",
-                        module_name
-                    )
-
             except Exception as e:
                 logger.warning(
                     "Auto-load failed for commands.%s: %s",
@@ -114,22 +106,25 @@ class BottanyBot(commands.Bot):
                 )
 
     # -------------------------------------------------
-    # SETUP HOOK
+    # SETUP HOOK (GUILD SYNC)
     # -------------------------------------------------
     async def setup_hook(self):
         await self.auto_load_command_modules()
 
+        guild = discord.Object(id=GUILD_ID)
+
         try:
-            synced = await self.tree.sync()
-            logger.info("Synced %s commands.", len(synced))
+            synced = await self.tree.sync(guild=guild)
+            logger.info("Synced %s guild commands.", len(synced))
         except Exception as e:
-            logger.error("Sync failed: %s", e)
+            logger.error("Guild sync failed: %s", e)
 
     async def on_ready(self):
         logger.info("Bot ready as %s", self.user)
 
 
 bot = BottanyBot()
+
 
 # -------------------------------------------------
 # CORE HEALTH CHECK
