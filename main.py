@@ -24,33 +24,50 @@ class BottanyBot(commands.Bot):
             intents=intents
         )
 
-    # -----------------------------
-    # SAFE REGISTER CALLER
-    # -----------------------------
+    # -------------------------------------------------
+    # SAFE REGISTER (SIGNATURE-AWARE)
+    # -------------------------------------------------
     async def safe_register(self, func):
-        if not func:
+        if not callable(func):
             return
 
         try:
             sig = inspect.signature(func)
-            params = sig.parameters
+            param_names = list(sig.parameters.keys())
 
-            if len(params) == 2:
+            result = None
+
+            # Supported signatures only
+            if param_names == ["bot", "data_dir"]:
                 result = func(self, DATA_DIR)
-            elif len(params) == 1:
+
+            elif param_names == ["bot"]:
                 result = func(self)
-            else:
+
+            elif len(param_names) == 0:
                 result = func()
+
+            else:
+                logger.info(
+                    "Skipped register %s (unsupported signature: %s)",
+                    func.__name__,
+                    param_names
+                )
+                return
 
             if asyncio.iscoroutine(result):
                 await result
 
         except Exception as e:
-            logger.warning("Register failed for %s: %s", func.__name__, e)
+            logger.warning(
+                "Register failed for %s: %s",
+                func.__name__,
+                e
+            )
 
-    # -----------------------------
-    # AUTO-LOADER (FLEXIBLE)
-    # -----------------------------
+    # -------------------------------------------------
+    # AUTO MODULE LOADER
+    # -------------------------------------------------
     async def auto_load_command_modules(self):
         try:
             import commands
@@ -65,18 +82,26 @@ class BottanyBot(commands.Bot):
                 found_register = False
 
                 for attr in dir(module):
-                    if attr.startswith("register"):
-                        register_func = getattr(module, attr)
-                        await self.safe_register(register_func)
-                        logger.info(
-                            "Registered via %s in commands.%s",
-                            attr,
-                            module_name
-                        )
-                        found_register = True
+                    if not attr.startswith("register"):
+                        continue
+
+                    register_func = getattr(module, attr)
+
+                    if not callable(register_func):
+                        continue
+
+                    await self.safe_register(register_func)
+
+                    logger.info(
+                        "Processed %s in commands.%s",
+                        attr,
+                        module_name
+                    )
+
+                    found_register = True
 
                 if not found_register:
-                    logger.warning(
+                    logger.info(
                         "No register* function found in commands.%s",
                         module_name
                     )
@@ -88,14 +113,12 @@ class BottanyBot(commands.Bot):
                     e
                 )
 
-    # -----------------------------
+    # -------------------------------------------------
     # SETUP HOOK
-    # -----------------------------
+    # -------------------------------------------------
     async def setup_hook(self):
-        # 1️⃣ Load all modules FIRST
         await self.auto_load_command_modules()
 
-        # 2️⃣ THEN sync commands
         try:
             synced = await self.tree.sync()
             logger.info("Synced %s commands.", len(synced))
@@ -108,13 +131,18 @@ class BottanyBot(commands.Bot):
 
 bot = BottanyBot()
 
-# -----------------------------
-# CORE HEALTH CHECK COMMAND
-# -----------------------------
+# -------------------------------------------------
+# CORE HEALTH CHECK
+# -------------------------------------------------
 @bot.tree.command(name="ping", description="Health check")
 async def ping(interaction: discord.Interaction):
     await interaction.response.send_message("Pong.")
 
 
 if __name__ == "__main__":
-    bot.run(os.getenv("DISCORD_TOKEN"))
+    token = os.getenv("DISCORD_TOKEN")
+
+    if not token:
+        raise RuntimeError("DISCORD_TOKEN is not set.")
+
+    bot.run(token)
