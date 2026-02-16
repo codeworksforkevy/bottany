@@ -1,4 +1,3 @@
-
 import discord
 from discord import app_commands
 from .time_api import TimeAPI
@@ -9,7 +8,6 @@ async def register(bot, data_dir):
     api = TimeAPI(data_dir)
     api.load_cache()
 
-    # Refresh timezone list if empty
     if not api.timezones:
         try:
             await api.fetch_timezones()
@@ -79,3 +77,4 @@ async def register(bot, data_dir):
         )
 
         await interaction.response.send_message(embed=embed)
+
