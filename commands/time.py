@@ -1,4 +1,3 @@
-
 from datetime import datetime
 from zoneinfo import ZoneInfo
 import json
@@ -6,8 +5,11 @@ from pathlib import Path
 import discord
 from discord import app_commands
 
-def register_time_command(client: discord.Client, tree: app_commands.CommandTree, data_dir: Path):
-    tz_path = data_dir / "city_timezones.json"
+
+async def register(bot, data_dir):
+
+    tz_path = Path(data_dir) / "city_timezones.json"
+
     if tz_path.exists():
         with open(tz_path, "r", encoding="utf-8") as f:
             CITY_TZ = json.load(f)
@@ -22,14 +24,19 @@ def register_time_command(client: discord.Client, tree: app_commands.CommandTree
             "belgium": "Europe/Brussels",
         }
 
-    @tree.command(name="time", description="Show local time, UTC and offset for a city or country")
+    @bot.tree.command(
+        name="time",
+        description="Show local time, UTC and offset for a city or country"
+    )
     @app_commands.describe(city="City or country name")
-    async def time(interaction: discord.Interaction, city: str):
+    async def time_command(interaction: discord.Interaction, city: str):
+
         key = city.strip().lower()
+
         if key not in CITY_TZ:
             await interaction.response.send_message(
                 f"Unknown location: {city}",
-                ephemeral=False  # PUBLIC error as well
+                ephemeral=False
             )
             return
 
@@ -44,7 +51,5 @@ def register_time_command(client: discord.Client, tree: app_commands.CommandTree
             f"Local time: **{now.strftime('%H:%M')}**\n"
             f"UTC offset: **UTC{sign}{abs(hours)}**"
         )
-        await interaction.response.send_message(
-            msg,
-            ephemeral=False  # 👈 PUBLIC RESPONSE
-        )
+
+        await interaction.response.send_message(msg, ephemeral=False)
