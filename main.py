@@ -16,7 +16,7 @@ intents.message_content = True
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
-# 🔥 YOUR DEV GUILD ID
+# 🔥 DEV GUILD ID
 GUILD_ID = 1446560723122520207
 
 
@@ -106,16 +106,12 @@ class BottanyBot(commands.Bot):
                 )
 
     # -------------------------------------------------
-    # SETUP HOOK (STRICT GUILD MODE)
+    # SETUP HOOK (GUILD SYNC ONLY)
     # -------------------------------------------------
     async def setup_hook(self):
         await self.auto_load_command_modules()
 
         guild = discord.Object(id=GUILD_ID)
-
-        # 🔥 CRITICAL FIX:
-        # Remove all global commands from memory
-        self.tree.clear_commands(guild=None)
 
         try:
             synced = await self.tree.sync(guild=guild)
@@ -130,7 +126,7 @@ class BottanyBot(commands.Bot):
 bot = BottanyBot()
 
 # -------------------------------------------------
-# CORE HEALTH CHECK (GUILD ONLY)
+# CORE HEALTH CHECK
 # -------------------------------------------------
 @bot.tree.command(
     name="ping",
@@ -147,3 +143,4 @@ if __name__ == "__main__":
         raise RuntimeError("DISCORD_TOKEN is not set.")
 
     bot.run(token)
+
