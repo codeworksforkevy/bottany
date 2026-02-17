@@ -1,6 +1,6 @@
+import os
 import discord
 from discord import app_commands
-import asyncio
 import logging
 import re
 from difflib import get_close_matches
@@ -11,7 +11,7 @@ import aiohttp
 logger = logging.getLogger("bottany.time")
 
 # =====================================================
-# 🌍 CORE GLOBAL CITIES (115+)
+# 🌍 CORE GLOBAL CITIES
 # =====================================================
 
 CORE_CITIES = {
@@ -21,136 +21,63 @@ CORE_CITIES = {
 "oslo": "Europe/Oslo",
 "bergen": "Europe/Oslo",
 "copenhagen": "Europe/Copenhagen",
-"aarhus": "Europe/Copenhagen",
 "helsinki": "Europe/Helsinki",
-"tallinn": "Europe/Tallinn",
-"riga": "Europe/Riga",
-"vilnius": "Europe/Vilnius",
-"warsaw": "Europe/Warsaw",
-"krakow": "Europe/Warsaw",
 "berlin": "Europe/Berlin",
-"munich": "Europe/Berlin",
-"frankfurt": "Europe/Berlin",
-"hamburg": "Europe/Berlin",
-"amsterdam": "Europe/Amsterdam",
-"rotterdam": "Europe/Amsterdam",
-"brussels": "Europe/Brussels",
 "paris": "Europe/Paris",
-"lyon": "Europe/Paris",
-"marseille": "Europe/Paris",
-"madrid": "Europe/Madrid",
-"barcelona": "Europe/Madrid",
-"lisbon": "Europe/Lisbon",
-"rome": "Europe/Rome",
-"milan": "Europe/Rome",
-"naples": "Europe/Rome",
-"vienna": "Europe/Vienna",
-"prague": "Europe/Prague",
-"budapest": "Europe/Budapest",
-"athens": "Europe/Athens",
-"bucharest": "Europe/Bucharest",
-"sofia": "Europe/Sofia",
-"zagreb": "Europe/Zagreb",
-"ljubljana": "Europe/Ljubljana",
-"bratislava": "Europe/Bratislava",
-"luxembourg": "Europe/Luxembourg",
-"dublin": "Europe/Dublin",
 "london": "Europe/London",
-"manchester": "Europe/London",
-"zurich": "Europe/Zurich",
-"geneva": "Europe/Zurich",
-"reykjavik": "Atlantic/Reykjavik",
+"rome": "Europe/Rome",
+"madrid": "Europe/Madrid",
+"amsterdam": "Europe/Amsterdam",
+"brussels": "Europe/Brussels",
+"vienna": "Europe/Vienna",
+"warsaw": "Europe/Warsaw",
+"athens": "Europe/Athens",
 "ankara": "Europe/Istanbul",
 "istanbul": "Europe/Istanbul",
 
 # USA
-"washington": "America/New_York",
 "new york": "America/New_York",
 "los angeles": "America/Los_Angeles",
-"san francisco": "America/Los_Angeles",
-"san diego": "America/Los_Angeles",
 "chicago": "America/Chicago",
 "houston": "America/Chicago",
-"dallas": "America/Chicago",
 "miami": "America/New_York",
-"boston": "America/New_York",
 "seattle": "America/Los_Angeles",
-"atlanta": "America/New_York",
-"denver": "America/Denver",
-"phoenix": "America/Phoenix",
-"las vegas": "America/Los_Angeles",
 
 # CANADA
-"ottawa": "America/Toronto",
 "toronto": "America/Toronto",
-"montreal": "America/Toronto",
 "vancouver": "America/Vancouver",
-"calgary": "America/Edmonton",
 
 # LATAM
 "mexico city": "America/Mexico_City",
 "bogota": "America/Bogota",
-"lima": "America/Lima",
-"santiago": "America/Santiago",
-"buenos aires": "America/Argentina/Buenos_Aires",
 "sao paulo": "America/Sao_Paulo",
-"rio de janeiro": "America/Sao_Paulo",
-"brasilia": "America/Sao_Paulo",
 
 # ASIA
 "tokyo": "Asia/Tokyo",
 "osaka": "Asia/Tokyo",
 "seoul": "Asia/Seoul",
-"busan": "Asia/Seoul",
 "beijing": "Asia/Shanghai",
 "shanghai": "Asia/Shanghai",
-"shenzhen": "Asia/Shanghai",
-"hong kong": "Asia/Hong_Kong",
-"taipei": "Asia/Taipei",
+"singapore": "Asia/Singapore",
+"kuala lumpur": "Asia/Kuala_Lumpur",
 
 # INDIA
 "new delhi": "Asia/Kolkata",
 "mumbai": "Asia/Kolkata",
-"bangalore": "Asia/Kolkata",
-"hyderabad": "Asia/Kolkata",
-"chennai": "Asia/Kolkata",
-"kolkata": "Asia/Kolkata",
-
-# SOUTHEAST ASIA
-"kuala lumpur": "Asia/Kuala_Lumpur",
-"penang": "Asia/Kuala_Lumpur",
-"bangkok": "Asia/Bangkok",
-"singapore": "Asia/Singapore",
-"jakarta": "Asia/Jakarta",
-"manila": "Asia/Manila",
-"ho chi minh": "Asia/Ho_Chi_Minh",
 
 # OCEANIA
 "sydney": "Australia/Sydney",
 "melbourne": "Australia/Sydney",
-"brisbane": "Australia/Brisbane",
-"perth": "Australia/Perth",
-"auckland": "Pacific/Auckland",
-"wellington": "Pacific/Auckland",
 
 # AFRICA
 "cairo": "Africa/Cairo",
 "nairobi": "Africa/Nairobi",
 "lagos": "Africa/Lagos",
-"johannesburg": "Africa/Johannesburg",
-"cape town": "Africa/Johannesburg",
-"addis ababa": "Africa/Addis_Ababa",
-"casablanca": "Africa/Casablanca",
-"rabat": "Africa/Casablanca",
 
 # MIDDLE EAST
 "dubai": "Asia/Dubai",
-"abu dhabi": "Asia/Dubai",
 "riyadh": "Asia/Riyadh",
-"doha": "Asia/Qatar",
-"tehran": "Asia/Tehran",
 "tel aviv": "Asia/Jerusalem",
-"jerusalem": "Asia/Jerusalem",
 }
 
 # =====================================================
@@ -160,46 +87,9 @@ CORE_CITIES = {
 def normalize(text: str) -> str:
     text = text.lower()
     text = re.sub(r"[^\w\s]", "", text)
-    text = text.replace("_", " ")
     text = re.sub(r"\s+", " ", text).strip()
     return text
 
-def get_flag_from_timezone(tz: str) -> str:
-    country_map = {
-        "Europe/Stockholm": "SE",
-        "Europe/Oslo": "NO",
-        "Europe/Copenhagen": "DK",
-        "Europe/Helsinki": "FI",
-        "Europe/Berlin": "DE",
-        "Europe/Paris": "FR",
-        "Europe/London": "GB",
-        "Europe/Rome": "IT",
-        "Europe/Madrid": "ES",
-        "Europe/Amsterdam": "NL",
-        "Europe/Brussels": "BE",
-        "Europe/Zurich": "CH",
-        "Europe/Warsaw": "PL",
-        "Europe/Athens": "GR",
-        "Europe/Istanbul": "TR",
-        "Asia/Tokyo": "JP",
-        "Asia/Seoul": "KR",
-        "Asia/Shanghai": "CN",
-        "Asia/Kolkata": "IN",
-        "Asia/Kuala_Lumpur": "MY",
-        "Asia/Singapore": "SG",
-        "Asia/Dubai": "AE",
-        "America/New_York": "US",
-        "America/Los_Angeles": "US",
-        "America/Chicago": "US",
-        "America/Denver": "US",
-        "America/Toronto": "CA",
-        "America/Sao_Paulo": "BR",
-        "Australia/Sydney": "AU",
-    }
-    code = country_map.get(tz)
-    if not code:
-        return ""
-    return chr(127397 + ord(code[0])) + chr(127397 + ord(code[1]))
 
 def get_day_icon(hour: int) -> str:
     if 6 <= hour < 17:
@@ -211,18 +101,35 @@ def get_day_icon(hour: int) -> str:
     else:
         return "🌌"
 
+
+def get_flag_from_timezone(tz: str) -> str:
+    region = tz.split("/")[0]
+
+    region_flag = {
+        "Europe": "🇪🇺",
+        "Asia": "🌏",
+        "America": "🌎",
+        "Australia": "🇦🇺",
+        "Africa": "🌍",
+    }
+
+    return region_flag.get(region, "")
+
+
 async def fetch_time_from_api(timezone: str):
     try:
         timeout = aiohttp.ClientTimeout(total=2.5)
         async with aiohttp.ClientSession(timeout=timeout) as session:
-            async with session.get(f"http://worldtimeapi.org/api/timezone/{timezone}") as resp:
+            async with session.get(
+                f"http://worldtimeapi.org/api/timezone/{timezone}"
+            ) as resp:
                 if resp.status == 200:
                     data = await resp.json()
-                    dt = datetime.fromisoformat(data["datetime"])
-                    return dt
+                    return datetime.fromisoformat(data["datetime"])
     except Exception:
         pass
     return None
+
 
 def fallback_zoneinfo(timezone: str):
     try:
@@ -230,15 +137,27 @@ def fallback_zoneinfo(timezone: str):
     except Exception:
         return None
 
+
 # =====================================================
-# 🌍 COMMAND
+# 🌍 COMMAND REGISTER
 # =====================================================
 
 async def register(bot, data_dir):
 
+    # Guild binding (development mode)
+    guild_id = os.getenv("DEV_GUILD_ID")
+    guild_obj = None
+
+    if guild_id:
+        try:
+            guild_obj = discord.Object(id=int(guild_id))
+        except Exception:
+            guild_obj = None
+
     @bot.tree.command(
         name="time",
-        description="World clock (multi-city)"
+        description="World clock (multi-city)",
+        guild=guild_obj
     )
     @app_commands.describe(
         locations="Example: Stockholm, Tokyo, New York"
@@ -248,28 +167,36 @@ async def register(bot, data_dir):
         await interaction.response.defer()
 
         inputs = [i.strip() for i in locations.split(",") if i.strip()]
+
         if len(inputs) > 5:
-            await interaction.followup.send("Maximum 5 locations allowed.")
+            await interaction.followup.send(
+                "Maximum 5 locations allowed."
+            )
             return
 
         lines = []
         corrections = []
 
-        for raw_input in inputs:
+        for raw in inputs:
 
-            normalized = normalize(raw_input)
-
+            normalized = normalize(raw)
             timezone = CORE_CITIES.get(normalized)
 
-            # Fuzzy
             if not timezone:
-                matches = get_close_matches(normalized, CORE_CITIES.keys(), n=1, cutoff=0.7)
+                matches = get_close_matches(
+                    normalized,
+                    CORE_CITIES.keys(),
+                    n=1,
+                    cutoff=0.7
+                )
                 if matches:
                     timezone = CORE_CITIES[matches[0]]
-                    corrections.append(f"{raw_input} → {matches[0].title()}")
+                    corrections.append(
+                        f"{raw} → {matches[0].title()}"
+                    )
 
             if not timezone:
-                lines.append(f"❌  {raw_input}")
+                lines.append(f"❌  {raw}")
                 continue
 
             dt = await fetch_time_from_api(timezone)
@@ -277,7 +204,7 @@ async def register(bot, data_dir):
                 dt = fallback_zoneinfo(timezone)
 
             if not dt:
-                lines.append(f"❌  {raw_input}")
+                lines.append(f"❌  {raw}")
                 continue
 
             hour = dt.hour
@@ -302,6 +229,8 @@ async def register(bot, data_dir):
         )
 
         if corrections:
-            embed.description += "\n\nauto-corrected: " + ", ".join(corrections)
+            embed.description += (
+                "\n\nauto-corrected: " + ", ".join(corrections)
+            )
 
         await interaction.followup.send(embed=embed)
