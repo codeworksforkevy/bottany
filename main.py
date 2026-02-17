@@ -16,7 +16,7 @@ intents.message_content = True
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
-# 🔥 YOUR GUILD ID
+# 🔥 YOUR DEV GUILD ID
 GUILD_ID = 1446560723122520207
 
 
@@ -106,12 +106,16 @@ class BottanyBot(commands.Bot):
                 )
 
     # -------------------------------------------------
-    # SETUP HOOK (GUILD SYNC)
+    # SETUP HOOK (STRICT GUILD MODE)
     # -------------------------------------------------
     async def setup_hook(self):
         await self.auto_load_command_modules()
 
         guild = discord.Object(id=GUILD_ID)
+
+        # 🔥 CRITICAL FIX:
+        # Remove all global commands from memory
+        self.tree.clear_commands(guild=None)
 
         try:
             synced = await self.tree.sync(guild=guild)
@@ -125,11 +129,13 @@ class BottanyBot(commands.Bot):
 
 bot = BottanyBot()
 
-
 # -------------------------------------------------
-# CORE HEALTH CHECK
+# CORE HEALTH CHECK (GUILD ONLY)
 # -------------------------------------------------
-@bot.tree.command(name="ping", description="Health check")
+@bot.tree.command(
+    name="ping",
+    description="Health check"
+)
 async def ping(interaction: discord.Interaction):
     await interaction.response.send_message("Pong.")
 
