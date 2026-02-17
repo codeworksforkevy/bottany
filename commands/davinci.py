@@ -3,16 +3,15 @@ import random
 import discord
 from discord import app_commands
 
-from utils.json_utils import load_json  # sende farklıysa düzelt
+from utils.json_utils import load_json
 
-# -------------------------
-# Da Vinci module (registry + pagination)
-# Official / institutional public sources only
-# -------------------------
+BASE_GUILD_ID = 1446560723122520207
+
 
 def _get_registry(DATA_DIR):
     path = os.path.join(DATA_DIR, "davinci_registry.json")
     return load_json(path) if os.path.exists(path) else {}
+
 
 def _davinci_items(registry, category: str = ""):
     items = (registry.get("items", []) or [])
@@ -66,11 +65,9 @@ class DavinciPager(discord.ui.View):
         await interaction.response.edit_message(embed=self.make_embed(), view=self)
 
 
-def register_davinci(bot, DATA_DIR):
-    """
-    Safe, idempotent registration.
-    Called from on_ready().
-    """
+async def register(bot, DATA_DIR):
+
+    guild = discord.Object(id=BASE_GUILD_ID)
 
     if getattr(bot, "_davinci_registered", False):
         return
@@ -82,8 +79,10 @@ def register_davinci(bot, DATA_DIR):
         description="Leonardo da Vinci — registry-based resources (official sources)."
     )
 
-    # -------- list --------
-    @davinci_group.command(name="list", description="List Da Vinci items with pagination.")
+    @davinci_group.command(
+        name="list",
+        description="List Da Vinci items with pagination."
+    )
     @app_commands.describe(category="all|machine|drawing|manuscript|painting")
     async def davinci_list(interaction: discord.Interaction, category: str = "all"):
         items = _davinci_items(registry, category)
@@ -96,13 +95,16 @@ def register_davinci(bot, DATA_DIR):
 
         page_size = int((registry.get("pagination", {}) or {}).get("page_size", 8))
         view = DavinciPager(registry, items, category, page_size)
+
         await interaction.response.send_message(
             embed=view.make_embed(),
             view=view
         )
 
-    # -------- random --------
-    @davinci_group.command(name="random", description="Show one Da Vinci item.")
+    @davinci_group.command(
+        name="random",
+        description="Show one Da Vinci item."
+    )
     @app_commands.describe(category="all|machine|drawing|manuscript|painting")
     async def davinci_random(interaction: discord.Interaction, category: str = "all"):
         items = _davinci_items(registry, category)
@@ -114,23 +116,30 @@ def register_davinci(bot, DATA_DIR):
             return
 
         it = random.choice(items)
+
         embed = discord.Embed(
             title=f"Da Vinci — {it.get('title', 'Untitled')}"
         )
+
         if it.get("note"):
             embed.description = it.get("note")
+
         if it.get("url"):
             embed.add_field(
                 name="Official / Institutional link",
                 value=it["url"],
                 inline=False
             )
+
         await interaction.response.send_message(embed=embed)
 
-    # -------- sources --------
-    @davinci_group.command(name="sources", description="Show official/institutional sources.")
+    @davinci_group.command(
+        name="sources",
+        description="Show official/institutional sources."
+    )
     async def davinci_sources(interaction: discord.Interaction):
         sources = (registry.get("sources", []) or [])
+
         if not sources:
             await interaction.response.send_message(
                 "No sources configured.",
@@ -138,7 +147,10 @@ def register_davinci(bot, DATA_DIR):
             )
             return
 
-        embed = discord.Embed(title="Da Vinci — Official / Institutional Sources")
+        embed = discord.Embed(
+            title="Da Vinci — Official / Institutional Sources"
+        )
+
         for s in sources[:10]:
             embed.add_field(
                 name=s.get("name", "Source"),
@@ -151,5 +163,6 @@ def register_davinci(bot, DATA_DIR):
 
         await interaction.response.send_message(embed=embed)
 
-    bot.tree.add_command(davinci_group)
+    bot.tree.add_command(davinci_group, guild=guild)
     bot._davinci_registered = True
+
