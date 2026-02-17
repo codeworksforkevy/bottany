@@ -155,10 +155,11 @@ async def register(bot, data_dir):
             guild_obj = None
 
     @bot.tree.command(
-        name="time",
-        description="World clock (multi-city)",
-        guild=guild_obj
+    name="time",
+    description="World clock (multi-city)",
+    guild=discord.Object(id=1446560723122520207)
     )
+
     @app_commands.describe(
         locations="Example: Stockholm, Tokyo, New York"
     )
