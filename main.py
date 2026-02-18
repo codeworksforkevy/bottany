@@ -34,6 +34,7 @@ intents.message_content = True
 # BOT CLASS
 # -------------------------------------------------
 class BottanyBot(commands.Bot):
+
     def __init__(self):
         super().__init__(
             command_prefix="!",
@@ -44,15 +45,17 @@ class BottanyBot(commands.Bot):
         self._original_sync = self.tree.sync
         self._install_sync_guard()
 
+        # Unified Twitch Layer placeholder
+        self.twitch_layer = None
+
     # -------------------------------------------------
-    # 🔒 GLOBAL SYNC GUARD (AUTO-DETECT SYSTEM)
+    # 🔒 GLOBAL SYNC GUARD
     # -------------------------------------------------
     def _install_sync_guard(self):
 
         async def guarded_sync(*args, **kwargs):
             guild = kwargs.get("guild")
 
-            # Block global sync automatically
             if guild is None:
                 logger.warning("🚨 BLOCKED global sync attempt.")
                 return []
@@ -134,9 +137,45 @@ class BottanyBot(commands.Bot):
                 )
 
     # -------------------------------------------------
-    # SETUP HOOK (CENTRALIZED SYNC SYSTEM)
+    # TWITCH PRE-WARM
+    # -------------------------------------------------
+    async def _prewarm_twitch(self):
+
+        if not self.twitch_layer:
+            return
+
+        cid = os.getenv("TWITCH_CLIENT_ID")
+        tok = os.getenv("TWITCH_APP_TOKEN")
+
+        if not cid or not tok:
+            logger.info("Twitch prewarm skipped (missing credentials).")
+            return
+
+        headers = {
+            "Client-ID": cid,
+            "Authorization": f"Bearer {tok}"
+        }
+
+        url = "https://api.twitch.tv/helix/chat/badges/global"
+
+        try:
+            await self.twitch_layer.fetch("badges", url, headers)
+            logger.info("🔥 Twitch badges pre-warmed.")
+        except Exception as e:
+            logger.warning("Prewarm failed: %s", e)
+
+    # -------------------------------------------------
+    # SETUP HOOK
     # -------------------------------------------------
     async def setup_hook(self):
+
+        # Load unified Twitch data layer
+        try:
+            from services.twitch_data_layer import TwitchDataLayer
+            self.twitch_layer = TwitchDataLayer(DATA_DIR)
+        except Exception as e:
+            logger.warning("TwitchDataLayer not available: %s", e)
+
         await self.auto_load_command_modules()
 
         if self._sync_done:
@@ -147,14 +186,16 @@ class BottanyBot(commands.Bot):
                 guild = discord.Object(id=GUILD_ID)
                 synced = await self._original_sync(guild=guild)
                 logger.info("✅ Dev guild sync complete (%s commands).", len(synced))
-
             else:
-                logger.info("🛡 Production mode: global sync disabled by default.")
+                logger.info("🛡 Production mode: global sync disabled.")
 
             self._sync_done = True
 
         except Exception as e:
             logger.error("Sync failed: %s", e)
+
+        # Prewarm Twitch after sync
+        await self._prewarm_twitch()
 
     async def on_ready(self):
         logger.info("Bot ready as %s", self.user)
@@ -175,7 +216,7 @@ async def ping(interaction: discord.Interaction):
 
 
 # -------------------------------------------------
-# OWNER-ONLY GLOBAL SYNC COMMAND
+# OWNER-ONLY GLOBAL SYNC
 # -------------------------------------------------
 @bot.tree.command(name="sync_global", description="Owner: perform global sync")
 async def sync_global(interaction: discord.Interaction):
@@ -192,14 +233,40 @@ async def sync_global(interaction: discord.Interaction):
 
 
 # -------------------------------------------------
+# TWITCH METRICS
+# -------------------------------------------------
+@bot.tree.command(name="twitch_metrics", description="Owner: Twitch API metrics")
+async def twitch_metrics(interaction: discord.Interaction):
+
+    if interaction.user.id != OWNER_ID:
+        await interaction.response.send_message("Not authorized.", ephemeral=True)
+        return
+
+    if not bot.twitch_layer:
+        await interaction.response.send_message("Twitch layer not initialized.", ephemeral=True)
+        return
+
+    metrics = bot.twitch_layer.metrics()
+
+    embed = discord.Embed(title="Twitch API Metrics")
+
+    for key, value in metrics.items():
+        embed.add_field(name=key, value=str(value), inline=False)
+
+    await interaction.response.send_message(embed=embed, ephemeral=True)
+
+
+# -------------------------------------------------
 # RUN
 # -------------------------------------------------
 if __name__ == "__main__":
+
     token = os.getenv("DISCORD_TOKEN")
 
     if not token:
         raise RuntimeError("DISCORD_TOKEN is not set.")
 
     bot.run(token)
+
 
 
