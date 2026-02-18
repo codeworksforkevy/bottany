@@ -7,25 +7,59 @@ import pkgutil
 import importlib
 import inspect
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger("bottany")
-
-intents = discord.Intents.default()
-intents.message_content = True
+# -------------------------------------------------
+# CONFIG
+# -------------------------------------------------
+ENV = os.getenv("ENV", "dev")  # dev | production
+OWNER_ID = int(os.getenv("BOT_OWNER_ID", "0"))
+GUILD_ID = int(os.getenv("DEV_GUILD_ID", "1446560723122520207"))
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(BASE_DIR, "data")
 
-# 🔥 DEV GUILD ID
-GUILD_ID = 1446560723122520207
+# -------------------------------------------------
+# LOGGING
+# -------------------------------------------------
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("bottany")
+
+# -------------------------------------------------
+# INTENTS
+# -------------------------------------------------
+intents = discord.Intents.default()
+intents.message_content = True
 
 
+# -------------------------------------------------
+# BOT CLASS
+# -------------------------------------------------
 class BottanyBot(commands.Bot):
     def __init__(self):
         super().__init__(
             command_prefix="!",
             intents=intents
         )
+
+        self._sync_done = False
+        self._original_sync = self.tree.sync
+        self._install_sync_guard()
+
+    # -------------------------------------------------
+    # 🔒 GLOBAL SYNC GUARD (AUTO-DETECT SYSTEM)
+    # -------------------------------------------------
+    def _install_sync_guard(self):
+
+        async def guarded_sync(*args, **kwargs):
+            guild = kwargs.get("guild")
+
+            # Block global sync automatically
+            if guild is None:
+                logger.warning("🚨 BLOCKED global sync attempt.")
+                return []
+
+            return await self._original_sync(*args, **kwargs)
+
+        self.tree.sync = guarded_sync
 
     # -------------------------------------------------
     # SAFE REGISTER
@@ -61,11 +95,7 @@ class BottanyBot(commands.Bot):
                 await result
 
         except Exception as e:
-            logger.warning(
-                "Register failed for %s: %s",
-                func.__name__,
-                e
-            )
+            logger.warning("Register failed for %s: %s", func.__name__, e)
 
     # -------------------------------------------------
     # AUTO MODULE LOADER
@@ -87,16 +117,14 @@ class BottanyBot(commands.Bot):
 
                     register_func = getattr(module, attr)
 
-                    if not callable(register_func):
-                        continue
+                    if callable(register_func):
+                        await self.safe_register(register_func)
 
-                    await self.safe_register(register_func)
-
-                    logger.info(
-                        "Processed %s in commands.%s",
-                        attr,
-                        module_name
-                    )
+                        logger.info(
+                            "Processed %s in commands.%s",
+                            attr,
+                            module_name
+                        )
 
             except Exception as e:
                 logger.warning(
@@ -106,36 +134,66 @@ class BottanyBot(commands.Bot):
                 )
 
     # -------------------------------------------------
-    # SETUP HOOK (GUILD SYNC ONLY)
+    # SETUP HOOK (CENTRALIZED SYNC SYSTEM)
     # -------------------------------------------------
     async def setup_hook(self):
         await self.auto_load_command_modules()
 
-        guild = discord.Object(id=GUILD_ID)
+        if self._sync_done:
+            return
 
         try:
-            synced = await self.tree.sync(guild=guild)
-            logger.info("Synced %s guild commands.", len(synced))
+            if ENV == "dev":
+                guild = discord.Object(id=GUILD_ID)
+                synced = await self._original_sync(guild=guild)
+                logger.info("✅ Dev guild sync complete (%s commands).", len(synced))
+
+            else:
+                logger.info("🛡 Production mode: global sync disabled by default.")
+
+            self._sync_done = True
+
         except Exception as e:
-            logger.error("Guild sync failed: %s", e)
+            logger.error("Sync failed: %s", e)
 
     async def on_ready(self):
         logger.info("Bot ready as %s", self.user)
 
 
+# -------------------------------------------------
+# BOT INSTANCE
+# -------------------------------------------------
 bot = BottanyBot()
 
+
 # -------------------------------------------------
-# CORE HEALTH CHECK
+# HEALTH CHECK
 # -------------------------------------------------
-@bot.tree.command(
-    name="ping",
-    description="Health check"
-)
+@bot.tree.command(name="ping", description="Health check")
 async def ping(interaction: discord.Interaction):
     await interaction.response.send_message("Pong.")
 
 
+# -------------------------------------------------
+# OWNER-ONLY GLOBAL SYNC COMMAND
+# -------------------------------------------------
+@bot.tree.command(name="sync_global", description="Owner: perform global sync")
+async def sync_global(interaction: discord.Interaction):
+
+    if interaction.user.id != OWNER_ID:
+        await interaction.response.send_message("Not authorized.", ephemeral=True)
+        return
+
+    synced = await bot._original_sync()
+    await interaction.response.send_message(
+        f"🌍 Global sync complete ({len(synced)} commands).",
+        ephemeral=True
+    )
+
+
+# -------------------------------------------------
+# RUN
+# -------------------------------------------------
 if __name__ == "__main__":
     token = os.getenv("DISCORD_TOKEN")
 
@@ -143,4 +201,5 @@ if __name__ == "__main__":
         raise RuntimeError("DISCORD_TOKEN is not set.")
 
     bot.run(token)
+
 
