@@ -1,88 +1,53 @@
-import os
-import discord
-from discord import app_commands
-import logging
+
+from __future__ import annotations
+
 import re
-from difflib import get_close_matches
 from datetime import datetime
 from zoneinfo import ZoneInfo
-import aiohttp
+from difflib import get_close_matches
+from typing import Dict, Tuple
 
-logger = logging.getLogger("bottany.time")
+import discord
+from discord import app_commands
 
-# =====================================================
-# 🌍 CORE GLOBAL CITIES
-# =====================================================
 
-CORE_CITIES = {
-# EUROPE
-"stockholm": "Europe/Stockholm",
-"gothenburg": "Europe/Stockholm",
-"oslo": "Europe/Oslo",
-"bergen": "Europe/Oslo",
-"copenhagen": "Europe/Copenhagen",
-"helsinki": "Europe/Helsinki",
-"berlin": "Europe/Berlin",
-"paris": "Europe/Paris",
-"london": "Europe/London",
-"rome": "Europe/Rome",
-"madrid": "Europe/Madrid",
-"amsterdam": "Europe/Amsterdam",
-"brussels": "Europe/Brussels",
-"vienna": "Europe/Vienna",
-"warsaw": "Europe/Warsaw",
-"athens": "Europe/Athens",
-"ankara": "Europe/Istanbul",
-"istanbul": "Europe/Istanbul",
+CORE_CITIES: Dict[str, Tuple[str, str]] = {
 
-# USA
-"new york": "America/New_York",
-"los angeles": "America/Los_Angeles",
-"chicago": "America/Chicago",
-"houston": "America/Chicago",
-"miami": "America/New_York",
-"seattle": "America/Los_Angeles",
+    "stockholm": ("Europe/Stockholm", "SE"),
+    "gothenburg": ("Europe/Stockholm", "SE"),
+    "oslo": ("Europe/Oslo", "NO"),
+    "copenhagen": ("Europe/Copenhagen", "DK"),
+    "helsinki": ("Europe/Helsinki", "FI"),
+    "berlin": ("Europe/Berlin", "DE"),
+    "paris": ("Europe/Paris", "FR"),
+    "rome": ("Europe/Rome", "IT"),
+    "madrid": ("Europe/Madrid", "ES"),
+    "amsterdam": ("Europe/Amsterdam", "NL"),
+    "brussels": ("Europe/Brussels", "BE"),
+    "zurich": ("Europe/Zurich", "CH"),
+    "warsaw": ("Europe/Warsaw", "PL"),
+    "athens": ("Europe/Athens", "GR"),
+    "london": ("Europe/London", "GB"),
+    "dublin": ("Europe/Dublin", "IE"),
+    "istanbul": ("Europe/Istanbul", "TR"),
+    "ankara": ("Europe/Istanbul", "TR"),
 
-# CANADA
-"toronto": "America/Toronto",
-"vancouver": "America/Vancouver",
+    "new york": ("America/New_York", "US"),
+    "los angeles": ("America/Los_Angeles", "US"),
+    "chicago": ("America/Chicago", "US"),
+    "denver": ("America/Denver", "US"),
+    "phoenix": ("America/Phoenix", "US"),
+    "miami": ("America/New_York", "US"),
 
-# LATAM
-"mexico city": "America/Mexico_City",
-"bogota": "America/Bogota",
-"sao paulo": "America/Sao_Paulo",
+    "tokyo": ("Asia/Tokyo", "JP"),
+    "seoul": ("Asia/Seoul", "KR"),
+    "beijing": ("Asia/Shanghai", "CN"),
+    "singapore": ("Asia/Singapore", "SG"),
 
-# ASIA
-"tokyo": "Asia/Tokyo",
-"osaka": "Asia/Tokyo",
-"seoul": "Asia/Seoul",
-"beijing": "Asia/Shanghai",
-"shanghai": "Asia/Shanghai",
-"singapore": "Asia/Singapore",
-"kuala lumpur": "Asia/Kuala_Lumpur",
-
-# INDIA
-"new delhi": "Asia/Kolkata",
-"mumbai": "Asia/Kolkata",
-
-# OCEANIA
-"sydney": "Australia/Sydney",
-"melbourne": "Australia/Sydney",
-
-# AFRICA
-"cairo": "Africa/Cairo",
-"nairobi": "Africa/Nairobi",
-"lagos": "Africa/Lagos",
-
-# MIDDLE EAST
-"dubai": "Asia/Dubai",
-"riyadh": "Asia/Riyadh",
-"tel aviv": "Asia/Jerusalem",
+    "sydney": ("Australia/Sydney", "AU"),
+    "auckland": ("Pacific/Auckland", "NZ"),
 }
 
-# =====================================================
-# 🔧 HELPERS
-# =====================================================
 
 def normalize(text: str) -> str:
     text = text.lower()
@@ -91,75 +56,26 @@ def normalize(text: str) -> str:
     return text
 
 
-def get_day_icon(hour: int) -> str:
+def country_code_to_flag(code: str) -> str:
+    return "".join(chr(127397 + ord(c)) for c in code.upper())
+
+
+def day_icon(hour: int) -> str:
     if 6 <= hour < 17:
         return "☀️"
     elif 17 <= hour < 20:
         return "🌇"
     elif 20 <= hour < 23:
         return "🌆"
-    else:
-        return "🌌"
+    return "🌙"
 
 
-def get_flag_from_timezone(tz: str) -> str:
-    region = tz.split("/")[0]
-
-    region_flag = {
-        "Europe": "🇪🇺",
-        "Asia": "🌏",
-        "America": "🌎",
-        "Australia": "🇦🇺",
-        "Africa": "🌍",
-    }
-
-    return region_flag.get(region, "")
-
-
-async def fetch_time_from_api(timezone: str):
-    try:
-        timeout = aiohttp.ClientTimeout(total=2.5)
-        async with aiohttp.ClientSession(timeout=timeout) as session:
-            async with session.get(
-                f"http://worldtimeapi.org/api/timezone/{timezone}"
-            ) as resp:
-                if resp.status == 200:
-                    data = await resp.json()
-                    return datetime.fromisoformat(data["datetime"])
-    except Exception:
-        pass
-    return None
-
-
-def fallback_zoneinfo(timezone: str):
-    try:
-        return datetime.now(ZoneInfo(timezone))
-    except Exception:
-        return None
-
-
-# =====================================================
-# 🌍 COMMAND REGISTER
-# =====================================================
-
-async def register(bot, data_dir):
-
-    # Guild binding (development mode)
-    guild_id = os.getenv("DEV_GUILD_ID")
-    guild_obj = None
-
-    if guild_id:
-        try:
-            guild_obj = discord.Object(id=int(guild_id))
-        except Exception:
-            guild_obj = None
+def register(bot, data_dir: str):
 
     @bot.tree.command(
-    name="time",
-    description="World clock (multi-city)",
-    guild=discord.Object(id=1446560723122520207)
+        name="time",
+        description="Premium world clock dashboard"
     )
-
     @app_commands.describe(
         locations="Example: Stockholm, Tokyo, New York"
     )
@@ -167,71 +83,69 @@ async def register(bot, data_dir):
 
         await interaction.response.defer()
 
-        inputs = [i.strip() for i in locations.split(",") if i.strip()]
-
-        if len(inputs) > 5:
-            await interaction.followup.send(
-                "Maximum 5 locations allowed."
-            )
+        inputs = [x.strip() for x in locations.split(",") if x.strip()]
+        if not inputs:
+            await interaction.followup.send("Provide at least one city.")
             return
 
-        lines = []
-        corrections = []
-
-        for raw in inputs:
-
-            normalized = normalize(raw)
-            timezone = CORE_CITIES.get(normalized)
-
-            if not timezone:
-                matches = get_close_matches(
-                    normalized,
-                    CORE_CITIES.keys(),
-                    n=1,
-                    cutoff=0.7
-                )
-                if matches:
-                    timezone = CORE_CITIES[matches[0]]
-                    corrections.append(
-                        f"{raw} → {matches[0].title()}"
-                    )
-
-            if not timezone:
-                lines.append(f"❌  {raw}")
-                continue
-
-            dt = await fetch_time_from_api(timezone)
-            if not dt:
-                dt = fallback_zoneinfo(timezone)
-
-            if not dt:
-                lines.append(f"❌  {raw}")
-                continue
-
-            hour = dt.hour
-            minute = dt.minute
-
-            city_display = timezone.split("/")[-1].replace("_", " ")
-            icon = get_day_icon(hour)
-            flag = get_flag_from_timezone(timezone)
-
-            lines.append(
-                f"{flag}  {icon}  {city_display:<12}  {hour:02}:{minute:02}"
-            )
-
-        if not lines:
-            await interaction.followup.send("No valid locations.")
+        if len(inputs) > 6:
+            await interaction.followup.send("Maximum 6 cities allowed.")
             return
 
         embed = discord.Embed(
             title="Time Dashboard",
-            description="────────────────────────\n\n" + "\n".join(lines),
-            color=0x1e1f22
+            color=0x1E1E2E
         )
 
-        if corrections:
-            embed.description += (
-                "\n\nauto-corrected: " + ", ".join(corrections)
+        corrections = []
+
+        for raw in inputs:
+            key = normalize(raw)
+            entry = CORE_CITIES.get(key)
+
+            if not entry:
+                matches = get_close_matches(key, CORE_CITIES.keys(), n=1, cutoff=0.7)
+                if matches:
+                    entry = CORE_CITIES[matches[0]]
+                    corrections.append(f"{raw} → {matches[0].title()}")
+
+            if not entry:
+                embed.add_field(
+                    name=f"❌ {raw}",
+                    value="Not found",
+                    inline=True
+                )
+                continue
+
+            tz, cc = entry
+
+            try:
+                now = datetime.now(ZoneInfo(tz))
+            except Exception:
+                embed.add_field(
+                    name=f"❌ {raw}",
+                    value="Timezone error",
+                    inline=True
+                )
+                continue
+
+            flag = country_code_to_flag(cc)
+            icon = day_icon(now.hour)
+            city_display = tz.split("/")[-1].replace("_", " ")
+
+            embed.add_field(
+                name=f"{flag} {city_display}",
+                value=f"{icon}   **{now.strftime('%H:%M')}**",
+                inline=True
             )
+
+        if corrections:
+            embed.add_field(
+                name="Auto-corrected",
+                value=", ".join(corrections),
+                inline=False
+            )
+
+        embed.set_footer(text="Live world clock • Bottany")
 
         await interaction.followup.send(embed=embed)
