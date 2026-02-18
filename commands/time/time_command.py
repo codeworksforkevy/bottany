@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 import re
@@ -11,43 +10,121 @@ import discord
 from discord import app_commands
 
 
+# =====================================================
+# 🌍 FULL CORE CITY DATABASE (Extended)
+# Format:
+# "city name": ("Timezone/String", "CountryCode")
+# =====================================================
+
 CORE_CITIES: Dict[str, Tuple[str, str]] = {
 
+    # EUROPE
     "stockholm": ("Europe/Stockholm", "SE"),
     "gothenburg": ("Europe/Stockholm", "SE"),
     "oslo": ("Europe/Oslo", "NO"),
+    "bergen": ("Europe/Oslo", "NO"),
     "copenhagen": ("Europe/Copenhagen", "DK"),
+    "aarhus": ("Europe/Copenhagen", "DK"),
     "helsinki": ("Europe/Helsinki", "FI"),
-    "berlin": ("Europe/Berlin", "DE"),
-    "paris": ("Europe/Paris", "FR"),
-    "rome": ("Europe/Rome", "IT"),
-    "madrid": ("Europe/Madrid", "ES"),
-    "amsterdam": ("Europe/Amsterdam", "NL"),
-    "brussels": ("Europe/Brussels", "BE"),
-    "zurich": ("Europe/Zurich", "CH"),
+    "tallinn": ("Europe/Tallinn", "EE"),
+    "riga": ("Europe/Riga", "LV"),
+    "vilnius": ("Europe/Vilnius", "LT"),
     "warsaw": ("Europe/Warsaw", "PL"),
+    "krakow": ("Europe/Warsaw", "PL"),
+    "berlin": ("Europe/Berlin", "DE"),
+    "munich": ("Europe/Berlin", "DE"),
+    "hamburg": ("Europe/Berlin", "DE"),
+    "amsterdam": ("Europe/Amsterdam", "NL"),
+    "rotterdam": ("Europe/Amsterdam", "NL"),
+    "brussels": ("Europe/Brussels", "BE"),
+    "paris": ("Europe/Paris", "FR"),
+    "lyon": ("Europe/Paris", "FR"),
+    "madrid": ("Europe/Madrid", "ES"),
+    "barcelona": ("Europe/Madrid", "ES"),
+    "lisbon": ("Europe/Lisbon", "PT"),
+    "rome": ("Europe/Rome", "IT"),
+    "milan": ("Europe/Rome", "IT"),
+    "vienna": ("Europe/Vienna", "AT"),
+    "prague": ("Europe/Prague", "CZ"),
+    "budapest": ("Europe/Budapest", "HU"),
     "athens": ("Europe/Athens", "GR"),
-    "london": ("Europe/London", "GB"),
+    "bucharest": ("Europe/Bucharest", "RO"),
+    "sofia": ("Europe/Sofia", "BG"),
     "dublin": ("Europe/Dublin", "IE"),
-    "istanbul": ("Europe/Istanbul", "TR"),
+    "london": ("Europe/London", "GB"),
+    "manchester": ("Europe/London", "GB"),
+    "zurich": ("Europe/Zurich", "CH"),
+    "geneva": ("Europe/Zurich", "CH"),
+    "reykjavik": ("Atlantic/Reykjavik", "IS"),
     "ankara": ("Europe/Istanbul", "TR"),
+    "istanbul": ("Europe/Istanbul", "TR"),
 
+    # USA
     "new york": ("America/New_York", "US"),
+    "washington": ("America/New_York", "US"),
     "los angeles": ("America/Los_Angeles", "US"),
+    "san francisco": ("America/Los_Angeles", "US"),
+    "san diego": ("America/Los_Angeles", "US"),
     "chicago": ("America/Chicago", "US"),
+    "houston": ("America/Chicago", "US"),
+    "dallas": ("America/Chicago", "US"),
+    "miami": ("America/New_York", "US"),
+    "boston": ("America/New_York", "US"),
+    "seattle": ("America/Los_Angeles", "US"),
     "denver": ("America/Denver", "US"),
     "phoenix": ("America/Phoenix", "US"),
-    "miami": ("America/New_York", "US"),
+    "las vegas": ("America/Los_Angeles", "US"),
 
+    # CANADA
+    "ottawa": ("America/Toronto", "CA"),
+    "toronto": ("America/Toronto", "CA"),
+    "montreal": ("America/Toronto", "CA"),
+    "vancouver": ("America/Vancouver", "CA"),
+    "calgary": ("America/Edmonton", "CA"),
+
+    # LATAM
+    "mexico city": ("America/Mexico_City", "MX"),
+    "bogota": ("America/Bogota", "CO"),
+    "lima": ("America/Lima", "PE"),
+    "santiago": ("America/Santiago", "CL"),
+    "buenos aires": ("America/Argentina/Buenos_Aires", "AR"),
+    "sao paulo": ("America/Sao_Paulo", "BR"),
+    "rio de janeiro": ("America/Sao_Paulo", "BR"),
+
+    # ASIA
     "tokyo": ("Asia/Tokyo", "JP"),
+    "osaka": ("Asia/Tokyo", "JP"),
     "seoul": ("Asia/Seoul", "KR"),
+    "busan": ("Asia/Seoul", "KR"),
     "beijing": ("Asia/Shanghai", "CN"),
+    "shanghai": ("Asia/Shanghai", "CN"),
+    "hong kong": ("Asia/Hong_Kong", "HK"),
+    "taipei": ("Asia/Taipei", "TW"),
     "singapore": ("Asia/Singapore", "SG"),
+    "bangkok": ("Asia/Bangkok", "TH"),
+    "kuala lumpur": ("Asia/Kuala_Lumpur", "MY"),
+    "dubai": ("Asia/Dubai", "AE"),
+    "riyadh": ("Asia/Riyadh", "SA"),
+    "doha": ("Asia/Qatar", "QA"),
 
+    # OCEANIA
     "sydney": ("Australia/Sydney", "AU"),
+    "melbourne": ("Australia/Sydney", "AU"),
+    "brisbane": ("Australia/Brisbane", "AU"),
+    "perth": ("Australia/Perth", "AU"),
     "auckland": ("Pacific/Auckland", "NZ"),
+
+    # AFRICA
+    "cairo": ("Africa/Cairo", "EG"),
+    "nairobi": ("Africa/Nairobi", "KE"),
+    "lagos": ("Africa/Lagos", "NG"),
+    "johannesburg": ("Africa/Johannesburg", "ZA"),
 }
 
+
+# =====================================================
+# 🔧 HELPERS
+# =====================================================
 
 def normalize(text: str) -> str:
     text = text.lower()
@@ -70,6 +147,10 @@ def day_icon(hour: int) -> str:
     return "🌙"
 
 
+# =====================================================
+# 🕒 REGISTER
+# =====================================================
+
 def register(bot, data_dir: str):
 
     @bot.tree.command(
@@ -84,6 +165,7 @@ def register(bot, data_dir: str):
         await interaction.response.defer()
 
         inputs = [x.strip() for x in locations.split(",") if x.strip()]
+
         if not inputs:
             await interaction.followup.send("Provide at least one city.")
             return
@@ -92,11 +174,7 @@ def register(bot, data_dir: str):
             await interaction.followup.send("Maximum 6 cities allowed.")
             return
 
-        embed = discord.Embed(
-            title="Time Dashboard",
-            color=0x1E1E2E
-        )
-
+        rows = []
         corrections = []
 
         for raw in inputs:
@@ -110,11 +188,7 @@ def register(bot, data_dir: str):
                     corrections.append(f"{raw} → {matches[0].title()}")
 
             if not entry:
-                embed.add_field(
-                    name=f"❌ {raw}",
-                    value="Not found",
-                    inline=True
-                )
+                rows.append(f"❌  {raw}")
                 continue
 
             tz, cc = entry
@@ -122,22 +196,22 @@ def register(bot, data_dir: str):
             try:
                 now = datetime.now(ZoneInfo(tz))
             except Exception:
-                embed.add_field(
-                    name=f"❌ {raw}",
-                    value="Timezone error",
-                    inline=True
-                )
+                rows.append(f"❌  {raw}")
                 continue
 
             flag = country_code_to_flag(cc)
             icon = day_icon(now.hour)
             city_display = tz.split("/")[-1].replace("_", " ")
 
-            embed.add_field(
-                name=f"{flag} {city_display}",
-                value=f"{icon}   **{now.strftime('%H:%M')}**",
-                inline=True
+            rows.append(
+                f"{flag} {icon}   {city_display:<18}   {now.strftime('%H:%M')}"
             )
+
+        embed = discord.Embed(
+            title="Time Dashboard",
+            description="```" + "\n".join(rows) + "```",
+            color=0x2B2D31
+        )
 
         if corrections:
             embed.add_field(
@@ -146,6 +220,5 @@ def register(bot, data_dir: str):
                 inline=False
             )
 
-        embed.set_footer(text="Live world clock • Bottany")
-
         await interaction.followup.send(embed=embed)
+
