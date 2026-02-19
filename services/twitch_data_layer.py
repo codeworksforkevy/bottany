@@ -1,13 +1,12 @@
 import os
 import time
 import json
-import asyncio
+import logging
 from typing import Any, Dict, Optional
 
-import aiohttp
+from services.http_client import http_client
 
-BACKOFF_BASE = 2
-MAX_BACKOFF = 60
+logger = logging.getLogger("bottany.twitch.data")
 
 class TwitchDataLayer:
 
@@ -18,7 +17,7 @@ class TwitchDataLayer:
             "api_calls": 0,
             "cache_hits": 0,
             "disk_hits": 0,
-            "rate_limits": 0
+            "failures": 0
         }
 
     # -----------------------------
@@ -40,23 +39,29 @@ class TwitchDataLayer:
     def _disk_path(self, key: str):
         return os.path.join(self.data_dir, f"twitch_cache_{key}.json")
 
-    def _load_disk(self, key: str):
+    def _load_disk(self, key: str) -> Optional[Any]:
         try:
             with open(self._disk_path(key), "r", encoding="utf-8") as f:
                 self._metrics["disk_hits"] += 1
+                logger.info(f"Disk cache hit: {key}")
                 return json.load(f)
-        except:
+        except Exception:
             return None
 
     def _save_disk(self, key: str, data: Any):
         os.makedirs(self.data_dir, exist_ok=True)
         with open(self._disk_path(key), "w", encoding="utf-8") as f:
-            json.dump(data, f, indent=2)
+            json.dump(data, f)
 
     # -----------------------------
-    # Core Fetcher (Rate-limit aware)
+    # Core Fetch (wrapper-based)
     # -----------------------------
-    async def fetch(self, key: str, url: str, headers: Dict[str, str]):
+    async def fetch(
+        self,
+        key: str,
+        url: str,
+        headers: Dict[str, str]
+    ) -> Optional[Any]:
 
         now = time.time()
 
@@ -66,39 +71,32 @@ class TwitchDataLayer:
             self._metrics["cache_hits"] += 1
             return entry["data"]
 
-        # 2️⃣ API call
-        backoff = 1
+        # 2️⃣ API via global wrapper
+        payload = await http_client.request(
+            method="GET",
+            url=url,
+            headers=headers
+        )
 
-        async with aiohttp.ClientSession() as session:
-            while True:
-                async with session.get(url, headers=headers) as resp:
+        if payload:
+            self._metrics["api_calls"] += 1
+            ttl = self._adaptive_ttl(key)
 
-                    if resp.status == 429:
-                        self._metrics["rate_limits"] += 1
-                        await asyncio.sleep(backoff)
-                        backoff = min(backoff * BACKOFF_BASE, MAX_BACKOFF)
-                        continue
+            self._memory[key] = {
+                "data": payload,
+                "expires": time.time() + ttl
+            }
 
-                    if resp.status != 200:
-                        break
-
-                    payload = await resp.json()
-                    self._metrics["api_calls"] += 1
-                    ttl = self._adaptive_ttl(key)
-
-                    self._memory[key] = {
-                        "data": payload,
-                        "expires": now + ttl
-                    }
-
-                    self._save_disk(key, payload)
-                    return payload
+            self._save_disk(key, payload)
+            return payload
 
         # 3️⃣ Disk fallback
         disk = self._load_disk(key)
         if disk:
             return disk
 
+        self._metrics["failures"] += 1
+        logger.warning(f"TwitchDataLayer fetch failed: {key}")
         return None
 
     # -----------------------------
