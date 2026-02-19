@@ -1,16 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "PWD: $(pwd)"
-echo "Listing root:"
-ls -la
+echo "========== BOT START =========="
+echo "Working dir: $(pwd)"
+echo "ENV: ${ENV:-dev}"
+python --version
+echo "==============================="
 
-TARGET="$(find . -maxdepth 4 -name main.py -print | head -n 1)"
+export PYTHONUNBUFFERED=1
+export PYTHONDONTWRITEBYTECODE=1
 
-if [[ -z "${TARGET}" ]]; then
-  echo "ERROR: main.py not found within 4 levels."
+if [[ ! -f "./main.py" ]]; then
+  echo "ERROR: main.py not found in root."
+  ls -la
   exit 1
 fi
 
-echo "Running: python ${TARGET}"
-python "${TARGET}"
+exec python main.py
