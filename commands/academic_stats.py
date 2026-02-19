@@ -1,6 +1,6 @@
 import discord
 from discord import app_commands
-from services.trivia_memory_pg import stats
+from services.trivia_memory_pg import stats, TARGET_FIELD_RATIO
 
 
 async def register(bot, data_dir):
@@ -21,6 +21,9 @@ async def register(bot, data_dir):
             color=0x5865F2
         )
 
+        # ------------------------------
+        # Core Metrics
+        # ------------------------------
         embed.add_field(
             name="Tracked Entries",
             value=str(data["tracked_entries"]),
@@ -39,14 +42,48 @@ async def register(bot, data_dir):
             inline=False
         )
 
-        # Field diversity breakdown
+        # ------------------------------
+        # Entropy & Health
+        # ------------------------------
+        embed.add_field(
+            name="Entropy Score",
+            value=str(data["entropy_score"]),
+            inline=True
+        )
+
+        embed.add_field(
+            name="Distribution Health %",
+            value=f"{data['health_percent']}%",
+            inline=True
+        )
+
+        embed.add_field(
+            name="Target Field Ratio",
+            value=f"{int(TARGET_FIELD_RATIO * 100)}%",
+            inline=True
+        )
+
+        # ------------------------------
+        # Field Diversity Breakdown
+        # ------------------------------
         if data["field_distribution"]:
-            field_text = "\n".join(
-                f"{field} → {percent}%"
-                for field, percent in data["field_distribution"][:8]
-            )
+
+            field_lines = []
+            dominance_warning = False
+
+            for field, percent in data["field_distribution"][:10]:
+
+                field_upper = field.upper()
+                field_lines.append(f"{field_upper} → {percent}%")
+
+                if percent > TARGET_FIELD_RATIO * 100:
+                    dominance_warning = True
+
+            field_text = "\n".join(field_lines)
+
         else:
-            field_text = "No data yet."
+            field_text = "No field data yet."
+            dominance_warning = False
 
         embed.add_field(
             name="Field Diversity %",
@@ -54,4 +91,15 @@ async def register(bot, data_dir):
             inline=False
         )
 
+        # ------------------------------
+        # Dominance Warning
+        # ------------------------------
+        if dominance_warning:
+            embed.add_field(
+                name="⚠ Field Dominance Warning",
+                value="One or more fields exceed the target diversity ratio.",
+                inline=False
+            )
+
         await interaction.response.send_message(embed=embed)
+
