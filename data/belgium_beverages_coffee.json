@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "dataset_version": "4.0",
+    "curation_level": "academic_professional",
+    "category": "coffee"
+  },
+  "items": [
+    {
+      "id": "coffee_1",
+      "name": "Miko Coffee",
+      "producer": "Miko Group",
+      "region": "Turnhout",
+      "foundation_year": 1801,
+      "certification": null
+    },
+    {
+      "id": "coffee_2",
+      "name": "Rombouts",
+      "producer": "Rombouts Coffee",
+      "region": "Antwerp",
+      "foundation_year": 1896,
+      "certification": null
+    },
+    {
+      "id": "coffee_3",
+      "name": "Java Coffee Company",
+      "producer": "Java Coffee Company",
+      "region": "Antwerp",
+      "foundation_year": 1935,
+      "certification": null
+    },
+    {
+      "id": "coffee_4",
+      "name": "Cuperus",
+      "producer": "Cuperus",
+      "region": "Antwerp",
+      "foundation_year": 1823,
+      "certification": null
+    },
+    {
+      "id": "coffee_5",
+      "name": "Mok Coffee",
+      "producer": "Mok Coffee Roastery",
+      "region": "Brussels",
+      "foundation_year": 2012,
+      "certification": null
+    },
+    {
+      "id": "coffee_6",
+      "name": "Caffenation",
+      "producer": "Caffenation",
+      "region": "Antwerp",
+      "foundation_year": 2003,
+      "certification": null
+    },
+    {
+      "id": "coffee_7",
+      "name": "OR Coffee Roasters",
+      "producer": "OR Coffee Roasters",
+      "region": "Ghent",
+      "foundation_year": 2011,
+      "certification": null
+    },
+    {
+      "id": "coffee_8",
+      "name": "Wide Awake Coffee",
+      "producer": "Wide Awake Coffee",
+      "region": "Antwerp",
+      "foundation_year": 2007,
+      "certification": null
+    },
+    {
+      "id": "coffee_9",
+      "name": "Ray & Jules",
+      "producer": "Ray & Jules",
+      "region": "Brussels",
+      "foundation_year": 2019,
+      "certification": null
+    },
+    {
+      "id": "coffee_10",
+      "name": "Bocca Belgium",
+      "producer": "Bocca Coffee",
+      "region": "Belgium",
+      "foundation_year": null,
+      "certification": null
+    }
+  ]
+}

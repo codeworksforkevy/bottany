@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "dataset_version": "4.0",
+    "curation_level": "academic_professional",
+    "category": "cocoa"
+  },
+  "items": [
+    {
+      "id": "cocoa_1",
+      "name": "Côte d'Or",
+      "producer": "Mondelez Belgium",
+      "region": "Brussels",
+      "foundation_year": 1883,
+      "certification": null
+    },
+    {
+      "id": "cocoa_2",
+      "name": "Neuhaus",
+      "producer": "Neuhaus Chocolates",
+      "region": "Brussels",
+      "foundation_year": 1857,
+      "certification": null
+    },
+    {
+      "id": "cocoa_3",
+      "name": "Leonidas",
+      "producer": "Leonidas Chocolates",
+      "region": "Brussels",
+      "foundation_year": 1913,
+      "certification": null
+    },
+    {
+      "id": "cocoa_4",
+      "name": "Godiva",
+      "producer": "Godiva Chocolatier",
+      "region": "Brussels",
+      "foundation_year": 1926,
+      "certification": null
+    },
+    {
+      "id": "cocoa_5",
+      "name": "Callebaut",
+      "producer": "Barry Callebaut",
+      "region": "Flanders",
+      "foundation_year": 1911,
+      "certification": null
+    },
+    {
+      "id": "cocoa_6",
+      "name": "Belcolade",
+      "producer": "Puratos",
+      "region": "Flemish Brabant",
+      "foundation_year": 1919,
+      "certification": null
+    },
+    {
+      "id": "cocoa_7",
+      "name": "Guylian",
+      "producer": "Guylian Chocolates",
+      "region": "Sint-Niklaas",
+      "foundation_year": 1958,
+      "certification": null
+    },
+    {
+      "id": "cocoa_8",
+      "name": "Meurisse",
+      "producer": "Meurisse Chocolatier",
+      "region": "Antwerp",
+      "foundation_year": 1845,
+      "certification": null
+    },
+    {
+      "id": "cocoa_9",
+      "name": "Dolfin",
+      "producer": "Dolfin Chocolates",
+      "region": "Brussels",
+      "foundation_year": 1989,
+      "certification": null
+    },
+    {
+      "id": "cocoa_10",
+      "name": "Pierre Marcolini",
+      "producer": "Maison Pierre Marcolini",
+      "region": "Brussels",
+      "foundation_year": 1995,
+      "certification": null
+    }
+  ]
+}

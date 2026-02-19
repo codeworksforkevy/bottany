@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "dataset_version": "4.0",
+    "curation_level": "academic_professional",
+    "category": "soft_drinks"
+  },
+  "items": [
+    {
+      "id": "soft_1",
+      "name": "Ritchie Lemonade",
+      "producer": "Ritchie",
+      "region": "Belgium",
+      "foundation_year": 2016,
+      "certification": null
+    },
+    {
+      "id": "soft_2",
+      "name": "Roman Cola",
+      "producer": "Brouwerij Roman",
+      "region": "East Flanders",
+      "foundation_year": 1545,
+      "certification": null
+    },
+    {
+      "id": "soft_3",
+      "name": "Spa Fruit",
+      "producer": "Spa Monopole",
+      "region": "Liège",
+      "foundation_year": 1921,
+      "certification": null
+    },
+    {
+      "id": "soft_4",
+      "name": "Chaudfontaine Ice Tea",
+      "producer": "Coca-Cola Europacific Partners Belgium",
+      "region": "Liège",
+      "foundation_year": 1925,
+      "certification": null
+    },
+    {
+      "id": "soft_5",
+      "name": "Tönissteiner Lemon",
+      "producer": "Tönissteiner",
+      "region": "Belgium",
+      "foundation_year": null,
+      "certification": null
+    },
+    {
+      "id": "soft_6",
+      "name": "Fanta Belgium",
+      "producer": "Coca-Cola Belgium",
+      "region": "Belgium",
+      "foundation_year": null,
+      "certification": null
+    },
+    {
+      "id": "soft_7",
+      "name": "Coca-Cola Belgium",
+      "producer": "Coca-Cola Belgium",
+      "region": "Belgium",
+      "foundation_year": 1927,
+      "certification": null
+    },
+    {
+      "id": "soft_8",
+      "name": "Ritchie Cola",
+      "producer": "Ritchie",
+      "region": "Belgium",
+      "foundation_year": 2016,
+      "certification": null
+    }
+  ]
+}

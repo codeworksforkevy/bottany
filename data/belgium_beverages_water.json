@@ -1,0 +1,129 @@
+{
+  "meta": {
+    "dataset_version": "4.0",
+    "curation_level": "academic_professional",
+    "category": "water"
+  },
+  "items": [
+    {
+      "id": "water_1",
+      "name": "Spa Reine",
+      "producer": "Spa Monopole",
+      "region": "Liège",
+      "foundation_year": 1921,
+      "certification": null
+    },
+    {
+      "id": "water_2",
+      "name": "Spa Intense",
+      "producer": "Spa Monopole",
+      "region": "Liège",
+      "foundation_year": 1921,
+      "certification": null
+    },
+    {
+      "id": "water_3",
+      "name": "Chaudfontaine",
+      "producer": "Coca-Cola Europacific Partners Belgium",
+      "region": "Liège",
+      "foundation_year": 1925,
+      "certification": null
+    },
+    {
+      "id": "water_4",
+      "name": "Bru",
+      "producer": "Bru-Chevron",
+      "region": "Wallonia",
+      "foundation_year": 1908,
+      "certification": null
+    },
+    {
+      "id": "water_5",
+      "name": "Val",
+      "producer": "Sources Alma",
+      "region": "Wallonia",
+      "foundation_year": null,
+      "certification": null
+    },
+    {
+      "id": "water_6",
+      "name": "Valvert",
+      "producer": "Valvert Group",
+      "region": "Wallonia",
+      "foundation_year": null,
+      "certification": null
+    },
+    {
+      "id": "water_7",
+      "name": "Eau de Villers",
+      "producer": "Villers Monastery Springs",
+      "region": "Walloon Brabant",
+      "foundation_year": null,
+      "certification": null
+    },
+    {
+      "id": "water_8",
+      "name": "Spa Marie-Henriette",
+      "producer": "Spa Monopole",
+      "region": "Liège",
+      "foundation_year": 1921,
+      "certification": null
+    },
+    {
+      "id": "water_9",
+      "name": "Cristaline Belgium",
+      "producer": "Sources Alma",
+      "region": "Belgium",
+      "foundation_year": null,
+      "certification": null
+    },
+    {
+      "id": "water_10",
+      "name": "Spa Barisart",
+      "producer": "Spa Monopole",
+      "region": "Liège",
+      "foundation_year": 1921,
+      "certification": null
+    },
+    {
+      "id": "water_11",
+      "name": "Chaudfontaine Sparkling",
+      "producer": "Coca-Cola Europacific Partners Belgium",
+      "region": "Liège",
+      "foundation_year": 1925,
+      "certification": null
+    },
+    {
+      "id": "water_12",
+      "name": "Spa Touch",
+      "producer": "Spa Monopole",
+      "region": "Liège",
+      "foundation_year": 1921,
+      "certification": null
+    },
+    {
+      "id": "water_13",
+      "name": "Spa Duo",
+      "producer": "Spa Monopole",
+      "region": "Liège",
+      "foundation_year": 1921,
+      "certification": null
+    },
+    {
+      "id": "water_14",
+      "name": "Bru Sparkling",
+      "producer": "Bru-Chevron",
+      "region": "Wallonia",
+      "foundation_year": 1908,
+      "certification": null
+    },
+    {
+      "id": "water_15",
+      "name": "Chaudfontaine Fusion",
+      "producer": "Coca-Cola Europacific Partners Belgium",
+      "region": "Liège",
+      "foundation_year": 1925,
+      "certification": null
+    }
+  ]
+}
