@@ -14,9 +14,10 @@ DATA_FILES = {
 }
 
 
-# -------------------------------------------------
+# =================================================
 # LOAD ALL CATEGORY FILES
-# -------------------------------------------------
+# =================================================
+
 def _load_all(data_dir: str) -> List[Dict[str, Any]]:
     all_items: List[Dict[str, Any]] = []
 
@@ -25,8 +26,11 @@ def _load_all(data_dir: str) -> List[Dict[str, Any]]:
         if not os.path.exists(path):
             continue
 
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+        except Exception:
+            continue
 
         for item in data.get("items", []):
             item["category"] = category
@@ -35,18 +39,16 @@ def _load_all(data_dir: str) -> List[Dict[str, Any]]:
     return all_items
 
 
-# -------------------------------------------------
-# NORMALIZE
-# -------------------------------------------------
+# =================================================
+# HELPERS
+# =================================================
+
 def _norm_category(x: Optional[str]) -> Optional[str]:
     if not x:
         return None
     return x.strip().lower()
 
 
-# -------------------------------------------------
-# SORT
-# -------------------------------------------------
 def _sort_key(item: Dict[str, Any]) -> Tuple[str, str]:
     return (
         item.get("category", ""),
@@ -54,9 +56,6 @@ def _sort_key(item: Dict[str, Any]) -> Tuple[str, str]:
     )
 
 
-# -------------------------------------------------
-# EMBED FORMATTER
-# -------------------------------------------------
 def _format_item(it: Dict[str, Any]) -> str:
     name = it.get("name", "")
     producer = it.get("producer", "")
@@ -83,13 +82,19 @@ def _format_item(it: Dict[str, Any]) -> str:
     return line
 
 
-# -------------------------------------------------
-# GROUP
-# -------------------------------------------------
-class BelgiumBeveragesGroup(app_commands.Group):
-    def __init__(self, data_dir: str):
-        super().__init__(name="belgium", description="Belgium cultural registry")
-        self._data_dir = data_dir
+# =================================================
+# REGISTER (HYBRID LOADER COMPATIBLE)
+# =================================================
+
+async def register(bot, data_dir: str):
+
+    root = bot.tree.get_command("belgium")
+
+    if not isinstance(root, app_commands.Group):
+        return  # belgium group henüz yoksa çık
+
+    if getattr(bot, "_belgium_beverages_registered", False):
+        return
 
     @app_commands.command(
         name="beverages",
@@ -99,11 +104,11 @@ class BelgiumBeveragesGroup(app_commands.Group):
         category="Filter by category (water, coffee, soft_drinks, cocoa)"
     )
     async def beverages(
-        self,
         interaction: discord.Interaction,
         category: Optional[str] = None
     ):
-        items = _load_all(self._data_dir)
+
+        items = _load_all(data_dir)
 
         cat = _norm_category(category)
 
@@ -134,17 +139,7 @@ class BelgiumBeveragesGroup(app_commands.Group):
 
         await interaction.response.send_message(embed=embed)
 
+    if not root.get_command("beverages"):
+        root.add_command(beverages)
 
-# -------------------------------------------------
-# REGISTER
-# -------------------------------------------------
-async def register_belgium_beverages(bot, data_dir: str):
-
-    existing = bot.tree.get_command("belgium")
-    group = BelgiumBeveragesGroup(data_dir)
-
-    if existing and isinstance(existing, app_commands.Group):
-        if not existing.get_command("beverages"):
-            existing.add_command(group.get_command("beverages"))
-    else:
-        bot.tree.add_command(group)
+    bot._belgium_beverages_registered = True
