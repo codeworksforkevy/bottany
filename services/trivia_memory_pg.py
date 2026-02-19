@@ -3,9 +3,11 @@ import psycopg
 
 DATABASE_URL = os.getenv("DATABASE_URL")
 
-DECAY_LAMBDA = 0.3      # entry-level weekly decay
-FIELD_DECAY_LAMBDA = 0.25  # field-level weekly decay
+DECAY_LAMBDA = 0.3
+FIELD_DECAY_LAMBDA = 0.25
 COLD_START_BOOST = 2.0
+
+TARGET_FIELD_RATIO = 0.35  # entropy target
 
 
 # -------------------------------------------------
@@ -18,7 +20,6 @@ def init_db():
     with psycopg.connect(DATABASE_URL) as conn:
         with conn.cursor() as cur:
 
-            # Entry-level tracking
             cur.execute("""
             CREATE TABLE IF NOT EXISTS global_shown (
                 entry_id TEXT PRIMARY KEY,
@@ -27,7 +28,6 @@ def init_db():
             );
             """)
 
-            # User history
             cur.execute("""
             CREATE TABLE IF NOT EXISTS user_history (
                 user_id BIGINT NOT NULL,
@@ -36,7 +36,6 @@ def init_db():
             );
             """)
 
-            # Field-level entropy tracking
             cur.execute("""
             CREATE TABLE IF NOT EXISTS field_stats (
                 field TEXT PRIMARY KEY,
@@ -49,19 +48,9 @@ def init_db():
 
 
 # -------------------------------------------------
-# WEIGHTED SELECT WITH:
-# - Weekly decay
-# - Cold start boost
-# - Field entropy balancing
+# WEIGHTED SELECT WITH ENTROPY TARGET
 # -------------------------------------------------
 def weighted_select(entries, user_id, k=25):
-    """
-    entries = list of dict:
-        {
-            "id": "...",
-            "field": "..."
-        }
-    """
 
     if not entries:
         return []
@@ -73,7 +62,12 @@ def weighted_select(entries, user_id, k=25):
         with conn.cursor() as cur:
 
             cur.execute(f"""
-            WITH candidates AS (
+            WITH total_field AS (
+                SELECT COALESCE(SUM(score), 0) AS total_score
+                FROM field_stats
+            ),
+
+            candidates AS (
                 SELECT
                     e.entry_id,
 
@@ -88,6 +82,8 @@ def weighted_select(entries, user_id, k=25):
                         EXTRACT(EPOCH FROM (NOW() - f.last_updated)) / 604800,
                         0
                     ) AS field_weeks,
+
+                    (SELECT total_score FROM total_field) AS total_field_score,
 
                     CASE
                         WHEN g.entry_id IS NULL THEN {COLD_START_BOOST}
@@ -123,26 +119,27 @@ def weighted_select(entries, user_id, k=25):
             SELECT entry_id
             FROM candidates
             ORDER BY RANDOM()
-                * (
+                *
+                (
                     1.0 /
-                    (
-                        1 + (
-                            entry_score
-                            * exp(-{DECAY_LAMBDA} * entry_weeks)
-                        )
-                    )
+                    (1 + (entry_score * exp(-{DECAY_LAMBDA} * entry_weeks)))
                 )
-                * (
+                *
+                (
                     1.0 /
-                    (
-                        1 + (
-                            field_score
-                            * exp(-{FIELD_DECAY_LAMBDA} * field_weeks)
-                        )
-                    )
+                    (1 + (field_score * exp(-{FIELD_DECAY_LAMBDA} * field_weeks)))
                 )
-                * cold_boost
-                * user_factor
+                *
+                CASE
+                    WHEN total_field_score > 0
+                         AND field_score > total_field_score * {TARGET_FIELD_RATIO}
+                    THEN 0.6
+                    ELSE 1.0
+                END
+                *
+                cold_boost
+                *
+                user_factor
             DESC
             LIMIT %s;
             """, (
@@ -156,11 +153,10 @@ def weighted_select(entries, user_id, k=25):
             rows = cur.fetchall()
             selected_ids = [r[0] for r in rows]
 
-            # ---- Update entry + field stats ----
+            # --- UPDATE STATS ---
             for entry_id in selected_ids:
                 field = entry_fields.get(entry_id)
 
-                # Entry update
                 cur.execute("""
                 INSERT INTO global_shown (entry_id, score, last_updated)
                 VALUES (%s, 1, NOW())
@@ -170,14 +166,12 @@ def weighted_select(entries, user_id, k=25):
                     last_updated = NOW();
                 """, (entry_id,))
 
-                # User history update
                 cur.execute("""
                 INSERT INTO user_history (user_id, entry_id)
                 VALUES (%s, %s)
                 ON CONFLICT DO NOTHING;
                 """, (user_id, entry_id))
 
-                # Field update
                 if field:
                     cur.execute("""
                     INSERT INTO field_stats (field, score, last_updated)
@@ -194,9 +188,10 @@ def weighted_select(entries, user_id, k=25):
 
 
 # -------------------------------------------------
-# STATS
+# STATS (Entropy + Health)
 # -------------------------------------------------
 def stats():
+
     with psycopg.connect(DATABASE_URL) as conn:
         with conn.cursor() as cur:
 
@@ -209,13 +204,32 @@ def stats():
             cur.execute("""
             SELECT field, score
             FROM field_stats
-            ORDER BY score DESC
-            LIMIT 5;
+            ORDER BY score DESC;
             """)
-            top_fields = cur.fetchall()
+            field_rows = cur.fetchall()
+
+    total_field_score = sum(row[1] for row in field_rows) or 1
+
+    field_distribution = [
+        (field, round((score / total_field_score) * 100, 2))
+        for field, score in field_rows
+    ]
+
+    # Shannon entropy calculation
+    import math
+    entropy = 0
+    for _, score in field_rows:
+        p = score / total_field_score
+        entropy -= p * math.log(p, 2)
+
+    max_entropy = math.log(len(field_rows), 2) if field_rows else 1
+    health = round((entropy / max_entropy) * 100, 2) if max_entropy > 0 else 0
 
     return {
         "tracked_entries": tracked,
         "total_score": total_score,
-        "top_fields": top_fields
+        "field_distribution": field_distribution,
+        "diversity_count": len(field_rows),
+        "entropy_score": round(entropy, 3),
+        "health_percent": health
     }
