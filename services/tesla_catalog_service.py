@@ -1,11 +1,10 @@
 import os
 import json
 
-CATALOG_FILE = "tesla_catalog.json"
 
 async def get_tesla_catalog(DATA_DIR):
 
-    path = os.path.join(DATA_DIR, CATALOG_FILE)
+    path = os.path.join(DATA_DIR, "tesla_catalog.json")
 
     if not os.path.exists(path):
         return {"items": [], "count": 0}
@@ -13,10 +12,14 @@ async def get_tesla_catalog(DATA_DIR):
     try:
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
-            return {
-                "items": data.get("items", []),
-                "count": len(data.get("items", []))
-            }
+
+        items = data.get("items", [])
+        return {
+            "items": items,
+            "count": len(items)
+        }
+
     except Exception:
         return {"items": [], "count": 0}
+
 
