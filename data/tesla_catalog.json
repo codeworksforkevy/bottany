@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "source": "Curated Tesla Patent Dataset",
+    "count": 5
+  },
+  "items": [
+    {
+      "patent_number": "381968",
+      "title": "Electro Magnetic Motor",
+      "year": "1888",
+      "category": "electric_motor",
+      "source_url": "https://ppubs.uspto.gov/dirsearch-public/print/downloadPdf/381968"
+    },
+    {
+      "patent_number": "390721",
+      "title": "Dynamo Electric Machine",
+      "year": "1888",
+      "category": "alternating_current",
+      "source_url": "https://ppubs.uspto.gov/dirsearch-public/print/downloadPdf/390721"
+    },
+    {
+      "patent_number": "645576",
+      "title": "System of Transmission of Electrical Energy",
+      "year": "1900",
+      "category": "wireless_power",
+      "source_url": "https://ppubs.uspto.gov/dirsearch-public/print/downloadPdf/645576"
+    },
+    {
+      "patent_number": "568178",
+      "title": "Electrical Condenser",
+      "year": "1896",
+      "category": "electrical_general",
+      "source_url": "https://ppubs.uspto.gov/dirsearch-public/print/downloadPdf/568178"
+    },
+    {
+      "patent_number": "514972",
+      "title": "Electric Meter",
+      "year": "1894",
+      "category": "electrical_general",
+      "source_url": "https://ppubs.uspto.gov/dirsearch-public/print/downloadPdf/514972"
+    }
+  ]
+}
