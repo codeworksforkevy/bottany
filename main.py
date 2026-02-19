@@ -75,7 +75,6 @@ class BottanyBot(commands.Bot):
 
     def __init__(self):
         super().__init__(command_prefix="!", intents=intents)
-        self._sync_allowed = False
 
     # -------------------------------------------------
     # HYBRID AUTO LOADER
@@ -103,11 +102,9 @@ class BottanyBot(commands.Bot):
                 func = module.register
                 sig = list(inspect.signature(func).parameters.keys())
 
-                # ---- NEW SYSTEM ----
                 if sig == ["tree"]:
                     result = func(self.tree)
 
-                # ---- OLD SYSTEM ----
                 elif sig == ["bot", "data_dir"]:
                     result = func(self, DATA_DIR)
 
@@ -144,11 +141,15 @@ class BottanyBot(commands.Bot):
         try:
             if ENV == "dev" and GUILD_ID:
                 guild = discord.Object(id=GUILD_ID)
+
+                # 🔥 CRITICAL FIX
+                self.tree.copy_global_to(guild=guild)
+
                 synced = await self.tree.sync(guild=guild)
                 logger.info("Dev guild sync (%s commands).", len(synced))
 
             elif ENV == "production":
-                logger.info("Production mode — global auto-sync disabled.")
+                logger.info("Production mode — auto global sync disabled.")
 
             else:
                 synced = await self.tree.sync()
@@ -214,8 +215,7 @@ async def sync_global(interaction: discord.Interaction):
             f"Global sync complete ({len(synced)} commands).",
             ephemeral=True
         )
-    except Exception as e:
-        capture_exception(e, context="manual_sync")
+    except Exception:
         await interaction.response.send_message(
             "Sync failed. Check logs.",
             ephemeral=True
@@ -223,7 +223,7 @@ async def sync_global(interaction: discord.Interaction):
 
 
 # =================================================
-# HEALTH HTTP ENDPOINT (Railway)
+# HEALTH HTTP ENDPOINT
 # =================================================
 
 async def health(request):
@@ -270,7 +270,4 @@ async def main():
 
 
 if __name__ == "__main__":
-    try:
-        asyncio.run(main())
-    except Exception as e:
-        capture_exception(e, context="main_boot")
+    asyncio.run(main())
