@@ -6,6 +6,7 @@ import logging
 import signal
 import pkgutil
 import importlib
+import inspect
 from pathlib import Path
 
 import discord
@@ -77,7 +78,7 @@ class BottanyBot(commands.Bot):
         self._sync_allowed = False
 
     # -------------------------------------------------
-    # AUTO LOADER (STRICT CONTRACT)
+    # HYBRID AUTO LOADER
     # -------------------------------------------------
 
     async def load_command_modules(self):
@@ -95,11 +96,39 @@ class BottanyBot(commands.Bot):
             try:
                 module = importlib.import_module(full_name)
 
-                if hasattr(module, "register"):
-                    module.register(self.tree)
-                    logger.info("Registered %s", full_name)
+                if not hasattr(module, "register"):
+                    logger.warning("%s has no register function", full_name)
+                    continue
+
+                func = module.register
+                sig = list(inspect.signature(func).parameters.keys())
+
+                # ---- NEW SYSTEM ----
+                if sig == ["tree"]:
+                    result = func(self.tree)
+
+                # ---- OLD SYSTEM ----
+                elif sig == ["bot", "data_dir"]:
+                    result = func(self, DATA_DIR)
+
+                elif sig == ["bot"]:
+                    result = func(self)
+
+                elif len(sig) == 0:
+                    result = func()
+
                 else:
-                    logger.warning("%s has no register(tree)", full_name)
+                    logger.warning(
+                        "%s has unsupported register signature: %s",
+                        full_name,
+                        sig
+                    )
+                    continue
+
+                if asyncio.iscoroutine(result):
+                    await result
+
+                logger.info("Registered %s", full_name)
 
             except Exception as e:
                 capture_exception(e, context=f"load:{full_name}")
@@ -119,7 +148,7 @@ class BottanyBot(commands.Bot):
                 logger.info("Dev guild sync (%s commands).", len(synced))
 
             elif ENV == "production":
-                logger.info("Production mode — global sync disabled.")
+                logger.info("Production mode — global auto-sync disabled.")
 
             else:
                 synced = await self.tree.sync()
@@ -179,16 +208,18 @@ async def sync_global(interaction: discord.Interaction):
         )
         return
 
-    bot._sync_allowed = True
-
     try:
         synced = await bot.tree.sync()
         await interaction.response.send_message(
             f"Global sync complete ({len(synced)} commands).",
             ephemeral=True
         )
-    finally:
-        bot._sync_allowed = False
+    except Exception as e:
+        capture_exception(e, context="manual_sync")
+        await interaction.response.send_message(
+            "Sync failed. Check logs.",
+            ephemeral=True
+        )
 
 
 # =================================================
@@ -233,7 +264,6 @@ def install_signal_handlers():
 # =================================================
 
 async def main():
-
     install_signal_handlers()
     await start_health_server()
     await bot.start(DISCORD_TOKEN)
