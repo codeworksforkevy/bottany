@@ -6,6 +6,7 @@ from discord.ext import commands
 import pkgutil
 import importlib
 import inspect
+from pathlib import Path
 
 # -------------------------------------------------
 # CONFIG
@@ -14,8 +15,20 @@ ENV = os.getenv("ENV", "dev")  # dev | production
 OWNER_ID = int(os.getenv("BOT_OWNER_ID", "0"))
 GUILD_ID = int(os.getenv("DEV_GUILD_ID", "1446560723122520207"))
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_DIR = os.path.join(BASE_DIR, "data")
+BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = BASE_DIR / "data"
+
+# Ensure data directory exists
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+
+# -------------------------------------------------
+# SQLITE MEMORY INIT
+# -------------------------------------------------
+try:
+    from services.trivia_memory import init_db
+    init_db()
+except Exception as e:
+    print(f"[WARN] SQLite init failed: {e}")
 
 # -------------------------------------------------
 # LOGGING
@@ -45,7 +58,6 @@ class BottanyBot(commands.Bot):
         self._original_sync = self.tree.sync
         self._install_sync_guard()
 
-        # Unified Twitch Layer placeholder
         self.twitch_layer = None
 
     # -------------------------------------------------
@@ -169,7 +181,7 @@ class BottanyBot(commands.Bot):
     # -------------------------------------------------
     async def setup_hook(self):
 
-        # Load unified Twitch data layer
+        # Load Twitch data layer
         try:
             from services.twitch_data_layer import TwitchDataLayer
             self.twitch_layer = TwitchDataLayer(DATA_DIR)
@@ -194,7 +206,6 @@ class BottanyBot(commands.Bot):
         except Exception as e:
             logger.error("Sync failed: %s", e)
 
-        # Prewarm Twitch after sync
         await self._prewarm_twitch()
 
     async def on_ready(self):
@@ -243,7 +254,10 @@ async def twitch_metrics(interaction: discord.Interaction):
         return
 
     if not bot.twitch_layer:
-        await interaction.response.send_message("Twitch layer not initialized.", ephemeral=True)
+        await interaction.response.send_message(
+            "Twitch layer not initialized.",
+            ephemeral=True
+        )
         return
 
     metrics = bot.twitch_layer.metrics()
