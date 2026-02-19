@@ -1,6 +1,5 @@
 import discord
 from discord import app_commands
-import random
 from pathlib import Path
 
 from services.academic_trivia_loader import get_random_batch
@@ -27,7 +26,7 @@ class TriviaPager(discord.ui.View):
             footer_parts.append(item["author"])
 
         if item.get("field"):
-            footer_parts.append(item["field"])
+            footer_parts.append(item["field"].upper())
 
         if footer_parts:
             embed.set_footer(text=" | ".join(footer_parts))
@@ -74,7 +73,13 @@ async def register(bot, data_dir):
 
         BASE_DIR = Path(__file__).resolve().parent.parent
 
-        items = get_random_batch(BASE_DIR, size=25)
+        user_id = interaction.user.id
+
+        items = get_random_batch(
+            BASE_DIR,
+            user_id=user_id,
+            size=25
+        )
 
         if not items:
             await interaction.response.send_message(
@@ -91,6 +96,7 @@ async def register(bot, data_dir):
         )
 
     bot.tree.add_command(academic_group, guild=guild)
+
 
 
 
