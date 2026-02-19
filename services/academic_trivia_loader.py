@@ -1,34 +1,55 @@
-import os
 import json
 import random
+from pathlib import Path
 
-def load_academic_trivia_from_directory(base_dir):
-    trivia_pool = []
 
-    trivia_dir = os.path.join(base_dir, "academic-trivia", "academic-trivia")
+def load_academic_directory(base_path: Path):
+    """
+    Loads all academic trivia JSON files from:
+    academic-trivia/academic-trivia/
+    """
 
-    if not os.path.exists(trivia_dir):
+    trivia_dir = base_path / "academic-trivia" / "academic-trivia"
+
+    if not trivia_dir.exists():
         print(f"[WARN] Trivia directory not found: {trivia_dir}")
-        return trivia_pool
+        return []
 
-    for filename in os.listdir(trivia_dir):
-        if filename.endswith(".json"):
-            path = os.path.join(trivia_dir, filename)
-            try:
-                with open(path, "r", encoding="utf-8") as f:
-                    data = json.load(f)
-                    if isinstance(data, list):
-                        trivia_pool.extend(data)
-                    else:
-                        print(f"[WARN] {filename} is not a list")
-            except Exception as e:
-                print(f"[ERROR] Failed loading {filename}: {e}")
+    all_items = []
 
-    return trivia_pool
+    for file in trivia_dir.glob("*.json"):
+        try:
+            with open(file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+
+            metadata = data.get("metadata", {})
+            author = metadata.get("author", "Unknown Author")
+
+            for entry in data.get("entries", []):
+                text = entry.get("text", "").strip()
+
+                if not text:
+                    continue
+
+                all_items.append({
+                    "text": text,
+                    "field": entry.get("field", ""),
+                    "author": author,
+                    "source_file": file.name
+                })
+
+        except Exception as e:
+            print(f"[ERROR] Failed loading {file.name}: {e}")
+
+    return all_items
 
 
-def get_random_trivia(base_dir):
-    pool = load_academic_trivia_from_directory(base_dir)
-    if not pool:
-        return None
-    return random.choice(pool)
+def get_random_batch(base_path: Path, size: int = 25):
+    items = load_academic_directory(base_path)
+
+    if not items:
+        return []
+
+    random.shuffle(items)
+    return items[:size]
+
