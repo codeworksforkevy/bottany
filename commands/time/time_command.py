@@ -91,7 +91,7 @@ def day_icon(hour: int) -> str:
         return "🌇"
     elif 20 <= hour < 23:
         return "🌆"
-    return "🌙"
+    return "🌌"
 
 
 # =====================================================
