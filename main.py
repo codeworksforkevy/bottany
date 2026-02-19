@@ -12,6 +12,7 @@ from pathlib import Path
 import discord
 from discord.ext import commands
 from aiohttp import web
+import aiohttp
 
 
 # =================================================
@@ -75,6 +76,7 @@ class BottanyBot(commands.Bot):
 
     def __init__(self):
         super().__init__(command_prefix="!", intents=intents)
+        self.http_session: aiohttp.ClientSession | None = None
 
     # -------------------------------------------------
     # HYBRID AUTO LOADER
@@ -136,13 +138,16 @@ class BottanyBot(commands.Bot):
 
     async def setup_hook(self):
 
+        # 🔥 GLOBAL HTTP SESSION (fixes unclosed session errors)
+        self.http_session = aiohttp.ClientSession()
+
         await self.load_command_modules()
 
         try:
             if ENV == "dev" and GUILD_ID:
                 guild = discord.Object(id=GUILD_ID)
 
-                # 🔥 CRITICAL FIX
+                # Copy global commands to dev guild
                 self.tree.copy_global_to(guild=guild)
 
                 synced = await self.tree.sync(guild=guild)
@@ -158,7 +163,10 @@ class BottanyBot(commands.Bot):
         except Exception as e:
             capture_exception(e, context="tree_sync")
 
-        # Global slash error handler
+        # -------------------------------------------------
+        # GLOBAL SLASH ERROR HANDLER
+        # -------------------------------------------------
+
         @self.tree.error
         async def on_app_command_error(interaction, error):
 
@@ -169,11 +177,14 @@ class BottanyBot(commands.Bot):
                 guild_id=interaction.guild_id,
             )
 
-            if not interaction.response.is_done():
-                await interaction.response.send_message(
-                    "An internal error occurred.",
-                    ephemeral=True
-                )
+            try:
+                if not interaction.response.is_done():
+                    await interaction.response.send_message(
+                        "An internal error occurred.",
+                        ephemeral=True
+                    )
+            except Exception:
+                pass
 
     async def on_ready(self):
         logger.info("Bot ready as %s", self.user)
@@ -215,7 +226,8 @@ async def sync_global(interaction: discord.Interaction):
             f"Global sync complete ({len(synced)} commands).",
             ephemeral=True
         )
-    except Exception:
+    except Exception as e:
+        capture_exception(e, context="manual_sync")
         await interaction.response.send_message(
             "Sync failed. Check logs.",
             ephemeral=True
@@ -223,7 +235,7 @@ async def sync_global(interaction: discord.Interaction):
 
 
 # =================================================
-# HEALTH HTTP ENDPOINT
+# HEALTH HTTP ENDPOINT (Railway)
 # =================================================
 
 async def health(request):
@@ -242,11 +254,19 @@ async def start_health_server():
 
 
 # =================================================
-# GRACEFUL SHUTDOWN
+# GRACEFUL SHUTDOWN (FIXES SESSION LEAK)
 # =================================================
 
 async def shutdown():
     logger.info("Graceful shutdown initiated.")
+
+    try:
+        if bot.http_session and not bot.http_session.closed:
+            await bot.http_session.close()
+            logger.info("HTTP session closed.")
+    except Exception:
+        pass
+
     await bot.close()
 
 
@@ -270,4 +290,7 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    try:
+        asyncio.run(main())
+    except Exception as e:
+        capture_exception(e, context="main_boot")
