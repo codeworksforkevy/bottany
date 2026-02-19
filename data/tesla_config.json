@@ -1,0 +1,4 @@
+{
+  "refresh_days": 30,
+  "cache_file": "tesla_cache.json"
+}
