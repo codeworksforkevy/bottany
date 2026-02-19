@@ -8,7 +8,7 @@ from discord.ext import tasks
 from discord import app_commands
 
 # -------------------------------------------------
-# SAFE IMPORTS (freegames logic)
+# SAFE IMPORTS
 # -------------------------------------------------
 
 try:
@@ -30,19 +30,19 @@ except Exception:
 # -------------------------------------------------
 
 STATE_FILE = "weekly_digest_state.json"
-POST_HOUR_UTC = 18  # Friday 18:00 UTC
+POST_HOUR_UTC = 18
 
 
 # -------------------------------------------------
 # JSON UTIL
 # -------------------------------------------------
 
-def _load(path: str, default=None):
+def _load(path: str):
     try:
         with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
     except Exception:
-        return default or {"last_post_iso": ""}
+        return {"last_post_iso": ""}
 
 
 def _save(path: str, obj):
@@ -56,8 +56,7 @@ def _save(path: str, obj):
 # -------------------------------------------------
 
 def _fmt(items, limit=10):
-    lines = [f"• {i}" for i in items[:limit]]
-    return "\n".join(lines)[:1024]
+    return "\n".join(f"• {i}" for i in items[:limit])[:1024]
 
 
 def _has_any(*groups):
@@ -65,7 +64,7 @@ def _has_any(*groups):
 
 
 # -------------------------------------------------
-# EMBED BUILDER
+# EMBED
 # -------------------------------------------------
 
 def build_weekly_embed(epic, gog, luna, humble):
@@ -78,32 +77,16 @@ def build_weekly_embed(epic, gog, luna, humble):
     )
 
     if epic:
-        embed.add_field(
-            name="Epic Games (Free)",
-            value=_fmt(epic),
-            inline=False
-        )
+        embed.add_field(name="Epic Games (Free)", value=_fmt(epic), inline=False)
 
     if gog:
-        embed.add_field(
-            name="GOG (Deals)",
-            value=_fmt(gog),
-            inline=False
-        )
+        embed.add_field(name="GOG (Deals)", value=_fmt(gog), inline=False)
 
     if luna:
-        embed.add_field(
-            name="Amazon Luna",
-            value=_fmt(luna),
-            inline=False
-        )
+        embed.add_field(name="Amazon Luna", value=_fmt(luna), inline=False)
 
     if humble:
-        embed.add_field(
-            name="Humble Bundle",
-            value=_fmt(humble),
-            inline=False
-        )
+        embed.add_field(name="Humble Bundle", value=_fmt(humble), inline=False)
 
     embed.set_footer(text="Auto-generated weekly digest")
 
@@ -111,33 +94,29 @@ def build_weekly_embed(epic, gog, luna, humble):
 
 
 # -------------------------------------------------
-# REGISTER
+# REGISTER (HYBRID LOADER COMPATIBLE)
 # -------------------------------------------------
 
-def register_weekly(client: discord.Client, tree, data_dir):
+async def register(bot: discord.Client, data_dir: str):
 
-    state_path = os.path.join(data_dir, STATE_FILE)
-    state = _load(state_path, {"last_post_iso": ""})
-
-    channel_id = int(os.getenv("WEEKLY_DIGEST_CHANNEL_ID", "0"))
-
-    # -------------------------------------------------
-    # GROUP (duplicate-safe)
-    # -------------------------------------------------
-
-    existing = tree.get_command("weekly")
+    existing = bot.tree.get_command("weekly")
 
     if isinstance(existing, app_commands.Group):
         weekly_group = existing
+    elif existing:
+        raise RuntimeError("Command name collision: 'weekly' exists.")
     else:
         weekly_group = app_commands.Group(
             name="weekly",
             description="Weekly gaming digest tools"
         )
-        tree.add_command(weekly_group)
+        bot.tree.add_command(weekly_group)
+
+    state_path = os.path.join(data_dir, STATE_FILE)
+    channel_id = int(os.getenv("WEEKLY_DIGEST_CHANNEL_ID", "0"))
 
     # -------------------------------------------------
-    # COMMAND: preview
+    # PREVIEW
     # -------------------------------------------------
 
     @weekly_group.command(name="preview", description="Admin-only weekly preview")
@@ -153,20 +132,17 @@ def register_weekly(client: discord.Client, tree, data_dir):
         humble = fetch_humble_bundle()
 
         if not _has_any(epic, gog, luna, humble):
-            await interaction.response.send_message(
-                "No weekly content available.",
-                ephemeral=True
-            )
+            await interaction.response.send_message("No weekly content available.", ephemeral=True)
             return
 
         embed = build_weekly_embed(epic, gog, luna, humble)
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
     # -------------------------------------------------
-    # COMMAND: post (manual force)
+    # POST (MANUAL)
     # -------------------------------------------------
 
-    @weekly_group.command(name="post", description="Force post weekly digest (Admin only)")
+    @weekly_group.command(name="post", description="Force post weekly digest")
     async def weekly_post(interaction: discord.Interaction):
 
         if not interaction.user.guild_permissions.administrator:
@@ -174,10 +150,7 @@ def register_weekly(client: discord.Client, tree, data_dir):
             return
 
         if not channel_id:
-            await interaction.response.send_message(
-                "WEEKLY_DIGEST_CHANNEL_ID not configured.",
-                ephemeral=True
-            )
+            await interaction.response.send_message("Channel not configured.", ephemeral=True)
             return
 
         epic = fetch_epic_free_games()
@@ -186,35 +159,29 @@ def register_weekly(client: discord.Client, tree, data_dir):
         humble = fetch_humble_bundle()
 
         if not _has_any(epic, gog, luna, humble):
-            await interaction.response.send_message(
-                "No weekly content available.",
-                ephemeral=True
-            )
+            await interaction.response.send_message("No weekly content available.", ephemeral=True)
             return
 
-        channel = client.get_channel(channel_id)
+        channel = bot.get_channel(channel_id)
         if not channel:
-            await interaction.response.send_message(
-                "Configured channel not found.",
-                ephemeral=True
-            )
+            await interaction.response.send_message("Channel not found.", ephemeral=True)
             return
 
         embed = build_weekly_embed(epic, gog, luna, humble)
         await channel.send(embed=embed)
 
-        now = datetime.datetime.utcnow()
-        state["last_post_iso"] = now.isoformat()
+        state = _load(state_path)
+        state["last_post_iso"] = datetime.datetime.utcnow().isoformat()
         _save(state_path, state)
 
-        await interaction.response.send_message(
-            "Weekly digest posted successfully.",
-            ephemeral=True
-        )
+        await interaction.response.send_message("Weekly digest posted.", ephemeral=True)
 
     # -------------------------------------------------
-    # BACKGROUND AUTO POST
+    # AUTO FRIDAY POSTER
     # -------------------------------------------------
+
+    if getattr(bot, "_weekly_started", False):
+        return
 
     @tasks.loop(minutes=30)
     async def friday_poster():
@@ -227,6 +194,7 @@ def register_weekly(client: discord.Client, tree, data_dir):
         if now.hour < POST_HOUR_UTC:
             return
 
+        state = _load(state_path)
         last_iso = state.get("last_post_iso")
 
         if last_iso:
@@ -245,7 +213,7 @@ def register_weekly(client: discord.Client, tree, data_dir):
         if not channel_id:
             return
 
-        channel = client.get_channel(channel_id)
+        channel = bot.get_channel(channel_id)
         if not channel:
             return
 
@@ -257,8 +225,7 @@ def register_weekly(client: discord.Client, tree, data_dir):
 
     @friday_poster.before_loop
     async def before():
-        await client.wait_until_ready()
+        await bot.wait_until_ready()
 
-    if not getattr(client, "_weekly_started", False):
-        client._weekly_started = True
-        friday_poster.start()
+    bot._weekly_started = True
+    friday_poster.start()
