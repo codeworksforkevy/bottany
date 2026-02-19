@@ -1,133 +1,97 @@
-import json
-import time
+import discord
+from discord import app_commands
 from pathlib import Path
-from typing import Dict, List
 
-from services.trivia_memory_pg import weighted_select
-
-
-# -------------------------------------------------
-# CACHE
-# -------------------------------------------------
-_CACHE = {
-    "data": {},      # entry_id -> entry dict
-    "last_load": 0
-}
-
-CACHE_TTL = 300  # seconds
+from services.academic_trivia_loader import get_weighted_batch
 
 
-# -------------------------------------------------
-# LOAD ALL ENTRIES FROM DISK
-# -------------------------------------------------
-def _load_from_disk(base_path: Path) -> Dict[str, Dict]:
+class TriviaPager(discord.ui.View):
+    def __init__(self, items, index: int = 0):
+        super().__init__(timeout=180)
+        self.items = items
+        self.index = index
 
-    trivia_dir = base_path / "academic-trivia" / "academic-trivia"
+    def make_embed(self) -> discord.Embed:
+        item = self.items[self.index]
 
-    if not trivia_dir.exists():
-        return {}
+        embed = discord.Embed(
+            title="Academic Trivia",
+            description=item["text"],
+            color=0x5865F2
+        )
 
-    all_entries = {}
-    seen_texts = set()
+        footer_parts = []
 
-    for file in trivia_dir.glob("*.json"):
-        with open(file, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        if item.get("author"):
+            footer_parts.append(item["author"])
 
-        metadata = data.get("metadata", {})
-        author = metadata.get("author", "Unknown Author")
+        if item.get("field"):
+            footer_parts.append(item["field"].upper())
 
-        for idx, entry in enumerate(data.get("entries", [])):
-            text = (entry.get("text") or "").strip()
-            if not text:
-                continue
+        if footer_parts:
+            embed.set_footer(text=" | ".join(footer_parts))
 
-            norm = text.lower()
-            if norm in seen_texts:
-                continue
-            seen_texts.add(norm)
+        embed.add_field(
+            name="Item",
+            value=f"{self.index + 1}/{len(self.items)}",
+            inline=False
+        )
 
-            entry_id = entry.get("id") or f"{file.stem}_{idx}"
+        return embed
 
-            all_entries[entry_id] = {
-                "id": entry_id,
-                "text": text,
-                "field": entry.get("field"),
-                "author": author
-            }
+    @discord.ui.button(label="◀ Prev", style=discord.ButtonStyle.secondary)
+    async def prev(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.index = (self.index - 1) % len(self.items)
+        await interaction.response.edit_message(
+            embed=self.make_embed(),
+            view=self
+        )
 
-    return all_entries
-
-
-# -------------------------------------------------
-# PUBLIC LOADER (WITH CACHE)
-# -------------------------------------------------
-def load_academic_directory(base_path: Path) -> Dict[str, Dict]:
-
-    now = time.time()
-
-    if (
-        _CACHE["data"]
-        and (now - _CACHE["last_load"] < CACHE_TTL)
-    ):
-        return _CACHE["data"]
-
-    data = _load_from_disk(base_path)
-
-    _CACHE["data"] = data
-    _CACHE["last_load"] = now
-
-    return data
+    @discord.ui.button(label="Next ▶", style=discord.ButtonStyle.secondary)
+    async def next(self, interaction: discord.Interaction, button: discord.ui.Button):
+        self.index = (self.index + 1) % len(self.items)
+        await interaction.response.edit_message(
+            embed=self.make_embed(),
+            view=self
+        )
 
 
-# -------------------------------------------------
-# MAIN ENTRY POINT FOR COMMAND
-# -------------------------------------------------
-def get_weighted_batch(
-    base_path: Path,
-    user_id: int,
-    size: int = 25,
-    author_filter: str | None = None
-) -> List[Dict]:
+async def register(bot, data_dir):
 
-    entries = load_academic_directory(base_path)
+    guild = discord.Object(id=1446560723122520207)
 
-    items = list(entries.values())
-
-    # Optional author filter
-    if author_filter:
-        items = [
-            i for i in items
-            if author_filter.lower() in (i.get("author") or "").lower()
-        ]
-
-    if not items:
-        return []
-
-    # Prepare minimal payload for SQL layer
-    sql_payload = [
-        {
-            "id": i["id"],
-            "field": i.get("field")
-        }
-        for i in items
-    ]
-
-    # SQL does:
-    # - weekly decay
-    # - cold start boost
-    # - user repetition suppression
-    # - field entropy balancing
-    selected_ids = weighted_select(
-        sql_payload,
-        user_id=user_id,
-        k=size
+    academic_group = app_commands.Group(
+        name="academic",
+        description="Academic tools"
     )
 
-    # Map back to full metadata
-    return [
-        entries[eid]
-        for eid in selected_ids
-        if eid in entries
-    ]
+    @academic_group.command(
+        name="trivia",
+        description="Browse academic trivia"
+    )
+    async def academic_trivia(interaction: discord.Interaction):
+
+        BASE_DIR = Path(__file__).resolve().parent.parent
+
+        items = get_weighted_batch(
+            BASE_DIR,
+            user_id=interaction.user.id,
+            size=25
+        )
+
+        if not items:
+            await interaction.response.send_message(
+                "Academic trivia dataset not loaded.",
+                ephemeral=True
+            )
+            return
+
+        view = TriviaPager(items)
+
+        await interaction.response.send_message(
+            embed=view.make_embed(),
+            view=view
+        )
+
+    bot.tree.add_command(academic_group, guild=guild)
 
