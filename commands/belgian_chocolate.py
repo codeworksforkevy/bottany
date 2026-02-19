@@ -9,9 +9,10 @@ from discord import app_commands
 DATA_FILE = "belgian_chocolate_professional.json"
 
 
-# -------------------------------------------------
+# =================================================
 # LOAD DATASET
-# -------------------------------------------------
+# =================================================
+
 def _load_dataset(data_dir: str) -> List[Dict[str, Any]]:
     path = os.path.join(data_dir, DATA_FILE)
 
@@ -26,9 +27,10 @@ def _load_dataset(data_dir: str) -> List[Dict[str, Any]]:
         return []
 
 
-# -------------------------------------------------
+# =================================================
 # FORMATTER
-# -------------------------------------------------
+# =================================================
+
 def _format_item(it: Dict[str, Any]) -> str:
     name = it.get("name", "")
     year = it.get("foundation_year")
@@ -59,18 +61,26 @@ def _format_item(it: Dict[str, Any]) -> str:
     return line
 
 
-# -------------------------------------------------
-# REGISTER
-# -------------------------------------------------
-async def register_belgium_chocolate(bot: discord.Client, data_dir: str) -> None:
+# =================================================
+# REGISTER (HYBRID LOADER COMPATIBLE)
+# =================================================
+
+async def register(bot: discord.Client, data_dir: str) -> None:
 
     group = bot.tree.get_command("belgium")
+
     if not group:
+        # Eğer belgium group henüz register edilmediyse güvenli çık
+        return
+
+    # Prevent duplicate registration
+    if getattr(bot, "_belgian_chocolate_registered", False):
         return
 
     # =================================================
     # THEORY COMMAND
     # =================================================
+
     @app_commands.command(
         name="chocolate_theory",
         description="Academic theory of Belgian chocolate production"
@@ -79,7 +89,8 @@ async def register_belgium_chocolate(bot: discord.Client, data_dir: str) -> None
 
         embed = discord.Embed(
             title="Belgian Chocolate – Academic Theory",
-            description="Structural differences in production systems."
+            description="Structural differences in production systems.",
+            color=0x4B2E2E
         )
 
         embed.add_field(
@@ -129,6 +140,7 @@ async def register_belgium_chocolate(bot: discord.Client, data_dir: str) -> None
     # =================================================
     # FILTERED BRANDS
     # =================================================
+
     @app_commands.command(
         name="chocolate_brands",
         description="Filter Belgian chocolate houses"
@@ -156,7 +168,6 @@ async def register_belgium_chocolate(bot: discord.Client, data_dir: str) -> None
             )
             return
 
-        # ---- Year filters ----
         if year_before:
             items = [
                 i for i in items
@@ -169,7 +180,6 @@ async def register_belgium_chocolate(bot: discord.Client, data_dir: str) -> None
                 if i.get("foundation_year") and i["foundation_year"] > year_after
             ]
 
-        # ---- Certification filter ----
         if certification:
             cert_lower = certification.lower()
             items = [
@@ -177,7 +187,6 @@ async def register_belgium_chocolate(bot: discord.Client, data_dir: str) -> None
                 if any(cert_lower in c.lower() for c in i.get("certifications", []))
             ]
 
-        # ---- Production model filter ----
         if production_model:
             items = [
                 i for i in items
@@ -203,7 +212,11 @@ async def register_belgium_chocolate(bot: discord.Client, data_dir: str) -> None
 
         await interaction.response.send_message(embed=embed)
 
-    # Prevent duplicates
-    for cmd in ("chocolate_theory", "chocolate_brands"):
-        if not group.get_command(cmd):
-            group.add_command(locals()[cmd])
+    # Attach to belgium group
+    if not group.get_command("chocolate_theory"):
+        group.add_command(chocolate_theory)
+
+    if not group.get_command("chocolate_brands"):
+        group.add_command(chocolate_brands)
+
+    bot._belgian_chocolate_registered = True
