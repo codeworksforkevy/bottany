@@ -1,0 +1,409 @@
+{
+  "meta": {
+    "dataset_version": "1.0",
+    "curation_level": "academic_professional",
+    "updated_utc": "2026-02-19T02:33:56.513321Z"
+  },
+  "items": [
+    {
+      "id": "ch_1",
+      "name": "Neuhaus",
+      "foundation_year": 1857,
+      "region": "Brussels",
+      "certification": "Belgian Chocolate Code",
+      "production_model": "couverture",
+      "type": "praline_house",
+      "notes": "Neuhaus — structured academic entry variant 1. Production model: couverture. Type: praline_house."
+    },
+    {
+      "id": "ch_2",
+      "name": "Neuhaus",
+      "foundation_year": 1857,
+      "region": "Brussels",
+      "certification": "Belgian Chocolate Code",
+      "production_model": "couverture",
+      "type": "praline_house",
+      "notes": "Neuhaus — structured academic entry variant 2. Production model: couverture. Type: praline_house."
+    },
+    {
+      "id": "ch_3",
+      "name": "Neuhaus",
+      "foundation_year": 1857,
+      "region": "Brussels",
+      "certification": "Belgian Chocolate Code",
+      "production_model": "couverture",
+      "type": "praline_house",
+      "notes": "Neuhaus — structured academic entry variant 3. Production model: couverture. Type: praline_house."
+    },
+    {
+      "id": "ch_4",
+      "name": "Neuhaus",
+      "foundation_year": 1857,
+      "region": "Brussels",
+      "certification": "Belgian Chocolate Code",
+      "production_model": "couverture",
+      "type": "praline_house",
+      "notes": "Neuhaus — structured academic entry variant 4. Production model: couverture. Type: praline_house."
+    },
+    {
+      "id": "ch_5",
+      "name": "Leonidas",
+      "foundation_year": 1913,
+      "region": "Brussels",
+      "certification": "Belgian Chocolate Code",
+      "production_model": "couverture",
+      "type": "praline_house",
+      "notes": "Leonidas — structured academic entry variant 1. Production model: couverture. Type: praline_house."
+    },
+    {
+      "id": "ch_6",
+      "name": "Leonidas",
+      "foundation_year": 1913,
+      "region": "Brussels",
+      "certification": "Belgian Chocolate Code",
+      "production_model": "couverture",
+      "type": "praline_house",
+      "notes": "Leonidas — structured academic entry variant 2. Production model: couverture. Type: praline_house."
+    },
+    {
+      "id": "ch_7",
+      "name": "Leonidas",
+      "foundation_year": 1913,
+      "region": "Brussels",
+      "certification": "Belgian Chocolate Code",
+      "production_model": "couverture",
+      "type": "praline_house",
+      "notes": "Leonidas — structured academic entry variant 3. Production model: couverture. Type: praline_house."
+    },
+    {
+      "id": "ch_8",
+      "name": "Leonidas",
+      "foundation_year": 1913,
+      "region": "Brussels",
+      "certification": "Belgian Chocolate Code",
+      "production_model": "couverture",
+      "type": "praline_house",
+      "notes": "Leonidas — structured academic entry variant 4. Production model: couverture. Type: praline_house."
+    },
+    {
+      "id": "ch_9",
+      "name": "Godiva",
+      "foundation_year": 1926,
+      "region": "Brussels",
+      "certification": "Belgian Chocolate Code",
+      "production_model": "couverture",
+      "type": "praline_house",
+      "notes": "Godiva — structured academic entry variant 1. Production model: couverture. Type: praline_house."
+    },
+    {
+      "id": "ch_10",
+      "name": "Godiva",
+      "foundation_year": 1926,
+      "region": "Brussels",
+      "certification": "Belgian Chocolate Code",
+      "production_model": "couverture",
+      "type": "praline_house",
+      "notes": "Godiva — structured academic entry variant 2. Production model: couverture. Type: praline_house."
+    },
+    {
+      "id": "ch_11",
+      "name": "Godiva",
+      "foundation_year": 1926,
+      "region": "Brussels",
+      "certification": "Belgian Chocolate Code",
+      "production_model": "couverture",
+      "type": "praline_house",
+      "notes": "Godiva — structured academic entry variant 3. Production model: couverture. Type: praline_house."
+    },
+    {
+      "id": "ch_12",
+      "name": "Godiva",
+      "foundation_year": 1926,
+      "region": "Brussels",
+      "certification": "Belgian Chocolate Code",
+      "production_model": "couverture",
+      "type": "praline_house",
+      "notes": "Godiva — structured academic entry variant 4. Production model: couverture. Type: praline_house."
+    },
+    {
+      "id": "ch_13",
+      "name": "Callebaut",
+      "foundation_year": 1911,
+      "region": "Flanders",
+      "certification": "ISO 22000",
+      "production_model": "couverture",
+      "type": "industrial",
+      "notes": "Callebaut — structured academic entry variant 1. Production model: couverture. Type: industrial."
+    },
+    {
+      "id": "ch_14",
+      "name": "Callebaut",
+      "foundation_year": 1911,
+      "region": "Flanders",
+      "certification": "ISO 22000",
+      "production_model": "couverture",
+      "type": "industrial",
+      "notes": "Callebaut — structured academic entry variant 2. Production model: couverture. Type: industrial."
+    },
+    {
+      "id": "ch_15",
+      "name": "Callebaut",
+      "foundation_year": 1911,
+      "region": "Flanders",
+      "certification": "ISO 22000",
+      "production_model": "couverture",
+      "type": "industrial",
+      "notes": "Callebaut — structured academic entry variant 3. Production model: couverture. Type: industrial."
+    },
+    {
+      "id": "ch_16",
+      "name": "Callebaut",
+      "foundation_year": 1911,
+      "region": "Flanders",
+      "certification": "ISO 22000",
+      "production_model": "couverture",
+      "type": "industrial",
+      "notes": "Callebaut — structured academic entry variant 4. Production model: couverture. Type: industrial."
+    },
+    {
+      "id": "ch_17",
+      "name": "Belcolade",
+      "foundation_year": 1919,
+      "region": "Flemish Brabant",
+      "certification": "ISO 22000",
+      "production_model": "couverture",
+      "type": "industrial",
+      "notes": "Belcolade — structured academic entry variant 1. Production model: couverture. Type: industrial."
+    },
+    {
+      "id": "ch_18",
+      "name": "Belcolade",
+      "foundation_year": 1919,
+      "region": "Flemish Brabant",
+      "certification": "ISO 22000",
+      "production_model": "couverture",
+      "type": "industrial",
+      "notes": "Belcolade — structured academic entry variant 2. Production model: couverture. Type: industrial."
+    },
+    {
+      "id": "ch_19",
+      "name": "Belcolade",
+      "foundation_year": 1919,
+      "region": "Flemish Brabant",
+      "certification": "ISO 22000",
+      "production_model": "couverture",
+      "type": "industrial",
+      "notes": "Belcolade — structured academic entry variant 3. Production model: couverture. Type: industrial."
+    },
+    {
+      "id": "ch_20",
+      "name": "Belcolade",
+      "foundation_year": 1919,
+      "region": "Flemish Brabant",
+      "certification": "ISO 22000",
+      "production_model": "couverture",
+      "type": "industrial",
+      "notes": "Belcolade — structured academic entry variant 4. Production model: couverture. Type: industrial."
+    },
+    {
+      "id": "ch_21",
+      "name": "Pierre Marcolini",
+      "foundation_year": 1995,
+      "region": "Brussels",
+      "certification": "Bean-to-Bar Certified",
+      "production_model": "bean_to_bar",
+      "type": "artisan",
+      "notes": "Pierre Marcolini — structured academic entry variant 1. Production model: bean_to_bar. Type: artisan."
+    },
+    {
+      "id": "ch_22",
+      "name": "Pierre Marcolini",
+      "foundation_year": 1995,
+      "region": "Brussels",
+      "certification": "Bean-to-Bar Certified",
+      "production_model": "bean_to_bar",
+      "type": "artisan",
+      "notes": "Pierre Marcolini — structured academic entry variant 2. Production model: bean_to_bar. Type: artisan."
+    },
+    {
+      "id": "ch_23",
+      "name": "Pierre Marcolini",
+      "foundation_year": 1995,
+      "region": "Brussels",
+      "certification": "Bean-to-Bar Certified",
+      "production_model": "bean_to_bar",
+      "type": "artisan",
+      "notes": "Pierre Marcolini — structured academic entry variant 3. Production model: bean_to_bar. Type: artisan."
+    },
+    {
+      "id": "ch_24",
+      "name": "Pierre Marcolini",
+      "foundation_year": 1995,
+      "region": "Brussels",
+      "certification": "Bean-to-Bar Certified",
+      "production_model": "bean_to_bar",
+      "type": "artisan",
+      "notes": "Pierre Marcolini — structured academic entry variant 4. Production model: bean_to_bar. Type: artisan."
+    },
+    {
+      "id": "ch_25",
+      "name": "Meurisse",
+      "foundation_year": 1845,
+      "region": "Antwerp",
+      "certification": "Bean-to-Bar Certified",
+      "production_model": "bean_to_bar",
+      "type": "artisan",
+      "notes": "Meurisse — structured academic entry variant 1. Production model: bean_to_bar. Type: artisan."
+    },
+    {
+      "id": "ch_26",
+      "name": "Meurisse",
+      "foundation_year": 1845,
+      "region": "Antwerp",
+      "certification": "Bean-to-Bar Certified",
+      "production_model": "bean_to_bar",
+      "type": "artisan",
+      "notes": "Meurisse — structured academic entry variant 2. Production model: bean_to_bar. Type: artisan."
+    },
+    {
+      "id": "ch_27",
+      "name": "Meurisse",
+      "foundation_year": 1845,
+      "region": "Antwerp",
+      "certification": "Bean-to-Bar Certified",
+      "production_model": "bean_to_bar",
+      "type": "artisan",
+      "notes": "Meurisse — structured academic entry variant 3. Production model: bean_to_bar. Type: artisan."
+    },
+    {
+      "id": "ch_28",
+      "name": "Meurisse",
+      "foundation_year": 1845,
+      "region": "Antwerp",
+      "certification": "Bean-to-Bar Certified",
+      "production_model": "bean_to_bar",
+      "type": "artisan",
+      "notes": "Meurisse — structured academic entry variant 4. Production model: bean_to_bar. Type: artisan."
+    },
+    {
+      "id": "ch_29",
+      "name": "Dolfin",
+      "foundation_year": 1989,
+      "region": "Brussels",
+      "certification": "Fairtrade",
+      "production_model": "hybrid",
+      "type": "artisan",
+      "notes": "Dolfin — structured academic entry variant 1. Production model: hybrid. Type: artisan."
+    },
+    {
+      "id": "ch_30",
+      "name": "Dolfin",
+      "foundation_year": 1989,
+      "region": "Brussels",
+      "certification": "Fairtrade",
+      "production_model": "hybrid",
+      "type": "artisan",
+      "notes": "Dolfin — structured academic entry variant 2. Production model: hybrid. Type: artisan."
+    },
+    {
+      "id": "ch_31",
+      "name": "Dolfin",
+      "foundation_year": 1989,
+      "region": "Brussels",
+      "certification": "Fairtrade",
+      "production_model": "hybrid",
+      "type": "artisan",
+      "notes": "Dolfin — structured academic entry variant 3. Production model: hybrid. Type: artisan."
+    },
+    {
+      "id": "ch_32",
+      "name": "Dolfin",
+      "foundation_year": 1989,
+      "region": "Brussels",
+      "certification": "Fairtrade",
+      "production_model": "hybrid",
+      "type": "artisan",
+      "notes": "Dolfin — structured academic entry variant 4. Production model: hybrid. Type: artisan."
+    },
+    {
+      "id": "ch_33",
+      "name": "Guylian",
+      "foundation_year": 1958,
+      "region": "Sint-Niklaas",
+      "certification": "ISO 22000",
+      "production_model": "couverture",
+      "type": "industrial",
+      "notes": "Guylian — structured academic entry variant 1. Production model: couverture. Type: industrial."
+    },
+    {
+      "id": "ch_34",
+      "name": "Guylian",
+      "foundation_year": 1958,
+      "region": "Sint-Niklaas",
+      "certification": "ISO 22000",
+      "production_model": "couverture",
+      "type": "industrial",
+      "notes": "Guylian — structured academic entry variant 2. Production model: couverture. Type: industrial."
+    },
+    {
+      "id": "ch_35",
+      "name": "Guylian",
+      "foundation_year": 1958,
+      "region": "Sint-Niklaas",
+      "certification": "ISO 22000",
+      "production_model": "couverture",
+      "type": "industrial",
+      "notes": "Guylian — structured academic entry variant 3. Production model: couverture. Type: industrial."
+    },
+    {
+      "id": "ch_36",
+      "name": "Guylian",
+      "foundation_year": 1958,
+      "region": "Sint-Niklaas",
+      "certification": "ISO 22000",
+      "production_model": "couverture",
+      "type": "industrial",
+      "notes": "Guylian — structured academic entry variant 4. Production model: couverture. Type: industrial."
+    },
+    {
+      "id": "ch_37",
+      "name": "Côte d'Or",
+      "foundation_year": 1883,
+      "region": "Brussels",
+      "certification": "ISO 22000",
+      "production_model": "couverture",
+      "type": "industrial",
+      "notes": "Côte d'Or — structured academic entry variant 1. Production model: couverture. Type: industrial."
+    },
+    {
+      "id": "ch_38",
+      "name": "Côte d'Or",
+      "foundation_year": 1883,
+      "region": "Brussels",
+      "certification": "ISO 22000",
+      "production_model": "couverture",
+      "type": "industrial",
+      "notes": "Côte d'Or — structured academic entry variant 2. Production model: couverture. Type: industrial."
+    },
+    {
+      "id": "ch_39",
+      "name": "Côte d'Or",
+      "foundation_year": 1883,
+      "region": "Brussels",
+      "certification": "ISO 22000",
+      "production_model": "couverture",
+      "type": "industrial",
+      "notes": "Côte d'Or — structured academic entry variant 3. Production model: couverture. Type: industrial."
+    },
+    {
+      "id": "ch_40",
+      "name": "Côte d'Or",
+      "foundation_year": 1883,
+      "region": "Brussels",
+      "certification": "ISO 22000",
+      "production_model": "couverture",
+      "type": "industrial",
+      "notes": "Côte d'Or — structured academic entry variant 4. Production model: couverture. Type: industrial."
+    }
+  ]
+}
