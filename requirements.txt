@@ -9,3 +9,4 @@ tenacity==8.2.3
 orjson==3.10.7
 aiolimiter==1.1.0
 rapidfuzz
+psycopg[binary]
