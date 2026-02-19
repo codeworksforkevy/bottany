@@ -4,8 +4,8 @@ from pathlib import Path
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-TIMEZONE_LIST_URL = "http://worldtimeapi.org/api/timezone"
-TIMEZONE_TIME_URL = "http://worldtimeapi.org/api/timezone/"
+TIMEZONE_LIST_URL = "https://worldtimeapi.org/api/timezone"
+TIMEZONE_TIME_URL = "https://worldtimeapi.org/api/timezone/"
 
 
 class TimeAPI:
@@ -17,8 +17,11 @@ class TimeAPI:
     # -------------------------------------------------
     # FETCH TIMEZONE LIST
     # -------------------------------------------------
+
     async def fetch_timezones(self):
-        timeout = aiohttp.ClientTimeout(total=3)
+
+        timeout = aiohttp.ClientTimeout(total=4)
+
         async with aiohttp.ClientSession(timeout=timeout) as session:
             async with session.get(TIMEZONE_LIST_URL) as resp:
                 if resp.status == 200:
@@ -26,7 +29,8 @@ class TimeAPI:
                     self.timezones = data
                     self._save_cache()
                     return
-        raise Exception("Failed to fetch timezone list")
+
+        raise RuntimeError("Failed to fetch timezone list")
 
     def _save_cache(self):
         with open(self.cache_path, "w", encoding="utf-8") as f:
@@ -38,25 +42,24 @@ class TimeAPI:
                 self.timezones = json.load(f)
 
     # -------------------------------------------------
-    # GET TIME (FAIL FAST + FALLBACK)
+    # GET TIME
     # -------------------------------------------------
+
     async def get_time(self, timezone: str):
 
-        timeout = aiohttp.ClientTimeout(total=2.5)
+        timeout = aiohttp.ClientTimeout(total=3)
 
+        # 1️⃣ Try API
         try:
             async with aiohttp.ClientSession(timeout=timeout) as session:
-                async with session.get(
-                    TIMEZONE_TIME_URL + timezone
-                ) as resp:
+                async with session.get(TIMEZONE_TIME_URL + timezone) as resp:
                     if resp.status == 200:
                         data = await resp.json()
 
                         dt = data.get("datetime")
-                        offset = data.get("utc_offset")
-                        day_index = data.get("day_of_week")
+                        if not dt:
+                            raise ValueError("No datetime in API response")
 
-                        # Parse datetime string
                         parsed = datetime.fromisoformat(dt)
 
                         return {
@@ -65,13 +68,13 @@ class TimeAPI:
                             "seconds": parsed.second,
                             "timeZone": timezone,
                             "dayOfWeek": parsed.strftime("%A"),
-                            "dstActive": False if offset == "+00:00" else True
+                            "dstActive": False  # API DST not reliable
                         }
 
         except Exception:
             pass
 
-        # 🔥 LOCAL FALLBACK
+        # 2️⃣ Local fallback
         try:
             tz = ZoneInfo(timezone)
             now = datetime.now(tz)
@@ -84,5 +87,6 @@ class TimeAPI:
                 "dayOfWeek": now.strftime("%A"),
                 "dstActive": bool(now.dst())
             }
+
         except Exception:
             return None
