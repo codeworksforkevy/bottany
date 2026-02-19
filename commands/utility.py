@@ -22,10 +22,17 @@ _message_queue = deque()
 
 MAX_REMINDERS_PER_USER = 20
 
-TIME_PATTERN = re.compile(r"\b(\d{1,2}):(\d{2})\b")
+# =========================================================
+# TIME PATTERNS
+# =========================================================
+
 IN_PATTERN = re.compile(r"in\s+(\d+)\s+(minutes?|hours?)", re.I)
 TOMORROW_PATTERN = re.compile(r"tomorrow\s+(\d{1,2}):(\d{2})", re.I)
-NEXT_WEEKDAY_PATTERN = re.compile(r"next\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\s+(\d{1,2}):(\d{2})", re.I)
+NEXT_WEEKDAY_PATTERN = re.compile(
+    r"next\s+(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\s+(\d{1,2}):(\d{2})",
+    re.I
+)
+HHMM_PATTERN = re.compile(r"\b(\d{1,2}):(\d{2})\b")
 
 WEEKDAY_MAP = {
     "monday": 0,
@@ -37,9 +44,8 @@ WEEKDAY_MAP = {
     "sunday": 6,
 }
 
-
 # =========================================================
-# JSON
+# JSON LAYER
 # =========================================================
 
 def _path(data_dir: str) -> str:
@@ -48,7 +54,7 @@ def _path(data_dir: str) -> str:
 
 def _default_data():
     return {
-        "version": 5,
+        "version": 6,
         "reminders": [],
         "guild_timezones": {},
         "user_timezones": {}
@@ -76,27 +82,29 @@ def _save_json(path: str, obj: Dict[str, Any]) -> None:
 def _utc_now() -> datetime:
     return datetime.now(timezone.utc)
 
-
 # =========================================================
 # RATE SAFE WORKER
 # =========================================================
 
 async def _message_worker(bot: discord.Client):
+
     await bot.wait_until_ready()
 
     while not bot.is_closed():
+
         if _message_queue:
             channel_id, content = _message_queue.popleft()
             ch = bot.get_channel(channel_id)
+
             if isinstance(ch, discord.TextChannel):
                 try:
                     await ch.send(content)
                 except Exception as e:
                     logger.warning(f"Send failed: {e}")
+
             await asyncio.sleep(1.2)
         else:
             await asyncio.sleep(0.5)
-
 
 # =========================================================
 # TIME HELPERS
@@ -119,9 +127,11 @@ def _get_effective_timezone(data, guild_id, user_id):
 
 
 def _parse_natural_time(text: str, tz_name: str) -> Optional[datetime]:
+
     tz = ZoneInfo(tz_name)
     now_local = datetime.now(tz)
 
+    # in X minutes/hours
     m = IN_PATTERN.search(text)
     if m:
         val = int(m.group(1))
@@ -130,6 +140,7 @@ def _parse_natural_time(text: str, tz_name: str) -> Optional[datetime]:
             return _utc_now() + timedelta(hours=val)
         return _utc_now() + timedelta(minutes=val)
 
+    # tomorrow HH:MM
     m = TOMORROW_PATTERN.search(text)
     if m:
         h, mnt = int(m.group(1)), int(m.group(2))
@@ -137,19 +148,30 @@ def _parse_natural_time(text: str, tz_name: str) -> Optional[datetime]:
         dt = dt.replace(hour=h, minute=mnt, second=0, microsecond=0)
         return dt.astimezone(timezone.utc)
 
+    # next weekday HH:MM
     m = NEXT_WEEKDAY_PATTERN.search(text)
     if m:
         wd = WEEKDAY_MAP[m.group(1).lower()]
         h, mnt = int(m.group(2)), int(m.group(3))
+
         days_ahead = (wd - now_local.weekday() + 7) % 7
         if days_ahead == 0:
             days_ahead = 7
+
         dt = now_local + timedelta(days=days_ahead)
         dt = dt.replace(hour=h, minute=mnt, second=0, microsecond=0)
         return dt.astimezone(timezone.utc)
 
-    return None
+    # simple HH:MM today
+    m = HHMM_PATTERN.search(text)
+    if m:
+        h, mnt = int(m.group(1)), int(m.group(2))
+        dt = now_local.replace(hour=h, minute=mnt, second=0, microsecond=0)
+        if dt < now_local:
+            dt += timedelta(days=1)
+        return dt.astimezone(timezone.utc)
 
+    return None
 
 # =========================================================
 # AUTOCOMPLETE
@@ -167,10 +189,12 @@ async def timezone_autocomplete(interaction, current):
 
 
 async def reminder_id_autocomplete(interaction, current):
+
     bot = interaction.client
-    group: UtilityGroup = bot.tree.get_command("utility")
+    group = bot.tree.get_command("utility")
     path = _path(group.data_dir)
     data = _load_json(path)
+
     user_id = interaction.user.id
 
     matches = [
@@ -185,7 +209,6 @@ async def reminder_id_autocomplete(interaction, current):
         for m in matches[:25]
     ]
 
-
 # =========================================================
 # UTILITY GROUP
 # =========================================================
@@ -197,9 +220,11 @@ class UtilityGroup(app_commands.Group):
         self.bot = bot
         self.data_dir = data_dir
 
-    # ---------------- TIMEZONE ----------------
+    # -----------------------------------------------------
+    # TIMEZONE
+    # -----------------------------------------------------
 
-    @app_commands.command(name="timezone")
+    @app_commands.command(name="timezone", description="Set server timezone")
     @app_commands.autocomplete(tz=timezone_autocomplete)
     async def timezone(self, interaction: discord.Interaction, tz: str):
 
@@ -219,9 +244,11 @@ class UtilityGroup(app_commands.Group):
 
         await interaction.response.send_message(f"Server timezone set to `{tz}`.")
 
-    # ---------------- MY TIMEZONE ----------------
+    # -----------------------------------------------------
+    # MY TIMEZONE
+    # -----------------------------------------------------
 
-    @app_commands.command(name="mytimezone")
+    @app_commands.command(name="mytimezone", description="Set your timezone")
     @app_commands.autocomplete(tz=timezone_autocomplete)
     async def mytimezone(self, interaction: discord.Interaction, tz: str):
 
@@ -237,12 +264,43 @@ class UtilityGroup(app_commands.Group):
 
         await interaction.response.send_message(f"Your timezone set to `{tz}`.", ephemeral=True)
 
-    # ---------------- REMIND ----------------
+    # -----------------------------------------------------
+    # SCHEDULE
+    # -----------------------------------------------------
 
-    @app_commands.command(name="remind")
+    @app_commands.command(name="schedule", description="Convert time text to Discord timestamp")
+    async def schedule(self, interaction: discord.Interaction, text: str):
+
+        path = _path(self.data_dir)
+        data = _load_json(path)
+
+        tz_name = _get_effective_timezone(
+            data,
+            interaction.guild_id or 0,
+            interaction.user.id
+        )
+
+        due = _parse_natural_time(text, tz_name)
+
+        if not due:
+            await interaction.response.send_message(
+                "Could not parse time. Example: `tomorrow 18:00`",
+                ephemeral=True
+            )
+            return
+
+        ts = int(due.timestamp())
+        await interaction.response.send_message(f"<t:{ts}:F>")
+
+    # -----------------------------------------------------
+    # REMIND
+    # -----------------------------------------------------
+
+    @app_commands.command(name="remind", description="Create reminder using natural time")
     async def remind(self, interaction: discord.Interaction, text: str):
 
         path = _path(self.data_dir)
+
         async with _lock:
             data = _load_json(path)
 
@@ -253,13 +311,10 @@ class UtilityGroup(app_commands.Group):
                 return
 
             tz_name = _get_effective_timezone(data, interaction.guild_id, interaction.user.id)
-
             due = _parse_natural_time(text, tz_name)
+
             if not due:
-                await interaction.response.send_message(
-                    "Could not parse time. Example: `in 30 minutes`, `tomorrow 18:00`",
-                    ephemeral=True
-                )
+                await interaction.response.send_message("Invalid time format.", ephemeral=True)
                 return
 
             for r in user_reminders:
@@ -286,9 +341,35 @@ class UtilityGroup(app_commands.Group):
 
         await interaction.response.send_message(f"Reminder #{reminder_id} set.", ephemeral=True)
 
-    # ---------------- EDIT ----------------
+    # -----------------------------------------------------
+    # REMINDERS LIST
+    # -----------------------------------------------------
 
-    @app_commands.command(name="edit")
+    @app_commands.command(name="reminders", description="List your reminders")
+    async def reminders(self, interaction: discord.Interaction):
+
+        path = _path(self.data_dir)
+        data = _load_json(path)
+
+        user_id = interaction.user.id
+        items = [r for r in data["reminders"] if r["user_id"] == user_id]
+
+        if not items:
+            await interaction.response.send_message("No reminders.", ephemeral=True)
+            return
+
+        lines = []
+        for r in items:
+            ts = int(datetime.fromisoformat(r["due"]).timestamp())
+            lines.append(f"#{r['id']} — <t:{ts}:F> — {r['text']}")
+
+        await interaction.response.send_message("\n".join(lines[:20]), ephemeral=True)
+
+    # -----------------------------------------------------
+    # EDIT
+    # -----------------------------------------------------
+
+    @app_commands.command(name="edit", description="Edit reminder time")
     @app_commands.autocomplete(number=reminder_id_autocomplete)
     async def edit(self, interaction: discord.Interaction, number: int, text: str):
 
@@ -298,19 +379,49 @@ class UtilityGroup(app_commands.Group):
 
             for r in data["reminders"]:
                 if r["id"] == number and r["user_id"] == interaction.user.id:
+
                     tz_name = _get_effective_timezone(data, interaction.guild_id, interaction.user.id)
                     new_due = _parse_natural_time(text, tz_name)
+
                     if not new_due:
                         await interaction.response.send_message("Invalid time format.", ephemeral=True)
                         return
+
                     r["due"] = new_due.isoformat()
                     r["text"] = text[:500]
                     _save_json(path, data)
+
                     await interaction.response.send_message(f"Reminder #{number} updated.", ephemeral=True)
                     return
 
         await interaction.response.send_message("Reminder not found.", ephemeral=True)
 
+    # -----------------------------------------------------
+    # CANCEL
+    # -----------------------------------------------------
+
+    @app_commands.command(name="cancel", description="Cancel reminder")
+    @app_commands.autocomplete(number=reminder_id_autocomplete)
+    async def cancel(self, interaction: discord.Interaction, number: int):
+
+        async with _lock:
+            path = _path(self.data_dir)
+            data = _load_json(path)
+
+            before = len(data["reminders"])
+
+            data["reminders"] = [
+                r for r in data["reminders"]
+                if not (r["id"] == number and r["user_id"] == interaction.user.id)
+            ]
+
+            after = len(data["reminders"])
+            _save_json(path, data)
+
+        if before == after:
+            await interaction.response.send_message("Reminder not found.", ephemeral=True)
+        else:
+            await interaction.response.send_message(f"Reminder #{number} cancelled.", ephemeral=True)
 
 # =========================================================
 # REGISTER
