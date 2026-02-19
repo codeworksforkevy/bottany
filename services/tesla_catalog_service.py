@@ -1,62 +1,138 @@
+from __future__ import annotations
 
 import os
-import re
-import random
-from datetime import datetime
-from bs4 import BeautifulSoup
-from utils.json_io import load_json, save_json
-from utils.async_http import fetch_text
+import json
+import requests
+from datetime import datetime, timedelta
 
-MIT_URL = "https://web.mit.edu/most/Public/Tesla1/alpha_tesla.html"
 
-def _extract_patents(html: str):
-    soup = BeautifulSoup(html, "html.parser")
-    items = []
-    for tr in soup.find_all("tr"):
-        text = tr.get_text(" ", strip=True)
-        m = re.search(r"\b(\d{3,}(?:,\d{3})*)\b", text)
-        if not m:
-            continue
-        pat = m.group(1).replace(",", "")
-        title = text.split(str(m.group(1)))[0].strip() or "Untitled"
-        items.append({
-            "title": title,
-            "patent_number": pat,
-            "grant_date": "",
-            "source_name": "MIT Tesla U.S. Patent Collection",
-            "source_url": MIT_URL
-        })
-    # dedupe
-    seen = set()
-    dedup = []
-    for i in items:
-        if i["patent_number"] in seen:
-            continue
-        seen.add(i["patent_number"])
-        dedup.append(i)
-    return dedup
+PATENTSVIEW_URL = "https://api.patentsview.org/patents/query"
+CACHE_FILE = "tesla_cache.json"
+REFRESH_DAYS = 30
 
-async def _build_catalog(data_dir: str, target: int):
-    html = await fetch_text(MIT_URL)
-    items = _extract_patents(html)[:target]
-    return {
-        "generated_utc": datetime.utcnow().isoformat() + "Z",
-        "count": len(items),
-        "items": items
+
+# -------------------------------------------------
+# CATEGORY CLASSIFIER
+# -------------------------------------------------
+
+def _classify(title: str) -> str:
+    t = (title or "").lower()
+
+    if "alternating" in t:
+        return "alternating_current"
+    if "wireless" in t:
+        return "wireless_power"
+    if "radio" in t:
+        return "radio"
+    if "motor" in t:
+        return "electric_motor"
+    if "turbine" in t:
+        return "turbine"
+    return "electrical_general"
+
+
+# -------------------------------------------------
+# FETCH FROM PATENTSVIEW
+# -------------------------------------------------
+
+def _fetch_from_api():
+
+    payload = {
+        "q": {
+            "_and": [
+                {"inventor_first_name": "Nikola"},
+                {"inventor_last_name": "Tesla"}
+            ]
+        },
+        "f": [
+            "patent_number",
+            "patent_title",
+            "patent_date",
+            "patent_abstract"
+        ],
+        "o": {"per_page": 200}
     }
 
-async def get_tesla_catalog(data_dir: str, refresh_days: int = 30, target: int = 150):
-    cache_path = os.path.join(data_dir, "tesla_cache.json")
-    cache = load_json(cache_path)
+    response = requests.post(PATENTSVIEW_URL, json=payload, timeout=20)
+    response.raise_for_status()
 
-    if cache.get("generated_utc"):
+    data = response.json()
+    patents = data.get("patents", [])
+
+    items = []
+
+    for p in patents:
+        items.append({
+            "patent_number": p.get("patent_number"),
+            "title": p.get("patent_title"),
+            "year": (p.get("patent_date") or "")[:4],
+            "category": _classify(p.get("patent_title")),
+            "abstract": p.get("patent_abstract"),
+            "source_url": f"https://ppubs.uspto.gov/dirsearch-public/print/downloadPdf/{p.get('patent_number')}"
+        })
+
+    return items
+
+
+# -------------------------------------------------
+# CACHE HANDLING
+# -------------------------------------------------
+
+def _load_cache(path):
+    if not os.path.exists(path):
+        return None
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def _save_cache(path, data):
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, indent=2)
+
+
+def _needs_refresh(cache):
+    if not cache:
+        return True
+
+    meta = cache.get("meta", {})
+    last = meta.get("last_refresh_utc")
+
+    if not last:
+        return True
+
+    last_dt = datetime.fromisoformat(last)
+    return datetime.utcnow() - last_dt > timedelta(days=REFRESH_DAYS)
+
+
+# -------------------------------------------------
+# PUBLIC SERVICE
+# -------------------------------------------------
+
+async def get_tesla_catalog(DATA_DIR):
+
+    cache_path = os.path.join(DATA_DIR, CACHE_FILE)
+    cache = _load_cache(cache_path)
+
+    if _needs_refresh(cache):
+
         try:
-            dt = datetime.fromisoformat(cache["generated_utc"].replace("Z",""))
-            if (datetime.utcnow() - dt).days < refresh_days:
-                return cache
-        except Exception:
-            pass
+            items = _fetch_from_api()
 
-    catalog = await _build_catalog(data_dir, target)
-    save_json(cache_path, catalog)
-    return catalog
+            cache = {
+                "meta": {
+                    "last_refresh_utc": datetime.utcnow().isoformat(),
+                    "count": len(items),
+                    "source": "USPTO PatentsView API"
+                },
+                "items": items
+            }
+
+            _save_cache(cache_path, cache)
+
+        except Exception:
+            # API fail ederse eski cache'i kullan
+            if cache:
+                return cache
+            return {"items": [], "count": 0}
+
+    return cache or {"items": [], "count": 0}
