@@ -1,70 +1,85 @@
+from __future__ import annotations
+
 import discord
 from discord import app_commands
 import json
 import os
 from datetime import datetime, timezone
-
-# -------------------------
-# Persistence (JSON)
-# -------------------------
-
-DATA_PATH = "data/kevy_stats.json"
+from typing import Dict, Any
 
 
-def _load_stats():
-    if not os.path.exists(DATA_PATH):
+# =====================================================
+# HELPERS
+# =====================================================
+
+def _data_path(data_dir: str) -> str:
+    return os.path.join(data_dir, "kevy_stats.json")
+
+
+def _today_key() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+
+def _load_stats(path: str) -> Dict[str, Any]:
+    if not os.path.exists(path):
         return {
             "total": 0,
             "today": {},
             "leaderboard": {},
             "last_date": _today_key(),
         }
-    with open(DATA_PATH, "r", encoding="utf-8") as f:
-        return json.load(f)
+
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {
+            "total": 0,
+            "today": {},
+            "leaderboard": {},
+            "last_date": _today_key(),
+        }
 
 
-def _save_stats(stats):
-    os.makedirs(os.path.dirname(DATA_PATH), exist_ok=True)
-    with open(DATA_PATH, "w", encoding="utf-8") as f:
+def _save_stats(path: str, stats: Dict[str, Any]) -> None:
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
         json.dump(stats, f, ensure_ascii=False, indent=2)
 
 
-def _today_key():
-    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
-
-
-def _rollover_if_needed(stats):
+def _rollover_if_needed(stats: Dict[str, Any]) -> None:
     today = _today_key()
     if stats.get("last_date") != today:
         stats["today"] = {}
         stats["last_date"] = today
 
 
-# -------------------------
-# Registration
-# -------------------------
+# =====================================================
+# REGISTER (HYBRID LOADER SAFE)
+# =====================================================
 
-def register_kevy(bot):
-    """
-    /kevy command group
-    - love
-    - count
-    - stats (today / total)
-    - leaderboard
-    Persistent, reconnect-safe.
-    """
+def register(bot, data_dir: str):
 
-    if getattr(bot, "_kevy_registered", False):
+    existing = bot.tree.get_command("kevy")
+
+    if isinstance(existing, app_commands.Group):
         return
+
+    if existing:
+        raise RuntimeError(
+            "Command name collision: 'kevy' already exists."
+        )
+
+    stats_path = _data_path(data_dir)
 
     kevy_group = app_commands.Group(
         name="kevy",
         description="Spread love to Kevy 🎉"
     )
 
-    # -------------------------
+    # -------------------------------------------------
     # /kevy love
-    # -------------------------
+    # -------------------------------------------------
     @kevy_group.command(name="love", description="Send love to Kevy 💙")
     @app_commands.describe(
         user="Mention someone (optional)",
@@ -75,7 +90,7 @@ def register_kevy(bot):
         user: discord.User | None = None,
         ephemeral: bool = False,
     ):
-        stats = _load_stats()
+        stats = _load_stats(stats_path)
         _rollover_if_needed(stats)
 
         uid = str(interaction.user.id)
@@ -84,7 +99,7 @@ def register_kevy(bot):
         stats["today"][uid] = stats["today"].get(uid, 0) + 1
         stats["leaderboard"][uid] = stats["leaderboard"].get(uid, 0) + 1
 
-        _save_stats(stats)
+        _save_stats(stats_path, stats)
 
         heart = "💙"
         text = "We love you Kevy"
@@ -102,12 +117,12 @@ def register_kevy(bot):
             ephemeral=ephemeral
         )
 
-    # -------------------------
+    # -------------------------------------------------
     # /kevy count
-    # -------------------------
+    # -------------------------------------------------
     @kevy_group.command(name="count", description="Show total /kevy usage.")
     async def kevy_count(interaction: discord.Interaction):
-        stats = _load_stats()
+        stats = _load_stats(stats_path)
         embed = discord.Embed(
             title="Kevy Counter 🎉",
             description=f"**Total uses:** {stats.get('total', 0)} 💙",
@@ -115,12 +130,12 @@ def register_kevy(bot):
         )
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
-    # -------------------------
+    # -------------------------------------------------
     # /kevy stats
-    # -------------------------
+    # -------------------------------------------------
     @kevy_group.command(name="stats", description="Show today's and total Kevy stats.")
     async def kevy_stats(interaction: discord.Interaction):
-        stats = _load_stats()
+        stats = _load_stats(stats_path)
         _rollover_if_needed(stats)
 
         today_total = sum(stats.get("today", {}).values())
@@ -135,12 +150,12 @@ def register_kevy(bot):
 
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
-    # -------------------------
+    # -------------------------------------------------
     # /kevy leaderboard
-    # -------------------------
+    # -------------------------------------------------
     @kevy_group.command(name="leaderboard", description="Top Kevy lovers 💙")
     async def kevy_leaderboard(interaction: discord.Interaction):
-        stats = _load_stats()
+        stats = _load_stats(stats_path)
         board = stats.get("leaderboard", {})
 
         if not board:
@@ -156,9 +171,10 @@ def register_kevy(bot):
             reverse=True
         )[:10]
 
-        lines = []
-        for i, (uid, count) in enumerate(sorted_users, start=1):
-            lines.append(f"**{i}.** <@{uid}> — {count}")
+        lines = [
+            f"**{i}.** <@{uid}> — {count}"
+            for i, (uid, count) in enumerate(sorted_users, start=1)
+        ]
 
         embed = discord.Embed(
             title="Kevy Leaderboard 🎉",
@@ -169,4 +185,3 @@ def register_kevy(bot):
         await interaction.response.send_message(embed=embed, ephemeral=True)
 
     bot.tree.add_command(kevy_group)
-    bot._kevy_registered = True
