@@ -11,9 +11,9 @@ from services.tesla_mit_resolver import resolve_mit_patent_image
 from services.tesla_wikimedia_resolver import resolve_wikimedia_patent_image
 
 
-# -------------------------------------------------
+# =================================================
 # IMAGE RESOLVER (parallel + safe)
-# -------------------------------------------------
+# =================================================
 
 async def _resolve_image_safe(patent_number: str):
 
@@ -31,9 +31,12 @@ async def _resolve_image_safe(patent_number: str):
             task.cancel()
 
         for task in done:
-            img = task.result()
-            if img:
-                return img
+            try:
+                img = task.result()
+                if img:
+                    return img
+            except Exception:
+                continue
 
     except Exception:
         pass
@@ -41,11 +44,11 @@ async def _resolve_image_safe(patent_number: str):
     return None
 
 
-# -------------------------------------------------
-# REGISTER
-# -------------------------------------------------
+# =================================================
+# REGISTER (HYBRID LOADER COMPATIBLE)
+# =================================================
 
-def register(bot, DATA_DIR):
+def register(bot, data_dir):
 
     existing = bot.tree.get_command("tesla")
 
@@ -67,7 +70,7 @@ def register(bot, DATA_DIR):
 
         await interaction.response.defer(thinking=True)
 
-        catalog = await get_tesla_catalog(DATA_DIR)
+        catalog = await get_tesla_catalog(data_dir)
         items = catalog.get("items", [])
 
         if not items:
@@ -107,7 +110,7 @@ def register(bot, DATA_DIR):
 
         await interaction.response.defer()
 
-        catalog = await get_tesla_catalog(DATA_DIR)
+        catalog = await get_tesla_catalog(data_dir)
         items = catalog.get("items", [])
 
         if not items:
@@ -129,7 +132,6 @@ def register(bot, DATA_DIR):
 
         min_year = min(years)
         max_year = max(years)
-
         top_years = counter.most_common(5)
 
         embed = discord.Embed(
@@ -140,10 +142,7 @@ def register(bot, DATA_DIR):
         embed.add_field(name="Total patents", value=str(total), inline=True)
         embed.add_field(name="Year range", value=f"{min_year} – {max_year}", inline=True)
 
-        year_lines = [
-            f"{year}: {count}"
-            for year, count in top_years
-        ]
+        year_lines = [f"{year}: {count}" for year, count in top_years]
 
         embed.add_field(
             name="Top active years",
@@ -168,7 +167,7 @@ def register(bot, DATA_DIR):
             await interaction.followup.send("Year outside Tesla patent era.")
             return
 
-        catalog = await get_tesla_catalog(DATA_DIR)
+        catalog = await get_tesla_catalog(data_dir)
         items = catalog.get("items", [])
 
         matches = [
@@ -177,9 +176,7 @@ def register(bot, DATA_DIR):
         ]
 
         if not matches:
-            await interaction.followup.send(
-                f"No patents found for {year}."
-            )
+            await interaction.followup.send(f"No patents found for {year}.")
             return
 
         embed = discord.Embed(
@@ -189,7 +186,7 @@ def register(bot, DATA_DIR):
 
         lines = []
 
-        for it in matches[:25]:  # guard
+        for it in matches[:25]:
             pat = it.get("patent_number", "")
             title = (it.get("title") or "")[:120]
             lines.append(f"• {pat} — {title}")
