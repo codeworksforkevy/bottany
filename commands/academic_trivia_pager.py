@@ -1,10 +1,9 @@
 import discord
 from discord import app_commands
-import json
 import random
 from pathlib import Path
 
-DATA_PATH = Path("data/academic_trivia_pool.json")
+from services.academic_trivia_loader import get_random_batch
 
 
 class TriviaPager(discord.ui.View):
@@ -22,8 +21,16 @@ class TriviaPager(discord.ui.View):
             color=0x5865F2
         )
 
-        if "source" in item:
-            embed.set_footer(text=item["source"])
+        footer_parts = []
+
+        if item.get("author"):
+            footer_parts.append(item["author"])
+
+        if item.get("field"):
+            footer_parts.append(item["field"])
+
+        if footer_parts:
+            embed.set_footer(text=" | ".join(footer_parts))
 
         embed.add_field(
             name="Item",
@@ -50,14 +57,6 @@ class TriviaPager(discord.ui.View):
         )
 
 
-def load_trivia():
-    if not DATA_PATH.exists():
-        return []
-    with open(DATA_PATH, "r", encoding="utf-8") as f:
-        data = json.load(f)
-    return data.get("items", []) if isinstance(data, dict) else data
-
-
 async def register(bot, data_dir):
 
     guild = discord.Object(id=1446560723122520207)
@@ -73,18 +72,18 @@ async def register(bot, data_dir):
     )
     async def academic_trivia(interaction: discord.Interaction):
 
-        items = load_trivia()
+        BASE_DIR = Path(__file__).resolve().parent.parent
+
+        items = get_random_batch(BASE_DIR, size=25)
 
         if not items:
             await interaction.response.send_message(
-                "Trivia pool is empty.",
+                "Academic trivia dataset not loaded.",
                 ephemeral=True
             )
             return
 
-        random.shuffle(items)
-
-        view = TriviaPager(items[:25])
+        view = TriviaPager(items)
 
         await interaction.response.send_message(
             embed=view.make_embed(),
@@ -92,5 +91,6 @@ async def register(bot, data_dir):
         )
 
     bot.tree.add_command(academic_group, guild=guild)
+
 
 
