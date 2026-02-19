@@ -1,0 +1,36 @@
+{
+  "id": "bev_25",
+  "name": "Spa Reine",
+  "producer": "Spa Monopole",
+  "category": "water",
+  "region": "Liège",
+  "official_url": "",
+  "notes": "Natural mineral water sourced from the Ardennes region"
+},
+{
+  "id": "bev_26",
+  "name": "Chaudfontaine Natural Mineral Water",
+  "producer": "Chaudfontaine",
+  "category": "water",
+  "region": "Liège",
+  "official_url": "",
+  "notes": "Thermal mineral water from Chaudfontaine springs"
+},
+{
+  "id": "bev_27",
+  "name": "Bru Mineral Water",
+  "producer": "Bru",
+  "category": "water",
+  "region": "Wallonia",
+  "official_url": "",
+  "notes": "Belgian natural mineral water brand"
+},
+{
+  "id": "bev_28",
+  "name": "Val Mineral Water",
+  "producer": "Val",
+  "category": "water",
+  "region": "Wallonia",
+  "official_url": "",
+  "notes": "Natural Belgian mineral water brand"
+}
