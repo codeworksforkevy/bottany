@@ -11,119 +11,66 @@ from discord import app_commands
 
 
 # =====================================================
-# 🌍 FULL CORE CITY DATABASE (Extended)
-# Format:
-# "city name": ("Timezone/String", "CountryCode")
+# 🌍 CORE CITY DATABASE
 # =====================================================
 
 CORE_CITIES: Dict[str, Tuple[str, str]] = {
-
-    # EUROPE
     "stockholm": ("Europe/Stockholm", "SE"),
     "gothenburg": ("Europe/Stockholm", "SE"),
     "oslo": ("Europe/Oslo", "NO"),
-    "bergen": ("Europe/Oslo", "NO"),
     "copenhagen": ("Europe/Copenhagen", "DK"),
-    "aarhus": ("Europe/Copenhagen", "DK"),
     "helsinki": ("Europe/Helsinki", "FI"),
-    "tallinn": ("Europe/Tallinn", "EE"),
-    "riga": ("Europe/Riga", "LV"),
-    "vilnius": ("Europe/Vilnius", "LT"),
     "warsaw": ("Europe/Warsaw", "PL"),
-    "krakow": ("Europe/Warsaw", "PL"),
     "berlin": ("Europe/Berlin", "DE"),
-    "munich": ("Europe/Berlin", "DE"),
-    "hamburg": ("Europe/Berlin", "DE"),
     "amsterdam": ("Europe/Amsterdam", "NL"),
-    "rotterdam": ("Europe/Amsterdam", "NL"),
     "brussels": ("Europe/Brussels", "BE"),
     "paris": ("Europe/Paris", "FR"),
-    "lyon": ("Europe/Paris", "FR"),
     "madrid": ("Europe/Madrid", "ES"),
-    "barcelona": ("Europe/Madrid", "ES"),
-    "lisbon": ("Europe/Lisbon", "PT"),
     "rome": ("Europe/Rome", "IT"),
-    "milan": ("Europe/Rome", "IT"),
     "vienna": ("Europe/Vienna", "AT"),
-    "prague": ("Europe/Prague", "CZ"),
-    "budapest": ("Europe/Budapest", "HU"),
     "athens": ("Europe/Athens", "GR"),
-    "bucharest": ("Europe/Bucharest", "RO"),
-    "sofia": ("Europe/Sofia", "BG"),
     "dublin": ("Europe/Dublin", "IE"),
     "london": ("Europe/London", "GB"),
-    "manchester": ("Europe/London", "GB"),
     "zurich": ("Europe/Zurich", "CH"),
-    "geneva": ("Europe/Zurich", "CH"),
     "reykjavik": ("Atlantic/Reykjavik", "IS"),
     "ankara": ("Europe/Istanbul", "TR"),
     "istanbul": ("Europe/Istanbul", "TR"),
 
-    # USA
     "new york": ("America/New_York", "US"),
-    "washington": ("America/New_York", "US"),
     "los angeles": ("America/Los_Angeles", "US"),
-    "san francisco": ("America/Los_Angeles", "US"),
-    "san diego": ("America/Los_Angeles", "US"),
     "chicago": ("America/Chicago", "US"),
-    "houston": ("America/Chicago", "US"),
-    "dallas": ("America/Chicago", "US"),
     "miami": ("America/New_York", "US"),
-    "boston": ("America/New_York", "US"),
     "seattle": ("America/Los_Angeles", "US"),
     "denver": ("America/Denver", "US"),
     "phoenix": ("America/Phoenix", "US"),
-    "las vegas": ("America/Los_Angeles", "US"),
 
-    # CANADA
-    "ottawa": ("America/Toronto", "CA"),
     "toronto": ("America/Toronto", "CA"),
-    "montreal": ("America/Toronto", "CA"),
     "vancouver": ("America/Vancouver", "CA"),
-    "calgary": ("America/Edmonton", "CA"),
 
-    # LATAM
     "mexico city": ("America/Mexico_City", "MX"),
     "bogota": ("America/Bogota", "CO"),
     "lima": ("America/Lima", "PE"),
-    "santiago": ("America/Santiago", "CL"),
     "buenos aires": ("America/Argentina/Buenos_Aires", "AR"),
     "sao paulo": ("America/Sao_Paulo", "BR"),
-    "rio de janeiro": ("America/Sao_Paulo", "BR"),
 
-    # ASIA
     "tokyo": ("Asia/Tokyo", "JP"),
     "osaka": ("Asia/Tokyo", "JP"),
     "seoul": ("Asia/Seoul", "KR"),
-    "busan": ("Asia/Seoul", "KR"),
     "beijing": ("Asia/Shanghai", "CN"),
     "shanghai": ("Asia/Shanghai", "CN"),
-    "hong kong": ("Asia/Hong_Kong", "HK"),
-    "taipei": ("Asia/Taipei", "TW"),
     "singapore": ("Asia/Singapore", "SG"),
-    "bangkok": ("Asia/Bangkok", "TH"),
-    "kuala lumpur": ("Asia/Kuala_Lumpur", "MY"),
     "dubai": ("Asia/Dubai", "AE"),
-    "riyadh": ("Asia/Riyadh", "SA"),
-    "doha": ("Asia/Qatar", "QA"),
 
-    # OCEANIA
     "sydney": ("Australia/Sydney", "AU"),
     "melbourne": ("Australia/Sydney", "AU"),
-    "brisbane": ("Australia/Brisbane", "AU"),
-    "perth": ("Australia/Perth", "AU"),
-    "auckland": ("Pacific/Auckland", "NZ"),
 
-    # AFRICA
     "cairo": ("Africa/Cairo", "EG"),
     "nairobi": ("Africa/Nairobi", "KE"),
-    "lagos": ("Africa/Lagos", "NG"),
-    "johannesburg": ("Africa/Johannesburg", "ZA"),
 }
 
 
 # =====================================================
-# 🔧 HELPERS
+# HELPERS
 # =====================================================
 
 def normalize(text: str) -> str:
@@ -148,18 +95,17 @@ def day_icon(hour: int) -> str:
 
 
 # =====================================================
-# 🕒 REGISTER
+# REGISTER (HYBRID LOADER SAFE)
 # =====================================================
 
 def register(bot, data_dir: str):
 
-    @bot.tree.command(
-        name="time",
-        description="Premium world clock dashboard"
-    )
-    @app_commands.describe(
-        locations="Example: Stockholm, Tokyo, New York"
-    )
+    existing = bot.tree.get_command("time")
+
+    if existing:
+        # Eğer zaten varsa tekrar ekleme
+        return
+
     async def time_command(interaction: discord.Interaction, locations: str):
 
         await interaction.response.defer()
@@ -178,14 +124,22 @@ def register(bot, data_dir: str):
         corrections = []
 
         for raw in inputs:
+
             key = normalize(raw)
             entry = CORE_CITIES.get(key)
 
             if not entry:
-                matches = get_close_matches(key, CORE_CITIES.keys(), n=1, cutoff=0.7)
+                matches = get_close_matches(
+                    key,
+                    CORE_CITIES.keys(),
+                    n=1,
+                    cutoff=0.7
+                )
                 if matches:
                     entry = CORE_CITIES[matches[0]]
-                    corrections.append(f"{raw} → {matches[0].title()}")
+                    corrections.append(
+                        f"{raw} → {matches[0].title()}"
+                    )
 
             if not entry:
                 rows.append(f"❌  {raw}")
@@ -204,21 +158,28 @@ def register(bot, data_dir: str):
             city_display = tz.split("/")[-1].replace("_", " ")
 
             rows.append(
-                f"{flag} {icon}   {city_display:<18}   {now.strftime('%H:%M')}"
+                f"{flag} {icon}  {city_display:<18}  {now.strftime('%H:%M')}"
             )
 
         embed = discord.Embed(
             title="Time Dashboard",
-            description="```" + "\n".join(rows) + "```",
+            description="```" + "\n".join(rows)[:3900] + "```",
             color=0x2B2D31
         )
 
         if corrections:
             embed.add_field(
                 name="Auto-corrected",
-                value=", ".join(corrections),
+                value=", ".join(corrections)[:1024],
                 inline=False
             )
 
         await interaction.followup.send(embed=embed)
 
+    command = app_commands.Command(
+        name="time",
+        description="Premium world clock dashboard",
+        callback=time_command
+    )
+
+    bot.tree.add_command(command)
