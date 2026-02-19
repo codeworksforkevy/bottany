@@ -1,76 +1,131 @@
-import json
 import os
-from typing import Any, Dict, List
+import json
+from typing import List, Dict, Any
 
 import discord
 from discord import app_commands
 
-REGISTRY_FILENAME = "belgian_chocolate_registry.json"
+
+DATA_FILE = "belgium_beverages_cocoa.json"
 
 
-def _load_json(path: str, default: Any) -> Any:
+# -------------------------------------------------
+# LOAD COCOA DATASET
+# -------------------------------------------------
+def _load_cocoa(data_dir: str) -> List[Dict[str, Any]]:
+    path = os.path.join(data_dir, DATA_FILE)
+
+    if not os.path.exists(path):
+        return []
+
     try:
         with open(path, "r", encoding="utf-8") as f:
-            return json.load(f)
+            data = json.load(f)
+            return data.get("items", [])
     except Exception:
-        return default
+        return []
 
 
-def _registry_path(data_dir: str) -> str:
-    return os.path.join(data_dir, REGISTRY_FILENAME)
+# -------------------------------------------------
+# FORMATTER
+# -------------------------------------------------
+def _format_item(it: Dict[str, Any]) -> str:
+    name = it.get("name", "")
+    producer = it.get("producer", "")
+    region = it.get("region", "")
+    year = it.get("foundation_year")
+    cert = it.get("certification")
+
+    line = f"• **{name}**"
+
+    if year:
+        line += f" _(est. {year})_"
+
+    if cert:
+        line += f" 🏷 {cert}"
+
+    if producer:
+        line += f"\n  Producer: {producer}"
+
+    if region:
+        line += f"\n  Region: {region}"
+
+    line += f"\n  `id: {it.get('id','')}`"
+
+    return line
 
 
-def _chunk(lines: List[str], max_len: int = 900) -> str:
-    out: List[str] = []
-    n = 0
-    for line in lines:
-        if n + len(line) + 1 > max_len:
-            break
-        out.append(line)
-        n += len(line) + 1
-    return "\n".join(out)
-
-
+# -------------------------------------------------
+# REGISTER
+# -------------------------------------------------
 async def register_belgium_chocolate(bot: discord.Client, data_dir: str) -> None:
     """
     Attach chocolate commands to existing /belgium group.
-    DOES NOT create a new group.
     """
 
     group = bot.tree.get_command("belgium")
     if not group:
-        return  # beverages henüz register edilmemiş
+        return  # beverages not registered yet
 
-    reg = _load_json(_registry_path(data_dir), {})
-
-    @app_commands.command(name="chocolate", description="Explain Belgian chocolate-making.")
+    # -------------------------------------------------
+    # PROCESS OVERVIEW
+    # -------------------------------------------------
+    @app_commands.command(
+        name="chocolate",
+        description="Explain Belgian chocolate-making."
+    )
     async def chocolate(interaction: discord.Interaction):
+
         embed = discord.Embed(
-            title="Belgian chocolate-making (overview)",
-            description="High-level overview of Belgian chocolate craftsmanship."
+            title="Belgian chocolate-making (academic overview)",
+            description="Structured overview of Belgian chocolate craftsmanship."
         )
 
         steps = [
-            "Ingredients & couverture",
-            "Refining & conching",
-            "Tempering",
-            "Molding & shelling",
-            "Fillings",
-            "Finishing",
-            "Storage",
+            "Ingredient sourcing (cocoa mass, cocoa butter, sugar)",
+            "Refining & particle size reduction",
+            "Conching (flavor development & texture refinement)",
+            "Tempering (crystal stabilization)",
+            "Molding / enrobing",
+            "Filling (ganache, praline, liqueur)",
+            "Cooling & finishing",
+            "Storage & distribution standards"
         ]
 
-        embed.add_field(name="Process", value=_chunk(steps), inline=False)
+        embed.add_field(
+            name="Production Stages",
+            value="\n".join(f"• {s}" for s in steps),
+            inline=False
+        )
+
         await interaction.response.send_message(embed=embed)
 
-    @app_commands.command(name="chocolate_brands", description="Belgian chocolate brands.")
+    # -------------------------------------------------
+    # BRANDS LIST
+    # -------------------------------------------------
+    @app_commands.command(
+        name="chocolate_brands",
+        description="Belgian chocolate houses and producers"
+    )
     async def chocolate_brands(interaction: discord.Interaction):
-        brands = reg.get("brands", [])
-        lines = [f"• {b.get('name')}" for b in brands[:20] if isinstance(b, dict)]
+
+        items = _load_cocoa(data_dir)
+
+        if not items:
+            await interaction.response.send_message(
+                "Cocoa dataset not found.",
+                ephemeral=True
+            )
+            return
+
+        description = "\n\n".join(
+            _format_item(i) for i in items[:20]
+        )
 
         embed = discord.Embed(
-            title="Belgian chocolate brands",
-            description="\n".join(lines)[:4096] if lines else "No data available."
+            title="Belgian Chocolate Houses",
+            description=description[:4096],
+            color=0x4B2E2E
         )
 
         await interaction.response.send_message(embed=embed)
@@ -81,5 +136,3 @@ async def register_belgium_chocolate(bot: discord.Client, data_dir: str) -> None
 
     if not group.get_command("chocolate_brands"):
         group.add_command(chocolate_brands)
-
-
