@@ -6,16 +6,16 @@ import logging
 import signal
 import pkgutil
 import importlib
-import inspect
 from pathlib import Path
 
 import discord
 from discord.ext import commands
 from aiohttp import web
 
-# -------------------------------------------------
+
+# =================================================
 # ENV
-# -------------------------------------------------
+# =================================================
 
 ENV = os.getenv("ENV", "dev").lower()
 OWNER_ID = int(os.getenv("BOT_OWNER_ID", "0"))
@@ -34,9 +34,10 @@ if not DATABASE_URL:
 if not DISCORD_TOKEN:
     raise RuntimeError("DISCORD_TOKEN is not set.")
 
-# -------------------------------------------------
-# STRUCTURED LOGGING
-# -------------------------------------------------
+
+# =================================================
+# LOGGING
+# =================================================
 
 from services.logging_config import setup_logging
 from services.telemetry import capture_exception
@@ -44,91 +45,42 @@ from services.telemetry import capture_exception
 setup_logging()
 logger = logging.getLogger("bottany")
 
-logger.info(f"Booting Bottany | ENV={ENV}")
+logger.info("Booting Bottany | ENV=%s", ENV)
 
-# -------------------------------------------------
+
+# =================================================
 # POSTGRES INIT
-# -------------------------------------------------
+# =================================================
 
 from services.trivia_memory_pg import init_db
+
 init_db()
 logger.info("PostgreSQL memory layer initialized.")
 
-# -------------------------------------------------
+
+# =================================================
 # INTENTS
-# -------------------------------------------------
+# =================================================
 
 intents = discord.Intents.default()
 intents.message_content = True
 
 
-# -------------------------------------------------
+# =================================================
 # BOT CLASS
-# -------------------------------------------------
+# =================================================
 
 class BottanyBot(commands.Bot):
 
     def __init__(self):
         super().__init__(command_prefix="!", intents=intents)
-
-        if ENV == "production":
-            self._install_sync_guard()
+        self._sync_allowed = False
 
     # -------------------------------------------------
-    # SYNC GUARD (PRODUCTION ONLY)
+    # AUTO LOADER (STRICT CONTRACT)
     # -------------------------------------------------
 
-    def _install_sync_guard(self):
-
-        original_sync = self.tree.sync
-
-        async def guarded_sync(*args, **kwargs):
-            if not getattr(self, "_sync_allowed", False):
-                logger.warning("Blocked tree.sync in production.")
-                return []
-            return await original_sync(*args, **kwargs)
-
-        self.tree.sync = guarded_sync
-
-    # -------------------------------------------------
-    # SAFE REGISTER
-    # -------------------------------------------------
-
-    async def safe_register(self, func):
-
-        if not callable(func):
-            return
-
-        try:
-            sig = inspect.signature(func)
-            param_names = list(sig.parameters.keys())
-            result = None
-
-            if param_names == ["bot", "data_dir"]:
-                result = func(self, DATA_DIR)
-            elif param_names == ["bot"]:
-                result = func(self)
-            elif len(param_names) == 0:
-                result = func()
-            else:
-                logger.info(
-                    "Skipped register %s (unsupported signature: %s)",
-                    func.__name__,
-                    param_names
-                )
-                return
-
-            if asyncio.iscoroutine(result):
-                await result
-
-        except Exception as e:
-            capture_exception(e, context="safe_register")
-
-    # -------------------------------------------------
-    # AUTO MODULE LOADER
-    # -------------------------------------------------
-
-    async def auto_load_command_modules(self):
+    async def load_command_modules(self):
 
         try:
             import commands
@@ -138,17 +90,19 @@ class BottanyBot(commands.Bot):
 
         for _, module_name, _ in pkgutil.iter_modules(commands.__path__):
 
+            full_name = f"commands.{module_name}"
+
             try:
-                module = importlib.import_module(f"commands.{module_name}")
+                module = importlib.import_module(full_name)
 
-                for attr in dir(module):
-                    if attr.startswith("register"):
-                        await self.safe_register(getattr(module, attr))
-
-                logger.info("Loaded commands.%s", module_name)
+                if hasattr(module, "register"):
+                    module.register(self.tree)
+                    logger.info("Registered %s", full_name)
+                else:
+                    logger.warning("%s has no register(tree)", full_name)
 
             except Exception as e:
-                capture_exception(e, context=f"auto_load:{module_name}")
+                capture_exception(e, context=f"load:{full_name}")
 
     # -------------------------------------------------
     # SETUP HOOK
@@ -156,15 +110,17 @@ class BottanyBot(commands.Bot):
 
     async def setup_hook(self):
 
-        await self.auto_load_command_modules()
+        await self.load_command_modules()
 
         try:
             if ENV == "dev" and GUILD_ID:
                 guild = discord.Object(id=GUILD_ID)
                 synced = await self.tree.sync(guild=guild)
                 logger.info("Dev guild sync (%s commands).", len(synced))
+
             elif ENV == "production":
-                logger.info("Production mode — global sync guarded.")
+                logger.info("Production mode — global sync disabled.")
+
             else:
                 synced = await self.tree.sync()
                 logger.info("Global sync (%s commands).", len(synced))
@@ -172,7 +128,7 @@ class BottanyBot(commands.Bot):
         except Exception as e:
             capture_exception(e, context="tree_sync")
 
-        # GLOBAL TREE ERROR HANDLER
+        # Global slash error handler
         @self.tree.error
         async def on_app_command_error(interaction, error):
 
@@ -196,18 +152,18 @@ class BottanyBot(commands.Bot):
 bot = BottanyBot()
 
 
-# -------------------------------------------------
-# BASIC HEALTH SLASH
-# -------------------------------------------------
+# =================================================
+# BASIC HEALTH COMMAND
+# =================================================
 
 @bot.tree.command(name="ping", description="Health check")
 async def ping(interaction: discord.Interaction):
     await interaction.response.send_message("Pong.")
 
 
-# -------------------------------------------------
+# =================================================
 # OWNER GLOBAL SYNC
-# -------------------------------------------------
+# =================================================
 
 @bot.tree.command(name="sync_global", description="Owner: force global sync")
 async def sync_global(interaction: discord.Interaction):
@@ -216,26 +172,32 @@ async def sync_global(interaction: discord.Interaction):
         await interaction.response.send_message("Not authorized.", ephemeral=True)
         return
 
-    if ENV == "production":
-        bot._sync_allowed = True
+    if ENV != "production":
+        await interaction.response.send_message(
+            "Global sync is only relevant in production.",
+            ephemeral=True
+        )
+        return
 
-    synced = await bot.tree.sync()
+    bot._sync_allowed = True
 
-    if ENV == "production":
+    try:
+        synced = await bot.tree.sync()
+        await interaction.response.send_message(
+            f"Global sync complete ({len(synced)} commands).",
+            ephemeral=True
+        )
+    finally:
         bot._sync_allowed = False
 
-    await interaction.response.send_message(
-        f"Global sync complete ({len(synced)} commands).",
-        ephemeral=True
-    )
 
-
-# -------------------------------------------------
+# =================================================
 # HEALTH HTTP ENDPOINT (Railway)
-# -------------------------------------------------
+# =================================================
 
 async def health(request):
     return web.json_response({"status": "ok", "env": ENV})
+
 
 async def start_health_server():
     app = web.Application()
@@ -245,16 +207,17 @@ async def start_health_server():
     port = int(os.getenv("PORT", "8080"))
     site = web.TCPSite(runner, "0.0.0.0", port)
     await site.start()
-    logger.info(f"Health endpoint running on port {port}")
+    logger.info("Health endpoint running on port %s", port)
 
 
-# -------------------------------------------------
+# =================================================
 # GRACEFUL SHUTDOWN
-# -------------------------------------------------
+# =================================================
 
 async def shutdown():
     logger.info("Graceful shutdown initiated.")
     await bot.close()
+
 
 def install_signal_handlers():
     loop = asyncio.get_event_loop()
@@ -265,15 +228,14 @@ def install_signal_handlers():
         )
 
 
-# -------------------------------------------------
+# =================================================
 # MAIN
-# -------------------------------------------------
+# =================================================
 
 async def main():
 
     install_signal_handlers()
     await start_health_server()
-
     await bot.start(DISCORD_TOKEN)
 
 
