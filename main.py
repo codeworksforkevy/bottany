@@ -17,24 +17,29 @@ GUILD_ID = int(os.getenv("DEV_GUILD_ID", "1446560723122520207"))
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
-
-# Ensure data directory exists
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 
-# -------------------------------------------------
-# SQLITE MEMORY INIT
-# -------------------------------------------------
-try:
-    from services.trivia_memory import init_db
-    init_db()
-except Exception as e:
-    print(f"[WARN] SQLite init failed: {e}")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 # -------------------------------------------------
 # LOGGING
 # -------------------------------------------------
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("bottany")
+
+# -------------------------------------------------
+# POSTGRES INIT
+# -------------------------------------------------
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL is not set.")
+
+try:
+    from services.trivia_memory_pg import init_db
+    init_db()
+    logger.info("✅ PostgreSQL memory layer initialized.")
+except Exception as e:
+    logger.error("❌ PostgreSQL init failed: %s", e)
+    raise
 
 # -------------------------------------------------
 # INTENTS
@@ -61,7 +66,7 @@ class BottanyBot(commands.Bot):
         self.twitch_layer = None
 
     # -------------------------------------------------
-    # 🔒 GLOBAL SYNC GUARD
+    # GLOBAL SYNC GUARD
     # -------------------------------------------------
     def _install_sync_guard(self):
 
@@ -134,7 +139,6 @@ class BottanyBot(commands.Bot):
 
                     if callable(register_func):
                         await self.safe_register(register_func)
-
                         logger.info(
                             "Processed %s in commands.%s",
                             attr,
