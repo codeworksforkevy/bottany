@@ -12,11 +12,11 @@ from providers.open_meteo import geocode_city, fetch_forecast
 from providers.bbc_rss import fetch_bbc_rss_by_location_id
 
 # =========================================================
-# SIMPLE CACHE (5 min)
+# CACHE (5 min)
 # =========================================================
 
 _CACHE: Dict[str, Tuple[float, Dict[str, Any]]] = {}
-CACHE_TTL = 300  # 5 minutes
+CACHE_TTL = 300
 
 
 def _get_cache(key: str):
@@ -41,8 +41,11 @@ def _set_cache(key: str, data: Dict[str, Any]):
 def _load_json(path: str) -> Dict[str, Any]:
     if not os.path.exists(path):
         return {}
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception:
+        return {}
 
 
 def _place_label(g) -> str:
@@ -64,7 +67,7 @@ def _fmt(x, unit=""):
 
 
 # =========================================================
-# WEATHER CODE MAP
+# WEATHER MAP
 # =========================================================
 
 WEATHER_CODE_MAP: Dict[int, Tuple[str, str]] = {
@@ -81,13 +84,61 @@ WEATHER_CODE_MAP: Dict[int, Tuple[str, str]] = {
 
 
 # =========================================================
-# EMBED BUILDER (LIGHT VERSION)
+# AIR QUALITY FETCH (Open-Meteo)
+# =========================================================
+
+import urllib.request
+import urllib.parse
+
+
+def fetch_air_quality(lat: float, lon: float) -> Optional[Dict[str, Any]]:
+    try:
+        params = urllib.parse.urlencode({
+            "latitude": lat,
+            "longitude": lon,
+            "current": "european_aqi,pm2_5,pm10"
+        })
+
+        url = f"https://air-quality-api.open-meteo.com/v1/air-quality?{params}"
+
+        with urllib.request.urlopen(url, timeout=10) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+
+        return data.get("current")
+    except Exception:
+        return None
+
+
+def _aqi_label(aqi: Optional[float]) -> str:
+    if aqi is None:
+        return "—"
+
+    try:
+        aqi = float(aqi)
+    except Exception:
+        return "—"
+
+    if aqi <= 20:
+        return "🟢 Good"
+    elif aqi <= 40:
+        return "🟡 Fair"
+    elif aqi <= 60:
+        return "🟠 Moderate"
+    elif aqi <= 80:
+        return "🔴 Poor"
+    else:
+        return "🟣 Very Poor"
+
+
+# =========================================================
+# EMBED BUILDER (Premium + AQ)
 # =========================================================
 
 def build_weather_embed(
     *,
     place_label: str,
     forecast: Dict[str, Any],
+    air_quality: Optional[Dict[str, Any]] = None,
     bbc_items: Optional[List[Dict[str, str]]] = None,
     source_footer: str = "Open-Meteo"
 ) -> discord.Embed:
@@ -103,38 +154,73 @@ def build_weather_embed(
 
     label, emoji = WEATHER_CODE_MAP.get(wcode, ("Conditions", "🛰️"))
 
-    title = f"{emoji} {place_label}"
-    desc = f"**{label}**"
-
-    # Simple severe flag
     wind = float(current.get("wind_speed_10m") or 0)
     precip = float(current.get("precipitation") or 0)
 
-    if wcode in (95,) or wind >= 60 or precip >= 15:
+    severe = (wcode in (95,) or wind >= 60 or precip >= 15)
+
+    # COLOR LOGIC
+    if severe:
+        color = 0x7F1D1D
+    elif bbc_items:
+        color = 0x0A1F44
+    else:
+        color = 0x1D4ED8
+
+    if bbc_items:
+        title = f"🇬🇧 {emoji} {place_label}"
+    else:
+        title = f"{emoji} {place_label}"
+
+    desc = f"**{label}**"
+    if severe:
         desc = f"🚨 Severe conditions\n{desc}"
 
-    embed = discord.Embed(title=title, description=desc, color=0x1D4ED8)
+    embed = discord.Embed(
+        title=title[:256],
+        description=desc[:4096],
+        color=color
+    )
 
+    # Temperature
     embed.add_field(
         name="Temperature",
-        value=f"🌡 {_fmt(current.get('temperature_2m'), '°C')}\n"
-              f"Feels: {_fmt(current.get('apparent_temperature'), '°C')}",
+        value=(
+            f"🌡 {_fmt(current.get('temperature_2m'), '°C')}\n"
+            f"Feels: {_fmt(current.get('apparent_temperature'), '°C')}"
+        )[:1024],
         inline=True
     )
 
     embed.add_field(
         name="Wind",
-        value=f"💨 {_fmt(wind, ' km/h')}",
+        value=f"💨 {_fmt(wind, ' km/h')}"[:1024],
         inline=True
     )
 
     embed.add_field(
         name="Precipitation",
-        value=f"🌧 {_fmt(precip, ' mm')}",
+        value=f"🌧 {_fmt(precip, ' mm')}"[:1024],
         inline=True
     )
 
-    # 3-day outlook
+    # Air Quality
+    if air_quality:
+        aqi = air_quality.get("european_aqi")
+        pm25 = air_quality.get("pm2_5")
+        pm10 = air_quality.get("pm10")
+
+        embed.add_field(
+            name="Air Quality",
+            value=(
+                f"AQI: {_aqi_label(aqi)}\n"
+                f"PM2.5: {_fmt(pm25, ' µg/m³')}\n"
+                f"PM10: {_fmt(pm10, ' µg/m³')}"
+            )[:1024],
+            inline=False
+        )
+
+    # Outlook
     dates = daily.get("time") or []
     tmin = daily.get("temperature_2m_min") or []
     tmax = daily.get("temperature_2m_max") or []
@@ -146,18 +232,31 @@ def build_weather_embed(
         )
 
     if lines:
-        embed.add_field(name="3-Day Outlook", value="\n".join(lines), inline=False)
+        embed.add_field(
+            name="3-Day Outlook",
+            value="\n".join(lines)[:1024],
+            inline=False
+        )
 
-    # BBC enrichment (UK only)
+    # BBC Premium
     if bbc_items:
+
+        embed.add_field(
+            name="\u200B",
+            value="──────────────",
+            inline=False
+        )
+
         bbc_lines = []
         for it in bbc_items[:2]:
-            if it.get("title"):
-                bbc_lines.append(f"• {it['title']}")
+            t = (it.get("title") or "").strip()
+            if t:
+                bbc_lines.append(f"• {t[:200]}")
+
         if bbc_lines:
             embed.add_field(
-                name="BBC Summary (UK)",
-                value="\n".join(bbc_lines),
+                name="🇬🇧 BBC Weather Insight (UK)",
+                value=("_Editorial summary_\n" + "\n".join(bbc_lines))[:1024],
                 inline=False
             )
 
@@ -165,13 +264,14 @@ def build_weather_embed(
     footer = f"Source: {source_footer}"
     if updated:
         footer += f" · Updated {updated}"
-    embed.set_footer(text=footer)
+
+    embed.set_footer(text=footer[:2048])
 
     return embed
 
 
 # =========================================================
-# VIEW (DETAILS + PROPER REFRESH)
+# VIEW
 # =========================================================
 
 class WeatherView(discord.ui.View):
@@ -190,27 +290,19 @@ class WeatherView(discord.ui.View):
     async def refresh(self, interaction: discord.Interaction, button: discord.ui.Button):
 
         if not self._refresh_cb:
-            await interaction.response.send_message(
-                "Refresh unavailable.",
-                ephemeral=True
-            )
+            await interaction.response.send_message("Refresh unavailable.", ephemeral=True)
             return
 
         try:
             self._forecast = await self._refresh_cb()
 
-            new_embed = build_weather_embed(
-                place_label=self._place_label,
-                forecast=self._forecast
+            await interaction.response.edit_message(
+                embed=self._forecast["embed"],
+                view=self
             )
-
-            await interaction.response.edit_message(embed=new_embed, view=self)
 
         except Exception:
-            await interaction.response.send_message(
-                "Could not refresh right now.",
-                ephemeral=True
-            )
+            await interaction.response.send_message("Could not refresh.", ephemeral=True)
 
 
 # =========================================================
@@ -223,81 +315,57 @@ def register_weather(bot, data_dir: str) -> None:
     BBC_MAP = _load_json(bbc_map_path).get("city_to_location_id", {})
     BBC_MAP = {k.lower(): v for k, v in BBC_MAP.items()}
 
-    @bot.tree.command(
-        name="weather",
-        description="Weather forecast by city."
-    )
+    @bot.tree.command(name="weather", description="Weather forecast by city.")
     async def weather_cmd(interaction: discord.Interaction, city: str):
 
         city_clean = (city or "").strip()
-        if not city_clean:
-            await interaction.response.send_message(
-                "Example: `/weather London`",
-                ephemeral=True
-            )
-            return
 
         geo = await asyncio.to_thread(geocode_city, city_clean)
         if not geo:
-            await interaction.response.send_message(
-                f"City not found: '{city_clean}'.",
-                ephemeral=True
-            )
+            await interaction.response.send_message("City not found.", ephemeral=True)
             return
 
         cache_key = f"{geo.latitude}:{geo.longitude}"
-        fc = _get_cache(cache_key)
 
-        if not fc:
-            try:
-                fc = await asyncio.to_thread(
-                    fetch_forecast,
-                    geo.latitude,
-                    geo.longitude,
-                    timezone=geo.timezone or "auto",
-                    days=3
-                )
-                if fc:
-                    _set_cache(cache_key, fc)
-            except Exception:
-                fc = None
+        data = _get_cache(cache_key)
 
-        # BBC enrichment (UK only)
-        loc_id = BBC_MAP.get(city_clean.lower())
-        bbc = await asyncio.to_thread(fetch_bbc_rss_by_location_id, loc_id) if loc_id else None
-
-        if not fc:
-            await interaction.response.send_message(
-                "Weather service temporarily unavailable.",
-                ephemeral=True
-            )
-            return
-
-        place = _place_label(geo)
-
-        embed = build_weather_embed(
-            place_label=place,
-            forecast=fc,
-            bbc_items=(bbc.get("items") if bbc else None),
-            source_footer=("Open-Meteo + BBC RSS" if bbc else "Open-Meteo")
-        )
-
-        async def refresh_cb():
-            new_fc = await asyncio.to_thread(
+        if not data:
+            fc = await asyncio.to_thread(
                 fetch_forecast,
                 geo.latitude,
                 geo.longitude,
                 timezone=geo.timezone or "auto",
                 days=3
             )
-            if new_fc:
-                _set_cache(cache_key, new_fc)
-            return new_fc
 
-        view = WeatherView(
-            forecast=fc,
+            aq = await asyncio.to_thread(fetch_air_quality, geo.latitude, geo.longitude)
+
+            data = {"forecast": fc, "air_quality": aq}
+            _set_cache(cache_key, data)
+
+        fc = data["forecast"]
+        aq = data["air_quality"]
+
+        # BBC matching tolerant
+        city_key = city_clean.lower().split(",")[0].strip()
+        loc_id = None
+        for k, v in BBC_MAP.items():
+            if k in city_key:
+                loc_id = v
+                break
+
+        bbc = await asyncio.to_thread(fetch_bbc_rss_by_location_id, loc_id) if loc_id else None
+
+        place = _place_label(geo)
+
+        embed = build_weather_embed(
             place_label=place,
-            refresh_cb=refresh_cb
+            forecast=fc,
+            air_quality=aq,
+            bbc_items=(bbc.get("items") if bbc else None),
+            source_footer=("Open-Meteo + BBC RSS" if bbc else "Open-Meteo")
         )
+
+        view = WeatherView(forecast=data, place_label=place)
 
         await interaction.response.send_message(embed=embed, view=view)
