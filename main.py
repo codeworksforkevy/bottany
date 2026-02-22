@@ -7,6 +7,7 @@ import signal
 import pkgutil
 import importlib
 import inspect
+import time
 from pathlib import Path
 
 import discord
@@ -58,6 +59,7 @@ class BottanyBot(commands.Bot):
             command_prefix="!",
             intents=intents
         )
+        self.start_time = time.time()
 
     # -------------------------------------------------
     # AUTO MODULE LOADER
@@ -167,6 +169,7 @@ class BottanyBot(commands.Bot):
 
     async def on_ready(self):
         logger.info("Bot ready as %s", self.user)
+        logger.info("Guild count: %s", len(self.guilds))
 
 # =================================================
 # BOT INSTANCE
@@ -180,7 +183,8 @@ bot = BottanyBot()
 
 @bot.tree.command(name="ping", description="Health check")
 async def ping(interaction: discord.Interaction):
-    await interaction.response.send_message("Pong.")
+    latency = round(bot.latency * 1000)
+    await interaction.response.send_message(f"Pong. Latency: {latency} ms")
 
 # =================================================
 # OWNER GLOBAL SYNC
