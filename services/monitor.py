@@ -1,4 +1,4 @@
-from services.drops_monitor import DropsLifecycleMonitor
+from services.stream_snapshot_engine import StreamSnapshotEngine
 from core.cache_manager import CacheManager
 
 
@@ -8,18 +8,24 @@ class TwitchMonitor:
         self.api = api
         self.telemetry = telemetry
         self.logger = logger
-        self.cache = CacheManager("data/drops_cache.json")
-        self.drops_monitor = DropsLifecycleMonitor(api, self.cache, logger)
 
-        self.tracked_games = [
-            "Valorant",
-            "League of Legends",
-            "Fortnite"
+        self.stream_cache = CacheManager("data/stream_snapshot_cache.json")
+        self.snapshot_engine = StreamSnapshotEngine(
+            api,
+            telemetry,
+            self.stream_cache,
+            logger
+        )
+
+        self.tracked_streams = [
+            "xqc",
+            "tarik",
+            "shroud"
         ]
 
     async def run_cycle(self):
 
-        for game in self.tracked_games:
-            await self.drops_monitor.check_game(game)
+        for user in self.tracked_streams:
+            await self.snapshot_engine.process_stream(user)
 
-        self.logger.log("monitor_cycle", {"status": "drops_checked"})
+        self.logger.log("monitor_cycle", {"status": "stream_snapshots_checked"})
