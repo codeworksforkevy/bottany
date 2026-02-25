@@ -49,6 +49,16 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 # =================================================
+# TWITCH INTELLIGENCE IMPORTS
+# =================================================
+
+from services.telemetry_service import TelemetryService
+from services.twitch_api import TwitchAPI
+from services.monitor import TwitchMonitor
+from workers.background_scheduler import BackgroundScheduler
+from core.structured_logger import StructuredLogger
+
+# =================================================
 # BOT CLASS
 # =================================================
 
@@ -60,6 +70,22 @@ class BottanyBot(commands.Bot):
             intents=intents
         )
         self.start_time = time.time()
+
+        # Intelligence services (initialized later)
+        self.telemetry = TelemetryService()
+        self.twitch_api = TwitchAPI()
+        self.intelligence_logger = StructuredLogger()
+
+        self.monitor = TwitchMonitor(
+            api=self.twitch_api,
+            telemetry=self.telemetry,
+            logger=self.intelligence_logger
+        )
+
+        self.scheduler = BackgroundScheduler(
+            monitor=self.monitor,
+            interval=300
+        )
 
     # -------------------------------------------------
     # AUTO MODULE LOADER
@@ -128,10 +154,8 @@ class BottanyBot(commands.Bot):
         try:
             if ENV == "dev" and GUILD_ID:
                 guild = discord.Object(id=GUILD_ID)
-
                 self.tree.copy_global_to(guild=guild)
                 synced = await self.tree.sync(guild=guild)
-
                 logger.info("Dev guild sync complete (%s commands).", len(synced))
 
             elif ENV == "production":
@@ -167,9 +191,24 @@ class BottanyBot(commands.Bot):
             except Exception:
                 pass
 
+    # -------------------------------------------------
+    # READY EVENT
+    # -------------------------------------------------
+
     async def on_ready(self):
+
         logger.info("Bot ready as %s", self.user)
         logger.info("Guild count: %s", len(self.guilds))
+
+        try:
+            await self.telemetry.init()
+            logger.info("Telemetry database connected.")
+
+            self.loop.create_task(self.scheduler.start())
+            logger.info("Twitch Intelligence scheduler started.")
+
+        except Exception as e:
+            capture_exception(e, context="intelligence_bootstrap")
 
 # =================================================
 # BOT INSTANCE
@@ -226,6 +265,12 @@ async def sync_global(interaction: discord.Interaction):
 
 async def shutdown():
     logger.info("Graceful shutdown initiated.")
+
+    try:
+        await bot.twitch_api.close()
+    except Exception:
+        pass
+
     await bot.close()
 
 def install_signal_handlers():
