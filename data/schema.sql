@@ -8,5 +8,9 @@ CREATE TABLE IF NOT EXISTS stream_snapshots (
     recorded_at TIMESTAMP DEFAULT NOW()
 );
 
-CREATE INDEX IF NOT EXISTS idx_stream_user_time
-ON stream_snapshots(user_login, recorded_at DESC);
+CREATE TABLE IF NOT EXISTS drops_history (
+    id SERIAL PRIMARY KEY,
+    game_name TEXT,
+    drops_active BOOLEAN,
+    recorded_at TIMESTAMP DEFAULT NOW()
+);
