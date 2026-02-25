@@ -5,6 +5,7 @@ from core.cache_manager import CacheManager
 from services.stream_snapshot_engine import StreamSnapshotEngine
 from services.anomaly_detector import ViewerAnomalyDetector
 from services.drops_monitor import DropsLifecycleMonitor
+from services.stream_intelligence_engine import StreamIntelligenceEngine
 
 
 class TwitchMonitor:
@@ -34,6 +35,15 @@ class TwitchMonitor:
             logger=logger,
             anomaly_detector=self.anomaly_detector,
             snapshot_ttl=120
+        )
+
+        # -------------------------------------------------
+        # STREAM INTELLIGENCE ENGINE
+        # -------------------------------------------------
+
+        self.intelligence_engine = StreamIntelligenceEngine(
+            telemetry=telemetry,
+            logger=logger
         )
 
         # -------------------------------------------------
@@ -72,13 +82,22 @@ class TwitchMonitor:
 
         cycle_start = time.time()
 
+        intelligence_results = []
+
         # -------------------------------------------------
-        # STREAM SNAPSHOTS
+        # STREAM SNAPSHOT + INTELLIGENCE
         # -------------------------------------------------
 
         for user in self.tracked_streams:
+
             try:
                 await self.snapshot_engine.process_stream(user)
+
+                result = await self.intelligence_engine.analyze(user)
+
+                if result:
+                    intelligence_results.append(result)
+
             except Exception as e:
                 self.logger.log(
                     "stream_monitor_error",
@@ -97,6 +116,32 @@ class TwitchMonitor:
                     "drops_monitor_error",
                     {"game": game, "error": str(e)}
                 )
+
+        # -------------------------------------------------
+        # CROSS-CHANNEL RANKING
+        # -------------------------------------------------
+
+        if intelligence_results:
+
+            ranked = sorted(
+                intelligence_results,
+                key=lambda x: x["health_score"],
+                reverse=True
+            )
+
+            self.logger.log(
+                "stream_ranking",
+                {
+                    "ranking": [
+                        {
+                            "user": r["user"],
+                            "health_score": r["health_score"],
+                            "trend": r["trend"]
+                        }
+                        for r in ranked
+                    ]
+                }
+            )
 
         # -------------------------------------------------
         # CYCLE METRICS
