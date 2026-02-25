@@ -1,4 +1,3 @@
-
 import os
 import asyncpg
 from datetime import datetime
@@ -20,7 +19,7 @@ class TelemetryService:
 
     async def init(self):
         if self.pool is not None:
-            return  # already initialized
+            return
 
         self.pool = await asyncpg.create_pool(
             dsn=self.dsn,
@@ -29,9 +28,47 @@ class TelemetryService:
             command_timeout=30
         )
 
+        await self._run_migrations()
+
     async def close(self):
         if self.pool:
             await self.pool.close()
+
+    # -------------------------------------------------
+    # MIGRATIONS
+    # -------------------------------------------------
+
+    async def _run_migrations(self):
+
+        async with self.pool.acquire() as conn:
+
+            # Stream snapshots table
+            await conn.execute("""
+            CREATE TABLE IF NOT EXISTS stream_snapshots (
+                id SERIAL PRIMARY KEY,
+                user_login TEXT NOT NULL,
+                viewer_count INT,
+                title TEXT,
+                game_name TEXT,
+                started_at TIMESTAMP,
+                recorded_at TIMESTAMP DEFAULT NOW()
+            );
+            """)
+
+            await conn.execute("""
+            CREATE INDEX IF NOT EXISTS idx_stream_user_time
+            ON stream_snapshots(user_login, recorded_at DESC);
+            """)
+
+            # Drops history table
+            await conn.execute("""
+            CREATE TABLE IF NOT EXISTS drops_history (
+                id SERIAL PRIMARY KEY,
+                game_name TEXT,
+                drops_active BOOLEAN,
+                recorded_at TIMESTAMP DEFAULT NOW()
+            );
+            """)
 
     # -------------------------------------------------
     # STREAM SNAPSHOT LOGGING
@@ -45,9 +82,6 @@ class TelemetryService:
         game_name: str,
         started_at: Optional[str] = None
     ):
-        """
-        Insert a stream snapshot into PostgreSQL.
-        """
 
         if not self.pool:
             raise RuntimeError("TelemetryService not initialized.")
@@ -68,7 +102,7 @@ class TelemetryService:
             )
 
     # -------------------------------------------------
-    # FUTURE EXTENSIONS
+    # DROPS LOGGING
     # -------------------------------------------------
 
     async def log_drops_state(
@@ -76,9 +110,6 @@ class TelemetryService:
         game_name: str,
         drops_active: bool
     ):
-        """
-        Optional: future drops lifecycle logging
-        """
 
         if not self.pool:
             raise RuntimeError("TelemetryService not initialized.")
@@ -95,14 +126,15 @@ class TelemetryService:
                 datetime.utcnow()
             )
 
+    # -------------------------------------------------
+    # ANALYTICS SUPPORT
+    # -------------------------------------------------
+
     async def get_recent_snapshots(
         self,
         user_login: str,
         limit: int = 10
     ):
-        """
-        Fetch recent stream snapshots (for anomaly detection / analytics).
-        """
 
         if not self.pool:
             raise RuntimeError("TelemetryService not initialized.")
