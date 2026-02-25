@@ -42,7 +42,6 @@ class TelemetryService:
 
         async with self.pool.acquire() as conn:
 
-            # Stream snapshots table
             await conn.execute("""
             CREATE TABLE IF NOT EXISTS stream_snapshots (
                 id SERIAL PRIMARY KEY,
@@ -60,7 +59,6 @@ class TelemetryService:
             ON stream_snapshots(user_login, recorded_at DESC);
             """)
 
-            # Drops history table
             await conn.execute("""
             CREATE TABLE IF NOT EXISTS drops_history (
                 id SERIAL PRIMARY KEY,
@@ -86,6 +84,19 @@ class TelemetryService:
         if not self.pool:
             raise RuntimeError("TelemetryService not initialized.")
 
+        parsed_started_at = None
+
+        if started_at:
+            try:
+                # Twitch ISO format example:
+                # 2026-02-25T17:56:10Z
+                parsed_started_at = datetime.strptime(
+                    started_at,
+                    "%Y-%m-%dT%H:%M:%SZ"
+                )
+            except Exception:
+                parsed_started_at = None
+
         async with self.pool.acquire() as conn:
             await conn.execute(
                 """
@@ -97,7 +108,7 @@ class TelemetryService:
                 viewer_count,
                 title,
                 game_name,
-                started_at,
+                parsed_started_at,
                 datetime.utcnow()
             )
 
