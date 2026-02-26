@@ -57,6 +57,15 @@ from services.twitch_api import TwitchAPI
 from services.monitor import TwitchMonitor
 from workers.background_scheduler import BackgroundScheduler
 from core.structured_logger import StructuredLogger
+from core.cache_manager import CacheManager
+
+from services.stream_snapshot_engine import StreamSnapshotEngine
+from services.drops_monitor import DropsLifecycleMonitor
+from services.anomaly_detector import ViewerAnomalyDetector
+from services.prediction_engine import PredictionEngine
+from services.trend_analytics_engine import TrendAnalyticsEngine
+from services.stream_intelligence_engine import StreamIntelligenceEngine
+from services.adaptive_tracking_engine import AdaptiveTrackingEngine
 
 # =================================================
 # BOT CLASS
@@ -65,22 +74,78 @@ from core.structured_logger import StructuredLogger
 class BottanyBot(commands.Bot):
 
     def __init__(self):
-        super().__init__(
-            command_prefix="!",
-            intents=intents
-        )
+        super().__init__(command_prefix="!", intents=intents)
+
         self.start_time = time.time()
 
-        # Intelligence services (initialized later)
+        # -------------------------------------------------
+        # CORE SERVICES
+        # -------------------------------------------------
+
         self.telemetry = TelemetryService()
         self.twitch_api = TwitchAPI()
         self.intelligence_logger = StructuredLogger()
 
+        # -------------------------------------------------
+        # CACHE LAYERS
+        # -------------------------------------------------
+
+        self.stream_cache = CacheManager("data/stream_snapshot_cache.json")
+        self.drops_cache = CacheManager("data/drops_cache.json")
+
+        # -------------------------------------------------
+        # ANALYTICS ENGINES
+        # -------------------------------------------------
+
+        self.anomaly_detector = ViewerAnomalyDetector(
+            telemetry=self.telemetry,
+            logger=self.intelligence_logger,
+            threshold=2.5
+        )
+
+        self.snapshot_engine = StreamSnapshotEngine(
+            api=self.twitch_api,
+            telemetry=self.telemetry,
+            cache=self.stream_cache,
+            logger=self.intelligence_logger,
+            anomaly_detector=self.anomaly_detector,
+            snapshot_ttl=120
+        )
+
+        self.drops_monitor = DropsLifecycleMonitor(
+            api=self.twitch_api,
+            cache=self.drops_cache,
+            logger=self.intelligence_logger
+        )
+
+        self.predictor = PredictionEngine()
+        self.trend_engine = TrendAnalyticsEngine()
+        self.adaptive_engine = AdaptiveTrackingEngine()
+
+        self.intelligence_engine = StreamIntelligenceEngine(
+            telemetry=self.telemetry,
+            logger=self.intelligence_logger,
+            predictor=self.predictor,
+            trend_engine=self.trend_engine
+        )
+
+        # -------------------------------------------------
+        # MONITOR (ORCHESTRATOR)
+        # -------------------------------------------------
+
         self.monitor = TwitchMonitor(
             api=self.twitch_api,
             telemetry=self.telemetry,
-            logger=self.intelligence_logger
+            logger=self.intelligence_logger,
+            snapshot_engine=self.snapshot_engine,
+            drops_monitor=self.drops_monitor,
+            intelligence_engine=self.intelligence_engine,
+            adaptive_engine=self.adaptive_engine
         )
+
+        # -------------------------------------------------
+        # BACKGROUND SCHEDULER
+        # -------------------------------------------------
 
         self.scheduler = BackgroundScheduler(
             monitor=self.monitor,
@@ -117,16 +182,12 @@ class BottanyBot(commands.Bot):
 
                 if sig == ["bot", "data_dir"]:
                     result = func(self, DATA_DIR)
-
                 elif sig == ["bot"]:
                     result = func(self)
-
                 elif sig == ["tree"]:
                     result = func(self.tree)
-
                 elif len(sig) == 0:
                     result = func()
-
                 else:
                     logger.warning(
                         "%s unsupported register signature: %s",
@@ -157,39 +218,14 @@ class BottanyBot(commands.Bot):
                 self.tree.copy_global_to(guild=guild)
                 synced = await self.tree.sync(guild=guild)
                 logger.info("Dev guild sync complete (%s commands).", len(synced))
-
             elif ENV == "production":
-                logger.info("Production mode — global sync disabled by default.")
-
+                logger.info("Production mode — global sync disabled.")
             else:
                 synced = await self.tree.sync()
                 logger.info("Global sync complete (%s commands).", len(synced))
 
         except Exception as e:
             capture_exception(e, context="tree_sync")
-
-        # -------------------------------------------------
-        # GLOBAL SLASH ERROR HANDLER
-        # -------------------------------------------------
-
-        @self.tree.error
-        async def on_app_command_error(interaction, error):
-
-            capture_exception(
-                error,
-                context="slash_command",
-                user_id=interaction.user.id if interaction.user else None,
-                guild_id=interaction.guild_id
-            )
-
-            try:
-                if not interaction.response.is_done():
-                    await interaction.response.send_message(
-                        "An internal error occurred.",
-                        ephemeral=True
-                    )
-            except Exception:
-                pass
 
     # -------------------------------------------------
     # READY EVENT
@@ -226,40 +262,6 @@ async def ping(interaction: discord.Interaction):
     await interaction.response.send_message(f"Pong. Latency: {latency} ms")
 
 # =================================================
-# OWNER GLOBAL SYNC
-# =================================================
-
-@bot.tree.command(name="sync_global", description="Owner: force global sync")
-async def sync_global(interaction: discord.Interaction):
-
-    if interaction.user.id != OWNER_ID:
-        await interaction.response.send_message(
-            "Not authorized.",
-            ephemeral=True
-        )
-        return
-
-    if ENV != "production":
-        await interaction.response.send_message(
-            "Global sync is only relevant in production.",
-            ephemeral=True
-        )
-        return
-
-    try:
-        synced = await bot.tree.sync()
-        await interaction.response.send_message(
-            f"Global sync complete ({len(synced)} commands).",
-            ephemeral=True
-        )
-    except Exception as e:
-        capture_exception(e, context="manual_sync")
-        await interaction.response.send_message(
-            "Sync failed. Check logs.",
-            ephemeral=True
-        )
-
-# =================================================
 # GRACEFUL SHUTDOWN
 # =================================================
 
@@ -268,6 +270,11 @@ async def shutdown():
 
     try:
         await bot.twitch_api.close()
+    except Exception:
+        pass
+
+    try:
+        await bot.telemetry.close()
     except Exception:
         pass
 
