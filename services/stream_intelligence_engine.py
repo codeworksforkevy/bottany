@@ -3,72 +3,55 @@ import statistics
 
 class StreamIntelligenceEngine:
 
-    def __init__(self, telemetry, logger):
+    def __init__(self, telemetry, logger, predictor, trend_engine):
         self.telemetry = telemetry
         self.logger = logger
+        self.predictor = predictor
+        self.trend_engine = trend_engine
 
-    async def analyze(self, user_login: str):
+    async def analyze(self, user_login):
 
-        rows = await self.telemetry.get_recent_snapshots(user_login, limit=20)
+        rows = await self.telemetry.get_recent_snapshots(user_login)
 
         if len(rows) < 5:
-            return  # not enough data
+            return None
 
         viewers = [r["viewer_count"] for r in rows]
 
         mean = statistics.mean(viewers)
         stdev = statistics.stdev(viewers) if len(viewers) > 1 else 0
 
-        first = viewers[-1]
-        last = viewers[0]
-
-        # ---------------------------------------------
-        # VOLATILITY
-        # ---------------------------------------------
-
-        volatility_score = 0
-        if mean > 0:
-            volatility_score = round((stdev / mean) * 100, 2)
-
-        # ---------------------------------------------
-        # MOMENTUM
-        # ---------------------------------------------
-
-        momentum = last - first
+        volatility = round((stdev / mean) * 100, 2) if mean else 0
+        momentum = viewers[0] - viewers[-1]
         momentum_rate = round(momentum / len(viewers), 2)
 
-        # ---------------------------------------------
-        # TREND
-        # ---------------------------------------------
+        trend = self.trend_engine.compute_trend(viewers)
+        predicted_next = self.predictor.predict_next(viewers)
 
-        if last > mean:
-            trend = "upward"
-        elif last < mean:
-            trend = "downward"
-        else:
-            trend = "stable"
+        stability = max(0, 100 - volatility)
+        growth = max(0, min(100, momentum_rate * 2 + 50))
 
-        # ---------------------------------------------
-        # HEALTH SCORE
-        # ---------------------------------------------
-
-        stability_factor = max(0, 100 - volatility_score)
-        growth_factor = max(0, min(100, momentum_rate * 2 + 50))
-
-        health_score = round(
-            (growth_factor * 0.4) +
-            (stability_factor * 0.3) +
+        health = round(
+            (growth * 0.4) +
+            (stability * 0.3) +
             (50 if trend == "upward" else 30 if trend == "stable" else 10) * 0.3,
             2
         )
 
+        await self.telemetry.log_stream_intelligence(
+            user_login,
+            volatility,
+            momentum,
+            momentum_rate,
+            trend,
+            health,
+            predicted_next
+        )
+
         result = {
             "user": user_login,
-            "volatility_score": volatility_score,
-            "momentum": momentum,
-            "momentum_rate": momentum_rate,
-            "trend": trend,
-            "health_score": health_score
+            "health_score": health,
+            "trend": trend
         }
 
         self.logger.log("stream_intelligence", result)
