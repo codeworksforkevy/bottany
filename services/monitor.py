@@ -1,160 +1,55 @@
 import time
-from typing import List
-
-from core.cache_manager import CacheManager
-from services.stream_snapshot_engine import StreamSnapshotEngine
-from services.anomaly_detector import ViewerAnomalyDetector
-from services.drops_monitor import DropsLifecycleMonitor
-from services.stream_intelligence_engine import StreamIntelligenceEngine
+from services.prediction_engine import PredictionEngine
+from services.trend_analytics_engine import TrendAnalyticsEngine
+from services.adaptive_tracking_engine import AdaptiveTrackingEngine
 
 
 class TwitchMonitor:
 
-    def __init__(self, api, telemetry, logger):
+    def __init__(self, api, telemetry, logger, snapshot_engine, drops_monitor):
 
         self.api = api
         self.telemetry = telemetry
         self.logger = logger
+        self.snapshot_engine = snapshot_engine
+        self.drops_monitor = drops_monitor
 
-        # -------------------------------------------------
-        # STREAM SNAPSHOT SYSTEM
-        # -------------------------------------------------
+        self.predictor = PredictionEngine()
+        self.trend_engine = TrendAnalyticsEngine()
+        self.adaptive_engine = AdaptiveTrackingEngine()
 
-        self.stream_cache = CacheManager("data/stream_snapshot_cache.json")
-
-        self.anomaly_detector = ViewerAnomalyDetector(
-            telemetry=telemetry,
-            logger=logger,
-            threshold=2.5
-        )
-
-        self.snapshot_engine = StreamSnapshotEngine(
-            api=api,
-            telemetry=telemetry,
-            cache=self.stream_cache,
-            logger=logger,
-            anomaly_detector=self.anomaly_detector,
-            snapshot_ttl=120
-        )
-
-        # -------------------------------------------------
-        # STREAM INTELLIGENCE ENGINE
-        # -------------------------------------------------
-
-        self.intelligence_engine = StreamIntelligenceEngine(
-            telemetry=telemetry,
-            logger=logger
-        )
-
-        # -------------------------------------------------
-        # DROPS LIFECYCLE SYSTEM
-        # -------------------------------------------------
-
-        self.drops_cache = CacheManager("data/drops_cache.json")
-
-        self.drops_monitor = DropsLifecycleMonitor(
-            api=api,
-            cache=self.drops_cache,
-            logger=logger
-        )
-
-        # -------------------------------------------------
-        # TRACKED ENTITIES
-        # -------------------------------------------------
-
-        self.tracked_streams: List[str] = [
-            "xqc",
-            "tarik",
-            "shroud"
-        ]
-
-        self.tracked_games: List[str] = [
-            "Valorant",
-            "League of Legends",
-            "Fortnite"
-        ]
-
-    # -------------------------------------------------
-    # MAIN CYCLE
-    # -------------------------------------------------
+        self.tracked_streams = ["xqc", "tarik", "shroud"]
+        self.tracked_games = ["Valorant", "League of Legends", "Fortnite"]
 
     async def run_cycle(self):
 
         cycle_start = time.time()
-
         intelligence_results = []
 
-        # -------------------------------------------------
-        # STREAM SNAPSHOT + INTELLIGENCE
-        # -------------------------------------------------
-
         for user in self.tracked_streams:
-
             try:
                 await self.snapshot_engine.process_stream(user)
-
-                result = await self.intelligence_engine.analyze(user)
-
+                result = await self.snapshot_engine.intelligence_engine.analyze(user)
                 if result:
                     intelligence_results.append(result)
-
             except Exception as e:
-                self.logger.log(
-                    "stream_monitor_error",
-                    {"user": user, "error": str(e)}
-                )
-
-        # -------------------------------------------------
-        # DROPS MONITORING
-        # -------------------------------------------------
+                self.logger.log("stream_monitor_error", {"user": user, "error": str(e)})
 
         for game in self.tracked_games:
             try:
                 await self.drops_monitor.check_game(game)
             except Exception as e:
-                self.logger.log(
-                    "drops_monitor_error",
-                    {"game": game, "error": str(e)}
-                )
+                self.logger.log("drops_monitor_error", {"game": game, "error": str(e)})
 
-        # -------------------------------------------------
-        # CROSS-CHANNEL RANKING
-        # -------------------------------------------------
-
-        if intelligence_results:
-
-            ranked = sorted(
-                intelligence_results,
-                key=lambda x: x["health_score"],
-                reverse=True
-            )
-
-            self.logger.log(
-                "stream_ranking",
-                {
-                    "ranking": [
-                        {
-                            "user": r["user"],
-                            "health_score": r["health_score"],
-                            "trend": r["trend"]
-                        }
-                        for r in ranked
-                    ]
-                }
-            )
-
-        # -------------------------------------------------
-        # CYCLE METRICS
-        # -------------------------------------------------
+        self.tracked_streams = self.adaptive_engine.adjust(
+            self.tracked_streams,
+            intelligence_results
+        )
 
         duration = round(time.time() - cycle_start, 3)
 
-        self.logger.log(
-            "monitor_cycle",
-            {
-                "status": "completed",
-                "streams_checked": len(self.tracked_streams),
-                "games_checked": len(self.tracked_games),
-                "duration_seconds": duration
-            }
-        )
+        self.logger.log("monitor_cycle", {
+            "status": "completed",
+            "streams_checked": len(self.tracked_streams),
+            "duration_seconds": duration
+        })
