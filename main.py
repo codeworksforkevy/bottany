@@ -114,8 +114,10 @@ class BottanyBot(commands.Bot):
 
         self.drops_monitor = DropsLifecycleMonitor(
             api=self.twitch_api,
+            telemetry=self.telemetry,
             cache=self.drops_cache,
             logger=self.intelligence_logger
+
         )
 
         self.predictor = PredictionEngine()
