@@ -1,3 +1,6 @@
+import discord
+from discord import app_commands
+
 async def register(bot, data_dir):
 
     @bot.tree.command(
