@@ -1,97 +1,111 @@
-import discord
-from discord import app_commands
+from __future__ import annotations
+
+import json
+import random
 from pathlib import Path
-
-from services.academic_trivia_loader import get_weighted_batch
-
-
-class TriviaPager(discord.ui.View):
-    def __init__(self, items, index: int = 0):
-        super().__init__(timeout=180)
-        self.items = items
-        self.index = index
-
-    def make_embed(self) -> discord.Embed:
-        item = self.items[self.index]
-
-        embed = discord.Embed(
-            title="Academic Trivia",
-            description=item["text"],
-            color=0x5865F2
-        )
-
-        footer_parts = []
-
-        if item.get("author"):
-            footer_parts.append(item["author"])
-
-        if item.get("field"):
-            footer_parts.append(item["field"].upper())
-
-        if footer_parts:
-            embed.set_footer(text=" | ".join(footer_parts))
-
-        embed.add_field(
-            name="Item",
-            value=f"{self.index + 1}/{len(self.items)}",
-            inline=False
-        )
-
-        return embed
-
-    @discord.ui.button(label="◀ Prev", style=discord.ButtonStyle.secondary)
-    async def prev(self, interaction: discord.Interaction, button: discord.ui.Button):
-        self.index = (self.index - 1) % len(self.items)
-        await interaction.response.edit_message(
-            embed=self.make_embed(),
-            view=self
-        )
-
-    @discord.ui.button(label="Next ▶", style=discord.ButtonStyle.secondary)
-    async def next(self, interaction: discord.Interaction, button: discord.ui.Button):
-        self.index = (self.index + 1) % len(self.items)
-        await interaction.response.edit_message(
-            embed=self.make_embed(),
-            view=self
-        )
+from typing import List, Dict, Optional
 
 
-async def register(bot, data_dir):
+# =====================================================
+# LOAD ALL JSON FILES FROM academic-trivia/
+# =====================================================
 
-    guild = discord.Object(id=1446560723122520207)
+def load_all_trivia(base_dir: Path) -> List[Dict]:
+    trivia_dir = base_dir / "academic-trivia"
 
-    academic_group = app_commands.Group(
-        name="academic",
-        description="Academic tools"
-    )
+    if not trivia_dir.exists():
+        print("[WARN] academic-trivia directory not found.")
+        return []
 
-    @academic_group.command(
-        name="trivia",
-        description="Browse academic trivia"
-    )
-    async def academic_trivia(interaction: discord.Interaction):
+    pool: List[Dict] = []
 
-        BASE_DIR = Path(__file__).resolve().parent.parent
+    for file in trivia_dir.glob("*.json"):
+        try:
+            with open(file, "r", encoding="utf-8") as f:
+                data = json.load(f)
 
-        items = get_weighted_batch(
-            BASE_DIR,
-            user_id=interaction.user.id,
-            size=25
-        )
+                if not isinstance(data, list):
+                    print(f"[WARN] {file.name} is not a list. Skipped.")
+                    continue
 
-        if not items:
-            await interaction.response.send_message(
-                "Academic trivia dataset not loaded.",
-                ephemeral=True
-            )
-            return
+                # Category otomatik olarak dosya adından türetilir
+                category_name = file.stem.lower()
 
-        view = TriviaPager(items)
+                for item in data:
+                    if not isinstance(item, dict):
+                        continue
 
-        await interaction.response.send_message(
-            embed=view.make_embed(),
-            view=view
-        )
+                    if "text" not in item:
+                        continue
 
-    bot.tree.add_command(academic_group, guild=guild)
+                    item.setdefault("author", None)
+                    item.setdefault("field", None)
+                    item.setdefault("weight", 1)
 
+                    # Eğer JSON içinde category yoksa dosya adını ata
+                    item.setdefault("category", category_name)
+
+                    pool.append(item)
+
+        except Exception as e:
+            print(f"[ERROR] Failed loading {file.name}: {e}")
+
+    return pool
+
+
+# =====================================================
+# WEIGHTED RANDOM SELECTION
+# =====================================================
+
+def weighted_sample(pool: List[Dict], size: int) -> List[Dict]:
+    if not pool:
+        return []
+
+    weights = [item.get("weight", 1) for item in pool]
+
+    # random.choices duplicates verebilir — biz unique istiyoruz
+    selected = []
+    used_indexes = set()
+
+    while len(selected) < min(size, len(pool)):
+        idx = random.choices(range(len(pool)), weights=weights, k=1)[0]
+        if idx not in used_indexes:
+            used_indexes.add(idx)
+            selected.append(pool[idx])
+
+    return selected
+
+
+# =====================================================
+# PUBLIC API
+# =====================================================
+
+def get_weighted_batch(
+    base_dir: Path,
+    user_id: int,
+    size: int = 25,
+    category: Optional[str] = None
+) -> List[Dict]:
+
+    pool = load_all_trivia(base_dir)
+
+    if not pool:
+        return []
+
+    # ---------------------------------------------
+    # CATEGORY FILTER
+    # ---------------------------------------------
+    if category:
+        category = category.lower().strip()
+        pool = [
+            item for item in pool
+            if item.get("category", "").lower() == category
+        ]
+
+    if not pool:
+        return []
+
+    # ---------------------------------------------
+    # WEIGHTED SAMPLE
+    # ---------------------------------------------
+    return weighted_sample(pool, size)
