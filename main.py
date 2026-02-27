@@ -49,6 +49,12 @@ intents = discord.Intents.default()
 intents.message_content = True
 
 # =================================================
+# ACADEMIC TRIVIA SERVICE IMPORT
+# =================================================
+
+from services.academic_trivia_loader import AcademicTriviaService
+
+# =================================================
 # TWITCH INTELLIGENCE IMPORTS
 # =================================================
 
@@ -77,6 +83,7 @@ class BottanyBot(commands.Bot):
         super().__init__(command_prefix="!", intents=intents)
 
         self.start_time = time.time()
+        self.owner_id = OWNER_ID
 
         # -------------------------------------------------
         # CORE SERVICES
@@ -117,7 +124,6 @@ class BottanyBot(commands.Bot):
             telemetry=self.telemetry,
             cache=self.drops_cache,
             logger=self.intelligence_logger
-
         )
 
         self.predictor = PredictionEngine()
@@ -132,7 +138,7 @@ class BottanyBot(commands.Bot):
         )
 
         # -------------------------------------------------
-        # MONITOR (ORCHESTRATOR)
+        # MONITOR
         # -------------------------------------------------
 
         self.monitor = TwitchMonitor(
@@ -212,8 +218,23 @@ class BottanyBot(commands.Bot):
 
     async def setup_hook(self):
 
+        # ---------------------------------------------
+        # Academic Trivia Cache Initialization
+        # ---------------------------------------------
+        try:
+            AcademicTriviaService.initialize(BASE_DIR)
+            logger.info("Academic Trivia cache initialized.")
+        except Exception as e:
+            capture_exception(e, context="academic_trivia_init")
+
+        # ---------------------------------------------
+        # Load Commands
+        # ---------------------------------------------
         await self.load_command_modules()
 
+        # ---------------------------------------------
+        # Sync
+        # ---------------------------------------------
         try:
             if ENV == "dev" and GUILD_ID:
                 guild = discord.Object(id=GUILD_ID)
@@ -247,6 +268,7 @@ class BottanyBot(commands.Bot):
 
         except Exception as e:
             capture_exception(e, context="intelligence_bootstrap")
+
 
 # =================================================
 # BOT INSTANCE
