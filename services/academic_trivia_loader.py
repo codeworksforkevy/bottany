@@ -24,59 +24,77 @@ class AcademicTriviaService:
     # INITIALIZE (BOT STARTUP OR RELOAD)
     # =====================================================
 
-    @classmethod
-    def initialize(cls, base_dir: Path, force: bool = False) -> None:
+@classmethod
+def initialize(cls, base_dir: Path, force: bool = False) -> None:
 
-        # Prevent double load unless forced
-        if cls._initialized and not force:
-            return
+    if cls._initialized and not force:
+        return
 
-        trivia_dir = base_dir / "academic-trivia"
+    trivia_dir = base_dir / "academic-trivia"
 
-        if not trivia_dir.exists():
-            print("[WARN] academic-trivia directory not found.")
-            cls._pool = []
-            cls._categories = set()
-            cls._initialized = False
-            return
+    if not trivia_dir.exists():
+        print("[WARN] academic-trivia directory not found.")
+        cls._pool = []
+        cls._categories = set()
+        cls._initialized = False
+        return
 
-        pool: List[Dict] = []
+    pool: List[Dict] = []
 
-        for file in trivia_dir.glob("*.json"):
-            try:
-                with open(file, "r", encoding="utf-8") as f:
-                    data = json.load(f)
+    for file in trivia_dir.glob("*.json"):
 
-                if not isinstance(data, list):
-                    print(f"[WARN] {file.name} is not a list. Skipped.")
+        # Skip metadata file
+        if file.name == "academic_trivia_index.json":
+            continue
+
+        try:
+            with open(file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+
+            # ------------------------------------------------
+            # SMART JSON NORMALIZATION
+            # ------------------------------------------------
+
+            if isinstance(data, dict):
+
+                # Case 1: {"quotes": [...]}
+                if "quotes" in data and isinstance(data["quotes"], list):
+                    data = data["quotes"]
+
+                # Case 2: {"1": {...}, "2": {...}}
+                else:
+                    data = list(data.values())
+
+            if not isinstance(data, list):
+                print(f"[WARN] {file.name} unsupported format. Skipped.")
+                continue
+
+            category_name = file.stem.lower()
+
+            for item in data:
+                if not isinstance(item, dict):
                     continue
 
-                category_name = file.stem.lower()
+                if "text" not in item:
+                    continue
 
-                for item in data:
-                    if not isinstance(item, dict):
-                        continue
+                item.setdefault("author", None)
+                item.setdefault("field", None)
+                item.setdefault("weight", 1)
+                item.setdefault("category", category_name)
 
-                    if "text" not in item:
-                        continue
+                pool.append(item)
 
-                    item.setdefault("author", None)
-                    item.setdefault("field", None)
-                    item.setdefault("weight", 1)
-                    item.setdefault("category", category_name)
+        except Exception as e:
+            print(f"[ERROR] Failed loading {file.name}: {e}")
 
-                    pool.append(item)
+    cls._pool = pool
+    cls._categories = {item["category"] for item in pool}
+    cls._user_seen = {}
+    cls._initialized = True
+    cls._last_loaded = datetime.utcnow()
 
-            except Exception as e:
-                print(f"[ERROR] Failed loading {file.name}: {e}")
-
-        cls._pool = pool
-        cls._categories = {item["category"] for item in pool}
-        cls._user_seen = {}
-        cls._initialized = True
-        cls._last_loaded = datetime.utcnow()
-
-        print(f"[AcademicTrivia] Loaded {len(pool)} items.")
+    print(f"[AcademicTrivia] Loaded {len(pool)} items.")
 
     # =====================================================
     # PUBLIC ACCESS METHODS
