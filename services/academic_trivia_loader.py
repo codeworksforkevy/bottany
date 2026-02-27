@@ -4,24 +4,40 @@ import json
 import random
 from pathlib import Path
 from typing import List, Dict, Optional
+from datetime import datetime
 
 
 class AcademicTriviaService:
 
+    # ==============================
+    # INTERNAL STATE (CACHE)
+    # ==============================
+
     _pool: List[Dict] = []
+    _categories: set[str] = set()
     _user_seen: Dict[int, set] = {}
 
+    _initialized: bool = False
+    _last_loaded: Optional[datetime] = None
+
     # =====================================================
-    # INITIALIZE (BOT STARTUP)
+    # INITIALIZE (BOT STARTUP OR RELOAD)
     # =====================================================
 
     @classmethod
-    def initialize(cls, base_dir: Path) -> None:
+    def initialize(cls, base_dir: Path, force: bool = False) -> None:
+
+        # Prevent double load unless forced
+        if cls._initialized and not force:
+            return
+
         trivia_dir = base_dir / "academic-trivia"
 
         if not trivia_dir.exists():
             print("[WARN] academic-trivia directory not found.")
             cls._pool = []
+            cls._categories = set()
+            cls._initialized = False
             return
 
         pool: List[Dict] = []
@@ -32,6 +48,7 @@ class AcademicTriviaService:
                     data = json.load(f)
 
                 if not isinstance(data, list):
+                    print(f"[WARN] {file.name} is not a list. Skipped.")
                     continue
 
                 category_name = file.stem.lower()
@@ -39,6 +56,7 @@ class AcademicTriviaService:
                 for item in data:
                     if not isinstance(item, dict):
                         continue
+
                     if "text" not in item:
                         continue
 
@@ -53,10 +71,54 @@ class AcademicTriviaService:
                 print(f"[ERROR] Failed loading {file.name}: {e}")
 
         cls._pool = pool
+        cls._categories = {item["category"] for item in pool}
+        cls._user_seen = {}
+        cls._initialized = True
+        cls._last_loaded = datetime.utcnow()
+
         print(f"[AcademicTrivia] Loaded {len(pool)} items.")
 
     # =====================================================
-    # PUBLIC ACCESS
+    # PUBLIC ACCESS METHODS
+    # =====================================================
+
+    @classmethod
+    def is_ready(cls) -> bool:
+        return cls._initialized and bool(cls._pool)
+
+    @classmethod
+    def get_categories(cls) -> List[str]:
+        return sorted(cls._categories)
+
+    @classmethod
+    def get_stats(cls) -> Dict:
+
+        total = len(cls._pool)
+
+        per_category: Dict[str, int] = {}
+
+        for item in cls._pool:
+            cat = item.get("category", "unknown")
+            per_category[cat] = per_category.get(cat, 0) + 1
+
+        return {
+            "total": total,
+            "categories": per_category,
+            "unique_users_tracked": len(cls._user_seen)
+        }
+
+    @classmethod
+    def get_cache_info(cls) -> Dict:
+        return {
+            "initialized": cls._initialized,
+            "total_items": len(cls._pool),
+            "categories": len(cls._categories),
+            "users_tracked": len(cls._user_seen),
+            "last_loaded": cls._last_loaded
+        }
+
+    # =====================================================
+    # MAIN BATCH ACCESS
     # =====================================================
 
     @classmethod
@@ -67,7 +129,7 @@ class AcademicTriviaService:
         category: Optional[str] = None
     ) -> List[Dict]:
 
-        if not cls._pool:
+        if not cls.is_ready():
             return []
 
         pool = cls._pool
@@ -95,10 +157,11 @@ class AcademicTriviaService:
             if id(item) not in seen
         ]
 
-        # Eğer tüm kategori tükenmişse reset
+        # If exhausted → reset user session
         if not available:
             cls._user_seen[user_id] = set()
             available = pool
+            seen = cls._user_seen[user_id]
 
         # ---------------------------------------------
         # WEIGHTED UNIQUE SAMPLE
@@ -108,7 +171,6 @@ class AcademicTriviaService:
             size
         )
 
-        # Seen listesine ekle
         for item in selected:
             seen.add(id(item))
 
@@ -129,7 +191,7 @@ class AcademicTriviaService:
 
         size = min(size, len(pool))
 
-        selected = []
+        selected: List[Dict] = []
         used_indexes = set()
 
         weights = [item.get("weight", 1) for item in pool]
