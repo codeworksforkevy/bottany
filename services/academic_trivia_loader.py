@@ -24,77 +24,77 @@ class AcademicTriviaService:
     # INITIALIZE (BOT STARTUP OR RELOAD)
     # =====================================================
 
-@classmethod
-def initialize(cls, base_dir: Path, force: bool = False) -> None:
+    @classmethod
+    def initialize(cls, base_dir: Path, force: bool = False) -> None:
 
-    if cls._initialized and not force:
-        return
+        if cls._initialized and not force:
+            return
 
-    trivia_dir = base_dir / "academic-trivia"
+        trivia_dir = base_dir / "academic-trivia"
 
-    if not trivia_dir.exists():
-        print("[WARN] academic-trivia directory not found.")
-        cls._pool = []
-        cls._categories = set()
-        cls._initialized = False
-        return
+        if not trivia_dir.exists():
+            print("[WARN] academic-trivia directory not found.")
+            cls._pool = []
+            cls._categories = set()
+            cls._initialized = False
+            return
 
-    pool: List[Dict] = []
+        pool: List[Dict] = []
 
-    for file in trivia_dir.glob("*.json"):
+        for file in trivia_dir.glob("*.json"):
 
-        # Skip metadata file
-        if file.name == "academic_trivia_index.json":
-            continue
-
-        try:
-            with open(file, "r", encoding="utf-8") as f:
-                data = json.load(f)
-
-            # ------------------------------------------------
-            # SMART JSON NORMALIZATION
-            # ------------------------------------------------
-
-            if isinstance(data, dict):
-
-                # Case 1: {"quotes": [...]}
-                if "quotes" in data and isinstance(data["quotes"], list):
-                    data = data["quotes"]
-
-                # Case 2: {"1": {...}, "2": {...}}
-                else:
-                    data = list(data.values())
-
-            if not isinstance(data, list):
-                print(f"[WARN] {file.name} unsupported format. Skipped.")
+            # Skip metadata file
+            if file.name == "academic_trivia_index.json":
                 continue
 
-            category_name = file.stem.lower()
+            try:
+                with open(file, "r", encoding="utf-8") as f:
+                    data = json.load(f)
 
-            for item in data:
-                if not isinstance(item, dict):
+                # ------------------------------------------------
+                # SMART JSON NORMALIZATION
+                # ------------------------------------------------
+
+                if isinstance(data, dict):
+
+                    # Case 1: {"quotes": [...]}
+                    if "quotes" in data and isinstance(data["quotes"], list):
+                        data = data["quotes"]
+
+                    # Case 2: {"1": {...}, "2": {...}}
+                    else:
+                        data = list(data.values())
+
+                if not isinstance(data, list):
+                    print(f"[WARN] {file.name} unsupported format. Skipped.")
                     continue
 
-                if "text" not in item:
-                    continue
+                category_name = file.stem.lower()
 
-                item.setdefault("author", None)
-                item.setdefault("field", None)
-                item.setdefault("weight", 1)
-                item.setdefault("category", category_name)
+                for item in data:
+                    if not isinstance(item, dict):
+                        continue
 
-                pool.append(item)
+                    if "text" not in item:
+                        continue
 
-        except Exception as e:
-            print(f"[ERROR] Failed loading {file.name}: {e}")
+                    item.setdefault("author", None)
+                    item.setdefault("field", None)
+                    item.setdefault("weight", 1)
+                    item.setdefault("category", category_name)
 
-    cls._pool = pool
-    cls._categories = {item["category"] for item in pool}
-    cls._user_seen = {}
-    cls._initialized = True
-    cls._last_loaded = datetime.utcnow()
+                    pool.append(item)
 
-    print(f"[AcademicTrivia] Loaded {len(pool)} items.")
+            except Exception as e:
+                print(f"[ERROR] Failed loading {file.name}: {e}")
+
+        cls._pool = pool
+        cls._categories = {item["category"] for item in pool}
+        cls._user_seen = {}
+        cls._initialized = True
+        cls._last_loaded = datetime.utcnow()
+
+        print(f"[AcademicTrivia] Loaded {len(pool)} items.")
 
     # =====================================================
     # PUBLIC ACCESS METHODS
@@ -112,7 +112,6 @@ def initialize(cls, base_dir: Path, force: bool = False) -> None:
     def get_stats(cls) -> Dict:
 
         total = len(cls._pool)
-
         per_category: Dict[str, int] = {}
 
         for item in cls._pool:
@@ -152,9 +151,7 @@ def initialize(cls, base_dir: Path, force: bool = False) -> None:
 
         pool = cls._pool
 
-        # ---------------------------------------------
         # CATEGORY FILTER
-        # ---------------------------------------------
         if category:
             category = category.lower().strip()
             pool = [
@@ -165,9 +162,7 @@ def initialize(cls, base_dir: Path, force: bool = False) -> None:
         if not pool:
             return []
 
-        # ---------------------------------------------
         # USER DUPLICATE PREVENTION
-        # ---------------------------------------------
         seen = cls._user_seen.setdefault(user_id, set())
 
         available = [
@@ -175,15 +170,12 @@ def initialize(cls, base_dir: Path, force: bool = False) -> None:
             if id(item) not in seen
         ]
 
-        # If exhausted → reset user session
+        # If exhausted → reset
         if not available:
             cls._user_seen[user_id] = set()
             available = pool
             seen = cls._user_seen[user_id]
 
-        # ---------------------------------------------
-        # WEIGHTED UNIQUE SAMPLE
-        # ---------------------------------------------
         selected = cls._weighted_unique_sample(
             available,
             size
