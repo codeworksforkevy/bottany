@@ -51,17 +51,21 @@ class AcademicTriviaService:
                 with open(file, "r", encoding="utf-8") as f:
                     data = json.load(f)
 
-                # ------------------------------------------------
+                # -----------------------------------------
                 # SMART JSON NORMALIZATION
-                # ------------------------------------------------
+                # -----------------------------------------
 
                 if isinstance(data, dict):
 
-                    # Case 1: {"quotes": [...]}
-                    if "quotes" in data and isinstance(data["quotes"], list):
+                    # Case 1: {"entries": [...]}
+                    if "entries" in data and isinstance(data["entries"], list):
+                        data = data["entries"]
+
+                    # Case 2: {"quotes": [...]}
+                    elif "quotes" in data and isinstance(data["quotes"], list):
                         data = data["quotes"]
 
-                    # Case 2: {"1": {...}, "2": {...}}
+                    # Case 3: index-style dict {"1": {...}, "2": {...}}
                     else:
                         data = list(data.values())
 
@@ -72,8 +76,13 @@ class AcademicTriviaService:
                 category_name = file.stem.lower()
 
                 for item in data:
+
                     if not isinstance(item, dict):
                         continue
+
+                    # Normalize "quote" → "text"
+                    if "quote" in item and "text" not in item:
+                        item["text"] = item["quote"]
 
                     if "text" not in item:
                         continue
@@ -170,7 +179,7 @@ class AcademicTriviaService:
             if id(item) not in seen
         ]
 
-        # If exhausted → reset
+        # If exhausted → reset user session
         if not available:
             cls._user_seen[user_id] = set()
             available = pool
