@@ -13,11 +13,16 @@ def capture_exception(
 ):
 
     logger.error(
-        "Unhandled exception",
-        extra={
-            "context": context,
-            "user_id": user_id,
-            "guild_id": guild_id,
-        },
-        exc_info=error,
+        "Unhandled exception | Context=%s | User=%s | Guild=%s | Error=%s",
+        context,
+        user_id,
+        guild_id,
+        repr(error),
+    )
+
+    # FORCE full traceback to stdout (Railway friendly)
+    traceback.print_exception(
+        type(error),
+        error,
+        error.__traceback__
     )
