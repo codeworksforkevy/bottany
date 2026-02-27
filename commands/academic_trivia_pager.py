@@ -1,22 +1,22 @@
-import discord
-from discord import app_commands
-from pathlib import Path
+from __future__ import annotations
 
-from services.academic_trivia_loader import get_random_batch
+import discord
+from typing import List, Dict
 
 
 class TriviaPager(discord.ui.View):
-    def __init__(self, items, index=0):
+
+    def __init__(self, items: List[Dict], index: int = 0):
         super().__init__(timeout=180)
         self.items = items
         self.index = index
 
-    def make_embed(self):
+    def make_embed(self) -> discord.Embed:
         item = self.items[self.index]
 
         embed = discord.Embed(
             title="Academic Trivia",
-            description=item["text"],
+            description=item.get("text", "No text provided."),
             color=0x5865F2
         )
 
@@ -39,6 +39,10 @@ class TriviaPager(discord.ui.View):
 
         return embed
 
+    async def on_timeout(self):
+        for child in self.children:
+            child.disabled = True
+
     @discord.ui.button(label="◀ Prev", style=discord.ButtonStyle.secondary)
     async def prev(self, interaction: discord.Interaction, button: discord.ui.Button):
         self.index = (self.index - 1) % len(self.items)
@@ -54,49 +58,3 @@ class TriviaPager(discord.ui.View):
             embed=self.make_embed(),
             view=self
         )
-
-
-async def register(bot, data_dir):
-
-    guild = discord.Object(id=1446560723122520207)
-
-    academic_group = app_commands.Group(
-        name="academic",
-        description="Academic tools"
-    )
-
-    @academic_group.command(
-        name="trivia",
-        description="Browse academic trivia"
-    )
-    async def academic_trivia(interaction: discord.Interaction):
-
-        BASE_DIR = Path(__file__).resolve().parent.parent
-
-        user_id = interaction.user.id
-
-        items = get_random_batch(
-            BASE_DIR,
-            user_id=user_id,
-            size=25
-        )
-
-        if not items:
-            await interaction.response.send_message(
-                "Academic trivia dataset not loaded.",
-                ephemeral=True
-            )
-            return
-
-        view = TriviaPager(items)
-
-        await interaction.response.send_message(
-            embed=view.make_embed(),
-            view=view
-        )
-
-    bot.tree.add_command(academic_group, guild=guild)
-
-
-
-
