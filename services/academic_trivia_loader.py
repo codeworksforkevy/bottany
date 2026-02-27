@@ -6,106 +6,143 @@ from pathlib import Path
 from typing import List, Dict, Optional
 
 
-# =====================================================
-# LOAD ALL JSON FILES FROM academic-trivia/
-# =====================================================
+class AcademicTriviaService:
 
-def load_all_trivia(base_dir: Path) -> List[Dict]:
-    trivia_dir = base_dir / "academic-trivia"
+    _pool: List[Dict] = []
+    _user_seen: Dict[int, set] = {}
 
-    if not trivia_dir.exists():
-        print("[WARN] academic-trivia directory not found.")
-        return []
+    # =====================================================
+    # INITIALIZE (BOT STARTUP)
+    # =====================================================
 
-    pool: List[Dict] = []
+    @classmethod
+    def initialize(cls, base_dir: Path) -> None:
+        trivia_dir = base_dir / "academic-trivia"
 
-    for file in trivia_dir.glob("*.json"):
-        try:
-            with open(file, "r", encoding="utf-8") as f:
-                data = json.load(f)
+        if not trivia_dir.exists():
+            print("[WARN] academic-trivia directory not found.")
+            cls._pool = []
+            return
+
+        pool: List[Dict] = []
+
+        for file in trivia_dir.glob("*.json"):
+            try:
+                with open(file, "r", encoding="utf-8") as f:
+                    data = json.load(f)
 
                 if not isinstance(data, list):
-                    print(f"[WARN] {file.name} is not a list. Skipped.")
                     continue
 
-                # Category otomatik olarak dosya adından türetilir
                 category_name = file.stem.lower()
 
                 for item in data:
                     if not isinstance(item, dict):
                         continue
-
                     if "text" not in item:
                         continue
 
                     item.setdefault("author", None)
                     item.setdefault("field", None)
                     item.setdefault("weight", 1)
-
-                    # Eğer JSON içinde category yoksa dosya adını ata
                     item.setdefault("category", category_name)
 
                     pool.append(item)
 
-        except Exception as e:
-            print(f"[ERROR] Failed loading {file.name}: {e}")
+            except Exception as e:
+                print(f"[ERROR] Failed loading {file.name}: {e}")
 
-    return pool
+        cls._pool = pool
+        print(f"[AcademicTrivia] Loaded {len(pool)} items.")
 
+    # =====================================================
+    # PUBLIC ACCESS
+    # =====================================================
 
-# =====================================================
-# WEIGHTED RANDOM SELECTION
-# =====================================================
+    @classmethod
+    def get_batch(
+        cls,
+        user_id: int,
+        size: int = 25,
+        category: Optional[str] = None
+    ) -> List[Dict]:
 
-def weighted_sample(pool: List[Dict], size: int) -> List[Dict]:
-    if not pool:
-        return []
+        if not cls._pool:
+            return []
 
-    weights = [item.get("weight", 1) for item in pool]
+        pool = cls._pool
 
-    # random.choices duplicates verebilir — biz unique istiyoruz
-    selected = []
-    used_indexes = set()
+        # ---------------------------------------------
+        # CATEGORY FILTER
+        # ---------------------------------------------
+        if category:
+            category = category.lower().strip()
+            pool = [
+                item for item in pool
+                if item.get("category", "").lower() == category
+            ]
 
-    while len(selected) < min(size, len(pool)):
-        idx = random.choices(range(len(pool)), weights=weights, k=1)[0]
-        if idx not in used_indexes:
-            used_indexes.add(idx)
-            selected.append(pool[idx])
+        if not pool:
+            return []
 
-    return selected
+        # ---------------------------------------------
+        # USER DUPLICATE PREVENTION
+        # ---------------------------------------------
+        seen = cls._user_seen.setdefault(user_id, set())
 
-
-# =====================================================
-# PUBLIC API
-# =====================================================
-
-def get_weighted_batch(
-    base_dir: Path,
-    user_id: int,
-    size: int = 25,
-    category: Optional[str] = None
-) -> List[Dict]:
-
-    pool = load_all_trivia(base_dir)
-
-    if not pool:
-        return []
-
-    # ---------------------------------------------
-    # CATEGORY FILTER
-    # ---------------------------------------------
-    if category:
-        category = category.lower().strip()
-        pool = [
+        available = [
             item for item in pool
-            if item.get("category", "").lower() == category
+            if id(item) not in seen
         ]
 
-    if not pool:
-        return []
+        # Eğer tüm kategori tükenmişse reset
+        if not available:
+            cls._user_seen[user_id] = set()
+            available = pool
 
-    # ---------------------------------------------
-    # WEIGHTED SAMPLE
-    # ---------------------------------------------
-    return weighted_sample(pool, size)
+        # ---------------------------------------------
+        # WEIGHTED UNIQUE SAMPLE
+        # ---------------------------------------------
+        selected = cls._weighted_unique_sample(
+            available,
+            size
+        )
+
+        # Seen listesine ekle
+        for item in selected:
+            seen.add(id(item))
+
+        return selected
+
+    # =====================================================
+    # INTERNAL WEIGHTED SAMPLER
+    # =====================================================
+
+    @staticmethod
+    def _weighted_unique_sample(
+        pool: List[Dict],
+        size: int
+    ) -> List[Dict]:
+
+        if not pool:
+            return []
+
+        size = min(size, len(pool))
+
+        selected = []
+        used_indexes = set()
+
+        weights = [item.get("weight", 1) for item in pool]
+
+        while len(selected) < size:
+            idx = random.choices(
+                range(len(pool)),
+                weights=weights,
+                k=1
+            )[0]
+
+            if idx not in used_indexes:
+                used_indexes.add(idx)
+                selected.append(pool[idx])
+
+        return selected
