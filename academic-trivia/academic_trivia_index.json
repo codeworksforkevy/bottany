@@ -1,0 +1,28 @@
+{
+  "command": "academictrivia",
+  "version": "1.1",
+  "updated": "2026-02-04",
+  "description": "Author-only modular datasets bound to a single command.",
+  "collections": {
+    "linguistics": [
+      "saussure.json",
+      "chomsky.json"
+    ],
+    "literature": [
+      "goethe.json",
+      "schiller.json",
+      "shakespeare.json"
+    ],
+    "philosophy": [
+      "spinoza.json",
+      "kant.json",
+      "hume.json",
+      "nietzsche.json",
+      "cicero.json",
+      "machiavelli.json",
+      "schopenhauer.json",
+      "humboldt.json",
+      "socrates.json"
+    ]
+  }
+}
