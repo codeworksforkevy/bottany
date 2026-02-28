@@ -12,6 +12,7 @@ from pathlib import Path
 
 import discord
 from discord.ext import commands
+import asyncpg
 
 # =================================================
 # ENV
@@ -21,6 +22,7 @@ ENV = os.getenv("ENV", "dev").lower()
 OWNER_ID = int(os.getenv("BOT_OWNER_ID", "0"))
 GUILD_ID = int(os.getenv("DEV_GUILD_ID", "0"))
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
@@ -28,6 +30,9 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 if not DISCORD_TOKEN:
     raise RuntimeError("DISCORD_TOKEN is not set.")
+
+if not DATABASE_URL:
+    raise RuntimeError("DATABASE_URL is not set.")
 
 # =================================================
 # LOGGING
@@ -47,24 +52,19 @@ logger.info("Booting Bottany Core | ENV=%s", ENV)
 
 intents = discord.Intents.default()
 intents.message_content = True
+intents.members = True  # Role sync için gerekli
 
 # =================================================
-# ACADEMIC TRIVIA SERVICE IMPORT
+# IMPORTS
 # =================================================
 
 from services.academic_trivia_loader import AcademicTriviaService
-
-# =================================================
-# TWITCH INTELLIGENCE IMPORTS
-# =================================================
-
 from services.telemetry_service import TelemetryService
 from services.twitch_api import TwitchAPI
 from services.monitor import TwitchMonitor
 from workers.background_scheduler import BackgroundScheduler
 from core.structured_logger import StructuredLogger
 from core.cache_manager import CacheManager
-
 from services.stream_snapshot_engine import StreamSnapshotEngine
 from services.drops_monitor import DropsLifecycleMonitor
 from services.anomaly_detector import ViewerAnomalyDetector
@@ -84,6 +84,7 @@ class BottanyBot(commands.Bot):
 
         self.start_time = time.time()
         self.owner_id = OWNER_ID
+        self.db: asyncpg.Pool | None = None
 
         # -------------------------------------------------
         # CORE SERVICES
@@ -94,7 +95,7 @@ class BottanyBot(commands.Bot):
         self.intelligence_logger = StructuredLogger()
 
         # -------------------------------------------------
-        # CACHE LAYERS
+        # CACHE
         # -------------------------------------------------
 
         self.stream_cache = CacheManager("data/stream_snapshot_cache.json")
@@ -137,10 +138,6 @@ class BottanyBot(commands.Bot):
             trend_engine=self.trend_engine
         )
 
-        # -------------------------------------------------
-        # MONITOR
-        # -------------------------------------------------
-
         self.monitor = TwitchMonitor(
             api=self.twitch_api,
             telemetry=self.telemetry,
@@ -151,18 +148,39 @@ class BottanyBot(commands.Bot):
             adaptive_engine=self.adaptive_engine
         )
 
-        # -------------------------------------------------
-        # BACKGROUND SCHEDULER
-        # -------------------------------------------------
-
         self.scheduler = BackgroundScheduler(
             monitor=self.monitor,
             interval=300
         )
 
-    # -------------------------------------------------
+    # =================================================
+    # DATABASE INIT
+    # =================================================
+
+    async def init_database(self):
+
+        self.db = await asyncpg.create_pool(
+            dsn=DATABASE_URL,
+            min_size=1,
+            max_size=5
+        )
+
+        async with self.db.acquire() as conn:
+            await conn.execute("""
+                CREATE TABLE IF NOT EXISTS kevy_saves (
+                    guild_id BIGINT NOT NULL,
+                    user_id BIGINT NOT NULL,
+                    save_count INTEGER NOT NULL DEFAULT 0,
+                    tier VARCHAR(20),
+                    PRIMARY KEY (guild_id, user_id)
+                );
+            """)
+
+        logger.info("PostgreSQL connected and kevy_saves ready.")
+
+    # =================================================
     # AUTO MODULE LOADER
-    # -------------------------------------------------
+    # =================================================
 
     async def load_command_modules(self):
 
@@ -180,7 +198,7 @@ class BottanyBot(commands.Bot):
                 module = importlib.import_module(full_name)
 
                 if not hasattr(module, "register"):
-                    logger.warning("%s has no register() function", full_name)
+                    logger.warning("%s has no register()", full_name)
                     continue
 
                 func = module.register
@@ -194,14 +212,7 @@ class BottanyBot(commands.Bot):
                     result = func(self)
                 elif sig == ["tree"]:
                     result = func(self.tree)
-                elif len(sig) == 0:
-                    result = func()
                 else:
-                    logger.warning(
-                        "%s unsupported register signature: %s",
-                        full_name,
-                        sig
-                    )
                     continue
 
                 if asyncio.iscoroutine(result):
@@ -212,47 +223,41 @@ class BottanyBot(commands.Bot):
             except Exception as e:
                 capture_exception(e, context=f"load:{full_name}")
 
-    # -------------------------------------------------
+    # =================================================
     # SETUP HOOK
-    # -------------------------------------------------
+    # =================================================
 
     async def setup_hook(self):
 
-        # ---------------------------------------------
-        # Academic Trivia Cache Initialization
-        # ---------------------------------------------
+        # DB INIT
+        await self.init_database()
+
+        # Academic Trivia
         try:
             AcademicTriviaService.initialize(BASE_DIR)
-            logger.info("Academic Trivia cache initialized.")
+            logger.info("Academic Trivia initialized.")
         except Exception as e:
             capture_exception(e, context="academic_trivia_init")
 
-        # ---------------------------------------------
         # Load Commands
-        # ---------------------------------------------
         await self.load_command_modules()
 
-        # ---------------------------------------------
         # Sync
-        # ---------------------------------------------
         try:
             if ENV == "dev" and GUILD_ID:
                 guild = discord.Object(id=GUILD_ID)
                 self.tree.copy_global_to(guild=guild)
                 synced = await self.tree.sync(guild=guild)
-                logger.info("Dev guild sync complete (%s commands).", len(synced))
-            elif ENV == "production":
-                logger.info("Production mode — global sync disabled.")
+                logger.info("Dev sync complete (%s commands).", len(synced))
             else:
                 synced = await self.tree.sync()
                 logger.info("Global sync complete (%s commands).", len(synced))
-
         except Exception as e:
             capture_exception(e, context="tree_sync")
 
-    # -------------------------------------------------
-    # READY EVENT
-    # -------------------------------------------------
+    # =================================================
+    # READY
+    # =================================================
 
     async def on_ready(self):
 
@@ -261,23 +266,22 @@ class BottanyBot(commands.Bot):
 
         try:
             await self.telemetry.init()
-            logger.info("Telemetry database connected.")
+            logger.info("Telemetry connected.")
 
             self.loop.create_task(self.scheduler.start())
-            logger.info("Twitch Intelligence scheduler started.")
+            logger.info("Scheduler started.")
 
         except Exception as e:
             capture_exception(e, context="intelligence_bootstrap")
 
-
 # =================================================
-# BOT INSTANCE
+# INSTANCE
 # =================================================
 
 bot = BottanyBot()
 
 # =================================================
-# BASIC HEALTH COMMAND
+# BASIC COMMAND
 # =================================================
 
 @bot.tree.command(name="ping", description="Health check")
@@ -286,11 +290,17 @@ async def ping(interaction: discord.Interaction):
     await interaction.response.send_message(f"Pong. Latency: {latency} ms")
 
 # =================================================
-# GRACEFUL SHUTDOWN
+# SHUTDOWN
 # =================================================
 
 async def shutdown():
     logger.info("Graceful shutdown initiated.")
+
+    try:
+        if bot.db:
+            await bot.db.close()
+    except Exception:
+        pass
 
     try:
         await bot.twitch_api.close()
