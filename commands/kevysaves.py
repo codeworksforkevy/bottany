@@ -36,7 +36,7 @@ def register(bot):
         save_counter(count)
 
         message = (
-            "Kevy saved an another puppie. It wasn't a suprise.\n"
+            "Kevy saved an another puppie. It wasn't a surprise.\n"
             f"Total saved puppies: {count}"
         )
 
