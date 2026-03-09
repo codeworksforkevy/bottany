@@ -12,7 +12,6 @@ from pathlib import Path
 
 import discord
 from discord.ext import commands
-import asyncpg
 
 # =================================================
 # ENV
@@ -30,7 +29,6 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 if not DISCORD_TOKEN:
     raise RuntimeError("DISCORD_TOKEN is not set.")
-
 if not DATABASE_URL:
     raise RuntimeError("DATABASE_URL is not set.")
 
@@ -43,7 +41,6 @@ from services.telemetry import capture_exception
 
 setup_logging()
 logger = logging.getLogger("bottany")
-
 logger.info("Booting Bottany Core | ENV=%s", ENV)
 
 # =================================================
@@ -52,7 +49,7 @@ logger.info("Booting Bottany Core | ENV=%s", ENV)
 
 intents = discord.Intents.default()
 intents.message_content = True
-intents.members = True  # Role sync için gerekli
+intents.members = True
 
 # =================================================
 # IMPORTS
@@ -73,12 +70,15 @@ from services.trend_analytics_engine import TrendAnalyticsEngine
 from services.stream_intelligence_engine import StreamIntelligenceEngine
 from services.adaptive_tracking_engine import AdaptiveTrackingEngine
 
+# DATABASE INTEGRATION
+from database.db import create_pool, get_pool
+from database.init_db import init_database
+
 # =================================================
 # BOT CLASS
 # =================================================
 
 class BottanyBot(commands.Bot):
-
     def __init__(self):
         super().__init__(command_prefix="!", intents=intents)
 
@@ -89,7 +89,6 @@ class BottanyBot(commands.Bot):
         # -------------------------------------------------
         # CORE SERVICES
         # -------------------------------------------------
-
         self.telemetry = TelemetryService()
         self.twitch_api = TwitchAPI()
         self.intelligence_logger = StructuredLogger()
@@ -97,20 +96,17 @@ class BottanyBot(commands.Bot):
         # -------------------------------------------------
         # CACHE
         # -------------------------------------------------
-
         self.stream_cache = CacheManager("data/stream_snapshot_cache.json")
         self.drops_cache = CacheManager("data/drops_cache.json")
 
         # -------------------------------------------------
         # ANALYTICS ENGINES
         # -------------------------------------------------
-
         self.anomaly_detector = ViewerAnomalyDetector(
             telemetry=self.telemetry,
             logger=self.intelligence_logger,
             threshold=2.5
         )
-
         self.snapshot_engine = StreamSnapshotEngine(
             api=self.twitch_api,
             telemetry=self.telemetry,
@@ -119,14 +115,12 @@ class BottanyBot(commands.Bot):
             anomaly_detector=self.anomaly_detector,
             snapshot_ttl=120
         )
-
         self.drops_monitor = DropsLifecycleMonitor(
             api=self.twitch_api,
             telemetry=self.telemetry,
             cache=self.drops_cache,
             logger=self.intelligence_logger
         )
-
         self.predictor = PredictionEngine()
         self.trend_engine = TrendAnalyticsEngine()
         self.adaptive_engine = AdaptiveTrackingEngine()
@@ -158,19 +152,18 @@ class BottanyBot(commands.Bot):
     # =================================================
 
     async def init_database(self):
-        self.db = await asyncpg.create_pool(
-            dsn=DATABASE_URL,
-            min_size=1,
-            max_size=5
-        )
-        logger.info("PostgreSQL connected. Tables should already exist from schema.sql")
+        # PostgreSQL pool
+        await create_pool()
+        self.db = get_pool()
+        # Run schema.sql
+        await init_database()
+        logger.info("Database initialized with schema.sql")
 
     # =================================================
     # AUTO MODULE LOADER
     # =================================================
 
     async def load_command_modules(self):
-
         try:
             import commands
         except Exception:
@@ -178,19 +171,15 @@ class BottanyBot(commands.Bot):
             return
 
         for _, module_name, _ in pkgutil.iter_modules(commands.__path__):
-
             full_name = f"commands.{module_name}"
-
             try:
                 module = importlib.import_module(full_name)
-
                 if not hasattr(module, "register"):
                     logger.warning("%s has no register()", full_name)
                     continue
 
                 func = module.register
                 sig = list(inspect.signature(func).parameters.keys())
-
                 result = None
 
                 if sig == ["bot", "data_dir"]:
@@ -215,18 +204,14 @@ class BottanyBot(commands.Bot):
     # =================================================
 
     async def setup_hook(self):
-
-        # DB INIT
         await self.init_database()
 
-        # Academic Trivia
         try:
             AcademicTriviaService.initialize(BASE_DIR)
             logger.info("Academic Trivia initialized.")
         except Exception as e:
             capture_exception(e, context="academic_trivia_init")
 
-        # Load Commands
         await self.load_command_modules()
 
         # Sync
@@ -247,17 +232,14 @@ class BottanyBot(commands.Bot):
     # =================================================
 
     async def on_ready(self):
-
         logger.info("Bot ready as %s", self.user)
         logger.info("Guild count: %s", len(self.guilds))
 
         try:
             await self.telemetry.init()
             logger.info("Telemetry connected.")
-
             self.loop.create_task(self.scheduler.start())
             logger.info("Scheduler started.")
-
         except Exception as e:
             capture_exception(e, context="intelligence_bootstrap")
 
@@ -280,7 +262,7 @@ async def ping(interaction: discord.Interaction):
 # REGISTER CUSTOM COMMANDS
 # =================================================
 
-from commands import kevysaves, petakitten  # petakitten.py burada olmalı
+from commands import kevysaves, petakitten
 kevysaves.register(bot)
 petakitten.register(bot)
 
@@ -312,10 +294,7 @@ async def shutdown():
 def install_signal_handlers():
     loop = asyncio.get_event_loop()
     for sig in (signal.SIGINT, signal.SIGTERM):
-        loop.add_signal_handler(
-            sig,
-            lambda: asyncio.create_task(shutdown())
-        )
+        loop.add_signal_handler(sig, lambda: asyncio.create_task(shutdown()))
 
 # =================================================
 # MAIN
