@@ -66,6 +66,9 @@ CORE_CITIES: Dict[str, Tuple[str, str]] = {
 
     "cairo": ("Africa/Cairo", "EG"),
     "nairobi": ("Africa/Nairobi", "KE"),
+
+    "new delhi": ("Asia/Kolkata", "IN"),
+    "kuala lumpur": ("Asia/Kuala_Lumpur", "MY"),
 }
 
 
