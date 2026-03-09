@@ -158,25 +158,12 @@ class BottanyBot(commands.Bot):
     # =================================================
 
     async def init_database(self):
-
         self.db = await asyncpg.create_pool(
             dsn=DATABASE_URL,
             min_size=1,
             max_size=5
         )
-
-        async with self.db.acquire() as conn:
-            await conn.execute("""
-                CREATE TABLE IF NOT EXISTS kevy_saves (
-                    guild_id BIGINT NOT NULL,
-                    user_id BIGINT NOT NULL,
-                    save_count INTEGER NOT NULL DEFAULT 0,
-                    tier VARCHAR(20),
-                    PRIMARY KEY (guild_id, user_id)
-                );
-            """)
-
-        logger.info("PostgreSQL connected and kevy_saves ready.")
+        logger.info("PostgreSQL connected. Tables should already exist from schema.sql")
 
     # =================================================
     # AUTO MODULE LOADER
@@ -288,6 +275,14 @@ bot = BottanyBot()
 async def ping(interaction: discord.Interaction):
     latency = round(bot.latency * 1000)
     await interaction.response.send_message(f"Pong. Latency: {latency} ms")
+
+# =================================================
+# REGISTER CUSTOM COMMANDS
+# =================================================
+
+from commands import kevysaves, petakitten  # petakitten.py burada olmalı
+kevysaves.register(bot)
+petakitten.register(bot)
 
 # =================================================
 # SHUTDOWN
