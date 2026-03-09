@@ -9,6 +9,8 @@ logger = logging.getLogger("bottany")
 
 COOLDOWN_SECONDS = 30
 
+ROMAN = ["I", "II", "III", "IV", "V"]
+
 TIERS = [
     (500, "Mythic", "Puppy Savior", 0xF1C40F),
     (150, "Epic", "Legendary Puppie Rescuer", 0x9B59B6),
@@ -23,10 +25,12 @@ TIERS = [
 # =================================================
 
 def resolve_tier(count: int):
-    for min_count, tier_name, role_name, color in TIERS:
+    for index, (min_count, tier_name, role_name, color) in enumerate(TIERS, start=1):
         if count >= min_count:
+            tier_number = len(TIERS) - index + 1
             return {
                 "tier": tier_name,
+                "tier_number": tier_number,
                 "role": role_name,
                 "color": color
             }
@@ -100,7 +104,7 @@ def register(bot):
                     WHERE guild_id = $2 AND user_id = $3
                 """, tier_data["tier"], guild_id, user_id)
 
-        except Exception as e:
+        except Exception:
             logger.exception("Kevy DB error")
             await interaction.response.send_message(
                 "Database error occurred.",
@@ -109,7 +113,7 @@ def register(bot):
             return
 
         # =================================================
-        # ROLE SYNC (SAFE)
+        # ROLE SYNC
         # =================================================
 
         member = interaction.guild.get_member(user_id)
@@ -155,14 +159,33 @@ def register(bot):
         # =================================================
 
         embed = discord.Embed(
-            title="🐶 Kevy Saves a Puppie Again",
-            description="Kevy saved an another puppie. It wasn't a suprise.",
+            title="🐶 Puppy Rescue Stats",
             color=tier_data["color"]
         )
 
-        embed.add_field(name="You helped", value=str(user_count))
-        embed.add_field(name="Server total helped", value=str(global_total))
-        embed.add_field(name="Tier", value=tier_data["tier"])
+        embed.add_field(
+            name="🐶 You Helped",
+            value=f"**{user_count}** puppies",
+            inline=True
+        )
+
+        embed.add_field(
+            name="🐾 Server's Help",
+            value=f"**{global_total}** puppies",
+            inline=True
+        )
+
+        embed.add_field(
+            name="🐕 Tier",
+            value=f"**{ROMAN[tier_data['tier_number'] - 1]}**",
+            inline=False
+        )
+
+        embed.set_thumbnail(url=interaction.user.display_avatar.url)
+
+        embed.set_footer(
+            text="🐶 You helped puppies • 🐾 Server's help grows • 🐕 You climb the tiers"
+        )
 
         await interaction.response.send_message(embed=embed)
 
@@ -222,18 +245,23 @@ def register(bot):
             return
 
         embed = discord.Embed(
-            title="🐶 Server Puppy Leaderboard",
+            title="🐾 Puppy Rescue Leaderboard",
             color=0xF5C542
         )
 
         for i, row in enumerate(rows, start=1):
             member = interaction.guild.get_member(row["user_id"])
             name = member.display_name if member else f"User {row['user_id']}"
+
             embed.add_field(
-                name=f"#{i} {name}",
-                value=f"{row['save_count']} helped",
+                name=f"🐶 #{i} {name}",
+                value=f"{row['save_count']} puppies helped",
                 inline=False
             )
+
+        embed.set_footer(
+            text="🐶 You helped puppies • 🐾 Server's help grows • 🐕 You climb the tiers"
+        )
 
         await interaction.response.send_message(embed=embed)
 
@@ -257,7 +285,6 @@ async def sync_role(member: discord.Member, tier_data: dict):
 
     tier_role_names = [t[2] for t in TIERS]
 
-    # Remove old tier roles
     for r in member.roles:
         if r.name in tier_role_names and r.name != role_name:
             try:
@@ -265,7 +292,6 @@ async def sync_role(member: discord.Member, tier_data: dict):
             except Exception:
                 logger.exception("Failed removing role %s", r.name)
 
-    # Add new role
     if role not in member.roles:
         try:
             await member.add_roles(role)
