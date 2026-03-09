@@ -4,6 +4,7 @@ import random
 import logging
 import discord
 from discord import app_commands
+from datetime import datetime
 
 logger = logging.getLogger("bottany")
 
@@ -11,37 +12,57 @@ COOLDOWN_SECONDS = 20
 
 ROMAN = ["I", "II", "III", "IV", "V"]
 
+# =================================================
+# RANDOM KITTY MESSAGES
+# =================================================
+
 KITTY_MESSAGES = [
 
     "🐱 You gave kittens a treat, purring sounds is the company.",
-
     "🐾 Pet and hug a kittie!",
-
     "🐱 You are just petting a kittie, want to adopt them as well?",
-
     "🐅 3 kittens in one hug!",
-
-    "🦁 Wait... that's not a kitten. You accidentally pet a lion. But there were no problems around :O",
-
     "🐈 The kitten rolls over for belly rubs.",
-
     "🐾 The kitten accepts your friendship.",
-
     "🐱 The kitten stares at you, then blinks."
 ]
 
+# =================================================
+# TIERS
+# =================================================
+
 KITTY_TIERS = [
 
-    (300, "Is this maybe Heaven?", 0xF39C12),
-
+    (500, "True Friend of Animals", 0xF39C12),
     (150, "Friend of the Animals", 0x9B59B6),
-
     (50, "Deep Cat Love", 0x3498DB),
-
     (10, "Kitten Companion", 0x2ECC71),
-
     (1, "Cats", 0x95A5A6),
 ]
+
+# =================================================
+# MILESTONE ACHIEVEMENTS
+# =================================================
+
+MILESTONES = {
+
+    1: "First Purr",
+    10: "Kitten Companion",
+    50: "Certified Cat Friend",
+    100: "Seen Too Much",
+    500: "True Friend of Animals"
+}
+
+# =================================================
+# EVENT ACHIEVEMENTS
+# =================================================
+
+EVENTS = {
+
+    "Wrong Cat": "🦁 Wait... that's not a kitten.\nYou accidentally pet a lion.",
+    "Murder Mitten": "🐱 The kitten bites your finger.",
+    "Chosen by Cats": "👑 All kittens suddenly gather around you."
+}
 
 
 # =================================================
@@ -92,8 +113,8 @@ def register(bot):
             async with bot.db.acquire() as conn:
 
                 await conn.execute("""
-                    INSERT INTO kitten_pets (guild_id, user_id, pet_count)
-                    VALUES ($1,$2,1)
+                    INSERT INTO kitten_pets (guild_id, user_id, pet_count, achievements)
+                    VALUES ($1,$2,1,ARRAY[]::TEXT[])
                     ON CONFLICT (guild_id,user_id)
                     DO UPDATE SET pet_count = kitten_pets.pet_count + 1
                 """, guild_id, user_id)
@@ -116,6 +137,15 @@ def register(bot):
                     WHERE guild_id=$1 AND user_id=$2
                 """, guild_id, user_id)
 
+                achievements = await conn.fetchval("""
+                    SELECT achievements
+                    FROM kitten_pets
+                    WHERE guild_id=$1 AND user_id=$2
+                """, guild_id, user_id)
+
+                if achievements is None:
+                    achievements = []
+
                 tier_data = resolve_tier(user_count)
 
                 await conn.execute("""
@@ -134,7 +164,6 @@ def register(bot):
             )
             return
 
-
         # =================================================
         # TIER ANNOUNCEMENT
         # =================================================
@@ -145,13 +174,72 @@ def register(bot):
                 f"🐅 {interaction.user.mention} reached **{tier_data['tier']}**!"
             )
 
-
         # =================================================
         # RANDOM MESSAGE
         # =================================================
 
         random_text = random.choice(KITTY_MESSAGES)
 
+        # =================================================
+        # RANDOM EVENTS
+        # =================================================
+
+        achievement_unlocked = None
+
+        event_roll = random.randint(1,100)
+
+        if event_roll <= 5 and "Wrong Cat" not in achievements:
+
+            achievement_unlocked = "Wrong Cat"
+            random_text = EVENTS["Wrong Cat"]
+
+        elif event_roll <= 10 and "Murder Mitten" not in achievements:
+
+            achievement_unlocked = "Murder Mitten"
+            random_text = EVENTS["Murder Mitten"]
+
+        elif event_roll <= 12 and "Chosen by Cats" not in achievements:
+
+            achievement_unlocked = "Chosen by Cats"
+            random_text = EVENTS["Chosen by Cats"]
+
+        # =================================================
+        # NIGHT CAT
+        # =================================================
+
+        hour = datetime.utcnow().hour
+
+        if 0 <= hour <= 6 and "Night Cat" not in achievements:
+
+            achievement_unlocked = "Night Cat"
+
+        # =================================================
+        # MILESTONE CHECK
+        # =================================================
+
+        if user_count in MILESTONES and MILESTONES[user_count] not in achievements:
+
+            achievement_unlocked = MILESTONES[user_count]
+
+        # =================================================
+        # SAVE ACHIEVEMENT
+        # =================================================
+
+        if achievement_unlocked:
+
+            async with bot.db.acquire() as conn:
+
+                await conn.execute("""
+
+                    UPDATE kitten_pets
+                    SET achievements = array_append(achievements,$1)
+                    WHERE guild_id=$2 AND user_id=$3
+
+                """, achievement_unlocked, guild_id, user_id)
+
+            await interaction.channel.send(
+                f"🏆 **Achievement unlocked:** {achievement_unlocked}\n{interaction.user.mention}"
+            )
 
         # =================================================
         # EMBED
