@@ -1,123 +1,86 @@
+import random
+from io import BytesIO
+
 import discord
-from discord.ext import commands
 from discord import app_commands
 
 from PIL import Image, ImageDraw
-from io import BytesIO
-import random
-
-
-# ======================================
-# WORLD SETTINGS
-# ======================================
 
 WIDTH = 512
 HEIGHT = 256
 
-PIXEL = 3
 
-GW = WIDTH // PIXEL
-GH = HEIGHT // PIXEL
+# =====================================================
+# SPRITES
+# =====================================================
 
-SKY = (18,22,26)
-GROUND = (70,80,70)
+def tree_sprite():
 
-RAIN = (200,210,220)
-RAIN_DIM = (160,170,180)
-
-TREE = (36,120,60)
-TRUNK = (90,60,40)
-
-CABIN = (120,80,50)
-ROOF = (90,40,40)
-
-SPLASH = (230,240,255)
-
-
-# ======================================
-# SPRITE GENERATOR
-# ======================================
-
-def sprite_tree():
-
-    size = 16
-    img = Image.new("RGBA",(size,size),(0,0,0,0))
+    img = Image.new("RGBA",(16,20),(0,0,0,0))
     d = ImageDraw.Draw(img)
 
-    # trunk
-    for y in range(10,16):
-        d.point((7,y),fill=TRUNK)
+    for y in range(10,20):
+        d.point((8,y),fill=(90,60,40))
 
-    # leaves
-    for x in range(3,13):
-        for y in range(2,10):
-
+    for x in range(2,14):
+        for y in range(0,10):
             if random.random()<0.7:
-                d.point((x,y),fill=TREE)
+                d.point((x,y),fill=(40,120,60))
 
     return img
 
 
-def sprite_cabin():
+def deer_sprite():
 
-    size=20
-    img=Image.new("RGBA",(size,size),(0,0,0,0))
-    d=ImageDraw.Draw(img)
+    img = Image.new("RGBA",(14,10),(0,0,0,0))
+    d = ImageDraw.Draw(img)
 
-    for x in range(4,16):
+    body=(140,100,60)
+
+    for x in range(2,10):
+        d.point((x,6),fill=body)
+
+    d.point((10,5),fill=body)
+
+    for x in (3,7):
+        d.point((x,7),fill=body)
+
+    return img
+
+
+def cabin_sprite():
+
+    img = Image.new("RGBA",(24,20),(0,0,0,0))
+    d = ImageDraw.Draw(img)
+
+    for x in range(4,20):
         for y in range(10,18):
-            d.point((x,y),fill=CABIN)
+            d.point((x,y),fill=(130,90,60))
 
-    for x in range(3,17):
-        d.point((x,10),fill=ROOF)
+    for x in range(3,21):
+        d.point((x,10),fill=(90,50,50))
 
     return img
 
 
-# ======================================
-# SCENE GENERATOR
-# ======================================
+# =====================================================
+# PARTICLES
+# =====================================================
 
-def build_scene():
-
-    objects=[]
-
-    for _ in range(random.randint(15,30)):
-
-        tree=sprite_tree()
-
-        x=random.randint(0,WIDTH-50)
-        y=random.randint(HEIGHT-80,HEIGHT-40)
-
-        objects.append((tree,x,y))
-
-    if random.random()<0.7:
-
-        cabin=sprite_cabin()
-
-        x=random.randint(100,WIDTH-100)
-        y=HEIGHT-60
-
-        objects.append((cabin,x,y))
-
-    return objects
-
-
-# ======================================
-# RAIN PARTICLE
-# ======================================
-
-class Rain:
+class RainParticle:
 
     def __init__(self):
+
+        self.reset()
+
+
+    def reset(self):
 
         self.x=random.uniform(0,WIDTH)
         self.y=random.uniform(-HEIGHT,0)
 
         self.vx=random.uniform(-0.3,0.3)
         self.vy=random.uniform(8,12)
-
-        self.length=random.randint(6,10)
 
 
     def update(self):
@@ -127,25 +90,14 @@ class Rain:
 
         if self.y>HEIGHT:
 
-            self.x=random.uniform(0,WIDTH)
-            self.y=random.uniform(-100,0)
+            splash=(self.x,HEIGHT-2)
 
+            self.reset()
 
-    def draw(self,draw):
+            return splash
 
-        for i in range(self.length):
+        return None
 
-            px=int(self.x)
-            py=int(self.y-i)
-
-            if 0<=px<WIDTH and 0<=py<HEIGHT:
-
-                draw.point((px,py),fill=RAIN)
-
-
-# ======================================
-# SPLASH
-# ======================================
 
 class Splash:
 
@@ -156,121 +108,160 @@ class Splash:
         self.life=4
 
 
+# =====================================================
+# SCENE
+# =====================================================
+
+def generate_scene():
+
+    scene=[]
+
+    for _ in range(random.randint(12,20)):
+
+        scene.append(
+            (
+                tree_sprite(),
+                random.randint(0,WIDTH-20),
+                random.randint(HEIGHT-100,HEIGHT-40)
+            )
+        )
+
+    if random.random()<0.8:
+
+        scene.append(
+            (
+                cabin_sprite(),
+                random.randint(200,320),
+                HEIGHT-50
+            )
+        )
+
+    if random.random()<0.6:
+
+        scene.append(
+            (
+                deer_sprite(),
+                random.randint(80,420),
+                HEIGHT-25
+            )
+        )
+
+    return scene
+
+
+# =====================================================
+# ENGINE
+# =====================================================
+
+class WeatherEngine:
+
+    def __init__(self):
+
+        self.rain=[RainParticle() for _ in range(900)]
+        self.splashes=[]
+
+        self.scene=generate_scene()
+
+        self.lightning=0
+
+
     def update(self):
-        self.life-=1
+
+        new_splashes=[]
+
+        for p in self.rain:
+
+            splash=p.update()
+
+            if splash:
+
+                new_splashes.append(Splash(*splash))
+
+        self.splashes+=new_splashes
+
+        for s in self.splashes:
+            s.life-=1
+
+        self.splashes=[s for s in self.splashes if s.life>0]
+
+        if random.random()<0.02:
+            self.lightning=2
 
 
-    def draw(self,draw):
+    def render(self):
 
-        if self.life>0:
+        sky=(20,25,30)
 
-            draw.point((self.x,self.y),fill=SPLASH)
+        if self.lightning>0:
+            sky=(200,200,210)
+            self.lightning-=1
 
+        img=Image.new("RGB",(WIDTH,HEIGHT),sky)
+        d=ImageDraw.Draw(img)
 
+        for sprite,x,y in self.scene:
 
-# ======================================
-# FRAME ENGINE
-# ======================================
+            img.paste(sprite,(x,y),sprite)
 
-def render_frame(objects,particles,splashes):
+        d.rectangle([0,HEIGHT-4,WIDTH,HEIGHT],fill=(50,60,50))
 
-    img=Image.new("RGB",(WIDTH,HEIGHT),SKY)
-    draw=ImageDraw.Draw(img)
+        for p in self.rain:
 
-    # sprites
-    for sprite,x,y in objects:
+            x=int(p.x)
+            y=int(p.y)
 
-        img.paste(sprite,(x,y),sprite)
+            for i in range(6):
+                d.point((x,y-i),fill=(200,210,220))
 
-    # ground
-    draw.rectangle(
-        [0,HEIGHT-10,WIDTH,HEIGHT],
-        fill=GROUND
-    )
+        for s in self.splashes:
 
-    # rain
-    for p in particles:
+            d.point((int(s.x),int(s.y)),fill=(220,220,230))
 
-        p.update()
-        p.draw(draw)
-
-        if p.y>=HEIGHT-10:
-
-            splashes.append(Splash(int(p.x),HEIGHT-10))
-
-    # splash
-    for s in splashes:
-
-        s.draw(draw)
-        s.update()
-
-    splashes[:]=[s for s in splashes if s.life>0]
-
-    return img
+        return img
 
 
-# ======================================
-# ANIMATION ENGINE
-# ======================================
-
-def generate_animation():
-
-    objects=build_scene()
-
-    particles=[Rain() for _ in range(900)]
-
-    splashes=[]
-
-    frames=[]
-
-    for _ in range(40):
-
-        frame=render_frame(objects,particles,splashes)
-
-        frames.append(frame)
-
-    buffer=BytesIO()
-
-    frames[0].save(
-        buffer,
-        format="GIF",
-        save_all=True,
-        append_images=frames[1:],
-        duration=16,
-        loop=0
-    )
-
-    buffer.seek(0)
-
-    return buffer
-
-
-# ======================================
+# =====================================================
 # DISCORD COMMAND
-# ======================================
+# =====================================================
 
-class MakeItRain(commands.Cog):
+def register(bot):
 
-    def __init__(self,bot):
-        self.bot=bot
-
-
-    @app_commands.command(
+    group = app_commands.Group(
         name="makeitrain",
-        description="Stardew-style pixel rain scene"
+        description="Pixel rain scene generator"
     )
 
-    async def makeitrain(self,interaction:discord.Interaction):
+
+    @group.command(name="scene",description="Generate pixel rain scene")
+    async def scene(interaction: discord.Interaction):
 
         await interaction.response.defer()
 
-        gif=generate_animation()
+        engine=WeatherEngine()
 
-        await interaction.followup.send(
-            file=discord.File(gif,"stardew_rain.gif")
+        frames=[]
+
+        for _ in range(40):
+
+            engine.update()
+
+            frames.append(engine.render())
+
+        buffer=BytesIO()
+
+        frames[0].save(
+            buffer,
+            format="GIF",
+            save_all=True,
+            append_images=frames[1:],
+            duration=16,
+            loop=0
         )
 
+        buffer.seek(0)
 
-async def setup(bot):
+        await interaction.followup.send(
+            file=discord.File(buffer,"rain.gif")
+        )
 
-    await bot.add_cog(MakeItRain(bot))
+    bot.tree.add_command(group)
