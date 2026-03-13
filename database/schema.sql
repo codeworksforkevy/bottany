@@ -19,3 +19,26 @@ CREATE TABLE IF NOT EXISTS kitten_pets (
     PRIMARY KEY (guild_id, user_id)
 
 );
+
+
+-- =================================================
+-- KITTEN ADOPTION TABLE
+-- =================================================
+
+CREATE TABLE IF NOT EXISTS kitten_adoptions (
+
+    guild_id BIGINT NOT NULL,
+    user_id BIGINT NOT NULL,
+
+    -- kitten name given by user
+    kitten_name TEXT NOT NULL,
+
+    -- adoption timestamp
+    adopted_at TIMESTAMP DEFAULT NOW(),
+
+    -- allows future multi-adoption systems
+    adoption_count INTEGER DEFAULT 1,
+
+    PRIMARY KEY (guild_id, user_id)
+
+);
