@@ -12,6 +12,7 @@ from pathlib import Path
 
 import discord
 from discord.ext import commands
+import asyncpg
 
 # =================================================
 # ENV
@@ -70,7 +71,7 @@ from services.trend_analytics_engine import TrendAnalyticsEngine
 from services.stream_intelligence_engine import StreamIntelligenceEngine
 from services.adaptive_tracking_engine import AdaptiveTrackingEngine
 
-# DATABASE INTEGRATION
+# DATABASE
 from database.db import create_pool, get_pool
 from database.init_db import init_database
 
@@ -81,27 +82,20 @@ from database.init_db import init_database
 class BottanyBot(commands.Bot):
     def __init__(self):
         super().__init__(command_prefix="!", intents=intents)
-
         self.start_time = time.time()
         self.owner_id = OWNER_ID
         self.db: asyncpg.Pool | None = None
 
-        # -------------------------------------------------
-        # CORE SERVICES
-        # -------------------------------------------------
+        # Core services
         self.telemetry = TelemetryService()
         self.twitch_api = TwitchAPI()
         self.intelligence_logger = StructuredLogger()
 
-        # -------------------------------------------------
-        # CACHE
-        # -------------------------------------------------
+        # Caches
         self.stream_cache = CacheManager("data/stream_snapshot_cache.json")
         self.drops_cache = CacheManager("data/drops_cache.json")
 
-        # -------------------------------------------------
-        # ANALYTICS ENGINES
-        # -------------------------------------------------
+        # Analytics engines
         self.anomaly_detector = ViewerAnomalyDetector(
             telemetry=self.telemetry,
             logger=self.intelligence_logger,
@@ -147,22 +141,16 @@ class BottanyBot(commands.Bot):
             interval=300
         )
 
-    # =================================================
     # DATABASE INIT
-    # =================================================
-
     async def init_database(self):
-        # PostgreSQL pool
         await create_pool()
         self.db = get_pool()
-        # Run schema.sql
         await init_database()
         logger.info("Database initialized with schema.sql")
 
     # =================================================
-    # AUTO MODULE LOADER
+    # COG + COMMAND LOADER
     # =================================================
-
     async def load_command_modules(self):
         try:
             import commands
@@ -174,35 +162,39 @@ class BottanyBot(commands.Bot):
             full_name = f"commands.{module_name}"
             try:
                 module = importlib.import_module(full_name)
-                if not hasattr(module, "register"):
-                    logger.warning("%s has no register()", full_name)
+
+                # Cog-based setup
+                if hasattr(module, "setup"):
+                    await module.setup(self)
+                    logger.info("Loaded cog %s via setup()", full_name)
                     continue
 
-                func = module.register
-                sig = list(inspect.signature(func).parameters.keys())
-                result = None
+                # Fallback: old-style register function
+                if hasattr(module, "register"):
+                    func = module.register
+                    sig = list(inspect.signature(func).parameters.keys())
+                    result = None
 
-                if sig == ["bot", "data_dir"]:
-                    result = func(self, DATA_DIR)
-                elif sig == ["bot"]:
-                    result = func(self)
-                elif sig == ["tree"]:
-                    result = func(self.tree)
+                    if sig == ["bot", "data_dir"]:
+                        result = func(self, DATA_DIR)
+                    elif sig == ["bot"]:
+                        result = func(self)
+                    elif sig == ["tree"]:
+                        result = func(self.tree)
+                    else:
+                        continue
+
+                    if asyncio.iscoroutine(result):
+                        await result
+
+                    logger.info("Registered %s via register()", full_name)
                 else:
-                    continue
-
-                if asyncio.iscoroutine(result):
-                    await result
-
-                logger.info("Registered %s", full_name)
+                    logger.warning("%s has no setup() or register()", full_name)
 
             except Exception as e:
                 capture_exception(e, context=f"load:{full_name}")
 
-    # =================================================
     # SETUP HOOK
-    # =================================================
-
     async def setup_hook(self):
         await self.init_database()
 
@@ -227,14 +219,9 @@ class BottanyBot(commands.Bot):
         except Exception as e:
             capture_exception(e, context="tree_sync")
 
-    # =================================================
-    # READY
-    # =================================================
-
     async def on_ready(self):
         logger.info("Bot ready as %s", self.user)
         logger.info("Guild count: %s", len(self.guilds))
-
         try:
             await self.telemetry.init()
             logger.info("Telemetry connected.")
@@ -243,66 +230,55 @@ class BottanyBot(commands.Bot):
         except Exception as e:
             capture_exception(e, context="intelligence_bootstrap")
 
+
 # =================================================
 # INSTANCE
 # =================================================
-
 bot = BottanyBot()
 
 # =================================================
 # BASIC COMMAND
 # =================================================
-
 @bot.tree.command(name="ping", description="Health check")
 async def ping(interaction: discord.Interaction):
     latency = round(bot.latency * 1000)
     await interaction.response.send_message(f"Pong. Latency: {latency} ms")
 
-# =================================================
-# REGISTER CUSTOM COMMANDS
-# =================================================
-
-from commands import kevysaves, petakitten
-kevysaves.register(bot)
-petakitten.register(bot)
 
 # =================================================
 # SHUTDOWN
 # =================================================
-
 async def shutdown():
     logger.info("Graceful shutdown initiated.")
-
     try:
         if bot.db:
             await bot.db.close()
     except Exception:
         pass
-
     try:
         await bot.twitch_api.close()
     except Exception:
         pass
-
     try:
         await bot.telemetry.close()
     except Exception:
         pass
-
     await bot.close()
+
 
 def install_signal_handlers():
     loop = asyncio.get_event_loop()
     for sig in (signal.SIGINT, signal.SIGTERM):
         loop.add_signal_handler(sig, lambda: asyncio.create_task(shutdown()))
 
+
 # =================================================
 # MAIN
 # =================================================
-
 async def main():
     install_signal_handlers()
     await bot.start(DISCORD_TOKEN)
+
 
 if __name__ == "__main__":
     try:
