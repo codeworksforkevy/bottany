@@ -7,12 +7,15 @@ from discord import app_commands
 
 logger = logging.getLogger("bottany")
 
+# =================================================
+# ADOPTION JOKES
+# =================================================
 
 ADOPTION_JOKES = [
 
 "📦 The kitten found a cardboard box. Somehow better than your expensive toy choices.",
 
-"🐈 Your kitten stepped on your keyboard during a raffle.\nInstead of typing !join, you wrote !joxcnvbyyyyyy.\nJordan won the raffle. :D",
+"🐈 Your kitten stepped on your keyboard during a raffle.\nInstead of typing !join, you wrote !joxcnvbyyyyyy\nJordan won the raffle. :D",
 
 "🎮 Your kitten is sitting between you and the monitor.\nGetting a kill in Counter-Strike is now impossible.",
 
@@ -34,6 +37,24 @@ ADOPTION_JOKES = [
 
 ]
 
+# =================================================
+# GLOBAL EVENTS
+# =================================================
+
+GLOBAL_EVENTS = [
+
+"🌙 At exactly midnight, every kitten runs across the house simultaneously.\nHopefully your neighbors don't get angry.",
+
+"🎧 It has been reported that all kittens today chewed through headphone cables.",
+
+"🥫 The demand for wet food continues in every household.",
+
+"🛋 Cozy cat-human time has brought happiness today."
+]
+
+# =================================================
+# LEGENDARY LORE
+# =================================================
 
 LEGENDARY_LORE = [
 
@@ -49,36 +70,47 @@ LEGENDARY_LORE = [
 
 ]
 
+# =================================================
+# CONFIRM VIEW
+# =================================================
 
-def register(bot):
+class KittenAdoptView(discord.ui.View):
 
-    @bot.tree.command(name="kittenadoption", description="Adopt a kitten.")
-    @app_commands.describe(name="Name of your kitten")
+    def __init__(self, bot, guild_id, user_id, kitten_name):
 
-    async def kittenadoption(interaction: discord.Interaction, name: str):
+        super().__init__(timeout=60)
 
-        if interaction.guild is None:
+        self.bot = bot
+        self.guild_id = guild_id
+        self.user_id = user_id
+        self.kitten_name = kitten_name
+
+
+    # ==============================================
+    # ADOPT BUTTON
+    # ==============================================
+
+    @discord.ui.button(label="Adopt", style=discord.ButtonStyle.green)
+    async def adopt(self, interaction: discord.Interaction, button: discord.ui.Button):
+
+        if interaction.user.id != self.user_id:
 
             await interaction.response.send_message(
-                "Server only command.",
+                "This adoption request belongs to another user.",
                 ephemeral=True
             )
             return
 
-        guild_id = interaction.guild.id
-        user_id = interaction.user.id
-
         try:
 
-            async with bot.db.acquire() as conn:
+            async with self.bot.db.acquire() as conn:
 
                 exists = await conn.fetchval("""
 
-                    SELECT 1
-                    FROM kitten_adoptions
+                    SELECT 1 FROM kitten_adoptions
                     WHERE guild_id=$1 AND user_id=$2
 
-                """, guild_id, user_id)
+                """, self.guild_id, self.user_id)
 
                 if exists:
 
@@ -90,11 +122,10 @@ def register(bot):
 
                 await conn.execute("""
 
-                    INSERT INTO kitten_adoptions
-                    (guild_id,user_id,kitten_name)
+                    INSERT INTO kitten_adoptions (guild_id,user_id,kitten_name)
                     VALUES ($1,$2,$3)
 
-                """, guild_id, user_id, name)
+                """, self.guild_id, self.user_id, self.kitten_name)
 
         except Exception:
 
@@ -106,7 +137,11 @@ def register(bot):
             )
             return
 
-        # Legendary chance
+
+        # ==========================================
+        # JOKE OR LEGENDARY
+        # ==========================================
+
         if random.randint(1,100) <= 5:
 
             text = random.choice(LEGENDARY_LORE)
@@ -114,6 +149,7 @@ def register(bot):
         else:
 
             text = random.choice(ADOPTION_JOKES)
+
 
         embed = discord.Embed(
 
@@ -125,7 +161,7 @@ def register(bot):
 
         embed.add_field(
             name="Kitten Name",
-            value=name,
+            value=self.kitten_name,
             inline=False
         )
 
@@ -133,4 +169,84 @@ def register(bot):
             text=f"{interaction.user.display_name} adopted a kitten"
         )
 
-        await interaction.response.send_message(embed=embed)
+        await interaction.response.edit_message(
+            content=None,
+            embed=embed,
+            view=None
+        )
+
+        # ==========================================
+        # GLOBAL EVENT CHANCE
+        # ==========================================
+
+        if random.randint(1,100) <= 8:
+
+            event = random.choice(GLOBAL_EVENTS)
+
+            await interaction.channel.send(
+                f"🌍 **Global Kitten Event**\n\n{event}"
+            )
+
+
+    # ==============================================
+    # CANCEL BUTTON
+    # ==============================================
+
+    @discord.ui.button(label="Cancel", style=discord.ButtonStyle.grey)
+    async def cancel(self, interaction: discord.Interaction, button: discord.ui.Button):
+
+        if interaction.user.id != self.user_id:
+            return
+
+        await interaction.response.edit_message(
+            content="Kitten adoption cancelled.",
+            embed=None,
+            view=None
+        )
+
+# =================================================
+# REGISTER COMMAND
+# =================================================
+
+def register(bot):
+
+    @bot.tree.command(name="kittenadoption", description="Adopt a kitten.")
+    @app_commands.describe(name="Choose a name for your kitten")
+
+    async def kittenadoption(interaction: discord.Interaction, name: str):
+
+        if interaction.guild is None:
+
+            await interaction.response.send_message(
+                "Server only command.",
+                ephemeral=True
+            )
+            return
+
+
+        embed = discord.Embed(
+
+            title="🐾 Kitten Adoption Request",
+
+            description=(
+                f"You are about to adopt a kitten.\n\n"
+                f"Name: **{name}**\n\n"
+                f"Your life will become warmer now.\n\n"
+                f"Are you sure you want to proceed?"
+            ),
+
+            color=0x2ECC71
+
+        )
+
+        view = KittenAdoptView(
+            bot,
+            interaction.guild.id,
+            interaction.user.id,
+            name
+        )
+
+        await interaction.response.send_message(
+            embed=embed,
+            view=view
+        )
