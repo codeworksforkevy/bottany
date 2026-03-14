@@ -3,10 +3,13 @@ import random
 import logging
 import discord
 from discord import app_commands
-from datetime import datetime
 
 logger = logging.getLogger("bottany")
 COOLDOWN_SECONDS = 20
+
+# =================================================
+# SCENARIOS / JOKES / LEGENDARY
+# =================================================
 
 KITTEN_SCENARIOS = [
     "{} knocked over your plant pot. The cat looks innocent. Could it be tho?",
@@ -22,12 +25,24 @@ KITTEN_SCENARIOS = [
     "Important question: Would you buy an expensive automatic litter box? Or a water fountain? :O"
 ]
 
+LEGENDARY_LORE = [
+    "🌌 Legendary Kitten Lore\n\nThis kitten once stared at a black hole.\nThe black hole blinked first.",
+    "📜 Legendary Kitten Lore\n\nAncient scholars wrote about a cosmic kitten.\nThey were not joking.",
+    "🪐 Legendary Kitten Lore\n\nYour kitten briefly understood the structure of the universe.\nIt immediately forgot and chased a dust particle.",
+    "⚡ Legendary Kitten Lore\n\nWhen the universe was young, a kitten stepped on the keyboard of reality.\nThat is why chaos exists.",
+    "🌠 Legendary Kitten Lore\n\nSome say every galaxy contains a kitten.\nScientists are still investigating."
+]
+
 GLOBAL_EVENTS = [
     "🌍 At exactly midnight, every kitten runs across the house simultaneously. Hopefully neighbors are okay.",
     "🎧 All kittens today chewed through headphone cables!",
     "🥫 Demand for wet food continues in every household.",
     "🛋 Cozy cat-human time brought happiness today."
 ]
+
+# =================================================
+# REGISTER COMMAND
+# =================================================
 
 def register(bot):
     @bot.tree.command(name="mykitten", description="See what your adopted kitten is up to today!")
@@ -49,20 +64,37 @@ def register(bot):
                 """, guild_id, user_id)
 
                 if not kittens:
-                    await interaction.response.send_message("You haven't adopted any kittens yet! Use `/kittenadoption` first.", ephemeral=True)
+                    await interaction.response.send_message(
+                        "You haven't adopted any kittens yet! Use `/kittenadoption` first.", 
+                        ephemeral=True
+                    )
                     return
 
+                # Select kitten by name if provided, else random
                 if kitten_name:
-                    selected = next((k['kitten_name'] for k in kittens if k['kitten_name'].lower() == kitten_name.lower()), None)
-                    if not selected: selected = kittens[0]['kitten_name']
+                    selected = next(
+                        (k['kitten_name'] for k in kittens if k['kitten_name'].lower() == kitten_name.lower()),
+                        None
+                    )
+                    if not selected:
+                        selected = kittens[0]['kitten_name']
                 else:
                     selected = random.choice(kittens)['kitten_name']
 
-                scenario = random.choice(KITTEN_SCENARIOS)
-                scenario_text = scenario.format(selected) if "{}" in scenario else scenario
+                # =================================================
+                # Scenario or Legendary
+                # =================================================
+                if random.randint(1, 100) <= 5:
+                    scenario_text = random.choice(LEGENDARY_LORE)
+                else:
+                    scenario = random.choice(KITTEN_SCENARIOS)
+                    scenario_text = scenario.format(selected) if "{}" in scenario else scenario
 
+                # =================================================
+                # Global Event Chance
+                # =================================================
                 global_event_text = None
-                if random.randint(1,100) <= 8:
+                if random.randint(1, 100) <= 8:
                     global_event_text = random.choice(GLOBAL_EVENTS)
 
         except Exception:
@@ -70,7 +102,15 @@ def register(bot):
             await interaction.response.send_message("Database error occurred.", ephemeral=True)
             return
 
-        embed = discord.Embed(title=f"🐱 {selected}'s Daily Scenario", description=scenario_text, color=0xFFD700)
+        # =================================================
+        # Embed Construction
+        # =================================================
+        embed = discord.Embed(
+            title=f"🐱 {selected}'s Daily Scenario",
+            description=f"ദ്ദി/ᐠ｡‸｡ᐟ\\\n\n{scenario_text}",
+            color=0x2F3136  # Antrasit
+        )
+
         embed.add_field(name="Owner", value=interaction.user.mention, inline=True)
         embed.add_field(name="Total adopted kittens", value=str(len(kittens)), inline=True)
 
@@ -79,11 +119,19 @@ def register(bot):
 
         await interaction.response.send_message(embed=embed)
 
+    # =================================================
+    # ERROR HANDLER
+    # =================================================
     @mykitten.error
     async def mykitten_error(interaction: discord.Interaction, error):
         if isinstance(error, app_commands.errors.CommandOnCooldown):
-            await interaction.response.send_message(f"🐾 Your kittens are resting. Try again in {int(error.retry_after)} seconds.", ephemeral=True)
+            await interaction.response.send_message(
+                f"🐾 Your kittens are resting. Try again in {int(error.retry_after)} seconds.", 
+                ephemeral=True
+            )
         else:
             logger.exception("MyKitten command crashed")
-            try: await interaction.response.send_message("Unexpected error occurred.", ephemeral=True)
-            except: pass
+            try:
+                await interaction.response.send_message("Unexpected error occurred.", ephemeral=True)
+            except: 
+                pass
