@@ -106,7 +106,7 @@ def register(bot):
         # Embed Construction
         # =================================================
         embed = discord.Embed(
-            title=f"🐱 {selected}'s Daily Scenario",
+            title=f"{selected}'s Daily Scenario",
             description=f"ദ്ദി/ᐠ｡‸｡ᐟ\\\n\n{scenario_text}",
             color=0x2F3136  # Antrasit
         )
