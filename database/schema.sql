@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS kitten_adoptions (
 
     adoption_count INTEGER DEFAULT 1,
 
-    PRIMARY KEY (guild_id, user_id)
+    PRIMARY KEY (guild_id, user_id, kitten_name)  -- <-- değişiklik burada
 
 );
 
