@@ -59,6 +59,8 @@ CORE_CITIES: Dict[str, Tuple[str, str]] = {
     "beijing": ("Asia/Shanghai", "CN"),
     "shanghai": ("Asia/Shanghai", "CN"),
     "singapore": ("Asia/Singapore", "SG"),
+    "kathmandu": ("Asia/Kathmandu", "NP"),
+    "nepal": ("Asia/Kathmandu", "NP"),
     "dubai": ("Asia/Dubai", "AE"),
 
     "sydney": ("Australia/Sydney", "AU"),
@@ -69,6 +71,25 @@ CORE_CITIES: Dict[str, Tuple[str, str]] = {
 
     "new delhi": ("Asia/Kolkata", "IN"),
     "kuala lumpur": ("Asia/Kuala_Lumpur", "MY"),
+
+    "moscow": ("Europe/Moscow", "RU"),
+    "prague": ("Europe/Prague", "CZ"),
+    "budapest": ("Europe/Budapest", "HU"),
+    "lisbon": ("Europe/Lisbon", "PT"),
+
+    "tel aviv": ("Asia/Jerusalem", "IL"),
+    "tehran": ("Asia/Tehran", "IR"),
+    "karachi": ("Asia/Karachi", "PK"),
+    "kathmandu": ("Asia/Kathmandu", "NP"),
+    "bangkok": ("Asia/Bangkok", "TH"),
+    "jakarta": ("Asia/Jakarta", "ID"),
+    "manila": ("Asia/Manila", "PH"),
+
+    "auckland": ("Pacific/Auckland", "NZ"),
+    "adelaide": ("Australia/Adelaide", "AU"),
+
+    "honolulu": ("Pacific/Honolulu", "US"),
+    "cape town": ("Africa/Johannesburg", "ZA"),
 }
 
 
