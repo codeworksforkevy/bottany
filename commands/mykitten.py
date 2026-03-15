@@ -17,11 +17,11 @@ KITTEN_SCENARIOS = [
     "{} sat on your keyboard again. You can't kill anyone in CS2 anymore. In fact a fight started in the team about kicking you :O",
     "Kitten blocked your keyboard. You can't type that important message.",
     "Your kitten sabotaged the raffle chances again, and guess what? Jordan won again!",
-    "The kitten entered the carrier. Against its will.",
+    "The kitten entered the carrier. Against its will (to vet visit).",
     "Kitten forgave you after the stress of the vet visit. Eventually.",
     "This kitten once stared at a black hole. The black hole blinked first.",
     "Your kitten briefly understood the structure of the universe. Then it chased a toy.",
-    "The kitten is trying to drink from your glass. Will you let it?",
+    "The kitten is trying to drink from your glass. Will you let {} ?",
     "Important question: Would you buy an expensive automatic litter box? Or a water fountain? :O"
 ]
 
