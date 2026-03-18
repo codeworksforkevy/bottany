@@ -23,6 +23,11 @@ KITTEN_SCENARIOS = [
     "Your kitten briefly understood the structure of the universe. Then it chased a toy.",
     "The kitten is trying to drink from your glass. Will you let {} ?",
     "Important question: Would you buy an expensive automatic litter box? Or a water fountain? :O"
+    "Every time {} purrs, an electron somewhere changes direction."
+    "The kitten knocked over your pens. You finally found the pen you've been wondering about for a while. Plus, the kitten brought you one of your AirPods with its paw."
+    "{} started playing games late at night. Hopefully the neighbors don't report us."
+
+
 ]
 
 LEGENDARY_LORE = [
@@ -38,6 +43,7 @@ GLOBAL_EVENTS = [
     "🎧 All kittens today chewed through headphone cables!",
     "🥫 Demand for wet food continues in every household.",
     "🛋 Cozy cat-human time brought happiness today."
+    "At midnight, every kitten simultaneously yawned. The universe sighed back."
 ]
 
 # =================================================
