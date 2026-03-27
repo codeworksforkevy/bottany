@@ -1,56 +1,144 @@
 {
-  "version": 1,
-  "updated_utc": "2026-01-20T00:00:00Z",
-  "awards": [
+  "meta": {
+    "version": "2.0",
+    "updated_utc": "2026-03-27T00:00:00Z",
+    "scope": "manga_awards",
+    "note": "Unified registry: award show metadata + verified winners. JMAF ended after 25th edition (2022). Shogakukan unified its categories from 69th edition (2023 publications) onward.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Shogakukan_Manga_Award",
+      "https://en.wikipedia.org/wiki/Kodansha_Manga_Award",
+      "https://en.wikipedia.org/wiki/Japan_Media_Arts_Festival",
+      "https://www.manga-award.mofa.go.jp/index_e.html",
+      "https://shogakukan-comic.jp/shogakukan-mangasho",
+      "https://www.kodansha.co.jp/awards/comics/histories",
+      "https://j-mediaarts-festival.bunka.go.jp/en/division/manga/index-2.html"
+    ]
+  },
+  "award_shows": [
     {
-      "id": "shogakukan_manga_award",
-      "name": "Shogakukan Manga Award (小学館漫画賞)",
-      "since": 1955,
+      "id": "shogakukan",
+      "name": "Shogakukan Manga Award",
+      "name_ja": "小学館漫画賞",
+      "short": "Shogakukan",
       "organizer": "Shogakukan",
       "region": "japan",
       "kind": "industry",
-      "note": "One of Japan’s oldest manga awards; official Shogakukan award page.",
+      "since": 1955,
+      "active": true,
+      "note": "Japan's oldest manga award. Had separate Shōnen/Shōjo/Children/General categories until 2022; unified to a single open category from 69th edition (2023 publications) onward.",
       "url": "https://shogakukan-comic.jp/shogakukan-mangasho"
     },
     {
-      "id": "kodansha_manga_award",
-      "name": "Kodansha Manga Award (講談社漫画賞)",
-      "since": 1977,
+      "id": "kodansha",
+      "name": "Kodansha Manga Award",
+      "name_ja": "講談社漫画賞",
+      "short": "Kodansha",
       "organizer": "Kodansha",
       "region": "japan",
       "kind": "industry",
-      "note": "Major annual manga award; official Kodansha winners/history index.",
+      "since": 1977,
+      "active": true,
+      "note": "Major annual award with Shōnen, Shōjo, and General categories. Children's category merged into Shōnen/Shōjo from 2015.",
       "url": "https://www.kodansha.co.jp/awards/comics/histories"
     },
     {
-      "id": "japan_international_manga_award",
-      "name": "Japan International MANGA Award",
-      "since": 2007,
-      "organizer": "Ministry of Foreign Affairs of Japan",
-      "region": "international",
-      "kind": "government",
-      "note": "International award founded by Japan’s MOFA to promote global exchange through manga.",
-      "url": "https://www.manga-award.mofa.go.jp/index_e.HTML"
-    },
-    {
-      "id": "jmaf_manga_division",
+      "id": "jmaf",
       "name": "Japan Media Arts Festival — Manga Division",
-      "since": 1997,
+      "name_ja": "文化庁メディア芸術祭 マンガ部門",
+      "short": "JMAF",
       "organizer": "Agency for Cultural Affairs (Japan)",
       "region": "japan",
       "kind": "festival",
-      "note": "Government-run media arts awards; Manga Division award pages.",
+      "since": 1997,
+      "active": false,
+      "note": "Government-run festival. Final edition was the 25th in 2022. Grand Prize winners only listed here.",
       "url": "https://j-mediaarts-festival.bunka.go.jp/en/division/manga/index-2.html"
     },
     {
-      "id": "kadokawa_world_manga_contest",
-      "name": "KADOKAWA WORLD MANGA CONTEST",
-      "since": 2013,
+      "id": "jima",
+      "name": "Japan International MANGA Award",
+      "name_ja": "国際漫画賞",
+      "short": "JIMA",
+      "organizer": "Ministry of Foreign Affairs of Japan",
+      "region": "international",
+      "kind": "government",
+      "since": 2007,
+      "active": true,
+      "note": "International award for non-Japanese creators promoting manga culture globally. Gold, Silver and Bronze tiers.",
+      "url": "https://www.manga-award.mofa.go.jp/index_e.HTML"
+    },
+    {
+      "id": "kadokawa_contest",
+      "name": "KADOKAWA World Manga Contest",
+      "short": "Kadokawa WMC",
       "organizer": "KADOKAWA",
       "region": "international",
       "kind": "industry",
-      "note": "Publisher-run contest open worldwide; official site.",
+      "since": 2013,
+      "active": true,
+      "note": "Publisher-run contest open to creators worldwide.",
       "url": "https://kadokawaworldmanga.com/"
     }
+  ],
+  "winners": [
+
+    { "title": "Haikyū!!",                         "author": "Haruichi Furudate",              "award_show_id": "shogakukan", "award": "Shogakukan — Shōnen",    "category": "shonen",   "year": 2015, "official_source": "https://en.wikipedia.org/wiki/Shogakukan_Manga_Award" },
+    { "title": "Umimachi Diary",                   "author": "Akimi Yoshida",                  "award_show_id": "shogakukan", "award": "Shogakukan — General",   "category": "general",  "year": 2015, "official_source": "https://en.wikipedia.org/wiki/Shogakukan_Manga_Award" },
+    { "title": "My Love Story!!",                  "author": "Kazune Kawahara & Aruko",        "award_show_id": "shogakukan", "award": "Shogakukan — Shōjo",     "category": "shojo",    "year": 2015, "official_source": "https://en.wikipedia.org/wiki/Shogakukan_Manga_Award" },
+
+    { "title": "Mob Psycho 100",                   "author": "ONE",                            "award_show_id": "shogakukan", "award": "Shogakukan — Shōnen",    "category": "shonen",   "year": 2016, "official_source": "https://en.wikipedia.org/wiki/Shogakukan_Manga_Award" },
+    { "title": "Blue Giant",                       "author": "Shinichi Ishizuka",              "award_show_id": "shogakukan", "award": "Shogakukan — General",   "category": "general",  "year": 2016, "official_source": "https://en.wikipedia.org/wiki/Shogakukan_Manga_Award" },
+
+    { "title": "The Promised Neverland",           "author": "Kaiu Shirai & Posuka Demizu",    "award_show_id": "shogakukan", "award": "Shogakukan — Shōnen",    "category": "shonen",   "year": 2017, "official_source": "https://en.wikipedia.org/wiki/Shogakukan_Manga_Award" },
+    { "title": "After the Rain",                   "author": "Jun Mayuzuki",                   "award_show_id": "shogakukan", "award": "Shogakukan — General",   "category": "general",  "year": 2017, "official_source": "https://en.wikipedia.org/wiki/Shogakukan_Manga_Award" },
+
+    { "title": "Dr. Stone",                        "author": "Riichiro Inagaki & Boichi",      "award_show_id": "shogakukan", "award": "Shogakukan — General",   "category": "general",  "year": 2019, "official_source": "https://en.wikipedia.org/wiki/Shogakukan_Manga_Award" },
+
+    { "title": "Chainsaw Man",                     "author": "Tatsuki Fujimoto",               "award_show_id": "shogakukan", "award": "Shogakukan — General",   "category": "general",  "year": 2020, "official_source": "https://en.wikipedia.org/wiki/Shogakukan_Manga_Award" },
+    { "title": "Kaguya-sama: Love Is War",         "author": "Aka Akasaka",                    "award_show_id": "shogakukan", "award": "Shogakukan — Shōnen",    "category": "shonen",   "year": 2020, "official_source": "https://en.wikipedia.org/wiki/Shogakukan_Manga_Award" },
+
+    { "title": "Dead Dead Demon's Dededede Destruction", "author": "Inio Asano",              "award_show_id": "shogakukan", "award": "Shogakukan — Shōjo",     "category": "shojo",    "year": 2021, "official_source": "https://en.wikipedia.org/wiki/Shogakukan_Manga_Award" },
+
+    { "title": "Frieren: Beyond Journey's End",   "author": "Kanehito Yamada & Tsukasa Abe",  "award_show_id": "shogakukan", "award": "Shogakukan Manga Award", "category": "open",     "year": 2023, "official_source": "https://shogakukan-comic.jp/shogakukan-mangasho" },
+    { "title": "The Elusive Samurai",              "author": "Yusei Matsui",                   "award_show_id": "shogakukan", "award": "Shogakukan Manga Award", "category": "open",     "year": 2023, "official_source": "https://shogakukan-comic.jp/shogakukan-mangasho" },
+    { "title": "Trillion Game",                    "author": "Riichiro Inagaki & Ryoichi Ikegami","award_show_id": "shogakukan", "award": "Shogakukan Manga Award","category": "open",    "year": 2023, "official_source": "https://shogakukan-comic.jp/shogakukan-mangasho" },
+
+    { "title": "Burning Kabaddi",                  "author": "Hajime Musashino",               "award_show_id": "shogakukan", "award": "Shogakukan Manga Award", "category": "open",     "year": 2024, "official_source": "https://shogakukan-comic.jp/shogakukan-mangasho" },
+    { "title": "Natsume Arata no Kekkon",          "author": "Taro Nogizaka",                  "award_show_id": "shogakukan", "award": "Shogakukan Manga Award", "category": "open",     "year": 2024, "official_source": "https://shogakukan-comic.jp/shogakukan-mangasho" },
+
+    { "title": "My Hero Academia",                 "author": "Kōhei Horikoshi",                "award_show_id": "kodansha",   "award": "Kodansha — Shōnen",      "category": "shonen",   "year": 2015, "official_source": "https://en.wikipedia.org/wiki/Kodansha_Manga_Award" },
+    { "title": "Monthly Girls' Nozaki-kun",        "author": "Izumi Tsubaki",                  "award_show_id": "kodansha",   "award": "Kodansha — Shōjo",       "category": "shojo",    "year": 2015, "official_source": "https://en.wikipedia.org/wiki/Kodansha_Manga_Award" },
+    { "title": "Vinland Saga",                     "author": "Makoto Yukimura",                "award_show_id": "kodansha",   "award": "Kodansha — General",     "category": "general",  "year": 2015, "official_source": "https://en.wikipedia.org/wiki/Kodansha_Manga_Award" },
+
+    { "title": "The Ancient Magus' Bride",         "author": "Kore Yamazaki",                  "award_show_id": "kodansha",   "award": "Kodansha — Shōjo",       "category": "shojo",    "year": 2016, "official_source": "https://en.wikipedia.org/wiki/Kodansha_Manga_Award" },
+    { "title": "The Ghost in the Shell",           "author": "Masamune Shirow",                "award_show_id": "kodansha",   "award": "Kodansha — General",     "category": "general",  "year": 2016, "official_source": "https://en.wikipedia.org/wiki/Kodansha_Manga_Award" },
+
+    { "title": "Land of the Lustrous",             "author": "Haruko Ichikawa",                "award_show_id": "kodansha",   "award": "Kodansha — General",     "category": "general",  "year": 2017, "official_source": "https://en.wikipedia.org/wiki/Kodansha_Manga_Award" },
+    { "title": "The Rising of the Shield Hero",    "author": "Aiya Kyu",                       "award_show_id": "kodansha",   "award": "Kodansha — Shōnen",      "category": "shonen",   "year": 2017, "official_source": "https://en.wikipedia.org/wiki/Kodansha_Manga_Award" },
+
+    { "title": "That Time I Got Reincarnated as a Slime", "author": "Taiki Kawakami",         "award_show_id": "kodansha",   "award": "Kodansha — Shōnen",      "category": "shonen",   "year": 2018, "official_source": "https://en.wikipedia.org/wiki/Kodansha_Manga_Award" },
+    { "title": "Witch Hat Atelier",                "author": "Kamome Shirahama",               "award_show_id": "kodansha",   "award": "Kodansha — Shōjo",       "category": "shojo",    "year": 2018, "official_source": "https://en.wikipedia.org/wiki/Kodansha_Manga_Award" },
+    { "title": "Dungeon Meshi (Delicious in Dungeon)", "author": "Ryoko Kui",                  "award_show_id": "kodansha",   "award": "Kodansha — General",     "category": "general",  "year": 2018, "official_source": "https://en.wikipedia.org/wiki/Kodansha_Manga_Award" },
+
+    { "title": "Goodbye, Eri",                     "author": "Tatsuki Fujimoto",               "award_show_id": "kodansha",   "award": "Kodansha — General",     "category": "general",  "year": 2022, "official_source": "https://en.wikipedia.org/wiki/Kodansha_Manga_Award" },
+    { "title": "Blue Period",                      "author": "Tsubasa Yamaguchi",              "award_show_id": "kodansha",   "award": "Kodansha — General",     "category": "general",  "year": 2022, "official_source": "https://en.wikipedia.org/wiki/Kodansha_Manga_Award" },
+
+    { "title": "Spy × Family",                     "author": "Tatsuya Endo",                   "award_show_id": "kodansha",   "award": "Kodansha — Shōnen",      "category": "shonen",   "year": 2023, "official_source": "https://en.wikipedia.org/wiki/Kodansha_Manga_Award" },
+    { "title": "Skip and Loafer",                  "author": "Misaki Takamatsu",               "award_show_id": "kodansha",   "award": "Kodansha — Shōjo",       "category": "shojo",    "year": 2023, "official_source": "https://en.wikipedia.org/wiki/Kodansha_Manga_Award" },
+
+    { "title": "Frieren: Beyond Journey's End",   "author": "Kanehito Yamada & Tsukasa Abe",  "award_show_id": "kodansha",   "award": "Kodansha — Shōnen",      "category": "shonen",   "year": 2024, "official_source": "https://anitrendz.net/news/2024/05/14/48th-kodansha-manga-award-frieren-beyond-journeys-end-medalist-among-winners/" },
+    { "title": "Medalist",                         "author": "Tsurumaikada",                   "award_show_id": "kodansha",   "award": "Kodansha — General",     "category": "general",  "year": 2024, "official_source": "https://anitrendz.net/news/2024/05/14/48th-kodansha-manga-award-frieren-beyond-journeys-end-medalist-among-winners/" },
+
+    { "title": "Versus",                           "author": "ONE & Kyotaro Azuma",            "award_show_id": "kodansha",   "award": "Kodansha — Shōnen",      "category": "shonen",   "year": 2025, "official_source": "https://www.imdb.com/news/ni65278401/" },
+    { "title": "Fall in Love, You Fake",           "author": "Unknown",                        "award_show_id": "kodansha",   "award": "Kodansha — Shōjo",       "category": "shojo",    "year": 2025, "official_source": "https://www.imdb.com/news/ni65278401/" },
+
+    { "title": "Blank Canvas: My So-Called Artist's Journey", "author": "Akiko Higashimura",  "award_show_id": "jmaf",       "award": "JMAF — Manga Grand Prize","category": "grand",   "year": 2015, "official_source": "https://j-mediaarts-festival.bunka.go.jp/en/division/manga/index-2.html" },
+    { "title": "I Am a Hero",                      "author": "Kengo Hanazawa",                 "award_show_id": "jmaf",       "award": "JMAF — Manga Grand Prize","category": "grand",   "year": 2017, "official_source": "https://j-mediaarts-festival.bunka.go.jp/en/division/manga/index-2.html" },
+    { "title": "Children of the Sea",              "author": "Daisuke Igarashi",               "award_show_id": "jmaf",       "award": "JMAF — Manga Grand Prize","category": "grand",   "year": 2018, "official_source": "https://j-mediaarts-festival.bunka.go.jp/en/division/manga/index-2.html" },
+    { "title": "Origin",                           "author": "Boichi",                         "award_show_id": "jmaf",       "award": "JMAF — Manga Grand Prize","category": "grand",   "year": 2019, "official_source": "https://j-mediaarts-festival.bunka.go.jp/en/division/manga/index-2.html" },
+    { "title": "Oshi no Ko",                       "author": "Aka Akasaka & Mengo Yokoyari",   "award_show_id": "jmaf",       "award": "JMAF — Manga Grand Prize","category": "grand",   "year": 2020, "official_source": "https://j-mediaarts-festival.bunka.go.jp/en/division/manga/index-2.html" },
+    { "title": "March Comes in Like a Lion",       "author": "Chika Umino",                    "award_show_id": "jmaf",       "award": "JMAF — Manga Grand Prize","category": "grand",   "year": 2021, "official_source": "https://j-mediaarts-festival.bunka.go.jp/en/division/manga/index-2.html" },
+    { "title": "The Fourth Wall",                  "author": "Yūki Tanaka",                    "award_show_id": "jmaf",       "award": "JMAF — Manga Grand Prize","category": "grand",   "year": 2022, "official_source": "https://j-mediaarts-festival.bunka.go.jp/en/division/manga/index-2.html" }
+
   ]
 }
