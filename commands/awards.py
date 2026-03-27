@@ -10,47 +10,6 @@ from discord import app_commands
 
 log = logging.getLogger(__name__)
 
-# ---------------------------------------------------------------------------
-# Path resolution — resolves relative to this file so it works regardless of
-# the working directory the bot is launched from.
-# ---------------------------------------------------------------------------
-_HERE = os.path.dirname(os.path.abspath(__file__))
-DATA_FILE = os.path.join(_HERE, "data", "awards_registry.json")
-
-# Lookup tables used by autocomplete
-_AWARD_CHOICES = [
-    app_commands.Choice(name="The Game Awards (TGA)",        value="tga"),
-    app_commands.Choice(name="BAFTA Games Awards",           value="bafta"),
-    app_commands.Choice(name="D.I.C.E. Awards",              value="dice"),
-    app_commands.Choice(name="Golden Joystick Awards (GJA)", value="gja"),
-    app_commands.Choice(name="IGN's Best of Year",           value="ign"),
-    app_commands.Choice(name="GDC Choice Awards",            value="gdc"),
-]
-
-_CATEGORY_CHOICES = [
-    app_commands.Choice(name="Game of the Year",        value="goty"),
-    app_commands.Choice(name="Best Narrative",          value="narrative"),
-    app_commands.Choice(name="Best Art Direction",      value="art"),
-    app_commands.Choice(name="Best Score / Music",      value="music"),
-    app_commands.Choice(name="Best Action Game",        value="action"),
-    app_commands.Choice(name="Best RPG",                value="rpg"),
-    app_commands.Choice(name="Best Indie Game",         value="indie"),
-    app_commands.Choice(name="Best Multiplayer",        value="multiplayer"),
-]
-
-# Human-readable labels for category keys
-_CATEGORY_LABELS: Dict[str, str] = {
-    "goty":        "Game of the Year",
-    "narrative":   "Best Narrative",
-    "art":         "Best Art Direction",
-    "music":       "Best Score / Music",
-    "action":      "Best Action Game",
-    "rpg":         "Best RPG",
-    "indie":       "Best Indie Game",
-    "multiplayer": "Best Multiplayer",
-}
-
-# Emoji badges per award show
 _AWARD_BADGES: Dict[str, str] = {
     "tga":   "🏆",
     "bafta": "🎭",
@@ -60,18 +19,55 @@ _AWARD_BADGES: Dict[str, str] = {
     "gdc":   "👾",
 }
 
+_AWARD_CHOICES = [
+    app_commands.Choice(name="The Game Awards (TGA)",        value="tga"),
+    app_commands.Choice(name="BAFTA Games Awards",           value="bafta"),
+    app_commands.Choice(name="D.I.C.E. Awards",              value="dice"),
+    app_commands.Choice(name="Golden Joystick Awards (GJA)", value="gja"),
+    app_commands.Choice(name="IGN's Best of Year",           value="ign"),
+    app_commands.Choice(name="GDC Choice Awards",            value="gdc"),
+]
+
+# Matches exactly the category_key values present in awards_registry.json:
+# goty, narrative, music, rpg, art, indie
+# Removed "action" and "multiplayer" — those keys don't exist in the registry
+# and would always return zero results.
+_CATEGORY_CHOICES = [
+    app_commands.Choice(name="Game of the Year",   value="goty"),
+    app_commands.Choice(name="Best Narrative",      value="narrative"),
+    app_commands.Choice(name="Best Art Direction",  value="art"),
+    app_commands.Choice(name="Best Score / Music",  value="music"),
+    app_commands.Choice(name="Best RPG",            value="rpg"),
+    app_commands.Choice(name="Best Indie Game",     value="indie"),
+]
+
+_CATEGORY_LABELS: Dict[str, str] = {
+    "goty":      "Game of the Year",
+    "narrative": "Best Narrative",
+    "art":       "Best Art Direction",
+    "music":     "Best Score / Music",
+    "rpg":       "Best RPG",
+    "indie":     "Best Indie Game",
+}
+
 
 # ---------------------------------------------------------------------------
 # Data helpers
 # ---------------------------------------------------------------------------
 
-def _load() -> Dict[str, Any]:
-    """Load and return the awards registry, or {} on any failure."""
+def _load(data_dir) -> Dict[str, Any]:
+    """
+    Load awards_registry.json from the central data_dir passed by main.py.
+    The old version resolved the path relative to __file__ and ignored data_dir
+    entirely — this version uses it correctly.
+    Returns {} on any failure so callers never crash.
+    """
+    path = os.path.join(str(data_dir), "awards_registry.json")
     try:
-        with open(DATA_FILE, "r", encoding="utf-8") as f:
+        with open(path, "r", encoding="utf-8") as f:
             return json.load(f)
     except FileNotFoundError:
-        log.error("awards_registry.json not found at %s", DATA_FILE)
+        log.error("awards_registry.json not found at %s", path)
         return {}
     except json.JSONDecodeError as exc:
         log.error("awards_registry.json is malformed: %s", exc)
@@ -89,7 +85,6 @@ def _get_winners(data: Dict[str, Any]) -> List[Dict[str, Any]]:
 
 
 def _award_name(data: Dict[str, Any], award_id: str) -> str:
-    """Return human-readable award name from registry metadata."""
     return (
         data.get("awards", {})
             .get(award_id.lower(), {})
@@ -106,9 +101,7 @@ def _build_embed(
     game: Optional[str],
     show_nominees: bool,
 ) -> discord.Embed:
-    """Build a rich embed from filtered results."""
 
-    # --- title / description ------------------------------------------------
     filters: List[str] = []
     if year:
         filters.append(str(year))
@@ -122,8 +115,6 @@ def _build_embed(
     title = "🎖️ Game Awards" + (f" — {', '.join(filters)}" if filters else "")
     embed = discord.Embed(title=title, color=0xF1C40F)
 
-    # --- group by year → show -----------------------------------------------
-    # Keep at most 20 entries to stay within embed limits
     capped = results[:20]
     grouped: Dict[int, List[Dict[str, Any]]] = {}
     for r in sorted(capped, key=lambda x: (x["year"], x["award_id"])):
@@ -131,33 +122,28 @@ def _build_embed(
 
     for yr in sorted(grouped):
         for r in grouped[yr]:
-            badge  = _AWARD_BADGES.get(r["award_id"], "🏅")
-            show   = _award_name(data, r["award_id"])
-            cat    = r.get("category", "—")
-            winner = r.get("winner", "Unknown")
-
+            badge       = _AWARD_BADGES.get(r["award_id"], "🏅")
+            show        = _award_name(data, r["award_id"])
+            cat         = r.get("category", "—")
+            winner      = r.get("winner", "Unknown")
             field_name  = f"{badge} {yr} · {show}"
             field_value = f"**{cat}**\n🥇 {winner}"
 
             if show_nominees:
                 noms: List[str] = r.get("nominees", [])
                 if noms:
-                    nom_lines = "\n".join(f"  • {n}" for n in noms)
-                    field_value += f"\n*Nominees:*\n{nom_lines}"
+                    field_value += "\n*Nominees:*\n" + "\n".join(f"  • {n}" for n in noms)
 
             embed.add_field(name=field_name, value=field_value, inline=False)
 
-    # --- footer -------------------------------------------------------------
-    total = len(results)
-    shown = len(capped)
+    total  = len(results)
+    shown  = len(capped)
     footer = f"Showing {shown} of {total} result(s)"
     if total > 20:
         footer += " — narrow your search to see more"
-    meta = data.get("meta", {})
-    if meta.get("years_covered"):
-        footer += f" · Coverage: {meta['years_covered']}"
+    if data.get("meta", {}).get("years_covered"):
+        footer += f" · Coverage: {data['meta']['years_covered']}"
     embed.set_footer(text=footer)
-
     return embed
 
 
@@ -189,10 +175,9 @@ def register(bot, data_dir) -> None:
         nominees: Optional[bool] = False,
     ) -> None:
 
-        # Defer immediately — data load + embed build can take a moment
         await interaction.response.defer(ephemeral=False)
 
-        data = _load()
+        data = _load(data_dir)  # data_dir captured from register() scope
         if not data:
             await interaction.followup.send(
                 "⚠️ The awards registry could not be loaded. "
@@ -202,14 +187,16 @@ def register(bot, data_dir) -> None:
             return
 
         results = _get_winners(data)
-
         if not results:
             await interaction.followup.send(
                 "⚠️ The registry appears to be empty.", ephemeral=True
             )
             return
 
-        # --- apply filters --------------------------------------------------
+        # Hide TBA placeholder entries unless user explicitly searched for 2025
+        if year != 2025:
+            results = [r for r in results if r.get("winner", "").upper() != "TBA"]
+
         if year is not None:
             results = [r for r in results if r.get("year") == year]
 
