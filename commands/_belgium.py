@@ -26,4 +26,3 @@ def register(bot, data_dir):
         )
 
     bot.tree.add_command(Belgium())
-
