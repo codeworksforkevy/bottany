@@ -227,32 +227,34 @@ def _detail_embed(item: Dict[str, Any]) -> discord.Embed:
     producer  = item.get("producer")          # cocoa dataset field
     itype     = _unified_type(item)
 
-    warrant = item.get("royal_warrant", False)
-    warrant = item.get("royal_warrant", False)
-    if region:
-        embed.add_field(name="📍 Region",     value=region,                                    inline=True)
-    if producer:
-        embed.add_field(name="🏢 Producer",   value=producer,                                  inline=True)
-    if year:
-        embed.add_field(name="📅 Founded",    value=str(year),                                 inline=True)
-    if itype and itype != "—":
-        embed.add_field(name="🏷 Type",       value=itype.replace("_", " ").title(),           inline=True)
-    if prod:
-        embed.add_field(name="🏭 Production", value=prod.replace("_", " ").title(),            inline=True)
-    if warrant:
-        embed.add_field(name="👑 Status", value="Belgian Royal Warrant Holder", inline=True)
-    if warrant:
-        embed.add_field(name="👑 Status", value="Belgian Royal Warrant Holder", inline=True)
-    if certs:
-        embed.add_field(name="✅ Certifications", value="\n".join(f"• {c}" for c in certs),   inline=False)
-    if text:
-        embed.add_field(name="📖 About",      value=text[:1024],                               inline=False)
-    if url:
-        embed.add_field(name="🔗 Source",     value=f"[Visit website]({url})",                 inline=False)
+    warrant      = item.get("royal_warrant", False)
+    image_url    = item.get("image_url")
+    image_credit = item.get("image_credit", "")
 
-    image_url = item.get("logo_url") or item.get("image_url")
+    if region:
+        embed.add_field(name="📍 Region",     value=region,                          inline=True)
+    if producer:
+        embed.add_field(name="🏢 Producer",   value=producer,                        inline=True)
+    if year:
+        embed.add_field(name="📅 Founded",    value=str(year),                       inline=True)
+    if itype and itype != "—":
+        embed.add_field(name="🏷 Type",       value=itype.replace("_", " ").title(), inline=True)
+    if prod:
+        embed.add_field(name="🏭 Production", value=prod.replace("_", " ").title(),  inline=True)
+    if warrant:
+        embed.add_field(name="👑 Status",     value="Belgian Royal Warrant Holder",  inline=True)
+    if certs:
+        embed.add_field(name="✅ Certifications", value="\n".join(f"• {c}" for c in certs), inline=False)
+    if text:
+        embed.add_field(name="📖 About",      value=text[:1024],                     inline=False)
+    if url:
+        embed.add_field(name="🔗 Source",     value=f"[Visit website]({url})",       inline=False)
+
     if image_url:
-        embed.set_thumbnail(url=image_url)
+        embed.set_image(url=image_url)
+        # CC license requires attribution — shown in footer
+        footer = image_credit if image_credit else "Image: Wikimedia Commons"
+        embed.set_footer(text=f"🖼️ {footer}")
 
     return embed
 
