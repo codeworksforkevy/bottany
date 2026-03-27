@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "updated_utc": "2026-01-18T00:00:00Z",
+  "version": 2,
+  "updated_utc": "2026-03-27T00:00:00Z",
   "sources": [
     {
       "id": "csp_official_tutorials",
@@ -12,7 +12,7 @@
       "topics": ["workflow", "tools", "lineart", "paneling", "lettering", "backgrounds"],
       "levels": ["Beginner", "Intermediate"],
       "modes": ["Digital"],
-      "summary": "Official tutorial hub for CSP, including comics/manga workflows and core features."
+      "summary": "Official tutorial hub for CSP covering comics/manga workflows and core features."
     },
     {
       "id": "csp_tips_hub",
@@ -21,14 +21,14 @@
       "provider": "CLIP STUDIO",
       "tool": "clip-studio",
       "source_type": "official_platform",
-      "topics": ["workflow", "tools", "lineart", "paneling", "screentone", "lettering", "composition", "perspective", "backgrounds", "environments", "lighting", "values", "materials", "props", "architecture"],
+      "topics": ["workflow", "tools", "lineart", "paneling", "screentone", "lettering", "composition", "perspective", "backgrounds", "environments", "lighting", "values", "materials", "props", "architecture", "atmospheric_perspective"],
       "levels": ["Beginner", "Intermediate", "Advanced"],
       "modes": ["Digital"],
-      "summary": "Official CSP community/tutorial portal; use filters to focus on manga workflows and specific techniques."
+      "summary": "Official CSP community portal; use filters to focus on manga workflows and specific techniques."
     },
     {
       "id": "csp_user_guide_perspective_ruler",
-      "title": "CLIP STUDIO PAINT User Guide — Perspective Ruler",
+      "title": "CLIP STUDIO PAINT — Perspective Ruler Guide",
       "url": "https://help.clip-studio.com/en-us/manual_en/180_layers/Perspective_ruler.htm",
       "provider": "CLIP STUDIO",
       "tool": "clip-studio",
@@ -36,11 +36,11 @@
       "topics": ["perspective", "backgrounds", "architecture"],
       "levels": ["Beginner", "Intermediate"],
       "modes": ["Digital"],
-      "summary": "Official documentation on using perspective rulers for backgrounds and architectural scenes."
+      "summary": "Official docs on using perspective rulers for backgrounds and architectural scenes."
     },
     {
       "id": "csp_user_guide_3d_import",
-      "title": "CLIP STUDIO PAINT User Guide — Importing 3D Materials",
+      "title": "CLIP STUDIO PAINT — Importing 3D Materials",
       "url": "https://help.clip-studio.com/en-us/manual_en/610_material/Importing_3D_materials.htm",
       "provider": "CLIP STUDIO",
       "tool": "clip-studio",
@@ -49,6 +49,42 @@
       "levels": ["Intermediate"],
       "modes": ["Digital"],
       "summary": "Official docs for using 3D assets to block in props/backgrounds and speed up scene construction."
+    },
+    {
+      "id": "csp_tips_anatomy",
+      "title": "CLIP STUDIO TIPS — Anatomy & Figure Drawing",
+      "url": "https://tips.clip-studio.com/en-us/search?word=anatomy",
+      "provider": "CLIP STUDIO",
+      "tool": "clip-studio",
+      "source_type": "official_platform",
+      "topics": ["anatomy"],
+      "levels": ["Beginner", "Intermediate", "Advanced"],
+      "modes": ["Digital"],
+      "summary": "Curated community tutorials on figure anatomy, proportions, and body construction for manga characters."
+    },
+    {
+      "id": "csp_tips_atmospheric_perspective",
+      "title": "CLIP STUDIO TIPS — Atmospheric Perspective & Depth",
+      "url": "https://tips.clip-studio.com/en-us/search?word=atmospheric+perspective",
+      "provider": "CLIP STUDIO",
+      "tool": "clip-studio",
+      "source_type": "official_platform",
+      "topics": ["atmospheric_perspective", "values", "lighting", "backgrounds"],
+      "levels": ["Intermediate", "Advanced"],
+      "modes": ["Digital"],
+      "summary": "Tutorials on adding depth and atmosphere to backgrounds using value gradation and colour fading."
+    },
+    {
+      "id": "csp_tips_backgrounds_intro",
+      "title": "CLIP STUDIO TIPS — Backgrounds",
+      "url": "https://tips.clip-studio.com/en-us/search?word=background",
+      "provider": "CLIP STUDIO",
+      "tool": "clip-studio",
+      "source_type": "official_platform",
+      "topics": ["backgrounds", "environments", "composition", "lighting"],
+      "levels": ["Beginner", "Intermediate", "Advanced"],
+      "modes": ["Digital"],
+      "summary": "Entry point to background tutorials; refine via tags and difficulty inside TIPS."
     },
     {
       "id": "medibang_tutorials_hub",
@@ -60,11 +96,11 @@
       "topics": ["workflow", "tools", "lineart", "paneling", "lettering", "backgrounds", "perspective"],
       "levels": ["Beginner", "Intermediate"],
       "modes": ["Digital"],
-      "summary": "Official MediBang tutorial hub for manga creation, tools, and workflow tips."
+      "summary": "Official MediBang tutorial hub covering manga creation, tools, and workflow tips."
     },
     {
       "id": "medibang_perspective_guide",
-      "title": "MediBang Paint — Use a Perspective Guide",
+      "title": "MediBang Paint — Perspective Guide",
       "url": "https://medibangpaint.com/en/tutorial/pc/use_perspective/",
       "provider": "MediBang",
       "tool": "medibang",
@@ -84,7 +120,19 @@
       "topics": ["backgrounds", "environments", "architecture", "props"],
       "levels": ["Intermediate"],
       "modes": ["Digital"],
-      "summary": "Using snap tools to construct room backgrounds you can reuse across panels."
+      "summary": "Using snap tools to construct room backgrounds reusable across panels."
+    },
+    {
+      "id": "medibang_anatomy_body",
+      "title": "MediBang Paint — How to Draw a Human Body",
+      "url": "https://medibangpaint.com/en/use-case/2019/01/how-to-draw-a-human-body/",
+      "provider": "MediBang",
+      "tool": "medibang",
+      "source_type": "official",
+      "topics": ["anatomy"],
+      "levels": ["Beginner", "Intermediate"],
+      "modes": ["Digital"],
+      "summary": "Step-by-step guide to drawing human proportions and body structure for manga figures."
     },
     {
       "id": "wacom_getting_started",
@@ -96,7 +144,7 @@
       "topics": ["tools", "workflow"],
       "levels": ["Beginner"],
       "modes": ["Digital"],
-      "summary": "Official onboarding for tablets and setup; helpful for beginners preparing a drawing workflow."
+      "summary": "Official tablet onboarding and setup guide for beginners setting up a drawing workflow."
     },
     {
       "id": "wacom_one_tutorials",
@@ -108,11 +156,11 @@
       "topics": ["tools", "workflow", "lineart"],
       "levels": ["Beginner", "Intermediate"],
       "modes": ["Digital"],
-      "summary": "Official Wacom One tutorial section for fundamentals and tablet-based workflows."
+      "summary": "Official Wacom One tutorials for fundamentals and tablet-based drawing workflows."
     },
     {
       "id": "too_how_to_draw_manga",
-      "title": "TOO — How to Draw Manga (Traditional/Hybrid)",
+      "title": "TOO — How to Draw Manga",
       "url": "https://www.too.com/manga/en/",
       "provider": "TOO",
       "tool": "too",
@@ -120,7 +168,19 @@
       "topics": ["workflow", "lineart", "screentone", "lettering", "backgrounds", "composition"],
       "levels": ["Beginner", "Intermediate"],
       "modes": ["Traditional", "Hybrid"],
-      "summary": "Structured guidance for manga-making fundamentals, including tools, tone, and panel/page concepts."
+      "summary": "Structured guidance for manga fundamentals including tools, tone, and panel/page concepts."
+    },
+    {
+      "id": "too_anatomy_figure",
+      "title": "TOO — Drawing the Human Figure for Manga",
+      "url": "https://www.too.com/manga/en/howto/figure/",
+      "provider": "TOO",
+      "tool": "too",
+      "source_type": "trusted_platform",
+      "topics": ["anatomy"],
+      "levels": ["Beginner", "Intermediate"],
+      "modes": ["Traditional", "Hybrid"],
+      "summary": "Traditional-media guidance on constructing manga figures — proportions, poses, and expression."
     },
     {
       "id": "procreate_handbook_perspective",
@@ -132,7 +192,19 @@
       "topics": ["perspective", "backgrounds", "architecture"],
       "levels": ["Beginner", "Intermediate"],
       "modes": ["Digital"],
-      "summary": "Official guide to perspective tools useful for background construction on iPad workflows."
+      "summary": "Official guide to perspective tools for background construction in iPad workflows."
+    },
+    {
+      "id": "procreate_handbook_drawing_guide",
+      "title": "Procreate Handbook — Drawing Guides & Symmetry",
+      "url": "https://procreate.com/handbook/procreate/guides/",
+      "provider": "Procreate",
+      "tool": "procreate",
+      "source_type": "official_docs",
+      "topics": ["composition", "lineart", "anatomy"],
+      "levels": ["Beginner", "Intermediate"],
+      "modes": ["Digital"],
+      "summary": "Official guide to grids, symmetry guides, and drawing assist tools useful for figure and layout work."
     },
     {
       "id": "kodansha_manga_academy",
@@ -144,19 +216,55 @@
       "topics": ["workflow"],
       "levels": ["Beginner", "Intermediate"],
       "modes": ["Hybrid", "Traditional", "Digital"],
-      "summary": "Official creator/academy entry point; useful for learning pathways and industry-oriented guidance."
+      "summary": "Official Kodansha creator/academy hub with industry-oriented learning pathways."
     },
     {
-      "id": "csp_tips_backgrounds_intro",
-      "title": "CLIP STUDIO TIPS — Backgrounds (Starter Search)",
-      "url": "https://tips.clip-studio.com/en-us/search?word=background",
+      "id": "csp_tips_values_lighting",
+      "title": "CLIP STUDIO TIPS — Values & Lighting for Manga",
+      "url": "https://tips.clip-studio.com/en-us/search?word=lighting+manga",
       "provider": "CLIP STUDIO",
       "tool": "clip-studio",
       "source_type": "official_platform",
-      "topics": ["backgrounds", "environments", "composition", "lighting"],
+      "topics": ["values", "lighting", "atmospheric_perspective"],
+      "levels": ["Intermediate", "Advanced"],
+      "modes": ["Digital"],
+      "summary": "Community tutorials on tonal values, light direction, and mood-building for manga scenes."
+    },
+    {
+      "id": "csp_tips_screentone",
+      "title": "CLIP STUDIO TIPS — Screentone Techniques",
+      "url": "https://tips.clip-studio.com/en-us/search?word=screentone",
+      "provider": "CLIP STUDIO",
+      "tool": "clip-studio",
+      "source_type": "official_platform",
+      "topics": ["screentone", "values"],
+      "levels": ["Beginner", "Intermediate"],
+      "modes": ["Digital"],
+      "summary": "Tutorials covering screentone application, density, and moire avoidance for print-ready manga."
+    },
+    {
+      "id": "csp_tips_paneling",
+      "title": "CLIP STUDIO TIPS — Panel Layout & Composition",
+      "url": "https://tips.clip-studio.com/en-us/search?word=panel+layout",
+      "provider": "CLIP STUDIO",
+      "tool": "clip-studio",
+      "source_type": "official_platform",
+      "topics": ["paneling", "composition"],
       "levels": ["Beginner", "Intermediate", "Advanced"],
       "modes": ["Digital"],
-      "summary": "Quick entry point to curated background tutorials; refine via tags and difficulty inside TIPS."
+      "summary": "Tutorials on manga panel flow, pacing, and visual hierarchy across a page spread."
+    },
+    {
+      "id": "csp_tips_lineart",
+      "title": "CLIP STUDIO TIPS — Line Art & Inking",
+      "url": "https://tips.clip-studio.com/en-us/search?word=line+art",
+      "provider": "CLIP STUDIO",
+      "tool": "clip-studio",
+      "source_type": "official_platform",
+      "topics": ["lineart"],
+      "levels": ["Beginner", "Intermediate", "Advanced"],
+      "modes": ["Digital"],
+      "summary": "Tips on pen settings, stabilisation, brush pressure, and clean inking technique in CSP."
     }
   ]
 }
