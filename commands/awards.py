@@ -165,7 +165,8 @@ def _build_embed(
 # Command registration
 # ---------------------------------------------------------------------------
 
-def register_awards(tree: app_commands.CommandTree) -> None:
+def register(bot, data_dir) -> None:
+    tree = bot.tree
 
     @tree.command(
         name="awards",
