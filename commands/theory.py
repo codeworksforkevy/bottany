@@ -126,14 +126,11 @@ class TheoryGroup(app_commands.Group):
         await interaction.response.send_message(embed=embed)
 
 
-async def register_theory(bot: discord.Client, data_dir: str) -> None:
-    # Avoid duplicate registration on reconnect
-    existing = [c.name for c in bot.tree.get_commands()]
-    if "theory" in existing:
+async def register(bot: discord.Client, data_dir: str) -> None:
+    """Register /theory command group. Called by main.py loader."""
+    # Guard against double-registration on reconnect
+    if bot.tree.get_command("theory"):
         return
     bot.tree.add_command(TheoryGroup(data_dir))
-    try:
-        await bot.tree.sync()
-    except Exception:
-        # Sync may fail on global rate limits; commands can still appear later
-        pass
+    # NOTE: do NOT call bot.tree.sync() here — main.py owns all syncing
+    # after all modules are loaded. Syncing early sends an incomplete tree.
