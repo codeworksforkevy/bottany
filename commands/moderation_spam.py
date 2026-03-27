@@ -238,16 +238,20 @@ class ModerationGroup(app_commands.Group):
 # ----------------------------
 # REGISTER FUNCTION
 # ----------------------------
-async def register_moderation_spam(
+async def register(
     bot: discord.Client,
     data_dir: str
 ) -> None:
+    # Guard against double-registration on reconnect
+    if bot.tree.get_command("moderation"):
+        return
 
     group = ModerationGroup(bot, data_dir)
     bot.tree.add_command(group)
 
-    # Message listener
-    @bot.event
+    # Use bot.listen() instead of @bot.event — @bot.event overwrites any
+    # existing on_message handler; listen() stacks multiple handlers safely.
+    @bot.listen("on_message")
     async def on_message(message: discord.Message):
 
         if not message.guild or message.author.bot:
