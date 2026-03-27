@@ -14,58 +14,64 @@ log = logging.getLogger(__name__)
 
 # ── Choices built from what actually exists in the data ──────────────────────
 
-# Unified type = item.get("category") or item.get("type")
-# Real values across both datasets: chocolate, dessert, artisan, industrial, praline_house
 _TYPE_CHOICES = [
-    app_commands.Choice(name="Chocolate",     value="chocolate"),
-    app_commands.Choice(name="Dessert",       value="dessert"),
-    app_commands.Choice(name="Artisan",       value="artisan"),
-    app_commands.Choice(name="Industrial",    value="industrial"),
-    app_commands.Choice(name="Praline House", value="praline_house"),
+    app_commands.Choice(name="🍫 Chocolate",     value="chocolate"),
+    app_commands.Choice(name="🧇 Dessert",       value="dessert"),
+    app_commands.Choice(name="🎨 Artisan",       value="artisan"),
+    app_commands.Choice(name="🏭 Industrial",    value="industrial"),
+    app_commands.Choice(name="🎁 Praline House", value="praline_house"),
 ]
 
-# Production models confirmed in the uploaded belgian_chocolate_professional.json
 _PRODUCTION_CHOICES = [
-    app_commands.Choice(name="Bean to Bar", value="bean_to_bar"),
-    app_commands.Choice(name="Couverture",  value="couverture"),
+    app_commands.Choice(name="🌱 Bean to Bar", value="bean_to_bar"),
+    app_commands.Choice(name="🍶 Couverture",  value="couverture"),
+    app_commands.Choice(name="🔀 Hybrid",      value="hybrid"),
 ]
 
-# All 10 certifications confirmed in belgian_chocolate_professional.json
 _CERT_CHOICES = [
-    app_commands.Choice(name="Belgian Chocolate Code",          value="Belgian Chocolate Code"),
-    app_commands.Choice(name="BRC Global Standard",             value="BRC Global Standard"),
-    app_commands.Choice(name="Direct Trade",                    value="Direct Trade"),
-    app_commands.Choice(name="EU Chocolate Directive Compliant",value="EU Chocolate Directive Compliant"),
-    app_commands.Choice(name="EU Organic",                      value="EU Organic"),
-    app_commands.Choice(name="Fairtrade",                       value="Fairtrade"),
-    app_commands.Choice(name="ISO 22000",                       value="ISO 22000"),
-    app_commands.Choice(name="Rainforest Alliance",             value="Rainforest Alliance"),
-    app_commands.Choice(name="Single Origin Certified",         value="Single Origin Certified"),
-    app_commands.Choice(name="UTZ Certified",                   value="UTZ Certified"),
+    app_commands.Choice(name="🏅 Belgian Chocolate Code",           value="Belgian Chocolate Code"),
+    app_commands.Choice(name="✅ BRC Global Standard",              value="BRC Global Standard"),
+    app_commands.Choice(name="🤝 Direct Trade",                     value="Direct Trade"),
+    app_commands.Choice(name="🇪🇺 EU Chocolate Directive Compliant", value="EU Chocolate Directive Compliant"),
+    app_commands.Choice(name="🌿 EU Organic",                       value="EU Organic"),
+    app_commands.Choice(name="⚖️ Fairtrade",                        value="Fairtrade"),
+    app_commands.Choice(name="📋 ISO 22000",                        value="ISO 22000"),
+    app_commands.Choice(name="🌲 Rainforest Alliance",              value="Rainforest Alliance"),
+    app_commands.Choice(name="🗺️ Single Origin Certified",          value="Single Origin Certified"),
+    app_commands.Choice(name="☑️ UTZ Certified",                    value="UTZ Certified"),
 ]
 
-# All 20 unique brand names for the info subcommand autocomplete
+# All brands across all three datasets — 30 unique names
 _BRAND_CHOICES = [
-    app_commands.Choice(name="Belcolade",        value="belcolade"),
-    app_commands.Choice(name="Belgian Waffle",   value="belgian waffle"),
-    app_commands.Choice(name="Brussels Waffle",  value="brussels waffle"),
-    app_commands.Choice(name="Callebaut",        value="callebaut"),
-    app_commands.Choice(name="Cuberdon",         value="cuberdon"),
-    app_commands.Choice(name="Côte d'Or",        value="côte d'or"),
-    app_commands.Choice(name="Dolfin",           value="dolfin"),
-    app_commands.Choice(name="Galler",           value="galler"),
-    app_commands.Choice(name="Godiva",           value="godiva"),
-    app_commands.Choice(name="Guylian",          value="guylian"),
-    app_commands.Choice(name="Leonidas",         value="leonidas"),
-    app_commands.Choice(name="Liège Waffle",     value="liège waffle"),
-    app_commands.Choice(name="Mattentaart",      value="mattentaart"),
-    app_commands.Choice(name="Merveilleux",      value="merveilleux"),
-    app_commands.Choice(name="Meurisse",         value="meurisse"),
-    app_commands.Choice(name="Neuhaus",          value="neuhaus"),
-    app_commands.Choice(name="Pierre Marcolini", value="pierre marcolini"),
-    app_commands.Choice(name="Rijsttaart",       value="rijsttaart"),
-    app_commands.Choice(name="Speculoos",        value="speculoos"),
-    app_commands.Choice(name="Tarte au Riz",     value="tarte au riz"),
+    app_commands.Choice(name="Belcolade",          value="belcolade"),
+    app_commands.Choice(name="Belgian Waffle",     value="belgian waffle"),
+    app_commands.Choice(name="Belvas",             value="belvas"),
+    app_commands.Choice(name="Bruyerre",           value="bruyerre"),
+    app_commands.Choice(name="Brussels Waffle",    value="brussels waffle"),
+    app_commands.Choice(name="Callebaut",          value="callebaut"),
+    app_commands.Choice(name="Chocolat Jacques",   value="chocolat jacques"),
+    app_commands.Choice(name="Corné Port-Royal",   value="corné port-royal"),
+    app_commands.Choice(name="Cuberdon",           value="cuberdon"),
+    app_commands.Choice(name="Côte d'Or",          value="côte d'or"),
+    app_commands.Choice(name="Dolfin",             value="dolfin"),
+    app_commands.Choice(name="Dumon",              value="dumon"),
+    app_commands.Choice(name="Galler",             value="galler"),
+    app_commands.Choice(name="Godiva",             value="godiva"),
+    app_commands.Choice(name="Guylian",            value="guylian"),
+    app_commands.Choice(name="Leonidas",           value="leonidas"),
+    app_commands.Choice(name="Liège Waffle",       value="liège waffle"),
+    app_commands.Choice(name="Mary Chocolatier",   value="mary chocolatier"),
+    app_commands.Choice(name="Mattentaart",        value="mattentaart"),
+    app_commands.Choice(name="Merveilleux",        value="merveilleux"),
+    app_commands.Choice(name="Meurisse",           value="meurisse"),
+    app_commands.Choice(name="Neuhaus",            value="neuhaus"),
+    app_commands.Choice(name="Pierre Marcolini",   value="pierre marcolini"),
+    app_commands.Choice(name="Planète Chocolat",   value="planète chocolat"),
+    app_commands.Choice(name="Rijsttaart",         value="rijsttaart"),
+    app_commands.Choice(name="Speculoos",          value="speculoos"),
+    app_commands.Choice(name="Tarte au Riz",       value="tarte au riz"),
+    app_commands.Choice(name="The Chocolate Line", value="the chocolate line"),
+    app_commands.Choice(name="Wittamer",           value="wittamer"),
 ]
 
 
@@ -164,10 +170,7 @@ def _unified_type(item: Dict[str, Any]) -> str:
 # ── Embed builders ────────────────────────────────────────────────────────────
 
 def _list_embed(items: List[Dict[str, Any]], filters_applied: List[str]) -> discord.Embed:
-    """
-    Single embed listing all matching brands with key details inline.
-    With only 20 unique items, showing everything at once beats a paginator.
-    """
+    """Single embed listing all matching brands with key details inline."""
     title = "🍫 Belgian Chocolate & Sweets"
     if filters_applied:
         title += f" — {', '.join(filters_applied)}"
@@ -175,12 +178,14 @@ def _list_embed(items: List[Dict[str, Any]], filters_applied: List[str]) -> disc
     embed = discord.Embed(title=title, color=0x4B2E2E)
 
     for item in items:
-        name  = item.get("name", "Unknown")
-        url   = item.get("url")
-        itype = _unified_type(item)
-        year  = item.get("foundation_year")
-        prod  = item.get("production_model")
-        certs = item.get("certifications", [])
+        name    = item.get("name", "Unknown")
+        emoji   = item.get("emoji", "🍫")
+        url     = item.get("url")
+        itype   = _unified_type(item)
+        year    = item.get("foundation_year")
+        prod    = item.get("production_model")
+        certs   = item.get("certifications", [])
+        warrant = item.get("royal_warrant", False)
 
         parts: List[str] = []
         if itype and itype != "—":
@@ -191,18 +196,18 @@ def _list_embed(items: List[Dict[str, Any]], filters_applied: List[str]) -> disc
             parts.append(prod.replace("_", " ").title())
 
         value = ", ".join(parts) if parts else "Belgian classic"
+        if warrant:
+            value += "\n👑 Royal Warrant Holder"
         if certs:
-            value += f"\n✅ {', '.join(certs)}"
+            value += f"\n✅ {', '.join(certs[:2])}"
 
-        # Hyperlink the brand name if a URL exists
-        field_name = f"[{name}]({url})" if url else name
+        field_name = f"{emoji} [{name}]({url})" if url else f"{emoji} {name}"
         embed.add_field(name=field_name, value=value, inline=True)
 
     embed.set_footer(
-        text=f"{len(items)} result(s) · Use /belgium chocolate_info <name> for full details"
+        text=f"{len(items)} result(s) · Use /belgium chocolate_info <n> for full details"
     )
     return embed
-
 
 def _detail_embed(item: Dict[str, Any]) -> discord.Embed:
     """Full detail embed for a single brand — used by /belgium chocolate_info."""
@@ -211,7 +216,8 @@ def _detail_embed(item: Dict[str, Any]) -> discord.Embed:
     text  = item.get("summary") or item.get("notes") or ""
     certs = item.get("certifications", [])
 
-    embed = discord.Embed(title=f"🍫 {name}", color=0x4B2E2E)
+    item_emoji = item.get("emoji", "🍫")
+    embed = discord.Embed(title=f"{item_emoji} {name}", color=0x4B2E2E)
     if url:
         embed.url = url
 
@@ -221,6 +227,8 @@ def _detail_embed(item: Dict[str, Any]) -> discord.Embed:
     producer  = item.get("producer")          # cocoa dataset field
     itype     = _unified_type(item)
 
+    warrant = item.get("royal_warrant", False)
+    warrant = item.get("royal_warrant", False)
     if region:
         embed.add_field(name="📍 Region",     value=region,                                    inline=True)
     if producer:
@@ -231,6 +239,10 @@ def _detail_embed(item: Dict[str, Any]) -> discord.Embed:
         embed.add_field(name="🏷 Type",       value=itype.replace("_", " ").title(),           inline=True)
     if prod:
         embed.add_field(name="🏭 Production", value=prod.replace("_", " ").title(),            inline=True)
+    if warrant:
+        embed.add_field(name="👑 Status", value="Belgian Royal Warrant Holder", inline=True)
+    if warrant:
+        embed.add_field(name="👑 Status", value="Belgian Royal Warrant Holder", inline=True)
     if certs:
         embed.add_field(name="✅ Certifications", value="\n".join(f"• {c}" for c in certs),   inline=False)
     if text:
