@@ -1,88 +1,111 @@
-import os
+# manga_learn.py
+from __future__ import annotations
+
 import json
+import logging
+import os
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple
 
 import discord
 from discord import app_commands
 
-REGISTRY_FILENAME = "manga_drawing_sources_registry.json"
-PRESETS_FILENAME = "manga_learn_presets.json"
-MANGA_AWARDS_FILENAME = "manga_awards_registry.json"
-MANGA_ORIGINS_FILENAME = "manga_origins_registry.json"
+log = logging.getLogger(__name__)
 
-# -------------------------
-# Normalization / aliases
-# -------------------------
+REGISTRY_FILENAME = "manga_drawing_sources_registry.json"
+PRESETS_FILENAME  = "manga_learn_presets.json"
+AWARDS_FILENAME   = "manga_awards_registry.json"
+ORIGINS_FILENAME  = "manga_origins_registry.json"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Allowed values & aliases
+# ─────────────────────────────────────────────────────────────────────────────
+
 _TOPIC_ALIASES = {
-    "bg": "backgrounds",
-    "background": "backgrounds",
-    "bgs": "backgrounds",
-    "env": "environments",
-    "environment": "environments",
-    "environ": "environments",
+    "bg": "backgrounds", "background": "backgrounds", "bgs": "backgrounds",
+    "env": "environments", "environment": "environments",
     "persp": "perspective",
-    "value": "values",
-    "tonal": "values",
-    "atmosphere": "atmospheric_perspective",
-    "depth": "atmospheric_perspective",
+    "value": "values", "tonal": "values",
+    "atmosphere": "atmospheric_perspective", "depth": "atmospheric_perspective",
+    "atm": "atmospheric_perspective",
 }
 
 _TOOL_ALIASES = {
-    "csp": "clip-studio",
-    "clip": "clip-studio",
-    "clipstudio": "clip-studio",
-    "clip_studio": "clip-studio",
-    "medibang": "medibang",
-    "wacom": "wacom",
-    "too": "too",
-    "procreate": "procreate",
-    "kodansha": "kodansha",
+    "csp": "clip-studio", "clip": "clip-studio", "clipstudio": "clip-studio",
+    "clip_studio": "clip-studio", "medibang": "medibang", "wacom": "wacom",
+    "too": "too", "procreate": "procreate", "kodansha": "kodansha",
 }
 
 _ALLOWED_TOPICS = {
-    "lineart",
-    "paneling",
-    "screentone",
-    "lettering",
-    "workflow",
-    "tools",
-    "anatomy",
-    "composition",
-    "perspective",
-    "backgrounds",
-    "environments",
-    "lighting",
-    "values",
-    "atmospheric_perspective",
-    "materials",
-    "props",
+    "lineart", "paneling", "screentone", "lettering", "workflow", "tools",
+    "anatomy", "composition", "perspective", "backgrounds", "environments",
+    "lighting", "values", "atmospheric_perspective", "materials", "props",
     "architecture",
 }
-
 _ALLOWED_LEVELS = {"Beginner", "Intermediate", "Advanced"}
-_ALLOWED_MODES = {"Digital", "Traditional", "Hybrid"}
+_ALLOWED_MODES  = {"Digital", "Traditional", "Hybrid"}
 
+_SHOW_EMOJIS = {
+    "shogakukan":       "📘",
+    "kodansha":         "📗",
+    "jmaf":             "🏛️",
+    "jima":             "🌐",
+    "kadokawa_contest": "🌏",
+}
+_MEDIUM_EMOJIS = {"manga": "📖", "anime": "🎬"}
+_SCOPE_EMOJIS  = {"japan": "🇯🇵", "global": "🌍"}
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Normalisation helpers
+# ─────────────────────────────────────────────────────────────────────────────
 
 def _utc_now() -> str:
     return datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
 
 
-def _registry_path(data_dir: str) -> str:
-    return os.path.join(data_dir, REGISTRY_FILENAME)
+def _norm_topic(v: Optional[str]) -> Optional[str]:
+    if not v: return None
+    s = v.strip().lower().replace(" ", "_")
+    s = _TOPIC_ALIASES.get(s, s)
+    return s if s in _ALLOWED_TOPICS else None
 
 
-def _preset_path(data_dir: str) -> str:
-    return os.path.join(data_dir, PRESETS_FILENAME)
+def _norm_level(v: Optional[str]) -> Optional[str]:
+    if not v: return None
+    s = v.strip().title()
+    return s if s in _ALLOWED_LEVELS else None
 
 
-def _awards_path(data_dir: str) -> str:
-    return os.path.join(data_dir, MANGA_AWARDS_FILENAME)
+def _norm_mode(v: Optional[str]) -> Optional[str]:
+    if not v: return None
+    s = v.strip().title()
+    return s if s in _ALLOWED_MODES else None
 
 
-def _origins_path(data_dir: str) -> str:
-    return os.path.join(data_dir, MANGA_ORIGINS_FILENAME)
+def _norm_tool(v: Optional[str]) -> Optional[str]:
+    if not v: return None
+    s = v.strip().lower().replace(" ", "-").replace("_", "-")
+    return _TOOL_ALIASES.get(s, s)
 
+
+def _preset_code(topic, level, mode, tool) -> str:
+    return ";".join(f"{k}={v}" for k, v in
+                    [("topic", topic), ("level", level), ("mode", mode), ("tool", tool)] if v)
+
+
+def _parse_preset_code(code: str) -> Dict[str, str]:
+    out: Dict[str, str] = {}
+    for chunk in (code or "").split(";"):
+        if "=" in chunk:
+            k, v = chunk.split("=", 1)
+            k, v = k.strip().lower(), v.strip()
+            if k and v:
+                out[k] = v
+    return out
+
+# ─────────────────────────────────────────────────────────────────────────────
+# JSON I/O
+# ─────────────────────────────────────────────────────────────────────────────
 
 def _load_json(path: str, default: Any) -> Any:
     try:
@@ -93,85 +116,26 @@ def _load_json(path: str, default: Any) -> Any:
 
 
 def _save_json(path: str, obj: Any) -> None:
-    os.makedirs(os.path.dirname(path), exist_ok=True)
+    os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(obj, f, ensure_ascii=False, indent=2)
 
-
-def _norm_topic(v: Optional[str]) -> Optional[str]:
-    if not v:
-        return None
-    s = v.strip().lower().replace(" ", "_")
-    s = _TOPIC_ALIASES.get(s, s)
-    return s if s in _ALLOWED_TOPICS else None
-
-
-def _norm_level(v: Optional[str]) -> Optional[str]:
-    if not v:
-        return None
-    s = v.strip().title()
-    return s if s in _ALLOWED_LEVELS else None
-
-
-def _norm_mode(v: Optional[str]) -> Optional[str]:
-    if not v:
-        return None
-    s = v.strip().title()
-    return s if s in _ALLOWED_MODES else None
-
-
-def _norm_tool(v: Optional[str]) -> Optional[str]:
-    if not v:
-        return None
-    s = v.strip().lower().replace(" ", "-").replace("_", "-")
-    s = _TOOL_ALIASES.get(s, s)
-    return s
-
-
-def _preset_code(topic: Optional[str], level: Optional[str], mode: Optional[str], tool: Optional[str]) -> str:
-    parts = []
-    if topic:
-        parts.append(f"topic={topic}")
-    if level:
-        parts.append(f"level={level}")
-    if mode:
-        parts.append(f"mode={mode}")
-    if tool:
-        parts.append(f"tool={tool}")
-    return ";".join(parts)
-
-
-def _parse_preset_code(code: str) -> Dict[str, str]:
-    out: Dict[str, str] = {}
-    if not code:
-        return out
-    for chunk in code.split(";"):
-        if "=" not in chunk:
-            continue
-        k, v = chunk.split("=", 1)
-        k = (k or "").strip().lower()
-        v = (v or "").strip()
-        if k and v:
-            out[k] = v
-    return out
-
+# ─────────────────────────────────────────────────────────────────────────────
+# Loaders
+# ─────────────────────────────────────────────────────────────────────────────
 
 def _load_registry(data_dir: str) -> List[Dict[str, Any]]:
-    obj = _load_json(_registry_path(data_dir), {"version": 1, "sources": []})
-    sources = obj.get("sources") if isinstance(obj, dict) else []
-    if not isinstance(sources, list):
-        return []
-    out = []
-    for s in sources:
-        if isinstance(s, dict) and s.get("id") and s.get("url"):
-            out.append(s)
-    return out
+    path = os.path.join(data_dir, REGISTRY_FILENAME)
+    obj  = _load_json(path, {"sources": []})
+    raw  = obj.get("sources") if isinstance(obj, dict) else []
+    return [s for s in (raw or []) if isinstance(s, dict) and s.get("id") and s.get("url")]
 
 
 def _load_presets(data_dir: str) -> Dict[str, Any]:
-    obj = _load_json(_preset_path(data_dir), {"version": 1, "updated_utc": _utc_now(), "presets": []})
+    path = os.path.join(data_dir, PRESETS_FILENAME)
+    obj  = _load_json(path, {})
     if not isinstance(obj, dict):
-        obj = {"version": 1, "updated_utc": _utc_now(), "presets": []}
+        obj = {}
     obj.setdefault("version", 1)
     obj.setdefault("updated_utc", _utc_now())
     obj.setdefault("presets", [])
@@ -182,661 +146,620 @@ def _load_presets(data_dir: str) -> Dict[str, Any]:
 
 def _save_presets(data_dir: str, obj: Dict[str, Any]) -> None:
     obj["updated_utc"] = _utc_now()
-    _save_json(_preset_path(data_dir), obj)
+    _save_json(os.path.join(data_dir, PRESETS_FILENAME), obj)
 
 
-def _load_awards(data_dir: str) -> List[Dict[str, Any]]:
-    obj = _load_json(_awards_path(data_dir), {"version": 1, "awards": []})
-    awards = obj.get("awards") if isinstance(obj, dict) else []
-    if not isinstance(awards, list):
-        return []
-    out: List[Dict[str, Any]] = []
-    for a in awards:
-        if isinstance(a, dict) and a.get("id") and a.get("name") and a.get("url"):
-            out.append(a)
-    return out
+def _load_awards(data_dir: str) -> Tuple[List[Dict[str, Any]], List[Dict[str, Any]]]:
+    """Returns (award_shows, winners). Compatible with old awards-only schema."""
+    path = os.path.join(data_dir, AWARDS_FILENAME)
+    obj  = _load_json(path, {})
+    if not isinstance(obj, dict):
+        return [], []
+    # New unified schema uses "award_shows"; old stub used "awards"
+    shows   = obj.get("award_shows") or obj.get("awards") or []
+    winners = obj.get("winners") or []
+    shows   = [s for s in shows   if isinstance(s, dict) and s.get("id")]
+    winners = [w for w in winners if isinstance(w, dict) and w.get("title")]
+    return shows, winners
 
 
 def _load_origins(data_dir: str) -> List[Dict[str, Any]]:
-    obj = _load_json(_origins_path(data_dir), {"version": 1, "entries": []})
-    entries = obj.get("entries") if isinstance(obj, dict) else []
-    if not isinstance(entries, list):
-        return []
-    out: List[Dict[str, Any]] = []
-    for e in entries:
-        if isinstance(e, dict) and e.get("id") and e.get("title") and e.get("url"):
-            out.append(e)
-    return out
+    path = os.path.join(data_dir, ORIGINS_FILENAME)
+    obj  = _load_json(path, {"entries": []})
+    raw  = obj.get("entries") if isinstance(obj, dict) else []
+    return [e for e in (raw or []) if isinstance(e, dict) and e.get("id") and e.get("title")]
 
+# ─────────────────────────────────────────────────────────────────────────────
+# Scoring & selection
+# ─────────────────────────────────────────────────────────────────────────────
 
-def _score_source(src: Dict[str, Any], topic: Optional[str], level: Optional[str], mode: Optional[str], tool: Optional[str]) -> float:
-    """Compute a relevance score for a source given optional filters."""
+def _score_source(src: Dict[str, Any], topic, level, mode, tool) -> float:
     score = 0.0
-
-    # source_type preference
     st = (src.get("source_type") or "").lower()
     if st in {"official", "official_platform", "official_docs"}:
         score += 4.0
     elif st in {"trusted", "trusted_platform", "curated"}:
         score += 2.0
 
-    # Exact / partial matches
-    topics = [str(t).lower() for t in (src.get("topics") or []) if isinstance(t, str)]
-    levels = [str(t) for t in (src.get("levels") or []) if isinstance(t, str)]
-    modes = [str(t) for t in (src.get("modes") or []) if isinstance(t, str)]
-    src_tool = str(src.get("tool") or "").lower()
+    topics = [str(t).lower() for t in (src.get("topics") or [])]
+    levels = [str(t)         for t in (src.get("levels") or [])]
+    modes  = [str(t)         for t in (src.get("modes")  or [])]
+    tool_s = str(src.get("tool") or "").lower()
 
-    if topic:
-        if topic in topics:
-            score += 6.0
-        else:
-            score -= 1.0
-    if level:
-        if level in levels:
-            score += 3.0
-        else:
-            score -= 0.5
-    if mode:
-        if mode in modes:
-            score += 2.0
-        else:
-            score -= 0.5
-    if tool:
-        if tool == src_tool:
-            score += 3.0
-        else:
-            score -= 0.25
-
-    # Small boost for concise summaries
-    if src.get("summary"):
-        score += 0.25
-
+    if topic: score += 6.0 if topic in topics else -1.0
+    if level: score += 3.0 if level in levels else -0.5
+    if mode:  score += 2.0 if mode  in modes  else -0.5
+    if tool:  score += 3.0 if tool == tool_s  else -0.25
+    if src.get("summary"): score += 0.25
     return score
 
 
-def _select_sources(
-    sources: List[Dict[str, Any]],
-    topic: Optional[str],
-    level: Optional[str],
-    mode: Optional[str],
-    tool: Optional[str],
-    limit: int = 8,
-) -> List[Dict[str, Any]]:
-    scored: List[Tuple[float, Dict[str, Any]]] = []
-    for s in sources:
-        scored.append((_score_source(s, topic, level, mode, tool), s))
-
+def _select_sources(sources, topic, level, mode, tool, limit=8) -> List[Dict[str, Any]]:
+    scored = [(_score_source(s, topic, level, mode, tool), s) for s in sources]
     scored.sort(key=lambda x: x[0], reverse=True)
 
-    # Greedy diversity selection: penalize repeating the same provider.
     picked: List[Dict[str, Any]] = []
-    provider_counts: Dict[str, int] = {}
+    pcounts: Dict[str, int] = {}
 
     for _ in range(limit):
-        best = None
-        best_score = -10**9
-        best_idx = -1
-        for idx, (base_score, s) in enumerate(scored):
-            if s is None:
-                continue
-            provider = str(s.get("provider") or "unknown").lower()
-            penalty = 1.25 * provider_counts.get(provider, 0)
-            adj = base_score - penalty
-            if adj > best_score:
-                best_score = adj
-                best = s
-                best_idx = idx
-        if best is None:
-            break
+        best_adj, best, best_idx = -1e9, None, -1
+        for idx, (base, s) in enumerate(scored):
+            if s is None: continue
+            p   = str(s.get("provider") or "unknown").lower()
+            adj = base - 1.25 * pcounts.get(p, 0)
+            if adj > best_adj:
+                best_adj, best, best_idx = adj, s, idx
+        if best is None: break
         picked.append(best)
-        provider = str(best.get("provider") or "unknown").lower()
-        provider_counts[provider] = provider_counts.get(provider, 0) + 1
-        scored[best_idx] = (-10**9, None)  # type: ignore
-
+        p = str(best.get("provider") or "unknown").lower()
+        pcounts[p] = pcounts.get(p, 0) + 1
+        scored[best_idx] = (-1e9, None)  # type: ignore
     return picked
 
+# ─────────────────────────────────────────────────────────────────────────────
+# Learning paths
+# ─────────────────────────────────────────────────────────────────────────────
 
-def _mini_paths() -> Tuple[List[str], List[str]]:
-    beginner = [
-        "composition",
-        "perspective",
-        "values",
-        "backgrounds",
-        "lighting",
-    ]
-    intermediate = [
-        "perspective",
-        "atmospheric_perspective",
-        "materials",
-        "props",
-        "architecture",
-        "environments",
-        "lighting",
-    ]
-    return beginner, intermediate
+_PATHS: Dict[str, List[str]] = {
+    "backgrounds": [
+        "workflow", "composition", "perspective", "values",
+        "atmospheric_perspective", "materials", "props",
+        "architecture", "environments", "backgrounds", "lighting",
+    ],
+    "characters": [
+        "anatomy", "composition", "perspective", "lineart",
+        "values", "lighting", "screentone",
+    ],
+    "general": [
+        "workflow", "composition", "perspective", "values",
+        "backgrounds", "paneling", "anatomy", "lineart",
+        "screentone", "lettering",
+    ],
+}
 
 
-def _path_for(track: Optional[str]) -> List[str]:
-    if track and track.strip().lower() == "backgrounds":
-        # default to the full intermediate-ish backgrounds track
-        return [
-            "workflow",
-            "composition",
-            "perspective",
-            "values",
-            "atmospheric_perspective",
-            "materials",
-            "props",
-            "architecture",
-            "environments",
-            "backgrounds",
-            "lighting",
-        ]
+def _path_for(track: Optional[str]) -> Tuple[str, List[str]]:
+    t = (track or "").strip().lower()
+    if t in {"bg", "background", "bgs", "backgrounds"}:
+        return "backgrounds", _PATHS["backgrounds"]
+    if t in {"character", "characters", "chars", "char"}:
+        return "characters", _PATHS["characters"]
+    return "general", _PATHS["general"]
 
-    # General manga creation path
-    return [
-        "workflow",
-        "composition",
-        "perspective",
-        "values",
-        "backgrounds",
-        "paneling",
-        "anatomy",
-        "lineart",
-        "screentone",
-        "lettering",
-    ]
+# ─────────────────────────────────────────────────────────────────────────────
+# Discord choices (static — no 25-item limit problem here)
+# ─────────────────────────────────────────────────────────────────────────────
 
+_TOPIC_CHOICES = [
+    app_commands.Choice(name="Anatomy",                 value="anatomy"),
+    app_commands.Choice(name="Architecture",            value="architecture"),
+    app_commands.Choice(name="Atmospheric Perspective", value="atmospheric_perspective"),
+    app_commands.Choice(name="Backgrounds",             value="backgrounds"),
+    app_commands.Choice(name="Composition",             value="composition"),
+    app_commands.Choice(name="Environments",            value="environments"),
+    app_commands.Choice(name="Lettering",               value="lettering"),
+    app_commands.Choice(name="Lighting",                value="lighting"),
+    app_commands.Choice(name="Lineart",                 value="lineart"),
+    app_commands.Choice(name="Materials",               value="materials"),
+    app_commands.Choice(name="Paneling",                value="paneling"),
+    app_commands.Choice(name="Perspective",             value="perspective"),
+    app_commands.Choice(name="Props",                   value="props"),
+    app_commands.Choice(name="Screentone",              value="screentone"),
+    app_commands.Choice(name="Tools",                   value="tools"),
+    app_commands.Choice(name="Values",                  value="values"),
+    app_commands.Choice(name="Workflow",                value="workflow"),
+]
+
+_LEVEL_CHOICES = [
+    app_commands.Choice(name="Beginner",     value="Beginner"),
+    app_commands.Choice(name="Intermediate", value="Intermediate"),
+    app_commands.Choice(name="Advanced",     value="Advanced"),
+]
+
+_MODE_CHOICES = [
+    app_commands.Choice(name="Digital",     value="Digital"),
+    app_commands.Choice(name="Traditional", value="Traditional"),
+    app_commands.Choice(name="Hybrid",      value="Hybrid"),
+]
+
+_TOOL_CHOICES = [
+    app_commands.Choice(name="CLIP STUDIO PAINT", value="clip-studio"),
+    app_commands.Choice(name="MediBang Paint",    value="medibang"),
+    app_commands.Choice(name="Procreate",         value="procreate"),
+    app_commands.Choice(name="TOO",               value="too"),
+    app_commands.Choice(name="Wacom",             value="wacom"),
+    app_commands.Choice(name="Kodansha Academy",  value="kodansha"),
+]
+
+_TRACK_CHOICES = [
+    app_commands.Choice(name="General manga creation", value="general"),
+    app_commands.Choice(name="Backgrounds & scenes",   value="backgrounds"),
+    app_commands.Choice(name="Characters & anatomy",   value="characters"),
+]
+
+_AWARD_REGION_CHOICES = [
+    app_commands.Choice(name="Japan",         value="japan"),
+    app_commands.Choice(name="International", value="international"),
+]
+
+_AWARD_KIND_CHOICES = [
+    app_commands.Choice(name="Industry",   value="industry"),
+    app_commands.Choice(name="Festival",   value="festival"),
+    app_commands.Choice(name="Government", value="government"),
+]
+
+_MEDIUM_CHOICES = [
+    app_commands.Choice(name="Manga", value="manga"),
+    app_commands.Choice(name="Anime", value="anime"),
+]
+
+_SCOPE_CHOICES = [
+    app_commands.Choice(name="Japan",  value="japan"),
+    app_commands.Choice(name="Global", value="global"),
+]
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Command group
+# ─────────────────────────────────────────────────────────────────────────────
 
 class MangaGroup(app_commands.Group):
     def __init__(self, data_dir: str):
-        super().__init__(name="manga", description="Manga learning resources (official/trusted) and study paths")
+        super().__init__(name="manga", description="Manga learning resources, awards, and history")
         self._data_dir = data_dir
 
-    @app_commands.command(name="filters", description="Show available filters for /manga learn")
-    async def filters(self, interaction: discord.Interaction):
-        topic_list = ", ".join(sorted(_ALLOWED_TOPICS))
-        level_list = ", ".join(sorted(_ALLOWED_LEVELS))
-        mode_list = ", ".join(sorted(_ALLOWED_MODES))
-        tool_list = ", ".join(sorted(set(_TOOL_ALIASES.values())))
-        embed = discord.Embed(title="/manga filters", color=0x2F3136)
-        embed.add_field(name="Topics", value=topic_list[:1024], inline=False)
-        embed.add_field(name="Levels", value=level_list, inline=False)
-        embed.add_field(name="Modes", value=mode_list, inline=False)
-        embed.add_field(name="Tools", value=tool_list[:1024], inline=False)
-        embed.set_footer(text="Tip: aliases work (e.g., topic:bg, tool:csp)")
-        await interaction.response.send_message(embed=embed, ephemeral=True)
+    # /manga learn ────────────────────────────────────────────────────────────
 
-    @app_commands.command(name="topics", description="Alias for /manga filters")
-    async def topics(self, interaction: discord.Interaction):
-        await self.filters(interaction)
-
-    @app_commands.command(name="learn", description="List official/trusted resources to learn manga drawing")
-    @app_commands.describe(topic="Topic (e.g., lineart, backgrounds, perspective)", level="Beginner/Intermediate/Advanced", mode="Digital/Traditional/Hybrid", tool="clip-studio/medibang/wacom/etc")
+    @app_commands.command(name="learn", description="Find official learning resources for manga drawing")
+    @app_commands.describe(
+        topic="What to study", level="Your current skill level",
+        mode="Drawing medium",  tool="Software or tool",
+    )
+    @app_commands.choices(topic=_TOPIC_CHOICES, level=_LEVEL_CHOICES,
+                          mode=_MODE_CHOICES,   tool=_TOOL_CHOICES)
     async def learn(
-        self,
-        interaction: discord.Interaction,
-        topic: Optional[str] = None,
-        level: Optional[str] = None,
-        mode: Optional[str] = None,
-        tool: Optional[str] = None,
-    ):
+        self, interaction: discord.Interaction,
+        topic: Optional[str] = None, level: Optional[str] = None,
+        mode:  Optional[str] = None, tool:  Optional[str] = None,
+    ) -> None:
+        await interaction.response.defer()
+
         topic_n = _norm_topic(topic)
         level_n = _norm_level(level)
-        mode_n = _norm_mode(mode)
-        tool_n = _norm_tool(tool)
+        mode_n  = _norm_mode(mode)
+        tool_n  = _norm_tool(tool)
 
         sources = _load_registry(self._data_dir)
-        picks = _select_sources(sources, topic_n, level_n, mode_n, tool_n, limit=8)
+        picks   = _select_sources(sources, topic_n, level_n, mode_n, tool_n, limit=8)
 
-        title_parts = ["/manga learn"]
-        fparts = []
-        if topic_n:
-            fparts.append(f"topic:{topic_n}")
-        if level_n:
-            fparts.append(f"level:{level_n}")
-        if mode_n:
-            fparts.append(f"mode:{mode_n}")
-        if tool_n:
-            fparts.append(f"tool:{tool_n}")
-        if fparts:
-            title_parts.append("(" + ", ".join(fparts) + ")")
+        filters = [f for f in [topic_n, level_n, mode_n, tool_n] if f]
+        title   = "📚 Manga Learning Resources"
+        if filters:
+            title += f" — {chr(44).join(filters)}"
 
-        embed = discord.Embed(title=" ".join(title_parts), color=0x2F3136)
+        embed = discord.Embed(title=title, color=0x5865F2)
+
         if not picks:
-            embed.description = "No sources matched your filters. Try removing one filter or use /manga filters."
-            await interaction.response.send_message(embed=embed, ephemeral=True)
+            embed.description = (
+                "No sources matched your filters.\n"
+                "Try removing a filter, or use `/manga filters` to see what is available."
+            )
+            await interaction.followup.send(embed=embed, ephemeral=True)
             return
 
-        lines = []
         for s in picks:
-            sid = s.get("id")
-            name = s.get("title") or s.get("name") or sid
-            url = s.get("url")
+            name    = s.get("title") or s.get("id", "Unknown")
+            url     = s.get("url", "")
             summary = (s.get("summary") or "").strip()
-            provider = s.get("provider")
-            meta = []
-            if provider:
-                meta.append(str(provider))
-            if s.get("tool"):
-                meta.append(str(s.get("tool")))
-            if s.get("source_type"):
-                meta.append(str(s.get("source_type")))
-            meta_txt = " — ".join(meta)
+            meta    = " · ".join(p for p in [s.get("provider",""), s.get("tool",""), s.get("source_type","")] if p)
+
+            fval = ""
             if summary:
-                lines.append(f"• **{name}**\n  {summary}\n  {url}\n  _{meta_txt}_")
-            else:
-                lines.append(f"• **{name}**\n  {url}\n  _{meta_txt}_")
+                fval += summary + "\n"
+            fval += f"[↗ Visit]({url})"
+            if meta:
+                fval += f"\n*{meta}*"
 
-        embed.description = "\n\n".join(lines)[:4096]
+            embed.add_field(name=f"**{name}**", value=fval[:1024], inline=False)
 
-        # Mini-path for backgrounds / scene work
-        scene_topics = {"backgrounds", "environments", "composition", "perspective", "lighting", "values", "atmospheric_perspective", "materials", "props", "architecture"}
-        if topic_n in scene_topics or (topic_n is None and (tool_n in {"clip-studio", "medibang", "procreate"})):
-            beg, inter = _mini_paths()
+        scene_topics = {"backgrounds","environments","composition","perspective",
+                        "lighting","values","atmospheric_perspective","materials","props","architecture"}
+        if topic_n in scene_topics:
             embed.add_field(
-                name="Scene & Background Mini-Path — Beginner",
-                value=" → ".join(beg),
-                inline=False,
-            )
-            embed.add_field(
-                name="Scene & Background Mini-Path — Intermediate",
-                value=" → ".join(inter),
+                name="💡 Suggested study order",
+                value="composition → perspective → values → atmospheric_perspective → backgrounds → lighting",
                 inline=False,
             )
 
         preset_code = _preset_code(topic_n, level_n, mode_n, tool_n)
         if preset_code:
             embed.add_field(
-                name="Saveable preset",
-                value=(
-                    f"`{preset_code}`\n"
-                    f"Save: `/manga preset_save name:MyPreset code:{preset_code}`\n"
-                    f"Run: `/manga preset_run name:MyPreset`"
-                )[:1024],
+                name="🔖 Save as preset",
+                value=f"`/manga preset_save name:MyPreset code:{preset_code}`",
                 inline=False,
             )
 
-        embed.set_footer(text="Short summaries + official links only (no scraped content).")
-        await interaction.response.send_message(embed=embed)
+        embed.set_footer(text=f"{len(picks)} source(s) · Official and trusted links only")
+        await interaction.followup.send(embed=embed)
 
-    @app_commands.command(name="path", description="Show a step-by-step learning path with curated links")
-    @app_commands.describe(track="Optional track: backgrounds", level="Beginner/Intermediate/Advanced", mode="Digital/Traditional/Hybrid", tool="clip-studio/medibang/wacom/etc")
+    # /manga path ─────────────────────────────────────────────────────────────
+
+    @app_commands.command(name="path", description="Step-by-step learning path with curated links")
+    @app_commands.describe(
+        track="Learning track", level="Skill level filter",
+        mode="Drawing medium",  tool="Tool filter",
+    )
+    @app_commands.choices(track=_TRACK_CHOICES, level=_LEVEL_CHOICES,
+                          mode=_MODE_CHOICES,   tool=_TOOL_CHOICES)
     async def path(
-        self,
-        interaction: discord.Interaction,
-        track: Optional[str] = None,
-        level: Optional[str] = None,
-        mode: Optional[str] = None,
-        tool: Optional[str] = None,
-    ):
-        track_n = (track or "").strip().lower() or None
-        if track_n in {"bg", "background", "bgs"}:
-            track_n = "backgrounds"
+        self, interaction: discord.Interaction,
+        track: Optional[str] = None, level: Optional[str] = None,
+        mode:  Optional[str] = None, tool:  Optional[str] = None,
+    ) -> None:
+        await interaction.response.defer()
 
+        track_label, steps = _path_for(track)
         level_n = _norm_level(level)
-        mode_n = _norm_mode(mode)
-        tool_n = _norm_tool(tool)
-
-        steps = _path_for(track_n)
+        mode_n  = _norm_mode(mode)
+        tool_n  = _norm_tool(tool)
         sources = _load_registry(self._data_dir)
 
-        title = "/manga path" + (f" track:{track_n}" if track_n else "")
-        embed = discord.Embed(title=title, color=0x2F3136)
+        embed = discord.Embed(
+            title=f"🗺️ Manga Learning Path — {track_label.title()}",
+            color=0x5865F2,
+        )
 
-        blocks = []
         for i, step_topic in enumerate(steps, start=1):
             picks = _select_sources(sources, step_topic, level_n, mode_n, tool_n, limit=2)
             if picks:
-                links = "\n".join(f"- {p.get('title') or p.get('id')}: {p.get('url')}" for p in picks)
+                links = "\n".join(
+                    f"[↗ {p.get('title') or p.get('id')}]({p.get('url')})"
+                    for p in picks
+                )
             else:
-                links = "- (no matching source; try /manga learn topic:{step_topic})"
-            blocks.append(f"**{i}. {step_topic}**\n{links}")
+                links = f"*No source found — try `/manga learn topic:{step_topic}`*"
+            embed.add_field(name=f"**{i}.** {step_topic}", value=links, inline=False)
 
-        embed.description = "\n\n".join(blocks)[:4096]
-        await interaction.response.send_message(embed=embed)
+        embed.set_footer(text="Official and trusted links only")
+        await interaction.followup.send(embed=embed)
 
-    @app_commands.command(name="source", description="Show a single source by id")
-    @app_commands.describe(id="Source id")
-    async def source(self, interaction: discord.Interaction, id: str):
-        sid = (id or "").strip()
-        if not sid:
-            await interaction.response.send_message("Please provide a source id.", ephemeral=True)
-            return
-        sources = _load_registry(self._data_dir)
-        s = next((x for x in sources if str(x.get("id")) == sid), None)
+    # /manga filters ──────────────────────────────────────────────────────────
+
+    @app_commands.command(name="filters", description="Show all available filters for /manga learn")
+    async def filters(self, interaction: discord.Interaction) -> None:
+        await interaction.response.defer(ephemeral=True)
+
+        embed = discord.Embed(title="🎛️ Available Filters for /manga learn", color=0x5865F2)
+        embed.add_field(
+            name="Topics",
+            value=", ".join(f"`{t}`" for t in sorted(_ALLOWED_TOPICS)),
+            inline=False,
+        )
+        embed.add_field(
+            name="Levels",
+            value=" · ".join(f"`{l}`" for l in sorted(_ALLOWED_LEVELS)),
+            inline=False,
+        )
+        embed.add_field(
+            name="Modes",
+            value=" · ".join(f"`{m}`" for m in sorted(_ALLOWED_MODES)),
+            inline=False,
+        )
+        embed.add_field(
+            name="Tools",
+            value=", ".join(f"`{t}`" for t in sorted(set(_TOOL_ALIASES.values()))),
+            inline=False,
+        )
+        embed.set_footer(text="Tip: aliases work — bg=backgrounds, csp=clip-studio")
+        await interaction.followup.send(embed=embed, ephemeral=True)
+
+    # /manga source ────────────────────────────────────────────────────────────
+
+    @app_commands.command(name="source", description="Look up a single learning source by its ID")
+    @app_commands.describe(id="Source ID (shown in /manga learn results)")
+    async def source(self, interaction: discord.Interaction, id: str) -> None:
+        await interaction.response.defer()
+
+        sid  = (id or "").strip()
+        srcs = _load_registry(self._data_dir)
+        s    = next((x for x in srcs if str(x.get("id")) == sid), None)
+
         if not s:
-            await interaction.response.send_message("Source not found. Use /manga learn or /manga filters.", ephemeral=True)
+            await interaction.followup.send(
+                f"Source `{sid}` not found. Use `/manga learn` to browse sources.",
+                ephemeral=True,
+            )
             return
 
-        title = s.get("title") or sid
-        embed = discord.Embed(title=title, color=0x2F3136)
+        embed = discord.Embed(title=s.get("title") or sid, url=s.get("url"), color=0x5865F2)
         if s.get("summary"):
-            embed.description = str(s.get("summary"))
-        embed.add_field(name="URL", value=str(s.get("url")), inline=False)
-        meta = []
-        for k in ("provider", "tool", "source_type"):
+            embed.description = str(s["summary"])
+
+        for k, label in [("provider","Provider"), ("tool","Tool"), ("source_type","Type")]:
             if s.get(k):
-                meta.append(f"{k}: {s.get(k)}")
-        if meta:
-            embed.add_field(name="Meta", value="\n".join(meta)[:1024], inline=False)
+                embed.add_field(name=label, value=str(s[k]), inline=True)
+
         if s.get("topics"):
-            embed.add_field(name="Topics", value=", ".join(s.get("topics"))[:1024], inline=False)
-        await interaction.response.send_message(embed=embed)
+            embed.add_field(name="Topics", value=", ".join(s["topics"]), inline=False)
+        if s.get("levels"):
+            embed.add_field(name="Levels", value=" · ".join(s["levels"]), inline=True)
+        if s.get("modes"):
+            embed.add_field(name="Modes",  value=" · ".join(s["modes"]),  inline=True)
 
-    # -------------------------
+        await interaction.followup.send(embed=embed)
 
-    # -------------------------
-    # Awards and origins
-    # -------------------------
-    @app_commands.command(name="awards", description="List prestigious manga awards (official/trusted links)")
-    @app_commands.describe(region="Optional region filter (japan/international)", kind="Optional kind filter (industry/government/festival)")
+    # /manga awards ────────────────────────────────────────────────────────────
+
+    @app_commands.command(name="awards", description="Browse prestigious manga awards and their winners")
+    @app_commands.describe(
+        region="Filter by region", kind="Filter by award type",
+        winner="Search for a winning title",
+    )
+    @app_commands.choices(region=_AWARD_REGION_CHOICES, kind=_AWARD_KIND_CHOICES)
     async def awards(
-        self,
-        interaction: discord.Interaction,
-        region: Optional[str] = None,
-        kind: Optional[str] = None,
-    ):
-        region_n = (region or "").strip().lower() or None
-        kind_n = (kind or "").strip().lower() or None
+        self, interaction: discord.Interaction,
+        region: Optional[str] = None, kind:   Optional[str] = None,
+        winner: Optional[str] = None,
+    ) -> None:
+        await interaction.response.defer()
 
-        awards = _load_awards(self._data_dir)
+        shows, all_winners = _load_awards(self._data_dir)
+        show_index = {s["id"]: s for s in shows}
 
-        def ok(a: Dict[str, Any]) -> bool:
-            if region_n and str(a.get("region") or "").lower() != region_n:
-                return False
-            if kind_n and str(a.get("kind") or "").lower() != kind_n:
-                return False
-            return True
+        filtered_shows = shows
+        if region:
+            filtered_shows = [s for s in filtered_shows if s.get("region","").lower() == region.lower()]
+        if kind:
+            filtered_shows = [s for s in filtered_shows if s.get("kind","").lower() == kind.lower()]
 
-        picks = [a for a in awards if ok(a)]
-        picks.sort(key=lambda x: (int(x.get("since") or 9999), str(x.get("name") or "")))
+        valid_show_ids = {s["id"] for s in filtered_shows}
+        filtered_winners = [w for w in all_winners if w.get("award_show_id") in valid_show_ids]
 
-        title = "/manga awards"
-        f = []
-        if region_n:
-            f.append(f"region:{region_n}")
-        if kind_n:
-            f.append(f"kind:{kind_n}")
-        if f:
-            title += " (" + ", ".join(f) + ")"
+        if winner:
+            needle = winner.lower().strip()
+            filtered_winners = [w for w in filtered_winners if needle in w.get("title","").lower()]
 
-        embed = discord.Embed(title=title, color=0x2F3136)
-        if not picks:
-            embed.description = "No awards matched your filters. Try removing region/kind."
-            await interaction.response.send_message(embed=embed, ephemeral=True)
-            return
-
-        lines: List[str] = []
-        for a in picks[:12]:
-            name = a.get("name")
-            url = a.get("url")
-            since = a.get("since")
-            organizer = a.get("organizer")
-            note = (a.get("note") or "").strip()
-            meta = []
-            if since:
-                meta.append(f"since {since}")
-            if organizer:
-                meta.append(str(organizer))
-            if a.get("region"):
-                meta.append(str(a.get("region")))
-            if a.get("kind"):
-                meta.append(str(a.get("kind")))
-            meta_txt = " — ".join(meta)
-            if note:
-                lines.append(f"• **{name}**\n  {note}\n  {url}\n  _{meta_txt}_")
+            embed = discord.Embed(title=f"🏆 Manga Winners — \"{winner}\"", color=0xE74C3C)
+            if not filtered_winners:
+                embed.description = f"No winners found matching **\"{winner}\"**."
             else:
-                lines.append(f"• **{name}**\n  {url}\n  _{meta_txt}_")
+                for w in sorted(filtered_winners, key=lambda w: -w.get("year",0))[:20]:
+                    emoji  = _SHOW_EMOJIS.get(w.get("award_show_id",""), "🏆")
+                    source = w.get("official_source","")
+                    author = w.get("author","")
+                    cat    = w.get("category","")
+                    fval   = f"{emoji} {w.get('award','—')}"
+                    if author: fval += f"\n*by {author}*"
+                    if cat:    fval += f" · *{cat}*"
+                    if source: fval += f"\n[↗ Source]({source})"
+                    embed.add_field(
+                        name=f"**{w['title']}** ({w.get('year','—')})",
+                        value=fval[:1024], inline=False,
+                    )
+            embed.set_footer(text="Official sources only")
+            await interaction.followup.send(embed=embed)
+            return
 
-        embed.description = "\n\n".join(lines)[:4096]
-        embed.set_footer(text="Official/trusted links only.")
-        await interaction.response.send_message(embed=embed)
+        # Default view: show award organisations + most recent winner per show
+        title = "🏆 Manga Awards"
+        fil   = [f"region:{region}" if region else None, f"kind:{kind}" if kind else None]
+        fil   = [f for f in fil if f]
+        if fil: title += f" — {', '.join(fil)}"
 
-    @app_commands.command(name="origins", description="Key milestones for early manga and early animation")
-    @app_commands.describe(medium="Optional: manga or anime", scope="Optional: japan or global")
+        embed = discord.Embed(title=title, color=0xE74C3C)
+        if not filtered_shows:
+            embed.description = "No award shows matched your filters."
+            await interaction.followup.send(embed=embed, ephemeral=True)
+            return
+
+        for show in sorted(filtered_shows, key=lambda s: s.get("since",9999)):
+            emoji  = _SHOW_EMOJIS.get(show["id"], "🏆")
+            active = "" if show.get("active", True) else " *(ended)*"
+            since  = show.get("since","")
+            org    = show.get("organizer","")
+            url    = show.get("url","")
+            note   = (show.get("note") or "").strip()
+
+            show_wins = sorted(
+                [w for w in all_winners if w.get("award_show_id") == show["id"]],
+                key=lambda w: -w.get("year",0),
+            )
+
+            meta = " · ".join(p for p in [f"since {since}" if since else None, org] if p)
+            fval = f"*{meta}*{active}"
+            if note: fval += f"\n{note}"
+            if show_wins:
+                w = show_wins[0]
+                fval += f"\n**Latest:** {w['title']} ({w.get('year','—')})"
+                if w.get("author"): fval += f" · *{w['author']}*"
+            if url: fval += f"\n[↗ Official site]({url})"
+
+            embed.add_field(name=f"{emoji} {show['name']}", value=fval[:1024], inline=False)
+
+        embed.set_footer(text=f"{len(all_winners)} verified winners · Official sources only")
+        await interaction.followup.send(embed=embed)
+
+    # /manga origins ───────────────────────────────────────────────────────────
+
+    @app_commands.command(name="origins", description="Key milestones in manga and anime history")
+    @app_commands.describe(medium="Filter by medium", scope="Filter by scope")
+    @app_commands.choices(medium=_MEDIUM_CHOICES, scope=_SCOPE_CHOICES)
     async def origins(
-        self,
-        interaction: discord.Interaction,
-        medium: Optional[str] = None,
-        scope: Optional[str] = None,
-    ):
-        medium_n = (medium or "").strip().lower() or None
-        scope_n = (scope or "").strip().lower() or None
-        if medium_n in {"animation", "anime"}:
-            medium_n = "anime"
+        self, interaction: discord.Interaction,
+        medium: Optional[str] = None, scope: Optional[str] = None,
+    ) -> None:
+        await interaction.response.defer()
 
         entries = _load_origins(self._data_dir)
+        if medium:
+            entries = [e for e in entries if e.get("medium","").lower() == medium.lower()]
+        if scope:
+            entries = [e for e in entries if e.get("scope","").lower() == scope.lower()]
 
-        def ok(e: Dict[str, Any]) -> bool:
-            if medium_n and str(e.get("medium") or "").lower() != medium_n:
-                return False
-            if scope_n and str(e.get("scope") or "").lower() != scope_n:
-                return False
-            return True
+        # Sort by integer year field (new schema); fall back to 9999 for undated entries
+        entries.sort(key=lambda e: (e.get("year") or 9999, (e.get("title") or "").lower()))
 
-        picks = [e for e in entries if ok(e)]
-        # Sort by year-ish key (string tolerant)
-        def year_key(v: Any) -> int:
-            s = str(v or "")
-            for token in s.replace("?", "").replace("c.", "").split():
-                if token.isdigit() and len(token) == 4:
-                    return int(token)
-            return 9999
+        filters = []
+        if medium: filters.append((_MEDIUM_EMOJIS.get(medium.lower(),"") + " " + medium).strip())
+        if scope:  filters.append((_SCOPE_EMOJIS.get(scope.lower(),"")  + " " + scope).strip())
 
-        picks.sort(key=lambda x: (year_key(x.get("date")), str(x.get("title") or "")))
+        title = "📜 Manga & Anime History"
+        if filters: title += f" — {', '.join(filters)}"
 
-        title = "/manga origins"
-        f = []
-        if medium_n:
-            f.append(f"medium:{medium_n}")
-        if scope_n:
-            f.append(f"scope:{scope_n}")
-        if f:
-            title += " (" + ", ".join(f) + ")"
+        embed = discord.Embed(title=title, color=0xE67E22)
 
-        embed = discord.Embed(title=title, color=0x2F3136)
-        if not picks:
-            embed.description = "No entries matched your filters. Try medium:manga|anime or scope:japan|global."
-            await interaction.response.send_message(embed=embed, ephemeral=True)
-            return
-
-        blocks: List[str] = []
-        for e in picks[:15]:
-            dt = e.get("date")
-            ttl = e.get("title")
-            url = e.get("url")
-            note = (e.get("note") or "").strip()
-            blocks.append(f"• **{dt} — {ttl}**\n  {note}\n  {url}")
-
-        embed.description = "\n\n".join(blocks)[:4096]
-        embed.set_footer(text="Note: 'first' depends on definitions; this is a curated milestones list.")
-        await interaction.response.send_message(embed=embed)
-
-    # -------------------------
-    # Awards and origins
-    # -------------------------
-    @app_commands.command(name="awards", description="List prestigious manga awards (official/trusted links)")
-    @app_commands.describe(region="Optional region filter (japan/international)", kind="Optional kind filter (industry/government/festival)")
-    async def awards(self, interaction: discord.Interaction, region: Optional[str] = None, kind: Optional[str] = None):
-        region_n = (region or "").strip().lower() or None
-        kind_n = (kind or "").strip().lower() or None
-
-        awards = _load_awards(self._data_dir)
-        if region_n:
-            awards = [a for a in awards if (str(a.get("region") or "").lower() == region_n)]
-        if kind_n:
-            awards = [a for a in awards if (str(a.get("kind") or "").lower() == kind_n)]
-
-        embed = discord.Embed(title="/manga awards", color=0x2F3136)
-        if not awards:
-            embed.description = "No awards matched your filters. Try removing a filter."
-            await interaction.response.send_message(embed=embed, ephemeral=True)
-            return
-
-        lines: List[str] = []
-        for a in awards[:12]:
-            name = a.get("name")
-            since = a.get("since")
-            org = a.get("organizer")
-            url = a.get("url")
-            note = (a.get("note") or "").strip()
-            meta_bits = [b for b in [f"since {since}" if since else None, org, a.get("region"), a.get("kind")] if b]
-            meta = " — ".join(str(x) for x in meta_bits)
-            block = f"• **{name}**\n  {meta}\n  {url}"
-            if note:
-                block += f"\n  _{note}_"
-            lines.append(block)
-
-        embed.description = "\n\n".join(lines)[:4096]
-        embed.set_footer(text="Official/trusted reference links only.")
-        await interaction.response.send_message(embed=embed)
-
-    @app_commands.command(name="origins", description="Key milestones for early manga/anime (with references)")
-    @app_commands.describe(medium="Optional filter: manga or anime")
-    async def origins(self, interaction: discord.Interaction, medium: Optional[str] = None):
-        medium_n = (medium or "").strip().lower() or None
-        if medium_n in {"animation", "anime"}:
-            medium_n = "anime"
-        if medium_n not in {None, "manga", "anime"}:
-            await interaction.response.send_message("medium must be 'manga' or 'anime'.", ephemeral=True)
-            return
-
-        entries = _load_origins(self._data_dir)
-        if medium_n:
-            entries = [e for e in entries if (str(e.get("medium") or "").lower() == medium_n)]
-
-        # Sort by year (best-effort)
-        def _year_key(e: Dict[str, Any]) -> int:
-            y = e.get("year")
-            try:
-                return int(y)
-            except Exception:
-                return 9999
-
-        entries.sort(key=_year_key)
-
-        title = "/manga origins" + (f" ({medium_n})" if medium_n else "")
-        embed = discord.Embed(title=title, color=0x2F3136)
         if not entries:
-            embed.description = "No entries found."
-            await interaction.response.send_message(embed=embed, ephemeral=True)
+            embed.description = "No milestones matched your filters."
+            await interaction.followup.send(embed=embed, ephemeral=True)
             return
 
-        lines: List[str] = []
-        for e in entries[:12]:
-            y = e.get("year")
-            t = e.get("title")
-            url = e.get("url")
-            note = (e.get("note") or "").strip()
-            tag = e.get("label") or e.get("medium")
-            block = f"• **{y} — {t}**"
-            if tag:
-                block += f" _(tag: {tag})_"
-            if note:
-                block += f"\n  {note}"
-            block += f"\n  {url}"
-            lines.append(block)
+        for e in entries[:20]:
+            date    = e.get("date") or str(e.get("year","—"))
+            med     = e.get("medium","")
+            scp     = e.get("scope","")
+            note    = (e.get("note") or "").strip()
+            url     = e.get("url","")
 
-        embed.description = "\n\n".join(lines)[:4096]
-        embed.set_footer(text="Early-history 'first' claims can vary by definition; this lists widely-cited milestones.")
-        await interaction.response.send_message(embed=embed)
-    # Presets
-    # -------------------------
-    @app_commands.command(name="preset_save", description="Save a preset (filters) for quick reuse")
-    @app_commands.describe(name="Preset name", code="Preset code shown by /manga learn")
-    async def preset_save(self, interaction: discord.Interaction, name: str, code: str):
+            m_em = _MEDIUM_EMOJIS.get(med.lower(),"")
+            s_em = _SCOPE_EMOJIS.get(scp.lower(),"")
+
+            fval = f"{m_em} {med} · {s_em} {scp}".strip(" ·")
+            if note: fval += f"\n{note}"
+            if url:  fval += f"\n[↗ Source]({url})"
+
+            embed.add_field(
+                name=f"**{e['title']}** · *{date}*",
+                value=fval[:1024], inline=False,
+            )
+
+        embed.set_footer(text="'First' claims vary by definition — widely cited milestones only")
+        await interaction.followup.send(embed=embed)
+
+    # /manga preset_save ──────────────────────────────────────────────────────
+
+    @app_commands.command(name="preset_save", description="Save your current filter combination as a named preset")
+    @app_commands.describe(name="Preset name", code="Code from /manga learn (e.g. topic=lineart;level=Beginner)")
+    async def preset_save(self, interaction: discord.Interaction, name: str, code: str) -> None:
         name = (name or "").strip()
         if not name:
             await interaction.response.send_message("Preset name cannot be empty.", ephemeral=True)
             return
 
-        parsed = _parse_preset_code(code)
+        parsed  = _parse_preset_code(code)
         topic_n = _norm_topic(parsed.get("topic"))
         level_n = _norm_level(parsed.get("level"))
-        mode_n = _norm_mode(parsed.get("mode"))
-        tool_n = _norm_tool(parsed.get("tool"))
+        mode_n  = _norm_mode(parsed.get("mode"))
+        tool_n  = _norm_tool(parsed.get("tool"))
 
-        obj = _load_presets(self._data_dir)
-        presets = obj.get("presets", [])
-
-        uid = interaction.user.id
-        presets = [p for p in presets if not (p.get("owner_id") == uid and (p.get("name") or "").lower() == name.lower())]
-
+        obj     = _load_presets(self._data_dir)
+        uid     = interaction.user.id
+        presets = [p for p in obj["presets"]
+                   if not (p.get("owner_id") == uid and (p.get("name") or "").lower() == name.lower())]
         presets.append({
-            "owner_id": uid,
-            "name": name,
-            "filters": {"topic": topic_n, "level": level_n, "mode": mode_n, "tool": tool_n},
+            "owner_id":    uid,
+            "name":        name,
+            "filters":     {"topic": topic_n, "level": level_n, "mode": mode_n, "tool": tool_n},
             "created_utc": _utc_now(),
         })
         obj["presets"] = presets
         _save_presets(self._data_dir, obj)
-        await interaction.response.send_message(f"Saved preset **{name}**.", ephemeral=True)
+        await interaction.response.send_message(f"✅ Saved preset **{name}**.", ephemeral=True)
 
-    @app_commands.command(name="preset_list", description="List your saved presets")
-    async def preset_list(self, interaction: discord.Interaction):
-        obj = _load_presets(self._data_dir)
-        uid = interaction.user.id
-        mine = [p for p in obj.get("presets", []) if p.get("owner_id") == uid]
+    # /manga preset_list ──────────────────────────────────────────────────────
+
+    @app_commands.command(name="preset_list", description="List your saved filter presets")
+    async def preset_list(self, interaction: discord.Interaction) -> None:
+        obj  = _load_presets(self._data_dir)
+        uid  = interaction.user.id
+        mine = [p for p in obj["presets"] if p.get("owner_id") == uid]
+
         if not mine:
-            await interaction.response.send_message("You have no presets yet. Use /manga learn then /manga preset_save.", ephemeral=True)
+            await interaction.response.send_message(
+                "No presets yet. Use `/manga learn`, then `/manga preset_save`.", ephemeral=True,
+            )
             return
 
-        lines = []
+        embed = discord.Embed(title="🔖 Your Manga Learn Presets", color=0x5865F2)
         for p in sorted(mine, key=lambda x: (x.get("name") or "").lower()):
-            f = p.get("filters") or {}
-            lines.append(f"• **{p.get('name')}** — `{_preset_code(f.get('topic'), f.get('level'), f.get('mode'), f.get('tool'))}`")
-
-        embed = discord.Embed(title="/manga preset_list", description="\n".join(lines)[:4096], color=0x2F3136)
+            f    = p.get("filters") or {}
+            code = _preset_code(f.get("topic"), f.get("level"), f.get("mode"), f.get("tool"))
+            embed.add_field(
+                name=f"**{p['name']}**",
+                value=f"`{code}`\nRun: `/manga preset_run name:{p['name']}`",
+                inline=False,
+            )
         await interaction.response.send_message(embed=embed, ephemeral=True)
+
+    # /manga preset_run ───────────────────────────────────────────────────────
 
     @app_commands.command(name="preset_run", description="Run a saved preset by name")
     @app_commands.describe(name="Preset name")
-    async def preset_run(self, interaction: discord.Interaction, name: str):
-        obj = _load_presets(self._data_dir)
-        uid = interaction.user.id
+    async def preset_run(self, interaction: discord.Interaction, name: str) -> None:
+        obj    = _load_presets(self._data_dir)
+        uid    = interaction.user.id
         name_l = (name or "").strip().lower()
-        target = None
-        for p in obj.get("presets", []):
-            if p.get("owner_id") == uid and (p.get("name") or "").strip().lower() == name_l:
-                target = p
-                break
+        target = next(
+            (p for p in obj["presets"]
+             if p.get("owner_id") == uid and (p.get("name") or "").strip().lower() == name_l),
+            None,
+        )
         if not target:
-            await interaction.response.send_message("Preset not found. Use /manga preset_list.", ephemeral=True)
+            await interaction.response.send_message(
+                "Preset not found. Use `/manga preset_list`.", ephemeral=True,
+            )
             return
 
         f = target.get("filters") or {}
         await self.learn(
-            interaction,
-            topic=f.get("topic"),
-            level=f.get("level"),
-            mode=f.get("mode"),
-            tool=f.get("tool"),
+            interaction, topic=f.get("topic"), level=f.get("level"),
+            mode=f.get("mode"), tool=f.get("tool"),
         )
+
+    # /manga preset_delete ─────────────────────────────────────────────────────
 
     @app_commands.command(name="preset_delete", description="Delete a saved preset by name")
     @app_commands.describe(name="Preset name")
-    async def preset_delete(self, interaction: discord.Interaction, name: str):
-        obj = _load_presets(self._data_dir)
-        uid = interaction.user.id
+    async def preset_delete(self, interaction: discord.Interaction, name: str) -> None:
+        obj    = _load_presets(self._data_dir)
+        uid    = interaction.user.id
         name_l = (name or "").strip().lower()
-        before = len(obj.get("presets", []))
-        obj["presets"] = [p for p in obj.get("presets", []) if not (p.get("owner_id") == uid and (p.get("name") or "").strip().lower() == name_l)]
-        after = len(obj.get("presets", []))
+        before = len(obj["presets"])
+        obj["presets"] = [
+            p for p in obj["presets"]
+            if not (p.get("owner_id") == uid and (p.get("name") or "").strip().lower() == name_l)
+        ]
         _save_presets(self._data_dir, obj)
-        if after == before:
+        if len(obj["presets"]) == before:
             await interaction.response.send_message("Preset not found.", ephemeral=True)
         else:
-            await interaction.response.send_message(f"Deleted preset **{name}**.", ephemeral=True)
+            await interaction.response.send_message(f"🗑️ Deleted preset **{name}**.", ephemeral=True)
 
 
-async def register_manga(bot: discord.Client, data_dir: str) -> None:
-    """Register the /manga command group."""
-    group = MangaGroup(data_dir=data_dir)
+# ─────────────────────────────────────────────────────────────────────────────
+# Registration
+# ─────────────────────────────────────────────────────────────────────────────
 
-    # Prevent double-register
-    for cmd in bot.tree.get_commands():
-        if isinstance(cmd, app_commands.Group) and cmd.name == group.name:
-            raise RuntimeError("Already registered")
-
-    bot.tree.add_command(group)
+async def register(bot: discord.Client, data_dir: str) -> None:
+    """Register /manga command group. Called by main.py loader."""
+    if bot.tree.get_command("manga"):
+        return
+    bot.tree.add_command(MangaGroup(data_dir=data_dir))
