@@ -41,39 +41,6 @@ _CERT_CHOICES = [
     app_commands.Choice(name="☑️ UTZ Certified",                    value="UTZ Certified"),
 ]
 
-# All brands across all three datasets — 30 unique names
-_BRAND_CHOICES = [
-    app_commands.Choice(name="Belcolade",          value="belcolade"),
-    app_commands.Choice(name="Belgian Waffle",     value="belgian waffle"),
-    app_commands.Choice(name="Belvas",             value="belvas"),
-    app_commands.Choice(name="Bruyerre",           value="bruyerre"),
-    app_commands.Choice(name="Brussels Waffle",    value="brussels waffle"),
-    app_commands.Choice(name="Callebaut",          value="callebaut"),
-    app_commands.Choice(name="Chocolat Jacques",   value="chocolat jacques"),
-    app_commands.Choice(name="Corné Port-Royal",   value="corné port-royal"),
-    app_commands.Choice(name="Cuberdon",           value="cuberdon"),
-    app_commands.Choice(name="Côte d'Or",          value="côte d'or"),
-    app_commands.Choice(name="Dolfin",             value="dolfin"),
-    app_commands.Choice(name="Dumon",              value="dumon"),
-    app_commands.Choice(name="Galler",             value="galler"),
-    app_commands.Choice(name="Godiva",             value="godiva"),
-    app_commands.Choice(name="Guylian",            value="guylian"),
-    app_commands.Choice(name="Leonidas",           value="leonidas"),
-    app_commands.Choice(name="Liège Waffle",       value="liège waffle"),
-    app_commands.Choice(name="Mary Chocolatier",   value="mary chocolatier"),
-    app_commands.Choice(name="Mattentaart",        value="mattentaart"),
-    app_commands.Choice(name="Merveilleux",        value="merveilleux"),
-    app_commands.Choice(name="Meurisse",           value="meurisse"),
-    app_commands.Choice(name="Neuhaus",            value="neuhaus"),
-    app_commands.Choice(name="Pierre Marcolini",   value="pierre marcolini"),
-    app_commands.Choice(name="Planète Chocolat",   value="planète chocolat"),
-    app_commands.Choice(name="Rijsttaart",         value="rijsttaart"),
-    app_commands.Choice(name="Speculoos",          value="speculoos"),
-    app_commands.Choice(name="Tarte au Riz",       value="tarte au riz"),
-    app_commands.Choice(name="The Chocolate Line", value="the chocolate line"),
-    app_commands.Choice(name="Wittamer",           value="wittamer"),
-]
-
 
 # ── Loader ────────────────────────────────────────────────────────────────────
 
@@ -371,15 +338,41 @@ async def register(bot: discord.Client, data_dir: str) -> None:
         log.info("Registered /belgium chocolate_brands")
 
     # ── /belgium chocolate_info ───────────────────────────────────────────────
+    # NOTE: uses autocomplete instead of @app_commands.choices — Discord caps
+    # choices at 25 items; autocomplete has no such limit and lets users type
+    # to filter the list dynamically.
 
     if not root.get_command("chocolate_info"):
+
+        async def _brand_autocomplete(
+            interaction: discord.Interaction,
+            current: str,
+        ) -> List[app_commands.Choice[str]]:
+            """Return up to 25 brand names matching what the user has typed so far."""
+            items = _load_dataset(data_dir)
+            needle = current.lower().strip()
+            matches = [
+                i.get("name", "")
+                for i in items
+                if needle in (i.get("name") or "").lower()
+            ]
+            # Deduplicate and sort, then cap at 25
+            seen: set[str] = set()
+            choices: List[app_commands.Choice[str]] = []
+            for name in sorted(matches):
+                if name not in seen:
+                    seen.add(name)
+                    choices.append(app_commands.Choice(name=name, value=name.lower()))
+                if len(choices) == 25:
+                    break
+            return choices
 
         @app_commands.command(
             name="chocolate_info",
             description="Get full details for a specific Belgian chocolate brand or sweet.",
         )
-        @app_commands.describe(name="Brand or product name")
-        @app_commands.choices(name=_BRAND_CHOICES)
+        @app_commands.describe(name="Start typing a brand name to search")
+        @app_commands.autocomplete(name=_brand_autocomplete)
         async def chocolate_info(
             interaction: discord.Interaction,
             name: str,
@@ -402,7 +395,7 @@ async def register(bot: discord.Client, data_dir: str) -> None:
             if not match:
                 await interaction.followup.send(
                     f"😕 No brand found matching **\"{name}\"**.\n"
-                    "Use the autocomplete dropdown to pick a valid name.",
+                    "Use the autocomplete suggestions to pick a valid name.",
                     ephemeral=True,
                 )
                 return
