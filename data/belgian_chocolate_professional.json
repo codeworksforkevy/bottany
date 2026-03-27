@@ -1,496 +1,288 @@
 {
   "meta": {
-    "dataset_version": "2.0",
+    "dataset_version": "3.0",
     "curation_level": "academic_professional",
-    "updated_utc": "2026-02-19T02:44:31.518920Z",
-    "certification_model": "multi_label"
+    "updated_utc": "2026-03-27T00:00:00Z",
+    "certification_model": "multi_label",
+    "sources": [
+      "https://www.neuhaus.be/en/our-story",
+      "https://www.godivachocolates.eu/en/our-story.htm",
+      "https://www.leonidas.com/en/our-story",
+      "https://www.wittamer.com",
+      "https://www.mary.be/en/history",
+      "https://www.galler.com/en/notre-histoire",
+      "https://www.marcolini.com/en/our-story",
+      "https://www.guylian.com/en/our-story",
+      "https://www.cotedeor.be",
+      "https://www.meurisse.com",
+      "https://belcolade.com/en/about-us",
+      "https://www.barry-callebaut.com/en-US/about-us/history",
+      "https://www.dolfin.be/en/story",
+      "https://eupedia.com/belgium/belgian_chocolate.shtml",
+      "https://www.laurewanders.com/best-belgian-chocolates/",
+      "https://www.candyretailer.com/blog/belgian-chocolate-brands/"
+    ]
   },
   "items": [
     {
-      "id": "ch_1",
+      "id": "pro_1",
       "name": "Neuhaus",
+      "emoji": "🍫",
       "foundation_year": 1857,
       "region": "Brussels",
       "production_model": "couverture",
       "type": "praline_house",
-      "certifications": [
-        "ISO 22000",
-        "Rainforest Alliance"
-      ],
-      "notes": "Neuhaus — academically structured entry. Production model: couverture. Type: praline_house. Certification profile reflects industrial and/or sustainability standards."
+      "royal_warrant": true,
+      "certifications": ["Belgian Chocolate Code", "EU Chocolate Directive Compliant"],
+      "notes": "Founded 1857 by Jean Neuhaus. Inventor of the praline (1912) and the ballotin box. Belgian Royal Warrant Holder.",
+      "url": "https://www.neuhaus.be/en"
     },
     {
-      "id": "ch_2",
-      "name": "Neuhaus",
-      "foundation_year": 1857,
-      "region": "Brussels",
-      "production_model": "couverture",
-      "type": "praline_house",
-      "certifications": [
-        "Rainforest Alliance"
-      ],
-      "notes": "Neuhaus — academically structured entry. Production model: couverture. Type: praline_house. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_3",
-      "name": "Neuhaus",
-      "foundation_year": 1857,
-      "region": "Brussels",
-      "production_model": "couverture",
-      "type": "praline_house",
-      "certifications": [
-        "Rainforest Alliance"
-      ],
-      "notes": "Neuhaus — academically structured entry. Production model: couverture. Type: praline_house. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_4",
-      "name": "Neuhaus",
-      "foundation_year": 1857,
-      "region": "Brussels",
-      "production_model": "couverture",
-      "type": "praline_house",
-      "certifications": [
-        "EU Chocolate Directive Compliant"
-      ],
-      "notes": "Neuhaus — academically structured entry. Production model: couverture. Type: praline_house. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_5",
-      "name": "Leonidas",
-      "foundation_year": 1913,
-      "region": "Brussels",
-      "production_model": "couverture",
-      "type": "praline_house",
-      "certifications": [
-        "EU Organic"
-      ],
-      "notes": "Leonidas — academically structured entry. Production model: couverture. Type: praline_house. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_6",
-      "name": "Leonidas",
-      "foundation_year": 1913,
-      "region": "Brussels",
-      "production_model": "couverture",
-      "type": "praline_house",
-      "certifications": [
-        "BRC Global Standard"
-      ],
-      "notes": "Leonidas — academically structured entry. Production model: couverture. Type: praline_house. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_7",
-      "name": "Leonidas",
-      "foundation_year": 1913,
-      "region": "Brussels",
-      "production_model": "couverture",
-      "type": "praline_house",
-      "certifications": [
-        "Fairtrade"
-      ],
-      "notes": "Leonidas — academically structured entry. Production model: couverture. Type: praline_house. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_8",
-      "name": "Leonidas",
-      "foundation_year": 1913,
-      "region": "Brussels",
-      "production_model": "couverture",
-      "type": "praline_house",
-      "certifications": [
-        "ISO 22000",
-        "Rainforest Alliance"
-      ],
-      "notes": "Leonidas — academically structured entry. Production model: couverture. Type: praline_house. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_9",
+      "id": "pro_2",
       "name": "Godiva",
+      "emoji": "👑",
       "foundation_year": 1926,
       "region": "Brussels",
       "production_model": "couverture",
-      "type": "praline_house",
-      "certifications": [
-        "BRC Global Standard"
-      ],
-      "notes": "Godiva — academically structured entry. Production model: couverture. Type: praline_house. Certification profile reflects industrial and/or sustainability standards."
+      "type": "industrial",
+      "royal_warrant": false,
+      "certifications": ["Belgian Chocolate Code", "Rainforest Alliance"],
+      "notes": "Founded 1926 by Pierre Draps Sr. Named after Lady Godiva. First international boutique opened in New York in 1972. Now sold in over 100 countries.",
+      "url": "https://godivachocolates.eu/en"
     },
     {
-      "id": "ch_10",
-      "name": "Godiva",
-      "foundation_year": 1926,
+      "id": "pro_3",
+      "name": "Leonidas",
+      "emoji": "⚔️",
+      "foundation_year": 1913,
       "region": "Brussels",
-      "production_model": "couverture",
-      "type": "praline_house",
-      "certifications": [
-        "BRC Global Standard"
-      ],
-      "notes": "Godiva — academically structured entry. Production model: couverture. Type: praline_house. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_11",
-      "name": "Godiva",
-      "foundation_year": 1926,
-      "region": "Brussels",
-      "production_model": "couverture",
-      "type": "praline_house",
-      "certifications": [
-        "EU Chocolate Directive Compliant"
-      ],
-      "notes": "Godiva — academically structured entry. Production model: couverture. Type: praline_house. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_12",
-      "name": "Godiva",
-      "foundation_year": 1926,
-      "region": "Brussels",
-      "production_model": "couverture",
-      "type": "praline_house",
-      "certifications": [
-        "EU Chocolate Directive Compliant"
-      ],
-      "notes": "Godiva — academically structured entry. Production model: couverture. Type: praline_house. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_13",
-      "name": "Callebaut",
-      "foundation_year": 1911,
-      "region": "Flanders",
       "production_model": "couverture",
       "type": "industrial",
-      "certifications": [
-        "Belgian Chocolate Code",
-        "EU Chocolate Directive Compliant"
-      ],
-      "notes": "Callebaut — academically structured entry. Production model: couverture. Type: industrial. Certification profile reflects industrial and/or sustainability standards."
+      "royal_warrant": false,
+      "certifications": ["Belgian Chocolate Code", "EU Chocolate Directive Compliant"],
+      "notes": "Founded 1913 by Leonidas Kestekides, a Greek pastry chef who won a gold medal at the 1910 World's Fair. One of Belgium's largest praline chains with 1400+ shops worldwide.",
+      "url": "https://www.leonidas.com/en"
     },
     {
-      "id": "ch_14",
-      "name": "Callebaut",
-      "foundation_year": 1911,
-      "region": "Flanders",
-      "production_model": "couverture",
-      "type": "industrial",
-      "certifications": [
-        "ISO 22000",
-        "Rainforest Alliance"
-      ],
-      "notes": "Callebaut — academically structured entry. Production model: couverture. Type: industrial. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_15",
-      "name": "Callebaut",
-      "foundation_year": 1911,
-      "region": "Flanders",
-      "production_model": "couverture",
-      "type": "industrial",
-      "certifications": [
-        "EU Organic"
-      ],
-      "notes": "Callebaut — academically structured entry. Production model: couverture. Type: industrial. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_16",
-      "name": "Callebaut",
-      "foundation_year": 1911,
-      "region": "Flanders",
-      "production_model": "couverture",
-      "type": "industrial",
-      "certifications": [
-        "BRC Global Standard"
-      ],
-      "notes": "Callebaut — academically structured entry. Production model: couverture. Type: industrial. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_17",
-      "name": "Belcolade",
-      "foundation_year": 1919,
-      "region": "Flemish Brabant",
-      "production_model": "couverture",
-      "type": "industrial",
-      "certifications": [
-        "Belgian Chocolate Code"
-      ],
-      "notes": "Belcolade — academically structured entry. Production model: couverture. Type: industrial. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_18",
-      "name": "Belcolade",
-      "foundation_year": 1919,
-      "region": "Flemish Brabant",
-      "production_model": "couverture",
-      "type": "industrial",
-      "certifications": [
-        "EU Chocolate Directive Compliant"
-      ],
-      "notes": "Belcolade — academically structured entry. Production model: couverture. Type: industrial. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_19",
-      "name": "Belcolade",
-      "foundation_year": 1919,
-      "region": "Flemish Brabant",
-      "production_model": "couverture",
-      "type": "industrial",
-      "certifications": [
-        "Direct Trade"
-      ],
-      "notes": "Belcolade — academically structured entry. Production model: couverture. Type: industrial. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_20",
-      "name": "Belcolade",
-      "foundation_year": 1919,
-      "region": "Flemish Brabant",
-      "production_model": "couverture",
-      "type": "industrial",
-      "certifications": [
-        "Rainforest Alliance"
-      ],
-      "notes": "Belcolade — academically structured entry. Production model: couverture. Type: industrial. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_21",
-      "name": "Pierre Marcolini",
-      "foundation_year": 1995,
-      "region": "Brussels",
-      "production_model": "bean_to_bar",
-      "type": "artisan",
-      "certifications": [
-        "Direct Trade"
-      ],
-      "notes": "Pierre Marcolini — academically structured entry. Production model: bean_to_bar. Type: artisan. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_22",
-      "name": "Pierre Marcolini",
-      "foundation_year": 1995,
-      "region": "Brussels",
-      "production_model": "bean_to_bar",
-      "type": "artisan",
-      "certifications": [
-        "EU Chocolate Directive Compliant"
-      ],
-      "notes": "Pierre Marcolini — academically structured entry. Production model: bean_to_bar. Type: artisan. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_23",
-      "name": "Pierre Marcolini",
-      "foundation_year": 1995,
-      "region": "Brussels",
-      "production_model": "bean_to_bar",
-      "type": "artisan",
-      "certifications": [
-        "UTZ Certified"
-      ],
-      "notes": "Pierre Marcolini — academically structured entry. Production model: bean_to_bar. Type: artisan. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_24",
-      "name": "Pierre Marcolini",
-      "foundation_year": 1995,
-      "region": "Brussels",
-      "production_model": "bean_to_bar",
-      "type": "artisan",
-      "certifications": [
-        "Fairtrade"
-      ],
-      "notes": "Pierre Marcolini — academically structured entry. Production model: bean_to_bar. Type: artisan. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_25",
-      "name": "Meurisse",
-      "foundation_year": 1845,
-      "region": "Antwerp",
-      "production_model": "bean_to_bar",
-      "type": "artisan",
-      "certifications": [
-        "UTZ Certified"
-      ],
-      "notes": "Meurisse — academically structured entry. Production model: bean_to_bar. Type: artisan. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_26",
-      "name": "Meurisse",
-      "foundation_year": 1845,
-      "region": "Antwerp",
-      "production_model": "bean_to_bar",
-      "type": "artisan",
-      "certifications": [
-        "Single Origin Certified"
-      ],
-      "notes": "Meurisse — academically structured entry. Production model: bean_to_bar. Type: artisan. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_27",
-      "name": "Meurisse",
-      "foundation_year": 1845,
-      "region": "Antwerp",
-      "production_model": "bean_to_bar",
-      "type": "artisan",
-      "certifications": [
-        "UTZ Certified"
-      ],
-      "notes": "Meurisse — academically structured entry. Production model: bean_to_bar. Type: artisan. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_28",
-      "name": "Meurisse",
-      "foundation_year": 1845,
-      "region": "Antwerp",
-      "production_model": "bean_to_bar",
-      "type": "artisan",
-      "certifications": [
-        "Fairtrade"
-      ],
-      "notes": "Meurisse — academically structured entry. Production model: bean_to_bar. Type: artisan. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_29",
-      "name": "Dolfin",
-      "foundation_year": 1989,
-      "region": "Brussels",
-      "production_model": "hybrid",
-      "type": "artisan",
-      "certifications": [
-        "UTZ Certified"
-      ],
-      "notes": "Dolfin — academically structured entry. Production model: hybrid. Type: artisan. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_30",
-      "name": "Dolfin",
-      "foundation_year": 1989,
-      "region": "Brussels",
-      "production_model": "hybrid",
-      "type": "artisan",
-      "certifications": [
-        "Single Origin Certified"
-      ],
-      "notes": "Dolfin — academically structured entry. Production model: hybrid. Type: artisan. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_31",
-      "name": "Dolfin",
-      "foundation_year": 1989,
-      "region": "Brussels",
-      "production_model": "hybrid",
-      "type": "artisan",
-      "certifications": [
-        "ISO 22000"
-      ],
-      "notes": "Dolfin — academically structured entry. Production model: hybrid. Type: artisan. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_32",
-      "name": "Dolfin",
-      "foundation_year": 1989,
-      "region": "Brussels",
-      "production_model": "hybrid",
-      "type": "artisan",
-      "certifications": [
-        "BRC Global Standard"
-      ],
-      "notes": "Dolfin — academically structured entry. Production model: hybrid. Type: artisan. Certification profile reflects industrial and/or sustainability standards."
-    },
-    {
-      "id": "ch_33",
+      "id": "pro_4",
       "name": "Guylian",
+      "emoji": "🐚",
       "foundation_year": 1958,
       "region": "Sint-Niklaas",
       "production_model": "couverture",
       "type": "industrial",
-      "certifications": [
-        "Direct Trade"
-      ],
-      "notes": "Guylian — academically structured entry. Production model: couverture. Type: industrial. Certification profile reflects industrial and/or sustainability standards."
+      "royal_warrant": false,
+      "certifications": ["Fairtrade", "Belgian Chocolate Code"],
+      "notes": "Founded 1958 by Guy Foubert in Sint-Niklaas. Named from 'Guy' and 'Lian' (his wife Liliane). World-famous for seashell-shaped pralines.",
+      "url": "https://www.guylian.com/en"
     },
     {
-      "id": "ch_34",
-      "name": "Guylian",
-      "foundation_year": 1958,
-      "region": "Sint-Niklaas",
+      "id": "pro_5",
+      "name": "Pierre Marcolini",
+      "emoji": "🌱",
+      "foundation_year": 1995,
+      "region": "Brussels",
+      "production_model": "bean_to_bar",
+      "type": "artisan",
+      "royal_warrant": false,
+      "certifications": ["Single Origin Certified", "Direct Trade", "Belgian Chocolate Code"],
+      "notes": "Founded 1995. World Pastry Champion. Travels personally to source cocoa beans directly from farmers in Latin America, Africa and Asia. Pioneer of bean-to-bar in Belgium.",
+      "url": "https://www.marcolini.com/en"
+    },
+    {
+      "id": "pro_6",
+      "name": "Galler",
+      "emoji": "🍫",
+      "foundation_year": 1976,
+      "region": "Liège",
+      "production_model": "couverture",
+      "type": "artisan",
+      "royal_warrant": true,
+      "certifications": ["Belgian Chocolate Code", "Rainforest Alliance"],
+      "notes": "Founded 1976 by Jean Galler in Liège. Belgian Royal Warrant Holder. Known for 22-flavour chocolate bar range and innovation in white chocolate.",
+      "url": "https://www.galler.com/en"
+    },
+    {
+      "id": "pro_7",
+      "name": "Mary Chocolatier",
+      "emoji": "💎",
+      "foundation_year": 1919,
+      "region": "Brussels",
+      "production_model": "couverture",
+      "type": "praline_house",
+      "royal_warrant": true,
+      "certifications": ["Belgian Chocolate Code"],
+      "notes": "Founded 1919 by Mary Delluc — first female Belgian chocolatier. Belgian Royal Warrant Holder since 1942 under King Leopold III. Famous for Art Deco boutique decor and 'Langues de Chat'.",
+      "url": "https://www.mary.be/en"
+    },
+    {
+      "id": "pro_8",
+      "name": "Wittamer",
+      "emoji": "🥐",
+      "foundation_year": 1910,
+      "region": "Brussels",
+      "production_model": "couverture",
+      "type": "praline_house",
+      "royal_warrant": true,
+      "certifications": ["Belgian Chocolate Code"],
+      "notes": "Founded 1910 by Henri Wittamer at Place du Grand Sablon, Brussels. Belgian Royal Warrant Holder. Created the wedding cake for King Philippe and Queen Mathilde. Only two shops globally: Brussels and Tokyo.",
+      "url": "https://www.wittamer.com"
+    },
+    {
+      "id": "pro_9",
+      "name": "Meurisse",
+      "emoji": "🎩",
+      "foundation_year": 1845,
+      "region": "Antwerp",
       "production_model": "couverture",
       "type": "industrial",
-      "certifications": [
-        "UTZ Certified"
-      ],
-      "notes": "Guylian — academically structured entry. Production model: couverture. Type: industrial. Certification profile reflects industrial and/or sustainability standards."
+      "royal_warrant": false,
+      "certifications": ["Belgian Chocolate Code", "BRC Global Standard"],
+      "notes": "Founded 1845 in Antwerp. One of Belgium's oldest chocolate houses. Known for traditional tablet chocolates and pralines.",
+      "url": "https://www.meurisse.com"
     },
     {
-      "id": "ch_35",
-      "name": "Guylian",
-      "foundation_year": 1958,
-      "region": "Sint-Niklaas",
+      "id": "pro_10",
+      "name": "Callebaut",
+      "emoji": "🏭",
+      "foundation_year": 1911,
+      "region": "Flanders",
       "production_model": "couverture",
       "type": "industrial",
-      "certifications": [
-        "BRC Global Standard"
-      ],
-      "notes": "Guylian — academically structured entry. Production model: couverture. Type: industrial. Certification profile reflects industrial and/or sustainability standards."
+      "royal_warrant": false,
+      "certifications": ["Rainforest Alliance", "UTZ Certified", "Belgian Chocolate Code", "ISO 22000"],
+      "notes": "Founded 1911 in Wieze, Flanders by Eugenius Callebaut. Now part of Barry Callebaut. The world's largest manufacturer of high-quality chocolate, supplying professional chocolatiers globally.",
+      "url": "https://www.callebaut.com/en-OC"
     },
     {
-      "id": "ch_36",
-      "name": "Guylian",
-      "foundation_year": 1958,
-      "region": "Sint-Niklaas",
+      "id": "pro_11",
+      "name": "Belcolade",
+      "emoji": "🔬",
+      "foundation_year": 1919,
+      "region": "Flemish Brabant",
       "production_model": "couverture",
       "type": "industrial",
-      "certifications": [
-        "Belgian Chocolate Code",
-        "EU Chocolate Directive Compliant"
-      ],
-      "notes": "Guylian — academically structured entry. Production model: couverture. Type: industrial. Certification profile reflects industrial and/or sustainability standards."
+      "royal_warrant": false,
+      "certifications": ["Belgian Chocolate Code", "EU Organic", "Fairtrade"],
+      "notes": "Founded 1919, now part of Puratos group. Specialist B2B couverture chocolate producer. Known for sustainable sourcing and organic certification lines.",
+      "url": "https://belcolade.com/en"
     },
     {
-      "id": "ch_37",
+      "id": "pro_12",
+      "name": "Dolfin",
+      "emoji": "🐬",
+      "foundation_year": 1989,
+      "region": "Brussels",
+      "production_model": "bean_to_bar",
+      "type": "artisan",
+      "royal_warrant": false,
+      "certifications": ["EU Organic", "Fairtrade", "Single Origin Certified"],
+      "notes": "Founded 1989 in Brussels. Pioneered flavoured dark chocolate bars with unusual inclusions (cardamom, black pepper, Earl Grey). Focus on organic and single-origin beans.",
+      "url": "https://www.dolfin.be/en"
+    },
+    {
+      "id": "pro_13",
       "name": "Côte d'Or",
+      "emoji": "🦁",
       "foundation_year": 1883,
       "region": "Brussels",
       "production_model": "couverture",
       "type": "industrial",
-      "certifications": [
-        "ISO 22000",
-        "Rainforest Alliance"
-      ],
-      "notes": "Côte d'Or — academically structured entry. Production model: couverture. Type: industrial. Certification profile reflects industrial and/or sustainability standards."
+      "royal_warrant": false,
+      "certifications": ["Belgian Chocolate Code", "Rainforest Alliance"],
+      "notes": "Founded 1883. Named after the Gold Coast (Ghana) cocoa growing region. Iconic elephant logo. Now owned by Mondelēz International. Famous for Mignonette individual chocolate bars.",
+      "url": "https://www.cotedeor.be"
     },
     {
-      "id": "ch_38",
-      "name": "Côte d'Or",
-      "foundation_year": 1883,
+      "id": "pro_14",
+      "name": "Corné Port-Royal",
+      "emoji": "🏛️",
+      "foundation_year": 1932,
       "region": "Brussels",
       "production_model": "couverture",
-      "type": "industrial",
-      "certifications": [
-        "BRC Global Standard"
-      ],
-      "notes": "Côte d'Or — academically structured entry. Production model: couverture. Type: industrial. Certification profile reflects industrial and/or sustainability standards."
+      "type": "praline_house",
+      "royal_warrant": false,
+      "certifications": ["Belgian Chocolate Code"],
+      "notes": "Founded 1932 by Maurice Corné in Brussels. Flagship boutique inside the historic Galeries Royales Saint-Hubert. Known for handcrafted pralines and traditional recipes.",
+      "url": "https://www.corne-port-royal.com"
     },
     {
-      "id": "ch_39",
-      "name": "Côte d'Or",
-      "foundation_year": 1883,
-      "region": "Brussels",
+      "id": "pro_15",
+      "name": "Chocolat Jacques",
+      "emoji": "🍬",
+      "foundation_year": 1896,
+      "region": "Verviers",
       "production_model": "couverture",
       "type": "industrial",
-      "certifications": [
-        "ISO 22000"
-      ],
-      "notes": "Côte d'Or — academically structured entry. Production model: couverture. Type: industrial. Certification profile reflects industrial and/or sustainability standards."
+      "royal_warrant": false,
+      "certifications": ["Belgian Chocolate Code", "EU Chocolate Directive Compliant"],
+      "notes": "Founded 1896 in Verviers by Antoine Jacques. In 1936, launched the world's first filled chocolate bar with praline. A beloved Belgian household brand sold widely across Europe.",
+      "url": "https://www.jacquesbelgian.com"
     },
     {
-      "id": "ch_40",
-      "name": "Côte d'Or",
-      "foundation_year": 1883,
+      "id": "pro_16",
+      "name": "Bruyerre",
+      "emoji": "🌿",
+      "foundation_year": 1909,
+      "region": "Gosselies",
+      "production_model": "couverture",
+      "type": "artisan",
+      "royal_warrant": false,
+      "certifications": ["Belgian Chocolate Code", "Fairtrade"],
+      "notes": "Founded 1909. Began producing pralines in 1922 in Gosselies. Family-owned artisan producer supplying professional chocolatiers. Known for high-quality praline fillings and ganaches.",
+      "url": "https://www.bruyerre.com"
+    },
+    {
+      "id": "pro_17",
+      "name": "Belvas",
+      "emoji": "🌍",
+      "foundation_year": 2005,
+      "region": "Ghislenghien",
+      "production_model": "bean_to_bar",
+      "type": "artisan",
+      "royal_warrant": false,
+      "certifications": ["EU Organic", "Fairtrade", "Single Origin Certified", "Direct Trade"],
+      "notes": "Founded 2005 by Thierry Noesen. First certified organic chocolate factory in Europe. Nominated 'greenest micro-enterprise in Europe' by the European Commission. 100% organic and fair-trade certified.",
+      "url": "https://www.belvas.be/en"
+    },
+    {
+      "id": "pro_18",
+      "name": "The Chocolate Line",
+      "emoji": "🎨",
+      "foundation_year": 1992,
+      "region": "Bruges",
+      "production_model": "bean_to_bar",
+      "type": "artisan",
+      "royal_warrant": false,
+      "certifications": ["Belgian Chocolate Code", "Single Origin Certified"],
+      "notes": "Founded 1992 by Dominique Persoone in Bruges. Known as 'the rock and roll chocolatier'. Avant-garde flavour combinations (wasabi, popcorn, Tabasco). Boutiques in Bruges and Antwerp. Referenced in the Michelin Guide.",
+      "url": "https://www.thechocolateline.be/en"
+    },
+    {
+      "id": "pro_19",
+      "name": "Dumon",
+      "emoji": "🐚",
+      "foundation_year": 1992,
+      "region": "Bruges",
+      "production_model": "couverture",
+      "type": "artisan",
+      "royal_warrant": false,
+      "certifications": ["Belgian Chocolate Code"],
+      "notes": "Founded 1992 in Bruges. Small-batch handcrafted chocolates with fresh cream fillings. A favourite among connoisseurs visiting Bruges for its artisan approach and creative seasonal collections.",
+      "url": "https://www.chocolateriedumon.be/en"
+    },
+    {
+      "id": "pro_20",
+      "name": "Planète Chocolat",
+      "emoji": "🌐",
+      "foundation_year": 1998,
       "region": "Brussels",
       "production_model": "couverture",
-      "type": "industrial",
-      "certifications": [
-        "BRC Global Standard"
-      ],
-      "notes": "Côte d'Or — academically structured entry. Production model: couverture. Type: industrial. Certification profile reflects industrial and/or sustainability standards."
+      "type": "artisan",
+      "royal_warrant": false,
+      "certifications": ["Belgian Chocolate Code"],
+      "notes": "Founded 1998 in Brussels. Offers chocolate-making workshops and handcrafted pralines. Known for educational approach to Belgian chocolate heritage and hands-on visitor experiences.",
+      "url": "https://www.planetechocolat.com"
     }
   ]
 }
