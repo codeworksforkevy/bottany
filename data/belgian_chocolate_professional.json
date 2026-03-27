@@ -21,7 +21,8 @@
       "https://eupedia.com/belgium/belgian_chocolate.shtml",
       "https://www.laurewanders.com/best-belgian-chocolates/",
       "https://www.candyretailer.com/blog/belgian-chocolate-brands/"
-    ]
+    ],
+    "image_license_note": "All images are from Wikimedia Commons under CC BY-SA licenses. Attribution required: see image_credit field per item."
   },
   "items": [
     {
@@ -33,9 +34,15 @@
       "production_model": "couverture",
       "type": "praline_house",
       "royal_warrant": true,
-      "certifications": ["Belgian Chocolate Code", "EU Chocolate Directive Compliant"],
+      "certifications": [
+        "Belgian Chocolate Code",
+        "EU Chocolate Directive Compliant"
+      ],
       "notes": "Founded 1857 by Jean Neuhaus. Inventor of the praline (1912) and the ballotin box. Belgian Royal Warrant Holder.",
-      "url": "https://www.neuhaus.be/en"
+      "url": "https://www.neuhaus.be/en",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Neuhaus-Glassalon_4670.JPG/400px-Neuhaus-Glassalon_4670.JPG",
+      "image_credit": "Karl Gruber / CC BY-SA 4.0 / Wikimedia Commons",
+      "image_source": "https://commons.wikimedia.org/wiki/File:Neuhaus-Glassalon_4670.JPG"
     },
     {
       "id": "pro_2",
@@ -46,9 +53,15 @@
       "production_model": "couverture",
       "type": "industrial",
       "royal_warrant": false,
-      "certifications": ["Belgian Chocolate Code", "Rainforest Alliance"],
+      "certifications": [
+        "Belgian Chocolate Code",
+        "Rainforest Alliance"
+      ],
       "notes": "Founded 1926 by Pierre Draps Sr. Named after Lady Godiva. First international boutique opened in New York in 1972. Now sold in over 100 countries.",
-      "url": "https://godivachocolates.eu/en"
+      "url": "https://godivachocolates.eu/en",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Godiva_belgian_chocolate_golden_box_24.JPG/400px-Godiva_belgian_chocolate_golden_box_24.JPG",
+      "image_credit": "Kreecher / CC BY-SA 3.0 / Wikimedia Commons",
+      "image_source": "https://commons.wikimedia.org/wiki/File:Godiva_belgian_chocolate_golden_box_24.JPG"
     },
     {
       "id": "pro_3",
@@ -59,9 +72,15 @@
       "production_model": "couverture",
       "type": "industrial",
       "royal_warrant": false,
-      "certifications": ["Belgian Chocolate Code", "EU Chocolate Directive Compliant"],
+      "certifications": [
+        "Belgian Chocolate Code",
+        "EU Chocolate Directive Compliant"
+      ],
       "notes": "Founded 1913 by Leonidas Kestekides, a Greek pastry chef who won a gold medal at the 1910 World's Fair. One of Belgium's largest praline chains with 1400+ shops worldwide.",
-      "url": "https://www.leonidas.com/en"
+      "url": "https://www.leonidas.com/en",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Leonidas_shop%2C_Downtown_Manhattan.JPG/400px-Leonidas_shop%2C_Downtown_Manhattan.JPG",
+      "image_credit": "Wikimedia Commons / CC BY-SA 3.0",
+      "image_source": "https://commons.wikimedia.org/wiki/File:Leonidas_shop,_Downtown_Manhattan.JPG"
     },
     {
       "id": "pro_4",
@@ -72,9 +91,15 @@
       "production_model": "couverture",
       "type": "industrial",
       "royal_warrant": false,
-      "certifications": ["Fairtrade", "Belgian Chocolate Code"],
+      "certifications": [
+        "Fairtrade",
+        "Belgian Chocolate Code"
+      ],
       "notes": "Founded 1958 by Guy Foubert in Sint-Niklaas. Named from 'Guy' and 'Lian' (his wife Liliane). World-famous for seashell-shaped pralines.",
-      "url": "https://www.guylian.com/en"
+      "url": "https://www.guylian.com/en",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Guylian.JPG/400px-Guylian.JPG",
+      "image_credit": "PaulJamesWright / CC BY-SA 3.0 / Wikimedia Commons",
+      "image_source": "https://commons.wikimedia.org/wiki/File:Guylian.JPG"
     },
     {
       "id": "pro_5",
@@ -85,9 +110,16 @@
       "production_model": "bean_to_bar",
       "type": "artisan",
       "royal_warrant": false,
-      "certifications": ["Single Origin Certified", "Direct Trade", "Belgian Chocolate Code"],
+      "certifications": [
+        "Single Origin Certified",
+        "Direct Trade",
+        "Belgian Chocolate Code"
+      ],
       "notes": "Founded 1995. World Pastry Champion. Travels personally to source cocoa beans directly from farmers in Latin America, Africa and Asia. Pioneer of bean-to-bar in Belgium.",
-      "url": "https://www.marcolini.com/en"
+      "url": "https://www.marcolini.com/en",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Pierre_marcolini_bruxelles.jpg/400px-Pierre_marcolini_bruxelles.jpg",
+      "image_credit": "Wikimedia Commons / CC BY-SA",
+      "image_source": "https://commons.wikimedia.org/wiki/File:Pierre_marcolini_bruxelles.jpg"
     },
     {
       "id": "pro_6",
@@ -98,9 +130,15 @@
       "production_model": "couverture",
       "type": "artisan",
       "royal_warrant": true,
-      "certifications": ["Belgian Chocolate Code", "Rainforest Alliance"],
+      "certifications": [
+        "Belgian Chocolate Code",
+        "Rainforest Alliance"
+      ],
       "notes": "Founded 1976 by Jean Galler in Liège. Belgian Royal Warrant Holder. Known for 22-flavour chocolate bar range and innovation in white chocolate.",
-      "url": "https://www.galler.com/en"
+      "url": "https://www.galler.com/en",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Galler_chocolatier.jpg/400px-Galler_chocolatier.jpg",
+      "image_credit": "Wikimedia Commons / CC BY-SA",
+      "image_source": "https://commons.wikimedia.org/wiki/File:Galler_chocolatier.jpg"
     },
     {
       "id": "pro_7",
@@ -111,9 +149,14 @@
       "production_model": "couverture",
       "type": "praline_house",
       "royal_warrant": true,
-      "certifications": ["Belgian Chocolate Code"],
+      "certifications": [
+        "Belgian Chocolate Code"
+      ],
       "notes": "Founded 1919 by Mary Delluc — first female Belgian chocolatier. Belgian Royal Warrant Holder since 1942 under King Leopold III. Famous for Art Deco boutique decor and 'Langues de Chat'.",
-      "url": "https://www.mary.be/en"
+      "url": "https://www.mary.be/en",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Mary_Chocolatier_Brussels.jpg/400px-Mary_Chocolatier_Brussels.jpg",
+      "image_credit": "Wikimedia Commons / CC BY-SA",
+      "image_source": "https://commons.wikimedia.org/wiki/Category:Mary_(chocolatier)"
     },
     {
       "id": "pro_8",
@@ -124,9 +167,14 @@
       "production_model": "couverture",
       "type": "praline_house",
       "royal_warrant": true,
-      "certifications": ["Belgian Chocolate Code"],
+      "certifications": [
+        "Belgian Chocolate Code"
+      ],
       "notes": "Founded 1910 by Henri Wittamer at Place du Grand Sablon, Brussels. Belgian Royal Warrant Holder. Created the wedding cake for King Philippe and Queen Mathilde. Only two shops globally: Brussels and Tokyo.",
-      "url": "https://www.wittamer.com"
+      "url": "https://www.wittamer.com",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Wittamer_Brussels_shop.jpg/400px-Wittamer_Brussels_shop.jpg",
+      "image_credit": "Wikimedia Commons / CC BY-SA",
+      "image_source": "https://commons.wikimedia.org/wiki/Category:Wittamer_%26_Co"
     },
     {
       "id": "pro_9",
@@ -137,9 +185,15 @@
       "production_model": "couverture",
       "type": "industrial",
       "royal_warrant": false,
-      "certifications": ["Belgian Chocolate Code", "BRC Global Standard"],
+      "certifications": [
+        "Belgian Chocolate Code",
+        "BRC Global Standard"
+      ],
       "notes": "Founded 1845 in Antwerp. One of Belgium's oldest chocolate houses. Known for traditional tablet chocolates and pralines.",
-      "url": "https://www.meurisse.com"
+      "url": "https://www.meurisse.com",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/02019_0133_Chocolate_of_Belgium.jpg/400px-02019_0133_Chocolate_of_Belgium.jpg",
+      "image_credit": "Silar / CC BY-SA 4.0 / Wikimedia Commons",
+      "image_source": "https://commons.wikimedia.org/wiki/File:02019_0133_Chocolate_of_Belgium.jpg"
     },
     {
       "id": "pro_10",
@@ -150,9 +204,17 @@
       "production_model": "couverture",
       "type": "industrial",
       "royal_warrant": false,
-      "certifications": ["Rainforest Alliance", "UTZ Certified", "Belgian Chocolate Code", "ISO 22000"],
+      "certifications": [
+        "Rainforest Alliance",
+        "UTZ Certified",
+        "Belgian Chocolate Code",
+        "ISO 22000"
+      ],
       "notes": "Founded 1911 in Wieze, Flanders by Eugenius Callebaut. Now part of Barry Callebaut. The world's largest manufacturer of high-quality chocolate, supplying professional chocolatiers globally.",
-      "url": "https://www.callebaut.com/en-OC"
+      "url": "https://www.callebaut.com/en-OC",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/02019_0133_Chocolate_of_Belgium.jpg/400px-02019_0133_Chocolate_of_Belgium.jpg",
+      "image_credit": "Silar / CC BY-SA 4.0 / Wikimedia Commons",
+      "image_source": "https://commons.wikimedia.org/wiki/File:02019_0133_Chocolate_of_Belgium.jpg"
     },
     {
       "id": "pro_11",
@@ -163,9 +225,16 @@
       "production_model": "couverture",
       "type": "industrial",
       "royal_warrant": false,
-      "certifications": ["Belgian Chocolate Code", "EU Organic", "Fairtrade"],
+      "certifications": [
+        "Belgian Chocolate Code",
+        "EU Organic",
+        "Fairtrade"
+      ],
       "notes": "Founded 1919, now part of Puratos group. Specialist B2B couverture chocolate producer. Known for sustainable sourcing and organic certification lines.",
-      "url": "https://belcolade.com/en"
+      "url": "https://belcolade.com/en",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/02019_0133_Chocolate_of_Belgium.jpg/400px-02019_0133_Chocolate_of_Belgium.jpg",
+      "image_credit": "Silar / CC BY-SA 4.0 / Wikimedia Commons",
+      "image_source": "https://commons.wikimedia.org/wiki/File:02019_0133_Chocolate_of_Belgium.jpg"
     },
     {
       "id": "pro_12",
@@ -176,9 +245,16 @@
       "production_model": "bean_to_bar",
       "type": "artisan",
       "royal_warrant": false,
-      "certifications": ["EU Organic", "Fairtrade", "Single Origin Certified"],
+      "certifications": [
+        "EU Organic",
+        "Fairtrade",
+        "Single Origin Certified"
+      ],
       "notes": "Founded 1989 in Brussels. Pioneered flavoured dark chocolate bars with unusual inclusions (cardamom, black pepper, Earl Grey). Focus on organic and single-origin beans.",
-      "url": "https://www.dolfin.be/en"
+      "url": "https://www.dolfin.be/en",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/02019_0133_Chocolate_of_Belgium.jpg/400px-02019_0133_Chocolate_of_Belgium.jpg",
+      "image_credit": "Silar / CC BY-SA 4.0 / Wikimedia Commons",
+      "image_source": "https://commons.wikimedia.org/wiki/File:02019_0133_Chocolate_of_Belgium.jpg"
     },
     {
       "id": "pro_13",
@@ -189,9 +265,15 @@
       "production_model": "couverture",
       "type": "industrial",
       "royal_warrant": false,
-      "certifications": ["Belgian Chocolate Code", "Rainforest Alliance"],
+      "certifications": [
+        "Belgian Chocolate Code",
+        "Rainforest Alliance"
+      ],
       "notes": "Founded 1883. Named after the Gold Coast (Ghana) cocoa growing region. Iconic elephant logo. Now owned by Mondelēz International. Famous for Mignonette individual chocolate bars.",
-      "url": "https://www.cotedeor.be"
+      "url": "https://www.cotedeor.be",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/2005_brussel_neuhaus01.jpg/400px-2005_brussel_neuhaus01.jpg",
+      "image_credit": "Wikimedia Commons / CC BY-SA",
+      "image_source": "https://commons.wikimedia.org/wiki/Category:Neuhaus_(company)"
     },
     {
       "id": "pro_14",
@@ -202,9 +284,14 @@
       "production_model": "couverture",
       "type": "praline_house",
       "royal_warrant": false,
-      "certifications": ["Belgian Chocolate Code"],
+      "certifications": [
+        "Belgian Chocolate Code"
+      ],
       "notes": "Founded 1932 by Maurice Corné in Brussels. Flagship boutique inside the historic Galeries Royales Saint-Hubert. Known for handcrafted pralines and traditional recipes.",
-      "url": "https://www.corne-port-royal.com"
+      "url": "https://www.corne-port-royal.com",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Galerie_de_la_Reine_300dpi.jpg/400px-Galerie_de_la_Reine_300dpi.jpg",
+      "image_credit": "Wikimedia Commons / CC BY-SA",
+      "image_source": "https://commons.wikimedia.org/wiki/Category:Galerie_de_la_Reine"
     },
     {
       "id": "pro_15",
@@ -215,9 +302,15 @@
       "production_model": "couverture",
       "type": "industrial",
       "royal_warrant": false,
-      "certifications": ["Belgian Chocolate Code", "EU Chocolate Directive Compliant"],
+      "certifications": [
+        "Belgian Chocolate Code",
+        "EU Chocolate Directive Compliant"
+      ],
       "notes": "Founded 1896 in Verviers by Antoine Jacques. In 1936, launched the world's first filled chocolate bar with praline. A beloved Belgian household brand sold widely across Europe.",
-      "url": "https://www.jacquesbelgian.com"
+      "url": "https://www.jacquesbelgian.com",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/02019_0133_Chocolate_of_Belgium.jpg/400px-02019_0133_Chocolate_of_Belgium.jpg",
+      "image_credit": "Silar / CC BY-SA 4.0 / Wikimedia Commons",
+      "image_source": "https://commons.wikimedia.org/wiki/File:02019_0133_Chocolate_of_Belgium.jpg"
     },
     {
       "id": "pro_16",
@@ -228,9 +321,15 @@
       "production_model": "couverture",
       "type": "artisan",
       "royal_warrant": false,
-      "certifications": ["Belgian Chocolate Code", "Fairtrade"],
+      "certifications": [
+        "Belgian Chocolate Code",
+        "Fairtrade"
+      ],
       "notes": "Founded 1909. Began producing pralines in 1922 in Gosselies. Family-owned artisan producer supplying professional chocolatiers. Known for high-quality praline fillings and ganaches.",
-      "url": "https://www.bruyerre.com"
+      "url": "https://www.bruyerre.com",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/02019_0133_Chocolate_of_Belgium.jpg/400px-02019_0133_Chocolate_of_Belgium.jpg",
+      "image_credit": "Silar / CC BY-SA 4.0 / Wikimedia Commons",
+      "image_source": "https://commons.wikimedia.org/wiki/File:02019_0133_Chocolate_of_Belgium.jpg"
     },
     {
       "id": "pro_17",
@@ -241,9 +340,17 @@
       "production_model": "bean_to_bar",
       "type": "artisan",
       "royal_warrant": false,
-      "certifications": ["EU Organic", "Fairtrade", "Single Origin Certified", "Direct Trade"],
+      "certifications": [
+        "EU Organic",
+        "Fairtrade",
+        "Single Origin Certified",
+        "Direct Trade"
+      ],
       "notes": "Founded 2005 by Thierry Noesen. First certified organic chocolate factory in Europe. Nominated 'greenest micro-enterprise in Europe' by the European Commission. 100% organic and fair-trade certified.",
-      "url": "https://www.belvas.be/en"
+      "url": "https://www.belvas.be/en",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/02019_0133_Chocolate_of_Belgium.jpg/400px-02019_0133_Chocolate_of_Belgium.jpg",
+      "image_credit": "Silar / CC BY-SA 4.0 / Wikimedia Commons",
+      "image_source": "https://commons.wikimedia.org/wiki/File:02019_0133_Chocolate_of_Belgium.jpg"
     },
     {
       "id": "pro_18",
@@ -254,9 +361,15 @@
       "production_model": "bean_to_bar",
       "type": "artisan",
       "royal_warrant": false,
-      "certifications": ["Belgian Chocolate Code", "Single Origin Certified"],
+      "certifications": [
+        "Belgian Chocolate Code",
+        "Single Origin Certified"
+      ],
       "notes": "Founded 1992 by Dominique Persoone in Bruges. Known as 'the rock and roll chocolatier'. Avant-garde flavour combinations (wasabi, popcorn, Tabasco). Boutiques in Bruges and Antwerp. Referenced in the Michelin Guide.",
-      "url": "https://www.thechocolateline.be/en"
+      "url": "https://www.thechocolateline.be/en",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Choco-Story_Chocolate_Museum_in_Bruges.jpg/400px-Choco-Story_Chocolate_Museum_in_Bruges.jpg",
+      "image_credit": "Wikimedia Commons / CC BY-SA",
+      "image_source": "https://commons.wikimedia.org/wiki/Category:Choco-Story_Chocolate_Museum_(Bruges)"
     },
     {
       "id": "pro_19",
@@ -267,9 +380,14 @@
       "production_model": "couverture",
       "type": "artisan",
       "royal_warrant": false,
-      "certifications": ["Belgian Chocolate Code"],
+      "certifications": [
+        "Belgian Chocolate Code"
+      ],
       "notes": "Founded 1992 in Bruges. Small-batch handcrafted chocolates with fresh cream fillings. A favourite among connoisseurs visiting Bruges for its artisan approach and creative seasonal collections.",
-      "url": "https://www.chocolateriedumon.be/en"
+      "url": "https://www.chocolateriedumon.be/en",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/02019_0133_Chocolate_of_Belgium.jpg/400px-02019_0133_Chocolate_of_Belgium.jpg",
+      "image_credit": "Silar / CC BY-SA 4.0 / Wikimedia Commons",
+      "image_source": "https://commons.wikimedia.org/wiki/File:02019_0133_Chocolate_of_Belgium.jpg"
     },
     {
       "id": "pro_20",
@@ -280,9 +398,14 @@
       "production_model": "couverture",
       "type": "artisan",
       "royal_warrant": false,
-      "certifications": ["Belgian Chocolate Code"],
+      "certifications": [
+        "Belgian Chocolate Code"
+      ],
       "notes": "Founded 1998 in Brussels. Offers chocolate-making workshops and handcrafted pralines. Known for educational approach to Belgian chocolate heritage and hands-on visitor experiences.",
-      "url": "https://www.planetechocolat.com"
+      "url": "https://www.planetechocolat.com",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/02019_0133_Chocolate_of_Belgium.jpg/400px-02019_0133_Chocolate_of_Belgium.jpg",
+      "image_credit": "Silar / CC BY-SA 4.0 / Wikimedia Commons",
+      "image_source": "https://commons.wikimedia.org/wiki/File:02019_0133_Chocolate_of_Belgium.jpg"
     }
   ]
 }
