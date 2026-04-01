@@ -17,6 +17,7 @@ TIERS = [
     (50, "Rare", "Guardian of Puppies", 0x3498DB),
     (10, "Uncommon", "Puppie Rescuer", 0x2ECC71),
     (1, "Common", "Puppie Helper", 0x95A5A6),
+    (0, "None", "Puppy Ignorer", 0x2F3136),
 ]
 
 
