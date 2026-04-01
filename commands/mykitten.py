@@ -26,7 +26,10 @@ KITTEN_SCENARIOS = [
     "Important question: Would you buy an expensive automatic litter box? Or a water fountain? :O",
     "Every time {} purrs, an electron somewhere changes direction.",
     "The kitten knocked over your pens. You finally found the pen you've been wondering about for a while. Plus, the kitten brought you one of your AirPods with its paw.",
-    "{} started playing games late at night. Hopefully the neighbors don't report us."
+    "{} started playing games late at night. Hopefully the neighbors don't report us.",
+    "A kitten infiltrated Jordan's computer. Jordan's raffle win probability decreased by %0.0001. (Still extremely high, but it's a start!)",
+    "{}, deleted the 'Subscriber Goal' with a single paw strike. Now everyone watches for free!",
+    "{} used your computer to order the most expensive wet food, premium kibble, and gourmet cat treats available online."
 ]
 
 LEGENDARY_LORE = [
@@ -141,7 +144,7 @@ def register(bot):
         embed = discord.Embed(
             title=f"🐱 What is {selected} Up To?",
             description=f"ദ്ദി/ᐠ｡‸｡ᐟ\\\n\n{scenario_text}",
-            color=0x2F3136
+            color=0x89CFF0 # Baby Blue
         )
 
         embed.add_field(name="Owner", value=interaction.user.mention, inline=True)
