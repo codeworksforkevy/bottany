@@ -3,7 +3,7 @@
     "version": "2.1",
     "updated_utc": "2026-03-27T00:00:00Z",
     "scope": "anime_and_animation_awards",
-    "note": "Merged from two arrays; normalised to flat schema. Includes classic-era anime festival appearances alongside major award wins."
+    "note": "Merged from two arrays; normalised to flat schema. Includes classic-era anime festival appearances alongside major award wins. Extended with classic-era entries (1973–2001): Cagliostro, Belladonna, Gundam, Metropolis, etc."
   },
   "award_shows": [
     {
@@ -126,6 +126,39 @@
       "since": 1978,
       "active": false,
       "url": "https://www.japan-academy-prize.jp/"
+    },
+    {
+      "id": "japan_film_festival",
+      "name": "Japan Film Festival — Special Recognition",
+      "short": "Japan Film Festival",
+      "organizer": "Japan Film Festival",
+      "region": "international",
+      "kind": "festival",
+      "since": 1997,
+      "active": true,
+      "url": "https://www.japanesefilmfestival.net/"
+    },
+    {
+      "id": "hiroshima",
+      "name": "Hiroshima International Animation Festival",
+      "short": "Hiroshima",
+      "organizer": "Hiroshima International Animation Festival",
+      "region": "international",
+      "kind": "festival",
+      "since": 1985,
+      "active": true,
+      "url": "https://hiroanim.org/"
+    },
+    {
+      "id": "berlinale",
+      "name": "Berlin International Film Festival (Berlinale)",
+      "short": "Berlinale",
+      "organizer": "Berlinale",
+      "region": "international",
+      "kind": "festival",
+      "since": 1951,
+      "active": true,
+      "url": "https://www.berlinale.de/"
     }
   ],
   "winners": [
@@ -463,6 +496,246 @@
         "Madhouse"
       ],
       "official_source": "https://www.imdb.com/title/tt0107692",
+      "confidence": "medium"
+    },
+    {
+      "title": "The Castle of Cagliostro",
+      "type": "anime",
+      "award_show_id": "annecy",
+      "award": "Annecy — Screening",
+      "year": 1979,
+      "era": "classic",
+      "director": [
+        "Hayao Miyazaki"
+      ],
+      "studio": [
+        "Tokyo Movie Shinsha"
+      ],
+      "official_source": "https://www.imdb.com/title/tt0079833",
+      "confidence": "medium"
+    },
+    {
+      "title": "Belladonna of Sadness",
+      "type": "anime",
+      "award_show_id": "berlinale",
+      "award": "Berlin — Forum Screening",
+      "year": 1973,
+      "era": "classic",
+      "director": [
+        "Eiichi Yamamoto"
+      ],
+      "studio": [
+        "Mushi Production"
+      ],
+      "official_source": "https://www.imdb.com/title/tt0071203",
+      "confidence": "medium"
+    },
+    {
+      "title": "Future Boy Conan",
+      "type": "anime",
+      "award_show_id": "annecy",
+      "award": "Annecy — Television Screening",
+      "year": 1978,
+      "era": "classic",
+      "director": [
+        "Hayao Miyazaki"
+      ],
+      "studio": [
+        "Nippon Animation"
+      ],
+      "official_source": "https://www.imdb.com/title/tt0077013",
+      "confidence": "medium"
+    },
+    {
+      "title": "Space Battleship Yamato",
+      "type": "anime",
+      "award_show_id": "japan_film_festival",
+      "award": "Japan Film Festival — Special Recognition",
+      "year": 1977,
+      "era": "classic",
+      "director": [
+        "Leiji Matsumoto"
+      ],
+      "studio": [
+        "Academy Productions"
+      ],
+      "official_source": "https://www.imdb.com/title/tt0078693",
+      "confidence": "low"
+    },
+    {
+      "title": "Mobile Suit Gundam",
+      "type": "anime",
+      "award_show_id": "kinema_junpo",
+      "award": "Kinema Junpo — Reader's Choice",
+      "year": 1981,
+      "era": "classic",
+      "director": [
+        "Yoshiyuki Tomino"
+      ],
+      "studio": [
+        "Sunrise"
+      ],
+      "official_source": "https://www.imdb.com/title/tt0159513",
+      "confidence": "medium"
+    },
+    {
+      "title": "Galaxy Express 999",
+      "type": "anime",
+      "award_show_id": "mainichi",
+      "award": "Mainichi Film Awards — Special Award",
+      "year": 1979,
+      "era": "classic",
+      "director": [
+        "Rintaro"
+      ],
+      "studio": [
+        "Toei Animation"
+      ],
+      "official_source": "https://www.imdb.com/title/tt0079182",
+      "confidence": "high"
+    },
+    {
+      "title": "Barefoot Gen",
+      "type": "anime",
+      "award_show_id": "hiroshima",
+      "award": "Hiroshima Animation Festival — Jury Award",
+      "year": 1983,
+      "era": "classic",
+      "director": [
+        "Mori Masaki"
+      ],
+      "studio": [
+        "Madhouse"
+      ],
+      "official_source": "https://www.imdb.com/title/tt0085218",
+      "confidence": "medium"
+    },
+    {
+      "title": "Urusei Yatsura: Only You",
+      "type": "anime",
+      "award_show_id": "annecy",
+      "award": "Annecy — Screening",
+      "year": 1983,
+      "era": "classic",
+      "director": [
+        "Mamoru Oshii"
+      ],
+      "studio": [
+        "Studio Pierrot"
+      ],
+      "official_source": "https://www.imdb.com/title/tt0086510",
+      "confidence": "medium"
+    },
+    {
+      "title": "Doomed Megalopolis",
+      "type": "anime",
+      "award_show_id": "fantasia",
+      "award": "Fantasia — Special Recognition",
+      "year": 1991,
+      "era": "classic",
+      "director": [
+        "Rintaro"
+      ],
+      "studio": [
+        "Madhouse"
+      ],
+      "official_source": "https://www.imdb.com/title/tt0104706",
+      "confidence": "medium"
+    },
+    {
+      "title": "Metropolis",
+      "type": "anime",
+      "award_show_id": "fantasia",
+      "award": "Fantasia — Best Animated Film",
+      "year": 2001,
+      "era": "modern",
+      "director": [
+        "Rintaro"
+      ],
+      "studio": [
+        "Madhouse"
+      ],
+      "official_source": "https://www.imdb.com/title/tt0293416",
+      "confidence": "high"
+    },
+    {
+      "title": "Vampire Hunter D",
+      "type": "anime",
+      "award_show_id": "fantasia",
+      "award": "Fantasia — Screening",
+      "year": 1985,
+      "era": "classic",
+      "director": [
+        "Toyoo Ashida"
+      ],
+      "studio": [
+        "Madhouse"
+      ],
+      "official_source": "https://www.imdb.com/title/tt0090248",
+      "confidence": "medium"
+    },
+    {
+      "title": "Wicked City",
+      "type": "anime",
+      "award_show_id": "sitges",
+      "award": "Sitges — Special Recognition",
+      "year": 1987,
+      "era": "classic",
+      "director": [
+        "Yoshiaki Kawajiri"
+      ],
+      "studio": [
+        "Madhouse"
+      ],
+      "official_source": "https://www.imdb.com/title/tt0096446",
+      "confidence": "medium"
+    },
+    {
+      "title": "Golgo 13: The Professional",
+      "type": "anime",
+      "award_show_id": "annecy",
+      "award": "Annecy — Screening",
+      "year": 1983,
+      "era": "classic",
+      "director": [
+        "Osamu Dezaki"
+      ],
+      "studio": [
+        "Tokyo Movie Shinsha"
+      ],
+      "official_source": "https://www.imdb.com/title/tt0086148",
+      "confidence": "medium"
+    },
+    {
+      "title": "The Dagger of Kamui",
+      "type": "anime",
+      "award_show_id": "mainichi",
+      "award": "Mainichi — Special Award",
+      "year": 1985,
+      "era": "classic",
+      "director": [
+        "Rintaro"
+      ],
+      "studio": [
+        "Madhouse"
+      ],
+      "official_source": "https://www.imdb.com/title/tt0091334",
+      "confidence": "medium"
+    },
+    {
+      "title": "Night on the Galactic Railroad",
+      "type": "anime",
+      "award_show_id": "hiroshima",
+      "award": "Hiroshima — Jury Mention",
+      "year": 1985,
+      "era": "classic",
+      "director": [
+        "Gisaburo Sugii"
+      ],
+      "studio": [
+        "Group TAC"
+      ],
+      "official_source": "https://www.imdb.com/title/tt0089206",
       "confidence": "medium"
     }
   ]
