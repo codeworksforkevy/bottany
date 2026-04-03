@@ -116,3 +116,32 @@ CREATE TABLE IF NOT EXISTS kitten_global_events (
     total_kittens        INTEGER DEFAULT 0
 
 );
+
+
+-- =============================================================================
+-- CHOCOLATE REGISTRY
+-- =============================================================================
+
+CREATE TABLE IF NOT EXISTS chocolate_registry (
+
+    id                   SERIAL PRIMARY KEY,
+
+    brand                TEXT NOT NULL UNIQUE,
+    city                 TEXT,
+    country              TEXT NOT NULL DEFAULT 'Belgium',
+    founded              INT,
+
+    category             TEXT,
+    technique            TEXT,
+
+    official_link        TEXT,
+    confidence           TEXT CHECK (confidence IN ('high', 'medium', 'low'))
+                         DEFAULT 'medium',
+
+    created_at           TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
+
+CREATE INDEX IF NOT EXISTS idx_choc_category  ON chocolate_registry (category);
+CREATE INDEX IF NOT EXISTS idx_choc_city      ON chocolate_registry (city);
+CREATE INDEX IF NOT EXISTS idx_choc_founded   ON chocolate_registry (founded);
