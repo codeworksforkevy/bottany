@@ -394,32 +394,60 @@ ON CONFLICT DO NOTHING;
 -- -----------------------------------------------------------------------------
 
 
-COMMIT;
-
--- seed.sql
-
-BEGIN;
-
--- -----------------------------------------------------------------------------
--- anime_awards (36 entries)
--- -----------------------------------------------------------------------------
-INSERT INTO anime_awards (...) VALUES
-...
-ON CONFLICT DO NOTHING;
 
 
 -- -----------------------------------------------------------------------------
 -- chocolate_registry — Batch 1 (15 entries)
 -- -----------------------------------------------------------------------------
-INSERT INTO chocolate_registry (...) VALUES
-...;
+INSERT INTO chocolate_registry (
+  brand, city, country, founded, category, technique, official_link, confidence
+) VALUES
+('The Chocolate Line','Bruges','Belgium',1992,'Artisan Chocolate','Experimental flavors / bean-to-bar','https://www.thechocolateline.be/','high'),
+('Dominique Persoone','Bruges','Belgium',1992,'Artisan Chocolate','Avant-garde chocolate techniques','https://www.thechocolateline.be/','high'),
+('Daskalidès','Ghent','Belgium',1931,'Praline','Traditional Belgian pralines','https://www.daskalides.be/','high'),
+('Van Dender','Brussels','Belgium',1978,'Haute Pâtisserie Chocolate','Pastry + chocolate fusion','https://www.vandender.com/','high'),
+('Yasushi Sasaki Chocolate','Brussels','Belgium',2015,'Artisan Chocolate','Precision Japanese-Belgian fusion','https://www.sasaki.brussels/','high'),
+('Bittersweet Chocolate Makers','Antwerp','Belgium',2013,'Bean-to-Bar','Small batch bean-to-bar','https://www.bittersweet.be/','high'),
+('Mike & Becky','Brussels','Belgium',2015,'Bean-to-Bar','Direct trade cacao / ethical sourcing','https://www.mikeandbecky.be/','high'),
+('Belvas','Ghislenghien','Belgium',2005,'Organic Chocolate','Organic / fair trade chocolate','https://www.belvas.be/','high'),
+('Planète Chocolat','Brussels','Belgium',1991,'Artisan Chocolate','Handcrafted pralines workshops','https://www.planetechocolat.com/','high'),
+('Laurent Gerbaud','Brussels','Belgium',2009,'Artisan Chocolate','Low sugar / fruit pairing chocolate','https://www.chocolatsgerbaud.be/','high'),
+('Concept Chocolate','Brussels','Belgium',2003,'Luxury Chocolate','High-end couverture / gastronomy','https://www.conceptchocolate.eu/','high'),
+('Zaabär','Brussels','Belgium',2007,'Chocolate Bar','Creative flavored bars','https://www.zaabar.com/','high'),
+('Cachet','Antwerp','Belgium',1987,'Chocolate Bar','Premium Belgian chocolate bars','https://www.cachetchocolate.com/','high'),
+('Barú','Brussels','Belgium',2007,'Chocolate Drinks','Chocolate powder / beverages','https://www.baru.be/','high'),
+('Ovidias','Brussels','Belgium',2008,'Luxury Chocolate','Gift-oriented pralines','https://www.ovidias.com/','high')
+ON CONFLICT (brand) DO NOTHING;
 
 
 -- -----------------------------------------------------------------------------
 -- chocolate_registry — Batch 2 (15 entries)
 -- -----------------------------------------------------------------------------
-INSERT INTO chocolate_registry (...) VALUES
-...;
+INSERT INTO chocolate_registry (
+  brand, city, country, founded, category, technique, official_link, confidence
+) VALUES
+('Dumon','Bruges','Belgium',1992,'Artisan Chocolate','Traditional handmade pralines','https://www.chocolatierdumon.com/','high'),
+('Spegelaere','Bruges','Belgium',1950,'Artisan Chocolate','Family-run traditional chocolate','https://www.spegelaere.be/','high'),
+('Depla','Bruges','Belgium',1958,'Artisan Chocolate','Classic Belgian pralines','https://www.chocolatierdepla.be/','high'),
+('Chocolaterie Sukerbuyc','Antwerp','Belgium',1976,'Artisan Chocolate','Handcrafted pralines / local tradition','https://www.sukerbuyc.be/','high'),
+('Del Rey','Antwerp','Belgium',1955,'Luxury Chocolate','High-end pastry chocolate','https://www.delrey.be/','high'),
+('Goossens','Antwerp','Belgium',1955,'Artisan Chocolate','Classic Belgian chocolate making','https://www.chocolateriegoossens.be/','high'),
+$str$BbyB (Benoît Nihant)$str$,'Brussels','Belgium',2013,'Bean-to-Bar','Premium bean-to-bar chocolate','https://www.bbyb.be/','high'),
+$str$Benoît Nihant$str$,'Awans','Belgium',2005,'Bean-to-Bar','Direct cacao sourcing / fine chocolate','https://www.benoitnihant.be/','high'),
+('Erik Van der Veken','Antwerp','Belgium',2000,'Artisan Chocolate','Contemporary praline design','https://www.erikvanderveken.be/','medium'),
+('Chocolatier M','Knokke','Belgium',2004,'Artisan Chocolate','Architectural chocolate design','https://www.chocolatier-m.be/','high'),
+('Centho Chocolates','Brussels','Belgium',1975,'Chocolate Bar','Classic Belgian chocolate bars','https://www.centho.be/','medium'),
+('Van Hoorebeke','Ghent','Belgium',1930,'Artisan Chocolate','Traditional recipes / heritage','https://www.vanhoorebeke.com/','medium'),
+('Choc Concept','Brussels','Belgium',2000,'Artisan Chocolate','Modern chocolate creations','https://www.chocconcept.be/','medium'),
+('Legast','Brussels','Belgium',1935,'Artisan Chocolate','Historic Belgian pralines','https://www.legast.be/','high'),
+('ISIS Chocolat','Brussels','Belgium',1923,'Artisan Chocolate','Traditional praline craftsmanship','https://www.isis-chocolat.be/','medium')
+ON CONFLICT (brand) DO NOTHING;
+
+
+-- -----------------------------------------------------------------------------
+-- kitten_pets / kitten_adoptions / kitten_global_events
+-- No seed data needed — populated at runtime by bot commands
+-- -----------------------------------------------------------------------------
 
 
 COMMIT;
