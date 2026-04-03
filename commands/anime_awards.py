@@ -155,7 +155,8 @@ def _build_embed(
 
     # Show thumbnail of the most recent / top result (avatar size)
     if winners:
-        thumb = winners[0].get("thumbnail", "")
+        thumb = (winners[0].get("thumbnail")
+                 or winners[0].get("thumbnail_cdn_fallback", ""))
         if thumb:
             embed.set_thumbnail(url=thumb)
 
@@ -212,7 +213,7 @@ def _build_detail_embed(item: Dict[str, Any]) -> discord.Embed:
     source  = item.get("official_source", "")
     imdb    = item.get("imdb_link", "")
     mal     = item.get("mal_link", "")
-    thumb   = item.get("thumbnail", "")
+    thumb   = item.get("thumbnail") or item.get("thumbnail_cdn_fallback", "")
 
     link_parts = []
     if source: link_parts.append(f"[Official]({source})")
