@@ -105,7 +105,7 @@ def _build_embed(
     if filters:
         title += f" — {', '.join(filters)}"
 
-    embed = discord.Embed(title=title, color=0xE74C3C)
+    embed = discord.Embed(title=title, color=0xFFF9C4)
 
     for item in winners[:20]:
         # ── Field name: title_display or title + jp, year ─────────────────
@@ -153,6 +153,12 @@ def _build_embed(
 
         embed.add_field(name=field_name, value="\n".join(lines), inline=False)
 
+    # Show thumbnail of the most recent / top result (avatar size)
+    if winners:
+        thumb = winners[0].get("thumbnail", "")
+        if thumb:
+            embed.set_thumbnail(url=thumb)
+
     shown  = min(len(winners), 20)
     footer = f"Showing {shown} of {total} result(s)"
     if total > 20:
@@ -173,7 +179,7 @@ def _build_detail_embed(item: Dict[str, Any]) -> discord.Embed:
     else:
         embed_title = title_en
 
-    embed = discord.Embed(title=embed_title, color=0xE74C3C)
+    embed = discord.Embed(title=embed_title, color=0xFFF9C4)
 
     type_label = _TYPE_LABELS.get(itype.lower(), itype)
     if type_label:
@@ -349,7 +355,7 @@ class AnimeGroup(app_commands.Group):
             return
 
         shows = data.get("award_shows", [])
-        embed = discord.Embed(title="アニメアワード (Anime Awards) — Shows", color=0xE74C3C)
+        embed = discord.Embed(title="アニメアワード (Anime Awards) — Shows", color=0xFFF9C4)
 
         for show in shows:
             name   = show.get("name", "Unknown")
