@@ -177,11 +177,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0245429",
       "confidence": "high",
-      "thumbnail": "https://cdn.bottany.app/anime/spirited_away.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/6/79597l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0245429",
       "mal_link": "https://myanimelist.net/anime/199",
       "title_jp": "千と千尋の神隠し",
-      "title_display": "Spirited Away | 千と千尋の神隠し"
+      "title_display": "Spirited Away | 千と千尋の神隠し",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/spirited_away.jpg"
     },
     {
       "title": "Akira",
@@ -198,11 +199,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0094625",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/akira_1988.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1408/114012l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0094625",
       "mal_link": "https://myanimelist.net/anime/47",
       "title_jp": "アキラ",
-      "title_display": "Akira | アキラ"
+      "title_display": "Akira | アキラ",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/akira_1988.jpg"
     },
     {
       "title": "Nausicaä of the Valley of the Wind",
@@ -219,11 +221,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0087544",
       "confidence": "high",
-      "thumbnail": "https://cdn.bottany.app/anime/nausicaa.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/10/75914l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0087544",
       "mal_link": "https://myanimelist.net/anime/572",
       "title_jp": "風の谷のナウシカ",
-      "title_display": "Nausicaä of the Valley of the Wind | 風の谷のナウシカ"
+      "title_display": "Nausicaä of the Valley of the Wind | 風の谷のナウシカ",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/nausicaa.jpg"
     },
     {
       "title": "Ghost in the Shell",
@@ -240,11 +243,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0113568",
       "confidence": "high",
-      "thumbnail": "https://cdn.bottany.app/anime/ghost_in_the_shell.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/10/82594l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0113568",
       "mal_link": "https://myanimelist.net/anime/43",
       "title_jp": "攻殻機動隊",
-      "title_display": "Ghost in the Shell | 攻殻機動隊"
+      "title_display": "Ghost in the Shell | 攻殻機動隊",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/ghost_in_the_shell.jpg"
     },
     {
       "title": "Perfect Blue",
@@ -261,11 +265,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0156887",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/perfect_blue.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1254/134212l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0156887",
       "mal_link": "https://myanimelist.net/anime/437",
       "title_jp": "パーフェクトブルー",
-      "title_display": "Perfect Blue | パーフェクトブルー"
+      "title_display": "Perfect Blue | パーフェクトブルー",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/perfect_blue.jpg"
     },
     {
       "title": "Princess Mononoke",
@@ -282,11 +287,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0119698",
       "confidence": "high",
-      "thumbnail": "https://cdn.bottany.app/anime/mononoke.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1355/147277l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0119698",
       "mal_link": "https://myanimelist.net/anime/164",
       "title_jp": "もののけ姫",
-      "title_display": "Princess Mononoke | もののけ姫"
+      "title_display": "Princess Mononoke | もののけ姫",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/mononoke.jpg"
     },
     {
       "title": "Grave of the Fireflies",
@@ -303,11 +309,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0095327",
       "confidence": "high",
-      "thumbnail": "https://cdn.bottany.app/anime/fireflies.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1485/141208l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0095327",
       "mal_link": "https://myanimelist.net/anime/578",
       "title_jp": "火垂るの墓",
-      "title_display": "Grave of the Fireflies | 火垂るの墓"
+      "title_display": "Grave of the Fireflies | 火垂るの墓",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/fireflies.jpg"
     },
     {
       "title": "Angel’s Egg",
@@ -324,11 +331,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0208502",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/angels_egg.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1034/135640l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0208502",
       "mal_link": "https://myanimelist.net/anime/885",
       "title_jp": "天使のたまご",
-      "title_display": "Angel’s Egg | 天使のたまご"
+      "title_display": "Angel’s Egg | 天使のたまご",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/angels_egg.jpg"
     },
     {
       "title": "Patlabor: The Movie",
@@ -345,11 +353,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0098062",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/patlabor.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/5/74786l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0098062",
       "mal_link": "https://myanimelist.net/anime/1095",
       "title_jp": "機動警察パトレイバー",
-      "title_display": "Patlabor: The Movie | 機動警察パトレイバー"
+      "title_display": "Patlabor: The Movie | 機動警察パトレイバー",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/patlabor.jpg"
     },
     {
       "title": "Millennium Actress",
@@ -366,11 +375,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0291350",
       "confidence": "high",
-      "thumbnail": "https://cdn.bottany.app/anime/millennium_actress.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1648/93626l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0291350",
       "mal_link": "https://myanimelist.net/anime/1033",
       "title_jp": "千年女優",
-      "title_display": "Millennium Actress | 千年女優"
+      "title_display": "Millennium Actress | 千年女優",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/millennium_actress.jpg"
     },
     {
       "title": "Tokyo Godfathers",
@@ -387,11 +397,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0388473",
       "confidence": "high",
-      "thumbnail": "https://cdn.bottany.app/anime/tokyo_godfathers.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1480/132791l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0388473",
       "mal_link": "https://myanimelist.net/anime/759",
       "title_jp": "東京ゴッドファーザーズ",
-      "title_display": "Tokyo Godfathers | 東京ゴッドファーザーズ"
+      "title_display": "Tokyo Godfathers | 東京ゴッドファーザーズ",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/tokyo_godfathers.jpg"
     },
     {
       "title": "Jin-Roh: The Wolf Brigade",
@@ -408,11 +419,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0193253",
       "confidence": "high",
-      "thumbnail": "https://cdn.bottany.app/anime/jin_roh.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1323/103343l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0193253",
       "mal_link": "https://myanimelist.net/anime/570",
       "title_jp": "人狼",
-      "title_display": "Jin-Roh: The Wolf Brigade | 人狼"
+      "title_display": "Jin-Roh: The Wolf Brigade | 人狼",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/jin_roh.jpg"
     },
     {
       "title": "Royal Space Force: The Wings of Honneamise",
@@ -429,11 +441,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0093207",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/honneamise.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1811/112663l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0093207",
       "mal_link": "https://myanimelist.net/anime/1034",
       "title_jp": "王立宇宙軍 オネアミスの翼",
-      "title_display": "Royal Space Force: The Wings of Honneamise | 王立宇宙軍 オネアミスの翼"
+      "title_display": "Royal Space Force: The Wings of Honneamise | 王立宇宙軍 オネアミスの翼",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/honneamise.jpg"
     },
     {
       "title": "My Neighbor Totoro",
@@ -450,11 +463,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0096283",
       "confidence": "high",
-      "thumbnail": "https://cdn.bottany.app/anime/totoro.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1110/147278l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0096283",
       "mal_link": "https://myanimelist.net/anime/523",
       "title_jp": "となりのトトロ",
-      "title_display": "My Neighbor Totoro | となりのトトロ"
+      "title_display": "My Neighbor Totoro | となりのトトロ",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/totoro.jpg"
     },
     {
       "title": "Kiki’s Delivery Service",
@@ -471,11 +485,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0097814",
       "confidence": "high",
-      "thumbnail": "https://cdn.bottany.app/anime/kiki.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1579/140483l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0097814",
       "mal_link": "https://myanimelist.net/anime/512",
       "title_jp": "魔女の宅急便",
-      "title_display": "Kiki’s Delivery Service | 魔女の宅急便"
+      "title_display": "Kiki’s Delivery Service | 魔女の宅急便",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/kiki.jpg"
     },
     {
       "title": "Castle in the Sky",
@@ -492,11 +507,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0092067",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/laputa.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/5/37799l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0092067",
       "mal_link": "https://myanimelist.net/anime/513",
       "title_jp": "天空の城ラピュタ",
-      "title_display": "Laputa: Castle in the Sky | 天空の城ラピュタ"
+      "title_display": "Laputa: Castle in the Sky | 天空の城ラピュタ",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/laputa.jpg"
     },
     {
       "title": "Porco Rosso",
@@ -513,11 +529,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0104652",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/porco_rosso.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1728/138709l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0104652",
       "mal_link": "https://myanimelist.net/anime/416",
       "title_jp": "紅の豚",
-      "title_display": "Porco Rosso | 紅の豚"
+      "title_display": "Porco Rosso | 紅の豚",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/porco_rosso.jpg"
     },
     {
       "title": "Only Yesterday",
@@ -534,11 +551,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0102587",
       "confidence": "high",
-      "thumbnail": "https://cdn.bottany.app/anime/only_yesterday.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1289/138708l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0102587",
       "mal_link": "https://myanimelist.net/anime/1029",
       "title_jp": "おもひでぽろぽろ",
-      "title_display": "Only Yesterday | おもひでぽろぽろ"
+      "title_display": "Only Yesterday | おもひでぽろぽろ",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/only_yesterday.jpg"
     },
     {
       "title": "Roujin Z",
@@ -555,11 +573,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0102802",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/roujin_z.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1644/131230l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0102802",
       "mal_link": "https://myanimelist.net/anime/200",
       "title_jp": "老人Z",
-      "title_display": "Roujin Z | 老人Z"
+      "title_display": "Roujin Z | 老人Z",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/roujin_z.jpg"
     },
     {
       "title": "Memories",
@@ -576,11 +595,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0113799",
       "confidence": "high",
-      "thumbnail": "https://cdn.bottany.app/anime/memories.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/9/74781l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0113799",
       "mal_link": "https://myanimelist.net/anime/1462",
       "title_jp": "MEMORIES",
-      "title_display": "Memories | MEMORIES"
+      "title_display": "Memories | MEMORIES",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/memories.jpg"
     },
     {
       "title": "Ninja Scroll",
@@ -597,11 +617,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0107692",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/ninja_scroll.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1520/145971l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0107692",
       "mal_link": "https://myanimelist.net/anime/617",
       "title_jp": "獣兵衛忍風帖",
-      "title_display": "Ninja Scroll | 獣兵衛忍風帖"
+      "title_display": "Ninja Scroll | 獣兵衛忍風帖",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/ninja_scroll.jpg"
     },
     {
       "title": "The Castle of Cagliostro",
@@ -618,11 +639,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0079833",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/cagliostro.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/5/26182l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0079833",
       "mal_link": "https://myanimelist.net/anime/1430",
       "title_jp": "カリオストロの城",
-      "title_display": "The Castle of Cagliostro | カリオストロの城"
+      "title_display": "The Castle of Cagliostro | カリオストロの城",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/cagliostro.jpg"
     },
     {
       "title": "Belladonna of Sadness",
@@ -639,11 +661,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0071203",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/belladonna.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/11/24740l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0071203",
       "mal_link": "https://myanimelist.net/anime/3220",
       "title_jp": "哀しみのベラドンナ",
-      "title_display": "Belladonna of Sadness | 哀しみのベラドンナ"
+      "title_display": "Belladonna of Sadness | 哀しみのベラドンナ",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/belladonna.jpg"
     },
     {
       "title": "Future Boy Conan",
@@ -660,11 +683,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0077013",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/conan.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/6/17529l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0077013",
       "mal_link": "https://myanimelist.net/anime/302",
       "title_jp": "未来少年コナン",
-      "title_display": "Future Boy Conan | 未来少年コナン"
+      "title_display": "Future Boy Conan | 未来少年コナン",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/conan.jpg"
     },
     {
       "title": "Space Battleship Yamato",
@@ -681,11 +705,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0078693",
       "confidence": "low",
-      "thumbnail": "https://cdn.bottany.app/anime/yamato.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/12/16154l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0078693",
       "mal_link": "https://myanimelist.net/anime/1650",
       "title_jp": "宇宙戦艦ヤマト",
-      "title_display": "Space Battleship Yamato | 宇宙戦艦ヤマト"
+      "title_display": "Space Battleship Yamato | 宇宙戦艦ヤマト",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/yamato.jpg"
     },
     {
       "title": "Mobile Suit Gundam",
@@ -702,11 +727,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0159513",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/gundam.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1915/128896l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0159513",
       "mal_link": "https://myanimelist.net/anime/1090",
       "title_jp": "機動戦士ガンダム",
-      "title_display": "Mobile Suit Gundam I | 機動戦士ガンダム"
+      "title_display": "Mobile Suit Gundam I | 機動戦士ガンダム",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/gundam.jpg"
     },
     {
       "title": "Galaxy Express 999",
@@ -723,11 +749,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0079182",
       "confidence": "high",
-      "thumbnail": "https://cdn.bottany.app/anime/galaxy999.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1685/104554l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0079182",
       "mal_link": "https://myanimelist.net/anime/1491",
       "title_jp": "銀河鉄道999",
-      "title_display": "Galaxy Express 999 | 銀河鉄道999"
+      "title_display": "Galaxy Express 999 | 銀河鉄道999",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/galaxy999.jpg"
     },
     {
       "title": "Barefoot Gen",
@@ -744,11 +771,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0085218",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/barefoot_gen.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1873/98756l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0085218",
       "mal_link": "https://myanimelist.net/anime/1824",
       "title_jp": "はだしのゲン",
-      "title_display": "Barefoot Gen | はだしのゲン"
+      "title_display": "Barefoot Gen | はだしのゲン",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/barefoot_gen.jpg"
     },
     {
       "title": "Urusei Yatsura: Only You",
@@ -765,11 +793,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0086510",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/urusei.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/12/82632l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0086510",
       "mal_link": "https://myanimelist.net/anime/192",
       "title_jp": "うる星やつら オンリー・ユー",
-      "title_display": "Urusei Yatsura: Only You | うる星やつら オンリー・ユー"
+      "title_display": "Urusei Yatsura: Only You | うる星やつら オンリー・ユー",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/urusei.jpg"
     },
     {
       "title": "Doomed Megalopolis",
@@ -786,11 +815,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0104706",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/teito.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/3/88664l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0104706",
       "mal_link": "https://myanimelist.net/anime/1148",
       "title_jp": "帝都物語",
-      "title_display": "Doomed Megalopolis | 帝都物語"
+      "title_display": "Doomed Megalopolis | 帝都物語",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/teito.jpg"
     },
     {
       "title": "Metropolis",
@@ -807,11 +837,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0293416",
       "confidence": "high",
-      "thumbnail": "https://cdn.bottany.app/anime/metropolis.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/4/75601l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0293416",
       "mal_link": "https://myanimelist.net/anime/522",
       "title_jp": "メトロポリス",
-      "title_display": "Metropolis | メトロポリス"
+      "title_display": "Metropolis | メトロポリス",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/metropolis.jpg"
     },
     {
       "title": "Vampire Hunter D",
@@ -828,11 +859,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0090248",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/vampire_d.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1571/135153l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0090248",
       "mal_link": "https://myanimelist.net/anime/543",
       "title_jp": "吸血鬼ハンターD",
-      "title_display": "Vampire Hunter D | 吸血鬼ハンターD"
+      "title_display": "Vampire Hunter D | 吸血鬼ハンターD",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/vampire_d.jpg"
     },
     {
       "title": "Wicked City",
@@ -849,11 +881,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0096446",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/wicked_city.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/2/50021l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0096446",
       "mal_link": "https://myanimelist.net/anime/1107",
       "title_jp": "妖獣都市",
-      "title_display": "Wicked City | 妖獣都市"
+      "title_display": "Wicked City | 妖獣都市",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/wicked_city.jpg"
     },
     {
       "title": "Golgo 13: The Professional",
@@ -870,11 +903,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0086148",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/golgo13.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1476/102570l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0086148",
       "mal_link": "https://myanimelist.net/anime/1760",
       "title_jp": "ゴルゴ13",
-      "title_display": "Golgo 13: The Professional | ゴルゴ13"
+      "title_display": "Golgo 13: The Professional | ゴルゴ13",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/golgo13.jpg"
     },
     {
       "title": "The Dagger of Kamui",
@@ -891,11 +925,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0091334",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/kamui.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1073/94233l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0091334",
       "mal_link": "https://myanimelist.net/anime/496",
       "title_jp": "カムイの剣",
-      "title_display": "The Dagger of Kamui | カムイの剣"
+      "title_display": "The Dagger of Kamui | カムイの剣",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/kamui.jpg"
     },
     {
       "title": "Night on the Galactic Railroad",
@@ -912,11 +947,12 @@
       ],
       "official_source": "https://www.imdb.com/title/tt0089206",
       "confidence": "medium",
-      "thumbnail": "https://cdn.bottany.app/anime/galactic_railroad.jpg",
+      "thumbnail": "https://myanimelist.net/images/anime/1694/120347l.jpg",
       "imdb_link": "https://www.imdb.com/title/tt0089206",
       "mal_link": "https://myanimelist.net/anime/1441",
       "title_jp": "銀河鉄道の夜",
-      "title_display": "Night on the Galactic Railroad | 銀河鉄道の夜"
+      "title_display": "Night on the Galactic Railroad | 銀河鉄道の夜",
+      "thumbnail_cdn_fallback": "https://cdn.bottany.app/anime/galactic_railroad.jpg"
     }
   ]
 }
