@@ -19,19 +19,30 @@ _TYPE_CHOICES = [
 ]
 
 _SHOW_CHOICES = [
-    app_commands.Choice(name="🏆 Academy Awards (Oscars)", value="oscars"),
-    app_commands.Choice(name="🎌 Japan Academy Film Prize", value="japan_academy"),
-    app_commands.Choice(name="🌟 Annecy Festival",          value="annecy"),
-    app_commands.Choice(name="🎭 Annie Awards",             value="annie"),
-    app_commands.Choice(name="🇯🇵 TAAF",                     value="taaf"),
+    app_commands.Choice(name="🏆 Academy Awards (Oscars)",   value="oscars"),
+    app_commands.Choice(name="🎌 Japan Academy Film Prize",  value="japan_academy"),
+    app_commands.Choice(name="🌟 Annecy Festival",           value="annecy"),
+    app_commands.Choice(name="🎭 Annie Awards",              value="annie"),
+    app_commands.Choice(name="🇯🇵 TAAF",                      value="taaf"),
+    app_commands.Choice(name="🎥 Mainichi Film Awards",      value="mainichi"),
+    app_commands.Choice(name="🎃 Fantasia Festival",         value="fantasia"),
+    app_commands.Choice(name="🕷️ Sitges Film Festival",      value="sitges"),
+    app_commands.Choice(name="🎞️ Blue Ribbon Awards",        value="blue_ribbon"),
+    app_commands.Choice(name="📰 Kinema Junpō Awards",       value="kinema_junpo"),
 ]
 
 _SHOW_EMOJIS = {
-    "oscars":        "🏆",
-    "japan_academy": "🎌",
-    "annecy":        "🌟",
-    "annie":         "🎭",
-    "taaf":          "🇯🇵",
+    "oscars":             "🏆",
+    "japan_academy":      "🎌",
+    "japan_academy_pre":  "🎌",
+    "annecy":             "🌟",
+    "annie":              "🎭",
+    "taaf":               "🇯🇵",
+    "mainichi":           "🎥",
+    "fantasia":           "🎃",
+    "sitges":             "🕷️",
+    "blue_ribbon":        "🎞️",
+    "kinema_junpo":       "📰",
 }
 
 _TYPE_EMOJIS = {
