@@ -1,820 +1,1451 @@
-[
-  {
-    "title": {
-      "display": "Spirited Away | 千と千尋の神隠し",
-      "en": "Spirited Away",
-      "jp": "千と千尋の神隠し"
-    },
-    "type": "anime",
-    "year": 2003,
-    "era": "modern",
-    "award": {
-      "show_id": "oscars",
-      "name": "Academy Awards — Best Animated Feature",
-      "category": "Best Animated Feature",
-      "award_type": "feature",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Hayao Miyazaki"],
-      "studio": ["Studio Ghibli"],
-      "production": ["Tokuma Shoten"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation / Digital (Mixed)",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/spirited_away.jpg"
-    },
-    "links": {
-      "official": "https://www.ghibli.jp/",
-      "imdb": "https://www.imdb.com/title/tt0245429",
-      "mal": "https://myanimelist.net/anime/199"
-    },
-    "sources": [
-      "https://awardsdatabase.oscars.org/"
-    ],
-    "confidence": "high"
+{
+  "meta": {
+    "registry_version": "3.0",
+    "scope": "winners_and_nominees",
+    "years_covered": "2015-2025",
+    "policy": "official_sources_only",
+    "updated_utc": "2026-03-27T00:00:00Z"
   },
-
-  {
-    "title": {
-      "display": "Akira | アキラ",
-      "en": "Akira",
-      "jp": "アキラ"
+  "awards": {
+    "tga": {
+      "name": "The Game Awards"
     },
-    "type": "anime",
-    "year": 1988,
-    "era": "classic",
-    "award": {
-      "show_id": "annecy",
-      "name": "Annecy — Screening",
-      "category": "Official Selection",
-      "award_type": "screening",
-      "jp_label": "賞 (Award)"
+    "bafta": {
+      "name": "BAFTA Games Awards"
     },
-    "credits": {
-      "director": ["Katsuhiro Otomo"],
-      "studio": ["Tokyo Movie Shinsha"],
-      "production": ["Akira Committee"]
+    "dice": {
+      "name": "D.I.C.E. Awards"
     },
-    "technical": {
-      "animation_technique": "Cel animation",
-      "format": "feature film"
+    "gja": {
+      "name": "Golden Joystick Awards"
     },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/akira_1988.jpg"
+    "ign": {
+      "name": "IGN's Best of Year"
     },
-    "links": {
-      "official": "https://www.akira2019.com/",
-      "imdb": "https://www.imdb.com/title/tt0094625",
-      "mal": "https://myanimelist.net/anime/47"
-    },
-    "sources": [
-      "https://www.annecyfestival.com/"
-    ],
-    "confidence": "medium"
+    "gdc": {
+      "name": "GDC Choice Awards"
+    }
   },
-
-  {
-    "title": {
-      "display": "Nausicaä of the Valley of the Wind | 風の谷のナウシカ",
-      "en": "Nausicaä of the Valley of the Wind",
-      "jp": "風の谷のナウシカ"
-    },
-    "type": "anime",
-    "year": 1984,
-    "era": "classic",
-    "award": {
-      "show_id": "mainichi",
-      "name": "Mainichi Film Awards — Ofuji Award",
-      "category": "Ofuji Noburo Award",
-      "award_type": "special",
-      "jp_label": "大賞 (Grand Prize)"
-    },
-    "credits": {
-      "director": ["Hayao Miyazaki"],
-      "studio": ["Topcraft"],
-      "production": ["Tokuma Shoten"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/nausicaa.jpg"
-    },
-    "links": {
-      "official": "https://www.ghibli.jp/",
-      "imdb": "https://www.imdb.com/title/tt0087544",
-      "mal": "https://myanimelist.net/anime/572"
-    },
-    "sources": [
-      "https://mainichi.jp/"
-    ],
-    "confidence": "high"
-  },
-
-  {
-    "title": {
-      "display": "Ghost in the Shell | 攻殻機動隊",
-      "en": "Ghost in the Shell",
-      "jp": "攻殻機動隊"
-    },
-    "type": "anime",
-    "year": 1995,
-    "era": "classic",
-    "award": {
-      "show_id": "sitges",
-      "name": "Sitges — Best Animated Film",
-      "category": "Best Animated Film",
-      "award_type": "feature",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Mamoru Oshii"],
-      "studio": ["Production I.G"],
-      "production": ["Bandai Visual"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation / Digital (Mixed)",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/ghost_in_the_shell.jpg"
-    },
-    "links": {
-      "official": "https://www.ghostintheshell.jp/",
-      "imdb": "https://www.imdb.com/title/tt0113568",
-      "mal": "https://myanimelist.net/anime/43"
-    },
-    "sources": [
-      "https://sitgesfilmfestival.com/"
-    ],
-    "confidence": "high"
-  },
-
-  {
-    "title": {
-      "display": "Perfect Blue | パーフェクトブルー",
-      "en": "Perfect Blue",
-      "jp": "パーフェクトブルー"
-    },
-    "type": "anime",
-    "year": 1997,
-    "era": "classic",
-    "award": {
-      "show_id": "fantasia",
-      "name": "Fantasia Festival — Jury Mention",
-      "category": "Best Asian Film",
-      "award_type": "jury",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Satoshi Kon"],
-      "studio": ["Madhouse"],
-      "production": ["Rex Entertainment"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/perfect_blue.jpg"
-    },
-    "links": {
-      "official": "https://www.madhouse.co.jp/",
-      "imdb": "https://www.imdb.com/title/tt0156887",
-      "mal": "https://myanimelist.net/anime/437"
-    },
-    "sources": [
-      "https://fantasiafestival.com/"
-    ],
-    "confidence": "medium"
-  }
-
-  {
-    "title": {
-      "display": "Princess Mononoke | もののけ姫",
-      "en": "Princess Mononoke",
-      "jp": "もののけ姫"
-    },
-    "type": "anime",
-    "year": 1997,
-    "era": "classic",
-    "award": {
-      "show_id": "japan_academy_pre",
-      "name": "Japan Academy — Special Award",
-      "category": "Special Recognition",
-      "award_type": "special",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Hayao Miyazaki"],
-      "studio": ["Studio Ghibli"],
-      "production": ["Tokuma Shoten"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation / Digital (Mixed)",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/mononoke.jpg"
-    },
-    "links": {
-      "official": "https://www.ghibli.jp/",
-      "imdb": "https://www.imdb.com/title/tt0119698",
-      "mal": "https://myanimelist.net/anime/164"
-    },
-    "sources": [
-      "https://www.japan-academy-prize.jp/"
-    ],
-    "confidence": "high"
-  },
-
-  {
-    "title": {
-      "display": "Grave of the Fireflies | 火垂るの墓",
-      "en": "Grave of the Fireflies",
-      "jp": "火垂るの墓"
-    },
-    "type": "anime",
-    "year": 1988,
-    "era": "classic",
-    "award": {
-      "show_id": "blue_ribbon",
-      "name": "Blue Ribbon Awards — Special Award",
-      "category": "Special Award",
-      "award_type": "special",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Isao Takahata"],
-      "studio": ["Studio Ghibli"],
-      "production": ["Shinchosha"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/fireflies.jpg"
-    },
-    "links": {
-      "official": "https://www.ghibli.jp/",
-      "imdb": "https://www.imdb.com/title/tt0095327",
-      "mal": "https://myanimelist.net/anime/578"
-    },
-    "sources": [
-      "https://www.allcinema.net/"
-    ],
-    "confidence": "high"
-  },
-
-  {
-    "title": {
-      "display": "Angel’s Egg | 天使のたまご",
-      "en": "Angel’s Egg",
-      "jp": "天使のたまご"
-    },
-    "type": "anime",
-    "year": 1985,
-    "era": "classic",
-    "award": {
-      "show_id": "annecy",
-      "name": "Annecy — Jury Mention",
-      "category": "Jury Mention",
-      "award_type": "jury",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Mamoru Oshii"],
-      "studio": ["Studio Deen"],
-      "production": ["Tokuma Shoten"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/angels_egg.jpg"
-    },
-    "links": {
-      "official": "https://www.deen.co.jp/",
-      "imdb": "https://www.imdb.com/title/tt0208502",
-      "mal": "https://myanimelist.net/anime/885"
-    },
-    "sources": [
-      "https://www.annecyfestival.com/"
-    ],
-    "confidence": "medium"
-  },
-
-  {
-    "title": {
-      "display": "Patlabor: The Movie | 機動警察パトレイバー",
-      "en": "Patlabor: The Movie",
-      "jp": "機動警察パトレイバー"
-    },
-    "type": "anime",
-    "year": 1989,
-    "era": "classic",
-    "award": {
-      "show_id": "mainichi",
-      "name": "Mainichi Film Awards — Special Mention",
-      "category": "Special Mention",
-      "award_type": "special",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Mamoru Oshii"],
-      "studio": ["Production I.G"],
-      "production": ["Bandai Visual"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/patlabor.jpg"
-    },
-    "links": {
-      "official": "https://www.production-ig.co.jp/",
-      "imdb": "https://www.imdb.com/title/tt0098062",
-      "mal": "https://myanimelist.net/anime/1095"
-    },
-    "sources": [
-      "https://mainichi.jp/"
-    ],
-    "confidence": "medium"
-  },
-
-  {
-    "title": {
-      "display": "Millennium Actress | 千年女優",
-      "en": "Millennium Actress",
-      "jp": "千年女優"
-    },
-    "type": "anime",
-    "year": 2001,
-    "era": "modern",
-    "award": {
-      "show_id": "fantasia",
-      "name": "Fantasia Festival — Best Animated Film",
-      "category": "Best Animated Film",
-      "award_type": "feature",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Satoshi Kon"],
-      "studio": ["Madhouse"],
-      "production": ["Kadokawa Shoten"]
-    },
-    "technical": {
-      "animation_technique": "Digital animation",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/millennium_actress.jpg"
-    },
-    "links": {
-      "official": "https://www.madhouse.co.jp/",
-      "imdb": "https://www.imdb.com/title/tt0291350",
-      "mal": "https://myanimelist.net/anime/1033"
-    },
-    "sources": [
-      "https://fantasiafestival.com/"
-    ],
-    "confidence": "high"
-  },
-
-  {
-    "title": {
-      "display": "Tokyo Godfathers | 東京ゴッドファーザーズ",
-      "en": "Tokyo Godfathers",
-      "jp": "東京ゴッドファーザーズ"
-    },
-    "type": "anime",
-    "year": 2003,
-    "era": "modern",
-    "award": {
-      "show_id": "sitges",
-      "name": "Sitges — Special Award",
-      "category": "Special Award",
-      "award_type": "special",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Satoshi Kon"],
-      "studio": ["Madhouse"],
-      "production": ["Sony Pictures Japan"]
-    },
-    "technical": {
-      "animation_technique": "Digital animation",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/tokyo_godfathers.jpg"
-    },
-    "links": {
-      "official": "https://www.madhouse.co.jp/",
-      "imdb": "https://www.imdb.com/title/tt0388473",
-      "mal": "https://myanimelist.net/anime/759"
-    },
-    "sources": [
-      "https://sitgesfilmfestival.com/"
-    ],
-    "confidence": "high"
-  },
-
-  {
-    "title": {
-      "display": "Jin-Roh: The Wolf Brigade | 人狼",
-      "en": "Jin-Roh: The Wolf Brigade",
-      "jp": "人狼"
-    },
-    "type": "anime",
-    "year": 1999,
-    "era": "classic",
-    "award": {
-      "show_id": "fantasia",
-      "name": "Fantasia Festival — Jury Award",
-      "category": "Best Asian Film",
-      "award_type": "jury",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Hiroyuki Okiura"],
-      "studio": ["Production I.G"],
-      "production": ["Bandai Visual"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation / Digital (Mixed)",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/jin_roh.jpg"
-    },
-    "links": {
-      "official": "https://www.production-ig.co.jp/",
-      "imdb": "https://www.imdb.com/title/tt0193253",
-      "mal": "https://myanimelist.net/anime/570"
-    },
-    "sources": [
-      "https://fantasiafestival.com/"
-    ],
-    "confidence": "high"
-  },
-
-  {
-    "title": {
-      "display": "Royal Space Force: The Wings of Honneamise | 王立宇宙軍 オネアミスの翼",
-      "en": "Royal Space Force: The Wings of Honneamise",
-      "jp": "王立宇宙軍 オネアミスの翼"
-    },
-    "type": "anime",
-    "year": 1987,
-    "era": "classic",
-    "award": {
-      "show_id": "annecy",
-      "name": "Annecy — Screening",
-      "category": "Official Selection",
-      "award_type": "screening",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Hiroyuki Yamaga"],
-      "studio": ["Gainax"],
-      "production": ["Bandai"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/honneamise.jpg"
-    },
-    "links": {
-      "official": "https://www.gainax.co.jp/",
-      "imdb": "https://www.imdb.com/title/tt0093207",
-      "mal": "https://myanimelist.net/anime/1034"
-    },
-    "sources": [
-      "https://www.annecyfestival.com/"
-    ],
-    "confidence": "medium"
-  }
-[
-  {
-    "title": {
-      "display": "My Neighbor Totoro | となりのトトロ",
-      "en": "My Neighbor Totoro",
-      "jp": "となりのトトロ"
-    },
-    "type": "anime",
-    "year": 1988,
-    "era": "classic",
-    "award": {
-      "show_id": "mainichi",
-      "name": "Mainichi Film Awards — Ofuji Award",
-      "category": "Ofuji Noburo Award",
-      "award_type": "special",
-      "jp_label": "大賞 (Grand Prize)"
-    },
-    "credits": {
-      "director": ["Hayao Miyazaki"],
-      "studio": ["Studio Ghibli"],
-      "production": ["Tokuma Shoten"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/totoro.jpg"
-    },
-    "links": {
-      "official": "https://www.ghibli.jp/",
-      "imdb": "https://www.imdb.com/title/tt0096283",
-      "mal": "https://myanimelist.net/anime/523"
-    },
-    "sources": [
-      "https://mainichi.jp/"
-    ],
-    "confidence": "high"
-  },
-
-  {
-    "title": {
-      "display": "Kiki’s Delivery Service | 魔女の宅急便",
-      "en": "Kiki’s Delivery Service",
-      "jp": "魔女の宅急便"
-    },
-    "type": "anime",
-    "year": 1989,
-    "era": "classic",
-    "award": {
-      "show_id": "kinema_junpo",
-      "name": "Kinema Junpo Awards — Reader’s Choice",
-      "category": "Reader’s Choice",
-      "award_type": "special",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Hayao Miyazaki"],
-      "studio": ["Studio Ghibli"],
-      "production": ["Tokuma Shoten"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/kiki.jpg"
-    },
-    "links": {
-      "official": "https://www.ghibli.jp/",
-      "imdb": "https://www.imdb.com/title/tt0097814",
-      "mal": "https://myanimelist.net/anime/512"
-    },
-    "sources": [
-      "https://www.kinejun.com/"
-    ],
-    "confidence": "high"
-  },
-
-  {
-    "title": {
-      "display": "Laputa: Castle in the Sky | 天空の城ラピュタ",
-      "en": "Castle in the Sky",
-      "jp": "天空の城ラピュタ"
-    },
-    "type": "anime",
-    "year": 1986,
-    "era": "classic",
-    "award": {
-      "show_id": "annecy",
-      "name": "Annecy — Screening",
-      "category": "Official Selection",
-      "award_type": "screening",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Hayao Miyazaki"],
-      "studio": ["Studio Ghibli"],
-      "production": ["Tokuma Shoten"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/laputa.jpg"
-    },
-    "links": {
-      "official": "https://www.ghibli.jp/",
-      "imdb": "https://www.imdb.com/title/tt0092067",
-      "mal": "https://myanimelist.net/anime/513"
-    },
-    "sources": [
-      "https://www.annecyfestival.com/"
-    ],
-    "confidence": "medium"
-  },
-
-  {
-    "title": {
-      "display": "Porco Rosso | 紅の豚",
-      "en": "Porco Rosso",
-      "jp": "紅の豚"
-    },
-    "type": "anime",
-    "year": 1992,
-    "era": "classic",
-    "award": {
-      "show_id": "annecy",
-      "name": "Annecy — Jury Mention",
-      "category": "Jury Mention",
-      "award_type": "jury",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Hayao Miyazaki"],
-      "studio": ["Studio Ghibli"],
-      "production": ["Tokuma Shoten"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/porco_rosso.jpg"
-    },
-    "links": {
-      "official": "https://www.ghibli.jp/",
-      "imdb": "https://www.imdb.com/title/tt0104652",
-      "mal": "https://myanimelist.net/anime/416"
-    },
-    "sources": [
-      "https://www.annecyfestival.com/"
-    ],
-    "confidence": "medium"
-  },
-
-  {
-    "title": {
-      "display": "Only Yesterday | おもひでぽろぽろ",
-      "en": "Only Yesterday",
-      "jp": "おもひでぽろぽろ"
-    },
-    "type": "anime",
-    "year": 1991,
-    "era": "classic",
-    "award": {
-      "show_id": "blue_ribbon",
-      "name": "Blue Ribbon Awards — Special Award",
-      "category": "Special Award",
-      "award_type": "special",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Isao Takahata"],
-      "studio": ["Studio Ghibli"],
-      "production": ["Tokuma Shoten"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/only_yesterday.jpg"
-    },
-    "links": {
-      "official": "https://www.ghibli.jp/",
-      "imdb": "https://www.imdb.com/title/tt0102587",
-      "mal": "https://myanimelist.net/anime/1029"
-    },
-    "sources": [
-      "https://www.allcinema.net/"
-    ],
-    "confidence": "high"
-  },
-
-  {
-    "title": {
-      "display": "Roujin Z | 老人Z",
-      "en": "Roujin Z",
-      "jp": "老人Z"
-    },
-    "type": "anime",
-    "year": 1991,
-    "era": "classic",
-    "award": {
-      "show_id": "annecy",
-      "name": "Annecy — Screening",
-      "category": "Official Selection",
-      "award_type": "screening",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Hiroyuki Kitakubo"],
-      "studio": ["A.P.P.P."],
-      "production": ["Sony Music Entertainment Japan"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation / Digital (Mixed)",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/roujin_z.jpg"
-    },
-    "links": {
-      "official": "https://www.app.jp/",
-      "imdb": "https://www.imdb.com/title/tt0102802",
-      "mal": "https://myanimelist.net/anime/200"
-    },
-    "sources": [
-      "https://www.annecyfestival.com/"
-    ],
-    "confidence": "medium"
-  },
-
-  {
-    "title": {
-      "display": "Memories | MEMORIES",
-      "en": "Memories",
-      "jp": "MEMORIES"
-    },
-    "type": "anime",
-    "year": 1995,
-    "era": "classic",
-    "award": {
-      "show_id": "sitges",
-      "name": "Sitges — Special Recognition",
-      "category": "Special Recognition",
-      "award_type": "special",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Katsuhiro Otomo"],
-      "studio": ["Madhouse"],
-      "production": ["Bandai Visual"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation / Digital (Mixed)",
-      "format": "anthology film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/memories.jpg"
-    },
-    "links": {
-      "official": "https://www.madhouse.co.jp/",
-      "imdb": "https://www.imdb.com/title/tt0113799",
-      "mal": "https://myanimelist.net/anime/1462"
-    },
-    "sources": [
-      "https://sitgesfilmfestival.com/"
-    ],
-    "confidence": "high"
-  },
-
-  {
-    "title": {
-      "display": "Ninja Scroll | 獣兵衛忍風帖",
-      "en": "Ninja Scroll",
-      "jp": "獣兵衛忍風帖"
-    },
-    "type": "anime",
-    "year": 1993,
-    "era": "classic",
-    "award": {
-      "show_id": "fantasia",
-      "name": "Fantasia Festival — Screening",
-      "category": "Official Selection",
-      "award_type": "screening",
-      "jp_label": "賞 (Award)"
-    },
-    "credits": {
-      "director": ["Yoshiaki Kawajiri"],
-      "studio": ["Madhouse"],
-      "production": ["JVC"]
-    },
-    "technical": {
-      "animation_technique": "Cel animation",
-      "format": "feature film"
-    },
-    "media": {
-      "thumbnail": "https://cdn.bottany.app/anime/ninja_scroll.jpg"
-    },
-    "links": {
-      "official": "https://www.madhouse.co.jp/",
-      "imdb": "https://www.imdb.com/title/tt0107692",
-      "mal": "https://myanimelist.net/anime/617"
-    },
-    "sources": [
-      "https://fantasiafestival.com/"
-    ],
-    "confidence": "medium"
-  }
-]
+  "winners": [
+    {
+      "award_id": "tga",
+      "year": 2015,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "The Witcher 3: Wild Hunt",
+      "nominees": [
+        "Fallout 4",
+        "Metal Gear Solid V",
+        "Super Mario Maker",
+        "The Witcher 3: Wild Hunt",
+        "Bloodborne"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2015,
+      "category": "Best Narrative",
+      "category_key": "narrative",
+      "winner": "The Witcher 3: Wild Hunt",
+      "nominees": [
+        "Her Story",
+        "Life is Strange",
+        "Metal Gear Solid V",
+        "Until Dawn"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2015,
+      "category": "Best Score / Music",
+      "category_key": "music",
+      "winner": "The Witcher 3: Wild Hunt",
+      "nominees": [
+        "Bloodborne",
+        "Fallout 4",
+        "Halo 5: Guardians",
+        "Ori and the Blind Forest"
+      ]
+    },
+    {
+      "award_id": "bafta",
+      "year": 2015,
+      "category": "Best Game",
+      "category_key": "goty",
+      "winner": "Destiny",
+      "nominees": [
+        "Alien: Isolation",
+        "Far Cry 4",
+        "Hearthstone",
+        "Monument Valley",
+        "The Last of Us Remastered"
+      ]
+    },
+    {
+      "award_id": "dice",
+      "year": 2015,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Dragon Age: Inquisition",
+      "nominees": [
+        "Alien: Isolation",
+        "Destiny",
+        "Far Cry 4",
+        "Middle-earth: Shadow of Mordor"
+      ]
+    },
+    {
+      "award_id": "gja",
+      "year": 2015,
+      "category": "Ultimate Game of the Year",
+      "category_key": "goty",
+      "winner": "The Witcher 3: Wild Hunt",
+      "nominees": [
+        "Bloodborne",
+        "Fallout 4",
+        "Metal Gear Solid V",
+        "Batman: Arkham Knight"
+      ]
+    },
+    {
+      "award_id": "gdc",
+      "year": 2015,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Middle-earth: Shadow of Mordor",
+      "nominees": [
+        "Hearthstone",
+        "Monument Valley",
+        "Shovel Knight",
+        "Threes!"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2016,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Overwatch",
+      "nominees": [
+        "Doom",
+        "Inside",
+        "Titanfall 2",
+        "Uncharted 4: A Thief's End",
+        "The Last Guardian"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2016,
+      "category": "Best Narrative",
+      "category_key": "narrative",
+      "winner": "Uncharted 4: A Thief's End",
+      "nominees": [
+        "Firewatch",
+        "Inside",
+        "Oxenfree",
+        "Virginia"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2016,
+      "category": "Best Score / Music",
+      "category_key": "music",
+      "winner": "Doom",
+      "nominees": [
+        "Overwatch",
+        "Uncharted 4: A Thief's End",
+        "The Last Guardian",
+        "Hyper Light Drifter"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2016,
+      "category": "Best RPG",
+      "category_key": "rpg",
+      "winner": "The Witcher 3: Blood and Wine",
+      "nominees": [
+        "Dark Souls III",
+        "Darkest Dungeon",
+        "Final Fantasy XV",
+        "Pokemon Sun and Moon"
+      ]
+    },
+    {
+      "award_id": "bafta",
+      "year": 2016,
+      "category": "Best Game",
+      "category_key": "goty",
+      "winner": "Fallout 4",
+      "nominees": [
+        "Batman: Arkham Knight",
+        "Bloodborne",
+        "The Witcher 3: Wild Hunt",
+        "The Witcher 3: Hearts of Stone",
+        "Until Dawn"
+      ]
+    },
+    {
+      "award_id": "dice",
+      "year": 2016,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Fallout 4",
+      "nominees": [
+        "Batman: Arkham Knight",
+        "Bloodborne",
+        "The Witcher 3: Wild Hunt",
+        "Metal Gear Solid V"
+      ]
+    },
+    {
+      "award_id": "gja",
+      "year": 2016,
+      "category": "Ultimate Game of the Year",
+      "category_key": "goty",
+      "winner": "Dark Souls III",
+      "nominees": [
+        "Doom",
+        "Inside",
+        "Overwatch",
+        "Uncharted 4: A Thief's End"
+      ]
+    },
+    {
+      "award_id": "ign",
+      "year": 2016,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Uncharted 4: A Thief's End",
+      "nominees": [
+        "Doom",
+        "Inside",
+        "Overwatch",
+        "Titanfall 2"
+      ]
+    },
+    {
+      "award_id": "gdc",
+      "year": 2016,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "The Witcher 3: Wild Hunt",
+      "nominees": [
+        "Her Story",
+        "Rocket League",
+        "Undertale",
+        "Fallout 4"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2017,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "The Legend of Zelda: Breath of the Wild",
+      "nominees": [
+        "Horizon Zero Dawn",
+        "NieR: Automata",
+        "Persona 5",
+        "Super Mario Odyssey",
+        "What Remains of Edith Finch"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2017,
+      "category": "Best Narrative",
+      "category_key": "narrative",
+      "winner": "What Remains of Edith Finch",
+      "nominees": [
+        "Horizon Zero Dawn",
+        "NieR: Automata",
+        "Persona 5",
+        "Wolfenstein II: The New Colossus"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2017,
+      "category": "Best Score / Music",
+      "category_key": "music",
+      "winner": "NieR: Automata",
+      "nominees": [
+        "Cuphead",
+        "Persona 5",
+        "Super Mario Odyssey",
+        "The Legend of Zelda: Breath of the Wild"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2017,
+      "category": "Best RPG",
+      "category_key": "rpg",
+      "winner": "Persona 5",
+      "nominees": [
+        "Final Fantasy XII: The Zodiac Age",
+        "NieR: Automata",
+        "South Park: The Fractured But Whole",
+        "Xenoblade Chronicles 2"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2017,
+      "category": "Best Art Direction",
+      "category_key": "art",
+      "winner": "Cuphead",
+      "nominees": [
+        "Horizon Zero Dawn",
+        "NieR: Automata",
+        "Super Mario Odyssey",
+        "The Legend of Zelda: Breath of the Wild"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2017,
+      "category": "Best Indie Game",
+      "category_key": "indie",
+      "winner": "Cuphead",
+      "nominees": [
+        "Gorogoa",
+        "Hollow Knight",
+        "Night in the Woods",
+        "Pyre"
+      ]
+    },
+    {
+      "award_id": "bafta",
+      "year": 2017,
+      "category": "Best Game",
+      "category_key": "goty",
+      "winner": "Uncharted 4: A Thief's End",
+      "nominees": [
+        "Battlefield 1",
+        "Dishonored 2",
+        "Inside",
+        "Overwatch",
+        "The Last Guardian"
+      ]
+    },
+    {
+      "award_id": "dice",
+      "year": 2017,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Overwatch",
+      "nominees": [
+        "Battlefield 1",
+        "Dishonored 2",
+        "Inside",
+        "The Last Guardian"
+      ]
+    },
+    {
+      "award_id": "gja",
+      "year": 2017,
+      "category": "Ultimate Game of the Year",
+      "category_key": "goty",
+      "winner": "The Legend of Zelda: Breath of the Wild",
+      "nominees": [
+        "NieR: Automata",
+        "Persona 5",
+        "Horizon Zero Dawn",
+        "Super Mario Odyssey"
+      ]
+    },
+    {
+      "award_id": "ign",
+      "year": 2017,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "The Legend of Zelda: Breath of the Wild",
+      "nominees": [
+        "NieR: Automata",
+        "Persona 5",
+        "Super Mario Odyssey",
+        "Horizon Zero Dawn"
+      ]
+    },
+    {
+      "award_id": "gdc",
+      "year": 2017,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Overwatch",
+      "nominees": [
+        "Firewatch",
+        "Inside",
+        "Pokémon Go",
+        "Stardew Valley"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2018,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "God of War",
+      "nominees": [
+        "Assassin's Creed Odyssey",
+        "Celeste",
+        "Marvel's Spider-Man",
+        "Monster Hunter: World",
+        "Red Dead Redemption 2"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2018,
+      "category": "Best Narrative",
+      "category_key": "narrative",
+      "winner": "God of War",
+      "nominees": [
+        "Detroit: Become Human",
+        "Marvel's Spider-Man",
+        "Red Dead Redemption 2",
+        "Return of the Obra Dinn"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2018,
+      "category": "Best Score / Music",
+      "category_key": "music",
+      "winner": "God of War",
+      "nominees": [
+        "Celeste",
+        "Marvel's Spider-Man",
+        "Monster Hunter: World",
+        "Red Dead Redemption 2"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2018,
+      "category": "Best RPG",
+      "category_key": "rpg",
+      "winner": "Monster Hunter: World",
+      "nominees": [
+        "Divinity: Original Sin II",
+        "Dragon Ball FighterZ",
+        "Ni No Kuni II",
+        "Octopath Traveler"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2018,
+      "category": "Best Art Direction",
+      "category_key": "art",
+      "winner": "Return of the Obra Dinn",
+      "nominees": [
+        "God of War",
+        "Marvel's Spider-Man",
+        "Red Dead Redemption 2",
+        "Shadow of the Colossus"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2018,
+      "category": "Best Indie Game",
+      "category_key": "indie",
+      "winner": "Celeste",
+      "nominees": [
+        "Dead Cells",
+        "Into the Breach",
+        "Return of the Obra Dinn",
+        "Undertale"
+      ]
+    },
+    {
+      "award_id": "bafta",
+      "year": 2018,
+      "category": "Best Game",
+      "category_key": "goty",
+      "winner": "What Remains of Edith Finch",
+      "nominees": [
+        "Cuphead",
+        "Hellblade: Senua's Sacrifice",
+        "Horizon Zero Dawn",
+        "Super Mario Odyssey",
+        "The Legend of Zelda: Breath of the Wild"
+      ]
+    },
+    {
+      "award_id": "dice",
+      "year": 2018,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "The Legend of Zelda: Breath of the Wild",
+      "nominees": [
+        "Cuphead",
+        "Hellblade: Senua's Sacrifice",
+        "Horizon Zero Dawn",
+        "Super Mario Odyssey"
+      ]
+    },
+    {
+      "award_id": "gja",
+      "year": 2018,
+      "category": "Ultimate Game of the Year",
+      "category_key": "goty",
+      "winner": "Fortnite",
+      "nominees": [
+        "God of War",
+        "Marvel's Spider-Man",
+        "Monster Hunter: World",
+        "Red Dead Redemption 2"
+      ]
+    },
+    {
+      "award_id": "ign",
+      "year": 2018,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "God of War",
+      "nominees": [
+        "Celeste",
+        "Marvel's Spider-Man",
+        "Red Dead Redemption 2",
+        "Monster Hunter: World"
+      ]
+    },
+    {
+      "award_id": "gdc",
+      "year": 2018,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "The Legend of Zelda: Breath of the Wild",
+      "nominees": [
+        "Cuphead",
+        "NieR: Automata",
+        "Persona 5",
+        "Wolfenstein II: The New Colossus"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2019,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Sekiro: Shadows Die Twice",
+      "nominees": [
+        "Control",
+        "Death Stranding",
+        "Devil May Cry 5",
+        "Super Smash Bros. Ultimate",
+        "The Outer Worlds"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2019,
+      "category": "Best Narrative",
+      "category_key": "narrative",
+      "winner": "Death Stranding",
+      "nominees": [
+        "Control",
+        "Disco Elysium",
+        "The Outer Worlds",
+        "A Plague Tale: Innocence"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2019,
+      "category": "Best Score / Music",
+      "category_key": "music",
+      "winner": "Death Stranding",
+      "nominees": [
+        "Control",
+        "Devil May Cry 5",
+        "Sekiro: Shadows Die Twice",
+        "Kingdom Hearts III"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2019,
+      "category": "Best RPG",
+      "category_key": "rpg",
+      "winner": "Disco Elysium",
+      "nominees": [
+        "Final Fantasy XIV: Shadowbringers",
+        "Kingdom Hearts III",
+        "Monster Hunter: World - Iceborne",
+        "The Outer Worlds"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2019,
+      "category": "Best Art Direction",
+      "category_key": "art",
+      "winner": "Control",
+      "nominees": [
+        "Death Stranding",
+        "Disco Elysium",
+        "Sekiro: Shadows Die Twice",
+        "Untitled Goose Game"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2019,
+      "category": "Best Indie Game",
+      "category_key": "indie",
+      "winner": "Disco Elysium",
+      "nominees": [
+        "Baba Is You",
+        "Hypnospace Outlaw",
+        "Outer Wilds",
+        "Untitled Goose Game"
+      ]
+    },
+    {
+      "award_id": "bafta",
+      "year": 2019,
+      "category": "Best Game",
+      "category_key": "goty",
+      "winner": "God of War",
+      "nominees": [
+        "Assassin's Creed Odyssey",
+        "Celeste",
+        "Into the Breach",
+        "Marvel's Spider-Man",
+        "Return of the Obra Dinn"
+      ]
+    },
+    {
+      "award_id": "dice",
+      "year": 2019,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "God of War",
+      "nominees": [
+        "Celeste",
+        "Marvel's Spider-Man",
+        "Red Dead Redemption 2",
+        "Return of the Obra Dinn"
+      ]
+    },
+    {
+      "award_id": "gja",
+      "year": 2019,
+      "category": "Ultimate Game of the Year",
+      "category_key": "goty",
+      "winner": "Resident Evil 2",
+      "nominees": [
+        "Control",
+        "Death Stranding",
+        "Sekiro: Shadows Die Twice",
+        "Devil May Cry 5"
+      ]
+    },
+    {
+      "award_id": "ign",
+      "year": 2019,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Sekiro: Shadows Die Twice",
+      "nominees": [
+        "Control",
+        "Death Stranding",
+        "Disco Elysium",
+        "Resident Evil 2"
+      ]
+    },
+    {
+      "award_id": "gdc",
+      "year": 2019,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "God of War",
+      "nominees": [
+        "Celeste",
+        "Into the Breach",
+        "Marvel's Spider-Man",
+        "Red Dead Redemption 2"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2020,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "The Last of Us Part II",
+      "nominees": [
+        "Animal Crossing: New Horizons",
+        "Doom Eternal",
+        "Final Fantasy VII Remake",
+        "Ghost of Tsushima",
+        "Hades"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2020,
+      "category": "Best Narrative",
+      "category_key": "narrative",
+      "winner": "The Last of Us Part II",
+      "nominees": [
+        "Cyberpunk 2077",
+        "Final Fantasy VII Remake",
+        "Ghost of Tsushima",
+        "Hades"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2020,
+      "category": "Best Score / Music",
+      "category_key": "music",
+      "winner": "Final Fantasy VII Remake",
+      "nominees": [
+        "Doom Eternal",
+        "Ghost of Tsushima",
+        "Hades",
+        "The Last of Us Part II"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2020,
+      "category": "Best RPG",
+      "category_key": "rpg",
+      "winner": "Final Fantasy VII Remake",
+      "nominees": [
+        "Cyberpunk 2077",
+        "Persona 4 Golden (PC)",
+        "Wasteland 3",
+        "Yakuza: Like a Dragon"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2020,
+      "category": "Best Art Direction",
+      "category_key": "art",
+      "winner": "Ghost of Tsushima",
+      "nominees": [
+        "Final Fantasy VII Remake",
+        "Hades",
+        "The Last of Us Part II",
+        "Ori and the Will of the Wisps"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2020,
+      "category": "Best Indie Game",
+      "category_key": "indie",
+      "winner": "Hades",
+      "nominees": [
+        "Fall Guys: Ultimate Knockout",
+        "Ori and the Will of the Wisps",
+        "Spiritfarer",
+        "Carrion"
+      ]
+    },
+    {
+      "award_id": "bafta",
+      "year": 2020,
+      "category": "Best Game",
+      "category_key": "goty",
+      "winner": "Outer Wilds",
+      "nominees": [
+        "Control",
+        "Death Stranding",
+        "Disco Elysium",
+        "Sekiro: Shadows Die Twice",
+        "Untitled Goose Game"
+      ]
+    },
+    {
+      "award_id": "dice",
+      "year": 2020,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Untitled Goose Game",
+      "nominees": [
+        "Control",
+        "Death Stranding",
+        "Disco Elysium",
+        "Sekiro: Shadows Die Twice"
+      ]
+    },
+    {
+      "award_id": "gja",
+      "year": 2020,
+      "category": "Ultimate Game of the Year",
+      "category_key": "goty",
+      "winner": "The Last of Us Part II",
+      "nominees": [
+        "Animal Crossing: New Horizons",
+        "Doom Eternal",
+        "Ghost of Tsushima",
+        "Hades"
+      ]
+    },
+    {
+      "award_id": "ign",
+      "year": 2020,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Hades",
+      "nominees": [
+        "Animal Crossing: New Horizons",
+        "Final Fantasy VII Remake",
+        "Ghost of Tsushima",
+        "The Last of Us Part II"
+      ]
+    },
+    {
+      "award_id": "gdc",
+      "year": 2020,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Disco Elysium",
+      "nominees": [
+        "Control",
+        "Death Stranding",
+        "Outer Wilds",
+        "Sekiro: Shadows Die Twice"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2021,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "It Takes Two",
+      "nominees": [
+        "Deathloop",
+        "Metroid Dread",
+        "Psychonauts 2",
+        "Ratchet & Clank: Rift Apart",
+        "Resident Evil Village"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2021,
+      "category": "Best Narrative",
+      "category_key": "narrative",
+      "winner": "It Takes Two",
+      "nominees": [
+        "Deathloop",
+        "Life is Strange: True Colors",
+        "Marvel's Guardians of the Galaxy",
+        "Psychonauts 2"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2021,
+      "category": "Best Score / Music",
+      "category_key": "music",
+      "winner": "NieR Replicant",
+      "nominees": [
+        "Guilty Gear -Strive-",
+        "Marvel's Guardians of the Galaxy",
+        "Psychonauts 2",
+        "Ratchet & Clank: Rift Apart"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2021,
+      "category": "Best RPG",
+      "category_key": "rpg",
+      "winner": "Tales of Arise",
+      "nominees": [
+        "Final Fantasy XIV: Endwalker",
+        "Monster Hunter Stories 2",
+        "Scarlet Nexus",
+        "Shin Megami Tensei V"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2021,
+      "category": "Best Art Direction",
+      "category_key": "art",
+      "winner": "Ratchet & Clank: Rift Apart",
+      "nominees": [
+        "Deathloop",
+        "Kena: Bridge of Spirits",
+        "Psychonauts 2",
+        "Returnal"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2021,
+      "category": "Best Indie Game",
+      "category_key": "indie",
+      "winner": "Kena: Bridge of Spirits",
+      "nominees": [
+        "12 Minutes",
+        "Chicory: A Colorful Tale",
+        "Loop Hero",
+        "Sable"
+      ]
+    },
+    {
+      "award_id": "bafta",
+      "year": 2021,
+      "category": "Best Game",
+      "category_key": "goty",
+      "winner": "Hades",
+      "nominees": [
+        "Animal Crossing: New Horizons",
+        "Assassin's Creed Valhalla",
+        "Ghost of Tsushima",
+        "The Last of Us Part II",
+        "13 Sentinels: Aegis Rim"
+      ]
+    },
+    {
+      "award_id": "dice",
+      "year": 2021,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Hades",
+      "nominees": [
+        "Animal Crossing: New Horizons",
+        "Final Fantasy VII Remake",
+        "Ghost of Tsushima",
+        "The Last of Us Part II"
+      ]
+    },
+    {
+      "award_id": "gja",
+      "year": 2021,
+      "category": "Ultimate Game of the Year",
+      "category_key": "goty",
+      "winner": "Resident Evil Village",
+      "nominees": [
+        "Deathloop",
+        "Halo Infinite",
+        "It Takes Two",
+        "Returnal"
+      ]
+    },
+    {
+      "award_id": "ign",
+      "year": 2021,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Metroid Dread",
+      "nominees": [
+        "Deathloop",
+        "It Takes Two",
+        "Psychonauts 2",
+        "Ratchet & Clank: Rift Apart"
+      ]
+    },
+    {
+      "award_id": "gdc",
+      "year": 2021,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Hades",
+      "nominees": [
+        "Animal Crossing: New Horizons",
+        "Among Us",
+        "The Last of Us Part II",
+        "Valorant"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2022,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Elden Ring",
+      "nominees": [
+        "A Plague Tale: Requiem",
+        "God of War: Ragnarök",
+        "Horizon Forbidden West",
+        "Stray",
+        "Xenoblade Chronicles 3"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2022,
+      "category": "Best Narrative",
+      "category_key": "narrative",
+      "winner": "God of War: Ragnarök",
+      "nominees": [
+        "A Plague Tale: Requiem",
+        "Elden Ring",
+        "Horizon Forbidden West",
+        "Immortality"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2022,
+      "category": "Best Score / Music",
+      "category_key": "music",
+      "winner": "God of War: Ragnarök",
+      "nominees": [
+        "A Plague Tale: Requiem",
+        "Elden Ring",
+        "Metal: Hellsinger",
+        "Xenoblade Chronicles 3"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2022,
+      "category": "Best RPG",
+      "category_key": "rpg",
+      "winner": "Elden Ring",
+      "nominees": [
+        "Live A Live",
+        "Pokémon Legends: Arceus",
+        "Triangle Strategy",
+        "Xenoblade Chronicles 3"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2022,
+      "category": "Best Art Direction",
+      "category_key": "art",
+      "winner": "Elden Ring",
+      "nominees": [
+        "Cuphead: The Delicious Last Course",
+        "God of War: Ragnarök",
+        "Horizon Forbidden West",
+        "Stray"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2022,
+      "category": "Best Indie Game",
+      "category_key": "indie",
+      "winner": "Stray",
+      "nominees": [
+        "Cult of the Lamb",
+        "Neon White",
+        "Rollerdrome",
+        "Tunic"
+      ]
+    },
+    {
+      "award_id": "bafta",
+      "year": 2022,
+      "category": "Best Game",
+      "category_key": "goty",
+      "winner": "Returnal",
+      "nominees": [
+        "Deathloop",
+        "Forza Horizon 5",
+        "Halo Infinite",
+        "It Takes Two",
+        "Resident Evil Village"
+      ]
+    },
+    {
+      "award_id": "dice",
+      "year": 2022,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "It Takes Two",
+      "nominees": [
+        "Deathloop",
+        "Forza Horizon 5",
+        "Halo Infinite",
+        "Resident Evil Village"
+      ]
+    },
+    {
+      "award_id": "gja",
+      "year": 2022,
+      "category": "Ultimate Game of the Year",
+      "category_key": "goty",
+      "winner": "Elden Ring",
+      "nominees": [
+        "God of War: Ragnarök",
+        "Horizon Forbidden West",
+        "Stray",
+        "Xenoblade Chronicles 3"
+      ]
+    },
+    {
+      "award_id": "ign",
+      "year": 2022,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Elden Ring",
+      "nominees": [
+        "God of War: Ragnarök",
+        "Horizon Forbidden West",
+        "Stray",
+        "Xenoblade Chronicles 3"
+      ]
+    },
+    {
+      "award_id": "gdc",
+      "year": 2022,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "It Takes Two",
+      "nominees": [
+        "Halo Infinite",
+        "Inscryption",
+        "Loop Hero",
+        "Valheim"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2023,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Baldur's Gate 3",
+      "nominees": [
+        "Alan Wake 2",
+        "Marvel's Spider-Man 2",
+        "Resident Evil 4",
+        "Super Mario Bros. Wonder",
+        "The Legend of Zelda: Tears of the Kingdom"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2023,
+      "category": "Best Narrative",
+      "category_key": "narrative",
+      "winner": "Alan Wake 2",
+      "nominees": [
+        "Baldur's Gate 3",
+        "Cyberpunk 2077: Phantom Liberty",
+        "Final Fantasy XVI",
+        "Marvel's Spider-Man 2"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2023,
+      "category": "Best Score / Music",
+      "category_key": "music",
+      "winner": "Alan Wake 2",
+      "nominees": [
+        "Baldur's Gate 3",
+        "Final Fantasy XVI",
+        "Hi-Fi Rush",
+        "The Legend of Zelda: Tears of the Kingdom"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2023,
+      "category": "Best RPG",
+      "category_key": "rpg",
+      "winner": "Baldur's Gate 3",
+      "nominees": [
+        "Final Fantasy XVI",
+        "Lies of P",
+        "Remnant II",
+        "Starfield"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2023,
+      "category": "Best Art Direction",
+      "category_key": "art",
+      "winner": "Alan Wake 2",
+      "nominees": [
+        "Baldur's Gate 3",
+        "Hi-Fi Rush",
+        "Marvel's Spider-Man 2",
+        "The Legend of Zelda: Tears of the Kingdom"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2023,
+      "category": "Best Indie Game",
+      "category_key": "indie",
+      "winner": "Sea of Stars",
+      "nominees": [
+        "Cocoon",
+        "Dave the Diver",
+        "Pizza Tower",
+        "Venba"
+      ]
+    },
+    {
+      "award_id": "bafta",
+      "year": 2023,
+      "category": "Best Game",
+      "category_key": "goty",
+      "winner": "Vampire Survivors",
+      "nominees": [
+        "Cult of the Lamb",
+        "Elden Ring",
+        "God of War: Ragnarök",
+        "Stray",
+        "Tunic"
+      ]
+    },
+    {
+      "award_id": "dice",
+      "year": 2023,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Elden Ring",
+      "nominees": [
+        "A Plague Tale: Requiem",
+        "God of War: Ragnarök",
+        "Horizon Forbidden West",
+        "Stray"
+      ]
+    },
+    {
+      "award_id": "gja",
+      "year": 2023,
+      "category": "Ultimate Game of the Year",
+      "category_key": "goty",
+      "winner": "Baldur's Gate 3",
+      "nominees": [
+        "Alan Wake 2",
+        "Marvel's Spider-Man 2",
+        "Resident Evil 4",
+        "The Legend of Zelda: Tears of the Kingdom"
+      ]
+    },
+    {
+      "award_id": "ign",
+      "year": 2023,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "The Legend of Zelda: Tears of the Kingdom",
+      "nominees": [
+        "Alan Wake 2",
+        "Baldur's Gate 3",
+        "Marvel's Spider-Man 2",
+        "Resident Evil 4"
+      ]
+    },
+    {
+      "award_id": "gdc",
+      "year": 2023,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Baldur's Gate 3",
+      "nominees": [
+        "Alan Wake 2",
+        "Hi-Fi Rush",
+        "Marvel's Spider-Man 2",
+        "The Legend of Zelda: Tears of the Kingdom"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2024,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Astro Bot",
+      "nominees": [
+        "Balatro",
+        "Black Myth: Wukong",
+        "Elden Ring: Shadow of the Erdtree",
+        "Final Fantasy VII Rebirth",
+        "Metaphor: ReFantazio"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2024,
+      "category": "Best Narrative",
+      "category_key": "narrative",
+      "winner": "Final Fantasy VII Rebirth",
+      "nominees": [
+        "Astro Bot",
+        "Balatro",
+        "Black Myth: Wukong",
+        "Metaphor: ReFantazio"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2024,
+      "category": "Best Score / Music",
+      "category_key": "music",
+      "winner": "Final Fantasy VII Rebirth",
+      "nominees": [
+        "Astro Bot",
+        "Elden Ring: Shadow of the Erdtree",
+        "Like a Dragon: Infinite Wealth",
+        "Metaphor: ReFantazio"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2024,
+      "category": "Best RPG",
+      "category_key": "rpg",
+      "winner": "Metaphor: ReFantazio",
+      "nominees": [
+        "Elden Ring: Shadow of the Erdtree",
+        "Final Fantasy VII Rebirth",
+        "Like a Dragon: Infinite Wealth",
+        "Persona 3 Reload"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2024,
+      "category": "Best Art Direction",
+      "category_key": "art",
+      "winner": "Astro Bot",
+      "nominees": [
+        "Black Myth: Wukong",
+        "Elden Ring: Shadow of the Erdtree",
+        "Final Fantasy VII Rebirth",
+        "Metaphor: ReFantazio"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2024,
+      "category": "Best Indie Game",
+      "category_key": "indie",
+      "winner": "Balatro",
+      "nominees": [
+        "Animal Well",
+        "Lorelei and the Laser Eyes",
+        "Neva",
+        "UFO 50"
+      ]
+    },
+    {
+      "award_id": "bafta",
+      "year": 2024,
+      "category": "Best Game",
+      "category_key": "goty",
+      "winner": "Baldur's Gate 3",
+      "nominees": [
+        "Alan Wake 2",
+        "Dave the Diver",
+        "Hi-Fi Rush",
+        "Marvel's Spider-Man 2",
+        "The Legend of Zelda: Tears of the Kingdom"
+      ]
+    },
+    {
+      "award_id": "dice",
+      "year": 2024,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Baldur's Gate 3",
+      "nominees": [
+        "Alan Wake 2",
+        "Marvel's Spider-Man 2",
+        "Resident Evil 4",
+        "The Legend of Zelda: Tears of the Kingdom"
+      ]
+    },
+    {
+      "award_id": "gja",
+      "year": 2024,
+      "category": "Ultimate Game of the Year",
+      "category_key": "goty",
+      "winner": "Black Myth: Wukong",
+      "nominees": [
+        "Astro Bot",
+        "Balatro",
+        "Elden Ring: Shadow of the Erdtree",
+        "Final Fantasy VII Rebirth"
+      ]
+    },
+    {
+      "award_id": "ign",
+      "year": 2024,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Astro Bot",
+      "nominees": [
+        "Balatro",
+        "Black Myth: Wukong",
+        "Elden Ring: Shadow of the Erdtree",
+        "Final Fantasy VII Rebirth"
+      ]
+    },
+    {
+      "award_id": "gdc",
+      "year": 2024,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "Balatro",
+      "nominees": [
+        "Astro Bot",
+        "Black Myth: Wukong",
+        "Hades II",
+        "Metaphor: ReFantazio"
+      ]
+    },
+    {
+      "award_id": "tga",
+      "year": 2025,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "TBA",
+      "nominees": []
+    },
+    {
+      "award_id": "bafta",
+      "year": 2025,
+      "category": "Best Game",
+      "category_key": "goty",
+      "winner": "TBA",
+      "nominees": []
+    },
+    {
+      "award_id": "dice",
+      "year": 2025,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "TBA",
+      "nominees": []
+    },
+    {
+      "award_id": "gja",
+      "year": 2025,
+      "category": "Ultimate Game of the Year",
+      "category_key": "goty",
+      "winner": "TBA",
+      "nominees": []
+    },
+    {
+      "award_id": "ign",
+      "year": 2025,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "TBA",
+      "nominees": []
+    },
+    {
+      "award_id": "gdc",
+      "year": 2025,
+      "category": "Game of the Year",
+      "category_key": "goty",
+      "winner": "TBA",
+      "nominees": []
+    }
+  ]
+}
