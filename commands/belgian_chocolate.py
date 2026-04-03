@@ -15,30 +15,30 @@ log = logging.getLogger(__name__)
 # ── Choices built from what actually exists in the data ──────────────────────
 
 _TYPE_CHOICES = [
-    app_commands.Choice(name="🍫 Chocolate",     value="chocolate"),
-    app_commands.Choice(name="🧇 Dessert",       value="dessert"),
-    app_commands.Choice(name="🎨 Artisan",       value="artisan"),
-    app_commands.Choice(name="🏭 Industrial",    value="industrial"),
-    app_commands.Choice(name="🎁 Praline House", value="praline_house"),
+    app_commands.Choice(name="Chocolate",     value="chocolate"),
+    app_commands.Choice(name="Dessert",       value="dessert"),
+    app_commands.Choice(name="Artisan",       value="artisan"),
+    app_commands.Choice(name="Industrial",    value="industrial"),
+    app_commands.Choice(name="Praline House", value="praline_house"),
 ]
 
 _PRODUCTION_CHOICES = [
-    app_commands.Choice(name="🌱 Bean to Bar", value="bean_to_bar"),
-    app_commands.Choice(name="🍶 Couverture",  value="couverture"),
-    app_commands.Choice(name="🔀 Hybrid",      value="hybrid"),
+    app_commands.Choice(name="Bean to Bar", value="bean_to_bar"),
+    app_commands.Choice(name="Couverture",  value="couverture"),
+    app_commands.Choice(name="Hybrid",      value="hybrid"),
 ]
 
 _CERT_CHOICES = [
-    app_commands.Choice(name="🏅 Belgian Chocolate Code",           value="Belgian Chocolate Code"),
-    app_commands.Choice(name="✅ BRC Global Standard",              value="BRC Global Standard"),
-    app_commands.Choice(name="🤝 Direct Trade",                     value="Direct Trade"),
-    app_commands.Choice(name="🇪🇺 EU Chocolate Directive Compliant", value="EU Chocolate Directive Compliant"),
-    app_commands.Choice(name="🌿 EU Organic",                       value="EU Organic"),
-    app_commands.Choice(name="⚖️ Fairtrade",                        value="Fairtrade"),
-    app_commands.Choice(name="📋 ISO 22000",                        value="ISO 22000"),
-    app_commands.Choice(name="🌲 Rainforest Alliance",              value="Rainforest Alliance"),
-    app_commands.Choice(name="🗺️ Single Origin Certified",          value="Single Origin Certified"),
-    app_commands.Choice(name="☑️ UTZ Certified",                    value="UTZ Certified"),
+    app_commands.Choice(name="Belgian Chocolate Code",           value="Belgian Chocolate Code"),
+    app_commands.Choice(name="BRC Global Standard",              value="BRC Global Standard"),
+    app_commands.Choice(name="Direct Trade",                     value="Direct Trade"),
+    app_commands.Choice(name="EU Chocolate Directive Compliant", value="EU Chocolate Directive Compliant"),
+    app_commands.Choice(name="EU Organic",                       value="EU Organic"),
+    app_commands.Choice(name="Fairtrade",                        value="Fairtrade"),
+    app_commands.Choice(name="ISO 22000",                        value="ISO 22000"),
+    app_commands.Choice(name="Rainforest Alliance",              value="Rainforest Alliance"),
+    app_commands.Choice(name="Single Origin Certified",          value="Single Origin Certified"),
+    app_commands.Choice(name="UTZ Certified",                    value="UTZ Certified"),
 ]
 
 
@@ -138,15 +138,14 @@ def _unified_type(item: Dict[str, Any]) -> str:
 
 def _list_embed(items: List[Dict[str, Any]], filters_applied: List[str]) -> discord.Embed:
     """Single embed listing all matching brands with key details inline."""
-    title = "🍫 Belgian Chocolate & Sweets"
+    title = "Belgian Chocolate & Sweets"
     if filters_applied:
         title += f" — {', '.join(filters_applied)}"
 
-    embed = discord.Embed(title=title, color=0x4B2E2E)
+    embed = discord.Embed(title=title, color=0x3B1A08)
 
     for item in items:
         name    = item.get("name", "Unknown")
-        emoji   = item.get("emoji", "🍫")
         url     = item.get("url")
         itype   = _unified_type(item)
         year    = item.get("foundation_year")
@@ -164,11 +163,11 @@ def _list_embed(items: List[Dict[str, Any]], filters_applied: List[str]) -> disc
 
         value = ", ".join(parts) if parts else "Belgian classic"
         if warrant:
-            value += "\n👑 Royal Warrant Holder"
+            value += "\n Royal Warrant Holder"
         if certs:
-            value += f"\n✅ {', '.join(certs[:2])}"
+            value += f"\n{', '.join(certs[:2])}"
 
-        field_name = f"{emoji} [{name}]({url})" if url else f"{emoji} {name}"
+        field_name = f"**[{name}]({url})**" if url else f"**{name}**"
         embed.add_field(name=field_name, value=value, inline=True)
 
     embed.set_footer(
@@ -183,8 +182,7 @@ def _detail_embed(item: Dict[str, Any]) -> discord.Embed:
     text  = item.get("summary") or item.get("notes") or ""
     certs = item.get("certifications", [])
 
-    item_emoji = item.get("emoji", "🍫")
-    embed = discord.Embed(title=f"{item_emoji} {name}", color=0x4B2E2E)
+    embed = discord.Embed(title=name, color=0x3B1A08)
     if url:
         embed.url = url
 
@@ -199,29 +197,29 @@ def _detail_embed(item: Dict[str, Any]) -> discord.Embed:
     image_credit = item.get("image_credit", "")
 
     if region:
-        embed.add_field(name="📍 Region",     value=region,                          inline=True)
+        embed.add_field(name="Region",     value=region,                          inline=True)
     if producer:
-        embed.add_field(name="🏢 Producer",   value=producer,                        inline=True)
+        embed.add_field(name="Producer",   value=producer,                        inline=True)
     if year:
-        embed.add_field(name="📅 Founded",    value=str(year),                       inline=True)
+        embed.add_field(name="Founded",    value=str(year),                       inline=True)
     if itype and itype != "—":
-        embed.add_field(name="🏷 Type",       value=itype.replace("_", " ").title(), inline=True)
+        embed.add_field(name="Type",       value=itype.replace("_", " ").title(), inline=True)
     if prod:
-        embed.add_field(name="🏭 Production", value=prod.replace("_", " ").title(),  inline=True)
+        embed.add_field(name="Production", value=prod.replace("_", " ").title(),  inline=True)
     if warrant:
-        embed.add_field(name="👑 Status",     value="Belgian Royal Warrant Holder",  inline=True)
+        embed.add_field(name="Status",     value="Belgian Royal Warrant Holder",  inline=True)
     if certs:
-        embed.add_field(name="✅ Certifications", value="\n".join(f"• {c}" for c in certs), inline=False)
+        embed.add_field(name="Certifications", value="\n".join(f"• {c}" for c in certs), inline=False)
     if text:
-        embed.add_field(name="📖 About",      value=text[:1024],                     inline=False)
+        embed.add_field(name="About",      value=text[:1024],                     inline=False)
     if url:
-        embed.add_field(name="🔗 Source",     value=f"[Visit website]({url})",       inline=False)
+        embed.add_field(name="Source",     value=f"[Visit website]({url})",       inline=False)
 
     if image_url:
-        embed.set_image(url=image_url)
+        embed.set_thumbnail(url=image_url)
         # CC license requires attribution — shown in footer
         footer = image_credit if image_credit else "Image: Wikimedia Commons"
-        embed.set_footer(text=f"🖼️ {footer}")
+        embed.set_footer(text=footer)
 
     return embed
 
@@ -278,7 +276,7 @@ async def register(bot: discord.Client, data_dir: str) -> None:
             items = _load_dataset(data_dir)
             if not items:
                 await interaction.followup.send(
-                    "⚠️ Chocolate dataset could not be loaded. "
+                    "Chocolate dataset could not be loaded. "
                     "Please ask an admin to check the `data/` directory.",
                     ephemeral=True,
                 )
@@ -319,7 +317,7 @@ async def register(bot: discord.Client, data_dir: str) -> None:
 
             if not items:
                 await interaction.followup.send(
-                    "😕 No brands matched your filters.\n"
+                    "No brands matched your filters.\n"
                     "**Tips:**\n"
                     "• `production_model` and `certification` only apply to professional brands\n"
                     "• `year_before` / `year_after` only apply to brands with a known founding year\n"
@@ -383,7 +381,7 @@ async def register(bot: discord.Client, data_dir: str) -> None:
             items = _load_dataset(data_dir)
             if not items:
                 await interaction.followup.send(
-                    "⚠️ Chocolate dataset could not be loaded.", ephemeral=True
+                    "Chocolate dataset could not be loaded.", ephemeral=True
                 )
                 return
 
@@ -394,7 +392,7 @@ async def register(bot: discord.Client, data_dir: str) -> None:
 
             if not match:
                 await interaction.followup.send(
-                    f"😕 No brand found matching **\"{name}\"**.\n"
+                    f"No brand found matching **\"{name}\"**.\n"
                     "Use the autocomplete suggestions to pick a valid name.",
                     ephemeral=True,
                 )
