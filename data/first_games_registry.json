@@ -1,15 +1,21 @@
 {
-  "version": "v1-early-60",
+  "version": "v2-early-60",
+  "description": "Curated list of first and early commercially significant video games (1962-1993)",
   "games": [
     {
       "name": "Spacewar!",
       "year": 1962,
       "platform": "Mainframe (PDP-1)",
+      "developer": "MIT",
+      "publisher": "—",
+      "genre": "Space shooter",
+      "significance": "First widely influential computer game",
       "summary": "Early space combat game developed at MIT; widely cited as one of the first influential computer games.",
-      "image_url": "",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Spacewar%21-PDP-1-20070512.jpg/320px-Spacewar%21-PDP-1-20070512.jpg",
+      "image_credit": "Joi Ito / CC BY 2.0",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
+          "name": "Computer History Museum",
           "url": "https://www.computerhistory.org/revolution/computer-games/16"
         }
       ]
@@ -18,12 +24,17 @@
       "name": "Computer Space",
       "year": 1971,
       "platform": "Arcade",
-      "summary": "One of the first commercially sold coin-op video games.",
-      "image_url": "",
+      "developer": "Nutting Associates",
+      "publisher": "Nutting Associates",
+      "genre": "Space shooter",
+      "significance": "First commercially sold arcade video game",
+      "summary": "The first commercially sold arcade video game, predating Pong by a year.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Computer_Space_–_Atari_prototype_%281971%29_-_MoHH.jpg/240px-Computer_Space_–_Atari_prototype_%281971%29_-_MoHH.jpg",
+      "image_credit": "Wikimedia Commons / CC BY-SA 4.0",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Computer_Space"
         }
       ]
     },
@@ -31,829 +42,1043 @@
       "name": "Pong",
       "year": 1972,
       "platform": "Arcade",
-      "summary": "Foundational arcade table tennis game that popularized coin-op video games.",
-      "image_url": "",
+      "developer": "Atari",
+      "publisher": "Atari",
+      "genre": "Sports",
+      "significance": "First commercially successful arcade game",
+      "summary": "Atari's table tennis arcade game. The first commercially successful video game, launching the industry.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Pong.png/240px-Pong.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Pong"
         }
       ]
     },
     {
       "name": "Maze War",
       "year": 1973,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "Mainframe",
+      "developer": "Steve Colley",
+      "publisher": "—",
+      "genre": "First-person shooter",
+      "significance": "First first-person perspective game; early networked multiplayer",
+      "summary": "One of the earliest first-person perspective games and an early example of networked multiplayer gaming.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Maze_War.jpg/240px-Maze_War.jpg",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Maze_War"
         }
       ]
     },
     {
       "name": "Spasim",
       "year": 1974,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "PLATO",
+      "developer": "Jim Bowery",
+      "publisher": "—",
+      "genre": "Space simulator",
+      "significance": "First 3D multiplayer online game",
+      "summary": "An early 3D space simulator considered one of the first online multiplayer games, running on the PLATO system.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Vector_Video_Games8.svg/240px-Vector_Video_Games8.svg.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Spasim"
         }
       ]
     },
     {
       "name": "Gun Fight",
       "year": 1975,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "Arcade",
+      "developer": "Taito / Midway",
+      "publisher": "Midway",
+      "genre": "Shooter",
+      "significance": "First game to use a microprocessor",
+      "summary": "The first arcade game to use a microprocessor, and the first to depict human-to-human combat.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Gun_Fight_arcadeflyer.png/240px-Gun_Fight_arcadeflyer.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Gun_Fight"
         }
       ]
     },
     {
       "name": "Breakout",
       "year": 1976,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "Arcade",
+      "developer": "Atari",
+      "publisher": "Atari",
+      "genre": "Action",
+      "significance": "Designed by Steve Jobs & Steve Wozniak",
+      "summary": "Designed by Steve Jobs and Steve Wozniak for Atari. Inspired countless clones and influenced early Apple hardware design.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Breakout2600.svg/240px-Breakout2600.svg.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Breakout_(video_game)"
         }
       ]
     },
     {
       "name": "Zork",
       "year": 1977,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "Mainframe / PC",
+      "developer": "MIT / Infocom",
+      "publisher": "Infocom",
+      "genre": "Text adventure",
+      "significance": "Pioneered the text adventure / interactive fiction genre",
+      "summary": "One of the earliest and most influential text adventure games. Pioneered interactive fiction.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Zork_box_art.jpg/240px-Zork_box_art.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Zork"
         }
       ]
     },
     {
       "name": "Space Invaders",
       "year": 1978,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "Arcade / Atari 2600",
+      "developer": "Taito",
+      "publisher": "Taito / Midway",
+      "genre": "Fixed shooter",
+      "significance": "First blockbuster arcade game; established shoot-em-up genre",
+      "summary": "The first blockbuster video game. Caused a coin shortage in Japan and defined the shoot-em-up genre.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Space_Invaders_-_Direct_Laser_Writer.png/240px-Space_Invaders_-_Direct_Laser_Writer.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Space_Invaders"
         }
       ]
     },
     {
       "name": "Asteroids",
       "year": 1979,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "Arcade",
+      "developer": "Atari",
+      "publisher": "Atari",
+      "genre": "Shooter",
+      "significance": "Best-selling arcade game of its era",
+      "summary": "One of the most popular and influential arcade games of the golden age. Best-selling Atari arcade game.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Asteroi1.png/240px-Asteroi1.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Asteroids_(video_game)"
         }
       ]
     },
     {
       "name": "Adventure",
       "year": 1979,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "Atari 2600",
+      "developer": "Warren Robinett",
+      "publisher": "Atari",
+      "genre": "Action-adventure",
+      "significance": "First graphical adventure game; first Easter egg",
+      "summary": "The first graphical action-adventure game and the first to contain a hidden Easter egg.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Adventure_Atari_2600.png/240px-Adventure_Atari_2600.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Adventure_(Atari_2600)"
         }
       ]
     },
     {
       "name": "Pac-Man",
       "year": 1980,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "Arcade",
+      "developer": "Namco",
+      "publisher": "Namco / Midway",
+      "genre": "Maze",
+      "significance": "Highest-grossing arcade game ever; first mascot character",
+      "summary": "The highest-grossing arcade game of all time. First game with a mascot character and cutscenes.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Pac-Man_arcade_game_logic_board.jpg/240px-Pac-Man_arcade_game_logic_board.jpg",
+      "image_credit": "Wikimedia Commons / CC BY-SA 3.0",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Pac-Man"
         }
       ]
     },
     {
       "name": "Rogue",
       "year": 1980,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "UNIX",
+      "developer": "Michael Toy & Glenn Wichman",
+      "publisher": "—",
+      "genre": "Dungeon crawler",
+      "significance": "Defined the roguelike genre",
+      "summary": "The game that defined the roguelike genre. Procedurally generated dungeons, permadeath.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Rogue_Screen_Shot_CAR.PNG/240px-Rogue_Screen_Shot_CAR.PNG",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Rogue_(video_game)"
         }
       ]
     },
     {
       "name": "Donkey Kong",
       "year": 1981,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "Arcade",
+      "developer": "Nintendo",
+      "publisher": "Nintendo",
+      "genre": "Platform",
+      "significance": "First platform game; introduced Mario",
+      "summary": "The first true platform game. Introduced Jumpman (later Mario) and villainous character Donkey Kong.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Donkey_Kong_arcade.jpg/240px-Donkey_Kong_arcade.jpg",
+      "image_credit": "Wikimedia Commons / CC BY-SA 3.0",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Donkey_Kong"
         }
       ]
     },
     {
       "name": "Galaga",
       "year": 1981,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "Arcade",
+      "developer": "Namco",
+      "publisher": "Namco / Midway",
+      "genre": "Fixed shooter",
+      "significance": "Refined the fixed shooter genre with dual-fighter mechanic",
+      "summary": "Sequel to Galaxian. Introduced the tractor beam capture mechanic and dual-fighter feature.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Galaga.png/240px-Galaga.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Galaga"
         }
       ]
     },
     {
       "name": "Wizardry",
       "year": 1981,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "Apple II",
+      "developer": "Sir-Tech",
+      "publisher": "Sir-Tech",
+      "genre": "RPG",
+      "significance": "Pioneered the dungeon-crawler RPG; influenced Final Fantasy & Dragon Quest",
+      "summary": "One of the earliest dungeon-crawling RPGs. Directly influenced Dragon Quest, Final Fantasy and countless JRPGs.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Wizardry_-_Proving_Grounds_of_the_Mad_Overlord_%28Apple_II%29.png/240px-Wizardry_-_Proving_Grounds_of_the_Mad_Overlord_%28Apple_II%29.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Wizardry"
         }
       ]
     },
     {
       "name": "Ms. Pac-Man",
       "year": 1982,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "Arcade",
+      "developer": "Midway / General Computer",
+      "publisher": "Midway",
+      "genre": "Maze",
+      "significance": "First major female protagonist in gaming",
+      "summary": "One of the most successful arcade games ever. Notable as one of the first games with a female protagonist.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Ms._Pac-Man.png/240px-Ms._Pac-Man.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Ms._Pac-Man"
         }
       ]
     },
     {
       "name": "Pitfall!",
       "year": 1982,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "Atari 2600",
+      "developer": "Activision",
+      "publisher": "Activision",
+      "genre": "Platform",
+      "significance": "First side-scrolling platformer on home consoles",
+      "summary": "One of the first side-scrolling platformers for a home console. Sold 4 million copies.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Pitfall_Atari2600_Screenshot.png/240px-Pitfall_Atari2600_Screenshot.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Pitfall!"
         }
       ]
     },
     {
       "name": "Dragon's Lair",
       "year": 1983,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "Arcade",
+      "developer": "Advanced Microcomputer Systems",
+      "publisher": "Cinematronics",
+      "genre": "Interactive film",
+      "significance": "First LaserDisc game; used full animation",
+      "summary": "First LaserDisc arcade game with full Disney-quality animation by Don Bluth. A milestone in video game visuals.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Dragon%27s_Lair_arcadeflyer.png/240px-Dragon%27s_Lair_arcadeflyer.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Dragon%27s_Lair"
         }
       ]
     },
     {
       "name": "Tetris",
       "year": 1984,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "Electronika 60 / Game Boy",
+      "developer": "Alexey Pajitnov",
+      "publisher": "Various",
+      "genre": "Puzzle",
+      "significance": "Best-selling video game of all time (mobile included)",
+      "summary": "Created by Alexey Pajitnov. One of the best-selling video games ever. The Game Boy version sold 35 million copies.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Typical_Tetris_Game.svg/240px-Typical_Tetris_Game.svg.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Tetris"
         }
       ]
     },
     {
       "name": "Elite",
       "year": 1984,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "BBC Micro / PC",
+      "developer": "David Braben & Ian Bell",
+      "publisher": "Acornsoft",
+      "genre": "Space trading",
+      "significance": "First open-world space sim; procedural generation",
+      "summary": "First open-world game and space trading simulator. Used procedural generation to create 8 galaxies with 256 planets each.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Elite_dangerous_logo.png/240px-Elite_dangerous_logo.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Elite_(video_game)"
         }
       ]
     },
     {
       "name": "Super Mario Bros.",
       "year": 1985,
-      "platform": "",
-      "summary": "Early influential title (curated list).",
-      "image_url": "",
+      "platform": "NES",
+      "developer": "Nintendo",
+      "publisher": "Nintendo",
+      "genre": "Platform",
+      "significance": "Best-selling NES game; defined the platformer genre",
+      "summary": "The defining platformer. Sold 40 million copies. Revitalized the gaming industry after the 1983 crash.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Super_Mario_Bros._Logo.svg/320px-Super_Mario_Bros._Logo.svg.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
-        },
-        {
-          "name": "World Video Game Hall of Fame (inducted games)",
-          "url": "https://www.museumofplay.org/exhibits/world-video-game-hall-of-fame/inducted-games/"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Super_Mario_Bros."
         }
       ]
     },
     {
-      "name": "Curated early game #23",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "The Legend of Zelda",
+      "year": 1986,
+      "platform": "NES / Famicom Disk System",
+      "developer": "Nintendo",
+      "publisher": "Nintendo",
+      "genre": "Action-adventure",
+      "significance": "Pioneered open-world exploration and non-linear gameplay",
+      "summary": "Pioneered open-world exploration, inventory systems and non-linear gameplay on home consoles.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/The_Legend_of_Zelda_-_Box_NA.jpg/240px-The_Legend_of_Zelda_-_Box_NA.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/The_Legend_of_Zelda"
         }
       ]
     },
     {
-      "name": "Curated early game #24",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Metroid",
+      "year": 1986,
+      "platform": "NES / Famicom Disk System",
+      "developer": "Nintendo R&D1",
+      "publisher": "Nintendo",
+      "genre": "Action-adventure",
+      "significance": "Pioneered atmospheric exploration; Metroidvania genre origin",
+      "summary": "Pioneered atmospheric, non-linear exploration. Origin of the Metroidvania genre. Featured a surprise female protagonist.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Metroid_NES_box_art.jpg/240px-Metroid_NES_box_art.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Metroid"
         }
       ]
     },
     {
-      "name": "Curated early game #25",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Castlevania",
+      "year": 1986,
+      "platform": "NES",
+      "developer": "Konami",
+      "publisher": "Konami",
+      "genre": "Action-platform",
+      "significance": "Origin of the Metroidvania genre",
+      "summary": "Action platformer set in Dracula's castle. Co-origin of the Metroidvania genre alongside Metroid.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Castlevania_NES_box_art.jpg/240px-Castlevania_NES_box_art.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Castlevania"
         }
       ]
     },
     {
-      "name": "Curated early game #26",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Dragon Quest",
+      "year": 1986,
+      "platform": "NES / Famicom",
+      "developer": "Chunsoft",
+      "publisher": "Enix",
+      "genre": "RPG",
+      "significance": "Founded the JRPG genre",
+      "summary": "The game that founded the Japanese RPG genre. Influenced every JRPG that followed, including Final Fantasy.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Dragon_Quest_Logo.png/240px-Dragon_Quest_Logo.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Dragon_Quest"
         }
       ]
     },
     {
-      "name": "Curated early game #27",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Mega Man",
+      "year": 1987,
+      "platform": "NES",
+      "developer": "Capcom",
+      "publisher": "Capcom",
+      "genre": "Action-platform",
+      "significance": "Stage-select system; pioneered user choice in progression",
+      "summary": "Introduced the stage-select system giving players freedom of progression. Launched one of gaming's most beloved franchises.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Mega_Man_box_art.jpg/240px-Mega_Man_box_art.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Mega_Man"
         }
       ]
     },
     {
-      "name": "Curated early game #28",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Final Fantasy",
+      "year": 1987,
+      "platform": "NES / Famicom",
+      "developer": "Square",
+      "publisher": "Square",
+      "genre": "RPG",
+      "significance": "Saved Square from bankruptcy; launched iconic franchise",
+      "summary": "Almost bankrupted Square was saved by this game's success. Launched one of the most celebrated RPG franchises ever.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Final_Fantasy_NES_box_art.jpg/240px-Final_Fantasy_NES_box_art.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Final_Fantasy"
         }
       ]
     },
     {
-      "name": "Curated early game #29",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Contra",
+      "year": 1987,
+      "platform": "Arcade / NES",
+      "developer": "Konami",
+      "publisher": "Konami",
+      "genre": "Run and gun",
+      "significance": "Defined the run-and-gun genre; popularized co-op play",
+      "summary": "Defined the run-and-gun shooter genre. Famous for its 30-life Konami Code cheat. Popularized couch co-op.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Contra_NES_box_art.jpg/240px-Contra_NES_box_art.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Contra_(video_game)"
         }
       ]
     },
     {
-      "name": "Curated early game #30",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Street Fighter",
+      "year": 1987,
+      "platform": "Arcade",
+      "developer": "Capcom",
+      "publisher": "Capcom",
+      "genre": "Fighting",
+      "significance": "Origin of the fighting game genre",
+      "summary": "The original fighting game. Introduced the six-button layout and special move commands that defined the genre.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Street_Fighter_arcadeflyer.png/240px-Street_Fighter_arcadeflyer.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Street_Fighter"
         }
       ]
     },
     {
-      "name": "Curated early game #31",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Super Mario Bros. 3",
+      "year": 1988,
+      "platform": "NES / Famicom",
+      "developer": "Nintendo",
+      "publisher": "Nintendo",
+      "genre": "Platform",
+      "significance": "Sold 17 million copies; considered greatest NES game",
+      "summary": "Widely considered one of the greatest video games ever made. Introduced the world map and power-up inventory.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/SMB3_NES_USA_box.png/240px-SMB3_NES_USA_box.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Super_Mario_Bros._3"
         }
       ]
     },
     {
-      "name": "Curated early game #32",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Bionic Commando",
+      "year": 1988,
+      "platform": "Arcade / NES",
+      "developer": "Capcom",
+      "publisher": "Capcom",
+      "genre": "Action-platform",
+      "significance": "First platformer without a jump button; grappling hook mechanic",
+      "summary": "Unique platformer where the protagonist cannot jump — movement relies entirely on a grappling hook arm.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Bionic_Commando_NES_cover.jpg/240px-Bionic_Commando_NES_cover.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Bionic_Commando"
         }
       ]
     },
     {
-      "name": "Curated early game #33",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Altered Beast",
+      "year": 1988,
+      "platform": "Arcade / Genesis",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "genre": "Beat 'em up",
+      "significance": "Launch title for Sega Genesis/Mega Drive",
+      "summary": "Sega Genesis launch title. Introduced the power-up transformation mechanic.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Alteredbeast_arcadeflyer.png/240px-Alteredbeast_arcadeflyer.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Altered_Beast"
         }
       ]
     },
     {
-      "name": "Curated early game #34",
+      "name": "Ultima IV: Quest of the Avatar",
       "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "platform": "Apple II / PC",
+      "developer": "Origin Systems",
+      "publisher": "Origin Systems",
+      "genre": "RPG",
+      "significance": "First game with a moral/virtue system instead of villain",
+      "summary": "Revolutionary RPG — no villain to defeat. The goal was personal enlightenment through eight virtues.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Ultima_IV_-_Quest_of_the_Avatar_Coverart.png/240px-Ultima_IV_-_Quest_of_the_Avatar_Coverart.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Ultima_IV:_Quest_of_the_Avatar"
         }
       ]
     },
     {
-      "name": "Curated early game #35",
+      "name": "Gauntlet",
       "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "platform": "Arcade",
+      "developer": "Atari Games",
+      "publisher": "Atari Games",
+      "genre": "Dungeon crawler",
+      "significance": "First 4-player cooperative arcade game",
+      "summary": "First 4-player simultaneous cooperative arcade game. Pioneered the dungeon crawler genre in arcades.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Gauntlet_arcadeflyer.png/240px-Gauntlet_arcadeflyer.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Gauntlet_(1985_video_game)"
         }
       ]
     },
     {
-      "name": "Curated early game #36",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Duck Hunt",
+      "year": 1984,
+      "platform": "NES",
+      "developer": "Nintendo R&D1",
+      "publisher": "Nintendo",
+      "genre": "Light gun shooter",
+      "significance": "Popularized the light gun peripheral",
+      "summary": "Pack-in title with NES Zapper. One of the most recognized early NES games. Famous for the laughing dog.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Duck_Hunt_NES_screenshot.png/240px-Duck_Hunt_NES_screenshot.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Duck_Hunt"
         }
       ]
     },
     {
-      "name": "Curated early game #37",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "SimCity",
+      "year": 1989,
+      "platform": "Mac / PC",
+      "developer": "Maxis",
+      "publisher": "Brøderbund",
+      "genre": "City builder / Simulation",
+      "significance": "Founded the city-building and simulation game genre",
+      "summary": "Will Wright's landmark city-builder. Founded the simulation game genre and inspired The Sims.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/SimCity_Classic_Logo.png/240px-SimCity_Classic_Logo.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/SimCity_(1989_video_game)"
         }
       ]
     },
     {
-      "name": "Curated early game #38",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Prince of Persia",
+      "year": 1989,
+      "platform": "Apple II / PC",
+      "developer": "Jordan Mechner",
+      "publisher": "Broderbund",
+      "genre": "Action-platform",
+      "significance": "First game with rotoscoped fluid animation",
+      "summary": "Jordan Mechner's masterpiece. Used rotoscoped animation from real footage for unprecedented fluid movement.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Prince_of_Persia_1989_Apple2_screenshot.png/320px-Prince_of_Persia_1989_Apple2_screenshot.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Prince_of_Persia_(1989_video_game)"
         }
       ]
     },
     {
-      "name": "Curated early game #39",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Populous",
+      "year": 1989,
+      "platform": "Amiga / PC",
+      "developer": "Bullfrog Productions",
+      "publisher": "Electronic Arts",
+      "genre": "God game",
+      "significance": "Founded the god game genre",
+      "summary": "Peter Molyneux's debut. Founded the god game genre where players manipulate terrain and guide civilizations.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Populous_Coverart.png/240px-Populous_Coverart.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Populous"
         }
       ]
     },
     {
-      "name": "Curated early game #40",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Golden Axe",
+      "year": 1989,
+      "platform": "Arcade / Genesis",
+      "developer": "Sega",
+      "publisher": "Sega",
+      "genre": "Beat 'em up",
+      "significance": "Landmark fantasy beat-em-up; co-op play",
+      "summary": "Sega's fantasy beat-em-up. Popularized the genre with magic systems and co-operative play.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Golden_Axe_arcade_flyer.jpg/240px-Golden_Axe_arcade_flyer.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Golden_Axe"
         }
       ]
     },
     {
-      "name": "Curated early game #41",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Tetris (Game Boy)",
+      "year": 1989,
+      "platform": "Game Boy",
+      "developer": "Nintendo / Bullet-Proof Software",
+      "publisher": "Nintendo",
+      "genre": "Puzzle",
+      "significance": "Made Game Boy a worldwide success; 35 million copies sold",
+      "summary": "The bundled Game Boy version of Tetris sold 35 million copies and made the Game Boy a global phenomenon.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Typical_Tetris_Game.svg/240px-Typical_Tetris_Game.svg.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Tetris_(Game_Boy)"
         }
       ]
     },
     {
-      "name": "Curated early game #42",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Sonic the Hedgehog",
+      "year": 1991,
+      "platform": "Sega Genesis",
+      "developer": "Sonic Team",
+      "publisher": "Sega",
+      "genre": "Platform",
+      "significance": "Sega's mascot; rivaled Mario; speed-based platforming",
+      "summary": "Sega's answer to Mario. Speed-based platforming defined a new style. Made the Genesis competitive with SNES.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Sonic_the_Hedgehog_logo.svg/320px-Sonic_the_Hedgehog_logo.svg.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Sonic_the_Hedgehog_(1991_video_game)"
         }
       ]
     },
     {
-      "name": "Curated early game #43",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Street Fighter II",
+      "year": 1991,
+      "platform": "Arcade / SNES",
+      "developer": "Capcom",
+      "publisher": "Capcom",
+      "genre": "Fighting",
+      "significance": "Defined the 1v1 fighting game genre globally",
+      "summary": "The game that defined competitive 1v1 fighting games. Six-character roster, special moves, global phenomenon.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Street_Fighter_II_SNES_cover.jpg/240px-Street_Fighter_II_SNES_cover.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Street_Fighter_II"
         }
       ]
     },
     {
-      "name": "Curated early game #44",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Civilization",
+      "year": 1991,
+      "platform": "PC",
+      "developer": "MicroProse",
+      "publisher": "MicroProse",
+      "genre": "Turn-based strategy",
+      "significance": "Founded the 4X strategy genre",
+      "summary": "Sid Meier's landmark 4X strategy game. Founded the civilization-building genre. 'One more turn' addiction.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Civilization_1_box_art.png/240px-Civilization_1_box_art.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Civilization_(video_game)"
         }
       ]
     },
     {
-      "name": "Curated early game #45",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Mortal Kombat",
+      "year": 1992,
+      "platform": "Arcade",
+      "developer": "Midway",
+      "publisher": "Midway",
+      "genre": "Fighting",
+      "significance": "First digitized sprite fighting game; sparked video game rating debate",
+      "summary": "Used digitized actors instead of sprites. Its violence directly led to the ESRB rating system being created.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/MK1_arcade_logo.png/240px-MK1_arcade_logo.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Mortal_Kombat"
         }
       ]
     },
     {
-      "name": "Curated early game #46",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Wolfenstein 3D",
+      "year": 1992,
+      "platform": "PC",
+      "developer": "id Software",
+      "publisher": "Apogee Software",
+      "genre": "First-person shooter",
+      "significance": "Popularized the first-person shooter genre",
+      "summary": "id Software's breakthrough. Popularized the first-person shooter genre and shareware distribution model.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Wolfenstein3d_firstlevel.png/320px-Wolfenstein3d_firstlevel.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Wolfenstein_3D"
         }
       ]
     },
     {
-      "name": "Curated early game #47",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Super Mario Kart",
+      "year": 1992,
+      "platform": "SNES",
+      "developer": "Nintendo",
+      "publisher": "Nintendo",
+      "genre": "Racing",
+      "significance": "Founded the kart racing genre",
+      "summary": "Founded the kart racing genre. Sold 8.76 million copies and spawned one of Nintendo's most beloved series.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Super_Mario_Kart_box_art.jpg/240px-Super_Mario_Kart_box_art.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Super_Mario_Kart"
         }
       ]
     },
     {
-      "name": "Curated early game #48",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Doom",
+      "year": 1993,
+      "platform": "PC",
+      "developer": "id Software",
+      "publisher": "id Software",
+      "genre": "First-person shooter",
+      "significance": "Defined the FPS genre; popularized multiplayer deathmatches",
+      "summary": "The game that defined first-person shooters. Popularized deathmatch multiplayer and level modding communities.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Doom_cover_art.jpg/240px-Doom_cover_art.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Doom_(1993_video_game)"
         }
       ]
     },
     {
-      "name": "Curated early game #49",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Star Fox",
+      "year": 1993,
+      "platform": "SNES",
+      "developer": "Nintendo / Argonaut",
+      "publisher": "Nintendo",
+      "genre": "Rail shooter",
+      "significance": "First SNES game to use 3D polygon graphics (Super FX chip)",
+      "summary": "First SNES game using 3D polygon graphics via the Super FX chip. Pioneered 3D gaming on home consoles.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Starfox_snes_boxart.jpg/240px-Starfox_snes_boxart.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Star_Fox_(1993_video_game)"
         }
       ]
     },
     {
-      "name": "Curated early game #50",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "The Secret of Monkey Island",
+      "year": 1990,
+      "platform": "PC / Amiga",
+      "developer": "LucasArts",
+      "publisher": "LucasArts",
+      "genre": "Point-and-click adventure",
+      "significance": "Peak of the point-and-click adventure era; SCUMM engine",
+      "summary": "LucasArts' masterpiece. Defined the golden age of point-and-click adventures. Famous wit and puzzle design.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Monkeyisland.jpg/240px-Monkeyisland.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/The_Secret_of_Monkey_Island"
         }
       ]
     },
     {
-      "name": "Curated early game #51",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Wing Commander",
+      "year": 1990,
+      "platform": "PC",
+      "developer": "Origin Systems",
+      "publisher": "Origin Systems",
+      "genre": "Space combat sim",
+      "significance": "Cinematic storytelling in games; FMV cutscenes",
+      "summary": "Pioneered cinematic storytelling in video games with branching narratives and full voice acting.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Wing_commander_-_cover_art.jpg/240px-Wing_commander_-_cover_art.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Wing_Commander_(video_game)"
         }
       ]
     },
     {
-      "name": "Curated early game #52",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Super Mario World",
+      "year": 1990,
+      "platform": "SNES",
+      "developer": "Nintendo",
+      "publisher": "Nintendo",
+      "genre": "Platform",
+      "significance": "SNES launch title; introduced Yoshi",
+      "summary": "SNES launch title. Sold 20 million copies. Introduced Yoshi and refined the Mario formula.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/SNES-Super-Mario-World-Box.jpg/240px-SNES-Super-Mario-World-Box.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Super_Mario_World"
         }
       ]
     },
     {
-      "name": "Curated early game #53",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "F-Zero",
+      "year": 1990,
+      "platform": "SNES",
+      "developer": "Nintendo",
+      "publisher": "Nintendo",
+      "genre": "Racing",
+      "significance": "Demonstrated Mode 7 graphics; high-speed futuristic racing",
+      "summary": "Launched alongside SNES, demonstrating Mode 7 pseudo-3D scaling. Founded futuristic racing games.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/F-Zero_SNES_cover.jpg/240px-F-Zero_SNES_cover.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/F-Zero_(video_game)"
         }
       ]
     },
     {
-      "name": "Curated early game #54",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Myst",
+      "year": 1993,
+      "platform": "Mac / PC",
+      "developer": "Cyan",
+      "publisher": "Broderbund",
+      "genre": "Puzzle adventure",
+      "significance": "Best-selling PC game of the 1990s; photo-realistic visuals",
+      "summary": "Best-selling PC game of the 1990s for many years. Pre-rendered photo-realistic visuals were unprecedented.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Myst_Library.jpg/320px-Myst_Library.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Myst"
         }
       ]
     },
     {
-      "name": "Curated early game #55",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "The Oregon Trail",
+      "year": 1971,
+      "platform": "Mainframe / Apple II",
+      "developer": "MECC",
+      "publisher": "MECC",
+      "genre": "Educational simulation",
+      "significance": "First widely played educational computer game",
+      "summary": "One of the earliest and most influential educational games. 'You have died of dysentery' entered popular culture.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/OregonTrail_AppleII.png/320px-OregonTrail_AppleII.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/The_Oregon_Trail_(video_game)"
         }
       ]
     },
     {
-      "name": "Curated early game #56",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Frogger",
+      "year": 1981,
+      "platform": "Arcade",
+      "developer": "Konami",
+      "publisher": "Sega / Gremlin",
+      "genre": "Action",
+      "significance": "Top-5 best-selling arcade game of its era",
+      "summary": "One of the best-selling arcade games ever. Simple yet enduring gameplay about crossing roads and rivers.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Frogger_game_arcade.png/240px-Frogger_game_arcade.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Frogger"
         }
       ]
     },
     {
-      "name": "Curated early game #57",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Dig Dug",
+      "year": 1982,
+      "platform": "Arcade",
+      "developer": "Namco",
+      "publisher": "Namco / Atari",
+      "genre": "Action",
+      "significance": "Golden age arcade classic; unique inflate-to-kill mechanic",
+      "summary": "Golden Age Namco classic. Unique mechanic: inflate enemies with an air pump until they pop.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Dig_Dug_arcadeflyer.png/240px-Dig_Dug_arcadeflyer.png",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Dig_Dug"
         }
       ]
     },
     {
-      "name": "Curated early game #58",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Q*bert",
+      "year": 1982,
+      "platform": "Arcade",
+      "developer": "Gottlieb",
+      "publisher": "Gottlieb",
+      "genre": "Action puzzle",
+      "significance": "Isometric perspective pioneer; unique diagonal-only movement",
+      "summary": "One of the first isometric perspective games. Unique diagonal-only movement on a pyramid of cubes.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Qbert.png/240px-Qbert.png",
+      "image_credit": "Wikimedia Commons / Public Domain",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Q*bert"
         }
       ]
     },
     {
-      "name": "Curated early game #59",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Excitebike",
+      "year": 1984,
+      "platform": "NES / Famicom",
+      "developer": "Nintendo",
+      "publisher": "Nintendo",
+      "genre": "Racing",
+      "significance": "First game with a level editor on home consoles",
+      "summary": "NES launch title in Japan. First home console game with a built-in track editor.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/ExcitebikeBoxArt.jpg/240px-ExcitebikeBoxArt.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Excitebike"
         }
       ]
     },
     {
-      "name": "Curated early game #60",
-      "year": 1985,
-      "platform": "",
-      "summary": "Placeholder: replace with a specific historical title and official source URL.",
-      "image_url": "",
+      "name": "Maniac Mansion",
+      "year": 1987,
+      "platform": "PC / Apple II / NES",
+      "developer": "LucasArts",
+      "publisher": "LucasArts / Jaleco",
+      "genre": "Point-and-click adventure",
+      "significance": "First SCUMM engine game; pioneered point-and-click adventures",
+      "summary": "First game to use LucasArts' SCUMM engine. Pioneered point-and-click adventure gameplay with multiple playable characters.",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Maniac_Mansion_cover.jpg/240px-Maniac_Mansion_cover.jpg",
+      "image_credit": "Wikimedia Commons / Fair Use",
       "sources": [
         {
-          "name": "CHM Revolution: Computer Games",
-          "url": "https://www.computerhistory.org/revolution/computer-games/16"
+          "name": "Wikipedia",
+          "url": "https://en.wikipedia.org/wiki/Maniac_Mansion"
         }
       ]
     }
