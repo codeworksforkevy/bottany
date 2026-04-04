@@ -145,3 +145,37 @@ CREATE TABLE IF NOT EXISTS chocolate_registry (
 CREATE INDEX IF NOT EXISTS idx_choc_category  ON chocolate_registry (category);
 CREATE INDEX IF NOT EXISTS idx_choc_city      ON chocolate_registry (city);
 CREATE INDEX IF NOT EXISTS idx_choc_founded   ON chocolate_registry (founded);
+
+
+-- =============================================================================
+-- CONSOLES
+-- =============================================================================
+
+CREATE TABLE IF NOT EXISTS consoles (
+
+    id                   TEXT PRIMARY KEY,
+
+    name                 TEXT NOT NULL,
+    brand                TEXT NOT NULL,
+    generation           INT,
+
+    release_jp           DATE,
+    release_na           DATE,
+    release_global       DATE,
+
+    cpu                  TEXT,
+    units_sold_millions  NUMERIC(8,2),
+
+    handheld             BOOLEAN DEFAULT FALSE,
+    hybrid               BOOLEAN DEFAULT FALSE,
+
+    thumbnail_avatar     TEXT,
+    thumbnail_full       TEXT,
+
+    created_at           TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
+
+CREATE INDEX IF NOT EXISTS idx_console_brand      ON consoles (brand);
+CREATE INDEX IF NOT EXISTS idx_console_generation ON consoles (generation);
+CREATE INDEX IF NOT EXISTS idx_console_units      ON consoles (units_sold_millions DESC);
