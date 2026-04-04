@@ -1,8 +1,7 @@
-
 import discord
 from discord import app_commands
 
-async def register(bot):
+async def register(bot: discord.Client, data_dir: str) -> None:
 
     group = app_commands.Group(
         name="twitch",
