@@ -72,13 +72,19 @@ def _type_tag(c: Dict[str, Any]) -> str:
 
 
 def _thumbnail(c: Dict[str, Any]) -> str:
-    """Return best available thumbnail URL — Wikimedia full as fallback."""
+    """Return best available thumbnail URL — Wikimedia full as fallback.
+    Priority: custom avatar CDN → Wikimedia full URL → empty string.
+    """
     thumb  = c.get("thumbnail", {})
     avatar = thumb.get("avatar", "")
     full   = thumb.get("full", "")
+    # Use avatar only if it's a real URL (not empty, not a placeholder)
     if avatar and "cdn.yourapp.com" not in avatar:
         return avatar
-    return full
+    # Fall back to Wikimedia full URL
+    if full:
+        return full
+    return ""
 
 
 _DIVIDER = "\u200b"  # zero-width space — Discord renders as blank divider field
