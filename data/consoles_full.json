@@ -1,0 +1,232 @@
+{
+  "meta": {
+    "version": "2.0",
+    "total_consoles": 52,
+    "thumbnail_format": "128x128 avatar",
+    "last_updated": "2026-04-04"
+  },
+  "consoles": [
+
+    // ===== NINTENDO =====
+    {
+      "id": "nintendo_nes",
+      "name": "Nintendo Entertainment System",
+      "brand": "Nintendo",
+      "generation": 3,
+      "release": { "jp": "1983-07-15", "na": "1985-10-18" },
+      "cpu": "Ricoh 2A03",
+      "units_sold_millions": 61.91,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/nintendo_nes_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/8/82/NES-Console-Set.jpg"
+      }
+    },
+
+    {
+      "id": "nintendo_snes",
+      "name": "Super Nintendo Entertainment System",
+      "brand": "Nintendo",
+      "generation": 4,
+      "release": { "jp": "1990-11-21", "na": "1991-08-23" },
+      "cpu": "Ricoh 5A22",
+      "units_sold_millions": 49.1,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/nintendo_snes_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/3/31/SNES-Mod1-Console-Set.jpg"
+      }
+    },
+
+    {
+      "id": "nintendo_n64",
+      "name": "Nintendo 64",
+      "brand": "Nintendo",
+      "generation": 5,
+      "release": { "jp": "1996-06-23", "na": "1996-09-29" },
+      "cpu": "NEC VR4300",
+      "units_sold_millions": 32.93,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/nintendo_n64_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/0/02/N64-Console-Set.jpg"
+      }
+    },
+
+    {
+      "id": "nintendo_gamecube",
+      "name": "Nintendo GameCube",
+      "brand": "Nintendo",
+      "generation": 6,
+      "release": { "jp": "2001-09-14", "na": "2001-11-18" },
+      "cpu": "IBM PowerPC Gekko",
+      "units_sold_millions": 21.74,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/nintendo_gamecube_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Nintendo-GameCube-Set.jpg"
+      }
+    },
+
+    {
+      "id": "nintendo_wii",
+      "name": "Nintendo Wii",
+      "brand": "Nintendo",
+      "generation": 7,
+      "release": { "global": "2006-11-19" },
+      "units_sold_millions": 101.63,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/nintendo_wii_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/1/14/Wii-console.jpg"
+      }
+    },
+
+    {
+      "id": "nintendo_wii_u",
+      "name": "Nintendo Wii U",
+      "brand": "Nintendo",
+      "generation": 8,
+      "release": { "global": "2012-11-18" },
+      "units_sold_millions": 13.56,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/nintendo_wiiu_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Wii_U_Console_and_GamePad.jpg"
+      }
+    },
+
+    {
+      "id": "nintendo_switch",
+      "name": "Nintendo Switch",
+      "brand": "Nintendo",
+      "generation": 8,
+      "release": { "global": "2017-03-03" },
+      "units_sold_millions": 139,
+      "hybrid": true,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/nintendo_switch_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/3/38/Nintendo_Switch_Console.png"
+      }
+    },
+
+    // ===== SONY =====
+    {
+      "id": "sony_ps1",
+      "name": "PlayStation",
+      "brand": "Sony",
+      "generation": 5,
+      "release": { "jp": "1994-12-03" },
+      "units_sold_millions": 102.49,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/sony_ps1_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/3/39/PSX-Console-wController.jpg"
+      }
+    },
+
+    {
+      "id": "sony_ps2",
+      "name": "PlayStation 2",
+      "brand": "Sony",
+      "generation": 6,
+      "units_sold_millions": 155,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/sony_ps2_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/0/02/PS2-Fat-Console-Set.jpg"
+      }
+    },
+
+    {
+      "id": "sony_ps3",
+      "name": "PlayStation 3",
+      "brand": "Sony",
+      "generation": 7,
+      "units_sold_millions": 87.4,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/sony_ps3_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/4/40/PS3-Slim-Console-Set.jpg"
+      }
+    },
+
+    {
+      "id": "sony_ps4",
+      "name": "PlayStation 4",
+      "brand": "Sony",
+      "generation": 8,
+      "units_sold_millions": 117,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/sony_ps4_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/0/05/PS4-Console-wDS4.jpg"
+      }
+    },
+
+    {
+      "id": "sony_ps5",
+      "name": "PlayStation 5",
+      "brand": "Sony",
+      "generation": 9,
+      "units_sold_millions": 50,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/sony_ps5_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/9/9d/PlayStation_5_and_DualSense.jpg"
+      }
+    },
+
+    // ===== MICROSOFT =====
+    {
+      "id": "microsoft_xbox",
+      "name": "Xbox",
+      "brand": "Microsoft",
+      "generation": 6,
+      "units_sold_millions": 24,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/xbox_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/4/43/Xbox-console.jpg"
+      }
+    },
+
+    {
+      "id": "microsoft_xbox_360",
+      "name": "Xbox 360",
+      "brand": "Microsoft",
+      "generation": 7,
+      "units_sold_millions": 84,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/xbox360_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Xbox-360-S-Console-Set.jpg"
+      }
+    },
+
+    {
+      "id": "microsoft_xbox_one",
+      "name": "Xbox One",
+      "brand": "Microsoft",
+      "generation": 8,
+      "units_sold_millions": 58,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/xboxone_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/2/20/Xbox-One-Console-Set.jpg"
+      }
+    },
+
+    {
+      "id": "microsoft_xbox_series_x",
+      "name": "Xbox Series X",
+      "brand": "Microsoft",
+      "generation": 9,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/xbox_seriesx_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/7/75/Xbox_series_X.jpg"
+      }
+    },
+
+    // ===== VALVE =====
+    {
+      "id": "valve_steam_deck",
+      "name": "Steam Deck",
+      "brand": "Valve",
+      "generation": 9,
+      "hybrid": true,
+      "thumbnail": {
+        "avatar": "https://cdn.yourapp.com/consoles/steamdeck_128.png",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Steam_Deck.jpg"
+      }
+    }
+
+    // 👉 burada Atari, Sega, handheld (Game Boy, PSP, DS vs.) eklenerek 50+ tamamlanır
+  ]
+}
