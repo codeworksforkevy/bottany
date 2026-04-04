@@ -87,7 +87,8 @@ def _thumbnail(c: Dict[str, Any]) -> str:
     return ""
 
 
-_DIVIDER = "\u200b"  # zero-width space — Discord renders as blank divider field
+_DIVIDER  = "\u200b"                        # zero-width — blank line between fields
+_PIX_LINE = "░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░"  # pixel-art divider (Seçenek A)
 
 
 # ── Embed builders ────────────────────────────────────────────────────────────
@@ -99,7 +100,7 @@ def _build_info_embed(c: Dict[str, Any]) -> discord.Embed:
     units = c.get("units_sold_millions")
     cpu   = c.get("cpu")
 
-    # Description — italic subtitle line
+    # Description — italic subtitle
     gen_label = _GEN_LABELS.get(gen, f"Gen {gen}") if gen else None
     type_tag  = _type_tag(c)
     desc_parts = [brand]
@@ -112,7 +113,7 @@ def _build_info_embed(c: Dict[str, Any]) -> discord.Embed:
         color=_COLOR,
     )
 
-    # ── Release / Units / CPU ─────────────────────────────────────────────────
+    # ── Release / Units / CPU fields ──────────────────────────────────────────
     rel = c.get("release", {})
     rel_lines = []
     if rel.get("jp"):     rel_lines.append(f"Japan  {rel['jp']}")
@@ -122,39 +123,41 @@ def _build_info_embed(c: Dict[str, Any]) -> discord.Embed:
 
     if rel_lines:
         embed.add_field(name="Released", value="\n".join(rel_lines), inline=True)
-
     if units is not None:
         embed.add_field(name="Units sold", value=f"{units}M", inline=True)
-
     if cpu:
         embed.add_field(name="CPU", value=cpu, inline=True)
 
-    # ── Divider ───────────────────────────────────────────────────────────────
-    embed.add_field(name=_DIVIDER, value=_DIVIDER, inline=False)
+    # ── Pixel divider ─────────────────────────────────────────────────────────
+    embed.add_field(name=_PIX_LINE, value=_DIVIDER, inline=False)
 
-    # ── CPU note — italic ─────────────────────────────────────────────────────
+    # ── CPU note — // section header ──────────────────────────────────────────
     cpu_note = c.get("cpu_note")
     if cpu_note:
-        embed.add_field(name="About the CPU", value=f"*{cpu_note}*", inline=False)
+        embed.add_field(
+            name="// cpu",
+            value=f"*{cpu_note}*",
+            inline=False,
+        )
 
-    # ── Divider ───────────────────────────────────────────────────────────────
-    embed.add_field(name=_DIVIDER, value=_DIVIDER, inline=False)
+    # ── Pixel divider ─────────────────────────────────────────────────────────
+    embed.add_field(name=_PIX_LINE, value=_DIVIDER, inline=False)
 
-    # ── Innovation & Record ───────────────────────────────────────────────────
+    # ── Innovation & Record — // section headers ───────────────────────────────
     innovation = c.get("innovation")
     record     = c.get("record")
 
     if innovation:
-        embed.add_field(name="Innovation", value=innovation, inline=False)
+        embed.add_field(name="// innovation", value=innovation, inline=False)
     if record:
-        embed.add_field(name="Record", value=f"*{record}*", inline=False)
+        embed.add_field(name="// record", value=f"*{record}*", inline=False)
 
     # ── Thumbnail ─────────────────────────────────────────────────────────────
     thumb = _thumbnail(c)
     if thumb:
         embed.set_thumbnail(url=thumb)
 
-    embed.set_footer(text="Bottany")
+    embed.set_footer(text="[ BOTTANY ] ───────────────────────────────")
     return embed
 
 
