@@ -19,7 +19,7 @@
       "cpu": "Ricoh 2A03",
       "units_sold_millions": 61.91,
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/nintendo_nes_128.png",
+        "avatar": "assets/consoles/avatars/nintendo_nes.png",
         "full": "https://upload.wikimedia.org/wikipedia/commons/8/82/NES-Console-Set.jpg"
       }
     },
@@ -35,7 +35,7 @@
       "cpu": "Ricoh 5A22",
       "units_sold_millions": 49.1,
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/nintendo_snes_128.png",
+        "avatar": "assets/consoles/avatars/nintendo_snes.png",
         "full": "https://upload.wikimedia.org/wikipedia/commons/3/31/SNES-Mod1-Console-Set.jpg"
       }
     },
@@ -299,7 +299,7 @@
       "cpu": "Motorola 68000",
       "units_sold_millions": 30.75,
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/sega_genesis_128.png",
+        "avatar": "assets/consoles/avatars/sega_genesis.png",
         "full": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Sega-Mega-Drive-JP-Mk1-Console-Set.jpg"
       }
     },
