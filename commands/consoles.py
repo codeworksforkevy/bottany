@@ -13,8 +13,8 @@ log = logging.getLogger(__name__)
 
 REG_FILE = "consoles_full.json"
 
-# Embed color — deep black
-_COLOR = 0x0a0a0a
+# Embed color — lemon yellow
+_COLOR = 0xFFF44F
 
 # Generation labels
 _GEN_LABELS = {
@@ -65,31 +65,23 @@ def _units_str(c: Dict[str, Any]) -> str:
     return f"{u}M units"
 
 
-def _rarity(units: Optional[float]) -> str:
-    if units is None: return "Unknown"
-    if units >= 100:  return "Legendary  (100M+)"
-    if units >= 50:   return "Very Common  (50–100M)"
-    if units >= 20:   return "Common  (20–50M)"
-    if units >= 5:    return "Uncommon  (5–20M)"
-    return "Rare  (<5M)"
+def _type_tag(c: Dict[str, Any]) -> str:
+    if c.get("hybrid"):   return "Hybrid"
+    if c.get("handheld"): return "Handheld"
+    return "Home console"
 
 
-def _tags(c: Dict[str, Any]) -> str:
-    tags = []
-    if c.get("handheld"): tags.append("Handheld")
-    if c.get("hybrid"):   tags.append("Hybrid")
-    return "  ·  ".join(tags) if tags else ""
-
-
-def _thumbnail(c: Dict[str, Any]) -> tuple[str, str]:
-    """Return (avatar_url, full_url). Prefer Wikimedia full for avatar fallback."""
-    thumb = c.get("thumbnail", {})
+def _thumbnail(c: Dict[str, Any]) -> str:
+    """Return best available thumbnail URL — Wikimedia full as fallback."""
+    thumb  = c.get("thumbnail", {})
     avatar = thumb.get("avatar", "")
     full   = thumb.get("full", "")
-    # If avatar points to cdn.yourapp.com (placeholder), fall back to Wikimedia full
-    if "cdn.yourapp.com" in avatar:
-        avatar = full
-    return avatar, full
+    if avatar and "cdn.yourapp.com" not in avatar:
+        return avatar
+    return full
+
+
+_DIVIDER = "\u200b"  # zero-width space — Discord renders as blank divider field
 
 
 # ── Embed builders ────────────────────────────────────────────────────────────
@@ -98,37 +90,65 @@ def _build_info_embed(c: Dict[str, Any]) -> discord.Embed:
     name  = c.get("name", "Unknown")
     brand = c.get("brand", "")
     gen   = c.get("generation")
-    gen_label = _GEN_LABELS.get(gen, f"Gen {gen}") if gen else "—"
+    units = c.get("units_sold_millions")
+    cpu   = c.get("cpu")
+
+    # Description — italic subtitle line
+    gen_label = _GEN_LABELS.get(gen, f"Gen {gen}") if gen else None
+    type_tag  = _type_tag(c)
+    desc_parts = [brand]
+    if gen_label:  desc_parts.append(gen_label)
+    if type_tag != "Home console": desc_parts.append(type_tag)
 
     embed = discord.Embed(
         title=name,
-        description=f"{brand}  ·  {gen_label}",
+        description=f"*{'  ·  '.join(desc_parts)}*",
         color=_COLOR,
     )
 
-    release = _release_str(c)
-    units   = _units_str(c)
-    cpu     = c.get("cpu", "—")
-    tags    = _tags(c)
+    # ── Release / Units / CPU ─────────────────────────────────────────────────
+    rel = c.get("release", {})
+    rel_lines = []
+    if rel.get("jp"):     rel_lines.append(f"Japan  {rel['jp']}")
+    if rel.get("na"):     rel_lines.append(f"North America  {rel['na']}")
+    if rel.get("eu"):     rel_lines.append(f"Europe  {rel['eu']}")
+    if rel.get("global"): rel_lines.append(rel["global"])
 
-    embed.add_field(name="Released",    value=release,              inline=True)
-    embed.add_field(name="Units Sold",  value=units,                inline=True)
-    embed.add_field(name="CPU",         value=cpu,                  inline=True)
-    embed.add_field(name="Generation",  value=str(gen) if gen else "—", inline=True)
+    if rel_lines:
+        embed.add_field(name="Released", value="\n".join(rel_lines), inline=True)
 
-    rarity = _rarity(c.get("units_sold_millions"))
-    embed.add_field(name="Market Reach", value=rarity,             inline=True)
+    if units is not None:
+        embed.add_field(name="Units sold", value=f"{units}M", inline=True)
 
-    if tags:
-        embed.add_field(name="Type", value=tags,                   inline=True)
+    if cpu:
+        embed.add_field(name="CPU", value=cpu, inline=True)
 
-    avatar, full = _thumbnail(c)
-    if avatar:
-        embed.set_thumbnail(url=avatar)
-    if full and full != avatar:
-        embed.set_image(url=full)
+    # ── Divider ───────────────────────────────────────────────────────────────
+    embed.add_field(name=_DIVIDER, value=_DIVIDER, inline=False)
 
-    embed.set_footer(text=f"ID: {c.get('id', '—')}  ·  Bottany Console Registry")
+    # ── CPU note — italic ─────────────────────────────────────────────────────
+    cpu_note = c.get("cpu_note")
+    if cpu_note:
+        embed.add_field(name="About the CPU", value=f"*{cpu_note}*", inline=False)
+
+    # ── Divider ───────────────────────────────────────────────────────────────
+    embed.add_field(name=_DIVIDER, value=_DIVIDER, inline=False)
+
+    # ── Innovation & Record ───────────────────────────────────────────────────
+    innovation = c.get("innovation")
+    record     = c.get("record")
+
+    if innovation:
+        embed.add_field(name="Innovation", value=innovation, inline=False)
+    if record:
+        embed.add_field(name="Record", value=f"*{record}*", inline=False)
+
+    # ── Thumbnail ─────────────────────────────────────────────────────────────
+    thumb = _thumbnail(c)
+    if thumb:
+        embed.set_thumbnail(url=thumb)
+
+    embed.set_footer(text="Bottany")
     return embed
 
 
