@@ -72,17 +72,19 @@ def _type_tag(c: Dict[str, Any]) -> str:
 
 
 def _thumbnail(c: Dict[str, Any]) -> str:
-    """Return best available thumbnail URL — Wikimedia full as fallback.
-    Priority: custom avatar CDN → Wikimedia full URL → empty string.
+    """Return best available thumbnail URL.
+    Only returns a URL if it starts with https:// — local file paths
+    from generate_console_avatars.py are skipped until a CDN is set up.
+    Priority: real CDN avatar → Wikimedia full URL → empty string.
     """
     thumb  = c.get("thumbnail", {})
     avatar = thumb.get("avatar", "")
     full   = thumb.get("full", "")
-    # Use avatar only if it's a real URL (not empty, not a placeholder)
-    if avatar and "cdn.yourapp.com" not in avatar:
+    # Accept avatar only if it's a real https URL (not placeholder, not local path)
+    if avatar and avatar.startswith("https://") and "cdn.yourapp.com" not in avatar:
         return avatar
     # Fall back to Wikimedia full URL
-    if full:
+    if full and full.startswith("https://"):
         return full
     return ""
 
