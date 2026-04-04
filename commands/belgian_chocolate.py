@@ -12,7 +12,7 @@ from discord import app_commands
 
 log = logging.getLogger(__name__)
 
-# ── Seçenekler ───────────────────────────────────────────────────────────────
+# ── Choices built from what actually exists in the data ──────────────────────
 
 _TYPE_CHOICES = [
     app_commands.Choice(name="Chocolate",     value="chocolate"),
@@ -22,149 +22,394 @@ _TYPE_CHOICES = [
     app_commands.Choice(name="Praline House", value="praline_house"),
 ]
 
-# ── Veri Yükleyici (Professional Dosyası Öncelikli) ──────────────────────────
+_PRODUCTION_CHOICES = [
+    app_commands.Choice(name="Bean to Bar", value="bean_to_bar"),
+    app_commands.Choice(name="Couverture",  value="couverture"),
+    app_commands.Choice(name="Hybrid",      value="hybrid"),
+]
+
+_CERT_CHOICES = [
+    app_commands.Choice(name="Belgian Chocolate Code",           value="Belgian Chocolate Code"),
+    app_commands.Choice(name="BRC Global Standard",              value="BRC Global Standard"),
+    app_commands.Choice(name="Direct Trade",                     value="Direct Trade"),
+    app_commands.Choice(name="EU Chocolate Directive Compliant", value="EU Chocolate Directive Compliant"),
+    app_commands.Choice(name="EU Organic",                       value="EU Organic"),
+    app_commands.Choice(name="Fairtrade",                        value="Fairtrade"),
+    app_commands.Choice(name="ISO 22000",                        value="ISO 22000"),
+    app_commands.Choice(name="Rainforest Alliance",              value="Rainforest Alliance"),
+    app_commands.Choice(name="Single Origin Certified",          value="Single Origin Certified"),
+    app_commands.Choice(name="UTZ Certified",                    value="UTZ Certified"),
+]
+
+
+# ── Loader ────────────────────────────────────────────────────────────────────
 
 def _load_dataset(data_dir: str) -> List[Dict[str, Any]]:
     """
-    Verileri yükler. 'belgian_chocolate_professional.json' ana kaynaktır.
-    Bilgi kirliliğini önlemek için sadece bu dosyadaki isimleri baz alır.
+    Load and merge all three JSON files, deduplicating by name.
+
+    Load order matters:
+      1. Desserts  — category, summary, url, tags
+      2. Professional — foundation_year, production_model, type, certifications, notes
+      3. Cocoa — producer, region (more precise), foundation_year
+
+    Because all 10 cocoa brands already exist in datasets 1 or 2, simple
+    name-based dedup would silently drop every cocoa entry and lose the
+    'producer' field entirely. Instead the cocoa dataset is used as an
+    enrichment layer: its fields are merged INTO the already-deduped item
+    rather than appended as a new record.
     """
-    # Dosya isimleri
-    pro_file = "belgian_chocolate_professional.json"
-    other_files = ["belgium_chocolate_desserts_dataset.json", "belgium_beverages_cocoa.json"]
-    
-    master_index: Dict[str, Dict[str, Any]] = {}
-
-    # ÖNCE PROFESYONEL DOSYAYI YÜKLE (Resmi temel budur)
-    path_pro = os.path.join(data_dir, pro_file)
-    if os.path.exists(path_pro):
-        try:
-            with open(path_pro, "r", encoding="utf-8") as f:
-                data = json.load(f)
-                items = data if isinstance(data, list) else data.get("items", [])
-                for item in items:
-                    name = (item.get("name") or "").strip()
-                    if name:
-                        master_index[name.lower()] = item
-        except Exception as e:
-            log.error(f"Professional file error: {e}")
-
-    # SONRA DİĞERLERİNDEN SADECE EKSİK VERİLERİ ÇEK (Üzerine yazma!)
-    for filename in other_files:
+    # ── Step 1: load desserts + professional, dedup by name ──────────────────
+    primary_files = [
+        "belgium_chocolate_desserts_dataset.json",
+        "belgian_chocolate_professional.json",
+    ]
+    merged: List[Dict[str, Any]] = []
+    for filename in primary_files:
         path = os.path.join(data_dir, filename)
-        if not os.path.exists(path): continue
+        if not os.path.exists(path):
+            log.warning("Chocolate data file not found: %s", path)
+            continue
         try:
             with open(path, "r", encoding="utf-8") as f:
-                data = json.load(f)
-                items = data if isinstance(data, list) else data.get("items", [])
-                for item in items:
-                    name = (item.get("name") or "").strip().lower()
-                    if name in master_index:
-                        # Sadece eksik alanları doldur, mevcut resmi bilgiyi bozma
-                        for k, v in item.items():
-                            if v and not master_index[name].get(k):
-                                master_index[name][k] = v
-        except Exception:
+                raw = json.load(f)
+        except json.JSONDecodeError as exc:
+            log.error("Malformed JSON in %s: %s", filename, exc)
             continue
+        except OSError as exc:
+            log.error("Could not read %s: %s", filename, exc)
+            continue
+        items = raw if isinstance(raw, list) else raw.get("items", [])
+        for item in items:
+            if isinstance(item, dict):
+                merged.append(item)
 
-    return list(master_index.values())
+    seen: set[str] = set()
+    unique: List[Dict[str, Any]] = []
+    index: Dict[str, Dict[str, Any]] = {}   # name.lower() → item ref
+    for item in merged:
+        key = (item.get("name") or "").lower().strip()
+        if not key:
+            continue
+        if key not in seen:
+            seen.add(key)
+            unique.append(item)
+            index[key] = item
+        else:
+            # Already seen — enrich existing entry with any fields it's missing.
+            # This ensures professional JSON fields (image_url, image_credit,
+            # notes, certifications, production_model…) are never lost even
+            # when the desserts dataset loaded the same brand first.
+            target = index[key]
+            for field, value in item.items():
+                if value and not target.get(field):
+                    target[field] = value
 
-# ── Yardımcı Fonksiyonlar ─────────────────────────────────────────────────────
+    # ── Step 2: load cocoa and ENRICH existing items ──────────────────────────
+    cocoa_path = os.path.join(data_dir, "belgium_beverages_cocoa.json")
+    if os.path.exists(cocoa_path):
+        try:
+            with open(cocoa_path, "r", encoding="utf-8") as f:
+                cocoa_raw = json.load(f)
+            cocoa_items = cocoa_raw.get("items", [])
+            for cocoa_item in cocoa_items:
+                if not isinstance(cocoa_item, dict):
+                    continue
+                key = (cocoa_item.get("name") or "").lower().strip()
+                if key in index:
+                    # Enrich: add producer and fill any missing fields
+                    target = index[key]
+                    if cocoa_item.get("producer") and not target.get("producer"):
+                        target["producer"] = cocoa_item["producer"]
+                    if cocoa_item.get("foundation_year") and not target.get("foundation_year"):
+                        target["foundation_year"] = cocoa_item["foundation_year"]
+                    if cocoa_item.get("region") and not target.get("region"):
+                        target["region"] = cocoa_item["region"]
+                else:
+                    # Brand only in cocoa — add it as a new entry
+                    cert = cocoa_item.pop("certification", None)
+                    if "certifications" not in cocoa_item:
+                        cocoa_item["certifications"] = [cert] if cert else []
+                    unique.append(cocoa_item)
+                    index[key] = cocoa_item
+        except (json.JSONDecodeError, OSError) as exc:
+            log.warning("Could not load cocoa enrichment data: %s", exc)
+
+    return unique
+
+
+# ── Helpers ───────────────────────────────────────────────────────────────────
 
 def _unified_type(item: Dict[str, Any]) -> str:
-    return item.get("category") or item.get("type") or "chocolate"
+    """Normalised type/category regardless of which dataset the item came from."""
+    return item.get("category") or item.get("type") or "—"
 
-def _get_dynamic_description(item: Dict[str, Any]) -> str:
-    """Cümle yapısını her seferinde değiştirir."""
-    name = item.get("name", "Unknown")
-    itype = _unified_type(item).replace("_", " ").lower()
-    
-    # Bitter Çikolata ağırlığında profesyonel cümleler
-    templates = [
-        f"Delving into the world of **{name}**, a cornerstone of Belgian {itype} heritage.",
-        f"**{name}** stands as a testament to the fine art of Belgian {itype} production.",
-        f"Discovering the authentic flavors and history of **{name}**, a renowned {itype} specialist.",
-        f"An official look at **{name}**, showcasing its unique contribution to Belgium's {itype} scene."
-    ]
-    
-    intro = random.choice(templates)
-    body = item.get("summary") or item.get("notes") or ""
-    return f"{intro}\n\n{body}"[:1024]
 
-# ── Embed Oluşturucu (Bitter Chocolate Rengi Dahil) ───────────────────────────
+# ── Embed builders ────────────────────────────────────────────────────────────
+
+def _list_embed(items: List[Dict[str, Any]], filters_applied: List[str]) -> discord.Embed:
+    """Single embed listing all matching brands with key details inline."""
+    title = "Belgian Chocolate & Sweets"
+    if filters_applied:
+        title += f" — {', '.join(filters_applied)}"
+
+    embed = discord.Embed(title=title, color=0x3B1A08)
+
+    for item in items:
+        name    = item.get("name", "Unknown")
+        url     = item.get("url")
+        itype   = _unified_type(item)
+        year    = item.get("foundation_year")
+        prod    = item.get("production_model")
+        certs   = item.get("certifications", [])
+        warrant = item.get("royal_warrant", False)
+
+        parts: List[str] = []
+        if itype and itype != "—":
+            parts.append(itype.replace("_", " ").title())
+        if year:
+            parts.append(f"est. {year}")
+        if prod:
+            parts.append(prod.replace("_", " ").title())
+
+        value = ", ".join(parts) if parts else "Belgian classic"
+        if warrant:
+            value += "\n Royal Warrant Holder"
+        if certs:
+            value += f"\n{', '.join(certs[:2])}"
+
+        field_name = f"**[{name}]({url})**" if url else f"**{name}**"
+        embed.add_field(name=field_name, value=value, inline=True)
+
+    embed.set_footer(
+        text=f"{len(items)} result(s) · Use /belgium chocolate_info <n> for full details"
+    )
+    return embed
 
 def _detail_embed(item: Dict[str, Any]) -> discord.Embed:
-    name = item.get("name", "Unknown")
-    url = item.get("url")
-    
-    # BURASI: Bitter Çikolata Rengi (0x3B1A08)
+    """Full detail embed for a single brand — used by /belgium chocolate_info."""
+    name  = item.get("name", "Unknown")
+    url   = item.get("url")
+    text  = item.get("summary") or item.get("notes") or ""
+    certs = item.get("certifications", [])
+
     embed = discord.Embed(title=name, color=0x3B1A08)
     if url:
         embed.url = url
 
-    # Dinamik Açıklama
-    embed.description = _get_dynamic_description(item)
+    region    = item.get("region") or item.get("area")
+    year      = item.get("foundation_year")
+    prod      = item.get("production_model")
+    producer  = item.get("producer")          # cocoa dataset field
+    itype     = _unified_type(item)
 
-    # Avatar (Thumbnail) - Kare ve Telifsiz
-    image_url = item.get("image_url")
-    if not image_url:
-        itype = _unified_type(item).lower()
-        if "dessert" in itype:
-            image_url = "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=250&h=250&fit=crop"
-        else:
-            image_url = "https://images.unsplash.com/photo-1548907040-4baa42d10919?w=250&h=250&fit=crop"
-    
-    embed.set_thumbnail(url=image_url)
+    warrant      = item.get("royal_warrant", False)
+    image_url    = item.get("image_url")
+    image_credit = item.get("image_credit", "")
 
-    # Resmi Bilgiler
-    region = item.get("region") or item.get("area")
-    year = item.get("foundation_year")
-    prod = item.get("production_model")
-    
     if region:
-        embed.add_field(name="Region", value=region, inline=True)
+        embed.add_field(name="Region",     value=region,                          inline=True)
+    if producer:
+        embed.add_field(name="Producer",   value=producer,                        inline=True)
     if year:
-        embed.add_field(name="Founded", value=str(year), inline=True)
+        embed.add_field(name="Founded",    value=str(year),                       inline=True)
+    if itype and itype != "—":
+        embed.add_field(name="Type",       value=itype.replace("_", " ").title(), inline=True)
     if prod:
-        embed.add_field(name="Production Style", value=prod.replace("_", " ").title(), inline=True)
-    
-    if item.get("royal_warrant"):
-        embed.add_field(name="Status", value="🏅 Official Royal Warrant Holder", inline=False)
-
-    # RESMİ KAYNAK VURGUSU
+        embed.add_field(name="Production", value=prod.replace("_", " ").title(),  inline=True)
+    if warrant:
+        embed.add_field(name="Status",     value="Belgian Royal Warrant Holder",  inline=True)
+    if certs:
+        embed.add_field(name="Certifications", value="\n".join(f"• {c}" for c in certs), inline=False)
+    if text:
+        embed.add_field(name="About",      value=text[:1024],                     inline=False)
     if url:
-        embed.add_field(name="Official Source", value=f"🔗 [Visit Official Website]({url})", inline=False)
+        embed.add_field(name="Source",     value=f"[Visit website]({url})",       inline=False)
 
-    embed.set_footer(text="Official Belgian Chocolate Heritage Database")
+    if image_url:
+        embed.set_thumbnail(url=image_url)
+        # CC license requires attribution — shown in footer
+        footer = image_credit if image_credit else "Image: Wikimedia Commons"
+        embed.set_footer(text=footer)
+
     return embed
 
-# ── Kayıt (Register) ──────────────────────────────────────────────────────────
+
+# ── Registration ──────────────────────────────────────────────────────────────
 
 async def register(bot: discord.Client, data_dir: str) -> None:
+    """
+    Registers two subcommands under /belgium:
+      /belgium chocolate_brands  — filterable list of all brands
+      /belgium chocolate_info    — full detail view for one specific brand
+    """
     root = bot.tree.get_command("belgium")
-    if not isinstance(root, app_commands.Group): return
+    if not isinstance(root, app_commands.Group):
+        log.error(
+            "belgian_chocolate: '/belgium' group not found. "
+            "Make sure _belgium.py loads before belgian_chocolate.py."
+        )
+        return
 
-    @app_commands.command(name="chocolate_info", description="Get verified info about a Belgian brand.")
-    @app_commands.describe(name="The name of the chocolate brand")
-    async def chocolate_info(interaction: discord.Interaction, name: str):
-        await interaction.response.defer()
-        items = _load_dataset(data_dir)
-        match = next((i for i in items if i.get("name", "").lower() == name.lower()), None)
-        
-        if not match:
-            await interaction.followup.send(f"Brand **'{name}'** not found in verified records.", ephemeral=True)
-            return
+    # ── /belgium chocolate_brands ─────────────────────────────────────────────
 
-        await interaction.followup.send(embed=_detail_embed(match))
+    if not root.get_command("chocolate_brands"):
 
-    @chocolate_info.autocomplete("name")
-    async def _brand_autocomplete(interaction: discord.Interaction, current: str):
-        items = _load_dataset(data_dir)
-        # Sadece ilk 25 eşleşmeyi göster
-        return [
-            app_commands.Choice(name=i["name"], value=i["name"])
-            for i in items if current.lower() in i["name"].lower()
-        ][:25]
+        @app_commands.command(
+            name="chocolate_brands",
+            description="Browse Belgian chocolate houses and sweets with optional filters.",
+        )
+        @app_commands.describe(
+            type="Filter by product type",
+            production_model="Filter by production model (professional brands only)",
+            certification="Filter by quality certification (professional brands only)",
+            year_before="Brands founded before this year (professional brands only)",
+            year_after="Brands founded after this year (professional brands only)",
+            random_pick="Return one random brand with full details",
+        )
+        @app_commands.choices(
+            type=_TYPE_CHOICES,
+            production_model=_PRODUCTION_CHOICES,
+            certification=_CERT_CHOICES,
+        )
+        async def chocolate_brands(
+            interaction: discord.Interaction,
+            type: Optional[str] = None,
+            production_model: Optional[str] = None,
+            certification: Optional[str] = None,
+            year_before: Optional[int] = None,
+            year_after: Optional[int] = None,
+            random_pick: bool = False,
+        ) -> None:
 
-    if not any(cmd.name == "chocolate_info" for cmd in root.commands):
+            await interaction.response.defer()
+
+            items = _load_dataset(data_dir)
+            if not items:
+                await interaction.followup.send(
+                    "Chocolate dataset could not be loaded. "
+                    "Please ask an admin to check the `data/` directory.",
+                    ephemeral=True,
+                )
+                return
+
+            filters_applied: List[str] = []
+
+            if type:
+                items = [i for i in items if _unified_type(i).lower() == type.lower()]
+                filters_applied.append(type.replace("_", " ").title())
+
+            if production_model:
+                items = [
+                    i for i in items
+                    if (i.get("production_model") or "").lower() == production_model.lower()
+                ]
+                filters_applied.append(production_model.replace("_", " ").title())
+
+            if certification:
+                items = [i for i in items if certification in i.get("certifications", [])]
+                filters_applied.append(certification)
+
+            if year_before is not None:
+                items = [
+                    i for i in items
+                    if isinstance(i.get("foundation_year"), int)
+                    and i["foundation_year"] < year_before
+                ]
+                filters_applied.append(f"before {year_before}")
+
+            if year_after is not None:
+                items = [
+                    i for i in items
+                    if isinstance(i.get("foundation_year"), int)
+                    and i["foundation_year"] > year_after
+                ]
+                filters_applied.append(f"after {year_after}")
+
+            if not items:
+                await interaction.followup.send(
+                    "No brands matched your filters.\n"
+                    "**Tips:**\n"
+                    "• `production_model` and `certification` only apply to professional brands\n"
+                    "• `year_before` / `year_after` only apply to brands with a known founding year\n"
+                    "• Try removing one filter at a time",
+                    ephemeral=True,
+                )
+                return
+
+            if random_pick:
+                await interaction.followup.send(embed=_detail_embed(random.choice(items)))
+                return
+
+            await interaction.followup.send(embed=_list_embed(items, filters_applied))
+
+        root.add_command(chocolate_brands)
+        log.info("Registered /belgium chocolate_brands")
+
+    # ── /belgium chocolate_info ───────────────────────────────────────────────
+    # NOTE: uses autocomplete instead of @app_commands.choices — Discord caps
+    # choices at 25 items; autocomplete has no such limit and lets users type
+    # to filter the list dynamically.
+
+    if not root.get_command("chocolate_info"):
+
+        async def _brand_autocomplete(
+            interaction: discord.Interaction,
+            current: str,
+        ) -> List[app_commands.Choice[str]]:
+            """Return up to 25 brand names matching what the user has typed so far."""
+            items = _load_dataset(data_dir)
+            needle = current.lower().strip()
+            matches = [
+                i.get("name", "")
+                for i in items
+                if needle in (i.get("name") or "").lower()
+            ]
+            # Deduplicate and sort, then cap at 25
+            seen: set[str] = set()
+            choices: List[app_commands.Choice[str]] = []
+            for name in sorted(matches):
+                if name not in seen:
+                    seen.add(name)
+                    choices.append(app_commands.Choice(name=name, value=name.lower()))
+                if len(choices) == 25:
+                    break
+            return choices
+
+        @app_commands.command(
+            name="chocolate_info",
+            description="Get full details for a specific Belgian chocolate brand or sweet.",
+        )
+        @app_commands.describe(name="Start typing a brand name to search")
+        @app_commands.autocomplete(name=_brand_autocomplete)
+        async def chocolate_info(
+            interaction: discord.Interaction,
+            name: str,
+        ) -> None:
+
+            await interaction.response.defer()
+
+            items = _load_dataset(data_dir)
+            if not items:
+                await interaction.followup.send(
+                    "Chocolate dataset could not be loaded.", ephemeral=True
+                )
+                return
+
+            match = next(
+                (i for i in items if (i.get("name") or "").lower().strip() == name.lower().strip()),
+                None,
+            )
+
+            if not match:
+                await interaction.followup.send(
+                    f"No brand found matching **\"{name}\"**.\n"
+                    "Use the autocomplete suggestions to pick a valid name.",
+                    ephemeral=True,
+                )
+                return
+
+            await interaction.followup.send(embed=_detail_embed(match))
+
         root.add_command(chocolate_info)
+        log.info("Registered /belgium chocolate_info")
