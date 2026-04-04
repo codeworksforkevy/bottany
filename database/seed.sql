@@ -450,4 +450,56 @@ ON CONFLICT (brand) DO NOTHING;
 -- -----------------------------------------------------------------------------
 
 
+-- -----------------------------------------------------------------------------
+-- consoles (39 entries)
+-- -----------------------------------------------------------------------------
+INSERT INTO consoles (
+  id, name, brand,
+  generation,
+  release_jp, release_na, release_global,
+  cpu, units_sold_millions,
+  handheld, hybrid,
+  thumbnail_avatar, thumbnail_full
+) VALUES
+('nintendo_nes','Nintendo Entertainment System','Nintendo',3,'1983-07-15','1985-10-18',NULL,'Ricoh 2A03',61.91,FALSE,FALSE,'https://cdn.yourapp.com/consoles/nintendo_nes_128.png','https://upload.wikimedia.org/wikipedia/commons/8/82/NES-Console-Set.jpg'),
+('nintendo_snes','Super Nintendo Entertainment System','Nintendo',4,'1990-11-21','1991-08-23',NULL,'Ricoh 5A22',49.1,FALSE,FALSE,'https://cdn.yourapp.com/consoles/nintendo_snes_128.png','https://upload.wikimedia.org/wikipedia/commons/3/31/SNES-Mod1-Console-Set.jpg'),
+('nintendo_n64','Nintendo 64','Nintendo',5,'1996-06-23','1996-09-29',NULL,'NEC VR4300',32.93,FALSE,FALSE,'https://cdn.yourapp.com/consoles/nintendo_n64_128.png','https://upload.wikimedia.org/wikipedia/commons/0/02/N64-Console-Set.jpg'),
+('nintendo_gamecube','Nintendo GameCube','Nintendo',6,'2001-09-14','2001-11-18',NULL,'IBM PowerPC Gekko',21.74,FALSE,FALSE,'https://cdn.yourapp.com/consoles/nintendo_gamecube_128.png','https://upload.wikimedia.org/wikipedia/commons/1/1f/Nintendo-GameCube-Set.jpg'),
+('nintendo_wii','Nintendo Wii','Nintendo',7,NULL,NULL,'2006-11-19',NULL,101.63,FALSE,FALSE,'https://cdn.yourapp.com/consoles/nintendo_wii_128.png','https://upload.wikimedia.org/wikipedia/commons/1/14/Wii-console.jpg'),
+('nintendo_wii_u','Nintendo Wii U','Nintendo',8,NULL,NULL,'2012-11-18',NULL,13.56,FALSE,FALSE,'https://cdn.yourapp.com/consoles/nintendo_wiiu_128.png','https://upload.wikimedia.org/wikipedia/commons/f/fd/Wii_U_Console_and_GamePad.jpg'),
+('nintendo_switch','Nintendo Switch','Nintendo',8,NULL,NULL,'2017-03-03',NULL,139,FALSE,TRUE,'https://cdn.yourapp.com/consoles/nintendo_switch_128.png','https://upload.wikimedia.org/wikipedia/commons/3/38/Nintendo_Switch_Console.png'),
+('sony_ps1','PlayStation','Sony',5,'1994-12-03',NULL,NULL,NULL,102.49,FALSE,FALSE,'https://cdn.yourapp.com/consoles/sony_ps1_128.png','https://upload.wikimedia.org/wikipedia/commons/3/39/PSX-Console-wController.jpg'),
+('sony_ps2','PlayStation 2','Sony',6,NULL,NULL,NULL,NULL,155,FALSE,FALSE,'https://cdn.yourapp.com/consoles/sony_ps2_128.png','https://upload.wikimedia.org/wikipedia/commons/0/02/PS2-Fat-Console-Set.jpg'),
+('sony_ps3','PlayStation 3','Sony',7,NULL,NULL,NULL,NULL,87.4,FALSE,FALSE,'https://cdn.yourapp.com/consoles/sony_ps3_128.png','https://upload.wikimedia.org/wikipedia/commons/4/40/PS3-Slim-Console-Set.jpg'),
+('sony_ps4','PlayStation 4','Sony',8,NULL,NULL,NULL,NULL,117,FALSE,FALSE,'https://cdn.yourapp.com/consoles/sony_ps4_128.png','https://upload.wikimedia.org/wikipedia/commons/0/05/PS4-Console-wDS4.jpg'),
+('sony_ps5','PlayStation 5','Sony',9,NULL,NULL,NULL,NULL,50,FALSE,FALSE,'https://cdn.yourapp.com/consoles/sony_ps5_128.png','https://upload.wikimedia.org/wikipedia/commons/9/9d/PlayStation_5_and_DualSense.jpg'),
+('microsoft_xbox','Xbox','Microsoft',6,NULL,NULL,NULL,NULL,24,FALSE,FALSE,'https://cdn.yourapp.com/consoles/xbox_128.png','https://upload.wikimedia.org/wikipedia/commons/4/43/Xbox-console.jpg'),
+('microsoft_xbox_360','Xbox 360','Microsoft',7,NULL,NULL,NULL,NULL,84,FALSE,FALSE,'https://cdn.yourapp.com/consoles/xbox360_128.png','https://upload.wikimedia.org/wikipedia/commons/e/e6/Xbox-360-S-Console-Set.jpg'),
+('microsoft_xbox_one','Xbox One','Microsoft',8,NULL,NULL,NULL,NULL,58,FALSE,FALSE,'https://cdn.yourapp.com/consoles/xboxone_128.png','https://upload.wikimedia.org/wikipedia/commons/2/20/Xbox-One-Console-Set.jpg'),
+('microsoft_xbox_series_x','Xbox Series X','Microsoft',9,NULL,NULL,NULL,NULL,NULL,FALSE,FALSE,'https://cdn.yourapp.com/consoles/xbox_seriesx_128.png','https://upload.wikimedia.org/wikipedia/commons/7/75/Xbox_series_X.jpg'),
+('valve_steam_deck','Steam Deck','Valve',9,NULL,NULL,NULL,NULL,NULL,FALSE,TRUE,'https://cdn.yourapp.com/consoles/steamdeck_128.png','https://upload.wikimedia.org/wikipedia/commons/6/6c/Steam_Deck.jpg'),
+('atari_2600','Atari 2600','Atari',2,NULL,'1977-09-11',NULL,'MOS 6507',30,FALSE,FALSE,'https://cdn.yourapp.com/consoles/atari_2600_128.png','https://upload.wikimedia.org/wikipedia/commons/b/b9/Atari-2600-Wood-4Sw-Set.jpg'),
+('atari_5200','Atari 5200','Atari',2,NULL,'1982-11-01',NULL,'MOS 6502C',1,FALSE,FALSE,'https://cdn.yourapp.com/consoles/atari_5200_128.png','https://upload.wikimedia.org/wikipedia/commons/a/a5/Atari-5200-4-Port-wController-L.jpg'),
+('atari_7800','Atari 7800','Atari',3,NULL,'1986-05-01',NULL,'Atari SALLY (6502C)',3.77,FALSE,FALSE,'https://cdn.yourapp.com/consoles/atari_7800_128.png','https://upload.wikimedia.org/wikipedia/commons/a/a0/Atari-7800-Console-Set.jpg'),
+('sega_master_system','Sega Master System','Sega',3,'1985-10-20','1986-09-01',NULL,'Zilog Z80',13,FALSE,FALSE,'https://cdn.yourapp.com/consoles/sega_mastersystem_128.png','https://upload.wikimedia.org/wikipedia/commons/e/e9/Sega-Master-System-Set.jpg'),
+('sega_genesis','Sega Genesis / Mega Drive','Sega',4,'1988-10-29','1989-08-14',NULL,'Motorola 68000',30.75,FALSE,FALSE,'https://cdn.yourapp.com/consoles/sega_genesis_128.png','https://upload.wikimedia.org/wikipedia/commons/a/a1/Sega-Mega-Drive-JP-Mk1-Console-Set.jpg'),
+('sega_saturn','Sega Saturn','Sega',5,'1994-11-22','1995-05-11',NULL,'Hitachi SH-2 (x2)',9.5,FALSE,FALSE,'https://cdn.yourapp.com/consoles/sega_saturn_128.png','https://upload.wikimedia.org/wikipedia/commons/4/4a/Sega-Saturn-Console-Set-Mk1.jpg'),
+('sega_dreamcast','Sega Dreamcast','Sega',6,'1998-11-27','1999-09-09',NULL,'Hitachi SH-4',10.6,FALSE,FALSE,'https://cdn.yourapp.com/consoles/sega_dreamcast_128.png','https://upload.wikimedia.org/wikipedia/commons/7/71/Dreamcast-Console-Set.jpg'),
+('nintendo_gameboy','Game Boy','Nintendo',4,'1989-04-21','1989-07-31',NULL,'Sharp LR35902',118.69,TRUE,FALSE,'https://cdn.yourapp.com/consoles/gameboy_128.png','https://upload.wikimedia.org/wikipedia/commons/a/a1/Nintendo_Gameboy.jpg'),
+('nintendo_gameboy_advance','Game Boy Advance','Nintendo',6,'2001-03-21','2001-06-11',NULL,'ARM7TDMI',81.51,TRUE,FALSE,'https://cdn.yourapp.com/consoles/gba_128.png','https://upload.wikimedia.org/wikipedia/commons/7/7b/Gameboy_advance.jpg'),
+('nintendo_ds','Nintendo DS','Nintendo',7,'2004-12-02','2004-11-21',NULL,'ARM9 + ARM7',154.02,TRUE,FALSE,'https://cdn.yourapp.com/consoles/nds_128.png','https://upload.wikimedia.org/wikipedia/commons/7/76/Nintendo-DS-Lite-Black.jpg'),
+('nintendo_3ds','Nintendo 3DS','Nintendo',8,'2011-02-26','2011-03-27',NULL,'ARM11 (x2)',75.94,TRUE,FALSE,'https://cdn.yourapp.com/consoles/3ds_128.png','https://upload.wikimedia.org/wikipedia/commons/f/fb/Nintendo-3DS-AquaOpen.jpg'),
+('sega_game_gear','Game Gear','Sega',4,'1990-10-06','1991-04-01',NULL,'Zilog Z80',10.62,TRUE,FALSE,'https://cdn.yourapp.com/consoles/gamegear_128.png','https://upload.wikimedia.org/wikipedia/commons/4/4d/Game_Gear_Handheld_Systemit.jpg'),
+('sony_psp','PlayStation Portable','Sony',7,'2004-12-12','2005-03-24',NULL,'MIPS R4000',80,TRUE,FALSE,'https://cdn.yourapp.com/consoles/psp_128.png','https://upload.wikimedia.org/wikipedia/commons/3/31/PSP-1000.jpg'),
+('sony_ps_vita','PlayStation Vita','Sony',8,'2011-12-17','2012-02-22',NULL,'ARM Cortex-A9 (x4)',16,TRUE,FALSE,'https://cdn.yourapp.com/consoles/psvita_128.png','https://upload.wikimedia.org/wikipedia/commons/3/3d/PlayStation-Vita-1101-FL.jpg'),
+('microsoft_xbox_series_s','Xbox Series S','Microsoft',9,NULL,NULL,'2020-11-10',NULL,NULL,FALSE,FALSE,'https://cdn.yourapp.com/consoles/xbox_seriess_128.png','https://upload.wikimedia.org/wikipedia/commons/6/62/Xbox_Series_S.jpg'),
+('snk_neo_geo','Neo Geo AES','SNK',4,'1990-04-26','1991-08-22',NULL,'Motorola 68000',1,FALSE,FALSE,'https://cdn.yourapp.com/consoles/neogeo_128.png','https://upload.wikimedia.org/wikipedia/commons/3/3a/Neo-Geo-AES-Console-Set.jpg'),
+('3do_interactive','3DO Interactive Multiplayer','3DO',5,NULL,'1993-10-04',NULL,'ARM60',2,FALSE,FALSE,'https://cdn.yourapp.com/consoles/3do_128.png','https://upload.wikimedia.org/wikipedia/commons/3/3e/3DO-FZ1-Console-Set.jpg'),
+('nec_turbografx','TurboGrafx-16 / PC Engine','NEC',4,'1987-10-30','1989-08-29',NULL,'Hudson Soft HuC6280',10,FALSE,FALSE,'https://cdn.yourapp.com/consoles/turbografx_128.png','https://upload.wikimedia.org/wikipedia/commons/c/c9/TurboGrafx-16-Console-Set.jpg'),
+('coleco_colecovision','ColecoVision','Coleco',2,NULL,'1982-08-01',NULL,'Zilog Z80',6,FALSE,FALSE,'https://cdn.yourapp.com/consoles/colecovision_128.png','https://upload.wikimedia.org/wikipedia/commons/2/21/ColecoVision-Console-Set.jpg'),
+('nintendo_switch_oled','Nintendo Switch OLED','Nintendo',8,NULL,NULL,'2021-10-08',NULL,NULL,FALSE,TRUE,'https://cdn.yourapp.com/consoles/switch_oled_128.png','https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Nintendo_Switch_OLED_model.jpg/320px-Nintendo_Switch_OLED_model.jpg'),
+('nokia_ngage','Nokia N-Gage','Nokia',6,NULL,NULL,'2003-10-07','ARM9',3,TRUE,FALSE,'https://cdn.yourapp.com/consoles/ngage_128.png','https://upload.wikimedia.org/wikipedia/commons/1/15/Nokia_N-Gage_QD.jpg'),
+('bandai_wonderswan','WonderSwan','Bandai',5,'1999-03-04',NULL,NULL,'NEC V30MZ',3.5,TRUE,FALSE,'https://cdn.yourapp.com/consoles/wonderswan_128.png','https://upload.wikimedia.org/wikipedia/commons/a/a5/WonderSwan.jpg')
+ON CONFLICT (id) DO NOTHING;
+
 COMMIT;
