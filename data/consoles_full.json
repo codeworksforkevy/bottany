@@ -1,579 +1,753 @@
 {
   "meta": {
-    "version": "2.1",
-    "total_consoles": 39,
-    "description": "Curated video game console registry with thumbnail support",
-    "thumbnail_note": "avatar URLs point to cdn.yourapp.com — replace with your CDN. full URLs are Wikimedia Commons (CC licensed).",
+    "version": "3.0",
+    "description": "Curated video game console registry with innovations, records and CPU notes",
     "last_updated": "2026-04-04"
   },
   "consoles": [
+
     {
-      "id": "nintendo_nes",
-      "name": "Nintendo Entertainment System",
-      "brand": "Nintendo",
-      "generation": 3,
-      "release": {
-        "jp": "1983-07-15",
-        "na": "1985-10-18"
-      },
-      "cpu": "Ricoh 2A03",
-      "units_sold_millions": 61.91,
+      "id": "magnavox_odyssey",
+      "name": "Magnavox Odyssey",
+      "brand": "Magnavox",
+      "generation": 1,
+      "release": { "na": "1972-09-01" },
+      "cpu": "No CPU — discrete transistor logic",
+      "cpu_note": "Contained no microprocessor. Used transistors and diodes on circuit boards to generate on-screen dots.",
+      "units_sold_millions": 0.33,
+      "innovation": "The first home video game console ever sold commercially. Inspired Pong after Atari's Nolan Bushnell saw a demo.",
+      "record": "First commercial home console in history (1972).",
       "thumbnail": {
-        "avatar": "assets/consoles/avatars/nintendo_nes.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/8/82/NES-Console-Set.jpg"
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Magnavox-Odyssey-Console-Set.jpg/320px-Magnavox-Odyssey-Console-Set.jpg"
       }
     },
+
     {
-      "id": "nintendo_snes",
-      "name": "Super Nintendo Entertainment System",
-      "brand": "Nintendo",
-      "generation": 4,
-      "release": {
-        "jp": "1990-11-21",
-        "na": "1991-08-23"
-      },
-      "cpu": "Ricoh 5A22",
-      "units_sold_millions": 49.1,
+      "id": "fairchild_channel_f",
+      "name": "Fairchild Channel F",
+      "brand": "Fairchild Semiconductor",
+      "generation": 2,
+      "release": { "na": "1976-08-01" },
+      "cpu": "Fairchild F8 @ 1.79 MHz",
+      "cpu_note": "The F8 was one of the first microprocessors designed specifically for consumer electronics. Used an unusual two-chip architecture.",
+      "units_sold_millions": 0.25,
+      "innovation": "First console to use ROM cartridges, allowing players to swap games. Directly inspired Atari to pivot the 2600 to cartridges.",
+      "record": "First cartridge-based programmable home console (1976).",
       "thumbnail": {
-        "avatar": "assets/consoles/avatars/nintendo_snes.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/3/31/SNES-Mod1-Console-Set.jpg"
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Fairchild-Channel-F-Console-Set.jpg/320px-Fairchild-Channel-F-Console-Set.jpg"
       }
     },
+
     {
-      "id": "nintendo_n64",
-      "name": "Nintendo 64",
-      "brand": "Nintendo",
-      "generation": 5,
-      "release": {
-        "jp": "1996-06-23",
-        "na": "1996-09-29"
-      },
-      "cpu": "NEC VR4300",
-      "units_sold_millions": 32.93,
+      "id": "commodore_64",
+      "name": "Commodore 64",
+      "brand": "Commodore",
+      "generation": 2,
+      "release": { "na": "1982-08-01", "eu": "1983-01-01" },
+      "cpu": "MOS Technology 6510 @ 1 MHz",
+      "cpu_note": "A variant of the famous 6502. Paired with the SID sound chip (still praised by musicians) and the VIC-II graphics chip — both ahead of their time.",
+      "units_sold_millions": 17,
+      "innovation": "Introduced the SID sound chip, enabling music and sound effects far beyond competitors. Became the best-selling personal computer of all time.",
+      "record": "Best-selling single personal computer model in history — ~17 million units.",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/nintendo_n64_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/0/02/N64-Console-Set.jpg"
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Commodore-64-Computer-FL.jpg/320px-Commodore-64-Computer-FL.jpg"
       }
     },
+
     {
-      "id": "nintendo_gamecube",
-      "name": "Nintendo GameCube",
-      "brand": "Nintendo",
-      "generation": 6,
-      "release": {
-        "jp": "2001-09-14",
-        "na": "2001-11-18"
-      },
-      "cpu": "IBM PowerPC Gekko",
-      "units_sold_millions": 21.74,
+      "id": "mattel_intellivision",
+      "name": "Mattel Intellivision",
+      "brand": "Mattel",
+      "generation": 2,
+      "release": { "na": "1979-12-01" },
+      "cpu": "General Instrument CP1610 @ 894 kHz",
+      "cpu_note": "16-bit processor at a time when most competitors used 8-bit chips — gave Intellivision superior graphics and gameplay complexity over the Atari 2600.",
+      "units_sold_millions": 3,
+      "innovation": "First console with a 16-bit CPU. Introduced sports games with real team licences, pioneering licensed sports gaming.",
+      "record": "First 16-bit processor in a home console (1979).",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/nintendo_gamecube_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Nintendo-GameCube-Set.jpg"
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Intellivision-Console-Set.jpg/320px-Intellivision-Console-Set.jpg"
       }
     },
-    {
-      "id": "nintendo_wii",
-      "name": "Nintendo Wii",
-      "brand": "Nintendo",
-      "generation": 7,
-      "release": {
-        "global": "2006-11-19"
-      },
-      "units_sold_millions": 101.63,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/nintendo_wii_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/1/14/Wii-console.jpg"
-      }
-    },
-    {
-      "id": "nintendo_wii_u",
-      "name": "Nintendo Wii U",
-      "brand": "Nintendo",
-      "generation": 8,
-      "release": {
-        "global": "2012-11-18"
-      },
-      "units_sold_millions": 13.56,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/nintendo_wiiu_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Wii_U_Console_and_GamePad.jpg"
-      }
-    },
-    {
-      "id": "nintendo_switch",
-      "name": "Nintendo Switch",
-      "brand": "Nintendo",
-      "generation": 8,
-      "release": {
-        "global": "2017-03-03"
-      },
-      "units_sold_millions": 139,
-      "hybrid": true,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/nintendo_switch_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/3/38/Nintendo_Switch_Console.png"
-      }
-    },
-    {
-      "id": "sony_ps1",
-      "name": "PlayStation",
-      "brand": "Sony",
-      "generation": 5,
-      "release": {
-        "jp": "1994-12-03"
-      },
-      "units_sold_millions": 102.49,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/sony_ps1_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/3/39/PSX-Console-wController.jpg"
-      }
-    },
-    {
-      "id": "sony_ps2",
-      "name": "PlayStation 2",
-      "brand": "Sony",
-      "generation": 6,
-      "units_sold_millions": 155,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/sony_ps2_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/0/02/PS2-Fat-Console-Set.jpg"
-      }
-    },
-    {
-      "id": "sony_ps3",
-      "name": "PlayStation 3",
-      "brand": "Sony",
-      "generation": 7,
-      "units_sold_millions": 87.4,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/sony_ps3_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/4/40/PS3-Slim-Console-Set.jpg"
-      }
-    },
-    {
-      "id": "sony_ps4",
-      "name": "PlayStation 4",
-      "brand": "Sony",
-      "generation": 8,
-      "units_sold_millions": 117,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/sony_ps4_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/0/05/PS4-Console-wDS4.jpg"
-      }
-    },
-    {
-      "id": "sony_ps5",
-      "name": "PlayStation 5",
-      "brand": "Sony",
-      "generation": 9,
-      "units_sold_millions": 50,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/sony_ps5_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/9/9d/PlayStation_5_and_DualSense.jpg"
-      }
-    },
-    {
-      "id": "microsoft_xbox",
-      "name": "Xbox",
-      "brand": "Microsoft",
-      "generation": 6,
-      "units_sold_millions": 24,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/xbox_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/4/43/Xbox-console.jpg"
-      }
-    },
-    {
-      "id": "microsoft_xbox_360",
-      "name": "Xbox 360",
-      "brand": "Microsoft",
-      "generation": 7,
-      "units_sold_millions": 84,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/xbox360_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Xbox-360-S-Console-Set.jpg"
-      }
-    },
-    {
-      "id": "microsoft_xbox_one",
-      "name": "Xbox One",
-      "brand": "Microsoft",
-      "generation": 8,
-      "units_sold_millions": 58,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/xboxone_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/2/20/Xbox-One-Console-Set.jpg"
-      }
-    },
-    {
-      "id": "microsoft_xbox_series_x",
-      "name": "Xbox Series X",
-      "brand": "Microsoft",
-      "generation": 9,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/xbox_seriesx_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/7/75/Xbox_series_X.jpg"
-      }
-    },
-    {
-      "id": "valve_steam_deck",
-      "name": "Steam Deck",
-      "brand": "Valve",
-      "generation": 9,
-      "hybrid": true,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/steamdeck_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Steam_Deck.jpg"
-      }
-    },
+
     {
       "id": "atari_2600",
       "name": "Atari 2600",
       "brand": "Atari",
       "generation": 2,
-      "release": {
-        "na": "1977-09-11"
-      },
-      "cpu": "MOS 6507",
+      "release": { "na": "1977-09-11" },
+      "cpu": "MOS Technology 6507 @ 1.19 MHz",
+      "cpu_note": "A cost-reduced 6502 with a smaller address bus. Paired with the TIA chip which handled all graphics and sound, keeping the CPU free for game logic.",
       "units_sold_millions": 30,
+      "innovation": "Popularised the ROM cartridge format and defined the home console market for a generation. Space Invaders port quadrupled console sales.",
+      "record": "First console to sell over 1 million units. Defined the second generation of home consoles.",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/atari_2600_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/b/b9/Atari-2600-Wood-4Sw-Set.jpg"
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Atari-2600-Wood-4Sw-Set.jpg/320px-Atari-2600-Wood-4Sw-Set.jpg"
       }
     },
+
     {
       "id": "atari_5200",
       "name": "Atari 5200",
       "brand": "Atari",
       "generation": 2,
-      "release": {
-        "na": "1982-11-01"
-      },
-      "cpu": "MOS 6502C",
+      "release": { "na": "1982-11-01" },
+      "cpu": "MOS Technology 6502C @ 1.79 MHz",
+      "cpu_note": "Essentially the same CPU as the Atari 8-bit computers, making ports straightforward. The 5200 was largely an Atari 400/800 computer in a console shell.",
       "units_sold_millions": 1,
+      "innovation": "First console with analog joysticks, enabling more precise control in games like Missile Command and Pac-Man.",
+      "record": "First home console with analog thumb controllers.",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/atari_5200_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/a/a5/Atari-5200-4-Port-wController-L.jpg"
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Atari-5200-4-Port-wController-L.jpg/320px-Atari-5200-4-Port-wController-L.jpg"
       }
     },
+
     {
       "id": "atari_7800",
       "name": "Atari 7800",
       "brand": "Atari",
       "generation": 3,
-      "release": {
-        "na": "1986-05-01"
-      },
-      "cpu": "Atari SALLY (6502C)",
+      "release": { "na": "1986-05-01" },
+      "cpu": "Atari SALLY (6502C) @ 1.79 MHz",
+      "cpu_note": "Modified 6502C with an additional halt line to allow the MARIA graphics chip to take over the bus. Backward-compatible with Atari 2600 cartridges.",
       "units_sold_millions": 3.77,
+      "innovation": "Backward-compatible with Atari 2600 — the first console designed to play its predecessor's entire library.",
+      "record": "First console with full backward compatibility.",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/atari_7800_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/a/a0/Atari-7800-Console-Set.jpg"
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Atari-7800-Console-Set.jpg/320px-Atari-7800-Console-Set.jpg"
       }
     },
+
+    {
+      "id": "coleco_colecovision",
+      "name": "ColecoVision",
+      "brand": "Coleco",
+      "generation": 2,
+      "release": { "na": "1982-08-01" },
+      "cpu": "Zilog Z80 @ 3.58 MHz",
+      "cpu_note": "The Z80 was one of the most popular 8-bit CPUs of the era, powering everything from the Sinclair ZX Spectrum to countless arcade boards.",
+      "units_sold_millions": 6,
+      "innovation": "First console to include a launch title (Donkey Kong) that was nearly arcade-perfect, setting the standard for home ports.",
+      "record": "First console to deliver arcade-accurate home ports of major titles.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/ColecoVision-Console-Set.jpg/320px-ColecoVision-Console-Set.jpg"
+      }
+    },
+
+    {
+      "id": "nintendo_nes",
+      "name": "Nintendo Entertainment System",
+      "brand": "Nintendo",
+      "generation": 3,
+      "release": { "jp": "1983-07-15", "na": "1985-10-18" },
+      "cpu": "Ricoh 2A03 @ 1.79 MHz",
+      "cpu_note": "A modified MOS 6502 with built-in audio processing (APU). The 6502 core had its decimal mode removed — a quirk that saved Nintendo licensing costs.",
+      "units_sold_millions": 61.91,
+      "innovation": "Revived the video game industry after the 1983 crash. Introduced the gamepad controller, the lockout chip (10NES) to control third-party publishing, and the concept of licenced mascots.",
+      "record": "Revived a $3.2B industry that had collapsed to $100M. Over 700 licensed games released.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/8/82/NES-Console-Set.jpg"
+      }
+    },
+
     {
       "id": "sega_master_system",
       "name": "Sega Master System",
       "brand": "Sega",
       "generation": 3,
-      "release": {
-        "jp": "1985-10-20",
-        "na": "1986-09-01"
-      },
-      "cpu": "Zilog Z80",
+      "release": { "jp": "1985-10-20", "na": "1986-09-01", "eu": "1987-06-01" },
+      "cpu": "Zilog Z80 @ 3.58 MHz",
+      "cpu_note": "Same Z80 architecture as the ColecoVision and many home computers. The Master System's VDP graphics chip was more advanced than the NES's PPU.",
       "units_sold_millions": 13,
+      "innovation": "Built-in game (Hang-On or Alex Kidd in Miracle World depending on region) — first console with a game embedded in ROM without a cartridge.",
+      "record": "Outsold the NES in Europe and Brazil, dominating those markets for years.",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/sega_mastersystem_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Sega-Master-System-Set.jpg"
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Sega-Master-System-Set.jpg/320px-Sega-Master-System-Set.jpg"
       }
     },
-    {
-      "id": "sega_genesis",
-      "name": "Sega Genesis / Mega Drive",
-      "brand": "Sega",
-      "generation": 4,
-      "release": {
-        "jp": "1988-10-29",
-        "na": "1989-08-14"
-      },
-      "cpu": "Motorola 68000",
-      "units_sold_millions": 30.75,
-      "thumbnail": {
-        "avatar": "assets/consoles/avatars/sega_genesis.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Sega-Mega-Drive-JP-Mk1-Console-Set.jpg"
-      }
-    },
-    {
-      "id": "sega_saturn",
-      "name": "Sega Saturn",
-      "brand": "Sega",
-      "generation": 5,
-      "release": {
-        "jp": "1994-11-22",
-        "na": "1995-05-11"
-      },
-      "cpu": "Hitachi SH-2 (x2)",
-      "units_sold_millions": 9.5,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/sega_saturn_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Sega-Saturn-Console-Set-Mk1.jpg"
-      }
-    },
-    {
-      "id": "sega_dreamcast",
-      "name": "Sega Dreamcast",
-      "brand": "Sega",
-      "generation": 6,
-      "release": {
-        "jp": "1998-11-27",
-        "na": "1999-09-09"
-      },
-      "cpu": "Hitachi SH-4",
-      "units_sold_millions": 10.6,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/sega_dreamcast_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/7/71/Dreamcast-Console-Set.jpg"
-      }
-    },
+
     {
       "id": "nintendo_gameboy",
       "name": "Game Boy",
       "brand": "Nintendo",
       "generation": 4,
       "handheld": true,
-      "release": {
-        "jp": "1989-04-21",
-        "na": "1989-07-31"
-      },
-      "cpu": "Sharp LR35902",
+      "release": { "jp": "1989-04-21", "na": "1989-07-31" },
+      "cpu": "Sharp LR35902 @ 4.19 MHz",
+      "cpu_note": "A hybrid of the Z80 and Intel 8080 architectures. Its low power draw was key — the Game Boy ran for 15 hours on 4 AA batteries, far outlasting competitors.",
       "units_sold_millions": 118.69,
+      "innovation": "Proved that battery life and durability beat raw power in handhelds. Launched with Tetris — one of the best-selling game bundles in history.",
+      "record": "Sold 118M units across original + Color models. Tetris bundle is the best-selling game-console bundle ever.",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/gameboy_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Nintendo_Gameboy.jpg"
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Nintendo_Gameboy.jpg/320px-Nintendo_Gameboy.jpg"
       }
     },
+
     {
-      "id": "nintendo_gameboy_advance",
-      "name": "Game Boy Advance",
-      "brand": "Nintendo",
-      "generation": 6,
-      "handheld": true,
-      "release": {
-        "jp": "2001-03-21",
-        "na": "2001-06-11"
-      },
-      "cpu": "ARM7TDMI",
-      "units_sold_millions": 81.51,
+      "id": "sega_genesis",
+      "name": "Sega Genesis / Mega Drive",
+      "brand": "Sega",
+      "generation": 4,
+      "release": { "jp": "1988-10-29", "na": "1989-08-14", "eu": "1990-11-30" },
+      "cpu": "Motorola 68000 @ 7.67 MHz",
+      "cpu_note": "The 68000 was used in the original Apple Macintosh and many arcade boards. Sega paired it with a Z80 co-processor for backward compatibility and sound.",
+      "units_sold_millions": 30.75,
+      "innovation": "First console to mount a serious mainstream challenge to Nintendo. Sonic the Hedgehog established Sega as a rival brand. Introduced the six-button fighting game controller.",
+      "record": "First console to defeat Nintendo in a major market segment (16-bit era in North America).",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/gba_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Gameboy_advance.jpg"
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Sega-Mega-Drive-JP-Mk1-Console-Set.jpg/320px-Sega-Mega-Drive-JP-Mk1-Console-Set.jpg"
       }
     },
+
     {
-      "id": "nintendo_ds",
-      "name": "Nintendo DS",
+      "id": "nintendo_snes",
+      "name": "Super Nintendo Entertainment System",
       "brand": "Nintendo",
-      "generation": 7,
-      "handheld": true,
-      "release": {
-        "na": "2004-11-21",
-        "jp": "2004-12-02"
-      },
-      "cpu": "ARM9 + ARM7",
-      "units_sold_millions": 154.02,
+      "generation": 4,
+      "release": { "jp": "1990-11-21", "na": "1991-08-23", "eu": "1992-06-11" },
+      "cpu": "Ricoh 5A22 @ 3.58 MHz",
+      "cpu_note": "Based on the WDC 65C816, a 16-bit extension of the 6502. The SNES also used special co-processor chips inside certain cartridges (Super FX, DSP-1) to extend its capabilities.",
+      "units_sold_millions": 49.1,
+      "innovation": "Mode 7 graphics enabled pseudo-3D effects. The Super FX chip in Star Fox brought polygon 3D gaming to home consoles for the first time.",
+      "record": "Hosted the greatest games library of its era — Super Mario World, Zelda: A Link to the Past, Chrono Trigger, Final Fantasy VI all on one platform.",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/nds_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/7/76/Nintendo-DS-Lite-Black.jpg"
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/3/31/SNES-Mod1-Console-Set.jpg"
       }
     },
+
     {
-      "id": "nintendo_3ds",
-      "name": "Nintendo 3DS",
-      "brand": "Nintendo",
-      "generation": 8,
-      "handheld": true,
-      "release": {
-        "jp": "2011-02-26",
-        "na": "2011-03-27"
-      },
-      "cpu": "ARM11 (x2)",
-      "units_sold_millions": 75.94,
+      "id": "snk_neo_geo",
+      "name": "Neo Geo AES",
+      "brand": "SNK",
+      "generation": 4,
+      "release": { "jp": "1990-04-26", "na": "1991-08-22" },
+      "cpu": "Motorola 68000 @ 12 MHz",
+      "cpu_note": "Running at 12 MHz — significantly faster than most competitors. Paired with a Z80 for sound. The hardware was essentially identical to SNK's MVS arcade boards.",
+      "units_sold_millions": 1,
+      "innovation": "First console to offer true arcade-identical home ports. Cartridges were physically the same as arcade ROM boards.",
+      "record": "Most expensive consumer console of its era at $649 (1990). Cartridges cost up to $300.",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/3ds_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Nintendo-3DS-AquaOpen.jpg"
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Neo-Geo-AES-Console-Set.jpg/320px-Neo-Geo-AES-Console-Set.jpg"
       }
     },
+
+    {
+      "id": "nec_turbografx",
+      "name": "TurboGrafx-16 / PC Engine",
+      "brand": "NEC",
+      "generation": 4,
+      "release": { "jp": "1987-10-30", "na": "1989-08-29" },
+      "cpu": "Hudson Soft HuC6280 @ 7.16 MHz",
+      "cpu_note": "An enhanced 65C02 with built-in sound. The '16' in the name referred to the 16-bit graphics processor, though the CPU itself was 8-bit — a clever marketing move.",
+      "units_sold_millions": 10,
+      "innovation": "First console add-on (CD-ROM² in 1988) and first to support CD-ROM games, enabling full voice acting and CD audio in games.",
+      "record": "First console to support CD-ROM games (1988), pioneering the format that would dominate the following generation.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/TurboGrafx-16-Console-Set.jpg/320px-TurboGrafx-16-Console-Set.jpg"
+      }
+    },
+
     {
       "id": "sega_game_gear",
       "name": "Game Gear",
       "brand": "Sega",
       "generation": 4,
       "handheld": true,
-      "release": {
-        "jp": "1990-10-06",
-        "na": "1991-04-01"
-      },
-      "cpu": "Zilog Z80",
+      "release": { "jp": "1990-10-06", "na": "1991-04-01", "eu": "1991-04-01" },
+      "cpu": "Zilog Z80 @ 3.58 MHz",
+      "cpu_note": "Same Z80 as the Master System, making ports straightforward. The full-colour backlit screen was a major advantage over Game Boy, but drained 6 AA batteries in just 3–5 hours.",
       "units_sold_millions": 10.62,
+      "innovation": "First colour backlit handheld console. Could be converted into a portable TV with an optional tuner attachment.",
+      "record": "First handheld with a full-colour backlit display (1990).",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/gamegear_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Game_Gear_Handheld_Systemit.jpg"
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Game_Gear_Handheld_Systemit.jpg/320px-Game_Gear_Handheld_Systemit.jpg"
       }
     },
+
+    {
+      "id": "sony_ps1",
+      "name": "PlayStation",
+      "brand": "Sony",
+      "generation": 5,
+      "release": { "jp": "1994-12-03", "na": "1995-09-09", "eu": "1995-09-29" },
+      "cpu": "MIPS R3000A @ 33.87 MHz",
+      "cpu_note": "A 32-bit RISC processor originally developed for workstations. Sony paired it with a dedicated Geometry Transformation Engine (GTE) co-processor for 3D calculations.",
+      "units_sold_millions": 102.49,
+      "innovation": "Shifted the industry from cartridges to CD-ROMs, slashing game production costs and enabling full motion video and CD-quality audio. Brought gaming to adults.",
+      "record": "First console to sell 100 million units. Established Sony as a dominant force in gaming overnight.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/3/39/PSX-Console-wController.jpg"
+      }
+    },
+
+    {
+      "id": "nintendo_n64",
+      "name": "Nintendo 64",
+      "brand": "Nintendo",
+      "generation": 5,
+      "release": { "jp": "1996-06-23", "na": "1996-09-29", "eu": "1997-03-01" },
+      "cpu": "NEC VR4300 @ 93.75 MHz",
+      "cpu_note": "A 64-bit MIPS processor. Paired with the Reality Co-Processor (RCP) which handled both 3D graphics and audio — an unusual unified design that simplified development.",
+      "units_sold_millions": 32.93,
+      "innovation": "Introduced the analog thumbstick on a mainstream controller, the rumble pak, and defined 3D platforming with Super Mario 64. Four controller ports built in.",
+      "record": "Super Mario 64 set the blueprint for all 3D platformers. GoldenEye 007 defined the console first-person shooter genre.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/0/02/N64-Console-Set.jpg"
+      }
+    },
+
+    {
+      "id": "sega_saturn",
+      "name": "Sega Saturn",
+      "brand": "Sega",
+      "generation": 5,
+      "release": { "jp": "1994-11-22", "na": "1995-05-11", "eu": "1995-07-08" },
+      "cpu": "Hitachi SH-2 @ 28.6 MHz (×2)",
+      "cpu_note": "Dual SH-2 processors — an unusual choice that made the Saturn powerful for 2D sprite games but notoriously difficult to program for 3D. Many developers struggled with its quad-CPU total architecture.",
+      "units_sold_millions": 9.5,
+      "innovation": "First console with a built-in battery for saving game data without needing a memory card. Exceptional 2D sprite capabilities attracted fighting game developers.",
+      "record": "Best 2D sprite performance of its generation — preferred by SNK and Capcom for fighting game ports.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Sega-Saturn-Console-Set-Mk1.jpg"
+      }
+    },
+
+    {
+      "id": "3do_interactive",
+      "name": "3DO Interactive Multiplayer",
+      "brand": "3DO",
+      "generation": 5,
+      "release": { "na": "1993-10-04" },
+      "cpu": "ARM60 @ 12.5 MHz",
+      "cpu_note": "One of the earliest ARM-based consumer devices. The ARM60 was paired with two custom ASICs for graphics and a math co-processor.",
+      "units_sold_millions": 2,
+      "innovation": "First console with a built-in CD-ROM as standard. Introduced the concept of licensing hardware to multiple manufacturers (Panasonic, Sanyo, GoldStar).",
+      "record": "Most expensive console launch of its era at $699 (1993). First to use ARM architecture in a games console.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/3/3e/3DO-FZ1-Console-Set.jpg"
+      }
+    },
+
+    {
+      "id": "sega_dreamcast",
+      "name": "Sega Dreamcast",
+      "brand": "Sega",
+      "generation": 6,
+      "release": { "jp": "1998-11-27", "na": "1999-09-09", "eu": "1999-10-14" },
+      "cpu": "Hitachi SH-4 @ 200 MHz",
+      "cpu_note": "Featured a 128-bit floating-point vector unit — a first for home consoles — enabling complex 3D calculations that the SH-4 handled natively.",
+      "units_sold_millions": 10.6,
+      "innovation": "First console with a built-in modem and online gaming support out of the box. VMU memory cards had their own screens and buttons.",
+      "record": "First online-ready console (1998). Sold 1.5 million units in the first two weeks in North America — a record at the time.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/7/71/Dreamcast-Console-Set.jpg"
+      }
+    },
+
+    {
+      "id": "nintendo_gamecube",
+      "name": "Nintendo GameCube",
+      "brand": "Nintendo",
+      "generation": 6,
+      "release": { "jp": "2001-09-14", "na": "2001-11-18", "eu": "2002-05-03" },
+      "cpu": "IBM PowerPC Gekko @ 485 MHz",
+      "cpu_note": "A PowerPC derivative with a paired-single SIMD unit for fast floating-point math. Ran significantly faster than the PS2's Emotion Engine in raw CPU throughput.",
+      "units_sold_millions": 21.74,
+      "innovation": "First Nintendo console to use optical discs (proprietary mini-DVD). Introduced the WaveBird — first mainstream wireless controller.",
+      "record": "GameCube's Super Smash Bros. Melee remains one of the most played competitive games 20 years later.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Nintendo-GameCube-Set.jpg"
+      }
+    },
+
+    {
+      "id": "microsoft_xbox",
+      "name": "Xbox",
+      "brand": "Microsoft",
+      "generation": 6,
+      "release": { "na": "2001-11-15", "eu": "2002-03-14", "jp": "2002-02-22" },
+      "cpu": "Intel Pentium III @ 733 MHz",
+      "cpu_note": "A desktop PC processor — the Xbox was essentially a custom PC. This made development familiar for PC developers and enabled DirectX support, blurring the line between PC and console gaming.",
+      "units_sold_millions": 24,
+      "innovation": "First console with a built-in hard drive. Xbox Live (2002) created the modern online gaming subscription model. Introduced the Duke controller — largest mainstream controller ever made.",
+      "record": "First console with an internal HDD. Xbox Live became the template for every online console platform that followed.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/4/43/Xbox-console.jpg"
+      }
+    },
+
+    {
+      "id": "sony_ps2",
+      "name": "PlayStation 2",
+      "brand": "Sony",
+      "generation": 6,
+      "release": { "jp": "2000-03-04", "na": "2000-10-26", "eu": "2000-11-24" },
+      "cpu": "MIPS R5900 Emotion Engine @ 294 MHz",
+      "cpu_note": "Custom 128-bit SIMD MIPS processor with two vector units. Difficult to program — developers had to hand-tune assembly — but rewarded mastery with exceptional performance.",
+      "units_sold_millions": 155,
+      "innovation": "Built-in DVD player drove adoption as much as gaming. Emotion Engine enabled cinematic experiences previously impossible on a console.",
+      "record": "Best-selling console of all time at 155 million units. Outsold dedicated DVD players in its first year.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/0/02/PS2-Fat-Console-Set.jpg"
+      }
+    },
+
+    {
+      "id": "nintendo_gameboy_advance",
+      "name": "Game Boy Advance",
+      "brand": "Nintendo",
+      "generation": 6,
+      "handheld": true,
+      "release": { "jp": "2001-03-21", "na": "2001-06-11", "eu": "2001-06-22" },
+      "cpu": "ARM7TDMI @ 16.78 MHz",
+      "cpu_note": "ARM's Thumb instruction set allowed 16-bit compressed instructions, saving power and memory. A secondary Z80 core handled Game Boy / Color backward compatibility.",
+      "units_sold_millions": 81.51,
+      "innovation": "First handheld capable of SNES-level graphics. SP model introduced the clamshell design and rechargeable lithium-ion battery to handhelds.",
+      "record": "Hosted the definitive portable versions of the Final Fantasy, Castlevania, and Pokémon franchises.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Gameboy_advance.jpg"
+      }
+    },
+
+    {
+      "id": "microsoft_xbox_360",
+      "name": "Xbox 360",
+      "brand": "Microsoft",
+      "generation": 7,
+      "release": { "na": "2005-11-22", "eu": "2005-12-02", "jp": "2005-12-10" },
+      "cpu": "IBM Xenon (PowerPC tri-core) @ 3.2 GHz",
+      "cpu_note": "Three symmetrical PowerPC cores, each with two hardware threads. Designed with in-order execution for predictability. Notorious RROD (Red Ring of Death) failures were caused by solder cracking under thermal stress.",
+      "units_sold_millions": 84,
+      "innovation": "Established achievements/gamerscore as a universal gaming concept. Xbox Live Arcade popularised downloadable indie games. First console with HDMI output.",
+      "record": "First HD console to market. Achievements system was adopted across all major platforms.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/e/e6/Xbox-360-S-Console-Set.jpg"
+      }
+    },
+
+    {
+      "id": "sony_ps3",
+      "name": "PlayStation 3",
+      "brand": "Sony",
+      "generation": 7,
+      "release": { "jp": "2006-11-11", "na": "2006-11-17", "eu": "2007-03-23" },
+      "cpu": "IBM Cell Broadband Engine @ 3.2 GHz",
+      "cpu_note": "One PPE core plus eight SPE co-processors. Theoretically powerful but extremely difficult to program — Sony used PS3s as cheap supercomputer nodes; Stanford's Folding@home ran on them.",
+      "units_sold_millions": 87.4,
+      "innovation": "Built-in Blu-ray player won the format war against HD-DVD. First console with a mandatory game installation system. PSN's free online play challenged Xbox Live's subscription model.",
+      "record": "PS3 clusters were used by the US Air Force for a 1,760-unit supercomputer. Won the Blu-ray vs HD-DVD format war.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/4/40/PS3-Slim-Console-Set.jpg"
+      }
+    },
+
+    {
+      "id": "nintendo_wii",
+      "name": "Nintendo Wii",
+      "brand": "Nintendo",
+      "generation": 7,
+      "release": { "na": "2006-11-19", "jp": "2006-12-02", "eu": "2006-12-08" },
+      "cpu": "IBM Broadway (PowerPC) @ 729 MHz",
+      "cpu_note": "A modest CPU by 7th-gen standards — Nintendo prioritised motion controls and low cost over raw power. The Broadway was essentially an overclocked GameCube CPU.",
+      "units_sold_millions": 101.63,
+      "innovation": "Motion controls via the Wii Remote redefined how games were played and attracted non-gamers for the first time. Wii Sports remains the best-selling pack-in game ever.",
+      "record": "Sold 101M units. Wii Sports is the 4th best-selling game ever. Introduced motion gaming to the mainstream.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/1/14/Wii-console.jpg"
+      }
+    },
+
     {
       "id": "sony_psp",
       "name": "PlayStation Portable",
       "brand": "Sony",
       "generation": 7,
       "handheld": true,
-      "release": {
-        "jp": "2004-12-12",
-        "na": "2005-03-24"
-      },
-      "cpu": "MIPS R4000",
+      "release": { "jp": "2004-12-12", "na": "2005-03-24", "eu": "2005-09-01" },
+      "cpu": "MIPS R4000 @ 333 MHz",
+      "cpu_note": "Full 32-bit MIPS processor paired with a dedicated Media Engine for video decoding. UMD discs stored up to 1.8 GB — far more than any cartridge of the era.",
       "units_sold_millions": 80,
+      "innovation": "First handheld with a widescreen display and full multimedia capabilities (music, video, internet). Introduced UMD optical media.",
+      "record": "First multimedia handheld console. Crisis Core: Final Fantasy VII sold 2.4M in Japan alone.",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/psp_128.png",
+        "avatar": "",
         "full": "https://upload.wikimedia.org/wikipedia/commons/3/31/PSP-1000.jpg"
       }
     },
+
+    {
+      "id": "nintendo_ds",
+      "name": "Nintendo DS",
+      "brand": "Nintendo",
+      "generation": 7,
+      "handheld": true,
+      "release": { "na": "2004-11-21", "jp": "2004-12-02", "eu": "2005-03-11" },
+      "cpu": "ARM9 @ 67 MHz + ARM7 @ 33 MHz",
+      "cpu_note": "Dual ARM processors — the ARM9 handled main game logic while the ARM7 managed audio, wireless, and GBA backward compatibility. The dual-processor model became the template for the 3DS.",
+      "units_sold_millions": 154.02,
+      "innovation": "Dual screens with touchscreen changed how games were designed. Pictochat, built-in wireless, and microphone made it a communication device as well as a games console.",
+      "record": "Second best-selling handheld ever (154M). Nintendogs and Brain Training opened gaming to entirely new demographics.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/7/76/Nintendo-DS-Lite-Black.jpg"
+      }
+    },
+
+    {
+      "id": "microsoft_xbox_one",
+      "name": "Xbox One",
+      "brand": "Microsoft",
+      "generation": 8,
+      "release": { "na": "2013-11-22", "eu": "2013-11-22" },
+      "cpu": "AMD Jaguar x86-64 (8-core) @ 1.75 GHz",
+      "cpu_note": "Shared architecture with the PS4 — both used AMD Jaguar. This made cross-platform development significantly easier and ended the era of exotic console CPUs.",
+      "units_sold_millions": 58,
+      "innovation": "Introduced Game Pass (later), the most significant subscription model shift in gaming. HDMI pass-through allowed the Xbox One to act as a TV hub.",
+      "record": "Xbox Game Pass pioneered the Netflix model for games — now has 34M+ subscribers.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/2/20/Xbox-One-Console-Set.jpg"
+      }
+    },
+
+    {
+      "id": "sony_ps4",
+      "name": "PlayStation 4",
+      "brand": "Sony",
+      "generation": 8,
+      "release": { "na": "2013-11-15", "eu": "2013-11-29", "jp": "2014-02-22" },
+      "cpu": "AMD Jaguar x86-64 (8-core) @ 1.6 GHz",
+      "cpu_note": "x86-64 architecture — a deliberate choice by Sony to make PS4 easy to develop for after PS3's notoriously complex Cell. 8 GB GDDR5 unified memory was exceptional for 2013.",
+      "units_sold_millions": 117,
+      "innovation": "Share button enabled instant screenshot and video capture for the first time on a console. Remote Play via PS Vita/mobile. The most developer-friendly PlayStation ever.",
+      "record": "God of War (2018) and The Last of Us Part II won over 300 Game of the Year awards between them.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/0/05/PS4-Console-wDS4.jpg"
+      }
+    },
+
+    {
+      "id": "nintendo_wii_u",
+      "name": "Nintendo Wii U",
+      "brand": "Nintendo",
+      "generation": 8,
+      "release": { "na": "2012-11-18", "eu": "2012-11-30", "jp": "2012-12-08" },
+      "cpu": "IBM Espresso (PowerPC tri-core) @ 1.24 GHz",
+      "cpu_note": "Three out-of-order PowerPC cores. Wii U was significantly more powerful than Wii but could not keep pace with PS4 and Xbox One. The GamePad's screen required the CPU to render two displays simultaneously.",
+      "units_sold_millions": 13.56,
+      "innovation": "Introduced the GamePad with a second screen, pioneering asymmetric gameplay. Many Wii U innovations (off-TV play, touchscreen control) were refined and perfected in the Nintendo Switch.",
+      "record": "Lowest-selling Nintendo home console. Despite commercial failure, its library includes Breath of the Wild, Mario Kart 8, and Splatoon.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Wii_U_Console_and_GamePad.jpg"
+      }
+    },
+
+    {
+      "id": "nintendo_3ds",
+      "name": "Nintendo 3DS",
+      "brand": "Nintendo",
+      "generation": 8,
+      "handheld": true,
+      "release": { "jp": "2011-02-26", "na": "2011-03-27", "eu": "2011-03-25" },
+      "cpu": "ARM11 @ 268 MHz (×2)",
+      "cpu_note": "Dual ARM11 cores with a legacy ARM9 for DS backward compatibility. The glasses-free 3D display used a parallax barrier — no glasses needed, just precise viewing angle.",
+      "units_sold_millions": 75.94,
+      "innovation": "First mainstream glasses-free 3D display on a consumer device. Introduced StreetPass — passive social interaction by carrying the console.",
+      "record": "First glasses-free 3D consumer device. Pokémon X/Y sold 4M copies in the first two days.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Nintendo-3DS-AquaOpen.jpg"
+      }
+    },
+
     {
       "id": "sony_ps_vita",
       "name": "PlayStation Vita",
       "brand": "Sony",
       "generation": 8,
       "handheld": true,
-      "release": {
-        "jp": "2011-12-17",
-        "na": "2012-02-22"
-      },
-      "cpu": "ARM Cortex-A9 (x4)",
+      "release": { "jp": "2011-12-17", "na": "2012-02-22", "eu": "2012-02-22" },
+      "cpu": "ARM Cortex-A9 (×4) @ 444 MHz",
+      "cpu_note": "Quad-core ARM with a quad-core PowerVR SGX543MP4 GPU — console-class performance in a handheld. Despite the hardware, Sony abandoned first-party support within a few years.",
       "units_sold_millions": 16,
+      "innovation": "First handheld with a rear touchpad. OLED screen was widely praised. Remote Play with PS4 worked better on Vita than any other device.",
+      "record": "Highest-spec handheld of its generation. Became the definitive indie and JRPG handheld despite Sony's abandonment.",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/psvita_128.png",
+        "avatar": "",
         "full": "https://upload.wikimedia.org/wikipedia/commons/3/3d/PlayStation-Vita-1101-FL.jpg"
       }
     },
+
+    {
+      "id": "microsoft_xbox_series_x",
+      "name": "Xbox Series X",
+      "brand": "Microsoft",
+      "generation": 9,
+      "release": { "global": "2020-11-10" },
+      "cpu": "AMD Zen 2 (8-core) @ 3.8 GHz",
+      "cpu_note": "Custom AMD SoC with Zen 2 CPU and RDNA 2 GPU sharing 10 GB GDDR6. The Velocity Architecture combines the SSD, CPU, and GPU pipeline to dramatically reduce load times.",
+      "units_sold_millions": null,
+      "innovation": "Quick Resume lets players suspend multiple games simultaneously and switch between them in seconds. DirectStorage brings PC SSD streaming tech to consoles.",
+      "record": "Most powerful console at launch (12 teraflops GPU). Xbox Game Pass reached 34M subscribers by 2024.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/7/75/Xbox_series_X.jpg"
+      }
+    },
+
     {
       "id": "microsoft_xbox_series_s",
       "name": "Xbox Series S",
       "brand": "Microsoft",
       "generation": 9,
-      "release": {
-        "global": "2020-11-10"
-      },
+      "release": { "global": "2020-11-10" },
+      "cpu": "AMD Zen 2 (8-core) @ 3.6 GHz",
+      "cpu_note": "Same Zen 2 CPU as Series X but with a weaker RDNA 2 GPU (4 teraflops vs 12). Targets 1440p instead of 4K. All-digital — no disc drive.",
+      "units_sold_millions": null,
+      "innovation": "Lowest-priced next-gen console at $299. First all-digital next-gen console in the Series family.",
+      "record": "Cheapest next-generation console at launch.",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/xbox_seriess_128.png",
+        "avatar": "",
         "full": "https://upload.wikimedia.org/wikipedia/commons/6/62/Xbox_Series_S.jpg"
       }
     },
+
     {
-      "id": "snk_neo_geo",
-      "name": "Neo Geo AES",
-      "brand": "SNK",
-      "generation": 4,
-      "release": {
-        "jp": "1990-04-26",
-        "na": "1991-08-22"
-      },
-      "cpu": "Motorola 68000",
-      "units_sold_millions": 1,
+      "id": "sony_ps5",
+      "name": "PlayStation 5",
+      "brand": "Sony",
+      "generation": 9,
+      "release": { "global": "2020-11-12" },
+      "cpu": "AMD Zen 2 (8-core) @ 3.5 GHz",
+      "cpu_note": "Custom SoC with Zen 2 CPU and RDNA 2 GPU. The custom 825 GB/s SSD was designed around an odd 12-channel interface specifically to hit that bandwidth figure.",
+      "units_sold_millions": 50,
+      "innovation": "DualSense haptic feedback and adaptive triggers add physical sensation to gameplay — praised as the most innovative controller since the Wii Remote. Tempest 3D AudioTech for spatial audio.",
+      "record": "Fastest-selling PlayStation console — 50M units in 3.5 years.",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/neogeo_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Neo-Geo-AES-Console-Set.jpg"
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/9/9d/PlayStation_5_and_DualSense.jpg"
       }
     },
+
     {
-      "id": "3do_interactive",
-      "name": "3DO Interactive Multiplayer",
-      "brand": "3DO",
-      "generation": 5,
-      "release": {
-        "na": "1993-10-04"
-      },
-      "cpu": "ARM60",
-      "units_sold_millions": 2,
+      "id": "nintendo_switch",
+      "name": "Nintendo Switch",
+      "brand": "Nintendo",
+      "generation": 8,
+      "hybrid": true,
+      "release": { "global": "2017-03-03" },
+      "cpu": "NVIDIA Tegra X1 @ 1.02 GHz (docked)",
+      "cpu_note": "Tegra X1 uses ARM Cortex-A57 cores with an NVIDIA Maxwell GPU. Clocks down significantly in handheld mode to preserve battery. The same chip powers the NVIDIA Shield TV.",
+      "units_sold_millions": 139,
+      "innovation": "First successful hybrid console — plays the same games on a TV and as a handheld. Joy-Con controllers enable dozens of play modes. Solved the divide between home and portable gaming.",
+      "record": "Third best-selling console ever. Breath of the Wild and Mario Kart 8 Deluxe each sold over 30M copies.",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/3do_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/3/3e/3DO-FZ1-Console-Set.jpg"
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/3/38/Nintendo_Switch_Console.png"
       }
     },
-    {
-      "id": "nec_turbografx",
-      "name": "TurboGrafx-16 / PC Engine",
-      "brand": "NEC",
-      "generation": 4,
-      "release": {
-        "jp": "1987-10-30",
-        "na": "1989-08-29"
-      },
-      "cpu": "Hudson Soft HuC6280",
-      "units_sold_millions": 10,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/turbografx_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/c/c9/TurboGrafx-16-Console-Set.jpg"
-      }
-    },
-    {
-      "id": "coleco_colecovision",
-      "name": "ColecoVision",
-      "brand": "Coleco",
-      "generation": 2,
-      "release": {
-        "na": "1982-08-01"
-      },
-      "cpu": "Zilog Z80",
-      "units_sold_millions": 6,
-      "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/colecovision_128.png",
-        "full": "https://upload.wikimedia.org/wikipedia/commons/2/21/ColecoVision-Console-Set.jpg"
-      }
-    },
+
     {
       "id": "nintendo_switch_oled",
       "name": "Nintendo Switch OLED",
       "brand": "Nintendo",
       "generation": 8,
       "hybrid": true,
-      "release": {
-        "global": "2021-10-08"
-      },
+      "release": { "global": "2021-10-08" },
+      "cpu": "NVIDIA Tegra X1+ @ 1.02 GHz (docked)",
+      "cpu_note": "Revised Tegra X1+ with minor efficiency improvements. The main upgrade is the 7-inch OLED screen — deeper blacks and more vibrant colours than the original LCD.",
+      "units_sold_millions": null,
+      "innovation": "7-inch OLED screen and wider adjustable stand. Enhanced audio for handheld mode. Included in Switch total sales figures.",
+      "record": "Most premium Switch model. Sold out immediately at launch in most markets.",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/switch_oled_128.png",
+        "avatar": "",
         "full": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Nintendo_Switch_OLED_model.jpg/320px-Nintendo_Switch_OLED_model.jpg"
       }
     },
+
+    {
+      "id": "valve_steam_deck",
+      "name": "Steam Deck",
+      "brand": "Valve",
+      "generation": 9,
+      "hybrid": true,
+      "release": { "global": "2022-02-25" },
+      "cpu": "AMD Zen 2 (4-core) @ 2.4–3.5 GHz",
+      "cpu_note": "Custom AMD APU (Aerith) with Zen 2 CPU and RDNA 2 GPU on a single die sharing 16 GB LPDDR5. Runs a full Linux OS (SteamOS) — the first mainstream console to do so.",
+      "units_sold_millions": null,
+      "innovation": "First PC gaming handheld with a mainstream audience. Full access to the Steam library. Proton compatibility layer runs Windows games on Linux seamlessly.",
+      "record": "First mainstream Linux-based gaming device. Opened handheld PC gaming as a viable category.",
+      "thumbnail": {
+        "avatar": "",
+        "full": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Steam_Deck.jpg"
+      }
+    },
+
     {
       "id": "nokia_ngage",
       "name": "Nokia N-Gage",
       "brand": "Nokia",
       "generation": 6,
       "handheld": true,
-      "release": {
-        "global": "2003-10-07"
-      },
-      "cpu": "ARM9",
+      "release": { "global": "2003-10-07" },
+      "cpu": "ARM9 @ 104 MHz",
+      "cpu_note": "The same ARM9 found in many contemporary smartphones. The N-Gage was essentially a Symbian OS phone with game cartridges — Nokia's attempt to merge mobile and gaming.",
       "units_sold_millions": 3,
+      "innovation": "First attempt to combine a mobile phone and dedicated handheld game console. Bluetooth multiplayer gaming before it was standard.",
+      "record": "Pioneered the phone-as-gaming-device concept years before smartphones.",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/ngage_128.png",
+        "avatar": "",
         "full": "https://upload.wikimedia.org/wikipedia/commons/1/15/Nokia_N-Gage_QD.jpg"
       }
     },
+
     {
       "id": "bandai_wonderswan",
       "name": "WonderSwan",
       "brand": "Bandai",
       "generation": 5,
       "handheld": true,
-      "release": {
-        "jp": "1999-03-04"
-      },
-      "cpu": "NEC V30MZ",
+      "release": { "jp": "1999-03-04" },
+      "cpu": "NEC V30MZ @ 3.072 MHz",
+      "cpu_note": "The V30MZ is an x86-compatible processor — meaning the WonderSwan could theoretically run x86 code. Designed by Gunpei Yokoi, creator of the original Game Boy, in his final project.",
       "units_sold_millions": 3.5,
+      "innovation": "Designed by Gunpei Yokoi (Game Boy creator) as his final project. Vertical and horizontal play modes. Achieved 30+ hour battery life from a single AA battery.",
+      "record": "Only game system designed by Gunpei Yokoi after leaving Nintendo.",
       "thumbnail": {
-        "avatar": "https://cdn.yourapp.com/consoles/wonderswan_128.png",
+        "avatar": "",
         "full": "https://upload.wikimedia.org/wikipedia/commons/a/a5/WonderSwan.jpg"
       }
     }
+
   ]
 }
