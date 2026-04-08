@@ -41,7 +41,9 @@ REGISTRY     = PROJECT_ROOT / "data" / "belgian_chocolate_professional.json"
 AVATAR_DIR   = PROJECT_ROOT / "assets" / "chocolate" / "avatars"
 
 AVATAR_SIZE  = (128, 128)
-SLEEP        = 0.5
+SLEEP        = 3.0    # Wikimedia rate limit — 3 saniye bekleme
+MAX_RETRIES  = 4      # 429 alınca kaç kez tekrar dene
+RETRY_WAIT   = 15.0   # 429 sonrası kaç saniye bekle
 
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
@@ -55,30 +57,44 @@ def slugify(name: str) -> str:
 
 
 def download_and_resize(url: str, output_path: Path) -> bool:
-    """Görseli indir, kare crop yap, 128x128'e küçült, PNG olarak kaydet."""
-    try:
-        headers = {"User-Agent": "Bottany-Bot/1.0 (chocolate avatar generator)"}
-        resp = requests.get(url, headers=headers, timeout=15)
-        if resp.status_code != 200:
-            print(f"    HTTP {resp.status_code} — atlandı")
+    """Görseli indir, kare crop yap, 128x128'e küçült, PNG olarak kaydet.
+    429 (rate limit) alınca MAX_RETRIES kez tekrar dener."""
+    headers = {"User-Agent": "Bottany-Bot/1.0 (chocolate avatar generator)"}
+
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            resp = requests.get(url, headers=headers, timeout=20)
+
+            if resp.status_code == 429:
+                wait = RETRY_WAIT * attempt
+                print(f"    Rate limit (429) — {wait:.0f}s bekleniyor (deneme {attempt}/{MAX_RETRIES}) ...", end="", flush=True)
+                time.sleep(wait)
+                print(" tekrar deneniyor")
+                continue
+
+            if resp.status_code != 200:
+                print(f"    HTTP {resp.status_code} — atlandı")
+                return False
+
+            img = Image.open(BytesIO(resp.content)).convert("RGBA")
+
+            # Ortadan kare crop — uzatma/bozma olmadan
+            w, h  = img.size
+            side  = min(w, h)
+            left  = (w - side) // 2
+            top   = (h - side) // 2
+            img   = img.crop((left, top, left + side, top + side))
+
+            img = img.resize(AVATAR_SIZE, Image.LANCZOS)
+            img.save(output_path, "PNG")
+            return True
+
+        except Exception as e:
+            print(f"    Hata: {e}")
             return False
 
-        img = Image.open(BytesIO(resp.content)).convert("RGBA")
-
-        # Ortadan kare crop — uzatma/bozma olmadan
-        w, h  = img.size
-        side  = min(w, h)
-        left  = (w - side) // 2
-        top   = (h - side) // 2
-        img   = img.crop((left, top, left + side, top + side))
-
-        img = img.resize(AVATAR_SIZE, Image.LANCZOS)
-        img.save(output_path, "PNG")
-        return True
-
-    except Exception as e:
-        print(f"    Hata: {e}")
-        return False
+    print(f"    Maksimum deneme aşıldı — atlandı")
+    return False
 
 
 # ── Main ───────────────────────────────────────────────────────────────────────
