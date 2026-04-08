@@ -28,7 +28,7 @@ SCRIPT_DIR   = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 
 AVATAR_SIZE  = (128, 128)
-SLEEP        = 2.0   # Wikipedia için daha güvenli bekleme süresi
+SLEEP        = 5.0   # Wikipedia için daha güvenli bekleme süresi
 HEADERS      = {
     # Spesifik bir User-Agent Wikipedia engellerini aşmaya yardımcı olur
     "User-Agent": "Bottany-Bot/1.1 (contact: github.com/codeworksforkevy/bottany; email: bot@example.com)",
