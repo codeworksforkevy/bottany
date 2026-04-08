@@ -39,7 +39,9 @@ REGISTRY     = PROJECT_ROOT / "data" / "consoles_full.json"
 AVATAR_DIR   = PROJECT_ROOT / "assets" / "consoles" / "avatars"
 
 AVATAR_SIZE  = (128, 128)
-SLEEP        = 0.5   # Wikimedia rate limit için bekleme süresi
+SLEEP        = 3.0    # Wikimedia rate limit — 3 saniye bekleme
+MAX_RETRIES  = 4      # 429 alınca kaç kez tekrar dene
+RETRY_WAIT   = 15.0   # 429 sonrası kaç saniye bekle
 
 
 # ── Image download & resize ────────────────────────────────────────────────────
@@ -47,31 +49,45 @@ SLEEP        = 0.5   # Wikimedia rate limit için bekleme süresi
 def download_and_resize(url: str, output_path: Path) -> bool:
     """
     URL'den görseli indir, 128x128 PNG'ye küçült ve kaydet.
+    429 (rate limit) alınca MAX_RETRIES kez tekrar dener.
     Başarılı olursa True, hata olursa False döner.
     """
-    try:
-        headers = {"User-Agent": "Bottany-Bot/1.0 (console avatar generator)"}
-        response = requests.get(url, headers=headers, timeout=15)
-        if response.status_code != 200:
-            print(f"    HTTP {response.status_code} — atlandı")
+    headers = {"User-Agent": "Bottany-Bot/1.0 (console avatar generator)"}
+
+    for attempt in range(1, MAX_RETRIES + 1):
+        try:
+            response = requests.get(url, headers=headers, timeout=20)
+
+            if response.status_code == 429:
+                wait = RETRY_WAIT * attempt
+                print(f"    Rate limit (429) — {wait:.0f}s bekleniyor (deneme {attempt}/{MAX_RETRIES}) ...", end="", flush=True)
+                time.sleep(wait)
+                print(" tekrar deneniyor")
+                continue
+
+            if response.status_code != 200:
+                print(f"    HTTP {response.status_code} — atlandı")
+                return False
+
+            img = Image.open(BytesIO(response.content)).convert("RGBA")
+
+            # Kare crop — ortadan kırp, uzatma/bozma olmadan
+            w, h = img.size
+            side  = min(w, h)
+            left  = (w - side) // 2
+            top   = (h - side) // 2
+            img   = img.crop((left, top, left + side, top + side))
+
+            img = img.resize(AVATAR_SIZE, Image.LANCZOS)
+            img.save(output_path, "PNG")
+            return True
+
+        except Exception as e:
+            print(f"    Hata: {e}")
             return False
 
-        img = Image.open(BytesIO(response.content)).convert("RGBA")
-
-        # Kare crop — ortadan kırp, uzatma/bozma olmadan
-        w, h = img.size
-        side  = min(w, h)
-        left  = (w - side) // 2
-        top   = (h - side) // 2
-        img   = img.crop((left, top, left + side, top + side))
-
-        img = img.resize(AVATAR_SIZE, Image.LANCZOS)
-        img.save(output_path, "PNG")
-        return True
-
-    except Exception as e:
-        print(f"    Hata: {e}")
-        return False
+    print(f"    Maksimum deneme aşıldı — atlandı")
+    return False
 
 
 # ── Main ───────────────────────────────────────────────────────────────────────
@@ -119,12 +135,10 @@ def main() -> None:
         time.sleep(SLEEP)
 
         if ok:
-            # JSON'u güncelle — relative path
             c["thumbnail"]["avatar"] = str(avatar_path.relative_to(PROJECT_ROOT))
             print(f"OK → {avatar_path.name}")
             updated += 1
         else:
-            print("FAILED")
             failed += 1
 
     # Güncellenen registry'i kaydet
