@@ -60,7 +60,7 @@ STATIONS: dict[str, dict] = {
         "description": "A retro-futuristic journey through synthwave, darksynth and cyberpunk. Perfect for late nights.",
         "copyright":   "100% copyright-free — licensed for broadcasters.",
         "website":     "https://nightride.fm/",
-        "logo":        "https://nightride.fm/favicon.ico",
+        "logo":        "https://archive.org/images/glogo.png",
     },
     "argofox": {
         "label":       "Argofox — Chill / Synth",
@@ -70,7 +70,7 @@ STATIONS: dict[str, dict] = {
         "description": "Independent and lo-fi electronic music curated for streamers. No copyright.",
         "copyright":   "100% copyright-free.",
         "website":     "https://argofox.com/",
-        "logo":        "https://argofox.com/favicon.ico",
+        "logo":        "https://archive.org/images/glogo.png",
     },
 
     # Jazz ─────────────────────────────────────────────────────────────────────
@@ -82,7 +82,7 @@ STATIONS: dict[str, dict] = {
         "description": "One of the world's best jazz stations. Bebop to smooth jazz — perfect for evenings.",
         "copyright":   "Broadcaster-friendly — public radio.",
         "website":     "https://www.jazz24.org/",
-        "logo":        "https://www.jazz24.org/wp-content/uploads/jazz24-logo-1400x1400.png",
+        "logo":        "https://archive.org/images/glogo.png",
     },
     "wbgo": {
         "label":       "WBGO Newark",
@@ -92,7 +92,7 @@ STATIONS: dict[str, dict] = {
         "description": "Over forty years of uninterrupted jazz. Hard bop, soul jazz and straight-ahead.",
         "copyright":   "Broadcaster-friendly — public radio.",
         "website":     "https://www.wbgo.org/",
-        "logo":        "https://www.wbgo.org/sites/wbgo/files/WBGO_Logo_Square.png",
+        "logo":        "https://archive.org/images/glogo.png",
     },
     "fip_jazz": {
         "label":       "FIP Jazz (France)",
@@ -102,7 +102,7 @@ STATIONS: dict[str, dict] = {
         "description": "Radio France's jazz channel. Feels like sitting in a corner of a Parisian café.",
         "copyright":   "Broadcaster-friendly — public radio.",
         "website":     "https://www.fip.fr/jazz",
-        "logo":        "https://www.fip.fr/sites/fip/files/styles/image_600/public/2021-06/FIP_JAZZ_CARRE.jpg",
+        "logo":        "https://archive.org/images/glogo.png",
     },
 
     # Eclectic / World ─────────────────────────────────────────────────────────
@@ -114,7 +114,7 @@ STATIONS: dict[str, dict] = {
         "description": "Perhaps the world's most eclectic radio. Jazz to French poetry, then a rock classic. A true cultural ambassador.",
         "copyright":   "Broadcaster-friendly — public radio.",
         "website":     "https://www.fip.fr/",
-        "logo":        "https://www.fip.fr/sites/fip/files/styles/image_600/public/2021-06/FIP_CARRE.jpg",
+        "logo":        "https://archive.org/images/glogo.png",
     },
     "kexp": {
         "label":       "KEXP 90.3 FM",
@@ -124,7 +124,7 @@ STATIONS: dict[str, dict] = {
         "description": "One of the world's best independent stations. DJs hand-pick every track — synth, indie, jazz and world music.",
         "copyright":   "Broadcaster-friendly — non-profit public radio.",
         "website":     "https://www.kexp.org/",
-        "logo":        "https://www.kexp.org/static/images/kexp-social.jpg",
+        "logo":        "https://archive.org/images/glogo.png",
     },
     "radio_paradise": {
         "label":       "Radio Paradise",
@@ -134,7 +134,7 @@ STATIONS: dict[str, dict] = {
         "description": "Ad-free, listener-supported. Classic rock, indie and world music with an artistic flow.",
         "copyright":   "Broadcaster-friendly — listener-supported.",
         "website":     "https://radioparadise.com/",
-        "logo":        "https://radioparadise.com/graphics/logo_1400.jpg",
+        "logo":        "https://archive.org/images/glogo.png",
     },
 
     # Anime / J-Pop / K-Pop ────────────────────────────────────────────────────
@@ -158,6 +158,56 @@ STATIONS: dict[str, dict] = {
         "website":     "https://listen.moe/",
         "logo":        "https://listen.moe/public/images/icons/144.png",
     },
+    "chillhop": {
+        "label":       "Chillhop Radio",
+        "stream":      "https://streams.fluxfm.de/Chillhop/mp3-128/streams.fluxfm.de/",
+        "kind":        "Lo-fi / Chill-hop / Japanese aesthetic",
+        "region":      "Global",
+        "description": "Lo-fi hip hop with a Japanese aesthetic — the Lofi Girl alternative with a direct stream. Ideal for studying, coding or relaxing.",
+        "copyright":   "Stream-safe — independent label, curated for streamers.",
+        "website":     "https://chillhop.com/",
+        "logo":        "https://archive.org/images/glogo.png",
+    },
+    "touhou": {
+        "label":       "Gensokyo Radio — Touhou",
+        "stream":      "https://stream.gensokyoradio.net/1/",
+        "kind":        "Touhou / Indie Japanese",
+        "region":      "Japan / Global",
+        "description": "Fan-made Touhou Project music — the largest indie music culture in Japan. Most tracks are fan compositions with lighter copyright restrictions.",
+        "copyright":   "Fan-made / indie — lighter copyright restrictions than mainstream.",
+        "website":     "https://gensokyoradio.net/",
+        "logo":        "https://archive.org/images/glogo.png",
+    },
+    "big_b_kpop": {
+        "label":       "Big B Radio — K-Pop",
+        "stream":      "https://cast1.torontocast.com:2000/stream",
+        "kind":        "K-Pop / Korean Pop",
+        "region":      "Asia / Global",
+        "description": "The #1 K-Pop internet radio station. Hottest Korean Pop hits from South Korea. Note: mainstream K-Pop — may trigger DMCA on Twitch.",
+        "copyright":   "⚠ Mainstream K-Pop — use with caution on Twitch. Discord only recommended.",
+        "website":     "https://bigbradio.net/kpop",
+        "logo":        "https://archive.org/images/glogo.png",
+    },
+    "big_b_jpop": {
+        "label":       "Big B Radio — J-Pop",
+        "stream":      "https://cast1.torontocast.com:2100/stream",
+        "kind":        "J-Pop / Anime / J-Rock",
+        "region":      "Asia / Global",
+        "description": "J-Pop, anime hits and J-Rock from Japan and Asia. Community-run non-profit station since 2004.",
+        "copyright":   "Community non-profit — broadcaster-friendly.",
+        "website":     "https://bigbradio.net/jpop",
+        "logo":        "https://archive.org/images/glogo.png",
+    },
+    "big_b_cpop": {
+        "label":       "Big B Radio — C-Pop",
+        "stream":      "https://cast1.torontocast.com:2200/stream",
+        "kind":        "C-Pop / Mandarin / Cantonese",
+        "region":      "Asia / Global",
+        "description": "Cantonese Pop, Mandarin Pop and Taiwanese Pop. The Asian Pop channel covering Chinese-language music.",
+        "copyright":   "Community non-profit — broadcaster-friendly.",
+        "website":     "https://bigbradio.net/cpop",
+        "logo":        "https://archive.org/images/glogo.png",
+    },
 
     # Broadcaster-safe ─────────────────────────────────────────────────────────
     "pretzel": {
@@ -168,7 +218,49 @@ STATIONS: dict[str, dict] = {
         "description": "Designed specifically for Twitch and Discord streamers. Fully licensed, zero copyright claims.",
         "copyright":   "100% copyright-free — streamer-licensed.",
         "website":     "https://www.pretzel.rocks/",
-        "logo":        "https://www.pretzel.rocks/static/images/pretzel-logo.png",
+        "logo":        "https://archive.org/images/glogo.png",
+    },
+    "wfmu": {
+        "label":       "WFMU 91.1 FM",
+        "stream":      "https://stream0.wfmu.org/freeform-128k",
+        "kind":        "Freeform / Eclectic / Independent",
+        "region":      "New Jersey, USA",
+        "description": "America's oldest independent radio station and founder of the Free Music Archive. Punk, jazz, experimental, 78 RPM records — completely unpredictable. Most music played is copyright-free or shareware-licensed.",
+        "copyright":   "Broadcaster-friendly — non-profit, Free Music Archive founder.",
+        "website":     "https://www.wfmu.org/",
+        "logo":        "https://archive.org/images/glogo.png",
+    },
+    "jamendo": {
+        "label":       "Jamendo — Indie Radio",
+        "stream":      "https://streaming.jamendo.com/JamIndie",
+        "kind":        "Indie / Creative Commons",
+        "region":      "Luxembourg / Belgium / Global",
+        "description": "The world's largest Creative Commons music platform, based in Luxembourg-Belgium. Indie, jazz and electronic — all tracks are copyright-free and streamer-safe.",
+        "copyright":   "100% Creative Commons — zero copyright risk.",
+        "website":     "https://www.jamendo.com/",
+        "logo":        "https://archive.org/images/glogo.png",
+    },
+
+    # Belgium — Independent Radio ──────────────────────────────────────────────
+    "radio_panik": {
+        "label":       "Radio Panik — Brussels",
+        "stream":      "http://streaming.domainepublic.net:8000/radiopanik.mp3",
+        "kind":        "Experimental / Jazz / World",
+        "region":      "Brussels, Belgium",
+        "description": "Independent community radio broadcasting since 1983. Multilingual, experimental, jazz and world music. Belgian independent radio at its finest.",
+        "copyright":   "Community radio — independent artists, broadcaster-friendly.",
+        "website":     "https://www.radiopanik.org/",
+        "logo":        "https://archive.org/images/glogo.png",
+    },
+    "radio_centraal": {
+        "label":       "Radio Centraal — Antwerp",
+        "stream":      "http://streaming.radiocentraal.org:8000/radiocentraal.mp3",
+        "kind":        "Avant-garde / Noise / Independent Jazz",
+        "region":      "Antwerp, Belgium",
+        "description": "One of Belgium's oldest independent stations. Artistic and niche — avant-garde, noise and independent jazz. Antwerp's cultural underground.",
+        "copyright":   "Community radio — independent artists, broadcaster-friendly.",
+        "website":     "https://www.radiocentraal.org/",
+        "logo":        "https://archive.org/images/glogo.png",
     },
 
     # Archive — Public Domain Radio Theatre ────────────────────────────────────
@@ -222,23 +314,57 @@ STATIONS: dict[str, dict] = {
         "website":     "https://archive.org/details/georgeblood",
         "logo":        "https://archive.org/images/glogo.png",
     },
+    "belgian_jazz_1942": {
+        "label":       "Gus Viseur — Belgian Jazz 1942",
+        "stream":      "https://archive.org/download/78_swing-42_gus-viseur-et-son-orchestre_gbia0148416a/01%20-%20Swing%2042%20-%20Gus%20Viseur%20et%20son%20orchestre.mp3",
+        "kind":        "Belgian Jazz / 1942 / Public Domain",
+        "region":      "Brussels, Belgium — Archive",
+        "description": "Gus Viseur and his orchestra — Brussels jazz from 1942. Belgium was one of Europe's jazz centres. Rare, atmospheric and fully public domain.",
+        "copyright":   "Public Domain — 1942 recording, copyright expired.",
+        "website":     "https://archive.org/details/78_swing-42_gus-viseur-et-son-orchestre_gbia0148416a",
+        "logo":        "https://archive.org/images/glogo.png",
+    },
+    "belgian_vintage": {
+        "label":       "Belgian Vintage — Mon Ami le Vent (1940s)",
+        "stream":      "https://archive.org/download/78_mon-ami-le-vent_nina-mona-jack-s-orchestra-v-p-t_gbia0148416b/03%20-%20Mon%20ami%20le%20vent%20-%20Nina%20Mona.mp3",
+        "kind":        "Belgian Chanson / 1940s / Public Domain",
+        "region":      "Belgium — Archive",
+        "description": "Nina Mona with Jack's Orchestra — a Belgian chanson from the 1940s. The crackling sound of vintage Belgian radio, fully public domain.",
+        "copyright":   "Public Domain — 1940s recording, copyright expired.",
+        "website":     "https://archive.org/details/78_mon-ami-le-vent_nina-mona-jack-s-orchestra-v-p-t_gbia0148416b",
+        "logo":        "https://archive.org/images/glogo.png",
+    },
+    "flemish_vintage": {
+        "label":       "De Vrolijke Belgen — Flemish Vintage",
+        "stream":      "https://archive.org/download/78_ik-ben-verliefd-op-jou_de-vrolijke-belgen-l-p-t_gbia0151241b/02%20-%20Ik%20ben%20verliefd%20op%20jou%20-%20De%20Vrolijke%20Belgen.mp3",
+        "kind":        "Flemish Pop / 1940s / Public Domain",
+        "region":      "Belgium — Archive",
+        "description": "De Vrolijke Belgen — cheerful Flemish pop from the 1940s. A window into Belgian culture before television. Fully public domain.",
+        "copyright":   "Public Domain — 1940s recording, copyright expired.",
+        "website":     "https://archive.org/details/78_ik-ben-verliefd-op-jou_de-vrolijke-belgen-l-p-t_gbia0151241b",
+        "logo":        "https://archive.org/images/glogo.png",
+    },
 }
 
 GROUPS: dict[str, list[str]] = {
     "ambient":  ["drone_zone", "groove_salad", "nightride", "argofox"],
     "jazz":     ["jazz24", "wbgo", "fip_jazz"],
-    "eclectic": ["fip", "kexp", "radio_paradise"],
-    "anime":    ["listen_moe", "listen_moe_kpop"],
+    "eclectic": ["fip", "kexp", "radio_paradise", "wfmu", "jamendo"],
+    "anime":    ["listen_moe", "listen_moe_kpop", "chillhop", "touhou"],
+    "asian":    ["big_b_kpop", "big_b_jpop", "big_b_cpop"],
     "safe":     ["pretzel"],
+    "belgium":  ["radio_panik", "radio_centraal", "belgian_jazz_1942", "belgian_vintage", "flemish_vintage"],
     "archive":  ["suspense", "broadway", "x_minus_one", "waam_1928", "78rpm"],
 }
 
 GROUP_LABELS: dict[str, str] = {
     "ambient":  "Ambient / Electronic",
     "jazz":     "Jazz",
-    "eclectic": "Eclectic / World",
-    "anime":    "Anime / K-Pop",
+    "eclectic": "Eclectic / World / Independent",
+    "anime":    "Anime / Lo-fi / Touhou",
+    "asian":    "Asian Pop (K-Pop / J-Pop / C-Pop)",
     "safe":     "Broadcaster-safe",
+    "belgium":  "Belgium — Independent & Archive",
     "archive":  "Archive — Radio Theatre (Public Domain)",
 }
 
