@@ -3,23 +3,10 @@ scripts/generate_avatars.py
 =============================
 Konsol ve çikolata avatar'larını Wikipedia REST API üzerinden indirir.
 
-Neden Wikipedia REST API?
-  - Doğrudan Wikimedia image server'ı yerine /page/summary/{title} endpoint'i kullanır
-  - Rate limit çok daha toleranslı (~200 req/s vs 1 req/s)
-  - Zaten optimize edilmiş thumbnail URL'leri döndürür (320px)
-  - 429 hatası vermez
-
-Çalıştırmak için (proje kökünden):
-    pip install requests pillow
-    python scripts/generate_avatars.py
-
-Ardından:
-    git add assets/
-    git add data/consoles_full.json
-    git add data/belgian_chocolate_professional.json
-    git commit -m "feat: add avatar thumbnails"
-    git push
-    python scripts/localpath_to_github_url.py
+GÜNCELLEMELER:
+  - 429 Hataları için "Exponential Backoff" (Hata aldıkça artan bekleme süresi) eklendi.
+  - SLEEP süresi daha güvenli bir seviyeye çekildi.
+  - User-Agent daha spesifik hale getirildi.
 """
 
 from __future__ import annotations
@@ -41,9 +28,10 @@ SCRIPT_DIR   = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 
 AVATAR_SIZE  = (128, 128)
-SLEEP        = 1.0   # 1 saniye — Wikipedia API çok toleranslı
+SLEEP        = 2.0   # Wikipedia için daha güvenli bekleme süresi
 HEADERS      = {
-    "User-Agent": "Bottany-Bot/1.0 (avatar generator; github.com/codeworksforkevy/bottany)",
+    # Spesifik bir User-Agent Wikipedia engellerini aşmaya yardımcı olur
+    "User-Agent": "Bottany-Bot/1.1 (contact: github.com/codeworksforkevy/bottany; email: bot@example.com)",
     "Accept":     "application/json",
 }
 
@@ -116,44 +104,70 @@ CHOCOLATE_SLUGS: dict[str, str] = {
 # ── Core functions ────────────────────────────────────────────────────────────
 
 def fetch_thumbnail_url(wiki_slug: str) -> str | None:
-    """Wikipedia REST API'den thumbnail URL'sini çek."""
+    """Wikipedia REST API'den thumbnail URL'sini çek (429 yönetimi ile)."""
     url = WIKI_SUMMARY.format(wiki_slug)
-    try:
-        resp = requests.get(url, headers=HEADERS, timeout=10)
-        if resp.status_code == 404:
+    max_retries = 3
+    
+    for attempt in range(max_retries):
+        try:
+            resp = requests.get(url, headers=HEADERS, timeout=10)
+            
+            if resp.status_code == 429:
+                wait = (attempt + 1) * 10
+                print(f"\n    [!] 429 Hatası (API). {wait} saniye bekleniyor...")
+                time.sleep(wait)
+                continue
+                
+            if resp.status_code == 404:
+                return None
+                
+            if resp.status_code != 200:
+                print(f"    Wikipedia API HTTP {resp.status_code}")
+                return None
+                
+            data = resp.json()
+            thumb = data.get("thumbnail", {})
+            return thumb.get("source")
+            
+        except Exception as e:
+            print(f"    Wikipedia API error: {e}")
             return None
-        if resp.status_code != 200:
-            print(f"    Wikipedia API HTTP {resp.status_code}")
-            return None
-        data = resp.json()
-        thumb = data.get("thumbnail", {})
-        return thumb.get("source")   # already a sized URL like /320px-...
-    except Exception as e:
-        print(f"    Wikipedia API error: {e}")
-        return None
+    return None
 
 
 def download_and_resize(url: str, output_path: Path) -> bool:
-    """URL'den görseli indir, 128x128 kare PNG olarak kaydet."""
-    try:
-        resp = requests.get(url, headers=HEADERS, timeout=15)
-        if resp.status_code != 200:
-            print(f"    Image download HTTP {resp.status_code}")
+    """URL'den görseli indir, 128x128 kare PNG olarak kaydet (429 yönetimi ile)."""
+    max_retries = 3
+    
+    for attempt in range(max_retries):
+        try:
+            resp = requests.get(url, headers=HEADERS, timeout=15)
+            
+            if resp.status_code == 429:
+                wait = (attempt + 1) * 15
+                print(f"\n    [!] 429 Hatası (İndirme). {wait} saniye bekleniyor...")
+                time.sleep(wait)
+                continue
+                
+            if resp.status_code != 200:
+                print(f"    Image download HTTP {resp.status_code}")
+                return False
+
+            img = Image.open(BytesIO(resp.content)).convert("RGBA")
+
+            # Centre-crop to square
+            w, h = img.size
+            side = min(w, h)
+            img  = img.crop(((w - side) // 2, (h - side) // 2,
+                              (w + side) // 2, (h + side) // 2))
+            img  = img.resize(AVATAR_SIZE, Image.LANCZOS)
+            img.save(output_path, "PNG")
+            return True
+            
+        except Exception as e:
+            print(f"    Image error: {e}")
             return False
-
-        img = Image.open(BytesIO(resp.content)).convert("RGBA")
-
-        # Centre-crop to square
-        w, h = img.size
-        side = min(w, h)
-        img  = img.crop(((w - side) // 2, (h - side) // 2,
-                          (w + side) // 2, (h + side) // 2))
-        img  = img.resize(AVATAR_SIZE, Image.LANCZOS)
-        img.save(output_path, "PNG")
-        return True
-    except Exception as e:
-        print(f"    Image error: {e}")
-        return False
+    return False
 
 
 def slugify(name: str) -> str:
@@ -191,7 +205,6 @@ def generate_console_avatars() -> None:
             skipped += 1
             continue
 
-        # Get Wikipedia slug
         wiki_slug = CONSOLE_SLUGS.get(cid) or name.replace(" ", "_")
 
         print(f"  WIKI  {name} ({wiki_slug}) ... ", end="", flush=True)
@@ -199,7 +212,6 @@ def generate_console_avatars() -> None:
         time.sleep(SLEEP)
 
         if not thumb_url:
-            # Fallback: use the full Wikimedia URL directly from JSON
             thumb_url = c.get("thumbnail", {}).get("full", "")
 
         if not thumb_url:
@@ -253,13 +265,11 @@ def generate_chocolate_avatars() -> None:
             skipped += 1
             continue
 
-        # Try Wikipedia API first
         wiki_slug = CHOCOLATE_SLUGS.get(name) or name.replace(" ", "_")
         print(f"  WIKI  {name} ({wiki_slug}) ... ", end="", flush=True)
         thumb_url = fetch_thumbnail_url(wiki_slug)
         time.sleep(SLEEP)
 
-        # Fallback: use image_url from JSON directly
         if not thumb_url:
             thumb_url = item.get("image_url", "")
             if thumb_url:
@@ -288,8 +298,6 @@ def generate_chocolate_avatars() -> None:
     print(f"\nChocolate: {updated} created, {skipped} skipped, {failed} failed")
 
 
-# ── Main ──────────────────────────────────────────────────────────────────────
-
 def main() -> None:
     print("Bottany Avatar Generator")
     print("Source: Wikipedia REST API + Wikimedia fallback")
@@ -300,18 +308,9 @@ def main() -> None:
 
     print(f"\n{'='*50}")
     print("Done! Next steps:")
-    print()
-    print("  git add assets/")
-    print("  git add data/consoles_full.json")
-    print("  git add data/belgian_chocolate_professional.json")
-    print('  git commit -m "feat: add avatar thumbnails"')
-    print("  git push")
-    print()
-    print("  python scripts/localpath_to_github_url.py")
-    print()
-    print("  git add data/consoles_full.json data/belgian_chocolate_professional.json")
-    print('  git commit -m "fix: avatar paths to GitHub raw URLs"')
-    print("  git push")
+    print("  1. Git add, commit, push (assets ve json dosyaları)")
+    print("  2. python scripts/localpath_to_github_url.py")
+    print("  3. Git add, commit, push (sadece güncellenmiş json dosyaları)")
 
 
 if __name__ == "__main__":
