@@ -466,10 +466,17 @@ GROUP_LABELS: dict[str, str] = {
     "archive":    "Archive — Radio Theatre & Curiosities (Public Domain)",
 }
 
-STATION_CHOICES = [
-    app_commands.Choice(name=v["label"][:100], value=k)
-    for k, v in STATIONS.items()
-]
+async def station_autocomplete(
+    interaction: discord.Interaction,
+    current: str,
+) -> list[app_commands.Choice[str]]:
+    """Filter stations by label or genre as the user types."""
+    matches = [
+        app_commands.Choice(name=v["label"][:100], value=k)
+        for k, v in STATIONS.items()
+        if current.lower() in v["label"].lower() or current.lower() in v["kind"].lower()
+    ]
+    return matches[:25]
 
 
 # ── Embed builders ────────────────────────────────────────────────────────────
@@ -533,7 +540,7 @@ async def register(bot: discord.Client, data_dir: str) -> None:
 
     @group.command(name="play", description="Start a radio stream in your voice channel")
     @app_commands.describe(station="Select a station to play")
-    @app_commands.choices(station=STATION_CHOICES)
+    @app_commands.autocomplete(station=station_autocomplete)
     async def radio_play(interaction: discord.Interaction, station: str) -> None:
         if not interaction.guild:
             await interaction.response.send_message("This command can only be used in servers.", ephemeral=True)
@@ -590,7 +597,7 @@ async def register(bot: discord.Client, data_dir: str) -> None:
 
     @group.command(name="station", description="Detailed info and stream link for one station")
     @app_commands.describe(station="Select a station")
-    @app_commands.choices(station=STATION_CHOICES)
+    @app_commands.autocomplete(station=station_autocomplete)
     async def radio_station(interaction: discord.Interaction, station: str) -> None:
         if station not in STATIONS:
             await interaction.response.send_message("Unknown station.", ephemeral=True)
