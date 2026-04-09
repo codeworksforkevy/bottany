@@ -2,6 +2,7 @@ from __future__ import annotations
 import discord
 from discord import app_commands
 from collections import Counter
+import random
 
 def register(bot, data_dir=None):
     if bot.tree.get_command("cloudofwords"):
@@ -16,19 +17,37 @@ def register(bot, data_dir=None):
         words = []
         async for message in interaction.channel.history(limit=limit):
             if not message.author.bot:
-                words.extend(message.content.lower().split())
+                # Basit bir temizleme: Noktalama işaretlerini atlayıp kelimeleri alıyoruz
+                clean_content = "".join([c for c in message.content.lower() if c.isalnum() or c.isspace()])
+                words.extend(clean_content.split())
         
-        if not words:
-            await interaction.followup.send("*Not enough data to create a word cloud.* ☁️", ephemeral=True)
+        # Sadece 2 harften uzun kelimeleri alalım
+        valid_words = [w for w in words if len(w) > 2]
+        
+        if len(valid_words) < 8:
+            await interaction.followup.send("*Not enough data to create a word cloud. We need more chat!* ☁️", ephemeral=True)
             return
 
-        top_words = Counter(words).most_common(5)
+        # En çok kullanılan ilk 8 kelimeyi buluyoruz
+        top_words_data = Counter(valid_words).most_common(8)
         
-        embed = discord.Embed(title="☁️ Word Cloud Data", color=0x87CEFA)
-        embed.description = "### Linguistic Analysis\n*Top words used recently in this channel:*"
-        for word, count in top_words:
-            if len(word) > 2:
-                embed.add_field(name=word, value=f"*{count} times*", inline=True)
+        # Kelimeleri buluta yerleştirmeden önce karıştıralım ki büyük kelimeler hep aynı yerde durmasın
+        cloud_words = [data[0] for data in top_words_data]
+        random.shuffle(cloud_words)
+        
+        # ASCII / Emoji Bulutu Tasarımı
+        # Kelimeleri italik (*) yaparak ve aralarına boşluklar koyarak bir bulut formu oluşturuyoruz
+        ascii_cloud = f"""
+        ☁️        *{cloud_words[0]}* ☁️
+            *{cloud_words[1]}* ☁️      *{cloud_words[2]}*
+        ☁️    *{cloud_words[3]}* *{cloud_words[4]}* ☁️
+            *{cloud_words[5]}* ☁️      *{cloud_words[6]}*
+                  ☁️    *{cloud_words[7]}* ☁️
+        """
+
+        embed = discord.Embed(title="☁️ Word Cloud Generated", color=0x87CEFA)
+        embed.description = f"### Linguistic Atmosphere\n{ascii_cloud}\n\n*Based on the last {limit} messages in this channel.*"
+        embed.set_footer(text="Data Analysis by Bottany 🤖")
         
         await interaction.followup.send(embed=embed)
 
