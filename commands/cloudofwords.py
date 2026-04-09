@@ -45,9 +45,9 @@ def register(bot, data_dir=None):
                   ☁️    *{cloud_words[7]}* ☁️
         """
 
-        embed = discord.Embed(title="☁️ Word Cloud Generated", color=0x87CEFA)
-        embed.description = f"### Linguistic Atmosphere\n{ascii_cloud}\n\n*Based on the last {limit} messages in this channel.*"
-        embed.set_footer(text="Data Analysis by Bottany 🤖")
+        embed = discord.Embed(title="☁️ Conversational Atmosphere", color=0x87CEFA)
+        embed.description = f"### Scans the last {limit} messages in this channel and surfaces the 8 most-used words as a visual word cloud.\n{ascii_cloud}"
+        embed.set_footer(text="☁️ Lexical Atmosphere")
         
         await interaction.followup.send(embed=embed)
 
