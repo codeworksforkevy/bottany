@@ -11,7 +11,7 @@ Requirements:
     pip install requests
 
 Jikan v4 is free, no API key needed. Rate limit: ~3 req/sec.
-Script sleeps 0.4s between requests to stay well under the limit.
+Script sleeps 1.0s between requests to stay well under the limit.
 """
 
 from __future__ import annotations
@@ -31,8 +31,11 @@ PROJECT_ROOT = SCRIPT_DIR.parent
 REGISTRY     = PROJECT_ROOT / "data" / "anime_awards_registry.json"
 
 JIKAN_BASE   = "https://api.jikan.moe/v4/anime"
-SLEEP        = 0.4   # seconds between requests (Jikan limit: ~3/sec)
+SLEEP        = 1.0   # Jikan limitlerine takılmamak için 0.4'ten 1.0'a çıkarıldı
 
+HEADERS = {
+    "User-Agent": "Bottany-Bot/1.0 (https://github.com/codeworksforkevy/bottany)"
+}
 
 # ── Helpers ────────────────────────────────────────────────────────────────────
 
@@ -52,7 +55,8 @@ def fetch_thumbnail(mal_id: str) -> str | None:
     """Call Jikan v4 and return the medium poster image URL, or None on failure."""
     url = f"{JIKAN_BASE}/{mal_id}"
     try:
-        resp = requests.get(url, timeout=10)
+        # İstek atarken HEADERS bilgisi eklendi
+        resp = requests.get(url, headers=HEADERS, timeout=10)
         if resp.status_code == 200:
             data = resp.json().get("data", {})
             images = data.get("images", {})
@@ -60,8 +64,8 @@ def fetch_thumbnail(mal_id: str) -> str | None:
             # Prefer large, fall back to image_url (medium)
             return jpg.get("large_image_url") or jpg.get("image_url")
         elif resp.status_code == 429:
-            print(f"  Rate limited — sleeping 2s then retrying {mal_id}")
-            time.sleep(2)
+            print(f"  Rate limited — sleeping 3s then retrying {mal_id}")
+            time.sleep(3)
             return fetch_thumbnail(mal_id)   # one retry
         else:
             print(f"  HTTP {resp.status_code} for MAL ID {mal_id}")
