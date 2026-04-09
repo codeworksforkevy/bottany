@@ -2,11 +2,6 @@
 scripts/generate_avatars.py
 =============================
 Konsol ve çikolata avatar'larını Wikipedia REST API üzerinden indirir.
-
-GÜNCELLEMELER:
-  - 429 Hataları için "Exponential Backoff" (Hata aldıkça artan bekleme süresi) eklendi.
-  - SLEEP süresi daha güvenli bir seviyeye çekildi.
-  - User-Agent daha spesifik hale getirildi.
 """
 
 from __future__ import annotations
@@ -28,15 +23,14 @@ SCRIPT_DIR   = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 
 AVATAR_SIZE  = (128, 128)
-SLEEP        = 5.0   # Wikipedia için daha güvenli bekleme süresi
+SLEEP        = 2.0   
 HEADERS      = {
-    # Spesifik bir User-Agent Wikipedia engellerini aşmaya yardımcı olur
-    "User-Agent": "Bottany-Bot/1.1 (contact: github.com/codeworksforkevy/bottany; email: bot@example.com)",
-    "Accept":     "application/json",
+    # LÜTFEN AŞAĞIDAKİ E-POSTAYI KENDİ E-POSTAN İLE DEĞİŞTİR
+    "User-Agent": "Bottany-AvatarGenerator/1.2 (https://github.com/codeworksforkevy/bottany; simreyalcin@yahoo.com) Python-Requests/2.31",
+    "Accept": "application/json",
 }
 
 WIKI_SUMMARY = "https://en.wikipedia.org/api/rest_v1/page/summary/{}"
-
 
 # ── Wikipedia slug overrides for consoles ─────────────────────────────────────
 CONSOLE_SLUGS: dict[str, str] = {
@@ -100,11 +94,9 @@ CHOCOLATE_SLUGS: dict[str, str] = {
     "Dolfin":               "Dolfin_(chocolate)",
 }
 
-
 # ── Core functions ────────────────────────────────────────────────────────────
 
 def fetch_thumbnail_url(wiki_slug: str) -> str | None:
-    """Wikipedia REST API'den thumbnail URL'sini çek (429 yönetimi ile)."""
     url = WIKI_SUMMARY.format(wiki_slug)
     max_retries = 3
     
@@ -113,7 +105,7 @@ def fetch_thumbnail_url(wiki_slug: str) -> str | None:
             resp = requests.get(url, headers=HEADERS, timeout=10)
             
             if resp.status_code == 429:
-                wait = (attempt + 1) * 10
+                wait = (attempt + 1) * 5
                 print(f"\n    [!] 429 Hatası (API). {wait} saniye bekleniyor...")
                 time.sleep(wait)
                 continue
@@ -127,24 +119,35 @@ def fetch_thumbnail_url(wiki_slug: str) -> str | None:
                 
             data = resp.json()
             thumb = data.get("thumbnail", {})
-            return thumb.get("source")
+            source_url = thumb.get("source")
+            
+            # Linkin başındaki // eksikliğini düzeltiyoruz
+            if source_url and source_url.startswith("//"):
+                source_url = "https:" + source_url
+                
+            return source_url
             
         except Exception as e:
             print(f"    Wikipedia API error: {e}")
             return None
     return None
 
-
 def download_and_resize(url: str, output_path: Path) -> bool:
-    """URL'den görseli indir, 128x128 kare PNG olarak kaydet (429 yönetimi ile)."""
     max_retries = 3
+    
+    # İndirme işlemi için Referer başlığını ekliyoruz
+    download_headers = {**HEADERS, "Referer": "https://en.wikipedia.org/"}
     
     for attempt in range(max_retries):
         try:
-            resp = requests.get(url, headers=HEADERS, timeout=15)
+            resp = requests.get(url, headers=download_headers, timeout=15)
             
+            if resp.status_code == 403:
+                print("\n    [!] 403 Forbidden. Wikipedia seni engelledi. User-Agent kontrol et.")
+                return False
+
             if resp.status_code == 429:
-                wait = (attempt + 1) * 15
+                wait = (attempt + 1) * 10
                 print(f"\n    [!] 429 Hatası (İndirme). {wait} saniye bekleniyor...")
                 time.sleep(wait)
                 continue
@@ -154,8 +157,6 @@ def download_and_resize(url: str, output_path: Path) -> bool:
                 return False
 
             img = Image.open(BytesIO(resp.content)).convert("RGBA")
-
-            # Centre-crop to square
             w, h = img.size
             side = min(w, h)
             img  = img.crop(((w - side) // 2, (h - side) // 2,
@@ -169,13 +170,11 @@ def download_and_resize(url: str, output_path: Path) -> bool:
             return False
     return False
 
-
 def slugify(name: str) -> str:
     s = name.lower().strip()
     s = re.sub(r"[^\w\s-]", "", s)
     s = re.sub(r"[\s-]+", "_", s)
     return s
-
 
 # ── Console avatars ───────────────────────────────────────────────────────────
 
@@ -235,7 +234,6 @@ def generate_console_avatars() -> None:
         json.dump(registry, f, indent=2, ensure_ascii=False)
 
     print(f"\nConsoles: {updated} created, {skipped} skipped, {failed} failed")
-
 
 # ── Chocolate avatars ─────────────────────────────────────────────────────────
 
@@ -297,7 +295,6 @@ def generate_chocolate_avatars() -> None:
 
     print(f"\nChocolate: {updated} created, {skipped} skipped, {failed} failed")
 
-
 def main() -> None:
     print("Bottany Avatar Generator")
     print("Source: Wikipedia REST API + Wikimedia fallback")
@@ -311,7 +308,6 @@ def main() -> None:
     print("  1. Git add, commit, push (assets ve json dosyaları)")
     print("  2. python scripts/localpath_to_github_url.py")
     print("  3. Git add, commit, push (sadece güncellenmiş json dosyaları)")
-
 
 if __name__ == "__main__":
     main()
