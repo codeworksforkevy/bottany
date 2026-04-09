@@ -3,6 +3,7 @@ import discord
 import random
 from discord import app_commands
 
+# Basit bir bellek-içi veritabanı (Bunu daha sonra PostgreSQL bot.db'ne bağlayabilirsin)
 economy_db = {}
 
 def get_user_data(user_id: int) -> dict:
@@ -14,15 +15,61 @@ def get_user_data(user_id: int) -> dict:
         }
     return economy_db[user_id]
 
+# Kredi Limitleri
 LIMIT_FED = 5000
 LIMIT_KEVIN = 10000
 
+# Şef Rotasyonu
 CHEFS = ["Kevy", "Keats", "Jordan", "Extinct", "Sim", "G", "Kenny"]
 
+# Rastgele ASCII Görselleri (Sıfır kayma için Raw String formatı)
+ASCII_ARTS = [
+    # 1. Klasik Kahve
+    r"""
+         )))
+        (((
+      +-----+
+      |     |]
+      `-----'
+    """,
+    
+    # 2. 180 Derece Döndürülmüş Üçgen Pizza
+    r"""
+     .-----------.
+     \___________/
+      \ o  o  o /
+       \ o   o /
+        \  o  /
+         \ o /
+          \ /
+           '
+    """,
+    
+    # 3. Klasik Kase Makarna
+    r"""
+            \ | /
+          '-..-..-'
+          /_\/_\/_\
+          \_______/
+    """,
+    
+    # 4. The Regency Cafe - Tetley Tea
+    r"""
+         (  )   (   )
+          ) (   )  (
+        .-------------.
+        |   TETLEY    |.-.
+        |   CLASSIC   |  |
+        `-------------'`-'
+    """
+]
+
+# Küresel Menü (Gerçek dünya fiyatları ve mekanları)
 MENU = {
-    # Coffee & Bar
+    # Coffee, Tea & Bar
     "espresso": {"name": "Espresso al Banco", "price": 2, "emoji": "☕"},
     "wc_mocha": {"name": "White Chocolate Mocha", "price": 6, "emoji": "☕"},
+    "tetley_tea": {"name": "The Regency Cafe Tetley Tea", "price": 2, "emoji": "🫖"},
     "martini": {"name": "Classic Dry Martini", "price": 25, "emoji": "🍸"},
     
     # Japanese Sushi (Michelin Starred)
@@ -34,7 +81,7 @@ MENU = {
     "vanilla_bean": {"name": "Madagascar Vanilla Ice Cream", "price": 8, "emoji": "🍨"},
     "marcolini_box": {"name": "Pierre Marcolini Box", "price": 45, "emoji": "🍫"},
     
-    # UK Breakfast & Waffles
+    # UK Breakfast, Tea & Waffles
     "uk_pancakes": {"name": "The Breakfast Club Pancakes", "price": 15, "emoji": "🥞"},
     "uk_crepe": {"name": "My Old Dutch Classic Crepe", "price": 13, "emoji": "🥞"},
     "belgian_waffle": {"name": "Brussels Authentic Waffle", "price": 11, "emoji": "🧇"},
@@ -64,16 +111,11 @@ def register(bot: discord.Client, data_dir: str = None) -> None:
     async def menu(interaction: discord.Interaction):
         embed = discord.Embed(title="☕ The Bottany Cafe Menu", color=0xD35400)
         
-        ascii_art = """
-        ```text
-             )))
-            (((
-          +-----+
-          |     |]
-          `-----'
-        ```
-        """
-        embed.description = f"### Today's Global Selection\n*Authentic culinary experiences sourced from world-renowned restaurants.*\n{ascii_art}"
+        # ASCII çizimini rastgele seç ve başındaki/sonundaki boşlukları temizle
+        selected_ascii = random.choice(ASCII_ARTS).strip("\n")
+        ascii_block = f"```text\n{selected_ascii}\n```"
+        
+        embed.description = f"### Today's Selection\n{ascii_block}"
         
         coffee_sweets = (
             f"☕ **White Chocolate Mocha** — *$ 6*\n"
@@ -88,11 +130,12 @@ def register(bot: discord.Client, data_dir: str = None) -> None:
         )
         embed.add_field(name="Japanese Fine Dining", value=asian_cuisine, inline=False)
 
-        brunch = (
+        brunch_tea = (
+            f"🫖 **The Regency Cafe Tetley Tea** (London) — *$ 2*\n"
             f"🥞 **The Breakfast Club Pancakes** (London) — *$ 15*\n"
             f"🧇 **Brussels Authentic Waffle** — *$ 11*"
         )
-        embed.add_field(name="UK Brunch & Waffles", value=brunch, inline=False)
+        embed.add_field(name="UK Brunch & Traditional Tea", value=brunch_tea, inline=False)
 
         italian = (
             f"🍕 **Da Michele Margherita** (Naples) — *$ 7*\n"
@@ -117,7 +160,7 @@ def register(bot: discord.Client, data_dir: str = None) -> None:
         cost = selected["price"]
 
         if buyer_data["balance"] < cost:
-            await interaction.response.send_message(f"*Your card was declined. 💳 Try taking a loan from the bank!* 🤖", ephemeral=True)
+            await interaction.response.send_message(f"*Your card was declined. 💳 Try taking a loan from the bank?* 🤖", ephemeral=True)
             return
 
         buyer_data["balance"] -= cost
