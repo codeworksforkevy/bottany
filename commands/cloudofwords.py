@@ -46,7 +46,7 @@ def register(bot, data_dir=None):
         """
 
         embed = discord.Embed(title="☁️ Conversational Atmosphere", color=0x87CEFA)
-        embed.description = f"### Scans the last {limit} messages in this channel and surfaces the 8 most-used words as a visual word cloud.\n{ascii_cloud}"
+        embed.description = f"{ascii_cloud}\n*Scans the last {limit} messages in this channel and surfaces the 8 most-used words as a visual word cloud.*"
         embed.set_footer(text="☁️ Lexical Atmosphere")
         
         await interaction.followup.send(embed=embed)
