@@ -10,7 +10,7 @@ def register(bot: discord.Client, data_dir: str = None) -> None:
     if bot.tree.get_command("manga"):
         return
 
-    manga_group = app_commands.Group(name="manga", description="Advanced academic repository for Manga history, knowledge about the Manga field, and drafting techniques.")
+    manga_group = app_commands.Group(name="manga", description="Academic knowledge on Manga history, drafting techniques, lexicon, and awards.")
 
     # =====================================================================
     # 1. HISTORICAL ORIGINS (/manga history)
