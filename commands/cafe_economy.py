@@ -3,7 +3,7 @@ import discord
 import random
 from discord import app_commands
 
-# Basit bir bellek-içi veritabanı (Bunu daha sonra PostgreSQL bot.db'ne bağlayabilirsin)
+# Basit bir bellek-içi veritabanı
 economy_db = {}
 
 def get_user_data(user_id: int) -> dict:
@@ -22,7 +22,7 @@ LIMIT_KEVIN = 10000
 # Şef Rotasyonu
 CHEFS = ["Kevy", "Keats", "Jordan", "Extinct", "Sim", "G", "Kenny"]
 
-# Rastgele ASCII Görselleri (Sıfır kayma için Raw String formatı)
+# Rastgele ASCII Görselleri (Jilet gibi hizalanmış)
 ASCII_ARTS = [
     # 1. Klasik Kahve
     r"""
@@ -32,7 +32,6 @@ ASCII_ARTS = [
       |     |]
       `-----'
     """,
-    
     # 2. 180 Derece Döndürülmüş Üçgen Pizza
     r"""
      .-----------.
@@ -44,7 +43,6 @@ ASCII_ARTS = [
           \ /
            '
     """,
-    
     # 3. Klasik Kase Makarna
     r"""
             \ | /
@@ -52,7 +50,6 @@ ASCII_ARTS = [
           /_\/_\/_\
           \_______/
     """,
-    
     # 4. The Regency Cafe - Tetley Tea
     r"""
          (  )   (   )
@@ -64,37 +61,44 @@ ASCII_ARTS = [
     """
 ]
 
-# Küresel Menü (Gerçek dünya fiyatları ve mekanları)
+# GÜNÜN MENÜSÜ (Tam 25 Ürün - Discord Limiti)
 MENU = {
-    # Coffee, Tea & Bar
+    # Coffee, Tea & Morning Pastries
     "espresso": {"name": "Espresso al Banco", "price": 2, "emoji": "☕"},
     "wc_mocha": {"name": "White Chocolate Mocha", "price": 6, "emoji": "☕"},
     "tetley_tea": {"name": "The Regency Cafe Tetley Tea", "price": 2, "emoji": "🫖"},
-    "martini": {"name": "Classic Dry Martini", "price": 25, "emoji": "🍸"},
+    "cronut": {"name": "Dominique Ansel Cronut (NYC)", "price": 7, "emoji": "🥐"},
+    "balthazar": {"name": "Balthazar Butter Croissant", "price": 5, "emoji": "🥐"},
+    "beignet": {"name": "Cafe Du Monde Beignets (NOLA)", "price": 4, "emoji": "🍩"},
     
-    # Japanese Sushi (Michelin Starred)
-    "jiro_omakase": {"name": "Sukiyabashi Jiro Omakase", "price": 300, "emoji": "🍣"},
-    "saito_nigiri": {"name": "Sushi Saito Nigiri Set", "price": 150, "emoji": "🍣"},
+    # Italian Masterpieces
+    "diavola": {"name": "Da Michele Pizza Diavola", "price": 8, "emoji": "🍕"},
+    "sorbillo": {"name": "Gino Sorbillo Pizza Fritta", "price": 9, "emoji": "🍕"},
+    "truffle_gnocchi": {"name": "Trattoria al Forno Truffle Gnocchi", "price": 25, "emoji": "🍝"},
+    "parmigiano": {"name": "Osteria Francescana Five Ages of Parmigiano", "price": 90, "emoji": "🍝"},
     
-    # Belgian Chocolates & Ice Cream
-    "godiva_choc": {"name": "Godiva Dark Chocolate Gelato", "price": 9, "emoji": "🍦"},
-    "vanilla_bean": {"name": "Madagascar Vanilla Ice Cream", "price": 8, "emoji": "🍨"},
-    "marcolini_box": {"name": "Pierre Marcolini Box", "price": 45, "emoji": "🍫"},
+    # Global Fine Dining & Asian
+    "nobu_cod": {"name": "Nobu Black Cod Miso", "price": 42, "emoji": "🍱"},
+    "jiro_uni": {"name": "Jiro Uni (Sea Urchin) Nigiri", "price": 20, "emoji": "🍣"},
+    "dintaifung": {"name": "Din Tai Fung Kurobuta Xiaolongbao", "price": 15, "emoji": "🥟"},
+    "peter_luger": {"name": "Peter Luger Dry Aged Steak for Two", "price": 140, "emoji": "🥩"},
     
-    # UK Breakfast, Tea & Waffles
-    "uk_pancakes": {"name": "The Breakfast Club Pancakes", "price": 15, "emoji": "🥞"},
-    "uk_crepe": {"name": "My Old Dutch Classic Crepe", "price": 13, "emoji": "🥞"},
-    "belgian_waffle": {"name": "Brussels Authentic Waffle", "price": 11, "emoji": "🧇"},
+    # Cult Fast Food
+    "shakeshack": {"name": "Shake Shack ShackBurger", "price": 7, "emoji": "🍔"},
+    "fiveguys": {"name": "Five Guys Bacon Cheeseburger", "price": 10, "emoji": "🍔"},
+    "innout": {"name": "In-N-Out Double-Double", "price": 5, "emoji": "🍔"},
+    "kfc_bucket": {"name": "KFC Original Recipe Bucket", "price": 15, "emoji": "🍗"},
     
-    # Italian Classics
-    "margherita": {"name": "Da Michele Margherita", "price": 7, "emoji": "🍕"},
-    "carbonara": {"name": "Roscioli Traditional Carbonara", "price": 20, "emoji": "🍝"},
-    "cacioepepe": {"name": "Da Enzo Cacio e Pepe", "price": 15, "emoji": "🍝"},
+    # Desserts
+    "laduree_ispahan": {"name": "Ladurée Ispahan Macaron", "price": 10, "emoji": "🧁"},
+    "berthillon": {"name": "Berthillon Wild Strawberry Sorbet", "price": 8, "emoji": "🍨"},
+    "ritz_madeleine": {"name": "Ritz Paris Classic Madeleine", "price": 6, "emoji": "🧁"},
     
-    # Fast Food
-    "baconator": {"name": "Wendy's Baconator", "price": 9, "emoji": "🍔"},
-    "spicy_chicken": {"name": "Wendy's Spicy Chicken", "price": 7, "emoji": "🍔"},
-    "frosty": {"name": "Wendy's Classic Frosty", "price": 3, "emoji": "🥤"}
+    # Signature Cocktails & Wine
+    "bellini": {"name": "Harry's Bar Original Bellini", "price": 22, "emoji": "🥂"},
+    "hanky_panky": {"name": "The Savoy Hanky Panky Cocktail", "price": 28, "emoji": "🍸"},
+    "serendipity": {"name": "Bar Hemingway Serendipity", "price": 35, "emoji": "🍹"},
+    "margaux": {"name": "Château Margaux 2015 (Glass)", "price": 150, "emoji": "🍷"}
 }
 
 def register(bot: discord.Client, data_dir: str = None) -> None:
@@ -111,56 +115,53 @@ def register(bot: discord.Client, data_dir: str = None) -> None:
     async def menu(interaction: discord.Interaction):
         embed = discord.Embed(title="☕ The Bottany Cafe Menu", color=0xD35400)
         
-        # ASCII çizimini rastgele seç ve başındaki/sonundaki boşlukları temizle
         selected_ascii = random.choice(ASCII_ARTS).strip("\n")
         ascii_block = f"```text\n{selected_ascii}\n```"
         
-        embed.description = f"### Today's Selection\n{ascii_block}"
+        embed.description = f"### Today's Global Selection\n*Authentic culinary experiences sourced from world-renowned restaurants.*\n{ascii_block}"
         
-        coffee_sweets = (
-            f"☕ **White Chocolate Mocha** — *$ 6*\n"
-            f"🍦 **Godiva Dark Choc Gelato** (Belgium) — *$ 9*\n"
-            f"🍫 **Pierre Marcolini Box** (Brussels) — *$ 45*"
+        coffee_pastries = (
+            f"☕ **Espresso al Banco** — *$ 2*\n"
+            f"🫖 **The Regency Cafe Tetley Tea** — *$ 2*\n"
+            f"🥐 **Dominique Ansel Cronut** (NYC) — *$ 7*\n"
+            f"🍩 **Cafe Du Monde Beignets** (New Orleans) — *$ 4*"
         )
-        embed.add_field(name="Cafe & Desserts", value=coffee_sweets, inline=False)
+        embed.add_field(name="Morning Bakery & Brews", value=coffee_pastries, inline=False)
 
-        asian_cuisine = (
-            f"🍣 **Sukiyabashi Jiro Omakase** (Tokyo) — *$ 300*\n"
-            f"🍣 **Sushi Saito Nigiri Set** (Tokyo) — *$ 150*"
+        italian_fine = (
+            f"🍕 **Da Michele Pizza Diavola** (Naples) — *$ 8*\n"
+            f"🍝 **Osteria Francescana Five Ages of Parmigiano** — *$ 90*\n"
+            f"🍱 **Nobu Black Cod Miso** — *$ 42*\n"
+            f"🥩 **Peter Luger Dry Aged Steak for Two** — *$ 140*"
         )
-        embed.add_field(name="Japanese Fine Dining", value=asian_cuisine, inline=False)
-
-        brunch_tea = (
-            f"🫖 **The Regency Cafe Tetley Tea** (London) — *$ 2*\n"
-            f"🥞 **The Breakfast Club Pancakes** (London) — *$ 15*\n"
-            f"🧇 **Brussels Authentic Waffle** — *$ 11*"
-        )
-        embed.add_field(name="UK Brunch & Traditional Tea", value=brunch_tea, inline=False)
-
-        italian = (
-            f"🍕 **Da Michele Margherita** (Naples) — *$ 7*\n"
-            f"🍝 **Roscioli Traditional Carbonara** (Rome) — *$ 20*"
-        )
-        embed.add_field(name="Italian Classics", value=italian, inline=False)
+        embed.add_field(name="Michelin & Italian Masterpieces", value=italian_fine, inline=False)
 
         fast_food = (
-            f"🍔 **Wendy's Baconator** — *$ 9*\n"
-            f"🥤 **Wendy's Classic Frosty** — *$ 3*"
+            f"🍔 **In-N-Out Double-Double** — *$ 5*\n"
+            f"🍔 **Five Guys Bacon Cheeseburger** — *$ 10*\n"
+            f"🍗 **KFC Original Recipe Bucket** — *$ 15*"
         )
-        embed.add_field(name="Fast Food Favorites", value=fast_food, inline=False)
+        embed.add_field(name="Cult Classics & Fast Food", value=fast_food, inline=False)
+
+        bar_desserts = (
+            f"🥂 **Harry's Bar Original Bellini** (Venice) — *$ 22*\n"
+            f"🍷 **Château Margaux 2015** (Glass) — *$ 150*\n"
+            f"🧁 **Ladurée Ispahan Macaron** (Paris) — *$ 10*"
+        )
+        embed.add_field(name="The Cellar & Desserts", value=bar_desserts, inline=False)
         
         embed.set_footer(text="Order with /cafe buy ✍")
         await interaction.response.send_message(embed=embed)
 
     @cafe_group.command(name="buy", description="Buy food or drinks for yourself or treat a friend!")
-    @app_commands.choices(item=[app_commands.Choice(name=v["name"], value=k) for k, v in MENU.items()][:25])
+    @app_commands.choices(item=[app_commands.Choice(name=v["name"], value=k) for k, v in MENU.items()])
     async def buy(interaction: discord.Interaction, item: str, friend: discord.Member = None):
         buyer_data = get_user_data(interaction.user.id)
         selected = MENU[item]
         cost = selected["price"]
 
         if buyer_data["balance"] < cost:
-            await interaction.response.send_message(f"*Your card was declined. 💳 Try taking a loan from the bank?* 🤖", ephemeral=True)
+            await interaction.response.send_message(f"*Your card was declined. 💳 Try taking a loan from the bank!* 🤖", ephemeral=True)
             return
 
         buyer_data["balance"] -= cost
