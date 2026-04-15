@@ -3,7 +3,6 @@ import discord
 import random
 from discord import app_commands
 
-# Basit bir bellek-içi veritabanı
 economy_db = {}
 
 def get_user_data(user_id: int) -> dict:
@@ -15,16 +14,13 @@ def get_user_data(user_id: int) -> dict:
         }
     return economy_db[user_id]
 
-# Kredi Limitleri
 LIMIT_FED = 5000
 LIMIT_KEVIN = 10000
 
-# Şef Rotasyonu
 CHEFS = ["Kevy", "Keats", "Jordan", "Extinct", "Sim", "G", "Kenny"]
 
-# Rastgele ASCII Görselleri (Jilet gibi hizalanmış)
 ASCII_ARTS = [
-    # 1. Klasik Kahve
+    # 1. Classic Coffee
     r"""
          )))
         (((
@@ -32,7 +28,7 @@ ASCII_ARTS = [
       |     |]
       `-----'
     """,
-    # 2. 180 Derece Döndürülmüş Üçgen Pizza
+    # 2. 180 Degree Pizza Slice
     r"""
      .-----------.
      \___________/
@@ -43,7 +39,7 @@ ASCII_ARTS = [
           \ /
            '
     """,
-    # 3. Klasik Kase Makarna
+    # 3. Classic Pasta Bowl
     r"""
             \ | /
           '-..-..-'
@@ -61,44 +57,41 @@ ASCII_ARTS = [
     """
 ]
 
-# GÜNÜN MENÜSÜ (Tam 25 Ürün - Discord Limiti)
+# TODAY's MENU - THE GLOBAL EXPEDITION (25 Items Max)
 MENU = {
-    # Coffee, Tea & Morning Pastries
+    # Coffee, Tea & Bakery
     "espresso": {"name": "Espresso al Banco", "price": 2, "emoji": "☕"},
     "wc_mocha": {"name": "White Chocolate Mocha", "price": 6, "emoji": "☕"},
     "tetley_tea": {"name": "The Regency Cafe Tetley Tea", "price": 2, "emoji": "🫖"},
-    "cronut": {"name": "Dominique Ansel Cronut (NYC)", "price": 7, "emoji": "🥐"},
-    "balthazar": {"name": "Balthazar Butter Croissant", "price": 5, "emoji": "🥐"},
-    "beignet": {"name": "Cafe Du Monde Beignets (NOLA)", "price": 4, "emoji": "🍩"},
+    "matcha": {"name": "Koffee Mameya Matcha Latte (Tokyo)", "price": 6, "emoji": "🍵"},
+    "pasteis": {"name": "Pastéis de Belém (Lisbon)", "price": 2, "emoji": "🥧"},
+    "russ_bagel": {"name": "Russ & Daughters Lox Bagel (NYC)", "price": 15, "emoji": "🥯"},
     
-    # Italian Masterpieces
-    "diavola": {"name": "Da Michele Pizza Diavola", "price": 8, "emoji": "🍕"},
-    "sorbillo": {"name": "Gino Sorbillo Pizza Fritta", "price": 9, "emoji": "🍕"},
-    "truffle_gnocchi": {"name": "Trattoria al Forno Truffle Gnocchi", "price": 25, "emoji": "🍝"},
-    "parmigiano": {"name": "Osteria Francescana Five Ages of Parmigiano", "price": 90, "emoji": "🍝"},
+    # Global Street Food
+    "baja_taco": {"name": "La Guerrerense Fish Taco (Ensenada)", "price": 4, "emoji": "🌮"},
+    "banh_mi": {"name": "Bánh Mì Phượng Sandwich (Hoi An)", "price": 2, "emoji": "🥖"},
+    "currywurst": {"name": "Curry 36 Currywurst & Fries (Berlin)", "price": 6, "emoji": "🌭"},
+    "schwartz_meat": {"name": "Schwartz's Smoked Meat (Montreal)", "price": 12, "emoji": "🥪"},
+    "smashburger": {"name": "7th Street Burger (NYC)", "price": 7, "emoji": "🍔"},
     
-    # Global Fine Dining & Asian
-    "nobu_cod": {"name": "Nobu Black Cod Miso", "price": 42, "emoji": "🍱"},
-    "jiro_uni": {"name": "Jiro Uni (Sea Urchin) Nigiri", "price": 20, "emoji": "🍣"},
-    "dintaifung": {"name": "Din Tai Fung Kurobuta Xiaolongbao", "price": 15, "emoji": "🥟"},
-    "peter_luger": {"name": "Peter Luger Dry Aged Steak for Two", "price": 140, "emoji": "🥩"},
+    # World Masterpieces & Fine Dining
+    "yaprak_sarma": {"name": "Karaköy Lokantası Yaprak Sarma", "price": 8, "emoji": "🌿"},
+    "shabu_shabu": {"name": "Imahan Wagyu Shabu-Shabu (Tokyo)", "price": 90, "emoji": "🍲"},
+    "ceviche": {"name": "Astrid y Gastón Ceviche Clásico (Lima)", "price": 28, "emoji": "🥗"},
+    "peking_duck": {"name": "Quanjude Peking Duck Half (Beijing)", "price": 40, "emoji": "🦆"},
+    "paella": {"name": "Casa Carmela Paella Valenciana (Spain)", "price": 45, "emoji": "🥘"},
+    "wellington": {"name": "Savoy Grill Beef Wellington (London)", "price": 65, "emoji": "🥩"},
     
-    # Cult Fast Food
-    "shakeshack": {"name": "Shake Shack ShackBurger", "price": 7, "emoji": "🍔"},
-    "fiveguys": {"name": "Five Guys Bacon Cheeseburger", "price": 10, "emoji": "🍔"},
-    "innout": {"name": "In-N-Out Double-Double", "price": 5, "emoji": "🍔"},
-    "kfc_bucket": {"name": "KFC Original Recipe Bucket", "price": 15, "emoji": "🍗"},
+    # World Famous Desserts
+    "baklava": {"name": "Karaköy Güllüoğlu Pistachio Baklava", "price": 8, "emoji": "🥮"},
+    "tiramisu": {"name": "Bar Pompi Classic Tiramisu (Rome)", "price": 6, "emoji": "🍰"},
+    "basque_cake": {"name": "La Viña Basque Cheesecake (San Sebastian)", "price": 8, "emoji": "🍰"},
     
-    # Desserts
-    "laduree_ispahan": {"name": "Ladurée Ispahan Macaron", "price": 10, "emoji": "🧁"},
-    "berthillon": {"name": "Berthillon Wild Strawberry Sorbet", "price": 8, "emoji": "🍨"},
-    "ritz_madeleine": {"name": "Ritz Paris Classic Madeleine", "price": 6, "emoji": "🧁"},
-    
-    # Signature Cocktails & Wine
-    "bellini": {"name": "Harry's Bar Original Bellini", "price": 22, "emoji": "🥂"},
-    "hanky_panky": {"name": "The Savoy Hanky Panky Cocktail", "price": 28, "emoji": "🍸"},
-    "serendipity": {"name": "Bar Hemingway Serendipity", "price": 35, "emoji": "🍹"},
-    "margaux": {"name": "Château Margaux 2015 (Glass)", "price": 150, "emoji": "🍷"}
+    # Iconic Cellar & Bar
+    "singapore_sling": {"name": "Raffles Hotel Singapore Sling", "price": 30, "emoji": "🍹"},
+    "old_fashioned": {"name": "The Dead Rabbit Old Fashioned (NYC)", "price": 20, "emoji": "🥃"},
+    "aperol_spritz": {"name": "Caffè Florian Aperol Spritz (Venice)", "price": 18, "emoji": "🥂"},
+    "lafite": {"name": "Château Lafite Rothschild 2010 (Glass)", "price": 200, "emoji": "🍷"}
 }
 
 def register(bot: discord.Client, data_dir: str = None) -> None:
@@ -120,35 +113,44 @@ def register(bot: discord.Client, data_dir: str = None) -> None:
         
         embed.description = f"### Today's Global Selection\n*Authentic culinary experiences sourced from world-renowned restaurants.*\n{ascii_block}"
         
-        coffee_pastries = (
-            f"☕ **Espresso al Banco** — *$ 2*\n"
+        morning_brews = (
+            f"☕ **Espresso / White Choc Mocha** — *$ 2 / $ 6*\n"
             f"🫖 **The Regency Cafe Tetley Tea** — *$ 2*\n"
-            f"🥐 **Dominique Ansel Cronut** (NYC) — *$ 7*\n"
-            f"🍩 **Cafe Du Monde Beignets** (New Orleans) — *$ 4*"
+            f"🍵 **Koffee Mameya Matcha Latte** (Tokyo) — *$ 6*\n"
+            f"🥯 **Russ & Daughters Lox Bagel** (NYC) — *$ 15*\n"
+            f"🥧 **Pastéis de Belém** (Lisbon) — *$ 2*"
         )
-        embed.add_field(name="Morning Bakery & Brews", value=coffee_pastries, inline=False)
+        embed.add_field(name="Morning Bakery & Brews", value=morning_brews, inline=False)
 
-        italian_fine = (
-            f"🍕 **Da Michele Pizza Diavola** (Naples) — *$ 8*\n"
-            f"🍝 **Osteria Francescana Five Ages of Parmigiano** — *$ 90*\n"
-            f"🍱 **Nobu Black Cod Miso** — *$ 42*\n"
-            f"🥩 **Peter Luger Dry Aged Steak for Two** — *$ 140*"
+        street_food = (
+            f"🍔 **7th Street Smashburger** (NYC) — *$ 7*\n"
+            f"🥪 **Schwartz's Smoked Meat** (Montreal) — *$ 12*\n"
+            f"🌭 **Curry 36 Currywurst & Fries** (Berlin) — *$ 6*\n"
+            f"🌮 **La Guerrerense Fish Taco** (Ensenada) — *$ 4*\n"
+            f"🥖 **Bánh Mì Phượng Sandwich** (Hoi An) — *$ 2*"
         )
-        embed.add_field(name="Michelin & Italian Masterpieces", value=italian_fine, inline=False)
+        embed.add_field(name="Global Street Food & Deli", value=street_food, inline=False)
 
-        fast_food = (
-            f"🍔 **In-N-Out Double-Double** — *$ 5*\n"
-            f"🍔 **Five Guys Bacon Cheeseburger** — *$ 10*\n"
-            f"🍗 **KFC Original Recipe Bucket** — *$ 15*"
+        fine_dining = (
+            f"🥩 **Savoy Grill Beef Wellington** (London) — *$ 65*\n"
+            f"🍲 **Imahan Wagyu Shabu-Shabu** (Tokyo) — *$ 90*\n"
+            f"🦆 **Quanjude Peking Duck Half** (Beijing) — *$ 40*\n"
+            f"🥘 **Casa Carmela Paella Valenciana** — *$ 45*\n"
+            f"🌿 **Karaköy Lokantası Yaprak Sarma** (Istanbul) — *$ 8*\n"
+            f"🥗 **Astrid y Gastón Ceviche Clásico** (Lima) — *$ 28*"
         )
-        embed.add_field(name="Cult Classics & Fast Food", value=fast_food, inline=False)
+        embed.add_field(name="World Masterpieces & Fine Dining", value=fine_dining, inline=False)
 
-        bar_desserts = (
-            f"🥂 **Harry's Bar Original Bellini** (Venice) — *$ 22*\n"
-            f"🍷 **Château Margaux 2015** (Glass) — *$ 150*\n"
-            f"🧁 **Ladurée Ispahan Macaron** (Paris) — *$ 10*"
+        cellar_desserts = (
+            f"🍷 **Château Lafite Rothschild 2010** — *$ 200*\n"
+            f"🍹 **Raffles Hotel Singapore Sling** — *$ 30*\n"
+            f"🥃 **The Dead Rabbit Old Fashioned** (NYC) — *$ 20*\n"
+            f"🥂 **Caffè Florian Aperol Spritz** (Venice) — *$ 18*\n"
+            f"🥮 **Karaköy Güllüoğlu Pistachio Baklava** — *$ 8*\n"
+            f"🍰 **La Viña Basque Cheesecake** — *$ 8*\n"
+            f"🍰 **Bar Pompi Classic Tiramisu** (Rome) — *$ 6*"
         )
-        embed.add_field(name="The Cellar & Desserts", value=bar_desserts, inline=False)
+        embed.add_field(name="The Cellar & Desserts", value=cellar_desserts, inline=False)
         
         embed.set_footer(text="Order with /cafe buy ✍")
         await interaction.response.send_message(embed=embed)
