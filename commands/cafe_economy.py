@@ -57,41 +57,40 @@ ASCII_ARTS = [
     """
 ]
 
-# TODAY's MENU - THE GLOBAL EXPEDITION (25 Items Max)
+# TODAY'S MENU - FRANCO-ITALIAN TIRAMISU TASTING (25 Items Max)
 MENU = {
-    # Coffee, Tea & Bakery
+    # Morning Brews & Classics
     "espresso": {"name": "Espresso al Banco", "price": 2, "emoji": "☕"},
     "wc_mocha": {"name": "White Chocolate Mocha", "price": 6, "emoji": "☕"},
     "tetley_tea": {"name": "The Regency Cafe Tetley Tea", "price": 2, "emoji": "🫖"},
-    "matcha": {"name": "Koffee Mameya Matcha Latte (Tokyo)", "price": 6, "emoji": "🍵"},
-    "pasteis": {"name": "Pastéis de Belém (Lisbon)", "price": 2, "emoji": "🥧"},
-    "russ_bagel": {"name": "Russ & Daughters Lox Bagel (NYC)", "price": 15, "emoji": "🥯"},
+    "angelina_hc": {"name": "Angelina Paris Hot Chocolate", "price": 10, "emoji": "☕"},
     
-    # Global Street Food
-    "baja_taco": {"name": "La Guerrerense Fish Taco (Ensenada)", "price": 4, "emoji": "🌮"},
-    "banh_mi": {"name": "Bánh Mì Phượng Sandwich (Hoi An)", "price": 2, "emoji": "🥖"},
-    "currywurst": {"name": "Curry 36 Currywurst & Fries (Berlin)", "price": 6, "emoji": "🌭"},
-    "schwartz_meat": {"name": "Schwartz's Smoked Meat (Montreal)", "price": 12, "emoji": "🥪"},
-    "smashburger": {"name": "7th Street Burger (NYC)", "price": 7, "emoji": "🍔"},
+    # The Tiramisu Tasting Collection (8 Unique Establishments)
+    "tiramisu_pompi": {"name": "Bar Pompi Classic Tiramisu (Rome)", "price": 6, "emoji": "🍰"},
+    "tiramisu_enzo": {"name": "Da Enzo al 29 Artisanal Tiramisu (Rome)", "price": 8, "emoji": "🍰"},
+    "tiramisu_beccherie": {"name": "Le Beccherie Original Tiramisu (Treviso)", "price": 10, "emoji": "🍰"},
+    "tiramisu_massari": {"name": "Iginio Massari Tiramisu (Milan)", "price": 15, "emoji": "🍰"},
+    "tiramisu_alfonso": {"name": "Don Alfonso 1890 Tiramisu (Campania) [**]", "price": 25, "emoji": "🍰"},
+    "tiramisu_palagio": {"name": "Il Palagio Tiramisu (Florence) [*]", "price": 30, "emoji": "🍰"},
+    "tiramisu_duomo": {"name": "Piazza Duomo Tiramisu (Alba) [***]", "price": 35, "emoji": "🍰"},
+    "tiramisu_osteria": {"name": "Osteria Francescana Tiramisu (Modena) [***]", "price": 45, "emoji": "🍰"},
     
-    # World Masterpieces & Fine Dining
-    "yaprak_sarma": {"name": "Karaköy Lokantası Yaprak Sarma", "price": 8, "emoji": "🌿"},
-    "shabu_shabu": {"name": "Imahan Wagyu Shabu-Shabu (Tokyo)", "price": 90, "emoji": "🍲"},
-    "ceviche": {"name": "Astrid y Gastón Ceviche Clásico (Lima)", "price": 28, "emoji": "🥗"},
-    "peking_duck": {"name": "Quanjude Peking Duck Half (Beijing)", "price": 40, "emoji": "🦆"},
-    "paella": {"name": "Casa Carmela Paella Valenciana (Spain)", "price": 45, "emoji": "🥘"},
-    "wellington": {"name": "Savoy Grill Beef Wellington (London)", "price": 65, "emoji": "🥩"},
+    # French & Italian Fine Dining (No Fowl/Snails)
+    "chartier_soup": {"name": "Bouillon Chartier French Onion Soup (Paris)", "price": 8, "emoji": "🍲"},
+    "cotedor_ratatouille": {"name": "La Côte d'Or Ratatouille (Burgundy) [**]", "price": 45, "emoji": "🥗"},
+    "entrecote_steak": {"name": "Le Relais de l'Entrecôte Steak Frites (Paris)", "price": 35, "emoji": "🥩"},
+    "ducasse_risotto": {"name": "Alain Ducasse Truffle Risotto (Paris) [***]", "price": 110, "emoji": "🥘"},
+    "da_michele": {"name": "Da Michele Margherita (Naples)", "price": 7, "emoji": "🍕"},
+    "roscioli_carbonara": {"name": "Roscioli Traditional Carbonara (Rome)", "price": 20, "emoji": "🍝"},
+    "pinchiorri_ravioli": {"name": "Enoteca Pinchiorri Artisanal Ravioli [***]", "price": 90, "emoji": "🍝"},
+    "reale_veal": {"name": "Reale Veal Milanese (Castel di Sangro) [***]", "price": 120, "emoji": "🥩"},
     
-    # World Famous Desserts
-    "baklava": {"name": "Karaköy Güllüoğlu Pistachio Baklava", "price": 8, "emoji": "🥮"},
-    "tiramisu": {"name": "Bar Pompi Classic Tiramisu (Rome)", "price": 6, "emoji": "🍰"},
-    "basque_cake": {"name": "La Viña Basque Cheesecake (San Sebastian)", "price": 8, "emoji": "🍰"},
-    
-    # Iconic Cellar & Bar
-    "singapore_sling": {"name": "Raffles Hotel Singapore Sling", "price": 30, "emoji": "🍹"},
-    "old_fashioned": {"name": "The Dead Rabbit Old Fashioned (NYC)", "price": 20, "emoji": "🥃"},
-    "aperol_spritz": {"name": "Caffè Florian Aperol Spritz (Venice)", "price": 18, "emoji": "🥂"},
-    "lafite": {"name": "Château Lafite Rothschild 2010 (Glass)", "price": 200, "emoji": "🍷"}
+    # The Cellar & Parisian Pastries
+    "grolet_eclair": {"name": "Cédric Grolet Vanilla Eclair (Paris)", "price": 15, "emoji": "🧁"},
+    "laduree_ispahan": {"name": "Ladurée Ispahan Macaron (Paris)", "price": 10, "emoji": "🧁"},
+    "harrys_bellini": {"name": "Harry's Bar Original Bellini (Venice)", "price": 22, "emoji": "🥂"},
+    "margaux_wine": {"name": "Château Margaux 2015 (Glass)", "price": 150, "emoji": "🍷"},
+    "barolo_wine": {"name": "Barolo Monfortino 2013 (Glass)", "price": 180, "emoji": "🍷"}
 }
 
 def register(bot: discord.Client, data_dir: str = None) -> None:
@@ -106,7 +105,7 @@ def register(bot: discord.Client, data_dir: str = None) -> None:
     # =====================================================================
     @cafe_group.command(name="menu", description="View the international menu and daily specials.")
     async def menu(interaction: discord.Interaction):
-        embed = discord.Embed(title="☕ The Bottany Cafe Menu", color=0xD35400)
+        embed = discord.Embed(title="☕ The Bottany Cafe Menu", color=0x002147)
         
         selected_ascii = random.choice(ASCII_ARTS).strip("\n")
         ascii_block = f"```text\n{selected_ascii}\n```"
@@ -116,41 +115,42 @@ def register(bot: discord.Client, data_dir: str = None) -> None:
         morning_brews = (
             f"☕ **Espresso / White Choc Mocha** — *$ 2 / $ 6*\n"
             f"🫖 **The Regency Cafe Tetley Tea** — *$ 2*\n"
-            f"🍵 **Koffee Mameya Matcha Latte** (Tokyo) — *$ 6*\n"
-            f"🥯 **Russ & Daughters Lox Bagel** (NYC) — *$ 15*\n"
-            f"🥧 **Pastéis de Belém** (Lisbon) — *$ 2*"
+            f"☕ **Angelina Paris Hot Chocolate** — *$ 10*"
         )
         embed.add_field(name="Morning Bakery & Brews", value=morning_brews, inline=False)
 
-        street_food = (
-            f"🍔 **7th Street Smashburger** (NYC) — *$ 7*\n"
-            f"🥪 **Schwartz's Smoked Meat** (Montreal) — *$ 12*\n"
-            f"🌭 **Curry 36 Currywurst & Fries** (Berlin) — *$ 6*\n"
-            f"🌮 **La Guerrerense Fish Taco** (Ensenada) — *$ 4*\n"
-            f"🥖 **Bánh Mì Phượng Sandwich** (Hoi An) — *$ 2*"
+        tiramisu_tasting = (
+            f"🍰 **Bar Pompi Classic Tiramisu** (Rome) — *$ 6*\n"
+            f"🍰 **Da Enzo al 29 Artisanal Tiramisu** (Rome) — *$ 8*\n"
+            f"🍰 **Le Beccherie Original Tiramisu** (Treviso) — *$ 10*\n"
+            f"🍰 **Iginio Massari Tiramisu** (Milan) — *$ 15*\n"
+            f"🍰 **Don Alfonso 1890 Tiramisu** [**] — *$ 25*\n"
+            f"🍰 **Il Palagio Tiramisu** (Florence) [*] — *$ 30*\n"
+            f"🍰 **Piazza Duomo Tiramisu** (Alba) [***] — *$ 35*\n"
+            f"🍰 **Osteria Francescana Tiramisu** [***] — *$ 45*"
         )
-        embed.add_field(name="Global Street Food & Deli", value=street_food, inline=False)
+        embed.add_field(name="The Tiramisu Tasting Collection", value=tiramisu_tasting, inline=False)
 
         fine_dining = (
-            f"🥩 **Savoy Grill Beef Wellington** (London) — *$ 65*\n"
-            f"🍲 **Imahan Wagyu Shabu-Shabu** (Tokyo) — *$ 90*\n"
-            f"🦆 **Quanjude Peking Duck Half** (Beijing) — *$ 40*\n"
-            f"🥘 **Casa Carmela Paella Valenciana** — *$ 45*\n"
-            f"🌿 **Karaköy Lokantası Yaprak Sarma** (Istanbul) — *$ 8*\n"
-            f"🥗 **Astrid y Gastón Ceviche Clásico** (Lima) — *$ 28*"
+            f"🍲 **Bouillon Chartier French Onion Soup** — *$ 8*\n"
+            f"🥩 **Le Relais de l'Entrecôte Steak Frites** — *$ 35*\n"
+            f"🥘 **Alain Ducasse Truffle Risotto** [***] — *$ 110*\n"
+            f"🥗 **La Côte d'Or Ratatouille** [**] — *$ 45*\n"
+            f"🍕 **Da Michele Margherita** (Naples) — *$ 7*\n"
+            f"🍝 **Roscioli Traditional Carbonara** — *$ 20*\n"
+            f"🍝 **Enoteca Pinchiorri Artisanal Ravioli** [***] — *$ 90*\n"
+            f"🥩 **Reale Veal Milanese** [***] — *$ 120*"
         )
-        embed.add_field(name="World Masterpieces & Fine Dining", value=fine_dining, inline=False)
+        embed.add_field(name="French & Italian Fine Dining", value=fine_dining, inline=False)
 
         cellar_desserts = (
-            f"🍷 **Château Lafite Rothschild 2010** — *$ 200*\n"
-            f"🍹 **Raffles Hotel Singapore Sling** — *$ 30*\n"
-            f"🥃 **The Dead Rabbit Old Fashioned** (NYC) — *$ 20*\n"
-            f"🥂 **Caffè Florian Aperol Spritz** (Venice) — *$ 18*\n"
-            f"🥮 **Karaköy Güllüoğlu Pistachio Baklava** — *$ 8*\n"
-            f"🍰 **La Viña Basque Cheesecake** — *$ 8*\n"
-            f"🍰 **Bar Pompi Classic Tiramisu** (Rome) — *$ 6*"
+            f"🧁 **Cédric Grolet Vanilla Eclair** (Paris) — *$ 15*\n"
+            f"🧁 **Ladurée Ispahan Macaron** (Paris) — *$ 10*\n"
+            f"🥂 **Harry's Bar Original Bellini** (Venice) — *$ 22*\n"
+            f"🍷 **Château Margaux 2015** (Glass) — *$ 150*\n"
+            f"🍷 **Barolo Monfortino 2013** (Glass) — *$ 180*"
         )
-        embed.add_field(name="The Cellar & Desserts", value=cellar_desserts, inline=False)
+        embed.add_field(name="The Cellar & Parisian Pastries", value=cellar_desserts, inline=False)
         
         embed.set_footer(text="Order with /cafe buy ✍")
         await interaction.response.send_message(embed=embed)
