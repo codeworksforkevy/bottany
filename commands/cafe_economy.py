@@ -57,40 +57,42 @@ ASCII_ARTS = [
     """
 ]
 
-# TODAY'S MENU - FRANCO-ITALIAN TIRAMISU TASTING (25 Items Max)
+# TODAY'S MENU - THE GINA, CALI & BELGIAN EXPEDITION (25 Items Max)
 MENU = {
-    # Morning Brews & Classics
+    # Morning Brews & Bakery
     "espresso": {"name": "Espresso al Banco", "price": 2, "emoji": "☕"},
     "wc_mocha": {"name": "White Chocolate Mocha", "price": 6, "emoji": "☕"},
     "tetley_tea": {"name": "The Regency Cafe Tetley Tea", "price": 2, "emoji": "🫖"},
-    "angelina_hc": {"name": "Angelina Paris Hot Chocolate", "price": 10, "emoji": "☕"},
+    "blue_bottle": {"name": "Blue Bottle New Orleans Iced (CA)", "price": 6, "emoji": "🧊"},
+    "tartine_bun": {"name": "Tartine Bakery Morning Bun (SF)", "price": 6, "emoji": "🧁"},
+    "dandoy_waffle": {"name": "Maison Dandoy Liege Waffle (Brussels)", "price": 8, "emoji": "🧇"},
     
-    # The Tiramisu Tasting Collection (8 Unique Establishments)
-    "tiramisu_pompi": {"name": "Bar Pompi Classic Tiramisu (Rome)", "price": 6, "emoji": "🍰"},
-    "tiramisu_enzo": {"name": "Da Enzo al 29 Artisanal Tiramisu (Rome)", "price": 8, "emoji": "🍰"},
-    "tiramisu_beccherie": {"name": "Le Beccherie Original Tiramisu (Treviso)", "price": 10, "emoji": "🍰"},
-    "tiramisu_massari": {"name": "Iginio Massari Tiramisu (Milan)", "price": 15, "emoji": "🍰"},
-    "tiramisu_alfonso": {"name": "Don Alfonso 1890 Tiramisu (Campania) [**]", "price": 25, "emoji": "🍰"},
-    "tiramisu_palagio": {"name": "Il Palagio Tiramisu (Florence) [*]", "price": 30, "emoji": "🍰"},
-    "tiramisu_duomo": {"name": "Piazza Duomo Tiramisu (Alba) [***]", "price": 35, "emoji": "🍰"},
-    "tiramisu_osteria": {"name": "Osteria Francescana Tiramisu (Modena) [***]", "price": 45, "emoji": "🍰"},
+    # Gina Istanbul - Italian Elegance
+    "gina_burrata": {"name": "Gina Burrata con Pomodorini (Istanbul)", "price": 18, "emoji": "🧀"},
+    "gina_carpaccio": {"name": "Gina Carpaccio di Manzo (Istanbul)", "price": 22, "emoji": "🥩"},
+    "gina_risotto": {"name": "Gina Risotto ai Funghi Porcini", "price": 26, "emoji": "🥘"},
+    "gina_lobster": {"name": "Gina Linguine all'Astice", "price": 38, "emoji": "🍝"},
+    "gina_tiramisu": {"name": "Gina Tiramisu Tradizionale", "price": 12, "emoji": "🍰"},
     
-    # French & Italian Fine Dining (No Fowl/Snails)
-    "chartier_soup": {"name": "Bouillon Chartier French Onion Soup (Paris)", "price": 8, "emoji": "🍲"},
-    "cotedor_ratatouille": {"name": "La Côte d'Or Ratatouille (Burgundy) [**]", "price": 45, "emoji": "🥗"},
-    "entrecote_steak": {"name": "Le Relais de l'Entrecôte Steak Frites (Paris)", "price": 35, "emoji": "🥩"},
-    "ducasse_risotto": {"name": "Alain Ducasse Truffle Risotto (Paris) [***]", "price": 110, "emoji": "🥘"},
-    "da_michele": {"name": "Da Michele Margherita (Naples)", "price": 7, "emoji": "🍕"},
-    "roscioli_carbonara": {"name": "Roscioli Traditional Carbonara (Rome)", "price": 20, "emoji": "🍝"},
-    "pinchiorri_ravioli": {"name": "Enoteca Pinchiorri Artisanal Ravioli [***]", "price": 90, "emoji": "🍝"},
-    "reale_veal": {"name": "Reale Veal Milanese (Castel di Sangro) [***]", "price": 120, "emoji": "🥩"},
+    # California Culinary Journey
+    "innout_burger": {"name": "In-N-Out Double-Double (CA)", "price": 5, "emoji": "🍔"},
+    "malibu_toast": {"name": "Malibu Farm Avocado Toast (CA)", "price": 16, "emoji": "🥑"},
+    "boudin_chowder": {"name": "Boudin Clam Chowder Sourdough (SF)", "price": 12, "emoji": "🍲"},
+    "spago_pizza": {"name": "Spago Smoked Salmon Pizza (Beverly Hills)", "price": 32, "emoji": "🍕"},
+    "nobu_yellowtail": {"name": "Nobu Malibu Yellowtail Jalapeño", "price": 32, "emoji": "🍱"},
+    "providence_salmon": {"name": "Providence Wild King Salmon (LA)", "price": 65, "emoji": "🐟"},
     
-    # The Cellar & Parisian Pastries
-    "grolet_eclair": {"name": "Cédric Grolet Vanilla Eclair (Paris)", "price": 15, "emoji": "🧁"},
-    "laduree_ispahan": {"name": "Ladurée Ispahan Macaron (Paris)", "price": 10, "emoji": "🧁"},
-    "harrys_bellini": {"name": "Harry's Bar Original Bellini (Venice)", "price": 22, "emoji": "🥂"},
-    "margaux_wine": {"name": "Château Margaux 2015 (Glass)", "price": 150, "emoji": "🍷"},
-    "barolo_wine": {"name": "Barolo Monfortino 2013 (Glass)", "price": 180, "emoji": "🍷"}
+    # Belgian Classics & Sweets
+    "chez_leon": {"name": "Chez Léon Moules-Frites (Brussels)", "price": 28, "emoji": "🦪"},
+    "fritland": {"name": "Fritland Belgian Fries with Andalouse", "price": 6, "emoji": "🍟"},
+    "marcolini_box": {"name": "Pierre Marcolini Praline Box (Brussels)", "price": 45, "emoji": "🍫"},
+    "neuhaus_truffles": {"name": "Neuhaus Artisanal Truffles", "price": 35, "emoji": "🍫"},
+    "ghirardelli": {"name": "Ghirardelli Hot Fudge Sundae (SF)", "price": 15, "emoji": "🍨"},
+    
+    # The Cellar & Taphouse
+    "delirium_ale": {"name": "Delirium Tremens Blonde Ale (Brussels)", "price": 8, "emoji": "🍺"},
+    "cantillon": {"name": "Cantillon Gueuze Lambic Beer (Brussels)", "price": 12, "emoji": "🍻"},
+    "opus_one": {"name": "Opus One 2018 Napa Valley (Glass)", "price": 95, "emoji": "🍷"}
 }
 
 def register(bot: discord.Client, data_dir: str = None) -> None:
@@ -115,42 +117,46 @@ def register(bot: discord.Client, data_dir: str = None) -> None:
         morning_brews = (
             f"☕ **Espresso / White Choc Mocha** — *$ 2 / $ 6*\n"
             f"🫖 **The Regency Cafe Tetley Tea** — *$ 2*\n"
-            f"☕ **Angelina Paris Hot Chocolate** — *$ 10*"
+            f"🧊 **Blue Bottle New Orleans Iced Coffee** (CA) — *$ 6*\n"
+            f"🧁 **Tartine Bakery Morning Bun** (SF) — *$ 6*\n"
+            f"🧇 **Maison Dandoy Liege Waffle** (Brussels) — *$ 8*"
         )
         embed.add_field(name="Morning Bakery & Brews", value=morning_brews, inline=False)
 
-        tiramisu_tasting = (
-            f"🍰 **Bar Pompi Classic Tiramisu** (Rome) — *$ 6*\n"
-            f"🍰 **Da Enzo al 29 Artisanal Tiramisu** (Rome) — *$ 8*\n"
-            f"🍰 **Le Beccherie Original Tiramisu** (Treviso) — *$ 10*\n"
-            f"🍰 **Iginio Massari Tiramisu** (Milan) — *$ 15*\n"
-            f"🍰 **Don Alfonso 1890 Tiramisu** [**] — *$ 25*\n"
-            f"🍰 **Il Palagio Tiramisu** (Florence) [*] — *$ 30*\n"
-            f"🍰 **Piazza Duomo Tiramisu** (Alba) [***] — *$ 35*\n"
-            f"🍰 **Osteria Francescana Tiramisu** [***] — *$ 45*"
+        gina_istanbul = (
+            f"🧀 **Gina Burrata con Pomodorini** — *$ 18*\n"
+            f"🥩 **Gina Carpaccio di Manzo** — *$ 22*\n"
+            f"🥘 **Gina Risotto ai Funghi Porcini** — *$ 26*\n"
+            f"🍝 **Gina Linguine all'Astice** — *$ 38*\n"
+            f"🍰 **Gina Tiramisu Tradizionale** — *$ 12*"
         )
-        embed.add_field(name="The Tiramisu Tasting Collection", value=tiramisu_tasting, inline=False)
+        embed.add_field(name="Gina Istanbul - Italian Elegance", value=gina_istanbul, inline=False)
 
-        fine_dining = (
-            f"🍲 **Bouillon Chartier French Onion Soup** — *$ 8*\n"
-            f"🥩 **Le Relais de l'Entrecôte Steak Frites** — *$ 35*\n"
-            f"🥘 **Alain Ducasse Truffle Risotto** [***] — *$ 110*\n"
-            f"🥗 **La Côte d'Or Ratatouille** [**] — *$ 45*\n"
-            f"🍕 **Da Michele Margherita** (Naples) — *$ 7*\n"
-            f"🍝 **Roscioli Traditional Carbonara** — *$ 20*\n"
-            f"🍝 **Enoteca Pinchiorri Artisanal Ravioli** [***] — *$ 90*\n"
-            f"🥩 **Reale Veal Milanese** [***] — *$ 120*"
+        california_journey = (
+            f"🍔 **In-N-Out Double-Double** (CA) — *$ 5*\n"
+            f"🥑 **Malibu Farm Avocado Toast** — *$ 16*\n"
+            f"🍲 **Boudin Clam Chowder Sourdough** (SF) — *$ 12*\n"
+            f"🍕 **Spago Smoked Salmon Pizza** (Beverly Hills) — *$ 32*\n"
+            f"🍱 **Nobu Malibu Yellowtail Jalapeño** — *$ 32*\n"
+            f"🐟 **Providence Wild King Salmon** (LA) — *$ 65*"
         )
-        embed.add_field(name="French & Italian Fine Dining", value=fine_dining, inline=False)
+        embed.add_field(name="California Culinary Journey", value=california_journey, inline=False)
 
-        cellar_desserts = (
-            f"🧁 **Cédric Grolet Vanilla Eclair** (Paris) — *$ 15*\n"
-            f"🧁 **Ladurée Ispahan Macaron** (Paris) — *$ 10*\n"
-            f"🥂 **Harry's Bar Original Bellini** (Venice) — *$ 22*\n"
-            f"🍷 **Château Margaux 2015** (Glass) — *$ 150*\n"
-            f"🍷 **Barolo Monfortino 2013** (Glass) — *$ 180*"
+        belgian_classics = (
+            f"🦪 **Chez Léon Moules-Frites** (Brussels) — *$ 28*\n"
+            f"🍟 **Fritland Belgian Fries with Andalouse** — *$ 6*\n"
+            f"🍫 **Pierre Marcolini Praline Box** (Brussels) — *$ 45*\n"
+            f"🍫 **Neuhaus Artisanal Truffles** — *$ 35*\n"
+            f"🍨 **Ghirardelli Hot Fudge Sundae** (SF) — *$ 15*"
         )
-        embed.add_field(name="The Cellar & Parisian Pastries", value=cellar_desserts, inline=False)
+        embed.add_field(name="Belgian Classics & Sweets", value=belgian_classics, inline=False)
+
+        cellar_taphouse = (
+            f"🍺 **Delirium Tremens Blonde Ale** (Brussels) — *$ 8*\n"
+            f"🍻 **Cantillon Gueuze Lambic Beer** — *$ 12*\n"
+            f"🍷 **Opus One 2018 Napa Valley** (Glass) — *$ 95*"
+        )
+        embed.add_field(name="The Cellar & Taphouse", value=cellar_taphouse, inline=False)
         
         embed.set_footer(text="Order with /cafe buy ✍")
         await interaction.response.send_message(embed=embed)
