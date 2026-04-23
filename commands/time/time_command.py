@@ -148,7 +148,7 @@ def register(bot, data_dir: str):
         rows = []
         corrections = []
 
-        for raw in inputs:
+for raw in inputs:
 
             key = normalize(raw)
             entry = CORE_CITIES.get(key)
@@ -161,9 +161,10 @@ def register(bot, data_dir: str):
                     cutoff=0.7
                 )
                 if matches:
-                    entry = CORE_CITIES[matches[0]]
+                    key = matches[0]  # Eşleşme bulursa key'i güncelliyoruz ki ismi doğru çeksin
+                    entry = CORE_CITIES[key]
                     corrections.append(
-                        f"{raw} → {matches[0].title()}"
+                        f"{raw} → {key.title()}"
                     )
 
             if not entry:
@@ -180,7 +181,10 @@ def register(bot, data_dir: str):
 
             flag = country_code_to_flag(cc)
             icon = day_icon(now.hour)
-            city_display = tz.split("/")[-1].replace("_", " ")
+            
+            # ŞEHİR İSMİNİ BURADA DÜZELTİYORUZ: 
+            # Artık timezone'dan değil, direkt sözlükteki kelimeden çekiyor.
+            city_display = key.title()
 
             rows.append(
                 f"{flag} {icon}  {city_display:<18}  {now.strftime('%H:%M')}"
