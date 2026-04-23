@@ -24,6 +24,7 @@ CORE_CITIES: Dict[str, Tuple[str, str]] = {
     "berlin": ("Europe/Berlin", "DE"),
     "amsterdam": ("Europe/Amsterdam", "NL"),
     "brussels": ("Europe/Brussels", "BE"),
+    "ghent": ("Europe/Brussels", "BE"),
     "paris": ("Europe/Paris", "FR"),
     "madrid": ("Europe/Madrid", "ES"),
     "rome": ("Europe/Rome", "IT"),
