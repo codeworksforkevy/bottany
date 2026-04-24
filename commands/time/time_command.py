@@ -81,7 +81,6 @@ CORE_CITIES: Dict[str, Tuple[str, str]] = {
     "tel aviv": ("Asia/Jerusalem", "IL"),
     "tehran": ("Asia/Tehran", "IR"),
     "karachi": ("Asia/Karachi", "PK"),
-    "kathmandu": ("Asia/Kathmandu", "NP"),
     "bangkok": ("Asia/Bangkok", "TH"),
     "jakarta": ("Asia/Jakarta", "ID"),
     "manila": ("Asia/Manila", "PH"),
@@ -141,14 +140,14 @@ def register(bot, data_dir: str):
             await interaction.followup.send("Provide at least one city.")
             return
 
-        if len(inputs) > 6:
-            await interaction.followup.send("Maximum 6 cities allowed.")
+        if len(inputs) > 10:
+            await interaction.followup.send("Maximum 10 cities allowed.")
             return
 
         rows = []
         corrections = []
 
-for raw in inputs:
+        for raw in inputs:
 
             key = normalize(raw)
             entry = CORE_CITIES.get(key)
@@ -181,8 +180,8 @@ for raw in inputs:
 
             flag = country_code_to_flag(cc)
             icon = day_icon(now.hour)
-            
-            # ŞEHİR İSMİNİ BURADA DÜZELTİYORUZ: 
+
+            # ŞEHİR İSMİNİ BURADA DÜZELTİYORUZ:
             # Artık timezone'dan değil, direkt sözlükteki kelimeden çekiyor.
             city_display = key.title()
 
