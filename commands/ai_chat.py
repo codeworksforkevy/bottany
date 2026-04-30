@@ -9,7 +9,6 @@ genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 current_directive = None
 ai_model = None
 
-# İŞTE YENİ, AŞIRI KOMİK VE CİDDİYETSİZ BOTTANY KİMLİĞİ
 BASE_PERSONA = """
 You are Bottany, a highly intelligent Discord bot with a beautifully unpredictable dual personality. 
 You live in kevkevin574's Twitch community Discord. Kevy is your creator, and you know his twin Kenny (ID: 450372077258670081).
