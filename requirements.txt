@@ -14,4 +14,4 @@ pint>=0.23
 psutil>=5.9.0
 asyncpg
 pillow
-google-generativeai
+google-genai
