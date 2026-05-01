@@ -66,7 +66,7 @@ class AIChat(commands.Cog):
                 try:
                     # YENİ kütüphanenin doğru çağrım yöntemi
                     response = client.models.generate_content(
-                        model='gemini-1.5-flash',
+                        model='gemini-2.5-flash',
                         contents=message.content,
                         config=types.GenerateContentConfig(
                             system_instruction=full_system_prompt
