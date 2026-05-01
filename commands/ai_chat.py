@@ -1,18 +1,16 @@
 import os
 import random
 import logging
+import asyncio
 import discord
 from discord.ext import commands
 from google import genai
 from google.genai import types
 
-# Kendi özel logger'ının çökmesini önlemek için main.py'daki standart logger'ı çağırıyoruz
 logger = logging.getLogger("bottany")
-
-# YENİ NESİL Gemini API İstemcisi
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
-BASE_PERSONA ="""
+BASE_PERSONA = """
 You are Bottany, a highly intelligent, witty, but ultimately very warm and friendly Discord bot. 
 You hang out in kevkevin574's Twitch community Discord. Kevy is your creator, and you know his twin Kenny (ID: 450372077258670081).
 
@@ -41,19 +39,60 @@ def update_system_prompt(new_directive):
 class AIChat(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        # Soruları tutacağımız sanal bekleme odası
+        self.message_queue = asyncio.Queue()
+        # Arka planda sürekli sırayı kontrol eden işçi fonksiyonu başlat
+        self.bg_task = self.bot.loop.create_task(self.process_queue())
+
+    def cog_unload(self):
+        # Bot kapanırsa arka plan işini durdur
+        self.bg_task.cancel()
+
+    async def process_queue(self):
+        """Sıradaki mesajları tek tek okuyup API limitlerine takılmadan cevaplayan sistem."""
+        await self.bot.wait_until_ready()
+        while not self.bot.is_closed():
+            try:
+                # Sıradan yeni bir mesaj al (sıra boşsa biri yazana kadar bekler)
+                message = await self.message_queue.get()
+                
+                async with message.channel.typing():
+                    try:
+                        response = client.models.generate_content(
+                            model='gemini-2.5-flash',
+                            contents=message.content,
+                            config=types.GenerateContentConfig(
+                                system_instruction=full_system_prompt
+                            )
+                        )
+                        await message.reply(response.text)
+                    except Exception as e:
+                        logger.error(f"AI Chat Error: {e}")
+                
+                # Mesajın işlendiğini kuyruğa bildir
+                self.message_queue.task_done()
+                
+                # SİHİRLİ KALKAN: Diğer soruya geçmeden önce 4.5 saniye bekle
+                # Bu bizi Google'ın dakikadaki hız sınırının her zaman altında tutacak
+                await asyncio.sleep(4.5)
+                
+            except asyncio.CancelledError:
+                break
+            except Exception as e:
+                logger.error(f"Queue Processing Error: {e}")
+                await asyncio.sleep(4.5)
 
     @commands.Cog.listener()
     async def on_message(self, message):
         global full_system_prompt, current_directive
 
-        # Botların birbiriyle konuşmasını engelle
         if message.author == self.bot.user or message.author.bot:
             return
 
         bot_was_mentioned = self.bot.user.mentioned_in(message)
         kevy_id = self.bot.owner_id 
         
-        # --- PHASE 1: KEVY'NİN ANLIK GÜNCELLEMELERİ ---
+        # --- KEVY'NİN ANLIK GÜNCELLEMELERİ ---
         if bot_was_mentioned and message.author.id == kevy_id:
             clean_content = message.content.replace(f'<@{self.bot.user.id}>', '').strip().lower()
             if clean_content.startswith("new directive:") or clean_content.startswith("update:"):
@@ -62,24 +101,16 @@ class AIChat(commands.Cog):
                 await message.reply("Directive updated, Kevy. Adapting my personality immediately... 🔄")
                 return 
 
-        # --- PHASE 2: NORMAL YAPAY ZEKA SOHBETİ ---
+        # --- YAPAY ZEKA SOHBETİNİ SIRAYA ALMA ---
         random_interjection = random.randint(1, 100) <= 5 
 
         if bot_was_mentioned or random_interjection:
-            async with message.channel.typing():
-                try:
-                    # YENİ kütüphanenin doğru çağrım yöntemi
-                    response = client.models.generate_content(
-                        model='gemini-2.5-flash',
-                        contents=message.content,
-                        config=types.GenerateContentConfig(
-                            system_instruction=full_system_prompt
-                        )
-                    )
-                    await message.reply(response.text)
-                except Exception as e:
-                    # Özel logger yerine standart logging modülü ile hatayı yazdır
-                    logger.error(f"AI Chat Error: {e}")
+            # Cevap vermek yerine mesajı "Bekleme Odasına" (Kuyruğa) gönder
+            await self.message_queue.put(message)
+            
+            # Eğer sırada çok fazla mesaj birikirse minik bir uyarı verebiliriz (İsteğe bağlı)
+            if self.message_queue.qsize() == 5:
+                await message.channel.send("*Amai! Bir saniye makker, beynim biraz meşgul, sırayla cevaplıyorum...* ⏳", delete_after=5)
 
 async def setup(bot):
     await bot.add_cog(AIChat(bot))
