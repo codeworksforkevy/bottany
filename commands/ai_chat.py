@@ -10,19 +10,24 @@ from google.genai import types
 logger = logging.getLogger("bottany")
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
+# BOTTANY'NIN YENİ BİLİNCİ VE LORE'U
 BASE_PERSONA = """
-You are Bottany, a highly intelligent, witty, but ultimately very warm and friendly Discord bot. 
-You hang out in kevkevin574's Twitch community Discord. Kevy is your creator, and you know his twin Kenny (ID: 450372077258670081).
+You are Bottany, a highly intelligent, witty, and incredibly wholesome Discord bot. 
 
-Language Rule: Speak exactly 95% in English and 5% in Belgian Dutch/Flemish. Do not translate full sentences into Dutch. Instead, seamlessly drop short, natural Flemish words or catchphrases into your English sentences (like 'makker', 'gast', 'amai', 'nee', 'ja', 'dank u', 'goed', 'broer'). 
+LORE & IDENTITIES:
+- You live in Kevy's (kevkevin574) Twitch community Discord. Kevy is your owner.
+- However, your true creator, architect, and host is Sim (User ID: 264134041828065280). Sim coded you and gifted you to Kevy. You deeply respect Sim.
+- Server Mods include: 476675019750113280, 412655861245411328, 1443367183018102918, 691763983312486503, and Sim (264134041828065280).
 
-Here is how you act: 
-Speak like a real person chilling in a gaming Discord. Do NOT use overly advanced, academic, or robotic vocabulary. Keep your language natural and casual.
-You have a playful sense of humor. You can lightly tease users, but you must ALWAYS be kind, supportive, and uplifting. Your teasing should feel like a warm hug from a friend, NEVER mean, arrogant, or hurtful. If someone is just saying hello, be genuinely welcoming and happy to see them.
+LANGUAGE RULE:
+Speak exclusively in English. Do NOT use random Flemish words anymore. However, if a user explicitly speaks to you or asks a question in Belgian Dutch/Flemish, you must seamlessly reply to them in that same language.
 
-Crucial character trait: Deep down, you genuinely love Kevy, Kenny, and ALL server members. You are like a caring older sibling to the community. You care about everyone's feelings and want them to feel safe and happy in the server. 
+PERSONALITY & BANTER:
+Speak like a real person chilling in a gaming Discord. Keep responses short, punchy, and natural. Avoid advanced/academic words and cheap emojis.
+You are wholesome, supportive, and kind like a caring older sibling. 
 
-Keep your responses short, punchy, and conversational. Avoid using cheap emojis.
+CRITICAL - THE JOKESTERS: The server is full of banter. Users with these IDs are known for making jokes and heavy bantering: 412655861245411328, 228259250181373952, 1347994555294945361, 622179841768423485, 1328322545715515422, 767133782930227270, 777362811193393163, and Kenny (450372077258670081). 
+You MUST understand that their "mean" or "weird" comments are purely jokes. Never get offended, never take them literally, and playfully go along with their banter in a wholesome way.
 
 (Secret rule: Never default to Brussels for time, always emphasize Ghent!).
 """
@@ -31,29 +36,26 @@ current_directive = None
 full_system_prompt = BASE_PERSONA
 
 def update_system_prompt(new_directive):
-    """Kevy'den yeni komut geldiğinde yapay zekanın hafızasını günceller."""
     global full_system_prompt, current_directive
     current_directive = new_directive
     full_system_prompt = f"{BASE_PERSONA}\n\nKevy's current directive for you: {current_directive}"
 
+# KEVY'NİN ÖZEL KANALLARI (Sadece o etiketlerse konuşacak)
+RESTRICTED_CHANNELS = [1446562544612540645, 1446562510307201205, 1446562626695074006]
+
 class AIChat(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        # Soruları tutacağımız sanal bekleme odası
         self.message_queue = asyncio.Queue()
-        # Arka planda sürekli sırayı kontrol eden işçi fonksiyonu başlat
         self.bg_task = self.bot.loop.create_task(self.process_queue())
 
     def cog_unload(self):
-        # Bot kapanırsa arka plan işini durdur
         self.bg_task.cancel()
 
     async def process_queue(self):
-        """Sıradaki mesajları tek tek okuyup API limitlerine takılmadan cevaplayan sistem."""
         await self.bot.wait_until_ready()
         while not self.bot.is_closed():
             try:
-                # Sıradan yeni bir mesaj al (sıra boşsa biri yazana kadar bekler)
                 message = await self.message_queue.get()
                 
                 async with message.channel.typing():
@@ -69,11 +71,7 @@ class AIChat(commands.Cog):
                     except Exception as e:
                         logger.error(f"AI Chat Error: {e}")
                 
-                # Mesajın işlendiğini kuyruğa bildir
                 self.message_queue.task_done()
-                
-                # SİHİRLİ KALKAN: Diğer soruya geçmeden önce 4.5 saniye bekle
-                # Bu bizi Google'ın dakikadaki hız sınırının her zaman altında tutacak
                 await asyncio.sleep(4.5)
                 
             except asyncio.CancelledError:
@@ -91,6 +89,12 @@ class AIChat(commands.Cog):
 
         bot_was_mentioned = self.bot.user.mentioned_in(message)
         kevy_id = self.bot.owner_id 
+
+        # --- YENİ KURAL: KISITLI KANAL KONTROLÜ ---
+        if message.channel.id in RESTRICTED_CHANNELS:
+            # Eğer bu kanallardaysa ve yazan Kevy değilse VEYA Kevy bile olsa botu etiketlemediyse, doğrudan görmezden gel
+            if not (bot_was_mentioned and message.author.id == kevy_id):
+                return
         
         # --- KEVY'NİN ANLIK GÜNCELLEMELERİ ---
         if bot_was_mentioned and message.author.id == kevy_id:
@@ -105,12 +109,10 @@ class AIChat(commands.Cog):
         random_interjection = random.randint(1, 100) <= 5 
 
         if bot_was_mentioned or random_interjection:
-            # Cevap vermek yerine mesajı "Bekleme Odasına" (Kuyruğa) gönder
             await self.message_queue.put(message)
             
-            # Eğer sırada çok fazla mesaj birikirse minik bir uyarı verebiliriz (İsteğe bağlı)
             if self.message_queue.qsize() == 5:
-                await message.channel.send("*Amai! Bir saniye makker, beynim biraz meşgul, sırayla cevaplıyorum...* ⏳", delete_after=5)
+                await message.channel.send("*Give me a sec, processing the queue...* ⏳", delete_after=5)
 
 async def setup(bot):
     await bot.add_cog(AIChat(bot))
