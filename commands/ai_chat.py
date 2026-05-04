@@ -72,6 +72,13 @@ class AIChat(commands.Cog):
                         await message.reply(response.text)
                     except Exception as e:
                         logger.error(f"AI Chat Error: {e}")
+                        error_msg = str(e)
+                        # API meşgulse veya kota dolduysa zekice ve sade bir cevap verir
+                        if "503" in error_msg or "UNAVAILABLE" in error_msg or "429" in error_msg:
+                            try:
+                                await message.reply("*My brain is currently experiencing a minor traffic jam. Give me a minute to reboot and try asking again.. :Alone: :catArrive2:  *")
+                            except:
+                                pass
                 
                 self.message_queue.task_done()
                 
