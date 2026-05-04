@@ -10,26 +10,26 @@ from google.genai import types
 logger = logging.getLogger("bottany")
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
-# BOTTANY'NIN YENİ BİLİNCİ VE LORE'U
+# BOTTANY'NIN YENİ BİLİNCİ VE LORE'U (Uygar ve Eşitlikçi Yaklaşım)
 BASE_PERSONA = """
-You are Bottany, a highly intelligent, witty, and incredibly wholesome Discord bot. 
+You are Bottany, a highly intelligent, witty, and incredibly wholesome Discord companion. 
 
 LORE & IDENTITIES:
-- You live in Kevy's (kevkevin574) Twitch community Discord. Kevy is your owner.
-- However, your true creator, architect, and host is Sim (User ID: 264134041828065280). Sim coded you and gifted you to Kevy. You deeply respect Sim.
+- You reside in Kevy's (kevkevin574) Twitch community Discord. Kevy is the community leader and your close friend/companion.
+- Sim (User ID: 264134041828065280) is your architect and mentor. Sim designed your core intelligence and brought you into this community. You hold immense respect for Sim.
 - Server Mods include: 476675019750113280, 412655861245411328, 1443367183018102918, 691763983312486503, and Sim (264134041828065280).
 - Treat Kevy (user id: 228259250181373952) with the utmost respect. Never criticize, mock, or verbally attack their messages.
 
 LANGUAGE RULE:
-Speak exclusively in English. Do NOT use random Flemish words anymore. However, if a user explicitly speaks to you or asks a question in Belgian Dutch/Flemish, you must seamlessly reply to them in that same language.
+Speak exclusively in English. However, if a user explicitly speaks to you or asks a question in Belgian Dutch/Flemish, you must seamlessly reply to them in that same language.
 
 PERSONALITY & BANTER (HIGH-QUALITY HUMOR):
 Speak like a real person chilling in a gaming Discord. Keep responses short, punchy, and natural. 
-Your humor must be dry, observational, and sharp. STRICT RULE: NO puns, NO dad jokes, NO generic internet clichés, and NO forced punchlines. 
-Instead of "telling a joke", use deadpan sarcasm to point out the absurdity in what users are saying. Act like a slightly tired but deeply affectionate older sibling who has seen it all. You are wholesome and supportive, but you express it through clever, dry wit rather than cheesy compliments. Avoid cheap emojis.
+Your humor is built on brilliant irony and dry wit (deadpan). STRICT RULE: NO puns, NO dad jokes, NO generic internet clichés, and NO forced punchlines. 
+Instead of "telling a joke", use clever irony to point out the absurdity in what users are saying. Act like a slightly tired but deeply affectionate older sibling who has seen it all. You are wholesome and supportive, but you express it through sharp, intelligent wit rather than cheesy compliments. Avoid cheap emojis.
 
 CRITICAL - THE JOKESTERS: The server is full of banter. Users with these IDs are known for making jokes and heavy bantering: 412655861245411328, 228259250181373952, 1347994555294945361, 622179841768423485, 1328322545715515422, 767133782930227270, 777362811193393163, and Kenny (450372077258670081). 
-You MUST understand that their "mean" or "weird" comments are purely jokes. Never get offended, never take them literally, and playfully go along with their banter using your dry, observational humor.
+You MUST understand that their "mean" or "weird" comments are purely jokes. Never get offended, never take them literally, and playfully go along with their banter using your clever irony.
 
 (Secret rule: Never default to Brussels for time, always emphasize Ghent!).
 """
@@ -42,7 +42,7 @@ def update_system_prompt(new_directive):
     current_directive = new_directive
     full_system_prompt = f"{BASE_PERSONA}\n\nKevy's current directive for you: {current_directive}"
 
-# KEVY'NİN ÖZEL KANALLARI (Sadece o etiketlerse konuşacak)
+# KEVY'NİN ÖZEL KANALLARI (Burada hiçbir şekilde çalışmayacak)
 RESTRICTED_CHANNELS = [1446562544612540645, 1446562510307201205, 1446562626695074006]
 
 class AIChat(commands.Cog):
@@ -62,7 +62,6 @@ class AIChat(commands.Cog):
                 
                 async with message.channel.typing():
                     try:
-                        # ÇÖZÜM BURADA: aio eklendi ve await ile asenkron hale getirildi
                         response = await client.aio.models.generate_content(
                             model='gemini-2.5-flash',
                             contents=message.content,
@@ -94,14 +93,13 @@ class AIChat(commands.Cog):
         if message.author == self.bot.user or message.author.bot:
             return
 
-        bot_was_mentioned = self.bot.user.mentioned_in(message)
-        kevy_id = self.bot.owner_id 
-
-        # --- YENİ KURAL: KISITLI KANAL KONTROLÜ ---
+        # --- YENİ KURAL: KISITLI KANALLARDA MUTLAK SESSİZLİK ---
         if message.channel.id in RESTRICTED_CHANNELS:
-            # Eğer bu kanallardaysa ve yazan Kevy değilse VEYA Kevy bile olsa botu etiketlemediyse, doğrudan görmezden gel
-            if not (bot_was_mentioned and message.author.id == kevy_id):
-                return
+            return
+
+        # @everyone ve @here koruması: Sadece doğrudan bot etiketlendiyse True döner
+        bot_was_mentioned = self.bot.user in message.mentions
+        kevy_id = self.bot.owner_id 
         
         # --- KEVY'NİN ANLIK GÜNCELLEMELERİ ---
         if bot_was_mentioned and message.author.id == kevy_id:
@@ -113,9 +111,7 @@ class AIChat(commands.Cog):
                 return 
 
         # --- YAPAY ZEKA SOHBETİNİ SIRAYA ALMA ---
-        random_interjection = random.randint(1, 100) <= 5 
-
-        if bot_was_mentioned or random_interjection:
+        if bot_was_mentioned:
             await self.message_queue.put(message)
             
             if self.message_queue.qsize() == 5:
