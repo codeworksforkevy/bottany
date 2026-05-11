@@ -126,7 +126,18 @@ class AIChat(commands.Cog):
                                 tools=[{"google_search": {}}]
                             )
                         )
-                        await message.reply(response.text)
+                        
+                        # --- YENİ ÇÖZÜM: DİSCORD 2000 KARAKTER LİMİTİ KORUMASI ---
+                        reply_text = response.text
+                        if len(reply_text) <= 2000:
+                            await message.reply(reply_text)
+                        else:
+                            # Mesaj 2000 karakterden uzunsa parçalara bölerek gönderir
+                            for i in range(0, len(reply_text), 2000):
+                                chunk = reply_text[i:i+2000]
+                                await message.reply(chunk)
+                                await asyncio.sleep(1) # Spama düşmemek için parçalar arası 1 saniye bekle
+
                     except Exception as e:
                         logger.error(f"AI Chat Error: {e}")
                         error_msg = str(e)
