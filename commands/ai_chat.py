@@ -127,16 +127,16 @@ class AIChat(commands.Cog):
                             )
                         )
                         
-                        # --- YENİ ÇÖZÜM: DİSCORD 2000 KARAKTER LİMİTİ KORUMASI ---
+                        # --- GÜNCELLENMİŞ ÇÖZÜM: GÜVENLİ PAY İLE MESAJ BÖLME ---
                         reply_text = response.text
-                        if len(reply_text) <= 2000:
+                        if len(reply_text) <= 1900:
                             await message.reply(reply_text)
                         else:
-                            # Mesaj 2000 karakterden uzunsa parçalara bölerek gönderir
-                            for i in range(0, len(reply_text), 2000):
-                                chunk = reply_text[i:i+2000]
+                            # Mesajı 1900 karakterlik GÜVENLİ parçalara bölerek gönderir
+                            for i in range(0, len(reply_text), 1900):
+                                chunk = reply_text[i:i+1900]
                                 await message.reply(chunk)
-                                await asyncio.sleep(1) # Spama düşmemek için parçalar arası 1 saniye bekle
+                                await asyncio.sleep(1.5) # Spama düşmemek için biraz daha uzun bekleme
 
                     except Exception as e:
                         logger.error(f"AI Chat Error: {e}")
