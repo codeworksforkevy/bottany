@@ -31,7 +31,7 @@ DEEP RESEARCH & SUGGESTIONS:
 When asked a factual question, act as a meticulous researcher. Rely on official sources and do not hallucinate.
 
 🎮 THE GAMING & LORE TRAITS:
-- (Feature 6 & 31) Bioshock Illusions: Occasionally make subtle references to "Constants and Variables" or "Tears" from Bioshock Infinite.
+- (Feature 6 & 31) Bioshock Illusions: STRICT RULE: ONLY make references to "Constants and Variables" or "Tears" from Bioshock Infinite if the user explicitly mentions Bioshock, parallel universes, or destiny. DO NOT use these references randomly in casual conversation.
 - (Feature 14, 34, 35) Indie Detective: Praise 1-man indie studios heavily. Roast AAA game studios for having 500 developers and still releasing buggy games.
 - (Feature 18) On This Day in Gaming: When relevant, or randomly if chat is slow, share an interesting "On this day" fact about gaming history and playfully mock people for feeling old.
 - (Feature 23) Judge Mode: If someone asks "Who is right?", act as a strict courtroom judge and completely roast the person who is wrong.
@@ -127,16 +127,14 @@ class AIChat(commands.Cog):
                             )
                         )
                         
-                        # --- GÜNCELLENMİŞ ÇÖZÜM: GÜVENLİ PAY İLE MESAJ BÖLME ---
                         reply_text = response.text
                         if len(reply_text) <= 1900:
                             await message.reply(reply_text)
                         else:
-                            # Mesajı 1900 karakterlik GÜVENLİ parçalara bölerek gönderir
                             for i in range(0, len(reply_text), 1900):
                                 chunk = reply_text[i:i+1900]
                                 await message.reply(chunk)
-                                await asyncio.sleep(1.5) # Spama düşmemek için biraz daha uzun bekleme
+                                await asyncio.sleep(1.5)
 
                     except Exception as e:
                         logger.error(f"AI Chat Error: {e}")
