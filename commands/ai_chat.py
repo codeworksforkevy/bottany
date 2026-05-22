@@ -2,6 +2,7 @@ import os
 import random
 import logging
 import asyncio
+import aiohttp  # Added for API requests
 import discord
 from discord.ext import commands
 from google import genai
@@ -68,10 +69,122 @@ class AIChat(commands.Cog):
         self.bot = bot
         self.message_queue = asyncio.Queue()
         self.bg_task = self.bot.loop.create_task(self.process_queue())
-        # idle_task tamamen silindi!
 
     def cog_unload(self):
         self.bg_task.cancel()
+
+    # ==========================================
+    # NEW FEATURE: API COMMANDS
+    # ==========================================
+
+    @commands.command(name="freegames", help="Fetches the top free game giveaways")
+    async def free_games(self, ctx):
+        url = "https://www.gamerpower.com/api/giveaways"
+        params = {"type": "game", "sort-by": "popularity"}
+        
+        async with aiohttp.ClientSession() as session:
+            async with session.get(url, params=params) as response:
+                if response.status != 200:
+                    await ctx.send("Could not fetch giveaways right now. The API might be down.")
+                    return
+                data = await response.json()
+                
+        if not data:
+            await ctx.send("No active free game giveaways found!")
+            return
+            
+        embed = discord.Embed(
+            title="🎮 Latest Free Games & Giveaways",
+            description="Here are the most popular game drops available right now!",
+            color=discord.Color.green()
+        )
+        
+        # Set the main image using the official 16:9 graphic from the top result
+        if data[0].get("image"):
+            embed.set_image(url=data[0]["image"])
+            
+        for item in data[:5]:
+            title = item.get("title", "Unknown Title")
+            worth = item.get("worth", "N/A")
+            platforms = item.get("platforms", "Unknown")
+            link = item.get("open_giveaway_url", "")
+            
+            price_text = f" (Was {worth})" if worth and worth != "N/A" else ""
+            
+            embed.add_field(
+                name=f"{title}{price_text}",
+                value=f"**Platform:** {platforms}\n[Claim Here]({link})",
+                inline=False
+            )
+            
+        embed.set_footer(text="Data sourced directly from GamerPower API")
+        await ctx.send(embed=embed)
+
+    @commands.command(name="twitchbadges", help="Fetches global Twitch badges")
+    async def twitch_badges(self, ctx):
+        client_id = os.getenv("TWITCH_CLIENT_ID")
+        client_secret = os.getenv("TWITCH_CLIENT_SECRET")
+        
+        if not client_id or not client_secret:
+            await ctx.send("My Twitch API credentials are missing. Tell Kevy to add `TWITCH_CLIENT_ID` and `TWITCH_CLIENT_SECRET` to my environment!")
+            return
+            
+        # 1. Server-to-Server OAuth Flow
+        token_url = "https://id.twitch.tv/oauth2/token"
+        token_params = {
+            "client_id": client_id,
+            "client_secret": client_secret,
+            "grant_type": "client_credentials"
+        }
+        
+        async with aiohttp.ClientSession() as session:
+            async with session.post(token_url, data=token_params) as resp:
+                if resp.status != 200:
+                    await ctx.send("Failed to authenticate with Twitch's OAuth server.")
+                    return
+                token_data = await resp.json()
+                access_token = token_data["access_token"]
+                
+            # 2. Fetch the Official Badges
+            headers = {
+                "Client-Id": client_id,
+                "Authorization": f"Bearer {access_token}"
+            }
+            badges_url = "https://api.twitch.tv/helix/chat/badges/global"
+            async with session.get(badges_url, headers=headers) as resp:
+                if resp.status != 200:
+                    await ctx.send("Failed to pull the badge graphics from Twitch.")
+                    return
+                badges_data = await resp.json()
+                
+        embed = discord.Embed(
+            title="🟣 Official Twitch Global Badges",
+            description="High-resolution global badges straight from the Helix API.",
+            color=discord.Color.purple()
+        )
+        
+        # Display the first 5 badge sets found (Staff, Admin, VIP, etc.)
+        for badge_set in badges_data.get("data", [])[:5]:
+            set_id = badge_set.get("set_id", "Unknown").capitalize()
+            
+            if badge_set.get("versions"):
+                version = badge_set["versions"][0]
+                badge_name = version.get("title", set_id)
+                # Fetching the 4x resolution image as requested
+                image_url = version.get("image_url_4x") or version.get("image_url_1x")
+                
+                # Adding the raw link so it renders directly in chat/embed
+                embed.add_field(name=badge_name, value=f"[View 72x72 Avatar]({image_url})", inline=False)
+                
+                # Use the first badge we find as the thumbnail graphic
+                if not embed.thumbnail.url and image_url:
+                    embed.set_thumbnail(url=image_url)
+                    
+        await ctx.send(embed=embed)
+
+    # ==========================================
+    # CORE AI CHAT LOOP
+    # ==========================================
 
     async def process_queue(self):
         await self.bot.wait_until_ready()
